@@ -46,7 +46,7 @@ extern "C" {
 #define __glxext_h_
 #endif
 
-#include "epoxy/glx_generated.h"
+#include "glx_generated.h"
 
 bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
 int epoxy_glx_version(Display *dpy, int screen);

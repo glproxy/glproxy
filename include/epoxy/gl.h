@@ -91,7 +91,7 @@ extern "C" {
 #define GLAPIENTRYP GLAPIENTRY *
 #endif
 
-#include "epoxy/gl_generated.h"
+#include "gl_generated.h"
 
 EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *extension);
 EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void);
