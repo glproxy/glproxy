@@ -376,7 +376,8 @@ class Generator(object):
                 condition = 'true'
                 loader = 'epoxy_gl_dlsym({0})'
             else:
-                sys.exit('unknown API: "{0}"'.format(api))
+                print('unknown API: "{0}"'.format(api))
+                continue
 
             self.process_require_statements(feature, condition, loader, human_name)
 
@@ -484,7 +485,7 @@ class Generator(object):
         self.write_header_header(file)
 
         if self.target != "gl":
-            self.outln('#include "epoxy/gl.h"')
+            self.outln('#include "gl.h"')
             if self.target == "egl":
                 self.outln('#include "EGL/eglplatform.h"')
         else:
@@ -586,7 +587,7 @@ class Generator(object):
                     self.outln('        0 /* None */,')
             self.outln('    };')
 
-            self.outln('    return {0}_provider_resolver(entrypoint_strings + {1} /* "{2}" */,'.format(self.target,
+            self.outln('    return {0}_provider_resolver(entrypoint_strings[{1}] /* "{2}" */,'.format(self.target,
                                                                                                        self.entrypoint_string_offset[func.name],
                                                                                                        func.name))
             self.outln('                                providers, entrypoints);')
@@ -606,7 +607,7 @@ class Generator(object):
         #
         # It also writes out the actual initialized global function
         # pointer.
-        if func.ret_type == 'void':
+        if func.ret_type == 'void' or func.ret_type == 'VOID':
             self.outln('GEN_THUNKS({0}, ({1}), ({2}))'.format(func.wrapped_name,
                                                               func.args_decl,
                                                               func.args_list))
@@ -655,10 +656,8 @@ class Generator(object):
             offset += len(human_name.replace('\\', '')) + 1
         self.outln('     ;')
         self.outln('')
-        # We're using uint16_t for the offsets.
-        assert(offset < 65536)
 
-        self.outln('static const uint16_t enum_string_offsets[] = {')
+        self.outln('static const uint32_t enum_string_offsets[] = {')
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
             self.outln('    [{0}] = {1},'.format(enum, self.enum_string_offset[human_name]))
@@ -668,16 +667,14 @@ class Generator(object):
     def write_entrypoint_strings(self):
         self.entrypoint_string_offset = {}
 
-        self.outln('static const char entrypoint_strings[] = ')
+        self.outln('static const char* entrypoint_strings[] = {')
         offset = 0
         for func in self.sorted_functions:
             if func.name not in self.entrypoint_string_offset:
                 self.entrypoint_string_offset[func.name] = offset
-                offset += len(func.name) + 1
-                self.outln('   "{0}\\0"'.format(func.name))
-        self.outln('    ;')
-        # We're using uint16_t for the offsets.
-        assert(offset < 65536)
+                offset = offset + 1
+                self.outln('   "{0}",'.format(func.name))
+        self.outln('};')
         self.outln('')
 
     def write_provider_resolver(self):
@@ -694,7 +691,7 @@ class Generator(object):
             enum = self.provider_enum[human_name]
             self.outln('        case {0}:'.format(enum))
             self.outln('            if ({0})'.format(self.provider_condition[human_name]))
-            self.outln('                return {0};'.format(self.provider_loader[human_name]).format("entrypoint_strings + entrypoints[i]"))
+            self.outln('                return {0};'.format(self.provider_loader[human_name]).format("entrypoint_strings[entrypoints[i]]"))
             self.outln('            break;')
 
         self.outln('        case {0}_provider_terminator:'.format(self.target))
@@ -731,7 +728,7 @@ class Generator(object):
         self.outln('        provider,')
         self.outln('        {0}_provider_terminator'.format(self.target))
         self.outln('    };')
-        self.outln('    return {0}_provider_resolver(entrypoint_strings + entrypoint_offset,'.format(self.target))
+        self.outln('    return {0}_provider_resolver(entrypoint_strings[entrypoint_offset],'.format(self.target))
         self.outln('                                providers, &entrypoint_offset);')
         self.outln('}')
         self.outln('')
@@ -749,6 +746,7 @@ class Generator(object):
         self.outln('#include <stdio.h>')
         self.outln('')
         self.outln('#include "dispatch_common.h"')
+        self.outln('#if PLATFORM_HAS_{0}'.format(self.target.upper()))
         self.outln('#include "epoxy/{0}.h"'.format(self.target))
         self.outln('')
         self.outln('#ifdef __GNUC__')
@@ -826,6 +824,7 @@ class Generator(object):
 
         for func in self.sorted_functions:
             self.write_function_pointer(func)
+        self.outln('#endif /* PLATFORM_HAS_{0} */'.format(self.target.upper()))
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')
