@@ -89,10 +89,11 @@ override_wglGetProcAddress(LPCSTR name)
 }
 
 static void
-test_createshader(HDC hdc, HGLRC ctx)
+test_createshader(HDC hdc, HGLRC ctx, void *epoxy_ctx)
 {
     GLuint shader, expected;
     int ctxnum;
+    epoxy_context_set(epoxy_ctx);
 
     wglMakeCurrent(hdc, ctx);
     current_context = ctx;
@@ -100,7 +101,7 @@ test_createshader(HDC hdc, HGLRC ctx)
     /* Install our GPA override so we can force per-context function
      * pointers.
      */
-    wglGetProcAddress = override_wglGetProcAddress;
+    *epoxy_context_get_function_pointer("wgl", "wglGetProcAddress") = override_wglGetProcAddress;
 
     if (ctx == ctx1) {
         expected = CREATESHADER_CTX1_VAL;
@@ -122,13 +123,27 @@ test_createshader(HDC hdc, HGLRC ctx)
 static int
 test_function(HDC hdc)
 {
+    void *epoxy_ctx1= NULL;
+    void *epoxy_ctx2 = NULL;
+
+    epoxy_context_set(epoxy_ctx1);
     ctx1 = wglCreateContext(hdc);
+    epoxy_ctx1 = epoxy_context_get();
+
+    epoxy_context_set(epoxy_ctx2);
     ctx2 = wglCreateContext(hdc);
+    epoxy_ctx2 = epoxy_context_get();
+
     if (!ctx1 || !ctx2) {
         fprintf(stderr, "Failed to create wgl contexts\n");
         return 1;
     }
+    if (!epoxy_ctx1 || !epoxy_ctx2) {
+        fprintf(stderr, "Failed to create epoxy contexts\n");
+        return 1;
+    }
 
+    epoxy_context_set(epoxy_ctx1);
     if (!wglMakeCurrent(hdc, ctx1)) {
         fprintf(stderr, "Failed to make context current\n");
         return 1;
@@ -141,18 +156,22 @@ test_function(HDC hdc)
     }
 
     /* Force resolving epoxy_wglGetProcAddress. */
-    wglGetProcAddress("glCreateShader");
+    void* x = wglGetProcAddress("glCreateShader");
 
-    test_createshader(hdc, ctx1);
-    test_createshader(hdc, ctx1);
-    test_createshader(hdc, ctx2);
-    test_createshader(hdc, ctx2);
-    test_createshader(hdc, ctx1);
-    test_createshader(hdc, ctx2);
+    test_createshader(hdc, ctx1, epoxy_ctx1);
+    test_createshader(hdc, ctx1, epoxy_ctx1);
+    test_createshader(hdc, ctx2, epoxy_ctx2);
+    test_createshader(hdc, ctx2, epoxy_ctx2);
+    test_createshader(hdc, ctx1, epoxy_ctx1);
+    test_createshader(hdc, ctx2, epoxy_ctx2);
 
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(ctx1);
     wglDeleteContext(ctx2);
+    epoxy_context_set(epoxy_ctx1);
+    epoxy_context_cleanup();
+    epoxy_context_set(epoxy_ctx2);
+    epoxy_context_cleanup();
 
     return !pass;
 }

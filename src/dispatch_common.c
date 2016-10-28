@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright © 2013-2014 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -918,7 +918,7 @@ EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_context) {
     set_tls_by_index(dispatch_common_tls_index, new_context);
 }
 
-EPOXY_IMPORTEXPORT void epoxy_context_clenaup() {
+EPOXY_IMPORTEXPORT void epoxy_context_cleanup() {
     if (!inited) {
         fprintf(stderr, "The epoxy are not inited yet");
         return;
@@ -929,6 +929,26 @@ EPOXY_IMPORTEXPORT void epoxy_context_clenaup() {
         free(exist_context);
     }
     set_tls_by_index(dispatch_common_tls_index, 0);
+}
+
+static size_t find_str_pos(const char** strList, char*expected, size_t length) {
+    for (size_t i = 0; i < length; ++i) {
+        if (strcmp(strList[i], expected) == 0) {
+            return i;
+        }
+    }
+    return 0;
+}
+
+EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(char* target, char* membername) {
+    tls_ptr exist_context = get_tls_by_index(dispatch_common_tls_index);
+#if PLATFORM_HAS_WGL
+    if (strcmp(target, "wgl") == 0) {
+        size_t pos = find_str_pos(wgl_entrypoint_strings, membername, sizeof(wgl_entrypoint_strings) / sizeof(wgl_entrypoint_strings[0]));
+        return (void**)(&exist_context->wgl_dispatch_table) + pos;
+    }
+#endif
+    return NULL;
 }
 
 static bool epoxy_is_desktop_gl_local(tls_ptr tls) {
@@ -960,6 +980,8 @@ static bool epoxy_is_desktop_gl_local(tls_ptr tls) {
         case EGL_NONE:
         default:  break;
         }
+    } else {
+        tls->open_gl_type = DISPATCH_OPENGL_DESKTOP;
     }
 #endif
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {

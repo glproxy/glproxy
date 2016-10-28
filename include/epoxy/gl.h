@@ -92,7 +92,10 @@ EPOXY_IMPORTEXPORT void epoxy_uninit_tls();
 
 EPOXY_IMPORTEXPORT void* epoxy_context_get();
 EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_contex);
-EPOXY_IMPORTEXPORT void epoxy_context_clenaup();
+EPOXY_IMPORTEXPORT void epoxy_context_cleanup();
+
+/* target: (wgl, glx, egl, gl) */
+EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(char* target, char* membername);
 
 /**
 * Returns true if the given GL extension is supported in the current context.
