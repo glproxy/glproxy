@@ -31,7 +31,7 @@ import os
 class GLProvider(object):
     def __init__(self, condition, condition_name, loader, name):
         # C code for determining if this function is available.
-        # (e.g. epoxy_is_desktop_gl() && epoxy_gl_version() >= 20
+        # (e.g. epoxy_is_desktop_gl_local() && epoxy_gl_version() >= 20
         self.condition = condition
 
         # A string (possibly with spaces) describing the condition.
@@ -60,24 +60,9 @@ class GLFunction(object):
         self.providers = {}
         self.args = []
 
-        # These are functions with hand-written wrapper code in
-        # dispatch_common.c.  Their dispatch entries are replaced with
-        # non-public symbols with a "_unwrapped" suffix.
-        wrapped_functions = {
-            'glBegin',
-            'glEnd',
-            'wglMakeCurrent',
-            'wglMakeContextCurrentEXT',
-            'wglMakeContextCurrentARB',
-            'wglMakeAssociatedContextCurrentAMD',
-        }
 
-        if name in wrapped_functions:
-            self.wrapped_name = name + '_unwrapped'
-            self.public = ''
-        else:
-            self.wrapped_name = name
-            self.public = 'PUBLIC '
+        self.wrapped_name = name
+        self.public = 'PUBLIC '
 
         # This is the string of C code for passing through the
         # arguments to the function.
@@ -334,23 +319,23 @@ class Generator(object):
 
             if api == 'gl':
                 human_name = 'Desktop OpenGL {0}'.format(feature.get('number'))
-                condition = 'epoxy_is_desktop_gl()'
+                condition = 'epoxy_is_desktop_gl_local(tls)'
 
-                loader = 'epoxy_get_core_proc_address({0}, {1})'.format('{0}', version)
+                loader = 'epoxy_get_core_proc_address(tls, {0}, {1})'.format('{0}', version)
                 if version >= 11:
-                    condition += ' && epoxy_conservative_gl_version() >= {0}'.format(version)
+                    condition += ' && epoxy_conservative_gl_version(tls) >= {0}'.format(version)
             elif api == 'gles2':
                 human_name = 'OpenGL ES {0}'.format(feature.get('number'))
-                condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() >= {0}'.format(version)
+                condition = '!epoxy_is_desktop_gl_local(tls) && epoxy_gl_version() >= {0}'.format(version)
 
                 if version <= 20:
-                    loader = 'epoxy_gles2_dlsym({0})'
+                    loader = 'epoxy_gles2_dlsym(tls, {0})'
                 else:
-                    loader = 'epoxy_gles3_dlsym({0})'
+                    loader = 'epoxy_gles3_dlsym(tls, {0})'
             elif api == 'gles1':
                 human_name = 'OpenGL ES 1.0'
-                condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() >= 10 && epoxy_gl_version() < 20'
-                loader = 'epoxy_gles1_dlsym({0})'
+                condition = '!epoxy_is_desktop_gl_local(tls) && epoxy_gl_version() >= 10 && epoxy_gl_version() < 20'
+                loader = 'epoxy_gles1_dlsym(tls, {0})'
             elif api == 'glx':
                 human_name = 'GLX {0}'.format(version)
                 # We could just always use GPA for loading everything
@@ -361,7 +346,7 @@ class Generator(object):
                     loader = 'glXGetProcAddress((const GLubyte *){0})'
                 else:
                     condition = 'true'
-                    loader = 'epoxy_glx_dlsym({0})'
+                    loader = 'epoxy_glx_dlsym(tls, {0})'
             elif api == 'egl':
                 human_name = 'EGL {0}'.format(version)
                 if version > 10:
@@ -370,11 +355,11 @@ class Generator(object):
                     condition = 'true'
                 # All EGL core entrypoints must be dlsym()ed out --
                 # eglGetProcAdddress() will return NULL.
-                loader = 'epoxy_egl_dlsym({0})'
+                loader = 'epoxy_egl_dlsym(tls, {0})'
             elif api == 'wgl':
                 human_name = 'WGL {0}'.format(version)
                 condition = 'true'
-                loader = 'epoxy_gl_dlsym({0})'
+                loader = 'epoxy_wgl_dlsym(tls, {0})'
             else:
                 print('unknown API: "{0}"'.format(api))
                 continue
@@ -391,7 +376,7 @@ class Generator(object):
             apis = extension.get('supported').split('|')
             if 'glx' in apis:
                 human_name = 'GLX extension \\"{0}\\"'.format(extname)
-                condition = 'epoxy_conservative_has_glx_extension("{0}")'.format(extname)
+                condition = 'epoxy_conservative_has_glx_extension(tls, "{0}")'.format(extname)
                 loader = 'glXGetProcAddress((const GLubyte *){0})'
                 self.process_require_statements(extension, condition, loader, human_name)
             if 'egl' in apis:
@@ -406,8 +391,8 @@ class Generator(object):
                 self.process_require_statements(extension, condition, loader, human_name)
             if {'gl', 'gles1', 'gles2'}.intersection(apis):
                 human_name = 'GL extension \\"{0}\\"'.format(extname)
-                condition = 'epoxy_conservative_has_gl_extension("{0}")'.format(extname)
-                loader = 'epoxy_get_proc_address({0})'
+                condition = 'epoxy_conservative_has_gl_extension(tls, "{0}")'.format(extname)
+                loader = 'epoxy_get_proc_address(tls, {0})'
                 self.process_require_statements(extension, condition, loader, human_name)
 
     def fixup_bootstrap_function(self, name, loader):
@@ -462,7 +447,7 @@ class Generator(object):
 
     def write_function_ptr_typedefs(self):
         for func in self.sorted_functions:
-            self.outln('typedef {0} (GLAPIENTRY *{1})({2});'.format(func.ret_type,
+            self.outln('typedef {0} (EPOXY_CALLSPEC *{1})({2});'.format(func.ret_type,
                                                                     func.ptr_type,
                                                                     func.args_decl))
 
@@ -528,7 +513,7 @@ class Generator(object):
         self.write_function_ptr_typedefs()
 
         for func in self.sorted_functions:
-            self.outln('extern EPOXY_IMPORTEXPORT {0} (EPOXY_CALLSPEC *epoxy_{1})({2});'.format(func.ret_type,
+            self.outln('EPOXY_IMPORTEXPORT {0} EPOXY_CALLSPEC epoxy_{1}({2});'.format(func.ret_type,
                                                                                      func.name,
                                                                                      func.args_decl))
             self.outln('')
@@ -538,7 +523,7 @@ class Generator(object):
 
     def write_function_ptr_resolver(self, func):
         self.outln('static {0}'.format(func.ptr_type))
-        self.outln('epoxy_{0}_resolver(void)'.format(func.wrapped_name))
+        self.outln('epoxy_{0}_resolver(tls_ptr tls)'.format(func.wrapped_name))
         self.outln('{')
 
         providers = []
@@ -587,13 +572,13 @@ class Generator(object):
                     self.outln('        0 /* None */,')
             self.outln('    };')
 
-            self.outln('    return {0}_provider_resolver(entrypoint_strings[{1}] /* "{2}" */,'.format(self.target,
+            self.outln('    return {0}_provider_resolver(tls, {0}_entrypoint_strings[{1}] /* "{2}" */,'.format(self.target,
                                                                                                        self.entrypoint_string_offset[func.name],
                                                                                                        func.name))
             self.outln('                                providers, entrypoints);')
         else:
             assert(providers[0].name == func.name)
-            self.outln('    return {0}_single_resolver({1}, {2} /* {3} */);'.format(self.target,
+            self.outln('    return {0}_single_resolver(tls, {1}, {2} /* {3} */);'.format(self.target,
                                                                                     providers[0].enum,
                                                                                     self.entrypoint_string_offset[func.name],
                                                                                     func.name))
@@ -608,20 +593,14 @@ class Generator(object):
         # It also writes out the actual initialized global function
         # pointer.
         if func.ret_type == 'void' or func.ret_type == 'VOID':
-            self.outln('GEN_THUNKS({0}, ({1}), ({2}))'.format(func.wrapped_name,
+            self.outln('GEN_THUNKS({0}, {1}, ({2}), ({3}))'.format(self.target, func.wrapped_name,
                                                               func.args_decl,
                                                               func.args_list))
         else:
-            self.outln('GEN_THUNKS_RET({0}, {1}, ({2}), ({3}))'.format(func.ret_type,
+            self.outln('GEN_THUNKS_RET({0}, {1}, {2}, ({3}), ({4}))'.format(self.target, func.ret_type,
                                                                        func.wrapped_name,
                                                                        func.args_decl,
                                                                        func.args_list))
-
-    def write_function_pointer(self, func):
-        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_global_rewrite_ptr;'.format(func.public,
-                                                                             func.ptr_type,
-                                                                             func.wrapped_name))
-        self.outln('')
 
     def write_provider_enums(self):
         # Writes the enum declaration for the list of providers
@@ -649,7 +628,7 @@ class Generator(object):
 
         self.enum_string_offset = {}
         offset = 0
-        self.outln('static const char *enum_string =')
+        self.outln('static const char *{0}_enum_string ='.format(self.target))
         for human_name in sorted_providers:
             self.outln('    "{0}\\0"'.format(human_name));
             self.enum_string_offset[human_name] = offset
@@ -657,7 +636,7 @@ class Generator(object):
         self.outln('     ;')
         self.outln('')
 
-        self.outln('static const uint32_t enum_string_offsets[] = {')
+        self.outln('static const uint32_t {0}_enum_string_offsets[] = {{'.format(self.target))
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
             self.outln('    [{0}] = {1},'.format(enum, self.enum_string_offset[human_name]))
@@ -667,7 +646,7 @@ class Generator(object):
     def write_entrypoint_strings(self):
         self.entrypoint_string_offset = {}
 
-        self.outln('static const char* entrypoint_strings[] = {')
+        self.outln('static const char* {0}_entrypoint_strings[] = {{'.format(self.target))
         offset = 0
         for func in self.sorted_functions:
             if func.name not in self.entrypoint_string_offset:
@@ -678,7 +657,7 @@ class Generator(object):
         self.outln('')
 
     def write_provider_resolver(self):
-        self.outln('static void *{0}_provider_resolver(const char *name,'.format(self.target))
+        self.outln('static void *{0}_provider_resolver(tls_ptr tls, const char *name,'.format(self.target))
         self.outln('                                   const enum {0}_provider *providers,'.format(self.target))
         self.outln('                                   const uint16_t *entrypoints)')
         self.outln('{')
@@ -687,11 +666,13 @@ class Generator(object):
         self.outln('    for (i = 0; providers[i] != {0}_provider_terminator; i++) {{'.format(self.target))
         self.outln('        switch (providers[i]) {')
 
+        entrypoint_strings = "{0}_entrypoint_strings[entrypoints[i]]".format(self.target)
+
         for human_name in sorted(self.provider_enum.keys()):
             enum = self.provider_enum[human_name]
             self.outln('        case {0}:'.format(enum))
             self.outln('            if ({0})'.format(self.provider_condition[human_name]))
-            self.outln('                return {0};'.format(self.provider_loader[human_name]).format("entrypoint_strings[entrypoints[i]]"))
+            self.outln('                return {0};'.format(self.provider_loader[human_name]).format(entrypoint_strings))
             self.outln('            break;')
 
         self.outln('        case {0}_provider_terminator:'.format(self.target))
@@ -706,7 +687,7 @@ class Generator(object):
         # call into some blank stub function and segfault).
         self.outln('    fprintf(stderr, "No provider of %s found.  Requires one of:\\n", name);')
         self.outln('    for (i = 0; providers[i] != {0}_provider_terminator; i++) {{'.format(self.target))
-        self.outln('        fprintf(stderr, "    %s\\n", enum_string + enum_string_offsets[providers[i]]);')
+        self.outln('        fprintf(stderr, "    %s\\n", {0}_enum_string + {0}_enum_string_offsets[providers[i]]);'.format(self.target))
         self.outln('    }')
         self.outln('    if (providers[0] == {0}_provider_terminator) {{'.format(self.target))
         self.outln('        fprintf(stderr, "    No known providers.  This is likely a bug "')
@@ -717,7 +698,7 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-        single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
+        single_resolver_proto = '{0}_single_resolver(tls_ptr tls, enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
         self.outln('EPOXY_NOINLINE static void *')
         self.outln('{0};'.format(single_resolver_proto))
         self.outln('')
@@ -728,52 +709,39 @@ class Generator(object):
         self.outln('        provider,')
         self.outln('        {0}_provider_terminator'.format(self.target))
         self.outln('    };')
-        self.outln('    return {0}_provider_resolver(entrypoint_strings[entrypoint_offset],'.format(self.target))
+        self.outln('    return {0}_provider_resolver(tls, {0}_entrypoint_strings[entrypoint_offset],'.format(self.target))
         self.outln('                                providers, &entrypoint_offset);')
         self.outln('}')
         self.outln('')
 
-    def write_source(self, file):
+    def write_inc_header(self, file):
         self.out_file = open(file, 'w')
 
         self.outln('/* GL dispatch code.')
         self.outln(' * This is code-generated from the GL API XML files from Khronos.')
         self.write_copyright_comment_body()
         self.outln(' */')
-        self.outln('')
-        self.outln('#include <stdlib.h>')
-        self.outln('#include <string.h>')
-        self.outln('#include <stdio.h>')
-        self.outln('')
         self.outln('#include "dispatch_common.h"')
         self.outln('#if PLATFORM_HAS_{0}'.format(self.target.upper()))
-        self.outln('#include "epoxy/{0}.h"'.format(self.target))
         self.outln('')
-        self.outln('#ifdef __GNUC__')
-        self.outln('#define EPOXY_NOINLINE __attribute__((noinline))')
-        self.outln('#elif defined (_MSC_VER)')
-        self.outln('#define EPOXY_NOINLINE __declspec(noinline)')
-        self.outln('#endif')
 
-        self.outln('struct dispatch_table {')
+    def write_table_type_inc(self, file):
+        self.write_inc_header(file)
+        self.outln('struct {0}_dispatch_table {{'.format(self.target))
         for func in self.sorted_functions:
             self.outln('    {0} epoxy_{1};'.format(func.ptr_type, func.wrapped_name))
         self.outln('};')
         self.outln('')
 
-        # Early declaration, so we can declare the real thing at the
-        # bottom. (I want the function_ptr_resolver as the first
-        # per-GL-call code, since it's the most interesting to see
-        # when you search for the implementation of a call)
-        self.outln('#if USING_DISPATCH_TABLE')
-        self.outln('static inline struct dispatch_table *')
-        self.outln('get_dispatch_table(void);')
-        self.outln('')
-        self.outln('#endif')
-
         self.write_provider_enums()
         self.write_provider_enum_strings()
         self.write_entrypoint_strings()
+
+        self.outln('#endif /* PLATFORM_HAS_{0} */'.format(self.target.upper()))
+
+    def write_thunks_inc(self, file):
+        self.write_inc_header(file)
+
         self.write_provider_resolver()
 
         for func in self.sorted_functions:
@@ -783,47 +751,11 @@ class Generator(object):
             self.write_thunks(func)
         self.outln('')
 
-        self.outln('#if USING_DISPATCH_TABLE')
-
-        self.outln('static struct dispatch_table resolver_table = {')
+        self.outln('static struct {0}_dispatch_table {0}_resolver_table = '.format(self.target) + '{')
         for func in self.sorted_functions:
             self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
         self.outln('};')
-        self.outln('')
 
-        self.outln('uint32_t {0}_tls_index;'.format(self.target))
-        self.outln('uint32_t {0}_tls_size = sizeof(struct dispatch_table);'.format(self.target))
-        self.outln('')
-
-        self.outln('static inline struct dispatch_table *')
-        self.outln('get_dispatch_table(void)')
-        self.outln('{')
-        self.outln('	return TlsGetValue({0}_tls_index);'.format(self.target))
-        self.outln('}')
-        self.outln('')
-
-        self.outln('void')
-        self.outln('{0}_init_dispatch_table(void)'.format(self.target))
-        self.outln('{')
-        self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
-        self.outln('    memcpy(dispatch_table, &resolver_table, sizeof(resolver_table));')
-        self.outln('}')
-        self.outln('')
-
-        self.outln('void')
-        self.outln('{0}_switch_to_dispatch_table(void)'.format(self.target))
-        self.outln('{')
-
-        for func in self.sorted_functions:
-            self.outln('    epoxy_{0} = epoxy_{0}_dispatch_table_thunk;'.format(func.wrapped_name))
-
-        self.outln('}')
-        self.outln('')
-
-        self.outln('#endif /* !USING_DISPATCH_TABLE */')
-
-        for func in self.sorted_functions:
-            self.write_function_pointer(func)
         self.outln('#endif /* PLATFORM_HAS_{0} */'.format(self.target.upper()))
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
@@ -849,17 +781,18 @@ for file in args.files:
     generator.sort_functions()
     generator.resolve_aliases()
     generator.fixup_bootstrap_function('glGetString',
-                                       'epoxy_get_bootstrap_proc_address({0})')
+                                       'epoxy_get_bootstrap_proc_address(tls, {0})')
     generator.fixup_bootstrap_function('glGetIntegerv',
-                                       'epoxy_get_bootstrap_proc_address({0})')
+                                       'epoxy_get_bootstrap_proc_address(tls, {0})')
 
     # While this is technically exposed as a GLX extension, it's
     # required to be present as a public symbol by the Linux OpenGL
     # ABI.
     generator.fixup_bootstrap_function('glXGetProcAddress',
-                                       'epoxy_glx_dlsym({0})')
+                                       'epoxy_glx_dlsym(tls, {0})')
 
     generator.prepare_provider_enum()
 
     generator.write_header(incdir + name + '_generated.h')
-    generator.write_source(srcdir + name + '_generated_dispatch.c')
+    generator.write_table_type_inc(srcdir + name + '_generated_dispatch_table_type.inc')
+    generator.write_thunks_inc(srcdir + name + '_generated_dispatch_thunks.inc')

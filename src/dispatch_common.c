@@ -90,7 +90,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #ifdef _WIN32
-#include <windows.h>
+#include <Windows.h>
 #else
 #include <dlfcn.h>
 #include <err.h>
@@ -102,51 +102,89 @@
 
 #include "dispatch_common.h"
 
-#ifdef __APPLE__
-#define GLX_LIB "/opt/X11/lib/libGL.1.dylib"
+#include "wgl_generated_dispatch_table_type.inc"
+#include "glx_generated_dispatch_table_type.inc"
+#include "gl_generated_dispatch_table_type.inc"
+#include "egl_generated_dispatch_table_type.inc"
+
+const char *WGL_LIBS[] = {
+    "opengl32.dll",
+    NULL
+};
+
+const char* GLX_LIBS[] = {
+#if defined(__APPLE__)
+    "/opt/X11/lib/libGL.1.dylib",
 #elif defined(ANDROID)
-#define GLX_LIB "libGLESv2.so"
+    "libGLESv2.so",
+#elif defined(_WIN32)
+    // Win32 do not contains GLX LIBS
 #else
-#define GLX_LIB "libGL.so.1"
+    "libGL.so.1",
 #endif
+    NULL,
+};
 
-#ifdef ANDROID
-#define EGL_LIB "libEGL.so"
-#define GLES1_LIB "libGLESv1_CM.so"
-#define GLES2_LIB "libGLESv2.so"
+const char *GL_LIBS[] = {
+#if defined(__APPLE__)
+    "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL",
+#endif
+    NULL
+};
+
+const char* EGL_LIBS[] = {
+#if defined(ANDROID)
+    "libEGL.so",
+#elif defined(_WIN32)
+    "libEGL.dll",
+    "libEGLd.dll", // For Qt
 #else
-#define EGL_LIB "libEGL.so.1"
-#define GLES1_LIB "libGLESv1_CM.so.1"
-#define GLES2_LIB "libGLESv2.so.2"
+    "libEGL.so.1",
 #endif
+    NULL
+};
 
-#ifdef __GNUC__
-#define CONSTRUCT(_func) static void _func (void) __attribute__((constructor));
-#define DESTRUCT(_func) static void _func (void) __attribute__((destructor));
-#elif defined (_MSC_VER) && (_MSC_VER >= 1500)
-#define CONSTRUCT(_func) \
-  static void _func(void); \
-  static int _func ## _wrapper(void) { _func(); return 0; } \
-  __pragma(section(".CRT$XCU",read)) \
-  __declspec(allocate(".CRT$XCU")) static int (* _array ## _func)(void) = _func ## _wrapper;
-
-#define DESTRUCT(_func) \
-  static void _func(void); \
-  static int _func ## _constructor(void) { atexit (_func); return 0; } \
-  __pragma(section(".CRT$XCU",read)) \
-  __declspec(allocate(".CRT$XCU")) static int (* _array ## _func)(void) = _func ## _constructor;
-
+const char* GLES1_LIBS[] = {
+#if defined(ANDROID)
+    "libGLESv1_CM.so",
+#elif defined(_WIN32)
+    "libGLESv1_CM.dll",
+    "libGLESv1_CMd.dll",
 #else
-#error "You will need constructor support for your compiler"
+    "libGLESv1_CM.so.1",
+#endif
+    NULL
+};
+
+const char* GLES2_LIBS[] = {
+#if defined(ANDROID)
+    "libGLESv2.so",
+#elif defined(_WIN32)
+    "libGLESv2.dll",
+    "libGLESv2d.dll",
+#else
+    "libGLESv2.so.2",
+#endif
+    NULL
+};
+
+struct dispatch_common_tls {
+#if PLATFORM_HAS_WGL
+    struct wgl_dispatch_table wgl_dispatch_table;
 #endif
 
-struct api {
-#ifndef _WIN32
-    /**
-     * Locking for making sure we don't double-dlopen().
-     */
-    pthread_mutex_t mutex;
+#if PLATFORM_HAS_GLX
+    struct glx_dispatch_table glx_dispatch_table;
 #endif
+
+    struct gl_dispatch_table gl_dispatch_table;
+
+#if PLATFORM_HAS_EGL
+    struct egl_dispatch_table egl_dispatch_table;
+#endif
+
+    /* LoadLibraryA return value for opengl32.dll */
+    void *wgl_handle;
 
     /** dlopen() return value for libGL.so.1. */
     void *glx_handle;
@@ -180,133 +218,124 @@ struct api {
      * informative error messages, we shouldn't need to care.
      */
     long begin_count;
+    PFNGLBEGINPROC glBeginSaved;
+    PFNGLENDPROC glEndSaved;
 };
 
-static struct api api = {
-#ifndef _WIN32
-    .mutex = PTHREAD_MUTEX_INITIALIZER,
+typedef struct dispatch_common_tls *tls_ptr;
+
+static void init_dispatch_common_tls(tls_ptr tls);
+
+#if defined(_WIN32)
+#define TLS_TYPE DWORD
 #else
-	0,
-#endif
-};
-
-static bool library_initialized;
-
-static bool epoxy_current_context_is_glx(void);
-
-#if PLATFORM_HAS_EGL
-static EGLenum
-epoxy_egl_get_current_gl_context_api(void);
+#define TLS_TYPE pthread_key_t
 #endif
 
-CONSTRUCT (library_init)
+static TLS_TYPE dispatch_common_tls__index = 0; /* thread local storage */
 
-static void
-library_init(void)
-{
-    library_initialized = true;
+static tls_ptr get_dispatch_common_tls() {
+    void* tls_value = 0;
+#if defined(_WIN32)
+    tls_value = TlsGetValue(dispatch_common_tls__index);
+#else
+    tls_value = pthread_getspecific(dispatch_common_tls__index);
+#endif
+    if (tls_value == 0) {
+#if defined(_WIN32)
+        tls_value = (void*)LocalAlloc(LPTR, sizeof(struct dispatch_common_tls));
+        TlsSetValue(dispatch_common_tls__index, (LPVOID)tls_value);
+#else
+        tls_value = (void*)malloc(sizeof(struct dispatch_common_tls));
+        pthread_setspecific(dispatch_common_tls__index, tls_value);
+#endif
+        init_dispatch_common_tls((tls_ptr)tls_value);
+    }
+    return (tls_ptr)tls_value;
 }
 
-static bool
-get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
+static void dispatch_init(void) {
+#if defined(_WIN32)
+    dispatch_common_tls__index = TlsAlloc();
+#else
+    pthread_key_create(&dispatch_common_tls__index, NULL);
+#endif
+    get_dispatch_common_tls();
+}
+CONSTRUCT(dispatch_init)
+
+static void dispatch_uninit(void) {
+    /* TODO: Free the memories related to the dispatch_common_tls__index */
+#if defined(_WIN32)
+    TlsFree(dispatch_common_tls__index);
+#else
+    pthread_key_delete(dispatch_common_tls__index);
+#endif
+    dispatch_common_tls__index = 0;
+}
+CONSTRUCT(dispatch_uninit)
+
+
+static bool get_dlopen_handle(void **handle, const char **lib_names, bool exit_on_fail)
 {
+    const char **lib_name_ptr = lib_names;
     if (*handle)
         return true;
 
-    if (!library_initialized) {
-        fprintf(stderr,
-                "Attempting to dlopen() while in the dynamic linker.\n");
-        abort();
-    }
-
-#ifdef _WIN32
-    *handle = LoadLibraryA(lib_name);
-#else
-    pthread_mutex_lock(&api.mutex);
-    if (!*handle) {
-        *handle = dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
+    for (; *lib_name_ptr; ++lib_name_ptr) {
         if (!*handle) {
-            if (exit_on_fail) {
-                fprintf(stderr, "Couldn't open %s: %s\n", lib_name, dlerror());
-                exit(1);
-            } else {
-                (void)dlerror();
+#ifdef _WIN32
+            *handle = LoadLibraryA(*lib_name_ptr);
+#else
+            *handle = dlopen(*lib_name_ptr, RTLD_LAZY | RTLD_LOCAL);
+            if (!*handle && lib_name_ptr[1] == NULL) {
+                if (exit_on_fail) {
+                    fprintf(stderr, "Couldn't open %s: %s\n", *lib_name_ptr, dlerror());
+                    exit(1);
+                } else {
+                    (void)dlerror();
+                }
             }
+#endif
         }
     }
-    pthread_mutex_unlock(&api.mutex);
-#endif
-
     return *handle != NULL;
 }
 
-static void *
-do_dlsym(void **handle, const char *lib_name, const char *name,
-         bool exit_on_fail)
-{
+static void * do_dlsym_by_handle(void*handle, const char* name, const char**error) {
+    void *result = NULL;
+#ifdef _WIN32
+    result = GetProcAddress(handle, name);
+#else
+    result = dlsym(handle, name);
+    if (!result) {
+        if (error) {
+            *error = dlerror();
+        } else {
+            (void)dlerror();
+        }
+    }
+#endif
+    return result;
+}
+
+// API required by following functions
+static void * do_dlsym(void **handle, const char **lib_names, const char *name, bool exit_on_fail) {
     void *result;
     const char *error = "";
 
-    if (!get_dlopen_handle(handle, lib_name, exit_on_fail))
+    if (!get_dlopen_handle(handle, lib_names, exit_on_fail))
         return NULL;
-
-#ifdef _WIN32
-    result = GetProcAddress(*handle, name);
-#else
-    result = dlsym(*handle, name);
-    if (!result)
-        error = dlerror();
-#endif
+    result = do_dlsym_by_handle(*handle, name, &error);
     if (!result && exit_on_fail) {
-        fprintf(stderr,"%s() not found in %s: %s\n", name, lib_name, error);
+        fprintf(stderr, "%s() not found in %s: %s\n", name, *lib_names, error);
         exit(1);
     }
 
     return result;
 }
 
-PUBLIC bool
-epoxy_is_desktop_gl(void)
-{
-    const char *es_prefix = "OpenGL ES";
-    const char *version;
-
-#if PLATFORM_HAS_EGL
-    /* PowerVR's OpenGL ES implementation (and perhaps other) don't
-     * comply with the standard, which states that
-     * "glGetString(GL_VERSION)" should return a string starting with
-     * "OpenGL ES". Therefore, to distinguish desktop OpenGL from
-     * OpenGL ES, we must also check the context type through EGL (we
-     * can do that as PowerVR is only usable through EGL).
-     */
-    if (!epoxy_current_context_is_glx()) {
-        switch (epoxy_egl_get_current_gl_context_api()) {
-        case EGL_OPENGL_API:     return true;
-        case EGL_OPENGL_ES_API:  return false;
-        case EGL_NONE:
-        default:  break;
-        }
-    }
-#endif
-
-    if (api.begin_count)
-        return true;
-
-    version = (const char *)glGetString(GL_VERSION);
-
-    /* If we didn't get a version back, there are only two things that
-     * could have happened: either malloc failure (which basically
-     * doesn't exist), or we were called within a glBegin()/glEnd().
-     * Assume the second, which only exists for desktop GL.
-     */
-    if (!version)
-        return true;
-
-    return strncmp(es_prefix, version, strlen(es_prefix));
-}
-
-static int
-epoxy_internal_gl_version(int error_version)
+static int epoxy_internal_gl_version(int error_version)
 {
     const char *version = (const char *)glGetString(GL_VERSION);
     GLint major, minor;
@@ -323,32 +352,155 @@ epoxy_internal_gl_version(int error_version)
     scanf_count = sscanf(version, "%i.%i", &major, &minor);
     if (scanf_count != 2) {
         fprintf(stderr, "Unable to interpret GL_VERSION string: %s\n",
-                version);
+            version);
         exit(1);
     }
     return 10 * major + minor;
 }
 
-PUBLIC int
-epoxy_gl_version(void)
+#if PLATFORM_HAS_EGL
+static EGLenum epoxy_egl_get_current_gl_context_api_by_handle(void* handle)
 {
-    return epoxy_internal_gl_version(0);
+    PFNEGLQUERYAPIPROC eglQueryAPILocal = do_dlsym_by_handle(handle, "eglQueryAPI", NULL);
+    PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContextLocal = do_dlsym_by_handle(handle, "eglGetCurrentContext", NULL);
+    PFNEGLBINDAPIPROC eglBindAPILocal = do_dlsym_by_handle(handle, "eglBindAPI", NULL);
+    PFNEGLGETERRORPROC eglGetErrorLocal = do_dlsym_by_handle(handle, "eglGetError", NULL);
+
+    EGLenum save_api = eglQueryAPILocal();
+    EGLContext ctx;
+
+    if (eglBindAPILocal(EGL_OPENGL_API)) {
+        ctx = eglGetCurrentContextLocal();
+        if (ctx) {
+            eglBindAPILocal(save_api);
+            return EGL_OPENGL_API;
+        }
+    } else {
+        (void)eglGetErrorLocal();
+    }
+
+    if (eglBindAPILocal(EGL_OPENGL_ES_API)) {
+        ctx = eglGetCurrentContextLocal();
+        eglBindAPILocal(save_api);
+        if (ctx) {
+            eglBindAPILocal(save_api);
+            return EGL_OPENGL_ES_API;
+        }
+    } else {
+        (void)eglGetErrorLocal();
+    }
+
+    return EGL_NONE;
 }
 
-int
-epoxy_conservative_gl_version(void)
-{
-    if (api.begin_count)
-        return 100;
+static EGLenum epoxy_egl_get_current_gl_context_api(tls_ptr tls) {
+    const char**egl_lib = EGL_LIBS;
+    EGLenum result = EGL_NONE;
+    int pos = 0;
+    const char* gles1_name = NULL;
+    const char* gles2_name = NULL;
+#if PLATFORM_HAS_GLX
+    result = epoxy_egl_get_current_gl_context_api_by_handle(NULL);
+    gles1_name = GLES1_LIBS[0];
+    gles2_name = GLES2_LIBS[0];
+#endif
+    if (result == EGL_NONE && tls->egl_handle) {
+        result = epoxy_egl_get_current_gl_context_api_by_handle(tls->egl_handle);
+    }
+    for (; *egl_lib != NULL && result == EGL_NONE; ++egl_lib, ++pos) {
+        const char* egl_libs[] = {
+            *egl_lib,
+            NULL
+        };
+        tls->egl_handle = NULL;
+        get_dlopen_handle(&tls->egl_handle, egl_libs, false);
+        if (tls->egl_handle) {
+            result = epoxy_egl_get_current_gl_context_api_by_handle(tls->egl_handle);
+            if (result != EGL_NONE) {
+                gles1_name = GLES1_LIBS[pos];
+                gles2_name = GLES2_LIBS[pos];
+            }
+        }
+    }
+    switch (result) {
+    case EGL_OPENGL_API:
+        break;
+    case EGL_OPENGL_ES_API: {
+        if (!tls->gles2_handle) {
+            const char* gles2_libs[] = {
+                gles2_name,
+                NULL
+            };
+            get_dlopen_handle(&tls->gles2_handle, gles2_libs, false);
+        }
+        if (!tls->gles2_handle && !tls->gles1_handle) {
+            const char* gles1_libs[] = {
+                gles1_name,
+                NULL
+            };
+            get_dlopen_handle(&tls->gles1_handle, gles1_libs, false);
+        }
+    }
+    }
+    return result;
+}
+#endif /* PLATFORM_HAS_EGL */
 
-    return epoxy_internal_gl_version(100);
+/**
+* Tests whether the currently bound context is EGL or GLX, trying to
+* avoid loading libraries unless necessary.
+*/
+static bool epoxy_current_context_is_gl_desktop(tls_ptr tls) {
+#if !PLATFORM_HAS_GLX && !PLATFORM_HAS_WGL
+    //TODO: Testing for All OpenGL
+    return false;
+#else
+    /* If the application hasn't explicitly called some of our GLX
+    * or EGL code but has presumably set up a context on its own,
+    * then we need to figure out how to getprocaddress anyway.
+    *
+    * If there's a public GetProcAddress loaded in the
+    * application's namespace, then use that.
+    */
+    void *sym;
+
+#if PLATFORM_HAS_GLX
+    sym = dlsym(NULL, "glXGetCurrentContext");
+    if (sym) {
+        if (glXGetCurrentContext())
+            return true;
+    } else {
+        (void)dlerror();
+    }
+
+    /* OK, couldn't find anything in the app's address space.
+    * Presumably they dlopened with RTLD_LOCAL, which hides it
+    * from us.  Just go dlopen()ing likely libraries and try them.
+    */
+    sym = do_dlsym(&tls->glx_handle, GLX_LIBS, "glXGetCurrentContext", false);
+    if (sym && glXGetCurrentContext())
+        return true;
+#endif /* PLATFORM_HAS_GLX */
+
+#if PLATFORM_HAS_WGL
+    sym = do_dlsym(&tls->wgl_handle, WGL_LIBS, "wglGetCurrentContext",
+        false);
+    if (sym && wglGetCurrentContext()) {
+        return true;
+    }
+#endif
+#if PLATFORM_HAS_EGL
+    if (epoxy_egl_get_current_gl_context_api(tls) != EGL_NONE)
+        return false;
+#endif /* PLATFORM_HAS_EGL */
+
+    return false;
+#endif /* !PLATFORM_HAS_GLX && !PLATFORM_HAS_WGL */
 }
 
-bool
-epoxy_extension_in_string(const char *extension_list, const char *ext)
-{
+bool epoxy_extension_in_string(const char *extension_list, const char *ext) {
     const char *ptr = extension_list;
-    int len = strlen(ext);
+    size_t len = strlen(ext);
 
     /* Make sure that don't just find an extension with our name as a prefix. */
     while (true) {
@@ -362,9 +514,7 @@ epoxy_extension_in_string(const char *extension_list, const char *ext)
     }
 }
 
-static bool
-epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
-{
+static bool epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode) {
     if (epoxy_gl_version() < 30) {
         const char *exts = (const char *)glGetString(GL_EXTENSIONS);
         if (!exts)
@@ -388,279 +538,41 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
     }
 }
 
-/**
- * Tests whether the currently bound context is EGL or GLX, trying to
- * avoid loading libraries unless necessary.
- */
-static bool
-epoxy_current_context_is_glx(void)
-{
-#if !PLATFORM_HAS_GLX
-    return false;
+// APIs required by resolvers
+
+void *epoxy_wgl_dlsym(tls_ptr tls, const char *name) {
+    return do_dlsym(&tls->wgl_handle, WGL_LIBS, name, true);
+}
+
+void *epoxy_glx_dlsym(tls_ptr tls, const char *name) {
+    return do_dlsym(&tls->glx_handle, GLX_LIBS, name, true);
+}
+
+void *epoxy_gl_dlsym(tls_ptr tls, const char *name) {
+#if defined(__APPLE__)
+    return do_dlsym(&tls->gl_handle, GL_LIBS, name, true);
+#elif defined(_WIN32)
+    return epoxy_wgl_dlsym(tls, name);
 #else
-    /* If the application hasn't explicitly called some of our GLX
-     * or EGL code but has presumably set up a context on its own,
-     * then we need to figure out how to getprocaddress anyway.
-     *
-     * If there's a public GetProcAddress loaded in the
-     * application's namespace, then use that.
-     */
-    void *sym;
-
-    sym = dlsym(NULL, "glXGetCurrentContext");
-    if (sym) {
-        if (glXGetCurrentContext())
-            return true;
-    } else {
-        (void)dlerror();
-    }
-
-#if PLATFORM_HAS_EGL
-    sym = dlsym(NULL, "eglGetCurrentContext");
-    if (sym) {
-        if (epoxy_egl_get_current_gl_context_api() != EGL_NONE)
-            return false;
-    } else {
-        (void)dlerror();
-    }
-#endif /* PLATFORM_HAS_EGL */
-
-    /* OK, couldn't find anything in the app's address space.
-     * Presumably they dlopened with RTLD_LOCAL, which hides it
-     * from us.  Just go dlopen()ing likely libraries and try them.
-     */
-    sym = do_dlsym(&api.glx_handle, GLX_LIB, "glXGetCurrentContext", false);
-    if (sym && glXGetCurrentContext())
-        return true;
-
-#if PLATFORM_HAS_EGL
-    sym = do_dlsym(&api.egl_handle, EGL_LIB, "eglGetCurrentContext",
-                   false);
-    if (sym && epoxy_egl_get_current_gl_context_api() != EGL_NONE)
-        return false;
-#endif /* PLATFORM_HAS_EGL */
-
-    return false;
-#endif /* PLATFORM_HAS_GLX */
-}
-
-/**
- * Returns true if the given GL extension is supported in the current context.
- *
- * Note that this function can't be called from within glBegin()/glEnd().
- *
- * \sa epoxy_has_egl_extension()
- * \sa epoxy_has_glx_extension()
- */
-PUBLIC bool
-epoxy_has_gl_extension(const char *ext)
-{
-    return epoxy_internal_has_gl_extension(ext, false);
-}
-
-bool
-epoxy_conservative_has_gl_extension(const char *ext)
-{
-    if (api.begin_count)
-        return true;
-
-    return epoxy_internal_has_gl_extension(ext, true);
-}
-
-void *
-epoxy_egl_dlsym(const char *name)
-{
-    return do_dlsym(&api.egl_handle, EGL_LIB, name, true);
-}
-
-void *
-epoxy_glx_dlsym(const char *name)
-{
-    return do_dlsym(&api.glx_handle, GLX_LIB, name, true);
-}
-
-void *
-epoxy_gl_dlsym(const char *name)
-{
-#ifdef _WIN32
-    return do_dlsym(&api.gl_handle, "OPENGL32", name, true);
-#elif defined(__APPLE__)
-    return do_dlsym(&api.gl_handle,
-                    "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL",
-                    name, true);
-#else
-    /* There's no library for desktop GL support independent of GLX. */
-    return epoxy_glx_dlsym(name);
+    return epoxy_glx_dlsym(tls, name);
 #endif
 }
 
-void *
-epoxy_gles1_dlsym(const char *name)
-{
-    if (epoxy_current_context_is_glx()) {
-        return epoxy_get_proc_address(name);
-    } else {
-        return do_dlsym(&api.gles1_handle, GLES1_LIB, name, true);
-    }
-}
-
-void *
-epoxy_gles2_dlsym(const char *name)
-{
-    if (epoxy_current_context_is_glx()) {
-        return epoxy_get_proc_address(name);
-    } else {
-        return do_dlsym(&api.gles2_handle, GLES2_LIB, name, true);
-    }
-}
-
-/**
- * Does the appropriate dlsym() or eglGetProcAddress() for GLES3
- * functions.
- *
- * Mesa interpreted GLES as intending that the GLES3 functions were
- * available only through eglGetProcAddress() and not dlsym(), while
- * ARM's Mali drivers interpreted GLES as intending that GLES3
- * functions were available only through dlsym() and not
- * eglGetProcAddress().  Thanks, Khronos.
- */
-void *
-epoxy_gles3_dlsym(const char *name)
-{
-    if (epoxy_current_context_is_glx()) {
-        return epoxy_get_proc_address(name);
-    } else {
-        void *func = do_dlsym(&api.gles2_handle, GLES2_LIB, name, false);
-
-        if (func)
-            return func;
-
-        return epoxy_get_proc_address(name);
-    }
-}
-
-/**
- * Performs either the dlsym or glXGetProcAddress()-equivalent for
- * core functions in desktop GL.
- */
-void *
-epoxy_get_core_proc_address(const char *name, int core_version)
-{
-#ifdef _WIN32
-    int core_symbol_support = 11;
-#elif defined(ANDROID)
-    /**
-     * All symbols must be resolved through eglGetProcAddress
-     * on Android
-     */
-    int core_symbol_support = 0;
+static void *epoxy_get_proc_address(tls_ptr tls, const char *name) {
+#if defined(__APPLE__)
+    return epoxy_gl_dlsym(tls, name);
 #else
-    int core_symbol_support = 12;
-#endif
-
-    if (core_version <= core_symbol_support) {
-        return epoxy_gl_dlsym(name);
-    } else {
-        return epoxy_get_proc_address(name);
-    }
-}
-
-#if PLATFORM_HAS_EGL
-static EGLenum
-epoxy_egl_get_current_gl_context_api(void)
-{
-    EGLenum save_api = eglQueryAPI();
-    EGLContext ctx;
-
-    if (eglBindAPI(EGL_OPENGL_API)) {
-        ctx = eglGetCurrentContext();
-        if (ctx) {
-            eglBindAPI(save_api);
-            return EGL_OPENGL_API;
-        }
-    } else {
-        (void)eglGetError();
-    }
-
-    if (eglBindAPI(EGL_OPENGL_ES_API)) {
-        ctx = eglGetCurrentContext();
-        eglBindAPI(save_api);
-        if (ctx) {
-            eglBindAPI(save_api);
-            return EGL_OPENGL_ES_API;
-        }
-    } else {
-        (void)eglGetError();
-    }
-
-    return EGL_NONE;
-}
-#endif /* PLATFORM_HAS_EGL */
-
-/**
- * Performs the dlsym() for the core GL 1.0 functions that we use for
- * determining version and extension support for deciding on dlsym
- * versus glXGetProcAddress() for all other functions.
- *
- * This needs to succeed on implementations without GLX (since
- * glGetString() and glGetIntegerv() are both in GLES1/2 as well, and
- * at call time we don't know for sure what API they're trying to use
- * without inspecting contexts ourselves).
- */
-void *
-epoxy_get_bootstrap_proc_address(const char *name)
-{
-    /* If we already have a library that links to libglapi loaded,
-     * use that.
-     */
-#if PLATFORM_HAS_GLX
-    if (api.glx_handle && glXGetCurrentContext())
-        return epoxy_gl_dlsym(name);
-#endif
-
-    /* If epoxy hasn't loaded any API-specific library yet, try to
-     * figure out what API the context is using and use that library,
-     * since future calls will also use that API (this prevents a
-     * non-X11 ES2 context from loading a bunch of X11 junk).
-     */
-#if PLATFORM_HAS_EGL
-    get_dlopen_handle(&api.egl_handle, EGL_LIB, false);
-    if (api.egl_handle) {
-        switch (epoxy_egl_get_current_gl_context_api()) {
-        case EGL_OPENGL_API:
-            return epoxy_gl_dlsym(name);
-        case EGL_OPENGL_ES_API:
-            /* We can't resolve the GL version, because
-             * epoxy_glGetString() is one of the two things calling
-             * us.  Try the GLES2 implementation first, and fall back
-             * to GLES1 otherwise.
-             */
-            get_dlopen_handle(&api.gles2_handle, GLES2_LIB, false);
-            if (api.gles2_handle)
-                return epoxy_gles2_dlsym(name);
-            else
-                return epoxy_gles1_dlsym(name);
-        }
-    }
-#endif /* PLATFORM_HAS_EGL */
-
-    /* Fall back to GLX */
-    return epoxy_gl_dlsym(name);
-}
-
-void *
-epoxy_get_proc_address(const char *name)
-{
+    if (epoxy_current_context_is_gl_desktop(tls)) {
 #ifdef _WIN32
-    return wglGetProcAddress(name);
-#elif defined(__APPLE__)
-    return epoxy_gl_dlsym(name);
+        return wglGetProcAddress(name);
 #else
-    if (epoxy_current_context_is_glx()) {
         return glXGetProcAddressARB((const GLubyte *)name);
-    } else {
+#endif
+    }
 #if PLATFORM_HAS_EGL
-        GLenum egl_api = epoxy_egl_get_current_gl_context_api();
+    else
+    {
+        GLenum egl_api = epoxy_egl_get_current_gl_context_api(tls);
 
         switch (egl_api) {
         case EGL_OPENGL_API:
@@ -669,39 +581,377 @@ epoxy_get_proc_address(const char *name)
         case EGL_NONE:
             break;
         }
-#endif
     }
-    errx(1, "Couldn't find current GLX or EGL context.\n");
+#endif
+    fprintf(stderr, "Couldn't find current GLX or EGL context.\n");
+    return NULL;
 #endif
 }
 
-WRAPPER_VISIBILITY (void)
-WRAPPER(epoxy_glBegin)(GLenum primtype)
-{
+/**
+* Performs either the dlsym or glXGetProcAddress()-equivalent for
+* core functions in desktop GL.
+*/
+void *epoxy_get_core_proc_address(tls_ptr tls, const char *name, int core_version) {
 #ifdef _WIN32
-    InterlockedIncrement(&api.begin_count);
+    int core_symbol_support = 11;
+#elif defined(ANDROID)
+    /**
+    * All symbols must be resolved through eglGetProcAddress
+    * on Android
+    */
+    int core_symbol_support = 0;
 #else
-    pthread_mutex_lock(&api.mutex);
-    api.begin_count++;
-    pthread_mutex_unlock(&api.mutex);
+    int core_symbol_support = 12;
 #endif
 
-    epoxy_glBegin_unwrapped(primtype);
+    if (core_version <= core_symbol_support) {
+        return epoxy_gl_dlsym(tls, name);
+    } else {
+        return epoxy_get_proc_address(tls, name);
+    }
 }
 
-WRAPPER_VISIBILITY (void)
-WRAPPER(epoxy_glEnd)(void)
+void *epoxy_egl_dlsym(tls_ptr tls, const char *name) {
+    return do_dlsym(&tls->egl_handle, EGL_LIBS, name, true);
+}
+
+void *epoxy_gles1_dlsym(tls_ptr tls, const char *name) {
+    if (epoxy_current_context_is_gl_desktop(tls)) {
+        return epoxy_get_proc_address(tls, name);
+    } else {
+        return do_dlsym(&tls->gles1_handle, GLES1_LIBS, name, true);
+    }
+}
+
+void *epoxy_gles2_dlsym(tls_ptr tls, const char *name) {
+    if (epoxy_current_context_is_gl_desktop(tls)) {
+        return epoxy_get_proc_address(tls, name);
+    } else {
+        return do_dlsym(&tls->gles2_handle, GLES2_LIBS, name, true);
+    }
+}
+
+/**
+* Does the appropriate dlsym() or eglGetProcAddress() for GLES3
+* functions.
+*
+* Mesa interpreted GLES as intending that the GLES3 functions were
+* available only through eglGetProcAddress() and not dlsym(), while
+* ARM's Mali drivers interpreted GLES as intending that GLES3
+* functions were available only through dlsym() and not
+* eglGetProcAddress().  Thanks, Khronos.
+*/
+void *epoxy_gles3_dlsym(tls_ptr tls, const char *name) {
+    if (epoxy_current_context_is_gl_desktop(tls)) {
+        return epoxy_get_proc_address(tls, name);
+    } else {
+        void *func = do_dlsym(&tls->gles2_handle, GLES2_LIBS, name, false);
+
+        if (func)
+            return func;
+
+        return epoxy_get_proc_address(tls, name);
+    }
+}
+
+/**
+* Performs the dlsym() for the core GL 1.0 functions that we use for
+* determining version and extension support for deciding on dlsym
+* versus glXGetProcAddress() for all other functions.
+*
+* This needs to succeed on implementations without GLX (since
+* glGetString() and glGetIntegerv() are both in GLES1/2 as well, and
+* at call time we don't know for sure what API they're trying to use
+* without inspecting contexts ourselves).
+*/
+void *epoxy_get_bootstrap_proc_address(tls_ptr tls, const char *name) {
+    /* If we already have a library that links to libglapi loaded,
+    * use that.
+    */
+#if PLATFORM_HAS_GLX
+    if (tls->glx_handle && glXGetCurrentContext())
+        return epoxy_glx_dlsym(name);
+#endif
+
+    /* If epoxy hasn't loaded any API-specific library yet, try to
+    * figure out what API the context is using and use that library,
+    * since future calls will also use that API (this prevents a
+    * non-X11 ES2 context from loading a bunch of X11 junk).
+    */
+#if PLATFORM_HAS_EGL
+    switch (epoxy_egl_get_current_gl_context_api(tls)) {
+    default: break;
+    case EGL_OPENGL_API:
+        return epoxy_gl_dlsym(tls, name);
+    case EGL_OPENGL_ES_API:
+        /* We can't resolve the GL version, because
+        * epoxy_glGetString() is one of the two things calling
+        * us.  Try the GLES2 implementation first, and fall back
+        * to GLES1 otherwise.
+        */
+        if (tls->gles2_handle)
+            return epoxy_gles2_dlsym(tls, name);
+        else
+            return epoxy_gles1_dlsym(tls, name);
+    }
+#endif /* PLATFORM_HAS_EGL */
+
+    /* Fall back to the platform default */
+    return epoxy_gl_dlsym(tls, name);
+}
+
+int epoxy_conservative_gl_version(tls_ptr tls) {
+    if (tls->begin_count)
+        return 100;
+
+    return epoxy_internal_gl_version(100);
+}
+
+bool epoxy_conservative_has_gl_extension(tls_ptr tls, const char *ext) {
+    if (tls->begin_count)
+        return true;
+
+    return epoxy_internal_has_gl_extension(ext, true);
+}
+
+#if PLATFORM_HAS_WGL
+
+EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *ext) {
+    PFNWGLGETEXTENSIONSSTRINGARBPROC getext;
+
+    getext = (void *)wglGetProcAddress("wglGetExtensionsStringARB");
+    if (!getext) {
+        fprintf(stderr,
+            "Implementation unexpectedly missing "
+            "WGL_ARB_extensions_string.  Probably a libepoxy bug.\n");
+        return false;
+    }
+
+    return epoxy_extension_in_string(getext(hdc), ext);
+}
+
+/**
+* If we can determine the WGL extension support from the current
+* context, then return that, otherwise give the answer that will just
+* send us on to get_proc_address().
+*/
+bool epoxy_conservative_has_wgl_extension(const char *ext)
 {
-    epoxy_glEnd_unwrapped();
+    HDC hdc = wglGetCurrentDC();
 
-#ifdef _WIN32
-    InterlockedDecrement(&api.begin_count);
-#else
-    pthread_mutex_lock(&api.mutex);
-    api.begin_count--;
-    pthread_mutex_unlock(&api.mutex);
-#endif
+    if (!hdc)
+        return true;
+
+    return epoxy_has_wgl_extension(hdc, ext);
 }
 
-PUBLIC PFNGLBEGINPROC epoxy_glBegin = epoxy_glBegin_wrapped;
-PUBLIC PFNGLENDPROC epoxy_glEnd = epoxy_glEnd_wrapped;
+#endif /* PLATFORM_HAS_WGL */
+
+#if PLATFORM_HAS_GLX
+/**
+* If we can determine the GLX version from the current context, then
+* return that, otherwise return a version that will just send us on
+* to dlsym() or get_proc_address().
+*/
+int epoxy_conservative_glx_version(void) {
+    Display *dpy = glXGetCurrentDisplay();
+    GLXContext ctx = glXGetCurrentContext();
+    int screen;
+
+    if (!dpy || !ctx)
+        return 14;
+
+    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
+
+    return epoxy_glx_version(dpy, screen);
+}
+
+EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen) {
+    int server_major, server_minor;
+    int client_major, client_minor;
+    int server, client;
+    const char *version_string;
+    int ret;
+
+    version_string = glXQueryServerString(dpy, screen, GLX_VERSION);
+    ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
+    assert(ret == 2);
+    server = server_major * 10 + server_minor;
+
+    version_string = glXGetClientString(dpy, GLX_VERSION);
+    ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
+    assert(ret == 2);
+    client = client_major * 10 + client_minor;
+
+    if (client < server)
+        return client;
+    else
+        return server;
+}
+
+/**
+* If we can determine the GLX extension support from the current
+* context, then return that, otherwise give the answer that will just
+* send us on to get_proc_address().
+*/
+bool
+epoxy_conservative_has_glx_extension(const char *ext)
+{
+    Display *dpy = glXGetCurrentDisplay();
+    GLXContext ctx = glXGetCurrentContext();
+    int screen;
+
+    if (!dpy || !ctx)
+        return true;
+
+    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
+
+    return epoxy_has_glx_extension(dpy, screen, ext);
+}
+
+EPOXY_IMPORTEXPORT bool
+epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
+{
+    /* No, you can't just use glXGetClientString or
+    * glXGetServerString() here.  Those each tell you about one half
+    * of what's needed for an extension to be supported, and
+    * glXQueryExtensionsString() is what gives you the intersection
+    * of the two.
+    */
+    return epoxy_extension_in_string(glXQueryExtensionsString(dpy, screen), ext);
+}
+
+#endif /* PLATFORM_HAS_GLX */
+
+#if PLATFORM_HAS_EGL
+
+EPOXY_IMPORTEXPORT int epoxy_egl_version(EGLDisplay dpy) {
+    int major, minor;
+    const char *version_string;
+    int ret;
+
+    version_string = eglQueryString(dpy, EGL_VERSION);
+    ret = sscanf(version_string, "%d.%d", &major, &minor);
+    assert(ret == 2);
+    return major * 10 + minor;
+}
+
+int epoxy_conservative_egl_version(void) {
+    EGLDisplay dpy = eglGetCurrentDisplay();
+
+    if (!dpy)
+        return 14;
+
+    return epoxy_egl_version(dpy);
+}
+
+EPOXY_IMPORTEXPORT bool epoxy_has_egl_extension(EGLDisplay dpy, const char *ext)
+{
+    return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);
+}
+
+bool epoxy_conservative_has_egl_extension(const char *ext)
+{
+    EGLDisplay dpy = eglGetCurrentDisplay();
+
+    if (!dpy)
+        return true;
+
+    return epoxy_has_egl_extension(dpy, ext);
+}
+
+#endif /* PLATFORM_HAS_EGL */
+
+EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *ext) {
+    return epoxy_internal_has_gl_extension(ext, false);
+}
+
+static bool epoxy_is_desktop_gl_local(tls_ptr tls) {
+    const char *es_prefix = "OpenGL ES";
+    const char *version;
+
+#if PLATFORM_HAS_EGL
+    /* PowerVR's OpenGL ES implementation (and perhaps other) don't
+    * comply with the standard, which states that
+    * "glGetString(GL_VERSION)" should return a string starting with
+    * "OpenGL ES". Therefore, to distinguish desktop OpenGL from
+    * OpenGL ES, we must also check the context type through EGL (we
+    * can do that as PowerVR is only usable through EGL).
+    */
+    if (!epoxy_current_context_is_gl_desktop(tls)) {
+        switch (epoxy_egl_get_current_gl_context_api(tls)) {
+        case EGL_OPENGL_API:     return true;
+        case EGL_OPENGL_ES_API:  return false;
+        case EGL_NONE:
+        default:  break;
+        }
+    }
+#endif
+
+    if (tls->begin_count)
+        return true;
+
+    version = (const char *)glGetString(GL_VERSION);
+
+    /* If we didn't get a version back, there are only two things that
+    * could have happened: either malloc failure (which basically
+    * doesn't exist), or we were called within a glBegin()/glEnd().
+    * Assume the second, which only exists for desktop GL.
+    */
+    if (!version)
+        return true;
+
+    return strncmp(es_prefix, version, strlen(es_prefix));
+}
+
+EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void) {
+    tls_ptr tls = get_dispatch_common_tls();
+    return epoxy_is_desktop_gl_local(tls);
+}
+
+EPOXY_IMPORTEXPORT int epoxy_gl_version(void) {
+    return epoxy_internal_gl_version(0);
+}
+
+#include "wgl_generated_dispatch_thunks.inc"
+#include "glx_generated_dispatch_thunks.inc"
+#include "gl_generated_dispatch_thunks.inc"
+#include "egl_generated_dispatch_thunks.inc"
+
+static void EPOXY_CALLSPEC epoxy_glBegin_proxy(GLenum mode) {
+    tls_ptr tls = get_dispatch_common_tls();
+    ++tls->begin_count;
+    if (!tls->glBeginSaved) {
+        tls->glBeginSaved = epoxy_glBegin_resolver(tls);
+    }
+    tls->glBeginSaved(mode);
+}
+
+static void EPOXY_CALLSPEC epoxy_glEnd_proxy(void) {
+    tls_ptr tls = get_dispatch_common_tls();
+    if (!tls->glEndSaved) {
+        tls->glEndSaved = epoxy_glEnd_resolver(tls);
+    }
+    tls->glEndSaved();
+    --tls->begin_count;
+}
+
+static void init_dispatch_common_tls(tls_ptr tls) {
+#if PLATFORM_HAS_WGL
+    tls->wgl_dispatch_table = wgl_resolver_table;
+#endif
+#if PLATFORM_HAS_GLX
+    tls->glx_dispatch_table = glx_resolver_table;
+#endif
+
+    tls->gl_dispatch_table = gl_resolver_table;
+    tls->gl_dispatch_table.epoxy_glBegin = epoxy_glBegin_proxy;
+    tls->gl_dispatch_table.epoxy_glEnd= epoxy_glEnd_proxy;
+    tls->glBeginSaved = NULL;
+    tls->glEndSaved = NULL;
+
+#if PLATFORM_HAS_EGL
+    tls->egl_dispatch_table = egl_resolver_table;
+#endif
+}

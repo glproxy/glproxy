@@ -93,6 +93,15 @@ extern "C" {
 
 #include "gl_generated.h"
 
+/**
+* Returns true if the given GL extension is supported in the current context.
+*
+* Note that this function can't be called from within glBegin()/glEnd().
+*
+* \sa epoxy_has_wgl_extension()
+* \sa epoxy_has_glx_extension()
+* \sa epoxy_has_egl_extension()
+*/
 EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *extension);
 EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void);
 EPOXY_IMPORTEXPORT int epoxy_gl_version(void);

@@ -55,7 +55,6 @@ extern "C" {
 #include "wgl_generated.h"
 
 EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
-EPOXY_IMPORTEXPORT void epoxy_handle_external_wglMakeCurrent(void);
 
 #ifdef __cplusplus
 } /* extern "C" */
