@@ -29,8 +29,6 @@
 #ifndef EPOXY_COMMON_H
 #define EPOXY_COMMON_H
 
-#include "epoxy/config.h"
-
 #include <stdbool.h>
 
 #ifdef __cplusplus
