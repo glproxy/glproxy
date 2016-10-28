@@ -62,7 +62,7 @@ class GLFunction(object):
 
 
         self.wrapped_name = name
-        self.public = 'PUBLIC '
+        self.public = 'EPOXY_IMPORTEXPORT '
 
         # This is the string of C code for passing through the
         # arguments to the function.
@@ -547,6 +547,8 @@ class Generator(object):
             'glBindVertexArrayAPPLE' : 'glBindVertexArray',
             'glBindFramebuffer' : 'glBindFramebufferEXT',
             'glBindFramebufferEXT' : 'glBindFramebuffer',
+            'glBindRenderbuffer' : 'glBindRenderbufferEXT',
+            'glBindRenderbufferEXT' : 'glBindRenderbuffer',
         }
         if func.name in half_aliases:
             alias_func = self.functions[half_aliases[func.name]]
@@ -564,7 +566,7 @@ class Generator(object):
             self.outln('        {0}_provider_terminator'.format(self.target))
             self.outln('    };')
 
-            self.outln('    static const uint16_t entrypoints[] = {')
+            self.outln('    static const uint32_t entrypoints[] = {')
             if len(providers) > 1:
                 for provider in providers:
                     self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
@@ -637,9 +639,10 @@ class Generator(object):
         self.outln('')
 
         self.outln('static const uint32_t {0}_enum_string_offsets[] = {{'.format(self.target))
+        self.outln('    -1, /* {0}_provider_terminator, unused */'.format(self.target))
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
-            self.outln('    [{0}] = {1},'.format(enum, self.enum_string_offset[human_name]))
+            self.outln('    {1}, /* {0} */'.format(enum, self.enum_string_offset[human_name]))
         self.outln('};')
         self.outln('')
 
@@ -659,7 +662,7 @@ class Generator(object):
     def write_provider_resolver(self):
         self.outln('static void *{0}_provider_resolver(tls_ptr tls, const char *name,'.format(self.target))
         self.outln('                                   const enum {0}_provider *providers,'.format(self.target))
-        self.outln('                                   const uint16_t *entrypoints)')
+        self.outln('                                   const uint32_t *entrypoints)')
         self.outln('{')
         self.outln('    int i;')
 
@@ -753,7 +756,7 @@ class Generator(object):
 
         self.outln('static struct {0}_dispatch_table {0}_resolver_table = '.format(self.target) + '{')
         for func in self.sorted_functions:
-            self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
+            self.outln('    epoxy_{0}_dispatch_table_rewrite_ptr, /* {0} */'.format(func.wrapped_name))
         self.outln('};')
 
         self.outln('#endif /* PLATFORM_HAS_{0} */'.format(self.target.upper()))
