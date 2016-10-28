@@ -32,7 +32,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <err.h>
 #include "epoxy/gl.h"
 #include "epoxy/egl.h"
 
@@ -52,18 +51,20 @@ int main(void)
      */
     first_space = strstr(extensions, " ");
     if (first_space) {
-        an_extension = strndup(extensions, first_space - extensions);
+        an_extension = malloc(first_space - extensions + 1);
+        an_extension[first_space - extensions] = 0;
+        memcpy(an_extension, extensions, first_space - extensions);
     } else {
         an_extension = strdup(extensions);
     }
 
     if (!epoxy_has_egl_extension(dpy, an_extension))
-        errx(1, "Implementation reported absence of %s", an_extension);
+        fprintf(stderr, "Implementation reported absence of %s", an_extension);
 
     free(an_extension);
 
     if (epoxy_has_egl_extension(dpy, "GLX_ARB_ham_sandwich"))
-        errx(1, "Implementation reported presence of GLX_ARB_ham_sandwich");
+        fprintf(stderr, "Implementation reported presence of GLX_ARB_ham_sandwich");
 
     return pass != true;
 }

@@ -42,7 +42,7 @@ depending on the type of generator you use, e.g. for Unix type `make`, and for
 MSVC open the solution in Visual studio and build the solution.
 
 * NOTE: To build for 64 bit with MSVC add ` Win64` to the generator name, e.g.
-  `Visual studio 14 2015 Win64`.
+  `Visual Studio 14 2015 Win64` or `Visual Studio 14 2015`.
 
 * To rebuild the generated headers from the specs, add
 `-DEPOXY_REBUILD_FROM_SPECS=ON` to the `cmake` invocation.

@@ -948,6 +948,22 @@ EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(char* target, char*
         return (void**)(&exist_context->wgl_dispatch_table) + pos;
     }
 #endif
+#if PLATFORM_HAS_GLX
+    if (strcmp(target, "glx") == 0) {
+        size_t pos = find_str_pos(glx_entrypoint_strings, membername, sizeof(glx_entrypoint_strings) / sizeof(glx_entrypoint_strings[0]));
+        return (void**)(&exist_context->glx_dispatch_table) + pos;
+    }
+#endif
+    if (strcmp(target, "gl") == 0) {
+        size_t pos = find_str_pos(gl_entrypoint_strings, membername, sizeof(gl_entrypoint_strings) / sizeof(gl_entrypoint_strings[0]));
+        return (void**)(&exist_context->gl_dispatch_table) + pos;
+    }
+#if PLATFORM_HAS_EGL
+    if (strcmp(target, "egl") == 0) {
+        size_t pos = find_str_pos(egl_entrypoint_strings, membername, sizeof(egl_entrypoint_strings) / sizeof(egl_entrypoint_strings[0]));
+        return (void**)(&exist_context->egl_dispatch_table) + pos;
+    }
+#endif
     return NULL;
 }
 

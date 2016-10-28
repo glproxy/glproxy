@@ -21,10 +21,84 @@
  * IN THE SOFTWARE.
  */
 
-#include <err.h>
 #include <epoxy/egl.h>
+#include <stdio.h>
 #include "egl_common.h"
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <err.h>
 #include <X11/Xlib.h>
+#endif
+
+#ifdef _WIN32
+
+static finished = false;
+static LRESULT CALLBACK
+window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
+{
+    int ret;
+
+    switch (message) {
+    case WM_CREATE:
+        finished = true;
+        return 0;
+    default:
+        return DefWindowProc(hwnd, message, wparam, lparam);
+    }
+}
+
+HDC
+make_window_and_test()
+{
+    LPCTSTR class_name = TEXT("epoxy");
+    LPCTSTR window_name = TEXT("epoxy");
+    int width = 150;
+    int height = 150;
+    HWND hwnd;
+    HINSTANCE hcurrentinst = NULL;
+    WNDCLASS window_class;
+    MSG msg;
+
+
+    memset(&window_class, 0, sizeof(window_class));
+    window_class.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
+    window_class.cbClsExtra = 0;
+    window_class.cbWndExtra = 0;
+    window_class.lpfnWndProc = window_proc;
+    window_class.hInstance = hcurrentinst;
+    window_class.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+    window_class.hCursor = LoadCursor(NULL, IDC_ARROW);
+    window_class.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    window_class.lpszMenuName = NULL;
+    window_class.lpszClassName = class_name;
+    if (!RegisterClass(&window_class)) {
+        fprintf(stderr, "Failed to register window class\n");
+        exit(1);
+    }
+
+    /* create window */
+    hwnd = CreateWindow(class_name, window_name,
+        WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS,
+        0, 0, width, height,
+        NULL, NULL, hcurrentinst, NULL);
+
+    ShowWindow(hwnd, SW_SHOWDEFAULT);
+
+    UpdateWindow(hwnd);
+
+    while (GetMessage(&msg, NULL, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+        if (finished) {
+            break;
+        }
+    }
+    HDC hdc = GetDC(hwnd);
+    return hdc;
+}
+
+#endif
 
 /**
  * Do whatever it takes to get us an EGL display for the system.
@@ -34,20 +108,24 @@
 EGLDisplay 
 get_egl_display_or_skip(void)
 {
+#ifdef _WIN32
+    HDC dpy = make_window_and_test();
+#else
     Display *dpy = XOpenDisplay(NULL);
+#endif
     EGLint major, minor;
     EGLDisplay edpy;
     bool ok;
 
     if (!dpy)
-        errx(77, "couldn't open display\n");
+        fprintf(stderr, "couldn't open display\n");
     edpy = eglGetDisplay((EGLNativeDisplayType)dpy);
     if (edpy == EGL_NO_DISPLAY)
-        errx(1, "Couldn't get EGL display for X11 Display.\n");
+        fprintf(stderr, "Couldn't get EGL display for X11 Display.\n");
 
     ok = eglInitialize(edpy, &major, &minor);
     if (!ok)
-        errx(1, "eglInitialize() failed\n");
+        fprintf(stderr, "eglInitialize() failed\n");
 
     return edpy;
 }

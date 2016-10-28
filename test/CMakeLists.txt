@@ -97,7 +97,13 @@ if (EPOXY_BUILD_TESTS)
                             "GLES_VERSION=2")
         endif ()
     endif()
-
+    if (EPOXY_BUILD_EGL_TESTS AND WIN32)
+        epoxy_add_test (egl_has_extension_nocontext "${EPOXY_EGL_TESTS_COMMON};egl_has_extension_nocontext.c"
+                        "${X11_LIBRARIES}")
+        epoxy_add_test (egl_gles2_without_glx "${EPOXY_EGL_TESTS_COMMON};egl_without_glx.c" "${X11_LIBRARIES}"
+                "GLES_VERSION=2")
+    endif()
+    
     if (EPOXY_BUILD_EGL_TESTS AND EPOXY_SUPPORT_GLX AND NOT APPLE)
     
         #epoxy_add_test (egl_and_glx_different_pointers "${EPOXY_EGL_TESTS_COMMON};${EPOXY_GLX_TESTS_COMMON};egl_and_glx_different_pointers.c;dlwrap.c;dlwrap.h" "${X11_LIBRARIES}" "USE_EGL;USE_GLX" "-rdynamic")
