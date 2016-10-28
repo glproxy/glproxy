@@ -93,6 +93,17 @@ extern "C" {
 
 #include "gl_generated.h"
 
+/*
+* By default, the TLS are inited by global constructor and destructor, if the compiler doesn't support that,
+then calling to the following API to do that.
+*/
+EPOXY_IMPORTEXPORT void epoxy_init_tls();
+EPOXY_IMPORTEXPORT void epoxy_uninit_tls();
+
+EPOXY_IMPORTEXPORT void* epoxy_context_get();
+EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_contex);
+EPOXY_IMPORTEXPORT void epoxy_context_clenaup();
+
 /**
 * Returns true if the given GL extension is supported in the current context.
 *

@@ -168,6 +168,12 @@ const char* GLES2_LIBS[] = {
     NULL
 };
 
+enum DISPATCH_OPENGL_TYPE {
+    DISPATCH_OPENGL_UNKNOW = 0,
+    DISPATCH_OPENGL_DESKTOP = 1,
+    DISPATCH_OPENGL_ES = 2
+};
+
 struct dispatch_common_tls {
 #if PLATFORM_HAS_WGL
     struct wgl_dispatch_table wgl_dispatch_table;
@@ -220,6 +226,8 @@ struct dispatch_common_tls {
     long begin_count;
     PFNGLBEGINPROC glBeginSaved;
     PFNGLENDPROC glEndSaved;
+
+    enum DISPATCH_OPENGL_TYPE open_gl_type;
 };
 
 typedef struct dispatch_common_tls *tls_ptr;
@@ -232,52 +240,65 @@ static void init_dispatch_common_tls(tls_ptr tls);
 #define TLS_TYPE pthread_key_t
 #endif
 
-static TLS_TYPE dispatch_common_tls__index = 0; /* thread local storage */
+/* thread local storage index */
+static TLS_TYPE dispatch_common_tls_index = 0;
 
-static tls_ptr get_dispatch_common_tls() {
-    void* tls_value = 0;
+static inline tls_ptr get_tls_by_index(TLS_TYPE index) {
 #if defined(_WIN32)
-    tls_value = TlsGetValue(dispatch_common_tls__index);
+    return (void*)TlsGetValue(index);
 #else
-    tls_value = pthread_getspecific(dispatch_common_tls__index);
+    return (void*)pthread_getspecific(index);
 #endif
-    if (tls_value == 0) {
-#if defined(_WIN32)
-        tls_value = (void*)LocalAlloc(LPTR, sizeof(struct dispatch_common_tls));
-        TlsSetValue(dispatch_common_tls__index, (LPVOID)tls_value);
-#else
-        tls_value = (void*)malloc(sizeof(struct dispatch_common_tls));
-        pthread_setspecific(dispatch_common_tls__index, tls_value);
-#endif
-        init_dispatch_common_tls((tls_ptr)tls_value);
-    }
-    return (tls_ptr)tls_value;
 }
 
-static void dispatch_init(void) {
+static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
 #if defined(_WIN32)
-    dispatch_common_tls__index = TlsAlloc();
+    TlsSetValue(index, (LPVOID)value);
 #else
-    pthread_key_create(&dispatch_common_tls__index, NULL);
+    pthread_setspecific(index, (void*)tls_value);
 #endif
-    get_dispatch_common_tls();
+}
+
+static tls_ptr get_dispatch_common_tls() {
+    tls_ptr tls_value = get_tls_by_index(dispatch_common_tls_index);
+    if (tls_value == 0) {
+        tls_value = (tls_ptr)malloc(sizeof(tls_value[0]));
+        memset(tls_value, 0, sizeof(tls_value[0]));
+        set_tls_by_index(dispatch_common_tls_index, tls_value);
+        init_dispatch_common_tls(tls_value);
+    }
+    return tls_value;
+}
+
+static bool inited = false;
+static void dispatch_init(void) {
+    if (inited) {
+        return;
+    }
+    inited = true;
+#if defined(_WIN32)
+    dispatch_common_tls_index = TlsAlloc();
+#else
+    pthread_key_create(&dispatch_common_tls_index, NULL);
+#endif
 }
 CONSTRUCT(dispatch_init)
 
 static void dispatch_uninit(void) {
-    /* TODO: Free the memories related to the dispatch_common_tls__index */
+    if (!inited) {
+        return;
+    }
 #if defined(_WIN32)
-    TlsFree(dispatch_common_tls__index);
+    TlsFree(dispatch_common_tls_index);
 #else
-    pthread_key_delete(dispatch_common_tls__index);
+    pthread_key_delete(dispatch_common_tls_index);
 #endif
-    dispatch_common_tls__index = 0;
+    dispatch_common_tls_index = 0;
+    inited = false;
 }
-CONSTRUCT(dispatch_uninit)
+DESTRUCT(dispatch_uninit)
 
-
-static bool get_dlopen_handle(void **handle, const char **lib_names, bool exit_on_fail)
-{
+static bool get_dlopen_handle(void **handle, const char **lib_names, bool exit_on_fail) {
     const char **lib_name_ptr = lib_names;
     if (*handle)
         return true;
@@ -302,7 +323,18 @@ static bool get_dlopen_handle(void **handle, const char **lib_names, bool exit_o
     return *handle != NULL;
 }
 
-static void * do_dlsym_by_handle(void*handle, const char* name, const char**error) {
+inline static void dlclose_handle(void* handle) {
+    if (!handle) {
+        return;
+    }
+#ifdef _WIN32
+    FreeLibrary(handle);
+#else
+    dlclose(*handle);
+#endif
+}
+
+static void *do_dlsym_by_handle(void*handle, const char* name, const char**error) {
     void *result = NULL;
 #ifdef _WIN32
     result = GetProcAddress(handle, name);
@@ -320,7 +352,7 @@ static void * do_dlsym_by_handle(void*handle, const char* name, const char**erro
 }
 
 // API required by following functions
-static void * do_dlsym(void **handle, const char **lib_names, const char *name, bool exit_on_fail) {
+static void *do_dlsym(void **handle, const char **lib_names, const char *name, bool exit_on_fail) {
     void *result;
     const char *error = "";
 
@@ -335,8 +367,7 @@ static void * do_dlsym(void **handle, const char **lib_names, const char *name, 
     return result;
 }
 
-static int epoxy_internal_gl_version(int error_version)
-{
+static int epoxy_internal_gl_version(int error_version) {
     const char *version = (const char *)glGetString(GL_VERSION);
     GLint major, minor;
     int scanf_count;
@@ -359,8 +390,7 @@ static int epoxy_internal_gl_version(int error_version)
 }
 
 #if PLATFORM_HAS_EGL
-static EGLenum epoxy_egl_get_current_gl_context_api_by_handle(void* handle)
-{
+static EGLenum epoxy_egl_get_current_gl_context_api_by_handle(void* handle) {
     PFNEGLQUERYAPIPROC eglQueryAPILocal = do_dlsym_by_handle(handle, "eglQueryAPI", NULL);
     PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContextLocal = do_dlsym_by_handle(handle, "eglGetCurrentContext", NULL);
     PFNEGLBINDAPIPROC eglBindAPILocal = do_dlsym_by_handle(handle, "eglBindAPI", NULL);
@@ -867,9 +897,52 @@ EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *ext) {
     return epoxy_internal_has_gl_extension(ext, false);
 }
 
+EPOXY_IMPORTEXPORT void epoxy_init_tls() {
+    dispatch_init();
+}
+
+EPOXY_IMPORTEXPORT void epoxy_uninit_tls() {
+    dispatch_uninit();
+}
+
+EPOXY_IMPORTEXPORT void* epoxy_context_get() {
+    if (!inited) {
+        fprintf(stderr, "The epoxy are not inited yet");
+        return NULL;
+    }
+    return get_tls_by_index(dispatch_common_tls_index);
+}
+
+EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_context) {
+    if (!inited) {
+        fprintf(stderr, "The epoxy are not inited yet");
+        return;
+    }
+    set_tls_by_index(dispatch_common_tls_index, new_context);
+}
+
+EPOXY_IMPORTEXPORT void epoxy_context_clenaup() {
+    if (!inited) {
+        fprintf(stderr, "The epoxy are not inited yet");
+        return;
+    }
+    tls_ptr exist_context = get_tls_by_index(dispatch_common_tls_index);
+    if (exist_context) {
+        init_dispatch_common_tls(exist_context);
+        free(exist_context);
+    }
+    set_tls_by_index(dispatch_common_tls_index, 0);
+}
+
 static bool epoxy_is_desktop_gl_local(tls_ptr tls) {
     const char *es_prefix = "OpenGL ES";
     const char *version;
+    if (tls->begin_count) {
+        tls->open_gl_type = DISPATCH_OPENGL_DESKTOP;
+    }
+    if (tls->open_gl_type != DISPATCH_OPENGL_UNKNOW) {
+        return tls->open_gl_type == DISPATCH_OPENGL_DESKTOP;
+    }
 
 #if PLATFORM_HAS_EGL
     /* PowerVR's OpenGL ES implementation (and perhaps other) don't
@@ -881,28 +954,30 @@ static bool epoxy_is_desktop_gl_local(tls_ptr tls) {
     */
     if (!epoxy_current_context_is_gl_desktop(tls)) {
         switch (epoxy_egl_get_current_gl_context_api(tls)) {
-        case EGL_OPENGL_API:     return true;
-        case EGL_OPENGL_ES_API:  return false;
+        case EGL_OPENGL_API:
+            tls->open_gl_type = DISPATCH_OPENGL_DESKTOP;
+            break;
+        case EGL_OPENGL_ES_API:
+            tls->open_gl_type = DISPATCH_OPENGL_ES;
+            break;
         case EGL_NONE:
         default:  break;
         }
     }
 #endif
+    if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
+        version = (const char *)glGetString(GL_VERSION);
 
-    if (tls->begin_count)
-        return true;
-
-    version = (const char *)glGetString(GL_VERSION);
-
-    /* If we didn't get a version back, there are only two things that
-    * could have happened: either malloc failure (which basically
-    * doesn't exist), or we were called within a glBegin()/glEnd().
-    * Assume the second, which only exists for desktop GL.
-    */
-    if (!version)
-        return true;
-
-    return strncmp(es_prefix, version, strlen(es_prefix));
+        /* If we didn't get a version back, there are only two things that
+        * could have happened: either malloc failure (which basically
+        * doesn't exist), or we were called within a glBegin()/glEnd().
+        * Assume the second, which only exists for desktop GL.
+        */
+        if (version && strncmp(es_prefix, version, strlen(es_prefix)) == 0) {
+            tls->open_gl_type = DISPATCH_OPENGL_ES;
+        }
+    } 
+    return tls->open_gl_type == DISPATCH_OPENGL_DESKTOP;
 }
 
 EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void) {
@@ -940,12 +1015,15 @@ static void EPOXY_CALLSPEC epoxy_glEnd_proxy(void) {
 static void init_dispatch_common_tls(tls_ptr tls) {
 #if PLATFORM_HAS_WGL
     tls->wgl_dispatch_table = wgl_resolver_table;
+    dlclose_handle(tls->wgl_handle);
 #endif
 #if PLATFORM_HAS_GLX
     tls->glx_dispatch_table = glx_resolver_table;
+    dlclose_handle(tls->glx_handle);
 #endif
 
     tls->gl_dispatch_table = gl_resolver_table;
+    dlclose_handle(tls->gl_handle);
     tls->gl_dispatch_table.epoxy_glBegin = epoxy_glBegin_proxy;
     tls->gl_dispatch_table.epoxy_glEnd= epoxy_glEnd_proxy;
     tls->glBeginSaved = NULL;
@@ -953,5 +1031,9 @@ static void init_dispatch_common_tls(tls_ptr tls) {
 
 #if PLATFORM_HAS_EGL
     tls->egl_dispatch_table = egl_resolver_table;
+    dlclose_handle(tls->gles2_handle);
+    dlclose_handle(tls->gles1_handle);
+    dlclose_handle(tls->egl_handle);
 #endif
+    tls->open_gl_type = DISPATCH_OPENGL_UNKNOW;
 }
