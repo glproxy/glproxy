@@ -29,16 +29,28 @@
 #ifndef EPOXY_COMMON_H
 #define EPOXY_COMMON_H
 
-#include "epoxy/config.h"
-
-#include <stdbool.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#if defined(_MSC_VER) && _MSC_VER < 1900
+#ifndef __cplusplus
+#ifndef bool
+    typedef enum { epoxy_false, epoxy_true } bool;
+#endif
+#ifndef true
+#define true ewgl_true
+#endif
+#ifndef false
+#define false ewgl_false
+#endif
+#endif
+#else
+#include <stdbool.h>
+#endif
 #if defined _WIN32 || defined __CYGWIN__
-    #if defined EPOXY_STATIC_LIB
+    #if defined(EPOXY_IMPORTEXPORT)
+    #elif defined(EPOXY_STATIC_LIB)
         #define EPOXY_IMPORTEXPORT
     #else
         #if defined EPOXY_BUILDING_LIB

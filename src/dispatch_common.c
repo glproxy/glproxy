@@ -802,22 +802,23 @@ EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen) {
     int client_major, client_minor;
     int server, client;
     const char *version_string;
-    int ret;
+    int ret = 0, sscanf_ret;
 
-    version_string = glXQueryServerString(dpy, screen, GLX_VERSION);
-    ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
-    assert(ret == 2);
-    server = server_major * 10 + server_minor;
+    if ((version_string = glXQueryServerString(dpy, screen, GLX_VERSION)))
+    {
+        sscanf_ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
+        assert(sscanf_ret == 2);
+        server = server_major * 10 + server_minor;
+        if ((version_string = glXGetClientString(dpy, GLX_VERSION)))
+        {
+            sscanf_ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
+            assert(sscanf_ret == 2);
+            client = client_major * 10 + client_minor;
+            ret = client <= server ? client : server;
+        }
+    }
 
-    version_string = glXGetClientString(dpy, GLX_VERSION);
-    ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
-    assert(ret == 2);
-    client = client_major * 10 + client_minor;
-
-    if (client < server)
-        return client;
-    else
-        return server;
+    return ret;
 }
 
 /**
@@ -825,9 +826,7 @@ EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen) {
 * context, then return that, otherwise give the answer that will just
 * send us on to get_proc_address().
 */
-bool
-epoxy_conservative_has_glx_extension(const char *ext)
-{
+bool epoxy_conservative_has_glx_extension(const char *ext) {
     Display *dpy = glXGetCurrentDisplay();
     GLXContext ctx = glXGetCurrentContext();
     int screen;
@@ -840,9 +839,7 @@ epoxy_conservative_has_glx_extension(const char *ext)
     return epoxy_has_glx_extension(dpy, screen, ext);
 }
 
-EPOXY_IMPORTEXPORT bool
-epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
-{
+EPOXY_IMPORTEXPORT bool epoxy_has_glx_extension(Display *dpy, int screen, const char *ext) {
     /* No, you can't just use glXGetClientString or
     * glXGetServerString() here.  Those each tell you about one half
     * of what's needed for an extension to be supported, and

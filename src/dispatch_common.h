@@ -24,8 +24,6 @@
 #ifndef _DISPATCH_COMMON_H
 #define _DISPATCH_COMMON_H
 
-#include <stdbool.h>
-
 #define PLATFORM_HAS_GL 1
 
 #if defined(EPOXY_IMPORTEXPORT)
