@@ -51,7 +51,7 @@ extern "C" {
 #define wglUseFontBitmaps wglUseFontBitmapsA
 #endif
 
-#include "wgl_generated.h"
+#include "epoxy/wgl_generated.h"
 
 EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
 

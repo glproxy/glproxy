@@ -44,7 +44,7 @@
 extern "C" {
 #endif
 
-#include "egl_generated.h"
+#include "epoxy/egl_generated.h"
 
 EPOXY_IMPORTEXPORT bool epoxy_has_egl_extension(EGLDisplay dpy, const char *extension);
 EPOXY_IMPORTEXPORT int epoxy_egl_version(EGLDisplay dpy);

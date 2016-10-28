@@ -46,7 +46,7 @@
 extern "C" {
 #endif
 
-#include "glx_generated.h"
+#include "epoxy/glx_generated.h"
 
 EPOXY_IMPORTEXPORT bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
 EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen);

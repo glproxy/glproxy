@@ -81,7 +81,7 @@ extern "C" {
 #   define GLAPI extern
 #endif
 
-#include "gl_generated.h"
+#include "epoxy/gl_generated.h"
 
 /*
 * By default, the TLS are inited by global constructor and destructor, if the compiler doesn't support that,
