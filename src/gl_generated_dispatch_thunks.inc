@@ -2570,12 +2570,14 @@ epoxy_glBindRenderbuffer_resolver(tls_ptr tls)
         Desktop_OpenGL_3_0,
         GL_extension_GL_ARB_framebuffer_object,
         OpenGL_ES_2_0,
+        GL_extension_GL_EXT_framebuffer_object,
         gl_provider_terminator
     };
     static const uint16_t entrypoints[] = {
         77 /* "glBindRenderbuffer" */,
         77 /* "glBindRenderbuffer" */,
         77 /* "glBindRenderbuffer" */,
+        78 /* "glBindRenderbufferEXT" */,
     };
     return gl_provider_resolver(tls, gl_entrypoint_strings[77] /* "glBindRenderbuffer" */,
                                 providers, entrypoints);
@@ -2584,7 +2586,21 @@ epoxy_glBindRenderbuffer_resolver(tls_ptr tls)
 static PFNGLBINDRENDERBUFFEREXTPROC
 epoxy_glBindRenderbufferEXT_resolver(tls_ptr tls)
 {
-    return gl_single_resolver(tls, GL_extension_GL_EXT_framebuffer_object, 78 /* glBindRenderbufferEXT */);
+    static const enum gl_provider providers[] = {
+        GL_extension_GL_EXT_framebuffer_object,
+        Desktop_OpenGL_3_0,
+        GL_extension_GL_ARB_framebuffer_object,
+        OpenGL_ES_2_0,
+        gl_provider_terminator
+    };
+    static const uint16_t entrypoints[] = {
+        78 /* "glBindRenderbufferEXT" */,
+        77 /* "glBindRenderbuffer" */,
+        77 /* "glBindRenderbuffer" */,
+        77 /* "glBindRenderbuffer" */,
+    };
+    return gl_provider_resolver(tls, gl_entrypoint_strings[78] /* "glBindRenderbufferEXT" */,
+                                providers, entrypoints);
 }
 
 static PFNGLBINDRENDERBUFFEROESPROC
