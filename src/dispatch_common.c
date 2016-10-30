@@ -232,8 +232,6 @@ struct dispatch_common_tls {
 
 typedef struct dispatch_common_tls *tls_ptr;
 
-static void reset_dispatch_common_tls(tls_ptr tls);
-
 #if defined(_WIN32)
 #define TLS_TYPE DWORD
 #else
@@ -850,6 +848,8 @@ bool epoxy_conservative_has_egl_extension(const char *ext)
 }
 
 #endif /* PLATFORM_HAS_EGL */
+
+static void reset_dispatch_common_tls(tls_ptr tls);
 
 EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *ext) {
     return epoxy_internal_has_gl_extension(ext, false);
