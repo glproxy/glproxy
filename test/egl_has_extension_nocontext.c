@@ -40,8 +40,8 @@
 int main(void)
 {
     bool pass = true;
-
-    EGLDisplay dpy = get_egl_display_or_skip();
+    void* nativeWindow = NULL;
+    EGLDisplay dpy = get_egl_display_or_skip(&nativeWindow);
     const char *extensions = eglQueryString(dpy, EGL_EXTENSIONS);
     char *first_space;
     char *an_extension;

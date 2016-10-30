@@ -622,7 +622,8 @@ class Generator(object):
         self.outln('')
 
     def write_provider_resolver(self):
-        self.outln('static void *{0}_provider_resolver(tls_ptr tls, const char *name,'.format(self.target))
+        self.outln('EPOXY_NOINLINE static void *')
+        self.outln('{0}_provider_resolver(tls_ptr tls, const char *name,'.format(self.target))
         self.outln('                                   const enum {0}_provider *providers,'.format(self.target))
         self.outln('                                   const uint16_t *entrypoints)')
         self.outln('{')
@@ -665,9 +666,6 @@ class Generator(object):
 
         single_resolver_proto = '{0}_single_resolver(tls_ptr tls, enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
         self.outln('EPOXY_NOINLINE static void *')
-        self.outln('{0};'.format(single_resolver_proto))
-        self.outln('')
-        self.outln('static void *')
         self.outln('{0}'.format(single_resolver_proto))
         self.outln('{')
         self.outln('    enum {0}_provider providers[] = {{'.format(self.target))

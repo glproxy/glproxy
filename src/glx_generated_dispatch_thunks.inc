@@ -4,7 +4,8 @@
 #include "dispatch_common.h"
 #if PLATFORM_HAS_GLX
 
-static void *glx_provider_resolver(tls_ptr tls, const char *name,
+EPOXY_NOINLINE static void *
+glx_provider_resolver(tls_ptr tls, const char *name,
                                    const enum glx_provider *providers,
                                    const uint16_t *entrypoints)
 {
@@ -176,9 +177,6 @@ static void *glx_provider_resolver(tls_ptr tls, const char *name,
 }
 
 EPOXY_NOINLINE static void *
-glx_single_resolver(tls_ptr tls, enum glx_provider provider, uint16_t entrypoint_offset);
-
-static void *
 glx_single_resolver(tls_ptr tls, enum glx_provider provider, uint16_t entrypoint_offset)
 {
     enum glx_provider providers[] = {

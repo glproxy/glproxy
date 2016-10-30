@@ -4,7 +4,8 @@
 #include "dispatch_common.h"
 #if PLATFORM_HAS_EGL
 
-static void *egl_provider_resolver(tls_ptr tls, const char *name,
+EPOXY_NOINLINE static void *
+egl_provider_resolver(tls_ptr tls, const char *name,
                                    const enum egl_provider *providers,
                                    const uint16_t *entrypoints)
 {
@@ -208,9 +209,6 @@ static void *egl_provider_resolver(tls_ptr tls, const char *name,
 }
 
 EPOXY_NOINLINE static void *
-egl_single_resolver(tls_ptr tls, enum egl_provider provider, uint16_t entrypoint_offset);
-
-static void *
 egl_single_resolver(tls_ptr tls, enum egl_provider provider, uint16_t entrypoint_offset)
 {
     enum egl_provider providers[] = {

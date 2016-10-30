@@ -26,11 +26,6 @@
 
 #define PLATFORM_HAS_GL 1
 
-#if defined(EPOXY_IMPORTEXPORT)
-#define EPOXY_STATIC_LIB
-#undef EPOXY_IMPORTEXPORT
-#endif
-
 #ifdef _WIN32
 #define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 0
@@ -71,7 +66,6 @@
   __declspec(allocate(".CRT$XCU")) static int (* _array ## _func)(void) = _func ## _wrapper;
 
 #define DESTRUCT(_func) \
-  static void _func(void); \
   static int _func ## _constructor(void) { atexit (_func); return 0; } \
   __pragma(section(".CRT$XCU",read)) \
   __declspec(allocate(".CRT$XCU")) static int (* _array ## _func)(void) = _func ## _constructor;
@@ -93,19 +87,19 @@
 #endif
 
 #define GEN_REWRITE_PTR(target, table, name, args, passthrough)            \
-    static void EPOXY_CALLSPEC                                             \
+    EPOXY_NOINLINE static void EPOXY_CALLSPEC                              \
     name##_dispatch_table_rewrite_ptr args                                 \
     {                                                                      \
-        tls_ptr tls = get_dispatch_common_tls();                           \
+        tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);         \
         tls->table.name = name##_resolver(tls);                            \
         tls->table.name passthrough;                                       \
     }
 
 #define GEN_REWRITE_PTR_RET(target, table, ret, name, args, passthrough)   \
-    static ret EPOXY_CALLSPEC                                              \
+    EPOXY_NOINLINE static ret EPOXY_CALLSPEC                               \
     name##_dispatch_table_rewrite_ptr args                                 \
     {                                                                      \
-        tls_ptr tls = get_dispatch_common_tls();                           \
+        tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);         \
         tls->table.name = name##_resolver(tls);                            \
         return tls->target##_dispatch_table.name passthrough;              \
     }
@@ -114,7 +108,7 @@
     EPOXY_IMPORTEXPORT void EPOXY_CALLSPEC                                 \
     name args                                                              \
     {                                                                      \
-        tls_ptr tls = get_dispatch_common_tls();                           \
+        tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);         \
         tls->table.name passthrough;                                       \
     }
 
@@ -122,7 +116,7 @@
     EPOXY_IMPORTEXPORT ret EPOXY_CALLSPEC                                  \
     name args                                                              \
     {                                                                      \
-        tls_ptr tls = get_dispatch_common_tls();                           \
+        tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);         \
         return tls->table.name passthrough;                                \
     }
 

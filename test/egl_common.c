@@ -24,32 +24,30 @@
 #include <epoxy/egl.h>
 #include <stdio.h>
 #include "egl_common.h"
-#ifdef _WIN32
-#include <Windows.h>
-#else
+#ifndef _WIN32
 #include <err.h>
 #include <X11/Xlib.h>
 #endif
 
 #ifdef _WIN32
 
-static finished = false;
 static LRESULT CALLBACK
 window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
-    int ret;
-
     switch (message) {
-    case WM_CREATE:
-        finished = true;
+    case WM_CREATE: {
+        CREATESTRUCT *creat_info = (CREATESTRUCT*)lparam;
+        bool *finished_ptr = creat_info->lpCreateParams;
+        *finished_ptr = TRUE;
         return 0;
+    }
     default:
         return DefWindowProc(hwnd, message, wparam, lparam);
     }
 }
 
 HDC
-make_window_and_test()
+make_window_and_test(void** nativeWindow)
 {
     LPCTSTR class_name = TEXT("epoxy");
     LPCTSTR window_name = TEXT("epoxy");
@@ -59,6 +57,8 @@ make_window_and_test()
     HINSTANCE hcurrentinst = NULL;
     WNDCLASS window_class;
     MSG msg;
+    bool finished = 0;
+    bool *ptr = &finished;
 
 
     memset(&window_class, 0, sizeof(window_class));
@@ -76,23 +76,13 @@ make_window_and_test()
         fprintf(stderr, "Failed to register window class\n");
         exit(1);
     }
-
     /* create window */
-    hwnd = CreateWindow(class_name, window_name,
+    hwnd = CreateWindowEx(0, class_name, window_name,
         WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS,
         0, 0, width, height,
-        NULL, NULL, hcurrentinst, NULL);
-
-    ShowWindow(hwnd, SW_SHOWDEFAULT);
-
-    UpdateWindow(hwnd);
-
-    while (GetMessage(&msg, NULL, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-        if (finished) {
-            break;
-        }
+        NULL, NULL, hcurrentinst, ptr);
+    if (nativeWindow) {
+        *nativeWindow = hwnd;
     }
     HDC hdc = GetDC(hwnd);
     return hdc;
@@ -106,17 +96,16 @@ make_window_and_test()
  * This needs to be ported to other window systems.
  */
 EGLDisplay 
-get_egl_display_or_skip(void)
+get_egl_display_or_skip(void** nativeWindow)
 {
 #ifdef _WIN32
-    HDC dpy = make_window_and_test();
+    HDC dpy = make_window_and_test(nativeWindow);
 #else
     Display *dpy = XOpenDisplay(NULL);
 #endif
     EGLint major, minor;
     EGLDisplay edpy;
     bool ok;
-
     if (!dpy)
         fprintf(stderr, "couldn't open display\n");
     edpy = eglGetDisplay((EGLNativeDisplayType)dpy);

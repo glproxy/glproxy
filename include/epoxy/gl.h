@@ -40,14 +40,14 @@
 #define __glplatform_h_
 #define __gl_h_
 #define __glext_h_
-#define __gl2platform_h
+#define __gl2platform_h_
 #define __gl2_h_ 1
 #define __gl2ext_h_ 1
 #define __gl3platform_h_
 #define __gl3_h_ 1
 #define __gl31_h_ 1
 
-#include "epoxy/common.h"
+#include "epoxy/_common.h"
 #include "epoxy/khrplatform.h"
 #ifdef _WIN32
 #   include <Windows.h>
@@ -55,6 +55,22 @@
 
 #ifdef __cplusplus
 extern "C" {
+#endif
+
+#if defined(_MSC_VER) && _MSC_VER < 1900
+#ifndef __cplusplus
+#ifndef bool
+typedef khronos_boolean_enum_t bool;
+#endif
+#ifndef true
+#define true KHRONOS_TRUE
+#endif
+#ifndef false
+#define false KHRONOS_FALSE
+#endif
+#endif
+#else
+#include <stdbool.h>
 #endif
 
 #ifndef GLAPIENTRY
@@ -87,12 +103,13 @@ extern "C" {
 * By default, the TLS are inited by global constructor and destructor, if the compiler doesn't support that,
 then calling to the following API to do that.
 */
-EPOXY_IMPORTEXPORT void epoxy_init_tls();
-EPOXY_IMPORTEXPORT void epoxy_uninit_tls();
+EPOXY_IMPORTEXPORT void epoxy_init_tls(void);
+EPOXY_IMPORTEXPORT void epoxy_uninit_tls(void);
 
+EPOXY_IMPORTEXPORT void* epoxy_context_create();
 EPOXY_IMPORTEXPORT void* epoxy_context_get();
 EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_contex);
-EPOXY_IMPORTEXPORT void epoxy_context_cleanup();
+EPOXY_IMPORTEXPORT void epoxy_context_destroy(void*);
 
 /* target: (wgl, glx, egl, gl) */
 EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(char* target, char* membername);

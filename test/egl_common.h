@@ -22,4 +22,4 @@
  */
 
 EGLDisplay
-get_egl_display_or_skip(void);
+get_egl_display_or_skip(void**nativeWindow);

@@ -232,7 +232,7 @@ struct dispatch_common_tls {
 
 typedef struct dispatch_common_tls *tls_ptr;
 
-static void init_dispatch_common_tls(tls_ptr tls);
+static void reset_dispatch_common_tls(tls_ptr tls);
 
 #if defined(_WIN32)
 #define TLS_TYPE DWORD
@@ -258,45 +258,6 @@ static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
     pthread_setspecific(index, (void*)tls_value);
 #endif
 }
-
-static tls_ptr get_dispatch_common_tls() {
-    tls_ptr tls_value = get_tls_by_index(dispatch_common_tls_index);
-    if (tls_value == 0) {
-        tls_value = (tls_ptr)malloc(sizeof(tls_value[0]));
-        memset(tls_value, 0, sizeof(tls_value[0]));
-        set_tls_by_index(dispatch_common_tls_index, tls_value);
-        init_dispatch_common_tls(tls_value);
-    }
-    return tls_value;
-}
-
-static bool inited = false;
-static void dispatch_init(void) {
-    if (inited) {
-        return;
-    }
-    inited = true;
-#if defined(_WIN32)
-    dispatch_common_tls_index = TlsAlloc();
-#else
-    pthread_key_create(&dispatch_common_tls_index, NULL);
-#endif
-}
-CONSTRUCT(dispatch_init)
-
-static void dispatch_uninit(void) {
-    if (!inited) {
-        return;
-    }
-#if defined(_WIN32)
-    TlsFree(dispatch_common_tls_index);
-#else
-    pthread_key_delete(dispatch_common_tls_index);
-#endif
-    dispatch_common_tls_index = 0;
-    inited = false;
-}
-DESTRUCT(dispatch_uninit)
 
 static bool get_dlopen_handle(void **handle, const char **lib_names, bool exit_on_fail) {
     const char **lib_name_ptr = lib_names;
@@ -894,20 +855,52 @@ EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *ext) {
     return epoxy_internal_has_gl_extension(ext, false);
 }
 
-EPOXY_IMPORTEXPORT void epoxy_init_tls() {
-    dispatch_init();
+static bool inited = false;
+/* The context for main thread */
+static tls_ptr global_context = NULL;
+EPOXY_IMPORTEXPORT void epoxy_init_tls(void) {
+    if (inited) {
+        return;
+    }
+    inited = true;
+#if defined(_WIN32)
+    dispatch_common_tls_index = TlsAlloc();
+#else
+    pthread_key_create(&dispatch_common_tls_index, NULL);
+#endif
+    global_context = epoxy_context_create();
+    epoxy_context_set(global_context);
 }
+CONSTRUCT(epoxy_init_tls)
 
-EPOXY_IMPORTEXPORT void epoxy_uninit_tls() {
-    dispatch_uninit();
+EPOXY_IMPORTEXPORT void epoxy_uninit_tls(void) {
+    if (!inited) {
+        return;
+    }
+    if (!global_context) {
+        fprintf(stderr, "Should calling to epoxy_uninit_tls to destroy epoxy global context.\n");
+    }
+    epoxy_context_destroy(global_context);
+    global_context = NULL;
+#if defined(_WIN32)
+    TlsFree(dispatch_common_tls_index);
+#else
+    pthread_key_delete(dispatch_common_tls_index);
+#endif
+    dispatch_common_tls_index = 0;
+    inited = false;
+}
+DESTRUCT(epoxy_uninit_tls)
+
+EPOXY_IMPORTEXPORT void* epoxy_context_create() {
+    tls_ptr tls_value = (tls_ptr)malloc(sizeof(tls_value[0]));
+    memset(tls_value, 0, sizeof(tls_value[0]));
+    reset_dispatch_common_tls(tls_value);
+    return tls_value;
 }
 
 EPOXY_IMPORTEXPORT void* epoxy_context_get() {
-    if (!inited) {
-        fprintf(stderr, "The epoxy are not inited yet");
-        return NULL;
-    }
-    return get_tls_by_index(dispatch_common_tls_index);
+    return (void*)get_tls_by_index(dispatch_common_tls_index);
 }
 
 EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_context) {
@@ -918,17 +911,21 @@ EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_context) {
     set_tls_by_index(dispatch_common_tls_index, new_context);
 }
 
-EPOXY_IMPORTEXPORT void epoxy_context_cleanup() {
+EPOXY_IMPORTEXPORT void epoxy_context_destroy(void* context) {
     if (!inited) {
         fprintf(stderr, "The epoxy are not inited yet");
         return;
     }
-    tls_ptr exist_context = get_tls_by_index(dispatch_common_tls_index);
-    if (exist_context) {
-        init_dispatch_common_tls(exist_context);
-        free(exist_context);
+    if (!context) {
+        fprintf(stderr, "The epoxy conext are NULL");
+        return;
     }
-    set_tls_by_index(dispatch_common_tls_index, 0);
+    tls_ptr exist_context = epoxy_context_get();
+    if ((void*)exist_context == context) {
+        epoxy_context_set(0);
+    }
+    reset_dispatch_common_tls(context);
+    free(context);
 }
 
 static size_t find_str_pos(const char** strList, char*expected, size_t length) {
@@ -941,7 +938,7 @@ static size_t find_str_pos(const char** strList, char*expected, size_t length) {
 }
 
 EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(char* target, char* membername) {
-    tls_ptr exist_context = get_tls_by_index(dispatch_common_tls_index);
+    tls_ptr exist_context = epoxy_context_get();
 #if PLATFORM_HAS_WGL
     if (strcmp(target, "wgl") == 0) {
         size_t pos = find_str_pos(wgl_entrypoint_strings, membername, sizeof(wgl_entrypoint_strings) / sizeof(wgl_entrypoint_strings[0]));
@@ -1016,7 +1013,7 @@ static bool epoxy_is_desktop_gl_local(tls_ptr tls) {
 }
 
 EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void) {
-    tls_ptr tls = get_dispatch_common_tls();
+    tls_ptr tls = epoxy_context_get();
     return epoxy_is_desktop_gl_local(tls);
 }
 
@@ -1030,7 +1027,7 @@ EPOXY_IMPORTEXPORT int epoxy_gl_version(void) {
 #include "egl_generated_dispatch_thunks.inc"
 
 static void EPOXY_CALLSPEC epoxy_glBegin_proxy(GLenum mode) {
-    tls_ptr tls = get_dispatch_common_tls();
+    tls_ptr tls = epoxy_context_get();
     ++tls->begin_count;
     if (!tls->glBeginSaved) {
         tls->glBeginSaved = epoxy_glBegin_resolver(tls);
@@ -1039,7 +1036,7 @@ static void EPOXY_CALLSPEC epoxy_glBegin_proxy(GLenum mode) {
 }
 
 static void EPOXY_CALLSPEC epoxy_glEnd_proxy(void) {
-    tls_ptr tls = get_dispatch_common_tls();
+    tls_ptr tls = epoxy_context_get();
     if (!tls->glEndSaved) {
         tls->glEndSaved = epoxy_glEnd_resolver(tls);
     }
@@ -1047,7 +1044,7 @@ static void EPOXY_CALLSPEC epoxy_glEnd_proxy(void) {
     --tls->begin_count;
 }
 
-static void init_dispatch_common_tls(tls_ptr tls) {
+static void reset_dispatch_common_tls(tls_ptr tls) {
 #if PLATFORM_HAS_WGL
     tls->wgl_dispatch_table = wgl_resolver_table;
     dlclose_handle(tls->wgl_handle);

@@ -75,7 +75,7 @@ make_egl_current_and_test(EGLDisplay dpy, EGLContext ctx)
 static void
 init_egl(EGLDisplay *out_dpy, EGLContext *out_ctx)
 {
-    EGLDisplay dpy = get_egl_display_or_skip();
+    EGLDisplay dpy = get_egl_display_or_skip(NULL);
     static const EGLint config_attribs[] = {
 	EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
 	EGL_RED_SIZE, 1,

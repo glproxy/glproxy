@@ -4,7 +4,8 @@
 #include "dispatch_common.h"
 #if PLATFORM_HAS_WGL
 
-static void *wgl_provider_resolver(tls_ptr tls, const char *name,
+EPOXY_NOINLINE static void *
+wgl_provider_resolver(tls_ptr tls, const char *name,
                                    const enum wgl_provider *providers,
                                    const uint16_t *entrypoints)
 {
@@ -156,9 +157,6 @@ static void *wgl_provider_resolver(tls_ptr tls, const char *name,
 }
 
 EPOXY_NOINLINE static void *
-wgl_single_resolver(tls_ptr tls, enum wgl_provider provider, uint16_t entrypoint_offset);
-
-static void *
 wgl_single_resolver(tls_ptr tls, enum wgl_provider provider, uint16_t entrypoint_offset)
 {
     enum wgl_provider providers[] = {

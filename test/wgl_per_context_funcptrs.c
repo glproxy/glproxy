@@ -123,16 +123,14 @@ test_createshader(HDC hdc, HGLRC ctx, void *epoxy_ctx)
 static int
 test_function(HDC hdc)
 {
-    void *epoxy_ctx1= NULL;
-    void *epoxy_ctx2 = NULL;
+    void *epoxy_ctx1 = epoxy_context_create();
+    void *epoxy_ctx2 = epoxy_context_create();
 
     epoxy_context_set(epoxy_ctx1);
     ctx1 = wglCreateContext(hdc);
-    epoxy_ctx1 = epoxy_context_get();
 
     epoxy_context_set(epoxy_ctx2);
     ctx2 = wglCreateContext(hdc);
-    epoxy_ctx2 = epoxy_context_get();
 
     if (!ctx1 || !ctx2) {
         fprintf(stderr, "Failed to create wgl contexts\n");
@@ -168,10 +166,8 @@ test_function(HDC hdc)
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(ctx1);
     wglDeleteContext(ctx2);
-    epoxy_context_set(epoxy_ctx1);
-    epoxy_context_cleanup();
-    epoxy_context_set(epoxy_ctx2);
-    epoxy_context_cleanup();
+    epoxy_context_destroy(epoxy_ctx1);
+    epoxy_context_destroy(epoxy_ctx2);
 
     return !pass;
 }

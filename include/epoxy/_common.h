@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright © 2013 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -26,6 +26,10 @@
  * Provides basic definitions for Epoxy. Included by all other Epoxy files.
  */
 
+#ifndef EPOXY_GL_H
+#error "epoxy/_common.h" must be included by epoxy/gl.h directly, do not include it outside
+#endif
+
 #ifndef EPOXY_COMMON_H
 #define EPOXY_COMMON_H
 
@@ -33,24 +37,13 @@
 extern "C" {
 #endif
 
-#if defined(_MSC_VER) && _MSC_VER < 1900
-#ifndef __cplusplus
-#ifndef bool
-    typedef enum { epoxy_false, epoxy_true } bool;
-#endif
-#ifndef true
-#define true ewgl_true
-#endif
-#ifndef false
-#define false ewgl_false
-#endif
-#endif
-#else
-#include <stdbool.h>
-#endif
 #if defined _WIN32 || defined __CYGWIN__
     #if defined(EPOXY_IMPORTEXPORT)
-    #elif defined(EPOXY_STATIC_LIB)
+        #undef EPOXY_IMPORTEXPORT
+        #define EPOXY_STATIC_LIB
+    #endif
+
+    #if defined(EPOXY_STATIC_LIB)
         #define EPOXY_IMPORTEXPORT
     #else
         #if defined EPOXY_BUILDING_LIB

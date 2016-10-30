@@ -45,7 +45,7 @@ extern "C" {
 #undef wglUseFontBitmaps
 #undef wglUseFontOutlines
 
-#ifdef UNICODE
+#if defined(_UNICODE) || defined(UNICODE)
 #define wglUseFontBitmaps wglUseFontBitmapsW
 #else
 #define wglUseFontBitmaps wglUseFontBitmapsA
