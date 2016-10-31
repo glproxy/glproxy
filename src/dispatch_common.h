@@ -129,4 +129,113 @@
     GEN_THUNK_RET(target, target##_dispatch_table, ret, name, args, passthrough)
 
 
+#include "wgl_generated_dispatch_table_type.inc"
+#include "glx_generated_dispatch_table_type.inc"
+#include "gl_generated_dispatch_table_type.inc"
+#include "egl_generated_dispatch_table_type.inc"
+
+enum DISPATCH_OPENGL_TYPE {
+    DISPATCH_OPENGL_UNKNOW = 0,
+    DISPATCH_OPENGL_DESKTOP = 1,
+    DISPATCH_OPENGL_ES = 2,
+    DISPATCH_OPENGL_EGL_DESKTOP = 3,
+    DISPATCH_OPENGL_EGL_ES = 4,
+};
+
+struct dispatch_common_tls {
+#if PLATFORM_HAS_WGL
+    struct wgl_dispatch_table wgl_dispatch_table;
+#endif
+
+#if PLATFORM_HAS_GLX
+    struct glx_dispatch_table glx_dispatch_table;
+#endif
+
+    struct gl_dispatch_table gl_dispatch_table;
+
+#if PLATFORM_HAS_EGL
+    struct egl_dispatch_table egl_dispatch_table;
+#endif
+
+    /* LoadLibraryA return value for opengl32.dll */
+    void *wgl_handle;
+
+    /** dlopen() return value for libGL.so.1. */
+    void *glx_handle;
+
+    /**
+    * dlopen() return value for OS X's GL library.
+    *
+    * On linux, glx_handle is used instead.
+    */
+    void *gl_handle;
+
+    /** dlopen() return value for libEGL.so.1 */
+    void *egl_handle;
+    unsigned int egl_context_api;
+    const char *gles1_name;
+    const char *gles2_name;
+
+    /** dlopen() return value for libGLESv1_CM.so.1 */
+    void *gles1_handle;
+
+    /** dlopen() return value for libGLESv2.so.2 */
+    void *gles2_handle;
+
+    enum DISPATCH_OPENGL_TYPE open_gl_type;
+};
+
+
+typedef struct dispatch_common_tls *tls_ptr;
+
+#if defined(_WIN32)
+#define TLS_TYPE DWORD
+#else
+#define TLS_TYPE pthread_key_t
+#endif
+
+static inline tls_ptr get_tls_by_index(TLS_TYPE index) {
+#if defined(_WIN32)
+    return (void*)TlsGetValue(index);
+#else
+    return (void*)pthread_getspecific(index);
+#endif
+}
+
+static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
+#if defined(_WIN32)
+    TlsSetValue(index, (LPVOID)value);
+#else
+    pthread_setspecific(index, (void*)tls_value);
+#endif
+}
+
+static inline void *dlopen_handle(const char *lib_name, const char** error) {
+    void *handle;
+#ifdef _WIN32
+    handle = (void *)LoadLibraryA(lib_name);
+#else
+    handle = (void *)dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
+    if (!handle) {
+        if (error) {
+            *error = dlerror();
+        } else {
+            (void)dlerror();
+        }
+    }
+#endif
+    return handle;
+}
+
+inline static void dlclose_handle(void* handle) {
+    if (!handle) {
+        return;
+    }
+#ifdef _WIN32
+    FreeLibrary(handle);
+#else
+    dlclose(*handle);
+#endif
+}
+
 #endif /* _DISPATCH_COMMON_H */
