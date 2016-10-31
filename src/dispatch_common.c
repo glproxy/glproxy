@@ -163,6 +163,28 @@ const char* GLES2_LIBS[] = {
     NULL
 };
 
+#if defined(_WIN32)
+#define TLS_TYPE DWORD
+#else
+#define TLS_TYPE pthread_key_t
+#endif
+
+static inline tls_ptr get_tls_by_index(TLS_TYPE index) {
+#if defined(_WIN32)
+    return (void*)TlsGetValue(index);
+#else
+    return (void*)pthread_getspecific(index);
+#endif
+}
+
+static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
+#if defined(_WIN32)
+    TlsSetValue(index, (LPVOID)value);
+#else
+    pthread_setspecific(index, (void*)tls_value);
+#endif
+}
+
 static void *do_dlsym_by_handle(void*handle, const char* name, const char**error, bool show_error) {
     void *result = NULL;
 #ifdef _WIN32
@@ -766,7 +788,6 @@ bool epoxy_conservative_has_egl_extension(const char *ext)
 
 #endif /* PLATFORM_HAS_EGL */
 
-static void reset_dispatch_common_tls(tls_ptr tls);
 
 EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *ext) {
     return epoxy_internal_has_gl_extension(ext, false);
@@ -848,38 +869,41 @@ EPOXY_IMPORTEXPORT void epoxy_context_destroy(void* context) {
     free(context);
 }
 
-static size_t find_str_pos(const char** strList, char*expected, size_t length) {
+static size_t find_str_pos(const char* strList, const char*expected, size_t length) {
+    /* TODO: */
     for (size_t i = 0; i < length; ++i) {
-        if (strcmp(strList[i], expected) == 0) {
+        if (strcmp(strList, expected) == 0) {
             return i;
         }
     }
     return 0;
 }
 
-EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(char* target, char* membername) {
+EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(const char* target, const char* membername) {
+#if 0
     tls_ptr exist_context = epoxy_context_get();
 #if PLATFORM_HAS_WGL
     if (strcmp(target, "wgl") == 0) {
-        size_t pos = find_str_pos(wgl_entrypoint_strings, membername, sizeof(wgl_entrypoint_strings) / sizeof(wgl_entrypoint_strings[0]));
+        //size_t pos = find_str_pos(wgl_entrypoint_strings, membername, sizeof(wgl_dispatch_resolve_offset) / sizeof(wgl_dispatch_resolve_offset[0]));
         return (void**)(&exist_context->wgl_dispatch_table) + pos;
     }
 #endif
 #if PLATFORM_HAS_GLX
     if (strcmp(target, "glx") == 0) {
-        size_t pos = find_str_pos(glx_entrypoint_strings, membername, sizeof(glx_entrypoint_strings) / sizeof(glx_entrypoint_strings[0]));
+        size_t pos = find_str_pos(glx_entrypoint_strings, membername, sizeof(glx_dispatch_resolve_offset) / sizeof(glx_dispatch_resolve_offset[0]));
         return (void**)(&exist_context->glx_dispatch_table) + pos;
     }
 #endif
     if (strcmp(target, "gl") == 0) {
-        size_t pos = find_str_pos(gl_entrypoint_strings, membername, sizeof(gl_entrypoint_strings) / sizeof(gl_entrypoint_strings[0]));
+        size_t pos = find_str_pos(gl_entrypoint_strings, membername, sizeof(gl_dispatch_resolve_offset) / sizeof(gl_dispatch_resolve_offset[0]));
         return (void**)(&exist_context->gl_dispatch_table) + pos;
     }
 #if PLATFORM_HAS_EGL
     if (strcmp(target, "egl") == 0) {
-        size_t pos = find_str_pos(egl_entrypoint_strings, membername, sizeof(egl_entrypoint_strings) / sizeof(egl_entrypoint_strings[0]));
+        size_t pos = find_str_pos(egl_entrypoint_strings, membername, sizeof(egl_dispatch_resolve_offset) / sizeof(egl_dispatch_resolve_offset[0]));
         return (void**)(&exist_context->egl_dispatch_table) + pos;
     }
+#endif
 #endif
     return NULL;
 }
@@ -938,31 +962,41 @@ EPOXY_IMPORTEXPORT int epoxy_gl_version(void) {
     return epoxy_internal_gl_version(0);
 }
 
-#include "wgl_generated_dispatch_thunks.inc"
-#include "glx_generated_dispatch_thunks.inc"
-#include "gl_generated_dispatch_thunks.inc"
-#include "egl_generated_dispatch_thunks.inc"
-
-static void reset_dispatch_common_tls(tls_ptr tls) {
-#if PLATFORM_HAS_WGL
-    tls->wgl_dispatch_table = wgl_resolver_table;
-    dlclose_handle(tls->wgl_handle);
-#endif
-#if PLATFORM_HAS_GLX
-    tls->glx_dispatch_table = glx_resolver_table;
-    dlclose_handle(tls->glx_handle);
-#endif
-
-    tls->gl_dispatch_table = gl_resolver_table;
-    dlclose_handle(tls->gl_handle);
-
-#if PLATFORM_HAS_EGL
-    tls->egl_dispatch_table = egl_resolver_table;
-    tls->egl_context_api = 0;
-
-    dlclose_handle(tls->gles2_handle);
-    dlclose_handle(tls->gles1_handle);
-    dlclose_handle(tls->egl_handle);
-#endif
-    tls->open_gl_type = DISPATCH_OPENGL_UNKNOW;
+EPOXY_NOINLINE void* wgl_resolve(uint16_t offset) {
+    tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);
+    void** ptr = ((void**)&tls->wgl_dispatch_table)[offset];
+    if (!*ptr) {
+        *ptr;
+    }
+    return *ptr;
 }
+
+#if PLATFORM_HAS_GLX
+EPOXY_NOINLINE  void* glx_resolve(uint16_t offset) {
+    tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);
+    void** ptr = ((void**)&tls->glx_dispatch_table)[offset];
+    if (!*ptr) {
+        *ptr;
+    }
+    return *ptr;
+}
+#endif
+
+EPOXY_NOINLINE void* gl_resolve(uint16_t offset) {
+    tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);
+    void** ptr = ((void**)&tls->gl_dispatch_table)[offset];
+    if (!*ptr) {
+        *ptr;
+    }
+    return *ptr;
+}
+
+EPOXY_NOINLINE void* egl_resolve(uint16_t offset) {
+    tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);
+    void** ptr = ((void**)&tls->egl_dispatch_table)[offset];
+    if (!*ptr) {
+        *ptr;
+    }
+    return *ptr;
+}
+

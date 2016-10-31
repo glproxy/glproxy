@@ -29,28 +29,20 @@ import re
 import os
 
 class GLProvider(object):
-    def __init__(self, condition, condition_name, loader, name):
-        # C code for determining if this function is available.
-        # (e.g. epoxy_is_desktop_gl_local() && epoxy_gl_version() >= 20
+    def __init__(self, condition, name):
+        # A dict describing the condition.
         self.condition = condition
-
-        # A string (possibly with spaces) describing the condition.
-        self.condition_name = condition_name
-
-        # The loader for getting the symbol -- either dlsym or
-        # getprocaddress.  This is a python format string to generate
-        # C code, given self.name.
-        self.loader = loader
 
         # The name of the function to be loaded (possibly an
         # ARB/EXT/whatever-decorated variant).
         self.name = name
-
-        # This is the C enum name we'll use for referring to this provider.
-        self.enum = condition_name
-        self.enum = self.enum.replace(' ', '_')
-        self.enum = self.enum.replace('\\"', '')
-        self.enum = self.enum.replace('.', '_')
+        if 'extension' in condition:
+            self.sort_key = '2extension:' + condition['extension']
+        elif 'version' in condition:
+            self.sort_key = '1version:' + '{0:08d}'.format(condition['version'])
+        else:
+            self.sort_key = '0direct:'
+        self.condition_name = self.sort_key
 
 class GLFunction(object):
     def __init__(self, ret_type, name):
@@ -123,9 +115,8 @@ class GLFunction(object):
             self.args_list += ', ' + arg_list_name
             self.args_decl += ', ' + type + ' ' + name
 
-    def add_provider(self, condition, loader, condition_name):
-        self.providers[condition_name] = GLProvider(condition, condition_name,
-                                                    loader, self.name)
+    def add_provider(self, condition):
+        self.providers[str(condition)] = GLProvider(condition, self.name)
 
     def add_alias(self, ext):
         assert self.alias_func is None
@@ -152,19 +143,6 @@ class Generator(object):
         # #defines for.
         self.supported_extensions = set()
 
-        # Dictionary mapping human-readable names of providers to a C
-        # enum token that will be used to reference those names, to
-        # reduce generated binary size.
-        self.provider_enum = {}
-
-        # Dictionary mapping human-readable names of providers to C
-        # code to detect if it's present.
-        self.provider_condition = {}
-
-        # Dictionary mapping human-readable names of providers to
-        # format strings for fetching the function pointer when
-        # provided the name of the symbol to be requested.
-        self.provider_loader = {}
 
     def all_text_until_element_name(self, element, element_name):
         text = ''
@@ -283,18 +261,15 @@ class Generator(object):
         for func in self.functions.values():
             for provider in func.providers.values():
                 if provider.condition_name in self.provider_enum:
-                    assert(self.provider_condition[provider.condition_name] == provider.condition)
-                    assert(self.provider_loader[provider.condition_name] == provider.loader)
+                    assert(self.provider_enum[provider.condition_name] == provider.condition)
                     continue
 
-                self.provider_enum[provider.condition_name] = provider.enum;
-                self.provider_condition[provider.condition_name] = provider.condition;
-                self.provider_loader[provider.condition_name] = provider.loader;
+                self.provider_enum[provider.condition_name] = provider.condition;
 
     def sort_functions(self):
         self.sorted_functions = sorted(self.functions.values(), key=lambda func:func.name)
 
-    def process_require_statements(self, feature, condition, loader, human_name):
+    def process_require_statements(self, feature, condition):
         for command in feature.findall('require/command'):
             name = command.get('name')
 
@@ -307,95 +282,95 @@ class Generator(object):
                 continue;
 
             func = self.functions[name]
-            func.add_provider(condition, loader, human_name)
+            func.add_provider(condition)
 
     def parse_function_providers(self, reg):
+        self.es_version_start = 10000
         for feature in reg.findall('feature'):
             api = feature.get('api') # string gl, gles1, gles2, glx
             m = re.match('([0-9])\.([0-9])', feature.get('number'))
-            version = int(m.group(1)) * 10 + int(m.group(2))
+            version_major = int(m.group(1))
+            version_minor = int(m.group(2))
+            version = version_major * 10 + version_minor
 
             self.supported_versions.add(feature.get('name'))
-
+            condition = {}
             if api == 'gl':
-                human_name = 'Desktop OpenGL {0}'.format(feature.get('number'))
-                condition = 'epoxy_is_desktop_gl_local(tls)'
-
-                loader = 'epoxy_get_core_proc_address(tls, {0}, {1})'.format('{0}', version)
-                if version >= 11:
-                    condition += ' && epoxy_conservative_gl_version(tls) >= {0}'.format(version)
+                condition = {
+                  'api':'gl',
+                  'enum_name': 'OpenGL_Desktop_{0}_{1}'.format(version_major, version_minor),
+                  'version': version
+                }
             elif api == 'gles2':
-                human_name = 'OpenGL ES {0}'.format(feature.get('number'))
-                condition = '!epoxy_is_desktop_gl_local(tls) && epoxy_gl_version() >= {0}'.format(version)
-
-                if version <= 20:
-                    loader = 'epoxy_gles2_dlsym(tls, {0})'
-                else:
-                    loader = 'epoxy_gles3_dlsym(tls, {0})'
+                condition = {
+                  'api':'gl',
+                  'enum_name': 'OpenGL_ES_{0}_{1}'.format(version_major, version_minor),
+                  'version': self.es_version_start + version
+                }
             elif api == 'gles1':
-                human_name = 'OpenGL ES 1.0'
-                condition = '!epoxy_is_desktop_gl_local(tls) && epoxy_gl_version() >= 10 && epoxy_gl_version() < 20'
-                loader = 'epoxy_gles1_dlsym(tls, {0})'
+                condition = {
+                  'api':'gl',
+                  'enum_name': 'OpenGL_ES_1_0',
+                  'version': self.es_version_start + 10
+                }
             elif api == 'glx':
-                human_name = 'GLX {0}'.format(version)
-                # We could just always use GPA for loading everything
-                # but glXGetProcAddress(), but dlsym() is a more
-                # efficient lookup.
-                if version > 13:
-                    condition = 'epoxy_conservative_glx_version() >= {0}'.format(version)
-                    loader = 'glXGetProcAddress((const GLubyte *){0})'
-                else:
-                    condition = 'true'
-                    loader = 'epoxy_glx_dlsym(tls, {0})'
+                condition = {
+                  'api':'glx',
+                  'enum_name': 'GLX_{0}_{1}'.format(version_major, version_minor),
+                  'version': version
+                }
             elif api == 'egl':
-                human_name = 'EGL {0}'.format(version)
-                if version > 10:
-                    condition = 'epoxy_conservative_egl_version() >= {0}'.format(version)
-                else:
-                    condition = 'true'
-                # All EGL core entrypoints must be dlsym()ed out --
-                # eglGetProcAdddress() will return NULL.
-                loader = 'epoxy_egl_dlsym(tls, {0})'
+                condition = {
+                  'api':'egl',
+                  'enum_name': 'EGL_{0}_{1}'.format(version_major, version_minor),
+                  'version': version
+                }
             elif api == 'wgl':
-                human_name = 'WGL {0}'.format(version)
-                condition = 'true'
-                loader = 'epoxy_wgl_dlsym(tls, {0})'
+                condition = {
+                  'api':'wgl',
+                  'enum_name': 'WGL_{0}_{1}'.format(version_major, version_minor),
+                  'version': version
+                }
             else:
                 print('unknown API: "{0}"'.format(api))
                 continue
 
-            self.process_require_statements(feature, condition, loader, human_name)
+            self.process_require_statements(feature, condition)
 
-        for extension in reg.findall('extensions/extension'):
-            extname = extension.get('name')
+        for extension_feature in reg.findall('extensions/extension'):
+            extname = extension_feature.get('name')
 
             self.supported_extensions.add(extname)
 
             # 'supported' is a set of strings like gl, gles1, gles2,
             # or glx, which are separated by '|'
-            apis = extension.get('supported').split('|')
+            apis = extension_feature.get('supported').split('|')
             if 'glx' in apis:
-                human_name = 'GLX extension \\"{0}\\"'.format(extname)
-                condition = 'epoxy_conservative_has_glx_extension(tls, "{0}")'.format(extname)
-                loader = 'glXGetProcAddress((const GLubyte *){0})'
-                self.process_require_statements(extension, condition, loader, human_name)
+                condition = {
+                  'api':'glx',
+                  'extension': extname
+                }
+                self.process_require_statements(extension_feature, condition)
             if 'egl' in apis:
-                human_name = 'EGL extension \\"{0}\\"'.format(extname)
-                condition = 'epoxy_conservative_has_egl_extension("{0}")'.format(extname)
-                loader = 'eglGetProcAddress({0})'
-                self.process_require_statements(extension, condition, loader, human_name)
+                condition = {
+                  'api':'egl',
+                  'extension': extname
+                }
+                self.process_require_statements(extension_feature, condition)
             if 'wgl' in apis:
-                human_name = 'WGL extension \\"{0}\\"'.format(extname)
-                condition = 'epoxy_conservative_has_wgl_extension("{0}")'.format(extname)
-                loader = 'wglGetProcAddress({0})'
-                self.process_require_statements(extension, condition, loader, human_name)
+                condition = {
+                  'api':'wgl',
+                  'extension': extname
+                }
+                self.process_require_statements(extension_feature, condition)
             if {'gl', 'gles1', 'gles2'}.intersection(apis):
-                human_name = 'GL extension \\"{0}\\"'.format(extname)
-                condition = 'epoxy_conservative_has_gl_extension(tls, "{0}")'.format(extname)
-                loader = 'epoxy_get_proc_address(tls, {0})'
-                self.process_require_statements(extension, condition, loader, human_name)
+                condition = {
+                  'api':'gl',
+                  'extension': extname
+                }
+                self.process_require_statements(extension_feature, condition)
 
-    def fixup_bootstrap_function(self, name, loader):
+    def fixup_bootstrap_function(self, name):
         # We handle glGetString(), glGetIntegerv(), and
         # glXGetProcAddressARB() specially, because we need to use
         # them in the process of deciding on loaders for resolving,
@@ -406,7 +381,7 @@ class Generator(object):
 
         func = self.functions[name]
         func.providers = {}
-        func.add_provider('true', loader, 'always present')
+        func.add_provider({'api':'gl'})
 
     def parse(self, file):
         reg = ET.parse(file)
@@ -484,11 +459,7 @@ class Generator(object):
         for func in self.sorted_functions:
             self.outln('#define {0} epoxy_{0}'.format(func.name))
 
-    def write_function_ptr_resolver(self, func):
-        self.outln('static {0}'.format(func.ptr_type))
-        self.outln('epoxy_{0}_resolver(tls_ptr tls)'.format(func.wrapped_name))
-        self.outln('{')
-
+    def get_function_ptr_providers(self, func):
         providers = []
         # Make a local list of all the providers for this alias group
         alias_root = func;
@@ -519,205 +490,172 @@ class Generator(object):
                 providers.append(provider)
 
         def provider_sort(provider):
-            return (provider.name != func.name, provider.name, provider.enum)
+            return (provider.name != func.name, provider.name, provider.sort_key)
         providers.sort(key=provider_sort);
+        return providers
 
-        if len(providers) != 1:
-            self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
-            for provider in providers:
-                self.outln('        {0},'.format(provider.enum))
-            self.outln('        {0}_provider_terminator'.format(self.target))
-            self.outln('    };')
-
-            self.outln('    static const uint16_t entrypoints[] = {')
-            if len(providers) > 1:
-                for provider in providers:
-                    self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
-            else:
-                    self.outln('        0 /* None */,')
-            self.outln('    };')
-
-            self.outln('    return {0}_provider_resolver(tls, {0}_entrypoint_strings[{1}] /* "{2}" */,'.format(self.target,
-                                                                                                       self.entrypoint_string_offset[func.name],
-                                                                                                       func.name))
-            self.outln('                                providers, entrypoints);')
-        else:
-            assert(providers[0].name == func.name)
-            self.outln('    return {0}_single_resolver(tls, {1}, {2} /* {3} */);'.format(self.target,
-                                                                                    providers[0].enum,
-                                                                                    self.entrypoint_string_offset[func.name],
-                                                                                    func.name))
-        self.outln('}')
-        self.outln('')
-
-    def write_thunks(self, func):
+    def write_thunks(self, func, offset):
         # Writes out the function that's initially plugged into the
         # global function pointer, which resolves, updates the global
         # function pointer, and calls down to it.
         #
         # It also writes out the actual initialized global function
         # pointer.
+        uppder_name = 'PFN{0}PROC'.format(func.wrapped_name.upper())
         if func.ret_type == 'void' or func.ret_type == 'VOID':
-            self.outln('GEN_THUNKS({0}, {1}, ({2}), ({3}))'.format(self.target, func.wrapped_name,
+            self.outln('GEN_THUNKS({0}, {1}, ({2}), ({3}), {4}, {5})'.format(self.target,
+                                                              func.wrapped_name,
                                                               func.args_decl,
-                                                              func.args_list))
+                                                              func.args_list,
+                                                              offset,
+                                                              uppder_name))
         else:
-            self.outln('GEN_THUNKS_RET({0}, {1}, {2}, ({3}), ({4}))'.format(self.target, func.ret_type,
+            self.outln('GEN_THUNKS_RET({0}, {1}, {2}, ({3}), ({4}), {5}, {6})'.format(self.target, func.ret_type,
                                                                        func.wrapped_name,
                                                                        func.args_decl,
-                                                                       func.args_list))
+                                                                       func.args_list,
+                                                                       offset,
+                                                              uppder_name))
 
-    def write_provider_enums(self):
-        # Writes the enum declaration for the list of providers
-        # supported by gl_provider_resolver()
+    def write_providers_version(self):
+        providers = [self.provider_enum[k] for k in self.provider_enum.keys()]
+        version_providers = [x for x in providers if 'version' in x]
+        if (self.target == 'gl'):
+          version_min = {
+            "api": "gl",
+            "enum_name": "OpenGL_Desktop_MIN",
+            "version": 0
+          }
+          version_providers.append(version_min)
+          version_max = {
+            "api": "gl",
+            "enum_name": "OpenGL_Desktop_MAX",
+            "version": self.es_version_start - 1
+          }
+          version_providers.append(version_max)
 
-        self.outln('enum {0}_provider {{'.format(self.target))
+          version_min_es = {
+            "api": "gl",
+            "enum_name": "OpenGL_ES_MIN",
+            "version": self.es_version_start
+          }
+          version_providers.append(version_min_es)
 
-        sorted_providers = sorted(self.provider_enum.keys())
+          version_max_es = {
+            "api": "gl",
+            "enum_name": "OpenGL_ES_MAX",
+            "version": self.es_version_start + self.es_version_start
+          }
+          version_providers.append(version_max_es)
 
-        # We always put a 0 enum first so that we can have a
-        # terminator in our arrays
-        self.outln('    {0}_provider_terminator = 0,'.format(self.target))
-
-        for human_name in sorted_providers:
-            enum = self.provider_enum[human_name]
-            self.outln('    {0},'.format(enum))
+        version_providers = sorted(version_providers, key=lambda x: x['version'])
+        self.outln('enum {0}_provider_versions {{'.format(self.target))
+        for version_provider in version_providers:
+            enum_name = version_provider["enum_name"]
+            version = version_provider['version']
+            self.outln('    {0} = {1},'.format(enum_name, version))
         self.outln('} PACKED;')
         self.outln('')
 
-    def write_provider_enum_strings(self):
-        # Writes the mapping from enums to the strings describing them
-        # for epoxy_print_failure_reasons().
-
-        sorted_providers = sorted(self.provider_enum.keys())
-
-        self.enum_string_offset = {}
+    def write_providers_extension(self):
+        providers = [self.provider_enum[k] for k in self.provider_enum.keys()]
+        extension_providers = [x for x in providers if 'extension' in x]
+        extension_providers = sorted(extension_providers, key=lambda x: x['extension'])
+        self.outln('static const char *{0}_extensions_enum_string ='.format(self.target))
         offset = 0
-        self.outln('static const char *{0}_enum_string ='.format(self.target))
-        for human_name in sorted_providers:
-            self.outln('    "{0}\\0"'.format(human_name));
-            self.enum_string_offset[human_name] = offset
-            offset += len(human_name.replace('\\', '')) + 1
-        self.outln('     ;')
+        for extension_provider in extension_providers:
+            self.outln('    "{0}\\0"'.format(extension_provider["extension"]));
+            extension_provider["offset"] = offset
+            offset += len(extension_provider["extension"]) + 1
+        self.outln(';')
         self.outln('')
+        self.outln('enum {0}_provider_extensions {{'.format(self.target))
+        for extension_provider in extension_providers:
+            enum_name = extension_provider["api"].upper() + "_extension_" + extension_provider["extension"]
+            extension_provider["enum_name"]= enum_name
+            self.outln('    {0} = {1},'.format(enum_name, extension_provider["offset"]))
+        self.outln('} PACKED;')
 
-        self.outln('static const uint32_t {0}_enum_string_offsets[] = {{'.format(self.target))
-        for human_name in sorted_providers:
-            enum = self.provider_enum[human_name]
-            self.outln('    [{0}] = {1},'.format(enum, self.enum_string_offset[human_name]))
-        self.outln('};')
+        vertion_providers = [x for x in providers if 'extension' in x]
+
         self.outln('')
 
     def write_entrypoint_strings(self):
         self.entrypoint_string_offset = {}
 
-        self.outln('static const char* {0}_entrypoint_strings[] = {{'.format(self.target))
+        self.outln('static const khronos_uint8_t {0}_entrypoint_strings[] = {{'.format(self.target))
         offset = 0
         for func in self.sorted_functions:
             if func.name not in self.entrypoint_string_offset:
                 self.entrypoint_string_offset[func.name] = offset
-                offset = offset + 1
-                self.outln('   "{0}",'.format(func.name))
+                offset += len(func.name) + 1
+                self.out('    ')
+                for x in list(func.name):
+                    self.out('{0}, '.format(ord(x)))
+                self.outln('0, /*{0}*/'.format(func.name))
         self.outln('};')
         self.outln('')
 
-    def write_provider_resolver(self):
-        self.outln('EPOXY_NOINLINE static void *')
-        self.outln('{0}_provider_resolver(tls_ptr tls, const char *name,'.format(self.target))
-        self.outln('                                   const enum {0}_provider *providers,'.format(self.target))
-        self.outln('                                   const uint16_t *entrypoints)')
-        self.outln('{')
-        self.outln('    int i;')
-
-        self.outln('    for (i = 0; providers[i] != {0}_provider_terminator; i++) {{'.format(self.target))
-        self.outln('        switch (providers[i]) {')
-
-        entrypoint_strings = "{0}_entrypoint_strings[entrypoints[i]]".format(self.target)
-
-        for human_name in sorted(self.provider_enum.keys()):
-            enum = self.provider_enum[human_name]
-            self.outln('        case {0}:'.format(enum))
-            self.outln('            if ({0})'.format(self.provider_condition[human_name]))
-            self.outln('                return {0};'.format(self.provider_loader[human_name]).format(entrypoint_strings))
-            self.outln('            break;')
-
-        self.outln('        case {0}_provider_terminator:'.format(self.target))
-        self.outln('            abort(); /* Not reached */')
-        self.outln('        }')
-        self.outln('    }')
-        self.outln('')
-
-        # If the function isn't provided by any known extension, print
-        # something useful for the poor application developer before
-        # aborting.  (In non-epoxy GL usage, the app developer would
-        # call into some blank stub function and segfault).
-        self.outln('    fprintf(stderr, "No provider of %s found.  Requires one of:\\n", name);')
-        self.outln('    for (i = 0; providers[i] != {0}_provider_terminator; i++) {{'.format(self.target))
-        self.outln('        fprintf(stderr, "    %s\\n", {0}_enum_string + {0}_enum_string_offsets[providers[i]]);'.format(self.target))
-        self.outln('    }')
-        self.outln('    if (providers[0] == {0}_provider_terminator) {{'.format(self.target))
-        self.outln('        fprintf(stderr, "    No known providers.  This is likely a bug "')
-        self.outln('                        "in libepoxy code generation\\n");')
-        self.outln('    }')
-        self.outln('    abort();')
-
-        self.outln('}')
-        self.outln('')
-
-        single_resolver_proto = '{0}_single_resolver(tls_ptr tls, enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
-        self.outln('EPOXY_NOINLINE static void *')
-        self.outln('{0}'.format(single_resolver_proto))
-        self.outln('{')
-        self.outln('    enum {0}_provider providers[] = {{'.format(self.target))
-        self.outln('        provider,')
-        self.outln('        {0}_provider_terminator'.format(self.target))
-        self.outln('    };')
-        self.outln('    return {0}_provider_resolver(tls, {0}_entrypoint_strings[entrypoint_offset],'.format(self.target))
-        self.outln('                                providers, &entrypoint_offset);')
-        self.outln('}')
-        self.outln('')
-
-    def write_inc_header(self, file):
+    def write_inc_header(self, file, is_table = False):
         self.out_file = open(file, 'w')
 
         self.outln('/* GL dispatch code.')
         self.outln(' * This is code-generated from the GL API XML files from Khronos.')
         self.write_copyright_comment_body()
         self.outln(' */')
-        self.outln('#include "dispatch_common.h"')
         self.outln('#if PLATFORM_HAS_{0}'.format(self.target.upper()))
+        if is_table:
+            self.outln('#include "epoxy/{0}.h"'.format(self.target))
+        else:
+            self.outln('#include "dispatch_common.h"')
         self.outln('')
 
     def write_table_type_inc(self, file):
-        self.write_inc_header(file)
+        self.write_inc_header(file, True)
         self.outln('struct {0}_dispatch_table {{'.format(self.target))
         for func in self.sorted_functions:
             self.outln('    {0} epoxy_{1};'.format(func.ptr_type, func.wrapped_name))
         self.outln('};')
         self.outln('')
-
-        self.write_provider_enums()
-        self.write_provider_enum_strings()
-        self.write_entrypoint_strings()
-
+        self.write_providers_version()
+        self.outln('')
         self.outln('#endif /* PLATFORM_HAS_{0} */'.format(self.target.upper()))
 
     def write_thunks_inc(self, file):
         self.write_inc_header(file)
 
-        self.write_provider_resolver()
-
+        self.write_providers_extension()
+        self.write_entrypoint_strings()
+        self.outln('static const struct dispatch_resolve_info {0}_dispatch_resolve_info_table[] = {{'.format(self.target))
+        function_number = 0
         for func in self.sorted_functions:
-            self.write_function_ptr_resolver(func)
-
-        for func in self.sorted_functions:
-            self.write_thunks(func)
+            providers = self.get_function_ptr_providers(func)
+            for provider in providers:
+                condition = provider.condition
+                name = provider.name
+                name_offset = self.entrypoint_string_offset[name]
+                identity = function_number % 256
+                self.out('    {')
+                if ('version' in condition):
+                    self.out('DISPATCH_RESOLVE_VERSION, {0}, {1}, {2}'.format(identity, condition['enum_name'], name_offset))
+                elif ('extension' in condition):
+                    self.out('DISPATCH_RESOLVE_EXTENSION, {0}, {1}, {2}'.format(identity, condition['enum_name'], name_offset))
+                else:
+                    self.out('DISPATCH_RESOLVE_DIRECT, {0}, {1}, {2}'.format(identity, 0, name_offset))
+                self.outln('}}, /* {0} */'.format(provider.name))
+            function_number = function_number + 1
+        self.outln('    {DISPATCH_RESOLVE_TERMINATOR, 0, 0, 0}')
+        self.outln('};')
+        self.outln('')
+        self.outln('static const khronos_uint16_t {0}_dispatch_resolve_offset[{1}] = {{0}};'.format(self.target, function_number));
         self.outln('')
 
-        self.outln('static struct {0}_dispatch_table {0}_resolver_table = '.format(self.target) + '{')
+        function_number = 0
         for func in self.sorted_functions:
-            self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
-        self.outln('};')
+            self.write_thunks(func, function_number)
+            function_number = function_number + 1
+        self.outln('')
+
 
         self.outln('#endif /* PLATFORM_HAS_{0} */'.format(self.target.upper()))
 
@@ -743,16 +681,13 @@ for file in args.files:
 
     generator.sort_functions()
     generator.resolve_aliases()
-    generator.fixup_bootstrap_function('glGetString',
-                                       'epoxy_get_bootstrap_proc_address(tls, {0})')
-    generator.fixup_bootstrap_function('glGetIntegerv',
-                                       'epoxy_get_bootstrap_proc_address(tls, {0})')
+    generator.fixup_bootstrap_function('glGetString')
+    generator.fixup_bootstrap_function('glGetIntegerv')
 
     # While this is technically exposed as a GLX extension, it's
     # required to be present as a public symbol by the Linux OpenGL
     # ABI.
-    generator.fixup_bootstrap_function('glXGetProcAddress',
-                                       'epoxy_glx_dlsym(tls, {0})')
+    generator.fixup_bootstrap_function('glXGetProcAddress')
 
     generator.prepare_provider_enum()
 

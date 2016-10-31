@@ -1,9 +1,12 @@
 set (EPOXY_APIS gl egl wgl glx)
 
-set (HEADERS "../include/epoxy/common.h"
+set (HEADERS "../include/epoxy/_common.h"
              "../include/epoxy/gl.h"
-             "../include/epoxy/khrplatform.h")
-set (SOURCES dispatch_common.c)
+             "../include/epoxy/khrplatform.h"
+             "dispatch_common.h")
+set (SOURCES dispatch_common.c
+ dispatch_generated.c)
+
 list (APPEND HEADERS "../include/epoxy/gl_generated.h"
                      "${CMAKE_CURRENT_BINARY_DIR}/../include/epoxy/config.h")
 

@@ -56,6 +56,11 @@
 
 #include "epoxy/gl.h"
 
+#include "wgl_generated_dispatch_table_type.inc"
+#include "glx_generated_dispatch_table_type.inc"
+#include "gl_generated_dispatch_table_type.inc"
+#include "egl_generated_dispatch_table_type.inc"
+
 #ifdef __GNUC__
 #define CONSTRUCT(_func) static void _func (void) __attribute__((constructor));
 #define DESTRUCT(_func) static void _func (void) __attribute__((destructor));
@@ -103,36 +108,31 @@
         tls->table.name = name##_resolver(tls);                            \
         return tls->target##_dispatch_table.name passthrough;              \
     }
-
-#define GEN_THUNK(target, table, name, args, passthrough)                  \
-    EPOXY_IMPORTEXPORT void EPOXY_CALLSPEC                                 \
-    name args                                                              \
-    {                                                                      \
-        tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);         \
-        tls->table.name passthrough;                                       \
+#define GEN_THUNK(target, table, name, args, passthrough, offset, function_type)              \
+    EPOXY_IMPORTEXPORT void EPOXY_CALLSPEC                                     \
+    name args                                                                  \
+    {                                                                          \
+        function_type func_symbol = target##_resolve(offset);                            \
+        func_symbol passthrough;                                                      \
     }
 
-#define GEN_THUNK_RET(target, table, ret, name, args, passthrough)         \
-    EPOXY_IMPORTEXPORT ret EPOXY_CALLSPEC                                  \
-    name args                                                              \
-    {                                                                      \
-        tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);         \
-        return tls->table.name passthrough;                                \
+#define GEN_THUNK_RET(target, table, ret, name, args, passthrough, offset, function_type)     \
+    EPOXY_IMPORTEXPORT ret EPOXY_CALLSPEC                                      \
+    name args                                                                  \
+    {                                                                          \
+        function_type func_symbol = target##_resolve(offset);                            \
+        return func_symbol passthrough;                                               \
     }
 
-#define GEN_THUNKS(target, name, args, passthrough)                                     \
-    GEN_REWRITE_PTR(target, target##_dispatch_table, name, args, passthrough)           \
-    GEN_THUNK(target, target##_dispatch_table, name, args, passthrough)
+#define GEN_THUNKS(target, name, args, passthrough, offset, function_type)                                     \
+    GEN_THUNK(target, target##_dispatch_table, name, args, passthrough, offset, function_type)
 
-#define GEN_THUNKS_RET(target, ret, name, args, passthrough)                            \
-    GEN_REWRITE_PTR_RET(target, target##_dispatch_table, ret, name, args, passthrough)  \
-    GEN_THUNK_RET(target, target##_dispatch_table, ret, name, args, passthrough)
+// GEN_REWRITE_PTR(target, target##_dispatch_table, name, args, passthrough)           \
 
+#define GEN_THUNKS_RET(target, ret, name, args, passthrough, offset, function_type)                            \
+    GEN_THUNK_RET(target, target##_dispatch_table, ret, name, args, passthrough, offset, function_type)
 
-#include "wgl_generated_dispatch_table_type.inc"
-#include "glx_generated_dispatch_table_type.inc"
-#include "gl_generated_dispatch_table_type.inc"
-#include "egl_generated_dispatch_table_type.inc"
+//    GEN_REWRITE_PTR_RET(target, target##_dispatch_table, ret, name, args, passthrough)  \
 
 enum DISPATCH_OPENGL_TYPE {
     DISPATCH_OPENGL_UNKNOW = 0,
@@ -140,6 +140,20 @@ enum DISPATCH_OPENGL_TYPE {
     DISPATCH_OPENGL_ES = 2,
     DISPATCH_OPENGL_EGL_DESKTOP = 3,
     DISPATCH_OPENGL_EGL_ES = 4,
+} PACKED;
+
+enum DISPATCH_RESOLVE_TYPE {
+    DISPATCH_RESOLVE_DIRECT = 0,
+    DISPATCH_RESOLVE_VERSION = 1,
+    DISPATCH_RESOLVE_EXTENSION = 2,
+    DISPATCH_RESOLVE_TERMINATOR = 3,
+} PACKED;
+
+struct dispatch_resolve_info {
+    khronos_uint8_t resolve_type;
+    khronos_uint8_t identity;
+    khronos_uint16_t condition;
+    khronos_uint32_t name_offset;
 };
 
 struct dispatch_common_tls {
@@ -187,28 +201,12 @@ struct dispatch_common_tls {
 
 
 typedef struct dispatch_common_tls *tls_ptr;
+EPOXY_NOINLINE void* wgl_resolve(uint16_t offset);
+EPOXY_NOINLINE void* glx_resolve(uint16_t offset);
+EPOXY_NOINLINE void* gl_resolve(uint16_t offset);
+EPOXY_NOINLINE void* egl_resolve(uint16_t offset);
 
-#if defined(_WIN32)
-#define TLS_TYPE DWORD
-#else
-#define TLS_TYPE pthread_key_t
-#endif
-
-static inline tls_ptr get_tls_by_index(TLS_TYPE index) {
-#if defined(_WIN32)
-    return (void*)TlsGetValue(index);
-#else
-    return (void*)pthread_getspecific(index);
-#endif
-}
-
-static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
-#if defined(_WIN32)
-    TlsSetValue(index, (LPVOID)value);
-#else
-    pthread_setspecific(index, (void*)tls_value);
-#endif
-}
+void reset_dispatch_common_tls(tls_ptr tls);
 
 static inline void *dlopen_handle(const char *lib_name, const char** error) {
     void *handle;
@@ -227,7 +225,7 @@ static inline void *dlopen_handle(const char *lib_name, const char** error) {
     return handle;
 }
 
-inline static void dlclose_handle(void* handle) {
+static inline void dlclose_handle(void* handle) {
     if (!handle) {
         return;
     }
@@ -237,5 +235,6 @@ inline static void dlclose_handle(void* handle) {
     dlclose(*handle);
 #endif
 }
+
 
 #endif /* _DISPATCH_COMMON_H */
