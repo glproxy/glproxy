@@ -962,41 +962,61 @@ EPOXY_IMPORTEXPORT int epoxy_gl_version(void) {
     return epoxy_internal_gl_version(0);
 }
 
+static void wgl_resolve_local(tls_ptr tls, void** ptr, uint16_t offset) {
+
+}
+
+static void glx_resolve_local(tls_ptr tls, void** ptr, uint16_t offset) {
+
+}
+
+static void gl_resolve_local(tls_ptr tls, void** ptr, uint16_t offset) {
+
+}
+
+static void egl_resolve_local(tls_ptr tls, void** ptr, uint16_t offset) {
+
+}
+
 EPOXY_NOINLINE void* wgl_resolve(uint16_t offset) {
     tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);
-    void** ptr = ((void**)&tls->wgl_dispatch_table)[offset];
-    if (!*ptr) {
-        *ptr;
+    void** ptr = ((void**)&tls->wgl_dispatch_table) + offset;
+    if (*ptr) {
+        return *ptr;
     }
+    wgl_resolve_local(tls, ptr, offset);
     return *ptr;
 }
 
 #if PLATFORM_HAS_GLX
 EPOXY_NOINLINE  void* glx_resolve(uint16_t offset) {
     tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);
-    void** ptr = ((void**)&tls->glx_dispatch_table)[offset];
-    if (!*ptr) {
-        *ptr;
+    void** ptr = ((void**)&tls->glx_dispatch_table) + offset;
+    if (*ptr) {
+        return *ptr;
     }
+    glx_resolve_local(tls, ptr, offset);
     return *ptr;
 }
 #endif
 
 EPOXY_NOINLINE void* gl_resolve(uint16_t offset) {
     tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);
-    void** ptr = ((void**)&tls->gl_dispatch_table)[offset];
-    if (!*ptr) {
-        *ptr;
+    void** ptr = ((void**)&tls->gl_dispatch_table) + offset;
+    if (*ptr) {
+        return *ptr;
     }
+    gl_resolve_local(tls, ptr, offset);
     return *ptr;
 }
 
 EPOXY_NOINLINE void* egl_resolve(uint16_t offset) {
     tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);
-    void** ptr = ((void**)&tls->egl_dispatch_table)[offset];
-    if (!*ptr) {
-        *ptr;
+    void** ptr = ((void**)&tls->egl_dispatch_table) + offset;
+    if (*ptr) {
+        return *ptr;
     }
+    egl_resolve_local(tls, ptr, offset);
     return *ptr;
 }
 

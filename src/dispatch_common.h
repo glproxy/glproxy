@@ -91,48 +91,21 @@
 #define EPOXY_NOINLINE __declspec(noinline)
 #endif
 
-#define GEN_REWRITE_PTR(target, table, name, args, passthrough)            \
-    EPOXY_NOINLINE static void EPOXY_CALLSPEC                              \
-    name##_dispatch_table_rewrite_ptr args                                 \
-    {                                                                      \
-        tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);         \
-        tls->table.name = name##_resolver(tls);                            \
-        tls->table.name passthrough;                                       \
-    }
-
-#define GEN_REWRITE_PTR_RET(target, table, ret, name, args, passthrough)   \
-    EPOXY_NOINLINE static ret EPOXY_CALLSPEC                               \
-    name##_dispatch_table_rewrite_ptr args                                 \
-    {                                                                      \
-        tls_ptr tls = get_tls_by_index(dispatch_common_tls_index);         \
-        tls->table.name = name##_resolver(tls);                            \
-        return tls->target##_dispatch_table.name passthrough;              \
-    }
-#define GEN_THUNK(target, table, name, args, passthrough, offset, function_type)              \
+#define GEN_THUNKS(target, name, args, passthrough, offset, func_type)         \
     EPOXY_IMPORTEXPORT void EPOXY_CALLSPEC                                     \
     name args                                                                  \
     {                                                                          \
-        function_type func_symbol = target##_resolve(offset);                            \
-        func_symbol passthrough;                                                      \
+        func_type func_symbol = target##_resolve(offset);                      \
+        func_symbol passthrough;                                               \
     }
 
-#define GEN_THUNK_RET(target, table, ret, name, args, passthrough, offset, function_type)     \
+#define GEN_THUNKS_RET(target, ret, name, args, passthrough, offset, func_type)\
     EPOXY_IMPORTEXPORT ret EPOXY_CALLSPEC                                      \
     name args                                                                  \
     {                                                                          \
-        function_type func_symbol = target##_resolve(offset);                            \
-        return func_symbol passthrough;                                               \
+        func_type func_symbol = target##_resolve(offset);                      \
+        return func_symbol passthrough;                                        \
     }
-
-#define GEN_THUNKS(target, name, args, passthrough, offset, function_type)                                     \
-    GEN_THUNK(target, target##_dispatch_table, name, args, passthrough, offset, function_type)
-
-// GEN_REWRITE_PTR(target, target##_dispatch_table, name, args, passthrough)           \
-
-#define GEN_THUNKS_RET(target, ret, name, args, passthrough, offset, function_type)                            \
-    GEN_THUNK_RET(target, target##_dispatch_table, ret, name, args, passthrough, offset, function_type)
-
-//    GEN_REWRITE_PTR_RET(target, target##_dispatch_table, ret, name, args, passthrough)  \
 
 enum DISPATCH_OPENGL_TYPE {
     DISPATCH_OPENGL_UNKNOW = 0,
