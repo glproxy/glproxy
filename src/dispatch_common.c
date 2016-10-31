@@ -204,6 +204,9 @@ struct dispatch_common_tls {
 
     /** dlopen() return value for libEGL.so.1 */
     void *egl_handle;
+    unsigned int egl_context_api;
+    const char *gles1_name;
+    const char *gles2_name;
 
     /** dlopen() return value for libGLESv1_CM.so.1 */
     void *gles1_handle;
@@ -257,29 +260,21 @@ static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
 #endif
 }
 
-static bool get_dlopen_handle(void **handle, const char **lib_names, bool exit_on_fail) {
-    const char **lib_name_ptr = lib_names;
-    if (*handle)
-        return true;
-
-    for (; *lib_name_ptr; ++lib_name_ptr) {
-        if (!*handle) {
+static void *dlopen_handle(const char *lib_name, const char** error) {
+    void *handle;
 #ifdef _WIN32
-            *handle = LoadLibraryA(*lib_name_ptr);
+    handle = (void *)LoadLibraryA(lib_name);
 #else
-            *handle = dlopen(*lib_name_ptr, RTLD_LAZY | RTLD_LOCAL);
-            if (!*handle && lib_name_ptr[1] == NULL) {
-                if (exit_on_fail) {
-                    fprintf(stderr, "Couldn't open %s: %s\n", *lib_name_ptr, dlerror());
-                    exit(1);
-                } else {
-                    (void)dlerror();
-                }
-            }
-#endif
+    handle = (void *)dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
+    if (!handle) {
+        if (error) {
+            *error = dlerror();
+        } else {
+            (void)dlerror();
         }
     }
-    return *handle != NULL;
+#endif
+    return handle;
 }
 
 inline static void dlclose_handle(void* handle) {
@@ -293,9 +288,12 @@ inline static void dlclose_handle(void* handle) {
 #endif
 }
 
-static void *do_dlsym_by_handle(void*handle, const char* name, const char**error) {
+static void *do_dlsym_by_handle(void*handle, const char* name, const char**error, bool show_error) {
     void *result = NULL;
 #ifdef _WIN32
+    if (!handle) {
+        return result;
+    }
     result = GetProcAddress(handle, name);
 #else
     result = dlsym(handle, name);
@@ -307,19 +305,39 @@ static void *do_dlsym_by_handle(void*handle, const char* name, const char**error
         }
     }
 #endif
+    if (show_error) {
+        if (!*error) {
+            *error = "unknow";
+        }
+        fprintf(stderr, "%s() not found in 0x%x %s\n", name, (intptr_t)handle, *error);
+    }
     return result;
 }
 
 // API required by following functions
 static void *do_dlsym(void **handle, const char **lib_names, const char *name, bool exit_on_fail) {
-    void *result;
-    const char *error = "";
+    void *result = NULL;
+    const char *error = "unknow";
 
-    if (!get_dlopen_handle(handle, lib_names, exit_on_fail))
-        return NULL;
-    result = do_dlsym_by_handle(*handle, name, &error);
+    const char** lib_name = lib_names;
+    if (*handle) {
+        result = do_dlsym_by_handle(*handle, name, &error, false);
+    } else {
+        while (*lib_name) {
+            void *tmp_handle = dlopen_handle(*lib_name, &error);
+            if (tmp_handle) {
+                result = do_dlsym_by_handle(tmp_handle, name, &error, false);
+                if (result) {
+                    *handle = tmp_handle;
+                    return result;
+                }
+            }
+            ++lib_name;
+        }
+    }
+
     if (!result && exit_on_fail) {
-        fprintf(stderr, "%s() not found in %s: %s\n", name, *lib_names, error);
+        fprintf(stderr, "%s() not found in %s: %s\n", name, lib_names[0], error);
         exit(1);
     }
 
@@ -350,10 +368,11 @@ static int epoxy_internal_gl_version(int error_version) {
 
 #if PLATFORM_HAS_EGL
 static EGLenum epoxy_egl_get_current_gl_context_api_by_handle(void* handle) {
-    PFNEGLQUERYAPIPROC eglQueryAPILocal = do_dlsym_by_handle(handle, "eglQueryAPI", NULL);
-    PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContextLocal = do_dlsym_by_handle(handle, "eglGetCurrentContext", NULL);
-    PFNEGLBINDAPIPROC eglBindAPILocal = do_dlsym_by_handle(handle, "eglBindAPI", NULL);
-    PFNEGLGETERRORPROC eglGetErrorLocal = do_dlsym_by_handle(handle, "eglGetError", NULL);
+    const char *error = "unknow";
+    PFNEGLQUERYAPIPROC eglQueryAPILocal = do_dlsym_by_handle(handle, "eglQueryAPI", &error, true);
+    PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContextLocal = do_dlsym_by_handle(handle, "eglGetCurrentContext", &error, true);
+    PFNEGLBINDAPIPROC eglBindAPILocal = do_dlsym_by_handle(handle, "eglBindAPI", &error, true);
+    PFNEGLGETERRORPROC eglGetErrorLocal = do_dlsym_by_handle(handle, "eglGetError", &error, true);
 
     EGLenum save_api = eglQueryAPILocal();
     EGLContext ctx;
@@ -382,56 +401,70 @@ static EGLenum epoxy_egl_get_current_gl_context_api_by_handle(void* handle) {
     return EGL_NONE;
 }
 
-static EGLenum epoxy_egl_get_current_gl_context_api(tls_ptr tls) {
-    const char**egl_lib = EGL_LIBS;
-    EGLenum result = EGL_NONE;
+static void epoxy_egl_open_handle(tls_ptr tls, bool need_context, EGLenum *result) {
+    const char **egl_lib;
+    const char **egl_libs_begin = EGL_LIBS - 1;
+    const char **egl_libs_end = EGL_LIBS + (sizeof(EGL_LIBS) / sizeof(EGL_LIBS[0]));
     int pos = 0;
-    const char* gles1_name = NULL;
-    const char* gles2_name = NULL;
-#if PLATFORM_HAS_GLX
-    result = epoxy_egl_get_current_gl_context_api_by_handle(NULL);
-    gles1_name = GLES1_LIBS[0];
-    gles2_name = GLES2_LIBS[0];
-#endif
-    if (result == EGL_NONE && tls->egl_handle) {
-        result = epoxy_egl_get_current_gl_context_api_by_handle(tls->egl_handle);
+    bool is_first = true;
+    if (need_context) {
+        *result = EGL_NONE;
     }
-    for (; *egl_lib != NULL && result == EGL_NONE; ++egl_lib, ++pos) {
-        const char* egl_libs[] = {
-            *egl_lib,
-            NULL
-        };
-        tls->egl_handle = NULL;
-        get_dlopen_handle(&tls->egl_handle, egl_libs, false);
+    for (egl_lib = egl_libs_begin; egl_lib < egl_libs_end; ++pos) {
         if (tls->egl_handle) {
-            result = epoxy_egl_get_current_gl_context_api_by_handle(tls->egl_handle);
-            if (result != EGL_NONE) {
-                gles1_name = GLES1_LIBS[pos];
-                gles2_name = GLES2_LIBS[pos];
+            if (need_context) {
+                *result = epoxy_egl_get_current_gl_context_api_by_handle(tls->egl_handle);
+                if (*result != EGL_NONE) {
+                    return;
+                }
+                if (is_first) {
+                    return;
+                }
+            } else {
+                return;
             }
         }
+        ++egl_lib;
+        is_first = false;
+        if (tls->egl_handle) {
+            dlclose_handle(tls->egl_handle);
+        }
+        if (!*egl_lib) {
+            break;
+        }
+        tls->egl_handle = dlopen_handle(*egl_lib, NULL);
+        tls->gles1_name = GLES1_LIBS[pos];
+        tls->gles2_name = GLES2_LIBS[pos];
     }
-    switch (result) {
+}
+
+static EGLenum epoxy_egl_get_current_gl_context_api(tls_ptr tls) {
+    if (tls->egl_context_api != 0) {
+        return tls->egl_context_api;
+    }
+#if PLATFORM_HAS_GLX
+    tls->egl_context_api = epoxy_egl_get_current_gl_context_api_by_handle(NULL);
+    if (tls->egl_context_api != EGL_NONE) {
+        return tls->egl_context_api;
+    }
+#endif
+    epoxy_egl_open_handle(tls, true, &tls->egl_context_api);
+    switch (tls->egl_context_api) {
     case EGL_OPENGL_API:
         break;
     case EGL_OPENGL_ES_API: {
         if (!tls->gles2_handle) {
-            const char* gles2_libs[] = {
-                gles2_name,
-                NULL
-            };
-            get_dlopen_handle(&tls->gles2_handle, gles2_libs, false);
+            tls->gles2_handle = dlopen_handle(tls->gles2_name, NULL);
         }
         if (!tls->gles2_handle && !tls->gles1_handle) {
-            const char* gles1_libs[] = {
-                gles1_name,
-                NULL
-            };
-            get_dlopen_handle(&tls->gles1_handle, gles1_libs, false);
+            tls->gles1_handle = dlopen_handle(tls->gles1_name, NULL);
         }
+        break;
     }
+    default:
+        break;
     }
-    return result;
+    return tls->egl_context_api;
 }
 #endif /* PLATFORM_HAS_EGL */
 
@@ -440,10 +473,6 @@ static EGLenum epoxy_egl_get_current_gl_context_api(tls_ptr tls) {
 * avoid loading libraries unless necessary.
 */
 static bool epoxy_current_context_is_gl_desktop(tls_ptr tls) {
-#if !PLATFORM_HAS_GLX && !PLATFORM_HAS_WGL
-    //TODO: Testing for All OpenGL
-    return false;
-#else
     /* If the application hasn't explicitly called some of our GLX
     * or EGL code but has presumably set up a context on its own,
     * then we need to figure out how to getprocaddress anyway.
@@ -484,7 +513,6 @@ static bool epoxy_current_context_is_gl_desktop(tls_ptr tls) {
 #endif /* PLATFORM_HAS_EGL */
 
     return false;
-#endif /* !PLATFORM_HAS_GLX && !PLATFORM_HAS_WGL */
 }
 
 bool epoxy_extension_in_string(const char *extension_list, const char *ext) {
@@ -602,23 +630,41 @@ void *epoxy_get_core_proc_address(tls_ptr tls, const char *name, int core_versio
 }
 
 void *epoxy_egl_dlsym(tls_ptr tls, const char *name) {
-    return do_dlsym(&tls->egl_handle, EGL_LIBS, name, true);
+    void* result = NULL;
+#if PLATFORM_HAS_EGL
+    epoxy_egl_open_handle(tls, false, NULL);
+    char *error = "unknow";
+    result = do_dlsym_by_handle(tls->egl_handle, name, &error, true);
+#endif
+    return result;
 }
 
 void *epoxy_gles1_dlsym(tls_ptr tls, const char *name) {
-    if (epoxy_current_context_is_gl_desktop(tls)) {
-        return epoxy_get_proc_address(tls, name);
+    void* result = NULL;
+#if PLATFORM_HAS_EGL
+    epoxy_egl_get_current_gl_context_api(tls);
+    if (tls->gles1_handle) {
+        char *error = "unknow";
+        result = do_dlsym_by_handle(tls->gles1_handle, name, &error, true);
     } else {
-        return do_dlsym(&tls->gles1_handle, GLES1_LIBS, name, true);
+        result = epoxy_get_proc_address(tls, name);
     }
+#endif
+    return result;
 }
 
 void *epoxy_gles2_dlsym(tls_ptr tls, const char *name) {
-    if (epoxy_current_context_is_gl_desktop(tls)) {
-        return epoxy_get_proc_address(tls, name);
+    void* result = NULL;
+#if PLATFORM_HAS_EGL
+    epoxy_egl_get_current_gl_context_api(tls);
+    if (tls->gles2_handle) {
+        char *error = "unknow";
+        result = do_dlsym_by_handle(tls->gles2_handle, name, &error, true);
     } else {
-        return do_dlsym(&tls->gles2_handle, GLES2_LIBS, name, true);
+        result = epoxy_get_proc_address(tls, name);
     }
+#endif
+    return result;
 }
 
 /**
@@ -632,16 +678,20 @@ void *epoxy_gles2_dlsym(tls_ptr tls, const char *name) {
 * eglGetProcAddress().  Thanks, Khronos.
 */
 void *epoxy_gles3_dlsym(tls_ptr tls, const char *name) {
-    if (epoxy_current_context_is_gl_desktop(tls)) {
-        return epoxy_get_proc_address(tls, name);
+    void* result = NULL;
+#if PLATFORM_HAS_EGL
+    epoxy_egl_get_current_gl_context_api(tls);
+    if (tls->gles2_handle) {
+        char *error = "unknow";
+        result = do_dlsym_by_handle(tls->gles2_handle, name, &error, true);
+        if (!result) {
+            result = epoxy_get_proc_address(tls, name);
+        }
     } else {
-        void *func = do_dlsym(&tls->gles2_handle, GLES2_LIBS, name, false);
-
-        if (func)
-            return func;
-
-        return epoxy_get_proc_address(tls, name);
+        result = epoxy_get_proc_address(tls, name);
     }
+#endif
+    return result;
 }
 
 /**
@@ -1063,6 +1113,8 @@ static void reset_dispatch_common_tls(tls_ptr tls) {
 
 #if PLATFORM_HAS_EGL
     tls->egl_dispatch_table = egl_resolver_table;
+    tls->egl_context_api = 0;
+
     dlclose_handle(tls->gles2_handle);
     dlclose_handle(tls->gles1_handle);
     dlclose_handle(tls->egl_handle);
