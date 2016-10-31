@@ -44,6 +44,8 @@ test_function(HDC hdc)
         return 1;
     }
 
+    glBegin(GL_POINTS);
+    glEnd();
     /* First, use the #ifdeffed variant of the function */
     wglUseFontBitmaps(hdc, 0, 255, dlist[1]);
     glListBase(dlist[1]);

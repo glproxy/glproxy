@@ -171,7 +171,9 @@ const char* GLES2_LIBS[] = {
 enum DISPATCH_OPENGL_TYPE {
     DISPATCH_OPENGL_UNKNOW = 0,
     DISPATCH_OPENGL_DESKTOP = 1,
-    DISPATCH_OPENGL_ES = 2
+    DISPATCH_OPENGL_ES = 2,
+    DISPATCH_OPENGL_EGL_DESKTOP = 3,
+    DISPATCH_OPENGL_EGL_ES = 4,
 };
 
 struct dispatch_common_tls {
@@ -213,22 +215,6 @@ struct dispatch_common_tls {
 
     /** dlopen() return value for libGLESv2.so.2 */
     void *gles2_handle;
-
-    /**
-     * This value gets incremented when any thread is in
-     * glBegin()/glEnd() called through epoxy.
-     *
-     * We're not guaranteed to be called through our wrapper, so the
-     * conservative paths also try to handle the failure cases they'll
-     * see if begin_count didn't reflect reality.  It's also a bit of
-     * a bug that the conservative paths might return success because
-     * some other thread was in epoxy glBegin/glEnd while our thread
-     * is trying to resolve, but given that it's basically just for
-     * informative error messages, we shouldn't need to care.
-     */
-    long begin_count;
-    PFNGLBEGINPROC glBeginSaved;
-    PFNGLENDPROC glEndSaved;
 
     enum DISPATCH_OPENGL_TYPE open_gl_type;
 };
@@ -305,7 +291,7 @@ static void *do_dlsym_by_handle(void*handle, const char* name, const char**error
         }
     }
 #endif
-    if (show_error) {
+    if (show_error && result == NULL) {
         if (!*error) {
             *error = "unknow";
         }
@@ -453,10 +439,10 @@ static EGLenum epoxy_egl_get_current_gl_context_api(tls_ptr tls) {
     case EGL_OPENGL_API:
         break;
     case EGL_OPENGL_ES_API: {
-        if (!tls->gles2_handle) {
+        if (!tls->gles2_handle && tls->gles2_name) {
             tls->gles2_handle = dlopen_handle(tls->gles2_name, NULL);
         }
-        if (!tls->gles2_handle && !tls->gles1_handle) {
+        if (!tls->gles2_handle && !tls->gles1_handle && tls->gles1_name) {
             tls->gles1_handle = dlopen_handle(tls->gles1_name, NULL);
         }
         break;
@@ -512,7 +498,7 @@ static bool epoxy_current_context_is_gl_desktop(tls_ptr tls) {
         return false;
 #endif /* PLATFORM_HAS_EGL */
 
-    return false;
+    return true;
 }
 
 bool epoxy_extension_in_string(const char *extension_list, const char *ext) {
@@ -576,12 +562,11 @@ void *epoxy_gl_dlsym(tls_ptr tls, const char *name) {
 }
 
 static void *epoxy_get_proc_address(tls_ptr tls, const char *name) {
-#if defined(__APPLE__)
-    return epoxy_gl_dlsym(tls, name);
-#else
     if (epoxy_current_context_is_gl_desktop(tls)) {
 #ifdef _WIN32
         return wglGetProcAddress(name);
+#elif defined (__APPLE__)
+        epoxy_gl_dlsym(tls, name)
 #else
         return glXGetProcAddressARB((const GLubyte *)name);
 #endif
@@ -602,7 +587,6 @@ static void *epoxy_get_proc_address(tls_ptr tls, const char *name) {
 #endif
     fprintf(stderr, "Couldn't find current GLX or EGL context.\n");
     return NULL;
-#endif
 }
 
 /**
@@ -741,16 +725,10 @@ void *epoxy_get_bootstrap_proc_address(tls_ptr tls, const char *name) {
 }
 
 int epoxy_conservative_gl_version(tls_ptr tls) {
-    if (tls->begin_count)
-        return 100;
-
     return epoxy_internal_gl_version(100);
 }
 
 bool epoxy_conservative_has_gl_extension(tls_ptr tls, const char *ext) {
-    if (tls->begin_count)
-        return true;
-
     return epoxy_internal_has_gl_extension(ext, true);
 }
 
@@ -1017,9 +995,6 @@ EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(char* target, char*
 static bool epoxy_is_desktop_gl_local(tls_ptr tls) {
     const char *es_prefix = "OpenGL ES";
     const char *version;
-    if (tls->begin_count) {
-        tls->open_gl_type = DISPATCH_OPENGL_DESKTOP;
-    }
     if (tls->open_gl_type != DISPATCH_OPENGL_UNKNOW) {
         return tls->open_gl_type == DISPATCH_OPENGL_DESKTOP;
     }
@@ -1076,24 +1051,6 @@ EPOXY_IMPORTEXPORT int epoxy_gl_version(void) {
 #include "gl_generated_dispatch_thunks.inc"
 #include "egl_generated_dispatch_thunks.inc"
 
-static void EPOXY_CALLSPEC epoxy_glBegin_proxy(GLenum mode) {
-    tls_ptr tls = epoxy_context_get();
-    ++tls->begin_count;
-    if (!tls->glBeginSaved) {
-        tls->glBeginSaved = epoxy_glBegin_resolver(tls);
-    }
-    tls->glBeginSaved(mode);
-}
-
-static void EPOXY_CALLSPEC epoxy_glEnd_proxy(void) {
-    tls_ptr tls = epoxy_context_get();
-    if (!tls->glEndSaved) {
-        tls->glEndSaved = epoxy_glEnd_resolver(tls);
-    }
-    tls->glEndSaved();
-    --tls->begin_count;
-}
-
 static void reset_dispatch_common_tls(tls_ptr tls) {
 #if PLATFORM_HAS_WGL
     tls->wgl_dispatch_table = wgl_resolver_table;
@@ -1106,10 +1063,6 @@ static void reset_dispatch_common_tls(tls_ptr tls) {
 
     tls->gl_dispatch_table = gl_resolver_table;
     dlclose_handle(tls->gl_handle);
-    tls->gl_dispatch_table.epoxy_glBegin = epoxy_glBegin_proxy;
-    tls->gl_dispatch_table.epoxy_glEnd= epoxy_glEnd_proxy;
-    tls->glBeginSaved = NULL;
-    tls->glEndSaved = NULL;
 
 #if PLATFORM_HAS_EGL
     tls->egl_dispatch_table = egl_resolver_table;
