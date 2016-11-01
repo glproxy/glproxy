@@ -108,11 +108,11 @@
 
 enum DISPATCH_OPENGL_TYPE {
     DISPATCH_OPENGL_UNKNOW = 0,
-    DISPATCH_OPENGL_CGL_DESKTOP = 1,
-    DISPATCH_OPENGL_WGL_DESKTOP = 1,
-    DISPATCH_OPENGL_GLX_DESKTOP = 1,
-    DISPATCH_OPENGL_EGL_DESKTOP = 2,
-    DISPATCH_OPENGL_ES = 3, /* Only comes from EGL */
+    DISPATCH_OPENGL_CGL_DESKTOP,
+    DISPATCH_OPENGL_WGL_DESKTOP,
+    DISPATCH_OPENGL_GLX_DESKTOP,
+    DISPATCH_OPENGL_EGL_DESKTOP,
+    DISPATCH_OPENGL_ES, /* Only comes from EGL */
 } PACKED;
 
 enum DISPATCH_RESOLVE_TYPE {
@@ -150,6 +150,8 @@ struct dispatch_common_tls {
 #if PLATFORM_HAS_WGL
     struct wgl_dispatch_table wgl_dispatch_table;
     struct dispatch_metadata wgl_metadata;
+    PFNWGLGETPROCADDRESSPROC wgl_get_proc;
+    PFNWGLGETCURRENTDCPROC wgl_get_current_dc;
 #endif
 
 #if PLATFORM_HAS_GLX
@@ -167,7 +169,8 @@ struct dispatch_common_tls {
     struct epoxy_gl_context param_context;
     struct epoxy_gl_context context;
     void* gl_handle;
-    PFNEGLGETPROCADDRESSPROC gles_handle;
+    void* gles_handle;
+    PFNEGLGETPROCADDRESSPROC egl_get_proc;
     bool gl_called;
     enum DISPATCH_OPENGL_TYPE open_gl_type;
     int gl_version;
@@ -201,21 +204,21 @@ static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
 
 void wgl_epoxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 
 void glx_epoxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 
 void gl_epoxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
+enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 
 void egl_epoxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
+enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 
 void epoxy_dispatch_common_tls_init(tls_ptr tls, bool inited);
 

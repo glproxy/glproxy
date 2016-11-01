@@ -22,12 +22,14 @@ EPOXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
 #endif
 #if HAS_DISPATCH_RESOLVE_VERSION
             case DISPATCH_RESOLVE_VERSION:
-                result_resolved = current_epoxy_resolve_version(tls, name, ptr);
+                result_resolved = current_epoxy_resolve_version(tls, name, ptr, resolve_info->condition);
                 break;
 #endif
-            case DISPATCH_RESOLVE_EXTENSION:
-                result_resolved = current_epoxy_resolve_extension(tls, name, ptr);
+            case DISPATCH_RESOLVE_EXTENSION: {
+                const char* extension_name = metadata->extension_enum_strings + resolve_info->condition;
+                result_resolved = current_epoxy_resolve_extension(tls, name, ptr, extension_name);
                 break;
+            }
             default:
                 break;
             }

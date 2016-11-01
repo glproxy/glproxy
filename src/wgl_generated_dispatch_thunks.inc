@@ -281,85 +281,85 @@ static const struct dispatch_resolve_info wgl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 61, WGL_1_0, 1421}, /* wglGetCurrentDC */
     {DISPATCH_RESOLVE_EXTENSION, 62, WGL_extension_WGL_ARB_make_current_read, 1437}, /* wglGetCurrentReadDCARB */
     {DISPATCH_RESOLVE_EXTENSION, 63, WGL_extension_WGL_EXT_make_current_read, 1460}, /* wglGetCurrentReadDCEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 65, WGL_extension_WGL_I3D_digital_video_control, 1508}, /* wglGetDigitalVideoParametersI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 66, WGL_extension_WGL_ARB_extensions_string, 1540}, /* wglGetExtensionsStringARB */
-    {DISPATCH_RESOLVE_EXTENSION, 67, WGL_extension_WGL_EXT_extensions_string, 1566}, /* wglGetExtensionsStringEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 68, WGL_extension_WGL_I3D_swap_frame_usage, 1592}, /* wglGetFrameUsageI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 69, WGL_extension_WGL_AMD_gpu_association, 1612}, /* wglGetGPUIDsAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 70, WGL_extension_WGL_AMD_gpu_association, 1628}, /* wglGetGPUInfoAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 71, WGL_extension_WGL_I3D_gamma, 1645}, /* wglGetGammaTableI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 72, WGL_extension_WGL_I3D_gamma, 1665}, /* wglGetGammaTableParametersI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 73, WGL_extension_WGL_I3D_genlock, 1695}, /* wglGetGenlockSampleRateI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 74, WGL_extension_WGL_I3D_genlock, 1722}, /* wglGetGenlockSourceDelayI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 75, WGL_extension_WGL_I3D_genlock, 1750}, /* wglGetGenlockSourceEdgeI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 76, WGL_extension_WGL_I3D_genlock, 1777}, /* wglGetGenlockSourceI3D */
-    {DISPATCH_RESOLVE_DIRECT, 77, WGL_1_0, 1800}, /* wglGetLayerPaletteEntries */
-    {DISPATCH_RESOLVE_EXTENSION, 78, WGL_extension_WGL_OML_sync_control, 1826}, /* wglGetMscRateOML */
-    {DISPATCH_RESOLVE_EXTENSION, 79, WGL_extension_WGL_ARB_pbuffer, 1843}, /* wglGetPbufferDCARB */
-    {DISPATCH_RESOLVE_EXTENSION, 80, WGL_extension_WGL_EXT_pbuffer, 1862}, /* wglGetPbufferDCEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 81, WGL_extension_WGL_ARB_pixel_format, 1881}, /* wglGetPixelFormatAttribfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 82, WGL_extension_WGL_EXT_pixel_format, 1910}, /* wglGetPixelFormatAttribfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 83, WGL_extension_WGL_ARB_pixel_format, 1939}, /* wglGetPixelFormatAttribivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 84, WGL_extension_WGL_EXT_pixel_format, 1968}, /* wglGetPixelFormatAttribivEXT */
-    {DISPATCH_RESOLVE_DIRECT, 85, WGL_1_0, 1997}, /* wglGetProcAddress */
-    {DISPATCH_RESOLVE_EXTENSION, 86, WGL_extension_WGL_EXT_swap_control, 2015}, /* wglGetSwapIntervalEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 87, WGL_extension_WGL_OML_sync_control, 2037}, /* wglGetSyncValuesOML */
-    {DISPATCH_RESOLVE_EXTENSION, 88, WGL_extension_WGL_NV_video_output, 2057}, /* wglGetVideoDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 89, WGL_extension_WGL_NV_video_output, 2077}, /* wglGetVideoInfoNV */
-    {DISPATCH_RESOLVE_EXTENSION, 90, WGL_extension_WGL_I3D_swap_frame_lock, 2095}, /* wglIsEnabledFrameLockI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 91, WGL_extension_WGL_I3D_genlock, 2120}, /* wglIsEnabledGenlockI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 92, WGL_extension_WGL_NV_swap_group, 2143}, /* wglJoinSwapGroupNV */
-    {DISPATCH_RESOLVE_EXTENSION, 93, WGL_extension_WGL_EXT_display_color_table, 2162}, /* wglLoadDisplayColorTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 94, WGL_extension_WGL_NV_video_capture, 2190}, /* wglLockVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 95, WGL_extension_WGL_AMD_gpu_association, 2218}, /* wglMakeAssociatedContextCurrentAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 96, WGL_extension_WGL_ARB_make_current_read, 2253}, /* wglMakeContextCurrentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 97, WGL_extension_WGL_EXT_make_current_read, 2278}, /* wglMakeContextCurrentEXT */
-    {DISPATCH_RESOLVE_DIRECT, 98, WGL_1_0, 2303}, /* wglMakeCurrent */
-    {DISPATCH_RESOLVE_EXTENSION, 99, WGL_extension_WGL_NV_present_video, 2318}, /* wglQueryCurrentContextNV */
-    {DISPATCH_RESOLVE_EXTENSION, 100, WGL_extension_WGL_NV_swap_group, 2343}, /* wglQueryFrameCountNV */
-    {DISPATCH_RESOLVE_EXTENSION, 101, WGL_extension_WGL_I3D_swap_frame_lock, 2364}, /* wglQueryFrameLockMasterI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 102, WGL_extension_WGL_I3D_swap_frame_usage, 2391}, /* wglQueryFrameTrackingI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 103, WGL_extension_WGL_I3D_genlock, 2416}, /* wglQueryGenlockMaxSourceDelayI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 104, WGL_extension_WGL_NV_swap_group, 2449}, /* wglQueryMaxSwapGroupsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 105, WGL_extension_WGL_ARB_pbuffer, 2473}, /* wglQueryPbufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 106, WGL_extension_WGL_EXT_pbuffer, 2492}, /* wglQueryPbufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 107, WGL_extension_WGL_NV_swap_group, 2511}, /* wglQuerySwapGroupNV */
-    {DISPATCH_RESOLVE_EXTENSION, 108, WGL_extension_WGL_NV_video_capture, 2531}, /* wglQueryVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_DIRECT, 109, WGL_1_0, 2560}, /* wglRealizeLayerPalette */
-    {DISPATCH_RESOLVE_EXTENSION, 110, WGL_extension_WGL_I3D_image_buffer, 2583}, /* wglReleaseImageBufferEventsI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 111, WGL_extension_WGL_ARB_pbuffer, 2614}, /* wglReleasePbufferDCARB */
-    {DISPATCH_RESOLVE_EXTENSION, 112, WGL_extension_WGL_EXT_pbuffer, 2637}, /* wglReleasePbufferDCEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 113, WGL_extension_WGL_ARB_render_texture, 2660}, /* wglReleaseTexImageARB */
-    {DISPATCH_RESOLVE_EXTENSION, 114, WGL_extension_WGL_NV_video_capture, 2682}, /* wglReleaseVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 115, WGL_extension_WGL_NV_video_output, 2713}, /* wglReleaseVideoDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 116, WGL_extension_WGL_NV_video_output, 2737}, /* wglReleaseVideoImageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 117, WGL_extension_WGL_NV_swap_group, 2760}, /* wglResetFrameCountNV */
-    {DISPATCH_RESOLVE_EXTENSION, 118, WGL_extension_WGL_ARB_buffer_region, 2781}, /* wglRestoreBufferRegionARB */
-    {DISPATCH_RESOLVE_EXTENSION, 119, WGL_extension_WGL_ARB_buffer_region, 2807}, /* wglSaveBufferRegionARB */
-    {DISPATCH_RESOLVE_EXTENSION, 120, WGL_extension_WGL_NV_video_output, 2830}, /* wglSendPbufferToVideoNV */
-    {DISPATCH_RESOLVE_EXTENSION, 121, WGL_extension_WGL_I3D_digital_video_control, 2854}, /* wglSetDigitalVideoParametersI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 122, WGL_extension_WGL_I3D_gamma, 2886}, /* wglSetGammaTableI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 123, WGL_extension_WGL_I3D_gamma, 2906}, /* wglSetGammaTableParametersI3D */
-    {DISPATCH_RESOLVE_DIRECT, 124, WGL_1_0, 2936}, /* wglSetLayerPaletteEntries */
-    {DISPATCH_RESOLVE_EXTENSION, 125, WGL_extension_WGL_ARB_render_texture, 2962}, /* wglSetPbufferAttribARB */
-    {DISPATCH_RESOLVE_EXTENSION, 126, WGL_extension_WGL_3DL_stereo_control, 2985}, /* wglSetStereoEmitterState3DL */
-    {DISPATCH_RESOLVE_DIRECT, 127, WGL_1_0, 3013}, /* wglShareLists */
-    {DISPATCH_RESOLVE_EXTENSION, 128, WGL_extension_WGL_OML_sync_control, 3027}, /* wglSwapBuffersMscOML */
-    {DISPATCH_RESOLVE_EXTENSION, 129, WGL_extension_WGL_EXT_swap_control, 3048}, /* wglSwapIntervalEXT */
-    {DISPATCH_RESOLVE_DIRECT, 130, WGL_1_0, 3067}, /* wglSwapLayerBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 131, WGL_extension_WGL_OML_sync_control, 3087}, /* wglSwapLayerBuffersMscOML */
-    {DISPATCH_RESOLVE_DIRECT, 132, WGL_1_0, 3113}, /* wglUseFontBitmapsA */
-    {DISPATCH_RESOLVE_DIRECT, 133, WGL_1_0, 3132}, /* wglUseFontBitmapsW */
-    {DISPATCH_RESOLVE_DIRECT, 134, WGL_1_0, 3151}, /* wglUseFontOutlines */
-    {DISPATCH_RESOLVE_DIRECT, 135, WGL_1_0, 3170}, /* wglUseFontOutlinesA */
-    {DISPATCH_RESOLVE_DIRECT, 136, WGL_1_0, 3190}, /* wglUseFontOutlinesW */
-    {DISPATCH_RESOLVE_EXTENSION, 137, WGL_extension_WGL_OML_sync_control, 3210}, /* wglWaitForMscOML */
-    {DISPATCH_RESOLVE_EXTENSION, 138, WGL_extension_WGL_OML_sync_control, 3227}, /* wglWaitForSbcOML */
-    {DISPATCH_RESOLVE_TERMINATOR, 139, 0, 0}
+    {DISPATCH_RESOLVE_EXTENSION, 64, WGL_extension_WGL_I3D_digital_video_control, 1508}, /* wglGetDigitalVideoParametersI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 65, WGL_extension_WGL_ARB_extensions_string, 1540}, /* wglGetExtensionsStringARB */
+    {DISPATCH_RESOLVE_EXTENSION, 66, WGL_extension_WGL_EXT_extensions_string, 1566}, /* wglGetExtensionsStringEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 67, WGL_extension_WGL_I3D_swap_frame_usage, 1592}, /* wglGetFrameUsageI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 68, WGL_extension_WGL_AMD_gpu_association, 1612}, /* wglGetGPUIDsAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 69, WGL_extension_WGL_AMD_gpu_association, 1628}, /* wglGetGPUInfoAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 70, WGL_extension_WGL_I3D_gamma, 1645}, /* wglGetGammaTableI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 71, WGL_extension_WGL_I3D_gamma, 1665}, /* wglGetGammaTableParametersI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 72, WGL_extension_WGL_I3D_genlock, 1695}, /* wglGetGenlockSampleRateI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 73, WGL_extension_WGL_I3D_genlock, 1722}, /* wglGetGenlockSourceDelayI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 74, WGL_extension_WGL_I3D_genlock, 1750}, /* wglGetGenlockSourceEdgeI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 75, WGL_extension_WGL_I3D_genlock, 1777}, /* wglGetGenlockSourceI3D */
+    {DISPATCH_RESOLVE_DIRECT, 76, WGL_1_0, 1800}, /* wglGetLayerPaletteEntries */
+    {DISPATCH_RESOLVE_EXTENSION, 77, WGL_extension_WGL_OML_sync_control, 1826}, /* wglGetMscRateOML */
+    {DISPATCH_RESOLVE_EXTENSION, 78, WGL_extension_WGL_ARB_pbuffer, 1843}, /* wglGetPbufferDCARB */
+    {DISPATCH_RESOLVE_EXTENSION, 79, WGL_extension_WGL_EXT_pbuffer, 1862}, /* wglGetPbufferDCEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 80, WGL_extension_WGL_ARB_pixel_format, 1881}, /* wglGetPixelFormatAttribfvARB */
+    {DISPATCH_RESOLVE_EXTENSION, 81, WGL_extension_WGL_EXT_pixel_format, 1910}, /* wglGetPixelFormatAttribfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 82, WGL_extension_WGL_ARB_pixel_format, 1939}, /* wglGetPixelFormatAttribivARB */
+    {DISPATCH_RESOLVE_EXTENSION, 83, WGL_extension_WGL_EXT_pixel_format, 1968}, /* wglGetPixelFormatAttribivEXT */
+    {DISPATCH_RESOLVE_DIRECT, 84, WGL_1_0, 1997}, /* wglGetProcAddress */
+    {DISPATCH_RESOLVE_EXTENSION, 85, WGL_extension_WGL_EXT_swap_control, 2015}, /* wglGetSwapIntervalEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 86, WGL_extension_WGL_OML_sync_control, 2037}, /* wglGetSyncValuesOML */
+    {DISPATCH_RESOLVE_EXTENSION, 87, WGL_extension_WGL_NV_video_output, 2057}, /* wglGetVideoDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 88, WGL_extension_WGL_NV_video_output, 2077}, /* wglGetVideoInfoNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, WGL_extension_WGL_I3D_swap_frame_lock, 2095}, /* wglIsEnabledFrameLockI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 90, WGL_extension_WGL_I3D_genlock, 2120}, /* wglIsEnabledGenlockI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 91, WGL_extension_WGL_NV_swap_group, 2143}, /* wglJoinSwapGroupNV */
+    {DISPATCH_RESOLVE_EXTENSION, 92, WGL_extension_WGL_EXT_display_color_table, 2162}, /* wglLoadDisplayColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 93, WGL_extension_WGL_NV_video_capture, 2190}, /* wglLockVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 94, WGL_extension_WGL_AMD_gpu_association, 2218}, /* wglMakeAssociatedContextCurrentAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 95, WGL_extension_WGL_ARB_make_current_read, 2253}, /* wglMakeContextCurrentARB */
+    {DISPATCH_RESOLVE_EXTENSION, 96, WGL_extension_WGL_EXT_make_current_read, 2278}, /* wglMakeContextCurrentEXT */
+    {DISPATCH_RESOLVE_DIRECT, 97, WGL_1_0, 2303}, /* wglMakeCurrent */
+    {DISPATCH_RESOLVE_EXTENSION, 98, WGL_extension_WGL_NV_present_video, 2318}, /* wglQueryCurrentContextNV */
+    {DISPATCH_RESOLVE_EXTENSION, 99, WGL_extension_WGL_NV_swap_group, 2343}, /* wglQueryFrameCountNV */
+    {DISPATCH_RESOLVE_EXTENSION, 100, WGL_extension_WGL_I3D_swap_frame_lock, 2364}, /* wglQueryFrameLockMasterI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 101, WGL_extension_WGL_I3D_swap_frame_usage, 2391}, /* wglQueryFrameTrackingI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 102, WGL_extension_WGL_I3D_genlock, 2416}, /* wglQueryGenlockMaxSourceDelayI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 103, WGL_extension_WGL_NV_swap_group, 2449}, /* wglQueryMaxSwapGroupsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 104, WGL_extension_WGL_ARB_pbuffer, 2473}, /* wglQueryPbufferARB */
+    {DISPATCH_RESOLVE_EXTENSION, 105, WGL_extension_WGL_EXT_pbuffer, 2492}, /* wglQueryPbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 106, WGL_extension_WGL_NV_swap_group, 2511}, /* wglQuerySwapGroupNV */
+    {DISPATCH_RESOLVE_EXTENSION, 107, WGL_extension_WGL_NV_video_capture, 2531}, /* wglQueryVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_DIRECT, 108, WGL_1_0, 2560}, /* wglRealizeLayerPalette */
+    {DISPATCH_RESOLVE_EXTENSION, 109, WGL_extension_WGL_I3D_image_buffer, 2583}, /* wglReleaseImageBufferEventsI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 110, WGL_extension_WGL_ARB_pbuffer, 2614}, /* wglReleasePbufferDCARB */
+    {DISPATCH_RESOLVE_EXTENSION, 111, WGL_extension_WGL_EXT_pbuffer, 2637}, /* wglReleasePbufferDCEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 112, WGL_extension_WGL_ARB_render_texture, 2660}, /* wglReleaseTexImageARB */
+    {DISPATCH_RESOLVE_EXTENSION, 113, WGL_extension_WGL_NV_video_capture, 2682}, /* wglReleaseVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 114, WGL_extension_WGL_NV_video_output, 2713}, /* wglReleaseVideoDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 115, WGL_extension_WGL_NV_video_output, 2737}, /* wglReleaseVideoImageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 116, WGL_extension_WGL_NV_swap_group, 2760}, /* wglResetFrameCountNV */
+    {DISPATCH_RESOLVE_EXTENSION, 117, WGL_extension_WGL_ARB_buffer_region, 2781}, /* wglRestoreBufferRegionARB */
+    {DISPATCH_RESOLVE_EXTENSION, 118, WGL_extension_WGL_ARB_buffer_region, 2807}, /* wglSaveBufferRegionARB */
+    {DISPATCH_RESOLVE_EXTENSION, 119, WGL_extension_WGL_NV_video_output, 2830}, /* wglSendPbufferToVideoNV */
+    {DISPATCH_RESOLVE_EXTENSION, 120, WGL_extension_WGL_I3D_digital_video_control, 2854}, /* wglSetDigitalVideoParametersI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 121, WGL_extension_WGL_I3D_gamma, 2886}, /* wglSetGammaTableI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 122, WGL_extension_WGL_I3D_gamma, 2906}, /* wglSetGammaTableParametersI3D */
+    {DISPATCH_RESOLVE_DIRECT, 123, WGL_1_0, 2936}, /* wglSetLayerPaletteEntries */
+    {DISPATCH_RESOLVE_EXTENSION, 124, WGL_extension_WGL_ARB_render_texture, 2962}, /* wglSetPbufferAttribARB */
+    {DISPATCH_RESOLVE_EXTENSION, 125, WGL_extension_WGL_3DL_stereo_control, 2985}, /* wglSetStereoEmitterState3DL */
+    {DISPATCH_RESOLVE_DIRECT, 126, WGL_1_0, 3013}, /* wglShareLists */
+    {DISPATCH_RESOLVE_EXTENSION, 127, WGL_extension_WGL_OML_sync_control, 3027}, /* wglSwapBuffersMscOML */
+    {DISPATCH_RESOLVE_EXTENSION, 128, WGL_extension_WGL_EXT_swap_control, 3048}, /* wglSwapIntervalEXT */
+    {DISPATCH_RESOLVE_DIRECT, 129, WGL_1_0, 3067}, /* wglSwapLayerBuffers */
+    {DISPATCH_RESOLVE_EXTENSION, 130, WGL_extension_WGL_OML_sync_control, 3087}, /* wglSwapLayerBuffersMscOML */
+    {DISPATCH_RESOLVE_DIRECT, 131, WGL_1_0, 3113}, /* wglUseFontBitmapsA */
+    {DISPATCH_RESOLVE_DIRECT, 132, WGL_1_0, 3132}, /* wglUseFontBitmapsW */
+    {DISPATCH_RESOLVE_DIRECT, 133, WGL_1_0, 3151}, /* wglUseFontOutlines */
+    {DISPATCH_RESOLVE_DIRECT, 134, WGL_1_0, 3170}, /* wglUseFontOutlinesA */
+    {DISPATCH_RESOLVE_DIRECT, 135, WGL_1_0, 3190}, /* wglUseFontOutlinesW */
+    {DISPATCH_RESOLVE_EXTENSION, 136, WGL_extension_WGL_OML_sync_control, 3210}, /* wglWaitForMscOML */
+    {DISPATCH_RESOLVE_EXTENSION, 137, WGL_extension_WGL_OML_sync_control, 3227}, /* wglWaitForSbcOML */
+    {DISPATCH_RESOLVE_TERMINATOR, 138, 0, 0}
 };
 
-static khronos_uint16_t wgl_resolve_offsets[139] = {0};
-static khronos_uint32_t wgl_method_name_offsets[139] = {0};
+static khronos_uint16_t wgl_resolve_offsets[138] = {0};
+static khronos_uint32_t wgl_method_name_offsets[138] = {0};
 
 #define HAS_DISPATCH_RESOLVE_DIRECT 1
 #define HAS_DISPATCH_RESOLVE_VERSION 0
@@ -461,80 +461,79 @@ GEN_THUNK_RET(wgl, HGLRC, wglGetCurrentContext, (void), (), 60, PFNWGLGETCURRENT
 GEN_THUNK_RET(wgl, HDC, wglGetCurrentDC, (void), (), 61, PFNWGLGETCURRENTDCPROC)
 GEN_THUNK_RET(wgl, HDC, wglGetCurrentReadDCARB, (void), (), 62, PFNWGLGETCURRENTREADDCARBPROC)
 GEN_THUNK_RET(wgl, HDC, wglGetCurrentReadDCEXT, (void), (), 63, PFNWGLGETCURRENTREADDCEXTPROC)
-GEN_THUNK_RET(wgl, PROC, wglGetDefaultProcAddress, (LPCSTR lpszProc), (lpszProc), 64, PFNWGLGETDEFAULTPROCADDRESSPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetDigitalVideoParametersI3D, (HDC hDC, int iAttribute, int * piValue), (hDC, iAttribute, piValue), 65, PFNWGLGETDIGITALVIDEOPARAMETERSI3DPROC)
-GEN_THUNK_RET(wgl, const char *, wglGetExtensionsStringARB, (HDC hdc), (hdc), 66, PFNWGLGETEXTENSIONSSTRINGARBPROC)
-GEN_THUNK_RET(wgl, const char *, wglGetExtensionsStringEXT, (void), (), 67, PFNWGLGETEXTENSIONSSTRINGEXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetFrameUsageI3D, (float * pUsage), (pUsage), 68, PFNWGLGETFRAMEUSAGEI3DPROC)
-GEN_THUNK_RET(wgl, UINT, wglGetGPUIDsAMD, (UINT maxCount, UINT * ids), (maxCount, ids), 69, PFNWGLGETGPUIDSAMDPROC)
-GEN_THUNK_RET(wgl, INT, wglGetGPUInfoAMD, (UINT id, int property, GLenum dataType, UINT size, void * data), (id, property, dataType, size, data), 70, PFNWGLGETGPUINFOAMDPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetGammaTableI3D, (HDC hDC, int iEntries, USHORT * puRed, USHORT * puGreen, USHORT * puBlue), (hDC, iEntries, puRed, puGreen, puBlue), 71, PFNWGLGETGAMMATABLEI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetGammaTableParametersI3D, (HDC hDC, int iAttribute, int * piValue), (hDC, iAttribute, piValue), 72, PFNWGLGETGAMMATABLEPARAMETERSI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetGenlockSampleRateI3D, (HDC hDC, UINT * uRate), (hDC, uRate), 73, PFNWGLGETGENLOCKSAMPLERATEI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetGenlockSourceDelayI3D, (HDC hDC, UINT * uDelay), (hDC, uDelay), 74, PFNWGLGETGENLOCKSOURCEDELAYI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetGenlockSourceEdgeI3D, (HDC hDC, UINT * uEdge), (hDC, uEdge), 75, PFNWGLGETGENLOCKSOURCEEDGEI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetGenlockSourceI3D, (HDC hDC, UINT * uSource), (hDC, uSource), 76, PFNWGLGETGENLOCKSOURCEI3DPROC)
-GEN_THUNK_RET(wgl, int, wglGetLayerPaletteEntries, (HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr), (hdc, iLayerPlane, iStart, cEntries, pcr), 77, PFNWGLGETLAYERPALETTEENTRIESPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetMscRateOML, (HDC hdc, INT32 * numerator, INT32 * denominator), (hdc, numerator, denominator), 78, PFNWGLGETMSCRATEOMLPROC)
-GEN_THUNK_RET(wgl, HDC, wglGetPbufferDCARB, (HPBUFFERARB hPbuffer), (hPbuffer), 79, PFNWGLGETPBUFFERDCARBPROC)
-GEN_THUNK_RET(wgl, HDC, wglGetPbufferDCEXT, (HPBUFFEREXT hPbuffer), (hPbuffer), 80, PFNWGLGETPBUFFERDCEXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetPixelFormatAttribfvARB, (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, FLOAT * pfValues), (hdc, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues), 81, PFNWGLGETPIXELFORMATATTRIBFVARBPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetPixelFormatAttribfvEXT, (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, FLOAT * pfValues), (hdc, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues), 82, PFNWGLGETPIXELFORMATATTRIBFVEXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetPixelFormatAttribivARB, (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, int * piValues), (hdc, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues), 83, PFNWGLGETPIXELFORMATATTRIBIVARBPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetPixelFormatAttribivEXT, (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, int * piValues), (hdc, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues), 84, PFNWGLGETPIXELFORMATATTRIBIVEXTPROC)
-GEN_THUNK_RET(wgl, PROC, wglGetProcAddress, (LPCSTR lpszProc), (lpszProc), 85, PFNWGLGETPROCADDRESSPROC)
-GEN_THUNK_RET(wgl, int, wglGetSwapIntervalEXT, (void), (), 86, PFNWGLGETSWAPINTERVALEXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetSyncValuesOML, (HDC hdc, INT64 * ust, INT64 * msc, INT64 * sbc), (hdc, ust, msc, sbc), 87, PFNWGLGETSYNCVALUESOMLPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetVideoDeviceNV, (HDC hDC, int numDevices, HPVIDEODEV * hVideoDevice), (hDC, numDevices, hVideoDevice), 88, PFNWGLGETVIDEODEVICENVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglGetVideoInfoNV, (HPVIDEODEV hpVideoDevice, unsigned long * pulCounterOutputPbuffer, unsigned long * pulCounterOutputVideo), (hpVideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo), 89, PFNWGLGETVIDEOINFONVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglIsEnabledFrameLockI3D, (BOOL * pFlag), (pFlag), 90, PFNWGLISENABLEDFRAMELOCKI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglIsEnabledGenlockI3D, (HDC hDC, BOOL * pFlag), (hDC, pFlag), 91, PFNWGLISENABLEDGENLOCKI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglJoinSwapGroupNV, (HDC hDC, GLuint group), (hDC, group), 92, PFNWGLJOINSWAPGROUPNVPROC)
-GEN_THUNK_RET(wgl, GLboolean, wglLoadDisplayColorTableEXT, (const GLushort * table, GLuint length), (table, length), 93, PFNWGLLOADDISPLAYCOLORTABLEEXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglLockVideoCaptureDeviceNV, (HDC hDc, HVIDEOINPUTDEVICENV hDevice), (hDc, hDevice), 94, PFNWGLLOCKVIDEOCAPTUREDEVICENVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglMakeAssociatedContextCurrentAMD, (HGLRC hglrc), (hglrc), 95, PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC)
-GEN_THUNK_RET(wgl, BOOL, wglMakeContextCurrentARB, (HDC hDrawDC, HDC hReadDC, HGLRC hglrc), (hDrawDC, hReadDC, hglrc), 96, PFNWGLMAKECONTEXTCURRENTARBPROC)
-GEN_THUNK_RET(wgl, BOOL, wglMakeContextCurrentEXT, (HDC hDrawDC, HDC hReadDC, HGLRC hglrc), (hDrawDC, hReadDC, hglrc), 97, PFNWGLMAKECONTEXTCURRENTEXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglMakeCurrent, (HDC hDc, HGLRC newContext), (hDc, newContext), 98, PFNWGLMAKECURRENTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryCurrentContextNV, (int iAttribute, int * piValue), (iAttribute, piValue), 99, PFNWGLQUERYCURRENTCONTEXTNVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryFrameCountNV, (HDC hDC, GLuint * count), (hDC, count), 100, PFNWGLQUERYFRAMECOUNTNVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryFrameLockMasterI3D, (BOOL * pFlag), (pFlag), 101, PFNWGLQUERYFRAMELOCKMASTERI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryFrameTrackingI3D, (DWORD * pFrameCount, DWORD * pMissedFrames, float * pLastMissedUsage), (pFrameCount, pMissedFrames, pLastMissedUsage), 102, PFNWGLQUERYFRAMETRACKINGI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryGenlockMaxSourceDelayI3D, (HDC hDC, UINT * uMaxLineDelay, UINT * uMaxPixelDelay), (hDC, uMaxLineDelay, uMaxPixelDelay), 103, PFNWGLQUERYGENLOCKMAXSOURCEDELAYI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryMaxSwapGroupsNV, (HDC hDC, GLuint * maxGroups, GLuint * maxBarriers), (hDC, maxGroups, maxBarriers), 104, PFNWGLQUERYMAXSWAPGROUPSNVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryPbufferARB, (HPBUFFERARB hPbuffer, int iAttribute, int * piValue), (hPbuffer, iAttribute, piValue), 105, PFNWGLQUERYPBUFFERARBPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryPbufferEXT, (HPBUFFEREXT hPbuffer, int iAttribute, int * piValue), (hPbuffer, iAttribute, piValue), 106, PFNWGLQUERYPBUFFEREXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQuerySwapGroupNV, (HDC hDC, GLuint * group, GLuint * barrier), (hDC, group, barrier), 107, PFNWGLQUERYSWAPGROUPNVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglQueryVideoCaptureDeviceNV, (HDC hDc, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int * piValue), (hDc, hDevice, iAttribute, piValue), 108, PFNWGLQUERYVIDEOCAPTUREDEVICENVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglRealizeLayerPalette, (HDC hdc, int iLayerPlane, BOOL bRealize), (hdc, iLayerPlane, bRealize), 109, PFNWGLREALIZELAYERPALETTEPROC)
-GEN_THUNK_RET(wgl, BOOL, wglReleaseImageBufferEventsI3D, (HDC hDC, const LPVOID * pAddress, UINT count), (hDC, pAddress, count), 110, PFNWGLRELEASEIMAGEBUFFEREVENTSI3DPROC)
-GEN_THUNK_RET(wgl, int, wglReleasePbufferDCARB, (HPBUFFERARB hPbuffer, HDC hDC), (hPbuffer, hDC), 111, PFNWGLRELEASEPBUFFERDCARBPROC)
-GEN_THUNK_RET(wgl, int, wglReleasePbufferDCEXT, (HPBUFFEREXT hPbuffer, HDC hDC), (hPbuffer, hDC), 112, PFNWGLRELEASEPBUFFERDCEXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglReleaseTexImageARB, (HPBUFFERARB hPbuffer, int iBuffer), (hPbuffer, iBuffer), 113, PFNWGLRELEASETEXIMAGEARBPROC)
-GEN_THUNK_RET(wgl, BOOL, wglReleaseVideoCaptureDeviceNV, (HDC hDc, HVIDEOINPUTDEVICENV hDevice), (hDc, hDevice), 114, PFNWGLRELEASEVIDEOCAPTUREDEVICENVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglReleaseVideoDeviceNV, (HPVIDEODEV hVideoDevice), (hVideoDevice), 115, PFNWGLRELEASEVIDEODEVICENVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglReleaseVideoImageNV, (HPBUFFERARB hPbuffer, int iVideoBuffer), (hPbuffer, iVideoBuffer), 116, PFNWGLRELEASEVIDEOIMAGENVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglResetFrameCountNV, (HDC hDC), (hDC), 117, PFNWGLRESETFRAMECOUNTNVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglRestoreBufferRegionARB, (HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc), (hRegion, x, y, width, height, xSrc, ySrc), 118, PFNWGLRESTOREBUFFERREGIONARBPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSaveBufferRegionARB, (HANDLE hRegion, int x, int y, int width, int height), (hRegion, x, y, width, height), 119, PFNWGLSAVEBUFFERREGIONARBPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSendPbufferToVideoNV, (HPBUFFERARB hPbuffer, int iBufferType, unsigned long * pulCounterPbuffer, BOOL bBlock), (hPbuffer, iBufferType, pulCounterPbuffer, bBlock), 120, PFNWGLSENDPBUFFERTOVIDEONVPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSetDigitalVideoParametersI3D, (HDC hDC, int iAttribute, const int * piValue), (hDC, iAttribute, piValue), 121, PFNWGLSETDIGITALVIDEOPARAMETERSI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSetGammaTableI3D, (HDC hDC, int iEntries, const USHORT * puRed, const USHORT * puGreen, const USHORT * puBlue), (hDC, iEntries, puRed, puGreen, puBlue), 122, PFNWGLSETGAMMATABLEI3DPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSetGammaTableParametersI3D, (HDC hDC, int iAttribute, const int * piValue), (hDC, iAttribute, piValue), 123, PFNWGLSETGAMMATABLEPARAMETERSI3DPROC)
-GEN_THUNK_RET(wgl, int, wglSetLayerPaletteEntries, (HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr), (hdc, iLayerPlane, iStart, cEntries, pcr), 124, PFNWGLSETLAYERPALETTEENTRIESPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSetPbufferAttribARB, (HPBUFFERARB hPbuffer, const int * piAttribList), (hPbuffer, piAttribList), 125, PFNWGLSETPBUFFERATTRIBARBPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSetStereoEmitterState3DL, (HDC hDC, UINT uState), (hDC, uState), 126, PFNWGLSETSTEREOEMITTERSTATE3DLPROC)
-GEN_THUNK_RET(wgl, BOOL, wglShareLists, (HGLRC hrcSrvShare, HGLRC hrcSrvSource), (hrcSrvShare, hrcSrvSource), 127, PFNWGLSHARELISTSPROC)
-GEN_THUNK_RET(wgl, INT64, wglSwapBuffersMscOML, (HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder), (hdc, target_msc, divisor, remainder), 128, PFNWGLSWAPBUFFERSMSCOMLPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSwapIntervalEXT, (int interval), (interval), 129, PFNWGLSWAPINTERVALEXTPROC)
-GEN_THUNK_RET(wgl, BOOL, wglSwapLayerBuffers, (HDC hdc, UINT fuFlags), (hdc, fuFlags), 130, PFNWGLSWAPLAYERBUFFERSPROC)
-GEN_THUNK_RET(wgl, INT64, wglSwapLayerBuffersMscOML, (HDC hdc, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder), (hdc, fuPlanes, target_msc, divisor, remainder), 131, PFNWGLSWAPLAYERBUFFERSMSCOMLPROC)
-GEN_THUNK_RET(wgl, BOOL, wglUseFontBitmapsA, (HDC hDC, DWORD first, DWORD count, DWORD listBase), (hDC, first, count, listBase), 132, PFNWGLUSEFONTBITMAPSAPROC)
-GEN_THUNK_RET(wgl, BOOL, wglUseFontBitmapsW, (HDC hDC, DWORD first, DWORD count, DWORD listBase), (hDC, first, count, listBase), 133, PFNWGLUSEFONTBITMAPSWPROC)
-GEN_THUNK_RET(wgl, BOOL, wglUseFontOutlines, (HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf), (hDC, first, count, listBase, deviation, extrusion, format, lpgmf), 134, PFNWGLUSEFONTOUTLINESPROC)
-GEN_THUNK_RET(wgl, BOOL, wglUseFontOutlinesA, (HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf), (hDC, first, count, listBase, deviation, extrusion, format, lpgmf), 135, PFNWGLUSEFONTOUTLINESAPROC)
-GEN_THUNK_RET(wgl, BOOL, wglUseFontOutlinesW, (HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf), (hDC, first, count, listBase, deviation, extrusion, format, lpgmf), 136, PFNWGLUSEFONTOUTLINESWPROC)
-GEN_THUNK_RET(wgl, BOOL, wglWaitForMscOML, (HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 * ust, INT64 * msc, INT64 * sbc), (hdc, target_msc, divisor, remainder, ust, msc, sbc), 137, PFNWGLWAITFORMSCOMLPROC)
-GEN_THUNK_RET(wgl, BOOL, wglWaitForSbcOML, (HDC hdc, INT64 target_sbc, INT64 * ust, INT64 * msc, INT64 * sbc), (hdc, target_sbc, ust, msc, sbc), 138, PFNWGLWAITFORSBCOMLPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetDigitalVideoParametersI3D, (HDC hDC, int iAttribute, int * piValue), (hDC, iAttribute, piValue), 64, PFNWGLGETDIGITALVIDEOPARAMETERSI3DPROC)
+GEN_THUNK_RET(wgl, const char *, wglGetExtensionsStringARB, (HDC hdc), (hdc), 65, PFNWGLGETEXTENSIONSSTRINGARBPROC)
+GEN_THUNK_RET(wgl, const char *, wglGetExtensionsStringEXT, (void), (), 66, PFNWGLGETEXTENSIONSSTRINGEXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetFrameUsageI3D, (float * pUsage), (pUsage), 67, PFNWGLGETFRAMEUSAGEI3DPROC)
+GEN_THUNK_RET(wgl, UINT, wglGetGPUIDsAMD, (UINT maxCount, UINT * ids), (maxCount, ids), 68, PFNWGLGETGPUIDSAMDPROC)
+GEN_THUNK_RET(wgl, INT, wglGetGPUInfoAMD, (UINT id, int property, GLenum dataType, UINT size, void * data), (id, property, dataType, size, data), 69, PFNWGLGETGPUINFOAMDPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetGammaTableI3D, (HDC hDC, int iEntries, USHORT * puRed, USHORT * puGreen, USHORT * puBlue), (hDC, iEntries, puRed, puGreen, puBlue), 70, PFNWGLGETGAMMATABLEI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetGammaTableParametersI3D, (HDC hDC, int iAttribute, int * piValue), (hDC, iAttribute, piValue), 71, PFNWGLGETGAMMATABLEPARAMETERSI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetGenlockSampleRateI3D, (HDC hDC, UINT * uRate), (hDC, uRate), 72, PFNWGLGETGENLOCKSAMPLERATEI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetGenlockSourceDelayI3D, (HDC hDC, UINT * uDelay), (hDC, uDelay), 73, PFNWGLGETGENLOCKSOURCEDELAYI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetGenlockSourceEdgeI3D, (HDC hDC, UINT * uEdge), (hDC, uEdge), 74, PFNWGLGETGENLOCKSOURCEEDGEI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetGenlockSourceI3D, (HDC hDC, UINT * uSource), (hDC, uSource), 75, PFNWGLGETGENLOCKSOURCEI3DPROC)
+GEN_THUNK_RET(wgl, int, wglGetLayerPaletteEntries, (HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr), (hdc, iLayerPlane, iStart, cEntries, pcr), 76, PFNWGLGETLAYERPALETTEENTRIESPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetMscRateOML, (HDC hdc, INT32 * numerator, INT32 * denominator), (hdc, numerator, denominator), 77, PFNWGLGETMSCRATEOMLPROC)
+GEN_THUNK_RET(wgl, HDC, wglGetPbufferDCARB, (HPBUFFERARB hPbuffer), (hPbuffer), 78, PFNWGLGETPBUFFERDCARBPROC)
+GEN_THUNK_RET(wgl, HDC, wglGetPbufferDCEXT, (HPBUFFEREXT hPbuffer), (hPbuffer), 79, PFNWGLGETPBUFFERDCEXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetPixelFormatAttribfvARB, (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, FLOAT * pfValues), (hdc, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues), 80, PFNWGLGETPIXELFORMATATTRIBFVARBPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetPixelFormatAttribfvEXT, (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, FLOAT * pfValues), (hdc, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues), 81, PFNWGLGETPIXELFORMATATTRIBFVEXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetPixelFormatAttribivARB, (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, int * piValues), (hdc, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues), 82, PFNWGLGETPIXELFORMATATTRIBIVARBPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetPixelFormatAttribivEXT, (HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, int * piValues), (hdc, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues), 83, PFNWGLGETPIXELFORMATATTRIBIVEXTPROC)
+GEN_THUNK_RET(wgl, PROC, wglGetProcAddress, (LPCSTR lpszProc), (lpszProc), 84, PFNWGLGETPROCADDRESSPROC)
+GEN_THUNK_RET(wgl, int, wglGetSwapIntervalEXT, (void), (), 85, PFNWGLGETSWAPINTERVALEXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetSyncValuesOML, (HDC hdc, INT64 * ust, INT64 * msc, INT64 * sbc), (hdc, ust, msc, sbc), 86, PFNWGLGETSYNCVALUESOMLPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetVideoDeviceNV, (HDC hDC, int numDevices, HPVIDEODEV * hVideoDevice), (hDC, numDevices, hVideoDevice), 87, PFNWGLGETVIDEODEVICENVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglGetVideoInfoNV, (HPVIDEODEV hpVideoDevice, unsigned long * pulCounterOutputPbuffer, unsigned long * pulCounterOutputVideo), (hpVideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo), 88, PFNWGLGETVIDEOINFONVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglIsEnabledFrameLockI3D, (BOOL * pFlag), (pFlag), 89, PFNWGLISENABLEDFRAMELOCKI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglIsEnabledGenlockI3D, (HDC hDC, BOOL * pFlag), (hDC, pFlag), 90, PFNWGLISENABLEDGENLOCKI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglJoinSwapGroupNV, (HDC hDC, GLuint group), (hDC, group), 91, PFNWGLJOINSWAPGROUPNVPROC)
+GEN_THUNK_RET(wgl, GLboolean, wglLoadDisplayColorTableEXT, (const GLushort * table, GLuint length), (table, length), 92, PFNWGLLOADDISPLAYCOLORTABLEEXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglLockVideoCaptureDeviceNV, (HDC hDc, HVIDEOINPUTDEVICENV hDevice), (hDc, hDevice), 93, PFNWGLLOCKVIDEOCAPTUREDEVICENVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglMakeAssociatedContextCurrentAMD, (HGLRC hglrc), (hglrc), 94, PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC)
+GEN_THUNK_RET(wgl, BOOL, wglMakeContextCurrentARB, (HDC hDrawDC, HDC hReadDC, HGLRC hglrc), (hDrawDC, hReadDC, hglrc), 95, PFNWGLMAKECONTEXTCURRENTARBPROC)
+GEN_THUNK_RET(wgl, BOOL, wglMakeContextCurrentEXT, (HDC hDrawDC, HDC hReadDC, HGLRC hglrc), (hDrawDC, hReadDC, hglrc), 96, PFNWGLMAKECONTEXTCURRENTEXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglMakeCurrent, (HDC hDc, HGLRC newContext), (hDc, newContext), 97, PFNWGLMAKECURRENTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryCurrentContextNV, (int iAttribute, int * piValue), (iAttribute, piValue), 98, PFNWGLQUERYCURRENTCONTEXTNVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryFrameCountNV, (HDC hDC, GLuint * count), (hDC, count), 99, PFNWGLQUERYFRAMECOUNTNVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryFrameLockMasterI3D, (BOOL * pFlag), (pFlag), 100, PFNWGLQUERYFRAMELOCKMASTERI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryFrameTrackingI3D, (DWORD * pFrameCount, DWORD * pMissedFrames, float * pLastMissedUsage), (pFrameCount, pMissedFrames, pLastMissedUsage), 101, PFNWGLQUERYFRAMETRACKINGI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryGenlockMaxSourceDelayI3D, (HDC hDC, UINT * uMaxLineDelay, UINT * uMaxPixelDelay), (hDC, uMaxLineDelay, uMaxPixelDelay), 102, PFNWGLQUERYGENLOCKMAXSOURCEDELAYI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryMaxSwapGroupsNV, (HDC hDC, GLuint * maxGroups, GLuint * maxBarriers), (hDC, maxGroups, maxBarriers), 103, PFNWGLQUERYMAXSWAPGROUPSNVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryPbufferARB, (HPBUFFERARB hPbuffer, int iAttribute, int * piValue), (hPbuffer, iAttribute, piValue), 104, PFNWGLQUERYPBUFFERARBPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryPbufferEXT, (HPBUFFEREXT hPbuffer, int iAttribute, int * piValue), (hPbuffer, iAttribute, piValue), 105, PFNWGLQUERYPBUFFEREXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQuerySwapGroupNV, (HDC hDC, GLuint * group, GLuint * barrier), (hDC, group, barrier), 106, PFNWGLQUERYSWAPGROUPNVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglQueryVideoCaptureDeviceNV, (HDC hDc, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int * piValue), (hDc, hDevice, iAttribute, piValue), 107, PFNWGLQUERYVIDEOCAPTUREDEVICENVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglRealizeLayerPalette, (HDC hdc, int iLayerPlane, BOOL bRealize), (hdc, iLayerPlane, bRealize), 108, PFNWGLREALIZELAYERPALETTEPROC)
+GEN_THUNK_RET(wgl, BOOL, wglReleaseImageBufferEventsI3D, (HDC hDC, const LPVOID * pAddress, UINT count), (hDC, pAddress, count), 109, PFNWGLRELEASEIMAGEBUFFEREVENTSI3DPROC)
+GEN_THUNK_RET(wgl, int, wglReleasePbufferDCARB, (HPBUFFERARB hPbuffer, HDC hDC), (hPbuffer, hDC), 110, PFNWGLRELEASEPBUFFERDCARBPROC)
+GEN_THUNK_RET(wgl, int, wglReleasePbufferDCEXT, (HPBUFFEREXT hPbuffer, HDC hDC), (hPbuffer, hDC), 111, PFNWGLRELEASEPBUFFERDCEXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglReleaseTexImageARB, (HPBUFFERARB hPbuffer, int iBuffer), (hPbuffer, iBuffer), 112, PFNWGLRELEASETEXIMAGEARBPROC)
+GEN_THUNK_RET(wgl, BOOL, wglReleaseVideoCaptureDeviceNV, (HDC hDc, HVIDEOINPUTDEVICENV hDevice), (hDc, hDevice), 113, PFNWGLRELEASEVIDEOCAPTUREDEVICENVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglReleaseVideoDeviceNV, (HPVIDEODEV hVideoDevice), (hVideoDevice), 114, PFNWGLRELEASEVIDEODEVICENVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglReleaseVideoImageNV, (HPBUFFERARB hPbuffer, int iVideoBuffer), (hPbuffer, iVideoBuffer), 115, PFNWGLRELEASEVIDEOIMAGENVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglResetFrameCountNV, (HDC hDC), (hDC), 116, PFNWGLRESETFRAMECOUNTNVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglRestoreBufferRegionARB, (HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc), (hRegion, x, y, width, height, xSrc, ySrc), 117, PFNWGLRESTOREBUFFERREGIONARBPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSaveBufferRegionARB, (HANDLE hRegion, int x, int y, int width, int height), (hRegion, x, y, width, height), 118, PFNWGLSAVEBUFFERREGIONARBPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSendPbufferToVideoNV, (HPBUFFERARB hPbuffer, int iBufferType, unsigned long * pulCounterPbuffer, BOOL bBlock), (hPbuffer, iBufferType, pulCounterPbuffer, bBlock), 119, PFNWGLSENDPBUFFERTOVIDEONVPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSetDigitalVideoParametersI3D, (HDC hDC, int iAttribute, const int * piValue), (hDC, iAttribute, piValue), 120, PFNWGLSETDIGITALVIDEOPARAMETERSI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSetGammaTableI3D, (HDC hDC, int iEntries, const USHORT * puRed, const USHORT * puGreen, const USHORT * puBlue), (hDC, iEntries, puRed, puGreen, puBlue), 121, PFNWGLSETGAMMATABLEI3DPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSetGammaTableParametersI3D, (HDC hDC, int iAttribute, const int * piValue), (hDC, iAttribute, piValue), 122, PFNWGLSETGAMMATABLEPARAMETERSI3DPROC)
+GEN_THUNK_RET(wgl, int, wglSetLayerPaletteEntries, (HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr), (hdc, iLayerPlane, iStart, cEntries, pcr), 123, PFNWGLSETLAYERPALETTEENTRIESPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSetPbufferAttribARB, (HPBUFFERARB hPbuffer, const int * piAttribList), (hPbuffer, piAttribList), 124, PFNWGLSETPBUFFERATTRIBARBPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSetStereoEmitterState3DL, (HDC hDC, UINT uState), (hDC, uState), 125, PFNWGLSETSTEREOEMITTERSTATE3DLPROC)
+GEN_THUNK_RET(wgl, BOOL, wglShareLists, (HGLRC hrcSrvShare, HGLRC hrcSrvSource), (hrcSrvShare, hrcSrvSource), 126, PFNWGLSHARELISTSPROC)
+GEN_THUNK_RET(wgl, INT64, wglSwapBuffersMscOML, (HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder), (hdc, target_msc, divisor, remainder), 127, PFNWGLSWAPBUFFERSMSCOMLPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSwapIntervalEXT, (int interval), (interval), 128, PFNWGLSWAPINTERVALEXTPROC)
+GEN_THUNK_RET(wgl, BOOL, wglSwapLayerBuffers, (HDC hdc, UINT fuFlags), (hdc, fuFlags), 129, PFNWGLSWAPLAYERBUFFERSPROC)
+GEN_THUNK_RET(wgl, INT64, wglSwapLayerBuffersMscOML, (HDC hdc, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder), (hdc, fuPlanes, target_msc, divisor, remainder), 130, PFNWGLSWAPLAYERBUFFERSMSCOMLPROC)
+GEN_THUNK_RET(wgl, BOOL, wglUseFontBitmapsA, (HDC hDC, DWORD first, DWORD count, DWORD listBase), (hDC, first, count, listBase), 131, PFNWGLUSEFONTBITMAPSAPROC)
+GEN_THUNK_RET(wgl, BOOL, wglUseFontBitmapsW, (HDC hDC, DWORD first, DWORD count, DWORD listBase), (hDC, first, count, listBase), 132, PFNWGLUSEFONTBITMAPSWPROC)
+GEN_THUNK_RET(wgl, BOOL, wglUseFontOutlines, (HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf), (hDC, first, count, listBase, deviation, extrusion, format, lpgmf), 133, PFNWGLUSEFONTOUTLINESPROC)
+GEN_THUNK_RET(wgl, BOOL, wglUseFontOutlinesA, (HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf), (hDC, first, count, listBase, deviation, extrusion, format, lpgmf), 134, PFNWGLUSEFONTOUTLINESAPROC)
+GEN_THUNK_RET(wgl, BOOL, wglUseFontOutlinesW, (HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf), (hDC, first, count, listBase, deviation, extrusion, format, lpgmf), 135, PFNWGLUSEFONTOUTLINESWPROC)
+GEN_THUNK_RET(wgl, BOOL, wglWaitForMscOML, (HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 * ust, INT64 * msc, INT64 * sbc), (hdc, target_msc, divisor, remainder, ust, msc, sbc), 136, PFNWGLWAITFORMSCOMLPROC)
+GEN_THUNK_RET(wgl, BOOL, wglWaitForSbcOML, (HDC hdc, INT64 target_sbc, INT64 * ust, INT64 * msc, INT64 * sbc), (hdc, target_sbc, ust, msc, sbc), 137, PFNWGLWAITFORSBCOMLPROC)
 
 #endif /* PLATFORM_HAS_WGL */

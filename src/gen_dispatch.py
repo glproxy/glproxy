@@ -626,6 +626,7 @@ class Generator(object):
         function_number = 0
         self.has_dispatch_direct = 0
         self.has_dispatch_version = 0
+        self.function_offsets = {}
         for func in self.sorted_functions:
             providers = self.get_function_ptr_providers(func)
             for provider in providers:
@@ -645,7 +646,9 @@ class Generator(object):
                 else:
                     raise Exception("not valid")
                 self.outln('}}, /* {0} */'.format(provider.name))
-            function_number = function_number + 1
+            if len(providers) > 0:
+                self.function_offsets[func.name] = function_number
+                function_number = function_number + 1
         identity = function_number % 256
         self.outln('    {{DISPATCH_RESOLVE_TERMINATOR, {0}, 0, 0}}'.format(identity))
         self.outln('};')
@@ -682,10 +685,11 @@ class Generator(object):
 
         self.outln('')
 
-        function_number = 0
         for func in self.sorted_functions:
-            self.write_thunks(func, function_number)
-            function_number = function_number + 1
+            if not func.name in self.function_offsets:
+                print('Can not resolve `{0}`'.format(func.name))
+            else:
+                self.write_thunks(func, self.function_offsets[func.name])
         self.outln('')
 
 
