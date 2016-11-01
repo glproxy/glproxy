@@ -590,10 +590,10 @@ EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void) {
 
 EPOXY_IMPORTEXPORT int epoxy_gl_version(void) {
     tls_ptr tls = epoxy_context_get();
-    if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
+    if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW || tls->gl_version == 0) {
         gl_epoxy_resolve_init(tls);
     }
-    return epoxy_internal_gl_version(glGetString(GL_VERSION), 0);
+    return tls->gl_version;
 }
 
 void cgl_epoxy_resolve_init(tls_ptr tls) {
@@ -695,7 +695,7 @@ void gl_epoxy_resolve_init(tls_ptr tls) {
         if (!get_string) {
             fprintf(stderr, "Can not resolve glGetString even though we have already found the current context\n");
         } else {
-            epoxy_internal_gl_version(get_string(GL_VERSION), 0);
+            tls->gl_version = epoxy_internal_gl_version(get_string(GL_VERSION), 0);
         }
     } else {
         tls->gl_metadata.inited = true;
