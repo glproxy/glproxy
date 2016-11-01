@@ -151,7 +151,6 @@ struct dispatch_common_tls {
     struct wgl_dispatch_table wgl_dispatch_table;
     struct dispatch_metadata wgl_metadata;
     PFNWGLGETPROCADDRESSPROC wgl_get_proc;
-    PFNWGLGETCURRENTDCPROC wgl_get_current_dc;
 #endif
 
 #if PLATFORM_HAS_GLX

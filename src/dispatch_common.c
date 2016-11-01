@@ -315,7 +315,7 @@ EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *ext) {
 bool epoxy_conservative_has_wgl_extension(const char *ext)
 {
     tls_ptr tls = epoxy_context_get();
-    HDC hdc = tls->wgl_get_current_dc();
+    HDC hdc = wglGetCurrentDC();
 
     if (!hdc)
         return true;
@@ -613,7 +613,6 @@ void wgl_epoxy_resolve_init(tls_ptr tls) {
         }
     }
     tls->wgl_get_proc = do_dlsym_by_handle(tls->context.handles.wgl, "wglGetProcAddress", NULL, false);
-    tls->wgl_get_current_dc = do_dlsym_by_handle(tls->context.handles.wgl, "wglGetCurrentDC", NULL, false);
 #endif
 }
 
