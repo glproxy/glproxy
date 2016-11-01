@@ -317,6 +317,7 @@ class Generator(object):
                 condition = {
                   'api':'glx',
                   'enum_name': 'GLX_{0}_{1}'.format(version_major, version_minor),
+                  "direct": True,
                   'version': version
                 }
             elif api == 'egl':
@@ -325,9 +326,12 @@ class Generator(object):
                   'enum_name': 'EGL_{0}_{1}'.format(version_major, version_minor),
                   'version': version
                 }
+                if version == 10:
+                  condition['direct'] = True
             elif api == 'wgl':
                 condition = {
                   'api':'wgl',
+                  "direct": True,
                   'enum_name': 'WGL_{0}_{1}'.format(version_major, version_minor),
                   'version': version
                 }
@@ -346,29 +350,25 @@ class Generator(object):
             # or glx, which are separated by '|'
             apis = extension_feature.get('supported').split('|')
             if 'glx' in apis:
-                condition = {
+                self.process_require_statements(extension_feature, {
                   'api':'glx',
                   'extension': extname
-                }
-                self.process_require_statements(extension_feature, condition)
+                })
             if 'egl' in apis:
-                condition = {
+                self.process_require_statements(extension_feature, {
                   'api':'egl',
                   'extension': extname
-                }
-                self.process_require_statements(extension_feature, condition)
+                })
             if 'wgl' in apis:
-                condition = {
+                self.process_require_statements(extension_feature, {
                   'api':'wgl',
                   'extension': extname
-                }
-                self.process_require_statements(extension_feature, condition)
+                })
             if {'gl', 'gles1', 'gles2'}.intersection(apis):
-                condition = {
+                self.process_require_statements(extension_feature, {
                   'api':'gl',
                   'extension': extname
-                }
-                self.process_require_statements(extension_feature, condition)
+                })
 
     def fixup_bootstrap_function(self, name):
         # We handle glGetString(), glGetIntegerv(), and
@@ -380,8 +380,8 @@ class Generator(object):
             return
 
         func = self.functions[name]
-        func.providers = {}
-        func.add_provider({'api':'gl'})
+        for key in func.providers:
+            func.providers[key].condition['direct'] = True
 
     def parse(self, file):
         reg = ET.parse(file)
@@ -503,14 +503,14 @@ class Generator(object):
         # pointer.
         uppder_name = 'PFN{0}PROC'.format(func.wrapped_name.upper())
         if func.ret_type == 'void' or func.ret_type == 'VOID':
-            self.outln('GEN_THUNKS({0}, {1}, ({2}), ({3}), {4}, {5})'.format(self.target,
+            self.outln('GEN_THUNK({0}, {1}, ({2}), ({3}), {4}, {5})'.format(self.target,
                                                               func.wrapped_name,
                                                               func.args_decl,
                                                               func.args_list,
                                                               offset,
                                                               uppder_name))
         else:
-            self.outln('GEN_THUNKS_RET({0}, {1}, {2}, ({3}), ({4}), {5}, {6})'.format(self.target, func.ret_type,
+            self.outln('GEN_THUNK_RET({0}, {1}, {2}, ({3}), ({4}), {5}, {6})'.format(self.target, func.ret_type,
                                                                        func.wrapped_name,
                                                                        func.args_decl,
                                                                        func.args_list,
@@ -521,32 +521,26 @@ class Generator(object):
         providers = [self.provider_enum[k] for k in self.provider_enum.keys()]
         version_providers = [x for x in providers if 'version' in x]
         if (self.target == 'gl'):
-          version_min = {
+          version_providers.append({
             "api": "gl",
             "enum_name": "OpenGL_Desktop_MIN",
             "version": 0
-          }
-          version_providers.append(version_min)
-          version_max = {
+          })
+          version_providers.append({
             "api": "gl",
             "enum_name": "OpenGL_Desktop_MAX",
             "version": self.es_version_start - 1
-          }
-          version_providers.append(version_max)
-
-          version_min_es = {
+          })
+          version_providers.append({
             "api": "gl",
             "enum_name": "OpenGL_ES_MIN",
             "version": self.es_version_start
-          }
-          version_providers.append(version_min_es)
-
-          version_max_es = {
+          })
+          version_providers.append({
             "api": "gl",
             "enum_name": "OpenGL_ES_MAX",
             "version": self.es_version_start + self.es_version_start
-          }
-          version_providers.append(version_max_es)
+          })
 
         version_providers = sorted(version_providers, key=lambda x: x['version'])
         self.outln('enum {0}_provider_versions {{'.format(self.target))
@@ -561,7 +555,9 @@ class Generator(object):
         providers = [self.provider_enum[k] for k in self.provider_enum.keys()]
         extension_providers = [x for x in providers if 'extension' in x]
         extension_providers = sorted(extension_providers, key=lambda x: x['extension'])
-        self.outln('static const char *{0}_extensions_enum_string ='.format(self.target))
+        self.outln('#define {0}_extensions_count {1}'.format(self.target, len(extension_providers)))
+        self.outln('')
+        self.outln('static const char *{0}_extension_enum_strings ='.format(self.target))
         offset = 0
         for extension_provider in extension_providers:
             self.outln('    "{0}\\0"'.format(extension_provider["extension"]));
@@ -626,8 +622,10 @@ class Generator(object):
 
         self.write_providers_extension()
         self.write_entrypoint_strings()
-        self.outln('static const struct dispatch_resolve_info {0}_dispatch_resolve_info_table[] = {{'.format(self.target))
+        self.outln('static const struct dispatch_resolve_info {0}_resolve_info_table[] = {{'.format(self.target))
         function_number = 0
+        self.has_dispatch_direct = 0
+        self.has_dispatch_version = 0
         for func in self.sorted_functions:
             providers = self.get_function_ptr_providers(func)
             for provider in providers:
@@ -636,18 +634,52 @@ class Generator(object):
                 name_offset = self.entrypoint_string_offset[name]
                 identity = function_number % 256
                 self.out('    {')
-                if ('version' in condition):
+                if ('direct' in condition):
+                    self.out('DISPATCH_RESOLVE_DIRECT, {0}, {1}, {2}'.format(identity, condition['enum_name'], name_offset))
+                    self.has_dispatch_direct = 1
+                elif ('version' in condition):
                     self.out('DISPATCH_RESOLVE_VERSION, {0}, {1}, {2}'.format(identity, condition['enum_name'], name_offset))
+                    self.has_dispatch_version = 1
                 elif ('extension' in condition):
                     self.out('DISPATCH_RESOLVE_EXTENSION, {0}, {1}, {2}'.format(identity, condition['enum_name'], name_offset))
                 else:
-                    self.out('DISPATCH_RESOLVE_DIRECT, {0}, {1}, {2}'.format(identity, 0, name_offset))
+                    raise Exception("not valid")
                 self.outln('}}, /* {0} */'.format(provider.name))
             function_number = function_number + 1
-        self.outln('    {DISPATCH_RESOLVE_TERMINATOR, 0, 0, 0}')
+        identity = function_number % 256
+        self.outln('    {{DISPATCH_RESOLVE_TERMINATOR, {0}, 0, 0}}'.format(identity))
         self.outln('};')
         self.outln('')
-        self.outln('static const khronos_uint16_t {0}_dispatch_resolve_offset[{1}] = {{0}};'.format(self.target, function_number));
+        self.outln('static khronos_uint16_t {0}_resolve_offsets[{1}] = {{0}};'.format(self.target, function_number));
+        self.outln('static khronos_uint32_t {0}_method_name_offsets[{1}] = {{0}};'.format(self.target, function_number));
+        self.outln('')
+        self.dispatch_generated_inc_list = [
+            'resolve',
+            'epoxy_resolve_init',
+            'epoxy_resolve_direct',
+            'epoxy_resolve_version',
+            'epoxy_resolve_extension',
+            'dispatch_table',
+            'metadata',
+            'epoxy_resolve_local',
+            'epoxy_dispatch_metadata_init',
+            'extensions_count',
+            'extension_enum_strings',
+            'entrypoint_strings',
+            'resolve_info_table',
+            'resolve_offsets',
+            'method_name_offsets',
+        ]
+        self.outln('#define HAS_DISPATCH_RESOLVE_DIRECT {0}'.format(self.has_dispatch_direct));
+        self.outln('#define HAS_DISPATCH_RESOLVE_VERSION {0}'.format(self.has_dispatch_version));
+        for suffix in self.dispatch_generated_inc_list:
+            self.outln('#define current_{1} {0}_{1}'.format(self.target, suffix))
+        self.outln('#include "dispatch_generated.inc"')
+        for suffix in self.dispatch_generated_inc_list:
+            self.outln('#undef current_{0}'.format(suffix))
+        self.outln('#undef HAS_DISPATCH_RESOLVE_DIRECT');
+        self.outln('#undef HAS_DISPATCH_RESOLVE_VERSION');
+
         self.outln('')
 
         function_number = 0

@@ -4,8 +4,14 @@ set (HEADERS "../include/epoxy/_common.h"
              "../include/epoxy/gl.h"
              "../include/epoxy/khrplatform.h"
              "dispatch_common.h")
-set (SOURCES dispatch_common.c
- dispatch_generated.c)
+set (SOURCES
+  dispatch_common.c
+  dispatch_generated.c
+)
+
+if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC)
+  list (APPEND SOURCES "gen_dispatch.py")
+endif ()
 
 list (APPEND HEADERS "../include/epoxy/gl_generated.h"
                      "${CMAKE_CURRENT_BINARY_DIR}/../include/epoxy/config.h")
@@ -37,6 +43,10 @@ if (EPOXY_BUILD_SHARED)
     target_include_directories ("${EPOXY_TARGET_NAME}_shared" PUBLIC ${EPOXY_INCLUDE_DIRS})
     target_compile_definitions ("${EPOXY_TARGET_NAME}_shared" PRIVATE ${EPOXY_COMPILE_DEFS})
     set_target_properties ("${EPOXY_TARGET_NAME}_shared" PROPERTIES C_VISIBILITY_PRESET hidden)
+    if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC)
+      target_compile_options ("${EPOXY_TARGET_NAME}_shared" PRIVATE "-wd4996")
+    endif ()
+
 endif ()
 
 if (EPOXY_BUILD_STATIC)
@@ -56,6 +66,9 @@ if (EPOXY_BUILD_STATIC)
         set_target_properties ("${EPOXY_TARGET_NAME}_static" PROPERTIES C_VISIBILITY_PRESET hidden)
     elseif ((CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_GCC) OR (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_CLANG))
         target_compile_options ("${EPOXY_TARGET_NAME}_static" PRIVATE "-fvisibility=hidden")
+    endif ()
+    if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC)
+      target_compile_options ("${EPOXY_TARGET_NAME}_static" PRIVATE "-wd4996")
     endif ()
 endif ()
 

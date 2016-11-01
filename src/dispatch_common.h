@@ -25,23 +25,24 @@
 #define _DISPATCH_COMMON_H
 
 #define PLATFORM_HAS_GL 1
+#define PLATFORM_HAS_EGL 1
 
 #ifdef _WIN32
-#define PLATFORM_HAS_EGL 1
-#define PLATFORM_HAS_GLX 0
+#define PLATFORM_HAS_CGL 0
 #define PLATFORM_HAS_WGL 1
-#elif defined(__APPLE__)
-#define PLATFORM_HAS_EGL 0
-#define PLATFORM_HAS_GLX 1
-#define PLATFORM_HAS_WGL 0
-#elif defined(ANDROID)
-#define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 0
+#elif defined(__APPLE__)
+#define PLATFORM_HAS_CGL 1
 #define PLATFORM_HAS_WGL 0
-#else
-#define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 1
+#elif defined(ANDROID)
+#define PLATFORM_HAS_CGL 0
 #define PLATFORM_HAS_WGL 0
+#define PLATFORM_HAS_GLX 1
+#else
+#define PLATFORM_HAS_CGL 0
+#define PLATFORM_HAS_WGL 0
+#define PLATFORM_HAS_GLX 1
 #endif
 
 #if PLATFORM_HAS_WGL
@@ -50,10 +51,8 @@
 #if PLATFORM_HAS_GLX
 #include "epoxy/glx.h"
 #endif
-#if PLATFORM_HAS_EGL
-#include "epoxy/egl.h"
-#endif
 
+#include "epoxy/egl.h"
 #include "epoxy/gl.h"
 
 #include "wgl_generated_dispatch_table_type.inc"
@@ -91,7 +90,7 @@
 #define EPOXY_NOINLINE __declspec(noinline)
 #endif
 
-#define GEN_THUNKS(target, name, args, passthrough, offset, func_type)         \
+#define GEN_THUNK(target, name, args, passthrough, offset, func_type)         \
     EPOXY_IMPORTEXPORT void EPOXY_CALLSPEC                                     \
     name args                                                                  \
     {                                                                          \
@@ -99,7 +98,7 @@
         func_symbol passthrough;                                               \
     }
 
-#define GEN_THUNKS_RET(target, ret, name, args, passthrough, offset, func_type)\
+#define GEN_THUNK_RET(target, ret, name, args, passthrough, offset, func_type)\
     EPOXY_IMPORTEXPORT ret EPOXY_CALLSPEC                                      \
     name args                                                                  \
     {                                                                          \
@@ -109,10 +108,11 @@
 
 enum DISPATCH_OPENGL_TYPE {
     DISPATCH_OPENGL_UNKNOW = 0,
-    DISPATCH_OPENGL_DESKTOP = 1,
-    DISPATCH_OPENGL_ES = 2,
-    DISPATCH_OPENGL_EGL_DESKTOP = 3,
-    DISPATCH_OPENGL_EGL_ES = 4,
+    DISPATCH_OPENGL_CGL_DESKTOP = 1,
+    DISPATCH_OPENGL_WGL_DESKTOP = 1,
+    DISPATCH_OPENGL_GLX_DESKTOP = 1,
+    DISPATCH_OPENGL_EGL_DESKTOP = 2,
+    DISPATCH_OPENGL_ES = 3, /* Only comes from EGL */
 } PACKED;
 
 enum DISPATCH_RESOLVE_TYPE {
@@ -122,92 +122,101 @@ enum DISPATCH_RESOLVE_TYPE {
     DISPATCH_RESOLVE_TERMINATOR = 3,
 } PACKED;
 
+enum DISPATCH_RESOLVE_RESULT {
+    DISPATCH_RESOLVE_RESULT_OK = 0,
+    DISPATCH_RESOLVE_RESULT_IGNORE = 1,
+    DISPATCH_RESOLVE_RESULT_ERROR = 2
+};
+
 struct dispatch_resolve_info {
     khronos_uint8_t resolve_type;
     khronos_uint8_t identity;
     khronos_uint16_t condition;
     khronos_uint32_t name_offset;
+} PACKED;
+
+struct dispatch_metadata {
+    const char* extension_enum_strings;
+    const char* entrypoint_strings;
+    const struct dispatch_resolve_info *resolve_info_table;
+    khronos_uint16_t *resolve_offsets;
+    khronos_uint32_t *method_name_offsets;
+    khronos_uint16_t extensions_count;
+    khronos_uint16_t method_count;
+    bool inited;
 };
 
 struct dispatch_common_tls {
 #if PLATFORM_HAS_WGL
     struct wgl_dispatch_table wgl_dispatch_table;
+    struct dispatch_metadata wgl_metadata;
 #endif
 
 #if PLATFORM_HAS_GLX
     struct glx_dispatch_table glx_dispatch_table;
+    struct dispatch_metadata glx_metadata;
 #endif
 
     struct gl_dispatch_table gl_dispatch_table;
+    struct dispatch_metadata gl_metadata;
 
-#if PLATFORM_HAS_EGL
     struct egl_dispatch_table egl_dispatch_table;
-#endif
+    struct dispatch_metadata egl_metadata;
 
-    /* LoadLibraryA return value for opengl32.dll */
-    void *wgl_handle;
-
-    /** dlopen() return value for libGL.so.1. */
-    void *glx_handle;
-
-    /**
-    * dlopen() return value for OS X's GL library.
-    *
-    * On linux, glx_handle is used instead.
-    */
-    void *gl_handle;
-
-    /** dlopen() return value for libEGL.so.1 */
-    void *egl_handle;
-    unsigned int egl_context_api;
-    const char *gles1_name;
-    const char *gles2_name;
-
-    /** dlopen() return value for libGLESv1_CM.so.1 */
-    void *gles1_handle;
-
-    /** dlopen() return value for libGLESv2.so.2 */
-    void *gles2_handle;
-
+    bool has_parameters;
+    struct epoxy_gl_context param_context;
+    struct epoxy_gl_context context;
+    void* gl_handle;
+    PFNEGLGETPROCADDRESSPROC gles_handle;
+    bool gl_called;
     enum DISPATCH_OPENGL_TYPE open_gl_type;
+    int gl_version;
 };
 
-
 typedef struct dispatch_common_tls *tls_ptr;
-EPOXY_NOINLINE void* wgl_resolve(uint16_t offset);
-EPOXY_NOINLINE void* glx_resolve(uint16_t offset);
-EPOXY_NOINLINE void* gl_resolve(uint16_t offset);
-EPOXY_NOINLINE void* egl_resolve(uint16_t offset);
 
-void reset_dispatch_common_tls(tls_ptr tls);
-
-static inline void *dlopen_handle(const char *lib_name, const char** error) {
-    void *handle;
-#ifdef _WIN32
-    handle = (void *)LoadLibraryA(lib_name);
+#if defined(_WIN32)
+#define TLS_TYPE DWORD
 #else
-    handle = (void *)dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
-    if (!handle) {
-        if (error) {
-            *error = dlerror();
-        } else {
-            (void)dlerror();
-        }
-    }
+#define TLS_TYPE pthread_key_t
 #endif
-    return handle;
-}
 
-static inline void dlclose_handle(void* handle) {
-    if (!handle) {
-        return;
-    }
-#ifdef _WIN32
-    FreeLibrary(handle);
+extern TLS_TYPE epoxy_dispatch_common_tls_index;
+
+static inline tls_ptr get_tls_by_index(TLS_TYPE index) {
+#if defined(_WIN32)
+    return (void*)TlsGetValue(index);
 #else
-    dlclose(*handle);
+    return (void*)pthread_getspecific(index);
 #endif
 }
 
+static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
+#if defined(_WIN32)
+    TlsSetValue(index, (LPVOID)value);
+#else
+    pthread_setspecific(index, (void*)tls_value);
+#endif
+}
+
+void wgl_epoxy_resolve_init(tls_ptr tls);
+enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr);
+
+void glx_epoxy_resolve_init(tls_ptr tls);
+enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr);
+
+void gl_epoxy_resolve_init(tls_ptr tls);
+enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr);
+
+void egl_epoxy_resolve_init(tls_ptr tls);
+enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr);
+
+void epoxy_dispatch_common_tls_init(tls_ptr tls, bool inited);
 
 #endif /* _DISPATCH_COMMON_H */

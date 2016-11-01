@@ -123,8 +123,8 @@ test_createshader(HDC hdc, HGLRC ctx, void *epoxy_ctx)
 static int
 test_function(HDC hdc)
 {
-    void *epoxy_ctx1 = epoxy_context_create();
-    void *epoxy_ctx2 = epoxy_context_create();
+    void *epoxy_ctx1 = epoxy_context_create(NULL);
+    void *epoxy_ctx2 = epoxy_context_create(NULL);
 
     epoxy_context_set(epoxy_ctx1);
     ctx1 = wglCreateContext(hdc);

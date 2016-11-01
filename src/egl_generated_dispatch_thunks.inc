@@ -4,7 +4,9 @@
 #if PLATFORM_HAS_EGL
 #include "dispatch_common.h"
 
-static const char *egl_extensions_enum_string =
+#define egl_extensions_count 40
+
+static const char *egl_extension_enum_strings =
     "EGL_ANDROID_blob_cache\0"
     "EGL_ANDROID_create_native_client_buffer\0"
     "EGL_ANDROID_native_fence_sync\0"
@@ -212,10 +214,10 @@ static const khronos_uint8_t egl_entrypoint_strings[] = {
     101, 103, 108, 87, 97, 105, 116, 83, 121, 110, 99, 75, 72, 82, 0, /*eglWaitSyncKHR*/
 };
 
-static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
+static const struct dispatch_resolve_info egl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 0, EGL_1_2, 0}, /* eglBindAPI */
     {DISPATCH_RESOLVE_VERSION, 1, EGL_1_1, 11}, /* eglBindTexImage */
-    {DISPATCH_RESOLVE_VERSION, 2, EGL_1_0, 27}, /* eglChooseConfig */
+    {DISPATCH_RESOLVE_DIRECT, 2, EGL_1_0, 27}, /* eglChooseConfig */
     {DISPATCH_RESOLVE_VERSION, 3, EGL_1_5, 43}, /* eglClientWaitSync */
     {DISPATCH_RESOLVE_EXTENSION, 3, EGL_extension_EGL_KHR_fence_sync, 61}, /* eglClientWaitSyncKHR */
     {DISPATCH_RESOLVE_EXTENSION, 3, EGL_extension_EGL_KHR_reusable_sync, 61}, /* eglClientWaitSyncKHR */
@@ -223,8 +225,8 @@ static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 4, EGL_extension_EGL_KHR_reusable_sync, 61}, /* eglClientWaitSyncKHR */
     {DISPATCH_RESOLVE_VERSION, 4, EGL_1_5, 43}, /* eglClientWaitSync */
     {DISPATCH_RESOLVE_EXTENSION, 5, EGL_extension_EGL_NV_sync, 82}, /* eglClientWaitSyncNV */
-    {DISPATCH_RESOLVE_VERSION, 6, EGL_1_0, 102}, /* eglCopyBuffers */
-    {DISPATCH_RESOLVE_VERSION, 7, EGL_1_0, 117}, /* eglCreateContext */
+    {DISPATCH_RESOLVE_DIRECT, 6, EGL_1_0, 102}, /* eglCopyBuffers */
+    {DISPATCH_RESOLVE_DIRECT, 7, EGL_1_0, 117}, /* eglCreateContext */
     {DISPATCH_RESOLVE_EXTENSION, 8, EGL_extension_EGL_MESA_drm_image, 134}, /* eglCreateDRMImageMESA */
     {DISPATCH_RESOLVE_EXTENSION, 9, EGL_extension_EGL_NV_sync, 156}, /* eglCreateFenceSyncNV */
     {DISPATCH_RESOLVE_VERSION, 10, EGL_1_5, 177}, /* eglCreateImage */
@@ -232,8 +234,8 @@ static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 11, EGL_extension_EGL_KHR_image_base, 192}, /* eglCreateImageKHR */
     {DISPATCH_RESOLVE_EXTENSION, 12, EGL_extension_EGL_ANDROID_create_native_client_buffer, 210}, /* eglCreateNativeClientBufferANDROID */
     {DISPATCH_RESOLVE_VERSION, 13, EGL_1_2, 245}, /* eglCreatePbufferFromClientBuffer */
-    {DISPATCH_RESOLVE_VERSION, 14, EGL_1_0, 278}, /* eglCreatePbufferSurface */
-    {DISPATCH_RESOLVE_VERSION, 15, EGL_1_0, 302}, /* eglCreatePixmapSurface */
+    {DISPATCH_RESOLVE_DIRECT, 14, EGL_1_0, 278}, /* eglCreatePbufferSurface */
+    {DISPATCH_RESOLVE_DIRECT, 15, EGL_1_0, 302}, /* eglCreatePixmapSurface */
     {DISPATCH_RESOLVE_EXTENSION, 16, EGL_extension_EGL_HI_clientpixmap, 325}, /* eglCreatePixmapSurfaceHI */
     {DISPATCH_RESOLVE_VERSION, 17, EGL_1_5, 350}, /* eglCreatePlatformPixmapSurface */
     {DISPATCH_RESOLVE_EXTENSION, 18, EGL_extension_EGL_EXT_platform_base, 381}, /* eglCreatePlatformPixmapSurfaceEXT */
@@ -249,9 +251,9 @@ static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 26, EGL_1_5, 592}, /* eglCreateSync */
     {DISPATCH_RESOLVE_EXTENSION, 27, EGL_extension_EGL_KHR_fence_sync, 625}, /* eglCreateSyncKHR */
     {DISPATCH_RESOLVE_EXTENSION, 27, EGL_extension_EGL_KHR_reusable_sync, 625}, /* eglCreateSyncKHR */
-    {DISPATCH_RESOLVE_VERSION, 28, EGL_1_0, 642}, /* eglCreateWindowSurface */
+    {DISPATCH_RESOLVE_DIRECT, 28, EGL_1_0, 642}, /* eglCreateWindowSurface */
     {DISPATCH_RESOLVE_EXTENSION, 29, EGL_extension_EGL_KHR_debug, 665}, /* eglDebugMessageControlKHR */
-    {DISPATCH_RESOLVE_VERSION, 30, EGL_1_0, 691}, /* eglDestroyContext */
+    {DISPATCH_RESOLVE_DIRECT, 30, EGL_1_0, 691}, /* eglDestroyContext */
     {DISPATCH_RESOLVE_VERSION, 31, EGL_1_5, 709}, /* eglDestroyImage */
     {DISPATCH_RESOLVE_EXTENSION, 31, EGL_extension_EGL_KHR_image, 725}, /* eglDestroyImageKHR */
     {DISPATCH_RESOLVE_EXTENSION, 31, EGL_extension_EGL_KHR_image_base, 725}, /* eglDestroyImageKHR */
@@ -259,7 +261,7 @@ static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 32, EGL_extension_EGL_KHR_image_base, 725}, /* eglDestroyImageKHR */
     {DISPATCH_RESOLVE_VERSION, 32, EGL_1_5, 709}, /* eglDestroyImage */
     {DISPATCH_RESOLVE_EXTENSION, 33, EGL_extension_EGL_KHR_stream, 744}, /* eglDestroyStreamKHR */
-    {DISPATCH_RESOLVE_VERSION, 34, EGL_1_0, 764}, /* eglDestroySurface */
+    {DISPATCH_RESOLVE_DIRECT, 34, EGL_1_0, 764}, /* eglDestroySurface */
     {DISPATCH_RESOLVE_VERSION, 35, EGL_1_5, 782}, /* eglDestroySync */
     {DISPATCH_RESOLVE_EXTENSION, 35, EGL_extension_EGL_KHR_fence_sync, 797}, /* eglDestroySyncKHR */
     {DISPATCH_RESOLVE_EXTENSION, 35, EGL_extension_EGL_KHR_reusable_sync, 797}, /* eglDestroySyncKHR */
@@ -272,18 +274,18 @@ static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 40, EGL_extension_EGL_MESA_image_dma_buf_export, 884}, /* eglExportDMABUFImageQueryMESA */
     {DISPATCH_RESOLVE_EXTENSION, 41, EGL_extension_EGL_MESA_drm_image, 914}, /* eglExportDRMImageMESA */
     {DISPATCH_RESOLVE_EXTENSION, 42, EGL_extension_EGL_NV_sync, 936}, /* eglFenceNV */
-    {DISPATCH_RESOLVE_VERSION, 43, EGL_1_0, 947}, /* eglGetConfigAttrib */
-    {DISPATCH_RESOLVE_VERSION, 44, EGL_1_0, 966}, /* eglGetConfigs */
+    {DISPATCH_RESOLVE_DIRECT, 43, EGL_1_0, 947}, /* eglGetConfigAttrib */
+    {DISPATCH_RESOLVE_DIRECT, 44, EGL_1_0, 966}, /* eglGetConfigs */
     {DISPATCH_RESOLVE_VERSION, 45, EGL_1_4, 980}, /* eglGetCurrentContext */
-    {DISPATCH_RESOLVE_VERSION, 46, EGL_1_0, 1001}, /* eglGetCurrentDisplay */
-    {DISPATCH_RESOLVE_VERSION, 47, EGL_1_0, 1022}, /* eglGetCurrentSurface */
-    {DISPATCH_RESOLVE_VERSION, 48, EGL_1_0, 1043}, /* eglGetDisplay */
-    {DISPATCH_RESOLVE_VERSION, 49, EGL_1_0, 1057}, /* eglGetError */
+    {DISPATCH_RESOLVE_DIRECT, 46, EGL_1_0, 1001}, /* eglGetCurrentDisplay */
+    {DISPATCH_RESOLVE_DIRECT, 47, EGL_1_0, 1022}, /* eglGetCurrentSurface */
+    {DISPATCH_RESOLVE_DIRECT, 48, EGL_1_0, 1043}, /* eglGetDisplay */
+    {DISPATCH_RESOLVE_DIRECT, 49, EGL_1_0, 1057}, /* eglGetError */
     {DISPATCH_RESOLVE_EXTENSION, 50, EGL_extension_EGL_EXT_output_base, 1069}, /* eglGetOutputLayersEXT */
     {DISPATCH_RESOLVE_EXTENSION, 51, EGL_extension_EGL_EXT_output_base, 1091}, /* eglGetOutputPortsEXT */
     {DISPATCH_RESOLVE_VERSION, 52, EGL_1_5, 1112}, /* eglGetPlatformDisplay */
     {DISPATCH_RESOLVE_EXTENSION, 53, EGL_extension_EGL_EXT_platform_base, 1134}, /* eglGetPlatformDisplayEXT */
-    {DISPATCH_RESOLVE_VERSION, 54, EGL_1_0, 1159}, /* eglGetProcAddress */
+    {DISPATCH_RESOLVE_DIRECT, 54, EGL_1_0, 1159}, /* eglGetProcAddress */
     {DISPATCH_RESOLVE_EXTENSION, 55, EGL_extension_EGL_KHR_stream_cross_process_fd, 1177}, /* eglGetStreamFileDescriptorKHR */
     {DISPATCH_RESOLVE_VERSION, 56, EGL_1_5, 1207}, /* eglGetSyncAttrib */
     {DISPATCH_RESOLVE_EXTENSION, 57, EGL_extension_EGL_KHR_fence_sync, 1224}, /* eglGetSyncAttribKHR */
@@ -291,17 +293,17 @@ static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 58, EGL_extension_EGL_NV_sync, 1244}, /* eglGetSyncAttribNV */
     {DISPATCH_RESOLVE_EXTENSION, 59, EGL_extension_EGL_NV_system_time, 1263}, /* eglGetSystemTimeFrequencyNV */
     {DISPATCH_RESOLVE_EXTENSION, 60, EGL_extension_EGL_NV_system_time, 1291}, /* eglGetSystemTimeNV */
-    {DISPATCH_RESOLVE_VERSION, 61, EGL_1_0, 1310}, /* eglInitialize */
+    {DISPATCH_RESOLVE_DIRECT, 61, EGL_1_0, 1310}, /* eglInitialize */
     {DISPATCH_RESOLVE_EXTENSION, 62, EGL_extension_EGL_KHR_debug, 1324}, /* eglLabelObjectKHR */
     {DISPATCH_RESOLVE_EXTENSION, 63, EGL_extension_EGL_KHR_lock_surface, 1342}, /* eglLockSurfaceKHR */
     {DISPATCH_RESOLVE_EXTENSION, 63, EGL_extension_EGL_KHR_lock_surface3, 1342}, /* eglLockSurfaceKHR */
-    {DISPATCH_RESOLVE_VERSION, 64, EGL_1_0, 1360}, /* eglMakeCurrent */
+    {DISPATCH_RESOLVE_DIRECT, 64, EGL_1_0, 1360}, /* eglMakeCurrent */
     {DISPATCH_RESOLVE_EXTENSION, 65, EGL_extension_EGL_EXT_output_base, 1375}, /* eglOutputLayerAttribEXT */
     {DISPATCH_RESOLVE_EXTENSION, 66, EGL_extension_EGL_EXT_output_base, 1399}, /* eglOutputPortAttribEXT */
     {DISPATCH_RESOLVE_EXTENSION, 67, EGL_extension_EGL_NV_post_sub_buffer, 1422}, /* eglPostSubBufferNV */
     {DISPATCH_RESOLVE_EXTENSION, 68, EGL_extension_EGL_ANDROID_presentation_time, 1441}, /* eglPresentationTimeANDROID */
     {DISPATCH_RESOLVE_VERSION, 69, EGL_1_2, 1468}, /* eglQueryAPI */
-    {DISPATCH_RESOLVE_VERSION, 70, EGL_1_0, 1480}, /* eglQueryContext */
+    {DISPATCH_RESOLVE_DIRECT, 70, EGL_1_0, 1480}, /* eglQueryContext */
     {DISPATCH_RESOLVE_EXTENSION, 71, EGL_extension_EGL_KHR_debug, 1496}, /* eglQueryDebugKHR */
     {DISPATCH_RESOLVE_EXTENSION, 72, EGL_extension_EGL_EXT_device_base, 1513}, /* eglQueryDeviceAttribEXT */
     {DISPATCH_RESOLVE_EXTENSION, 72, EGL_extension_EGL_EXT_device_query, 1513}, /* eglQueryDeviceAttribEXT */
@@ -326,8 +328,8 @@ static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 85, EGL_extension_EGL_NV_stream_metadata, 1831}, /* eglQueryStreamMetadataNV */
     {DISPATCH_RESOLVE_EXTENSION, 86, EGL_extension_EGL_KHR_stream_fifo, 1856}, /* eglQueryStreamTimeKHR */
     {DISPATCH_RESOLVE_EXTENSION, 87, EGL_extension_EGL_KHR_stream, 1878}, /* eglQueryStreamu64KHR */
-    {DISPATCH_RESOLVE_VERSION, 88, EGL_1_0, 1899}, /* eglQueryString */
-    {DISPATCH_RESOLVE_VERSION, 89, EGL_1_0, 1914}, /* eglQuerySurface */
+    {DISPATCH_RESOLVE_DIRECT, 88, EGL_1_0, 1899}, /* eglQueryString */
+    {DISPATCH_RESOLVE_DIRECT, 89, EGL_1_0, 1914}, /* eglQuerySurface */
     {DISPATCH_RESOLVE_EXTENSION, 90, EGL_extension_EGL_KHR_lock_surface3, 1930}, /* eglQuerySurface64KHR */
     {DISPATCH_RESOLVE_EXTENSION, 91, EGL_extension_EGL_ANGLE_query_surface_pointer, 1951}, /* eglQuerySurfacePointerANGLE */
     {DISPATCH_RESOLVE_VERSION, 92, EGL_1_1, 1979}, /* eglReleaseTexImage */
@@ -344,143 +346,180 @@ static const struct dispatch_resolve_info egl_dispatch_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 103, EGL_extension_EGL_EXT_stream_consumer_egloutput, 2250}, /* eglStreamConsumerOutputEXT */
     {DISPATCH_RESOLVE_EXTENSION, 104, EGL_extension_EGL_KHR_stream_consumer_gltexture, 2277}, /* eglStreamConsumerReleaseKHR */
     {DISPATCH_RESOLVE_VERSION, 105, EGL_1_1, 2305}, /* eglSurfaceAttrib */
-    {DISPATCH_RESOLVE_VERSION, 106, EGL_1_0, 2322}, /* eglSwapBuffers */
+    {DISPATCH_RESOLVE_DIRECT, 106, EGL_1_0, 2322}, /* eglSwapBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 107, EGL_extension_EGL_NOK_swap_region2, 2337}, /* eglSwapBuffersRegion2NOK */
     {DISPATCH_RESOLVE_EXTENSION, 108, EGL_extension_EGL_NOK_swap_region, 2362}, /* eglSwapBuffersRegionNOK */
     {DISPATCH_RESOLVE_EXTENSION, 109, EGL_extension_EGL_EXT_swap_buffers_with_damage, 2386}, /* eglSwapBuffersWithDamageEXT */
     {DISPATCH_RESOLVE_EXTENSION, 110, EGL_extension_EGL_KHR_swap_buffers_with_damage, 2414}, /* eglSwapBuffersWithDamageKHR */
     {DISPATCH_RESOLVE_VERSION, 111, EGL_1_1, 2442}, /* eglSwapInterval */
-    {DISPATCH_RESOLVE_VERSION, 112, EGL_1_0, 2458}, /* eglTerminate */
+    {DISPATCH_RESOLVE_DIRECT, 112, EGL_1_0, 2458}, /* eglTerminate */
     {DISPATCH_RESOLVE_EXTENSION, 113, EGL_extension_EGL_KHR_lock_surface, 2471}, /* eglUnlockSurfaceKHR */
     {DISPATCH_RESOLVE_EXTENSION, 113, EGL_extension_EGL_KHR_lock_surface3, 2471}, /* eglUnlockSurfaceKHR */
     {DISPATCH_RESOLVE_VERSION, 114, EGL_1_2, 2491}, /* eglWaitClient */
-    {DISPATCH_RESOLVE_VERSION, 115, EGL_1_0, 2505}, /* eglWaitGL */
-    {DISPATCH_RESOLVE_VERSION, 116, EGL_1_0, 2515}, /* eglWaitNative */
+    {DISPATCH_RESOLVE_DIRECT, 115, EGL_1_0, 2505}, /* eglWaitGL */
+    {DISPATCH_RESOLVE_DIRECT, 116, EGL_1_0, 2515}, /* eglWaitNative */
     {DISPATCH_RESOLVE_VERSION, 117, EGL_1_5, 2529}, /* eglWaitSync */
     {DISPATCH_RESOLVE_EXTENSION, 118, EGL_extension_EGL_KHR_wait_sync, 2541}, /* eglWaitSyncKHR */
-    {DISPATCH_RESOLVE_TERMINATOR, 0, 0, 0}
+    {DISPATCH_RESOLVE_TERMINATOR, 119, 0, 0}
 };
 
-static const khronos_uint16_t egl_dispatch_resolve_offset[119] = {0};
+static khronos_uint16_t egl_resolve_offsets[119] = {0};
+static khronos_uint32_t egl_method_name_offsets[119] = {0};
 
-GEN_THUNKS_RET(egl, EGLBoolean, eglBindAPI, (EGLenum api), (api), 0, PFNEGLBINDAPIPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglBindTexImage, (EGLDisplay dpy, EGLSurface surface, EGLint buffer), (dpy, surface, buffer), 1, PFNEGLBINDTEXIMAGEPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglChooseConfig, (EGLDisplay dpy, const EGLint * attrib_list, EGLConfig * configs, EGLint config_size, EGLint * num_config), (dpy, attrib_list, configs, config_size, num_config), 2, PFNEGLCHOOSECONFIGPROC)
-GEN_THUNKS_RET(egl, EGLint, eglClientWaitSync, (EGLDisplay dpy, EGLSync sync, EGLint flags, EGLTime timeout), (dpy, sync, flags, timeout), 3, PFNEGLCLIENTWAITSYNCPROC)
-GEN_THUNKS_RET(egl, EGLint, eglClientWaitSyncKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLint flags, EGLTimeKHR timeout), (dpy, sync, flags, timeout), 4, PFNEGLCLIENTWAITSYNCKHRPROC)
-GEN_THUNKS_RET(egl, EGLint, eglClientWaitSyncNV, (EGLSyncNV sync, EGLint flags, EGLTimeNV timeout), (sync, flags, timeout), 5, PFNEGLCLIENTWAITSYNCNVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglCopyBuffers, (EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target), (dpy, surface, target), 6, PFNEGLCOPYBUFFERSPROC)
-GEN_THUNKS_RET(egl, EGLContext, eglCreateContext, (EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint * attrib_list), (dpy, config, share_context, attrib_list), 7, PFNEGLCREATECONTEXTPROC)
-GEN_THUNKS_RET(egl, EGLImageKHR, eglCreateDRMImageMESA, (EGLDisplay dpy, const EGLint * attrib_list), (dpy, attrib_list), 8, PFNEGLCREATEDRMIMAGEMESAPROC)
-GEN_THUNKS_RET(egl, EGLSyncNV, eglCreateFenceSyncNV, (EGLDisplay dpy, EGLenum condition, const EGLint * attrib_list), (dpy, condition, attrib_list), 9, PFNEGLCREATEFENCESYNCNVPROC)
-GEN_THUNKS_RET(egl, EGLImage, eglCreateImage, (EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLAttrib * attrib_list), (dpy, ctx, target, buffer, attrib_list), 10, PFNEGLCREATEIMAGEPROC)
-GEN_THUNKS_RET(egl, EGLImageKHR, eglCreateImageKHR, (EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint * attrib_list), (dpy, ctx, target, buffer, attrib_list), 11, PFNEGLCREATEIMAGEKHRPROC)
-GEN_THUNKS_RET(egl, EGLClientBuffer, eglCreateNativeClientBufferANDROID, (const EGLint * attrib_list), (attrib_list), 12, PFNEGLCREATENATIVECLIENTBUFFERANDROIDPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreatePbufferFromClientBuffer, (EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint * attrib_list), (dpy, buftype, buffer, config, attrib_list), 13, PFNEGLCREATEPBUFFERFROMCLIENTBUFFERPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreatePbufferSurface, (EGLDisplay dpy, EGLConfig config, const EGLint * attrib_list), (dpy, config, attrib_list), 14, PFNEGLCREATEPBUFFERSURFACEPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreatePixmapSurface, (EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint * attrib_list), (dpy, config, pixmap, attrib_list), 15, PFNEGLCREATEPIXMAPSURFACEPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreatePixmapSurfaceHI, (EGLDisplay dpy, EGLConfig config, struct EGLClientPixmapHI * pixmap), (dpy, config, pixmap), 16, PFNEGLCREATEPIXMAPSURFACEHIPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreatePlatformPixmapSurface, (EGLDisplay dpy, EGLConfig config, void * native_pixmap, const EGLAttrib * attrib_list), (dpy, config, native_pixmap, attrib_list), 17, PFNEGLCREATEPLATFORMPIXMAPSURFACEPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreatePlatformPixmapSurfaceEXT, (EGLDisplay dpy, EGLConfig config, void * native_pixmap, const EGLint * attrib_list), (dpy, config, native_pixmap, attrib_list), 18, PFNEGLCREATEPLATFORMPIXMAPSURFACEEXTPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreatePlatformWindowSurface, (EGLDisplay dpy, EGLConfig config, void * native_window, const EGLAttrib * attrib_list), (dpy, config, native_window, attrib_list), 19, PFNEGLCREATEPLATFORMWINDOWSURFACEPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreatePlatformWindowSurfaceEXT, (EGLDisplay dpy, EGLConfig config, void * native_window, const EGLint * attrib_list), (dpy, config, native_window, attrib_list), 20, PFNEGLCREATEPLATFORMWINDOWSURFACEEXTPROC)
-GEN_THUNKS_RET(egl, EGLStreamKHR, eglCreateStreamFromFileDescriptorKHR, (EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor), (dpy, file_descriptor), 21, PFNEGLCREATESTREAMFROMFILEDESCRIPTORKHRPROC)
-GEN_THUNKS_RET(egl, EGLStreamKHR, eglCreateStreamKHR, (EGLDisplay dpy, const EGLint * attrib_list), (dpy, attrib_list), 22, PFNEGLCREATESTREAMKHRPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreateStreamProducerSurfaceKHR, (EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint * attrib_list), (dpy, config, stream, attrib_list), 23, PFNEGLCREATESTREAMPRODUCERSURFACEKHRPROC)
-GEN_THUNKS_RET(egl, EGLSyncKHR, eglCreateStreamSyncNV, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum type, const EGLint * attrib_list), (dpy, stream, type, attrib_list), 24, PFNEGLCREATESTREAMSYNCNVPROC)
-GEN_THUNKS_RET(egl, EGLSync, eglCreateSync, (EGLDisplay dpy, EGLenum type, const EGLAttrib * attrib_list), (dpy, type, attrib_list), 25, PFNEGLCREATESYNCPROC)
-GEN_THUNKS_RET(egl, EGLSyncKHR, eglCreateSync64KHR, (EGLDisplay dpy, EGLenum type, const EGLAttribKHR * attrib_list), (dpy, type, attrib_list), 26, PFNEGLCREATESYNC64KHRPROC)
-GEN_THUNKS_RET(egl, EGLSyncKHR, eglCreateSyncKHR, (EGLDisplay dpy, EGLenum type, const EGLint * attrib_list), (dpy, type, attrib_list), 27, PFNEGLCREATESYNCKHRPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglCreateWindowSurface, (EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint * attrib_list), (dpy, config, win, attrib_list), 28, PFNEGLCREATEWINDOWSURFACEPROC)
-GEN_THUNKS_RET(egl, EGLint, eglDebugMessageControlKHR, (EGLDEBUGPROCKHR callback, const EGLAttrib * attrib_list), (callback, attrib_list), 29, PFNEGLDEBUGMESSAGECONTROLKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglDestroyContext, (EGLDisplay dpy, EGLContext ctx), (dpy, ctx), 30, PFNEGLDESTROYCONTEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglDestroyImage, (EGLDisplay dpy, EGLImage image), (dpy, image), 31, PFNEGLDESTROYIMAGEPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglDestroyImageKHR, (EGLDisplay dpy, EGLImageKHR image), (dpy, image), 32, PFNEGLDESTROYIMAGEKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglDestroyStreamKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 33, PFNEGLDESTROYSTREAMKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglDestroySurface, (EGLDisplay dpy, EGLSurface surface), (dpy, surface), 34, PFNEGLDESTROYSURFACEPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglDestroySync, (EGLDisplay dpy, EGLSync sync), (dpy, sync), 35, PFNEGLDESTROYSYNCPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglDestroySyncKHR, (EGLDisplay dpy, EGLSyncKHR sync), (dpy, sync), 36, PFNEGLDESTROYSYNCKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglDestroySyncNV, (EGLSyncNV sync), (sync), 37, PFNEGLDESTROYSYNCNVPROC)
-GEN_THUNKS_RET(egl, EGLint, eglDupNativeFenceFDANDROID, (EGLDisplay dpy, EGLSyncKHR sync), (dpy, sync), 38, PFNEGLDUPNATIVEFENCEFDANDROIDPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglExportDMABUFImageMESA, (EGLDisplay dpy, EGLImageKHR image, int * fds, EGLint * strides, EGLint * offsets), (dpy, image, fds, strides, offsets), 39, PFNEGLEXPORTDMABUFIMAGEMESAPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglExportDMABUFImageQueryMESA, (EGLDisplay dpy, EGLImageKHR image, int * fourcc, int * num_planes, EGLuint64KHR * modifiers), (dpy, image, fourcc, num_planes, modifiers), 40, PFNEGLEXPORTDMABUFIMAGEQUERYMESAPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglExportDRMImageMESA, (EGLDisplay dpy, EGLImageKHR image, EGLint * name, EGLint * handle, EGLint * stride), (dpy, image, name, handle, stride), 41, PFNEGLEXPORTDRMIMAGEMESAPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglFenceNV, (EGLSyncNV sync), (sync), 42, PFNEGLFENCENVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglGetConfigAttrib, (EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint * value), (dpy, config, attribute, value), 43, PFNEGLGETCONFIGATTRIBPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglGetConfigs, (EGLDisplay dpy, EGLConfig * configs, EGLint config_size, EGLint * num_config), (dpy, configs, config_size, num_config), 44, PFNEGLGETCONFIGSPROC)
-GEN_THUNKS_RET(egl, EGLContext, eglGetCurrentContext, (void), (), 45, PFNEGLGETCURRENTCONTEXTPROC)
-GEN_THUNKS_RET(egl, EGLDisplay, eglGetCurrentDisplay, (void), (), 46, PFNEGLGETCURRENTDISPLAYPROC)
-GEN_THUNKS_RET(egl, EGLSurface, eglGetCurrentSurface, (EGLint readdraw), (readdraw), 47, PFNEGLGETCURRENTSURFACEPROC)
-GEN_THUNKS_RET(egl, EGLDisplay, eglGetDisplay, (EGLNativeDisplayType display_id), (display_id), 48, PFNEGLGETDISPLAYPROC)
-GEN_THUNKS_RET(egl, EGLint, eglGetError, (void), (), 49, PFNEGLGETERRORPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglGetOutputLayersEXT, (EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint max_layers, EGLint * num_layers), (dpy, attrib_list, layers, max_layers, num_layers), 50, PFNEGLGETOUTPUTLAYERSEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglGetOutputPortsEXT, (EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputPortEXT * ports, EGLint max_ports, EGLint * num_ports), (dpy, attrib_list, ports, max_ports, num_ports), 51, PFNEGLGETOUTPUTPORTSEXTPROC)
-GEN_THUNKS_RET(egl, EGLDisplay, eglGetPlatformDisplay, (EGLenum platform, void * native_display, const EGLAttrib * attrib_list), (platform, native_display, attrib_list), 52, PFNEGLGETPLATFORMDISPLAYPROC)
-GEN_THUNKS_RET(egl, EGLDisplay, eglGetPlatformDisplayEXT, (EGLenum platform, void * native_display, const EGLint * attrib_list), (platform, native_display, attrib_list), 53, PFNEGLGETPLATFORMDISPLAYEXTPROC)
-GEN_THUNKS_RET(egl, __eglMustCastToProperFunctionPointerType, eglGetProcAddress, (const char * procname), (procname), 54, PFNEGLGETPROCADDRESSPROC)
-GEN_THUNKS_RET(egl, EGLNativeFileDescriptorKHR, eglGetStreamFileDescriptorKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 55, PFNEGLGETSTREAMFILEDESCRIPTORKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglGetSyncAttrib, (EGLDisplay dpy, EGLSync sync, EGLint attribute, EGLAttrib * value), (dpy, sync, attribute, value), 56, PFNEGLGETSYNCATTRIBPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglGetSyncAttribKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLint attribute, EGLint * value), (dpy, sync, attribute, value), 57, PFNEGLGETSYNCATTRIBKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglGetSyncAttribNV, (EGLSyncNV sync, EGLint attribute, EGLint * value), (sync, attribute, value), 58, PFNEGLGETSYNCATTRIBNVPROC)
-GEN_THUNKS_RET(egl, EGLuint64NV, eglGetSystemTimeFrequencyNV, (void), (), 59, PFNEGLGETSYSTEMTIMEFREQUENCYNVPROC)
-GEN_THUNKS_RET(egl, EGLuint64NV, eglGetSystemTimeNV, (void), (), 60, PFNEGLGETSYSTEMTIMENVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglInitialize, (EGLDisplay dpy, EGLint * major, EGLint * minor), (dpy, major, minor), 61, PFNEGLINITIALIZEPROC)
-GEN_THUNKS_RET(egl, EGLint, eglLabelObjectKHR, (EGLDisplay display, EGLenum objectType, EGLObjectKHR object, EGLLabelKHR label), (display, objectType, object, label), 62, PFNEGLLABELOBJECTKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglLockSurfaceKHR, (EGLDisplay dpy, EGLSurface surface, const EGLint * attrib_list), (dpy, surface, attrib_list), 63, PFNEGLLOCKSURFACEKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglMakeCurrent, (EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx), (dpy, draw, read, ctx), 64, PFNEGLMAKECURRENTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglOutputLayerAttribEXT, (EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib value), (dpy, layer, attribute, value), 65, PFNEGLOUTPUTLAYERATTRIBEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglOutputPortAttribEXT, (EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib value), (dpy, port, attribute, value), 66, PFNEGLOUTPUTPORTATTRIBEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglPostSubBufferNV, (EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height), (dpy, surface, x, y, width, height), 67, PFNEGLPOSTSUBBUFFERNVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglPresentationTimeANDROID, (EGLDisplay dpy, EGLSurface surface, EGLnsecsANDROID time), (dpy, surface, time), 68, PFNEGLPRESENTATIONTIMEANDROIDPROC)
-GEN_THUNKS_RET(egl, EGLenum, eglQueryAPI, (void), (), 69, PFNEGLQUERYAPIPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryContext, (EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint * value), (dpy, ctx, attribute, value), 70, PFNEGLQUERYCONTEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryDebugKHR, (EGLint attribute, EGLAttrib * value), (attribute, value), 71, PFNEGLQUERYDEBUGKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryDeviceAttribEXT, (EGLDeviceEXT device, EGLint attribute, EGLAttrib * value), (device, attribute, value), 72, PFNEGLQUERYDEVICEATTRIBEXTPROC)
-GEN_THUNKS_RET(egl, const char *, eglQueryDeviceStringEXT, (EGLDeviceEXT device, EGLint name), (device, name), 73, PFNEGLQUERYDEVICESTRINGEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryDevicesEXT, (EGLint max_devices, EGLDeviceEXT * devices, EGLint * num_devices), (max_devices, devices, num_devices), 74, PFNEGLQUERYDEVICESEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryDisplayAttribEXT, (EGLDisplay dpy, EGLint attribute, EGLAttrib * value), (dpy, attribute, value), 75, PFNEGLQUERYDISPLAYATTRIBEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryDisplayAttribNV, (EGLDisplay dpy, EGLint attribute, EGLAttrib * value), (dpy, attribute, value), 76, PFNEGLQUERYDISPLAYATTRIBNVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryNativeDisplayNV, (EGLDisplay dpy, EGLNativeDisplayType * display_id), (dpy, display_id), 77, PFNEGLQUERYNATIVEDISPLAYNVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryNativePixmapNV, (EGLDisplay dpy, EGLSurface surf, EGLNativePixmapType * pixmap), (dpy, surf, pixmap), 78, PFNEGLQUERYNATIVEPIXMAPNVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryNativeWindowNV, (EGLDisplay dpy, EGLSurface surf, EGLNativeWindowType * window), (dpy, surf, window), 79, PFNEGLQUERYNATIVEWINDOWNVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryOutputLayerAttribEXT, (EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib * value), (dpy, layer, attribute, value), 80, PFNEGLQUERYOUTPUTLAYERATTRIBEXTPROC)
-GEN_THUNKS_RET(egl, const char *, eglQueryOutputLayerStringEXT, (EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint name), (dpy, layer, name), 81, PFNEGLQUERYOUTPUTLAYERSTRINGEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryOutputPortAttribEXT, (EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib * value), (dpy, port, attribute, value), 82, PFNEGLQUERYOUTPUTPORTATTRIBEXTPROC)
-GEN_THUNKS_RET(egl, const char *, eglQueryOutputPortStringEXT, (EGLDisplay dpy, EGLOutputPortEXT port, EGLint name), (dpy, port, name), 83, PFNEGLQUERYOUTPUTPORTSTRINGEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryStreamKHR, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint * value), (dpy, stream, attribute, value), 84, PFNEGLQUERYSTREAMKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryStreamMetadataNV, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum name, EGLint n, EGLint offset, EGLint size, void * data), (dpy, stream, name, n, offset, size, data), 85, PFNEGLQUERYSTREAMMETADATANVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryStreamTimeKHR, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLTimeKHR * value), (dpy, stream, attribute, value), 86, PFNEGLQUERYSTREAMTIMEKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQueryStreamu64KHR, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLuint64KHR * value), (dpy, stream, attribute, value), 87, PFNEGLQUERYSTREAMU64KHRPROC)
-GEN_THUNKS_RET(egl, const char *, eglQueryString, (EGLDisplay dpy, EGLint name), (dpy, name), 88, PFNEGLQUERYSTRINGPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQuerySurface, (EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint * value), (dpy, surface, attribute, value), 89, PFNEGLQUERYSURFACEPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQuerySurface64KHR, (EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLAttribKHR * value), (dpy, surface, attribute, value), 90, PFNEGLQUERYSURFACE64KHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglQuerySurfacePointerANGLE, (EGLDisplay dpy, EGLSurface surface, EGLint attribute, void ** value), (dpy, surface, attribute, value), 91, PFNEGLQUERYSURFACEPOINTERANGLEPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglReleaseTexImage, (EGLDisplay dpy, EGLSurface surface, EGLint buffer), (dpy, surface, buffer), 92, PFNEGLRELEASETEXIMAGEPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglReleaseThread, (void), (), 93, PFNEGLRELEASETHREADPROC)
-GEN_THUNKS(egl, eglSetBlobCacheFuncsANDROID, (EGLDisplay dpy, EGLSetBlobFuncANDROID set, EGLGetBlobFuncANDROID get), (dpy, set, get), 94, PFNEGLSETBLOBCACHEFUNCSANDROIDPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSetDamageRegionKHR, (EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects), (dpy, surface, rects, n_rects), 95, PFNEGLSETDAMAGEREGIONKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSetStreamMetadataNV, (EGLDisplay dpy, EGLStreamKHR stream, EGLint n, EGLint offset, EGLint size, const void * data), (dpy, stream, n, offset, size, data), 96, PFNEGLSETSTREAMMETADATANVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSignalSyncKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLenum mode), (dpy, sync, mode), 97, PFNEGLSIGNALSYNCKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSignalSyncNV, (EGLSyncNV sync, EGLenum mode), (sync, mode), 98, PFNEGLSIGNALSYNCNVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglStreamAttribKHR, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint value), (dpy, stream, attribute, value), 99, PFNEGLSTREAMATTRIBKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglStreamConsumerAcquireKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 100, PFNEGLSTREAMCONSUMERACQUIREKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglStreamConsumerGLTextureExternalAttribsNV, (EGLDisplay dpy, EGLStreamKHR stream, EGLAttrib * attrib_list), (dpy, stream, attrib_list), 101, PFNEGLSTREAMCONSUMERGLTEXTUREEXTERNALATTRIBSNVPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglStreamConsumerGLTextureExternalKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 102, PFNEGLSTREAMCONSUMERGLTEXTUREEXTERNALKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglStreamConsumerOutputEXT, (EGLDisplay dpy, EGLStreamKHR stream, EGLOutputLayerEXT layer), (dpy, stream, layer), 103, PFNEGLSTREAMCONSUMEROUTPUTEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglStreamConsumerReleaseKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 104, PFNEGLSTREAMCONSUMERRELEASEKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSurfaceAttrib, (EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value), (dpy, surface, attribute, value), 105, PFNEGLSURFACEATTRIBPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSwapBuffers, (EGLDisplay dpy, EGLSurface surface), (dpy, surface), 106, PFNEGLSWAPBUFFERSPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSwapBuffersRegion2NOK, (EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects), (dpy, surface, numRects, rects), 107, PFNEGLSWAPBUFFERSREGION2NOKPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSwapBuffersRegionNOK, (EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects), (dpy, surface, numRects, rects), 108, PFNEGLSWAPBUFFERSREGIONNOKPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSwapBuffersWithDamageEXT, (EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects), (dpy, surface, rects, n_rects), 109, PFNEGLSWAPBUFFERSWITHDAMAGEEXTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSwapBuffersWithDamageKHR, (EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects), (dpy, surface, rects, n_rects), 110, PFNEGLSWAPBUFFERSWITHDAMAGEKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglSwapInterval, (EGLDisplay dpy, EGLint interval), (dpy, interval), 111, PFNEGLSWAPINTERVALPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglTerminate, (EGLDisplay dpy), (dpy), 112, PFNEGLTERMINATEPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglUnlockSurfaceKHR, (EGLDisplay dpy, EGLSurface surface), (dpy, surface), 113, PFNEGLUNLOCKSURFACEKHRPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglWaitClient, (void), (), 114, PFNEGLWAITCLIENTPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglWaitGL, (void), (), 115, PFNEGLWAITGLPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglWaitNative, (EGLint engine), (engine), 116, PFNEGLWAITNATIVEPROC)
-GEN_THUNKS_RET(egl, EGLBoolean, eglWaitSync, (EGLDisplay dpy, EGLSync sync, EGLint flags), (dpy, sync, flags), 117, PFNEGLWAITSYNCPROC)
-GEN_THUNKS_RET(egl, EGLint, eglWaitSyncKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLint flags), (dpy, sync, flags), 118, PFNEGLWAITSYNCKHRPROC)
+#define HAS_DISPATCH_RESOLVE_DIRECT 1
+#define HAS_DISPATCH_RESOLVE_VERSION 1
+#define current_resolve egl_resolve
+#define current_epoxy_resolve_init egl_epoxy_resolve_init
+#define current_epoxy_resolve_direct egl_epoxy_resolve_direct
+#define current_epoxy_resolve_version egl_epoxy_resolve_version
+#define current_epoxy_resolve_extension egl_epoxy_resolve_extension
+#define current_dispatch_table egl_dispatch_table
+#define current_metadata egl_metadata
+#define current_epoxy_resolve_local egl_epoxy_resolve_local
+#define current_epoxy_dispatch_metadata_init egl_epoxy_dispatch_metadata_init
+#define current_extensions_count egl_extensions_count
+#define current_extension_enum_strings egl_extension_enum_strings
+#define current_entrypoint_strings egl_entrypoint_strings
+#define current_resolve_info_table egl_resolve_info_table
+#define current_resolve_offsets egl_resolve_offsets
+#define current_method_name_offsets egl_method_name_offsets
+#include "dispatch_generated.inc"
+#undef current_resolve
+#undef current_epoxy_resolve_init
+#undef current_epoxy_resolve_direct
+#undef current_epoxy_resolve_version
+#undef current_epoxy_resolve_extension
+#undef current_dispatch_table
+#undef current_metadata
+#undef current_epoxy_resolve_local
+#undef current_epoxy_dispatch_metadata_init
+#undef current_extensions_count
+#undef current_extension_enum_strings
+#undef current_entrypoint_strings
+#undef current_resolve_info_table
+#undef current_resolve_offsets
+#undef current_method_name_offsets
+#undef HAS_DISPATCH_RESOLVE_DIRECT
+#undef HAS_DISPATCH_RESOLVE_VERSION
+
+GEN_THUNK_RET(egl, EGLBoolean, eglBindAPI, (EGLenum api), (api), 0, PFNEGLBINDAPIPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglBindTexImage, (EGLDisplay dpy, EGLSurface surface, EGLint buffer), (dpy, surface, buffer), 1, PFNEGLBINDTEXIMAGEPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglChooseConfig, (EGLDisplay dpy, const EGLint * attrib_list, EGLConfig * configs, EGLint config_size, EGLint * num_config), (dpy, attrib_list, configs, config_size, num_config), 2, PFNEGLCHOOSECONFIGPROC)
+GEN_THUNK_RET(egl, EGLint, eglClientWaitSync, (EGLDisplay dpy, EGLSync sync, EGLint flags, EGLTime timeout), (dpy, sync, flags, timeout), 3, PFNEGLCLIENTWAITSYNCPROC)
+GEN_THUNK_RET(egl, EGLint, eglClientWaitSyncKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLint flags, EGLTimeKHR timeout), (dpy, sync, flags, timeout), 4, PFNEGLCLIENTWAITSYNCKHRPROC)
+GEN_THUNK_RET(egl, EGLint, eglClientWaitSyncNV, (EGLSyncNV sync, EGLint flags, EGLTimeNV timeout), (sync, flags, timeout), 5, PFNEGLCLIENTWAITSYNCNVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglCopyBuffers, (EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target), (dpy, surface, target), 6, PFNEGLCOPYBUFFERSPROC)
+GEN_THUNK_RET(egl, EGLContext, eglCreateContext, (EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint * attrib_list), (dpy, config, share_context, attrib_list), 7, PFNEGLCREATECONTEXTPROC)
+GEN_THUNK_RET(egl, EGLImageKHR, eglCreateDRMImageMESA, (EGLDisplay dpy, const EGLint * attrib_list), (dpy, attrib_list), 8, PFNEGLCREATEDRMIMAGEMESAPROC)
+GEN_THUNK_RET(egl, EGLSyncNV, eglCreateFenceSyncNV, (EGLDisplay dpy, EGLenum condition, const EGLint * attrib_list), (dpy, condition, attrib_list), 9, PFNEGLCREATEFENCESYNCNVPROC)
+GEN_THUNK_RET(egl, EGLImage, eglCreateImage, (EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLAttrib * attrib_list), (dpy, ctx, target, buffer, attrib_list), 10, PFNEGLCREATEIMAGEPROC)
+GEN_THUNK_RET(egl, EGLImageKHR, eglCreateImageKHR, (EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint * attrib_list), (dpy, ctx, target, buffer, attrib_list), 11, PFNEGLCREATEIMAGEKHRPROC)
+GEN_THUNK_RET(egl, EGLClientBuffer, eglCreateNativeClientBufferANDROID, (const EGLint * attrib_list), (attrib_list), 12, PFNEGLCREATENATIVECLIENTBUFFERANDROIDPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreatePbufferFromClientBuffer, (EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint * attrib_list), (dpy, buftype, buffer, config, attrib_list), 13, PFNEGLCREATEPBUFFERFROMCLIENTBUFFERPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreatePbufferSurface, (EGLDisplay dpy, EGLConfig config, const EGLint * attrib_list), (dpy, config, attrib_list), 14, PFNEGLCREATEPBUFFERSURFACEPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreatePixmapSurface, (EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint * attrib_list), (dpy, config, pixmap, attrib_list), 15, PFNEGLCREATEPIXMAPSURFACEPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreatePixmapSurfaceHI, (EGLDisplay dpy, EGLConfig config, struct EGLClientPixmapHI * pixmap), (dpy, config, pixmap), 16, PFNEGLCREATEPIXMAPSURFACEHIPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreatePlatformPixmapSurface, (EGLDisplay dpy, EGLConfig config, void * native_pixmap, const EGLAttrib * attrib_list), (dpy, config, native_pixmap, attrib_list), 17, PFNEGLCREATEPLATFORMPIXMAPSURFACEPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreatePlatformPixmapSurfaceEXT, (EGLDisplay dpy, EGLConfig config, void * native_pixmap, const EGLint * attrib_list), (dpy, config, native_pixmap, attrib_list), 18, PFNEGLCREATEPLATFORMPIXMAPSURFACEEXTPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreatePlatformWindowSurface, (EGLDisplay dpy, EGLConfig config, void * native_window, const EGLAttrib * attrib_list), (dpy, config, native_window, attrib_list), 19, PFNEGLCREATEPLATFORMWINDOWSURFACEPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreatePlatformWindowSurfaceEXT, (EGLDisplay dpy, EGLConfig config, void * native_window, const EGLint * attrib_list), (dpy, config, native_window, attrib_list), 20, PFNEGLCREATEPLATFORMWINDOWSURFACEEXTPROC)
+GEN_THUNK_RET(egl, EGLStreamKHR, eglCreateStreamFromFileDescriptorKHR, (EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor), (dpy, file_descriptor), 21, PFNEGLCREATESTREAMFROMFILEDESCRIPTORKHRPROC)
+GEN_THUNK_RET(egl, EGLStreamKHR, eglCreateStreamKHR, (EGLDisplay dpy, const EGLint * attrib_list), (dpy, attrib_list), 22, PFNEGLCREATESTREAMKHRPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreateStreamProducerSurfaceKHR, (EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint * attrib_list), (dpy, config, stream, attrib_list), 23, PFNEGLCREATESTREAMPRODUCERSURFACEKHRPROC)
+GEN_THUNK_RET(egl, EGLSyncKHR, eglCreateStreamSyncNV, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum type, const EGLint * attrib_list), (dpy, stream, type, attrib_list), 24, PFNEGLCREATESTREAMSYNCNVPROC)
+GEN_THUNK_RET(egl, EGLSync, eglCreateSync, (EGLDisplay dpy, EGLenum type, const EGLAttrib * attrib_list), (dpy, type, attrib_list), 25, PFNEGLCREATESYNCPROC)
+GEN_THUNK_RET(egl, EGLSyncKHR, eglCreateSync64KHR, (EGLDisplay dpy, EGLenum type, const EGLAttribKHR * attrib_list), (dpy, type, attrib_list), 26, PFNEGLCREATESYNC64KHRPROC)
+GEN_THUNK_RET(egl, EGLSyncKHR, eglCreateSyncKHR, (EGLDisplay dpy, EGLenum type, const EGLint * attrib_list), (dpy, type, attrib_list), 27, PFNEGLCREATESYNCKHRPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglCreateWindowSurface, (EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint * attrib_list), (dpy, config, win, attrib_list), 28, PFNEGLCREATEWINDOWSURFACEPROC)
+GEN_THUNK_RET(egl, EGLint, eglDebugMessageControlKHR, (EGLDEBUGPROCKHR callback, const EGLAttrib * attrib_list), (callback, attrib_list), 29, PFNEGLDEBUGMESSAGECONTROLKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglDestroyContext, (EGLDisplay dpy, EGLContext ctx), (dpy, ctx), 30, PFNEGLDESTROYCONTEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglDestroyImage, (EGLDisplay dpy, EGLImage image), (dpy, image), 31, PFNEGLDESTROYIMAGEPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglDestroyImageKHR, (EGLDisplay dpy, EGLImageKHR image), (dpy, image), 32, PFNEGLDESTROYIMAGEKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglDestroyStreamKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 33, PFNEGLDESTROYSTREAMKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglDestroySurface, (EGLDisplay dpy, EGLSurface surface), (dpy, surface), 34, PFNEGLDESTROYSURFACEPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglDestroySync, (EGLDisplay dpy, EGLSync sync), (dpy, sync), 35, PFNEGLDESTROYSYNCPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglDestroySyncKHR, (EGLDisplay dpy, EGLSyncKHR sync), (dpy, sync), 36, PFNEGLDESTROYSYNCKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglDestroySyncNV, (EGLSyncNV sync), (sync), 37, PFNEGLDESTROYSYNCNVPROC)
+GEN_THUNK_RET(egl, EGLint, eglDupNativeFenceFDANDROID, (EGLDisplay dpy, EGLSyncKHR sync), (dpy, sync), 38, PFNEGLDUPNATIVEFENCEFDANDROIDPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglExportDMABUFImageMESA, (EGLDisplay dpy, EGLImageKHR image, int * fds, EGLint * strides, EGLint * offsets), (dpy, image, fds, strides, offsets), 39, PFNEGLEXPORTDMABUFIMAGEMESAPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglExportDMABUFImageQueryMESA, (EGLDisplay dpy, EGLImageKHR image, int * fourcc, int * num_planes, EGLuint64KHR * modifiers), (dpy, image, fourcc, num_planes, modifiers), 40, PFNEGLEXPORTDMABUFIMAGEQUERYMESAPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglExportDRMImageMESA, (EGLDisplay dpy, EGLImageKHR image, EGLint * name, EGLint * handle, EGLint * stride), (dpy, image, name, handle, stride), 41, PFNEGLEXPORTDRMIMAGEMESAPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglFenceNV, (EGLSyncNV sync), (sync), 42, PFNEGLFENCENVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglGetConfigAttrib, (EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint * value), (dpy, config, attribute, value), 43, PFNEGLGETCONFIGATTRIBPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglGetConfigs, (EGLDisplay dpy, EGLConfig * configs, EGLint config_size, EGLint * num_config), (dpy, configs, config_size, num_config), 44, PFNEGLGETCONFIGSPROC)
+GEN_THUNK_RET(egl, EGLContext, eglGetCurrentContext, (void), (), 45, PFNEGLGETCURRENTCONTEXTPROC)
+GEN_THUNK_RET(egl, EGLDisplay, eglGetCurrentDisplay, (void), (), 46, PFNEGLGETCURRENTDISPLAYPROC)
+GEN_THUNK_RET(egl, EGLSurface, eglGetCurrentSurface, (EGLint readdraw), (readdraw), 47, PFNEGLGETCURRENTSURFACEPROC)
+GEN_THUNK_RET(egl, EGLDisplay, eglGetDisplay, (EGLNativeDisplayType display_id), (display_id), 48, PFNEGLGETDISPLAYPROC)
+GEN_THUNK_RET(egl, EGLint, eglGetError, (void), (), 49, PFNEGLGETERRORPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglGetOutputLayersEXT, (EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint max_layers, EGLint * num_layers), (dpy, attrib_list, layers, max_layers, num_layers), 50, PFNEGLGETOUTPUTLAYERSEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglGetOutputPortsEXT, (EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputPortEXT * ports, EGLint max_ports, EGLint * num_ports), (dpy, attrib_list, ports, max_ports, num_ports), 51, PFNEGLGETOUTPUTPORTSEXTPROC)
+GEN_THUNK_RET(egl, EGLDisplay, eglGetPlatformDisplay, (EGLenum platform, void * native_display, const EGLAttrib * attrib_list), (platform, native_display, attrib_list), 52, PFNEGLGETPLATFORMDISPLAYPROC)
+GEN_THUNK_RET(egl, EGLDisplay, eglGetPlatformDisplayEXT, (EGLenum platform, void * native_display, const EGLint * attrib_list), (platform, native_display, attrib_list), 53, PFNEGLGETPLATFORMDISPLAYEXTPROC)
+GEN_THUNK_RET(egl, __eglMustCastToProperFunctionPointerType, eglGetProcAddress, (const char * procname), (procname), 54, PFNEGLGETPROCADDRESSPROC)
+GEN_THUNK_RET(egl, EGLNativeFileDescriptorKHR, eglGetStreamFileDescriptorKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 55, PFNEGLGETSTREAMFILEDESCRIPTORKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglGetSyncAttrib, (EGLDisplay dpy, EGLSync sync, EGLint attribute, EGLAttrib * value), (dpy, sync, attribute, value), 56, PFNEGLGETSYNCATTRIBPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglGetSyncAttribKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLint attribute, EGLint * value), (dpy, sync, attribute, value), 57, PFNEGLGETSYNCATTRIBKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglGetSyncAttribNV, (EGLSyncNV sync, EGLint attribute, EGLint * value), (sync, attribute, value), 58, PFNEGLGETSYNCATTRIBNVPROC)
+GEN_THUNK_RET(egl, EGLuint64NV, eglGetSystemTimeFrequencyNV, (void), (), 59, PFNEGLGETSYSTEMTIMEFREQUENCYNVPROC)
+GEN_THUNK_RET(egl, EGLuint64NV, eglGetSystemTimeNV, (void), (), 60, PFNEGLGETSYSTEMTIMENVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglInitialize, (EGLDisplay dpy, EGLint * major, EGLint * minor), (dpy, major, minor), 61, PFNEGLINITIALIZEPROC)
+GEN_THUNK_RET(egl, EGLint, eglLabelObjectKHR, (EGLDisplay display, EGLenum objectType, EGLObjectKHR object, EGLLabelKHR label), (display, objectType, object, label), 62, PFNEGLLABELOBJECTKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglLockSurfaceKHR, (EGLDisplay dpy, EGLSurface surface, const EGLint * attrib_list), (dpy, surface, attrib_list), 63, PFNEGLLOCKSURFACEKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglMakeCurrent, (EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx), (dpy, draw, read, ctx), 64, PFNEGLMAKECURRENTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglOutputLayerAttribEXT, (EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib value), (dpy, layer, attribute, value), 65, PFNEGLOUTPUTLAYERATTRIBEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglOutputPortAttribEXT, (EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib value), (dpy, port, attribute, value), 66, PFNEGLOUTPUTPORTATTRIBEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglPostSubBufferNV, (EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height), (dpy, surface, x, y, width, height), 67, PFNEGLPOSTSUBBUFFERNVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglPresentationTimeANDROID, (EGLDisplay dpy, EGLSurface surface, EGLnsecsANDROID time), (dpy, surface, time), 68, PFNEGLPRESENTATIONTIMEANDROIDPROC)
+GEN_THUNK_RET(egl, EGLenum, eglQueryAPI, (void), (), 69, PFNEGLQUERYAPIPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryContext, (EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint * value), (dpy, ctx, attribute, value), 70, PFNEGLQUERYCONTEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryDebugKHR, (EGLint attribute, EGLAttrib * value), (attribute, value), 71, PFNEGLQUERYDEBUGKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryDeviceAttribEXT, (EGLDeviceEXT device, EGLint attribute, EGLAttrib * value), (device, attribute, value), 72, PFNEGLQUERYDEVICEATTRIBEXTPROC)
+GEN_THUNK_RET(egl, const char *, eglQueryDeviceStringEXT, (EGLDeviceEXT device, EGLint name), (device, name), 73, PFNEGLQUERYDEVICESTRINGEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryDevicesEXT, (EGLint max_devices, EGLDeviceEXT * devices, EGLint * num_devices), (max_devices, devices, num_devices), 74, PFNEGLQUERYDEVICESEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryDisplayAttribEXT, (EGLDisplay dpy, EGLint attribute, EGLAttrib * value), (dpy, attribute, value), 75, PFNEGLQUERYDISPLAYATTRIBEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryDisplayAttribNV, (EGLDisplay dpy, EGLint attribute, EGLAttrib * value), (dpy, attribute, value), 76, PFNEGLQUERYDISPLAYATTRIBNVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryNativeDisplayNV, (EGLDisplay dpy, EGLNativeDisplayType * display_id), (dpy, display_id), 77, PFNEGLQUERYNATIVEDISPLAYNVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryNativePixmapNV, (EGLDisplay dpy, EGLSurface surf, EGLNativePixmapType * pixmap), (dpy, surf, pixmap), 78, PFNEGLQUERYNATIVEPIXMAPNVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryNativeWindowNV, (EGLDisplay dpy, EGLSurface surf, EGLNativeWindowType * window), (dpy, surf, window), 79, PFNEGLQUERYNATIVEWINDOWNVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryOutputLayerAttribEXT, (EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib * value), (dpy, layer, attribute, value), 80, PFNEGLQUERYOUTPUTLAYERATTRIBEXTPROC)
+GEN_THUNK_RET(egl, const char *, eglQueryOutputLayerStringEXT, (EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint name), (dpy, layer, name), 81, PFNEGLQUERYOUTPUTLAYERSTRINGEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryOutputPortAttribEXT, (EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib * value), (dpy, port, attribute, value), 82, PFNEGLQUERYOUTPUTPORTATTRIBEXTPROC)
+GEN_THUNK_RET(egl, const char *, eglQueryOutputPortStringEXT, (EGLDisplay dpy, EGLOutputPortEXT port, EGLint name), (dpy, port, name), 83, PFNEGLQUERYOUTPUTPORTSTRINGEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryStreamKHR, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint * value), (dpy, stream, attribute, value), 84, PFNEGLQUERYSTREAMKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryStreamMetadataNV, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum name, EGLint n, EGLint offset, EGLint size, void * data), (dpy, stream, name, n, offset, size, data), 85, PFNEGLQUERYSTREAMMETADATANVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryStreamTimeKHR, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLTimeKHR * value), (dpy, stream, attribute, value), 86, PFNEGLQUERYSTREAMTIMEKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQueryStreamu64KHR, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLuint64KHR * value), (dpy, stream, attribute, value), 87, PFNEGLQUERYSTREAMU64KHRPROC)
+GEN_THUNK_RET(egl, const char *, eglQueryString, (EGLDisplay dpy, EGLint name), (dpy, name), 88, PFNEGLQUERYSTRINGPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQuerySurface, (EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint * value), (dpy, surface, attribute, value), 89, PFNEGLQUERYSURFACEPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQuerySurface64KHR, (EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLAttribKHR * value), (dpy, surface, attribute, value), 90, PFNEGLQUERYSURFACE64KHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglQuerySurfacePointerANGLE, (EGLDisplay dpy, EGLSurface surface, EGLint attribute, void ** value), (dpy, surface, attribute, value), 91, PFNEGLQUERYSURFACEPOINTERANGLEPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglReleaseTexImage, (EGLDisplay dpy, EGLSurface surface, EGLint buffer), (dpy, surface, buffer), 92, PFNEGLRELEASETEXIMAGEPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglReleaseThread, (void), (), 93, PFNEGLRELEASETHREADPROC)
+GEN_THUNK(egl, eglSetBlobCacheFuncsANDROID, (EGLDisplay dpy, EGLSetBlobFuncANDROID set, EGLGetBlobFuncANDROID get), (dpy, set, get), 94, PFNEGLSETBLOBCACHEFUNCSANDROIDPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSetDamageRegionKHR, (EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects), (dpy, surface, rects, n_rects), 95, PFNEGLSETDAMAGEREGIONKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSetStreamMetadataNV, (EGLDisplay dpy, EGLStreamKHR stream, EGLint n, EGLint offset, EGLint size, const void * data), (dpy, stream, n, offset, size, data), 96, PFNEGLSETSTREAMMETADATANVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSignalSyncKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLenum mode), (dpy, sync, mode), 97, PFNEGLSIGNALSYNCKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSignalSyncNV, (EGLSyncNV sync, EGLenum mode), (sync, mode), 98, PFNEGLSIGNALSYNCNVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglStreamAttribKHR, (EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint value), (dpy, stream, attribute, value), 99, PFNEGLSTREAMATTRIBKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglStreamConsumerAcquireKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 100, PFNEGLSTREAMCONSUMERACQUIREKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglStreamConsumerGLTextureExternalAttribsNV, (EGLDisplay dpy, EGLStreamKHR stream, EGLAttrib * attrib_list), (dpy, stream, attrib_list), 101, PFNEGLSTREAMCONSUMERGLTEXTUREEXTERNALATTRIBSNVPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglStreamConsumerGLTextureExternalKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 102, PFNEGLSTREAMCONSUMERGLTEXTUREEXTERNALKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglStreamConsumerOutputEXT, (EGLDisplay dpy, EGLStreamKHR stream, EGLOutputLayerEXT layer), (dpy, stream, layer), 103, PFNEGLSTREAMCONSUMEROUTPUTEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglStreamConsumerReleaseKHR, (EGLDisplay dpy, EGLStreamKHR stream), (dpy, stream), 104, PFNEGLSTREAMCONSUMERRELEASEKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSurfaceAttrib, (EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value), (dpy, surface, attribute, value), 105, PFNEGLSURFACEATTRIBPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSwapBuffers, (EGLDisplay dpy, EGLSurface surface), (dpy, surface), 106, PFNEGLSWAPBUFFERSPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSwapBuffersRegion2NOK, (EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects), (dpy, surface, numRects, rects), 107, PFNEGLSWAPBUFFERSREGION2NOKPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSwapBuffersRegionNOK, (EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects), (dpy, surface, numRects, rects), 108, PFNEGLSWAPBUFFERSREGIONNOKPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSwapBuffersWithDamageEXT, (EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects), (dpy, surface, rects, n_rects), 109, PFNEGLSWAPBUFFERSWITHDAMAGEEXTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSwapBuffersWithDamageKHR, (EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects), (dpy, surface, rects, n_rects), 110, PFNEGLSWAPBUFFERSWITHDAMAGEKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglSwapInterval, (EGLDisplay dpy, EGLint interval), (dpy, interval), 111, PFNEGLSWAPINTERVALPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglTerminate, (EGLDisplay dpy), (dpy), 112, PFNEGLTERMINATEPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglUnlockSurfaceKHR, (EGLDisplay dpy, EGLSurface surface), (dpy, surface), 113, PFNEGLUNLOCKSURFACEKHRPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglWaitClient, (void), (), 114, PFNEGLWAITCLIENTPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglWaitGL, (void), (), 115, PFNEGLWAITGLPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglWaitNative, (EGLint engine), (engine), 116, PFNEGLWAITNATIVEPROC)
+GEN_THUNK_RET(egl, EGLBoolean, eglWaitSync, (EGLDisplay dpy, EGLSync sync, EGLint flags), (dpy, sync, flags), 117, PFNEGLWAITSYNCPROC)
+GEN_THUNK_RET(egl, EGLint, eglWaitSyncKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLint flags), (dpy, sync, flags), 118, PFNEGLWAITSYNCKHRPROC)
 
 #endif /* PLATFORM_HAS_EGL */

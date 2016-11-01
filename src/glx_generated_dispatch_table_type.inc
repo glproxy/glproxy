@@ -142,6 +142,7 @@ enum glx_provider_versions {
     GLX_1_1 = 11,
     GLX_1_2 = 12,
     GLX_1_3 = 13,
+    GLX_1_4 = 14,
 } PACKED;
 
 

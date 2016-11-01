@@ -99,6 +99,40 @@ typedef khronos_boolean_enum_t bool;
 
 #include "epoxy/gl_generated.h"
 
+struct epoxy_gles_names {
+    const char* egl;
+    const char* gles1;
+    const char* gles2;
+};
+
+struct epoxy_gl_handles {
+    /**
+    * dlopen() return value for OS X's GL library.
+    */
+    void *cgl;
+
+    /* LoadLibraryA return value for opengl32.dll */
+    void *wgl;
+
+    /** dlopen() return value for libGL.so.1. in other works, glx */
+    void *glx;
+
+    /** dlopen() return value for libEGL.so.1 */
+    void *egl;
+    /** dlopen() return value for libGLESv1_CM.so.1 */
+    void *gles1;
+    /** dlopen() return value for libGLESv2.so.2 */
+    void *gles2;
+};
+
+struct epoxy_gl_context {
+    const char *cgl_name;
+    const char *wgl_name;
+    const char *glx_name;
+    struct epoxy_gles_names gles_names;
+    struct epoxy_gl_handles handles;
+};
+
 /*
 * By default, the TLS are inited by global constructor and destructor, if the compiler doesn't support that,
 then calling to the following API to do that.
@@ -106,7 +140,7 @@ then calling to the following API to do that.
 EPOXY_IMPORTEXPORT void epoxy_init_tls(void);
 EPOXY_IMPORTEXPORT void epoxy_uninit_tls(void);
 
-EPOXY_IMPORTEXPORT void* epoxy_context_create();
+EPOXY_IMPORTEXPORT void* epoxy_context_create(struct epoxy_gl_context *params);
 EPOXY_IMPORTEXPORT void* epoxy_context_get();
 EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_contex);
 EPOXY_IMPORTEXPORT void epoxy_context_destroy(void*);
