@@ -1,8 +1,8 @@
 /* GL dispatch code.
  * This is code-generated from the GL API XML files from Khronos.
  */
-#if PLATFORM_HAS_WGL
 #include "dispatch_common.h"
+#if PLATFORM_HAS_WGL
 
 #define wgl_extensions_count 31
 

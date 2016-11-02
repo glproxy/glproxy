@@ -599,11 +599,12 @@ class Generator(object):
         self.outln(' * This is code-generated from the GL API XML files from Khronos.')
         self.write_copyright_comment_body()
         self.outln(' */')
-        self.outln('#if PLATFORM_HAS_{0}'.format(self.target.upper()))
         if is_table:
+            self.outln('#if PLATFORM_HAS_{0}'.format(self.target.upper()))
             self.outln('#include "epoxy/{0}.h"'.format(self.target))
         else:
             self.outln('#include "dispatch_common.h"')
+            self.outln('#if PLATFORM_HAS_{0}'.format(self.target.upper()))
         self.outln('')
 
     def write_table_type_inc(self, file):

@@ -23,8 +23,8 @@
  * MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
  * 
  */
-#if PLATFORM_HAS_GL
 #include "dispatch_common.h"
+#if PLATFORM_HAS_GL
 
 #define gl_extensions_count 352
 

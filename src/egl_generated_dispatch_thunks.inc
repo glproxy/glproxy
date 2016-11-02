@@ -1,8 +1,8 @@
 /* GL dispatch code.
  * This is code-generated from the GL API XML files from Khronos.
  */
-#if PLATFORM_HAS_EGL
 #include "dispatch_common.h"
+#if PLATFORM_HAS_EGL
 
 #define egl_extensions_count 40
 
