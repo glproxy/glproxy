@@ -1,3 +1,8 @@
+GLproxy
+==========
+[![Travis CI Build Status](https://travis-ci.org/glproxy/glproxy.svg?branch=master)](https://travis-ci.org/glproxy/glproxy/builds)
+
+
 GLproxy is a library for handling OpenGL function pointer management for
 you.
 
