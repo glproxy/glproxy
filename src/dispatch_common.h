@@ -67,8 +67,14 @@
 #include "egl_generated_dispatch_table_type.inc"
 
 #ifdef __GNUC__
-#define CONSTRUCT(_func) static void _func (void) __attribute__((constructor));
-#define DESTRUCT(_func) static void _func (void) __attribute__((destructor));
+#define CONSTRUCT(_func) \
+static void _func ## _wrapper(void) __attribute__((constructor)) \
+{ _func(); }
+
+#define DESTRUCT(_func) \
+static void _func ## _wrapper(void) __attribute__((destructor)) \
+{ _func(); }
+
 #elif defined (_MSC_VER) && (_MSC_VER >= 1500)
 #define CONSTRUCT(_func) \
   static int _func ## _wrapper(void) { _func(); return 0; } \
