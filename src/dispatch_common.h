@@ -162,6 +162,9 @@ struct dispatch_common_tls {
 #if PLATFORM_HAS_GLX
     struct glx_dispatch_table glx_dispatch_table;
     struct dispatch_metadata glx_metadata;
+    PFNGLXGETPROCADDRESSPROC glx_get_proc;
+    PFNGLXGETPROCADDRESSARBPROC glx_get_proc_arb;
+
 #endif
 
     struct gl_dispatch_table gl_dispatch_table;

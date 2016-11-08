@@ -290,7 +290,6 @@ static bool glproxy_internal_has_gl_extension(const char *ext, bool invalid_op_m
 
 // APIs required by resolvers
 
-
 #if PLATFORM_HAS_WGL
 
 GLPROXY_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *ext) {
@@ -326,23 +325,6 @@ bool glproxy_conservative_has_wgl_extension(const char *ext)
 #endif /* PLATFORM_HAS_WGL */
 
 #if PLATFORM_HAS_GLX
-/**
-* If we can determine the GLX version from the current context, then
-* return that, otherwise return a version that will just send us on
-* to dlsym() or get_proc_address().
-*/
-int glproxy_conservative_glx_version(void) {
-    Display *dpy = glXGetCurrentDisplay();
-    GLXContext ctx = glXGetCurrentContext();
-    int screen;
-
-    if (!dpy || !ctx)
-        return 14;
-
-    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
-
-    return glproxy_glx_version(dpy, screen);
-}
 
 GLPROXY_IMPORTEXPORT int glproxy_glx_version(Display *dpy, int screen) {
     int server_major, server_minor;
@@ -640,6 +622,8 @@ void glx_glproxy_resolve_init(tls_ptr tls) {
             }
         }
     }
+    tls->glx_get_proc = do_dlsym_by_handle(tls->context.handles.glx, "glXGetProcAddress", NULL, false);
+    tls->glx_get_proc_arb = do_dlsym_by_handle(tls->context.handles.glx, "glXGetProcAddressARB", NULL, false);
     tls->glx_metadata.inited = true;
 }
 
@@ -654,7 +638,7 @@ enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char*
 * context, then return that, otherwise give the answer that will just
 * send us on to get_proc_address().
 */
-bool glproxy_conservative_has_glx_extension(const char *ext) {
+bool glproxy_conservative_has_glx_extension(tls_ptr tls, const char *ext) {
     Display *dpy = glXGetCurrentDisplay();
     GLXContext ctx = glXGetCurrentContext();
     int screen;
@@ -668,8 +652,8 @@ bool glproxy_conservative_has_glx_extension(const char *ext) {
 }
 
 enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
-    if (glproxy_conservative_has_glx_extension(extension)) {
-        *ptr = glXGetProcAddress((const GLubyte *)name);
+    if (glproxy_conservative_has_glx_extension(tls, extension)) {
+        *ptr = tls->glx_get_proc((const GLubyte *)name);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
     return DISPATCH_RESOLVE_RESULT_IGNORE;
@@ -716,16 +700,16 @@ static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr) {
     switch (tls->open_gl_type) {
     case DISPATCH_OPENGL_EGL_DESKTOP:
     case DISPATCH_OPENGL_ES:
-        *ptr = eglGetProcAddress(name);
+        *ptr = tls->egl_get_proc(name);
         break;
     case DISPATCH_OPENGL_WGL_DESKTOP:
 #if PLATFORM_HAS_WGL
-        *ptr = wglGetProcAddress(name);
+        *ptr = tls->wgl_get_proc(name);
 #endif
         break;
     case DISPATCH_OPENGL_GLX_DESKTOP:
 #if PLATFORM_HAS_GLX
-        *ptr = glXGetProcAddressARB((const GLubyte *)name);
+        *ptr = tls->glx_get_proc_arb((const GLubyte *)name);
 #endif
         break;
     case DISPATCH_OPENGL_CGL_DESKTOP:
@@ -764,6 +748,7 @@ static void glproxy_get_core_proc_address(tls_ptr tls, const char *name, int cor
         glproxy_get_proc_address(tls, name, ptr);
     }
 }
+
 enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version) {
     if (version <= OpenGL_Desktop_MAX) {
         if (tls->open_gl_type != DISPATCH_OPENGL_ES) {
@@ -781,6 +766,7 @@ enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_version(tls_ptr tls, const char*
 
 enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
     if (glproxy_internal_has_gl_extension(extension, true)) {
+        glproxy_get_proc_address(tls, name, ptr);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
     return DISPATCH_RESOLVE_RESULT_IGNORE;
