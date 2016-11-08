@@ -19,4 +19,6 @@ script:
   - cmake -version
   - mkdir build
   - cd build
-  - cmake .. && make
+  - cmake ..
+  - cmake.exe --build .
+  - cmake.exe --build . --target RUN_TESTS
