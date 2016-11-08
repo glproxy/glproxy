@@ -85,13 +85,13 @@
 #endif
 
 #ifdef __GNUC__
-#define glproxy_NOINLINE __attribute__((noinline))
+#define GLPROXY_NOINLINE __attribute__((noinline))
 #elif defined (_MSC_VER)
-#define glproxy_NOINLINE __declspec(noinline)
+#define GLPROXY_NOINLINE __declspec(noinline)
 #endif
 
 #define GEN_THUNK(target, name, args, passthrough, offset, func_type)         \
-    glproxy_IMPORTEXPORT void glproxy_CALLSPEC                                     \
+    GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC                                     \
     name args                                                                  \
     {                                                                          \
         func_type func_symbol = target##_resolve(offset);                      \
@@ -99,7 +99,7 @@
     }
 
 #define GEN_THUNK_RET(target, ret, name, args, passthrough, offset, func_type)\
-    glproxy_IMPORTEXPORT ret glproxy_CALLSPEC                                      \
+    GLPROXY_IMPORTEXPORT ret GLPROXY_CALLSPEC                                      \
     name args                                                                  \
     {                                                                          \
         func_type func_symbol = target##_resolve(offset);                      \

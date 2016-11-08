@@ -23,57 +23,57 @@
 
 /** @file common.h
  *
- * Provides basic definitions for glproxy. Included by all other glproxy files.
+ * Provides basic definitions for GLproxy. Included by all other GLproxy files.
  */
 
-#ifndef glproxy_GL_H
+#ifndef GLPROXY_GL_H
 #error "glproxy/_common.h" must be included by glproxy/gl.h directly, do not include it outside
 #endif
 
-#ifndef glproxy_COMMON_H
-#define glproxy_COMMON_H
+#ifndef GLPROXY_COMMON_H
+#define GLPROXY_COMMON_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #if defined _WIN32 || defined __CYGWIN__
-    #if defined(glproxy_IMPORTEXPORT)
-        #undef glproxy_IMPORTEXPORT
-        #define glproxy_STATIC_LIB
+    #if defined(GLPROXY_IMPORTEXPORT)
+        #undef GLPROXY_IMPORTEXPORT
+        #define GLPROXY_STATIC_LIB
     #endif
 
-    #if defined(glproxy_STATIC_LIB)
-        #define glproxy_IMPORTEXPORT
+    #if defined(GLPROXY_STATIC_LIB)
+        #define GLPROXY_IMPORTEXPORT
     #else
-        #if defined glproxy_BUILDING_LIB
+        #if defined GLPROXY_BUILDING_LIB
             #ifdef __GNUC__
-                #define glproxy_IMPORTEXPORT __attribute__((dllexport))
+                #define GLPROXY_IMPORTEXPORT __attribute__((dllexport))
             #else
-                #define glproxy_IMPORTEXPORT __declspec(dllexport)
+                #define GLPROXY_IMPORTEXPORT __declspec(dllexport)
             #endif
         #else
             #ifdef __GNUC__
-                #define glproxy_IMPORTEXPORT __attribute__((dllimport))
+                #define GLPROXY_IMPORTEXPORT __attribute__((dllimport))
             #else
-                #define glproxy_IMPORTEXPORT __declspec(dllimport)
+                #define GLPROXY_IMPORTEXPORT __declspec(dllimport)
             #endif
         #endif
     #endif
 #elif defined __ANDROID__
     #include <sys/cdefs.h>
-    #define glproxy_IMPORTEXPORT __attribute__((visibility("default"))) __NDK_FPABI__
+    #define GLPROXY_IMPORTEXPORT __attribute__((visibility("default"))) __NDK_FPABI__
 #elif (defined __GNUC__ && __GNUC__ >= 4)  ||  (defined __SUNPRO_C && __SUNPRO_C >= 0x590)
-    #define glproxy_IMPORTEXPORT __attribute__((visibility("default")))
+    #define GLPROXY_IMPORTEXPORT __attribute__((visibility("default")))
 #else
-    #define glproxy_IMPORTEXPORT
+    #define GLPROXY_IMPORTEXPORT
 #endif
 
 // Prevent "unused variable/parameter" warnings.
-#define glproxy_UNUSED(var) ((void)var)
+#define GLPROXY_UNUSED(var) ((void)var)
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* glproxy_COMMON_H */
+#endif /* GLPROXY_COMMON_H */

@@ -27,8 +27,8 @@
  * global function pointers or a hidden vtable.
  */
 
-#ifndef glproxy_GL_H
-#define glproxy_GL_H
+#ifndef GLPROXY_GL_H
+#define GLPROXY_GL_H
 
 #if    defined(__glplatform_h_)  || defined(__gl_h_)  || defined(__glext_h_)  \
     || defined(__gl2platform_h_) || defined(__gl2_h_) || defined(__gl2ext_h_) \
@@ -89,7 +89,7 @@ typedef khronos_boolean_enum_t bool;
 #define GLAPIENTRYP GLAPIENTRY *
 #endif
 
-#define glproxy_CALLSPEC KHRONOS_APIENTRY
+#define GLPROXY_CALLSPEC KHRONOS_APIENTRY
 
 #if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
 #   define GLAPI __attribute__((visibility("default")))
@@ -137,16 +137,16 @@ struct glproxy_gl_context {
 * By default, the TLS are inited by global constructor and destructor, if the compiler doesn't support that,
 then calling to the following API to do that.
 */
-glproxy_IMPORTEXPORT void glproxy_init_tls(void);
-glproxy_IMPORTEXPORT void glproxy_uninit_tls(void);
+GLPROXY_IMPORTEXPORT void glproxy_init_tls(void);
+GLPROXY_IMPORTEXPORT void glproxy_uninit_tls(void);
 
-glproxy_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *params);
-glproxy_IMPORTEXPORT void* glproxy_context_get();
-glproxy_IMPORTEXPORT void glproxy_context_set(void* new_contex);
-glproxy_IMPORTEXPORT void glproxy_context_destroy(void*);
+GLPROXY_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *params);
+GLPROXY_IMPORTEXPORT void* glproxy_context_get();
+GLPROXY_IMPORTEXPORT void glproxy_context_set(void* new_contex);
+GLPROXY_IMPORTEXPORT void glproxy_context_destroy(void*);
 
 /* target: (wgl, glx, egl, gl) */
-glproxy_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* target, const char* membername);
+GLPROXY_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* target, const char* membername);
 
 /**
 * Returns true if the given GL extension is supported in the current context.
@@ -157,12 +157,12 @@ glproxy_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* tar
 * \sa glproxy_has_glx_extension()
 * \sa glproxy_has_egl_extension()
 */
-glproxy_IMPORTEXPORT bool glproxy_has_gl_extension(const char *extension);
-glproxy_IMPORTEXPORT bool glproxy_is_desktop_gl(void);
-glproxy_IMPORTEXPORT int glproxy_gl_version(void);
+GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension(const char *extension);
+GLPROXY_IMPORTEXPORT bool glproxy_is_desktop_gl(void);
+GLPROXY_IMPORTEXPORT int glproxy_gl_version(void);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* glproxy_GL_H */
+#endif /* GLPROXY_GL_H */

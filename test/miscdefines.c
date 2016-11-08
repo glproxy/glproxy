@@ -23,11 +23,11 @@
 
 #include <glproxy/gl.h>
 
-#if glproxy_SUPPORT_EGL
+#if GLPROXY_SUPPORT_EGL
 #include <glproxy/egl.h>
 #endif
 
-#if glproxy_SUPPORT_GLX
+#if GLPROXY_SUPPORT_GLX
 #include <glproxy/glx.h>
 #endif
 

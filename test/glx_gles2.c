@@ -46,7 +46,7 @@ override_GLES2_glCreateShader(GLenum target);
 GLuint
 override_GLES2_glCreateShader(GLenum target)
 {
-    glproxy_UNUSED(target);
+    GLPROXY_UNUSED(target);
     return 0;
 }
 

@@ -23,22 +23,22 @@
 
 /** @file config.h
  *
- * Provides configuration options for glproxy.
+ * Provides configuration options for GLproxy.
  */
 
-#ifndef glproxy_CONFIG_H
-#define glproxy_CONFIG_H
+#ifndef GLPROXY_CONFIG_H
+#define GLPROXY_CONFIG_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#cmakedefine01 glproxy_SUPPORT_EGL
-#cmakedefine01 glproxy_SUPPORT_GLX
-#cmakedefine01 glproxy_SUPPORT_WGL
+#cmakedefine01 GLPROXY_SUPPORT_EGL
+#cmakedefine01 GLPROXY_SUPPORT_GLX
+#cmakedefine01 GLPROXY_SUPPORT_WGL
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* glproxy_CONFIG_H */
+#endif /* GLPROXY_CONFIG_H */

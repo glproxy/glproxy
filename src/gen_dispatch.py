@@ -54,7 +54,7 @@ class GLFunction(object):
 
 
         self.wrapped_name = name
-        self.public = 'glproxy_IMPORTEXPORT '
+        self.public = 'GLPROXY_IMPORTEXPORT '
 
         # This is the string of C code for passing through the
         # arguments to the function.
@@ -451,7 +451,7 @@ class Generator(object):
         self.write_function_ptr_typedefs()
 
         for func in self.sorted_functions:
-            self.outln('glproxy_IMPORTEXPORT {0} glproxy_CALLSPEC glproxy_{1}({2});'.format(func.ret_type,
+            self.outln('GLPROXY_IMPORTEXPORT {0} GLPROXY_CALLSPEC glproxy_{1}({2});'.format(func.ret_type,
                                                                                      func.name,
                                                                                      func.args_decl))
             self.outln('')

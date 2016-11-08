@@ -9643,6285 +9643,6285 @@ typedef void (GLAPIENTRY *PFNGLWINDOWPOS4SMESAPROC)(GLshort x, GLshort y, GLshor
 typedef void (GLAPIENTRY *PFNGLWINDOWPOS4SVMESAPROC)(const GLshort * v);
 typedef void (GLAPIENTRY *PFNGLWINDOWRECTANGLESEXTPROC)(GLenum mode, GLsizei count, const GLint * box);
 typedef void (GLAPIENTRY *PFNGLWRITEMASKEXTPROC)(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAccum(GLenum op, GLfloat value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAccum(GLenum op, GLfloat value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAccumxOES(GLenum op, GLfixed value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAccumxOES(GLenum op, GLfixed value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glActiveProgramEXT(GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glActiveProgramEXT(GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glActiveShaderProgram(GLuint pipeline, GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glActiveShaderProgram(GLuint pipeline, GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glActiveShaderProgramEXT(GLuint pipeline, GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glActiveShaderProgramEXT(GLuint pipeline, GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glActiveStencilFaceEXT(GLenum face);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glActiveStencilFaceEXT(GLenum face);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glActiveTexture(GLenum texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glActiveTexture(GLenum texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glActiveTextureARB(GLenum texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glActiveTextureARB(GLenum texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glActiveVaryingNV(GLuint program, const GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glActiveVaryingNV(GLuint program, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAlphaFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAlphaFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAlphaFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAlphaFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAlphaFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAlphaFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAlphaFunc(GLenum func, GLfloat ref);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAlphaFunc(GLenum func, GLfloat ref);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAlphaFuncQCOM(GLenum func, GLclampf ref);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAlphaFuncQCOM(GLenum func, GLclampf ref);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAlphaFuncx(GLenum func, GLfixed ref);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAlphaFuncx(GLenum func, GLfixed ref);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAlphaFuncxOES(GLenum func, GLfixed ref);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAlphaFuncxOES(GLenum func, GLfixed ref);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glApplyFramebufferAttachmentCMAAINTEL(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glApplyFramebufferAttachmentCMAAINTEL(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glApplyTextureEXT(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glApplyTextureEXT(GLenum mode);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glAreProgramsResidentNV(GLsizei n, const GLuint * programs, GLboolean * residences);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glAreProgramsResidentNV(GLsizei n, const GLuint * programs, GLboolean * residences);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glAreTexturesResident(GLsizei n, const GLuint * textures, GLboolean * residences);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glAreTexturesResident(GLsizei n, const GLuint * textures, GLboolean * residences);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glAreTexturesResidentEXT(GLsizei n, const GLuint * textures, GLboolean * residences);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glAreTexturesResidentEXT(GLsizei n, const GLuint * textures, GLboolean * residences);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glArrayElement(GLint i);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glArrayElement(GLint i);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glArrayElementEXT(GLint i);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glArrayElementEXT(GLint i);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glArrayObjectATI(GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glArrayObjectATI(GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAsyncMarkerSGIX(GLuint marker);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAsyncMarkerSGIX(GLuint marker);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glAttachShader(GLuint program, GLuint shader);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glAttachShader(GLuint program, GLuint shader);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBegin(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBegin(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginConditionalRender(GLuint id, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginConditionalRender(GLuint id, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginConditionalRenderNV(GLuint id, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginConditionalRenderNV(GLuint id, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginConditionalRenderNVX(GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginConditionalRenderNVX(GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginFragmentShaderATI(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginFragmentShaderATI(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginOcclusionQueryNV(GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginOcclusionQueryNV(GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginPerfMonitorAMD(GLuint monitor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginPerfMonitorAMD(GLuint monitor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginPerfQueryINTEL(GLuint queryHandle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginPerfQueryINTEL(GLuint queryHandle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginQuery(GLenum target, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginQuery(GLenum target, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginQueryARB(GLenum target, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginQueryARB(GLenum target, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginQueryEXT(GLenum target, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginQueryEXT(GLenum target, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginQueryIndexed(GLenum target, GLuint index, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginQueryIndexed(GLenum target, GLuint index, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginTransformFeedback(GLenum primitiveMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginTransformFeedback(GLenum primitiveMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginTransformFeedbackEXT(GLenum primitiveMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginTransformFeedbackEXT(GLenum primitiveMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginTransformFeedbackNV(GLenum primitiveMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginTransformFeedbackNV(GLenum primitiveMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginVertexShaderEXT(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginVertexShaderEXT(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBeginVideoCaptureNV(GLuint video_capture_slot);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBeginVideoCaptureNV(GLuint video_capture_slot);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindAttribLocation(GLuint program, GLuint index, const GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindAttribLocation(GLuint program, GLuint index, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindAttribLocationARB(GLhandleARB programObj, GLuint index, const GLcharARB * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindAttribLocationARB(GLhandleARB programObj, GLuint index, const GLcharARB * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBuffer(GLenum target, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBuffer(GLenum target, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferARB(GLenum target, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferARB(GLenum target, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferBase(GLenum target, GLuint index, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferBase(GLenum target, GLuint index, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferBaseEXT(GLenum target, GLuint index, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferBaseEXT(GLenum target, GLuint index, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferBaseNV(GLenum target, GLuint index, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferBaseNV(GLenum target, GLuint index, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferOffsetEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferOffsetEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferOffsetNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferOffsetNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferRangeEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferRangeEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBufferRangeNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBufferRangeNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint * buffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint * buffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizeiptr * sizes);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizeiptr * sizes);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindFragDataLocation(GLuint program, GLuint color, const GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindFragDataLocation(GLuint program, GLuint color, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindFragDataLocationEXT(GLuint program, GLuint color, const GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindFragDataLocationEXT(GLuint program, GLuint color, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindFragDataLocationIndexedEXT(GLuint program, GLuint colorNumber, GLuint index, const GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindFragDataLocationIndexedEXT(GLuint program, GLuint colorNumber, GLuint index, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindFragmentShaderATI(GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindFragmentShaderATI(GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindFramebuffer(GLenum target, GLuint framebuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindFramebuffer(GLenum target, GLuint framebuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindFramebufferEXT(GLenum target, GLuint framebuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindFramebufferEXT(GLenum target, GLuint framebuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindFramebufferOES(GLenum target, GLuint framebuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindFramebufferOES(GLenum target, GLuint framebuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindImageTextureEXT(GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindImageTextureEXT(GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindImageTextures(GLuint first, GLsizei count, const GLuint * textures);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindImageTextures(GLuint first, GLsizei count, const GLuint * textures);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glBindLightParameterEXT(GLenum light, GLenum value);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glBindLightParameterEXT(GLenum light, GLenum value);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glBindMaterialParameterEXT(GLenum face, GLenum value);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glBindMaterialParameterEXT(GLenum face, GLenum value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindMultiTextureEXT(GLenum texunit, GLenum target, GLuint texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindMultiTextureEXT(GLenum texunit, GLenum target, GLuint texture);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glBindParameterEXT(GLenum value);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glBindParameterEXT(GLenum value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindProgramARB(GLenum target, GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindProgramARB(GLenum target, GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindProgramNV(GLenum target, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindProgramNV(GLenum target, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindProgramPipeline(GLuint pipeline);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindProgramPipeline(GLuint pipeline);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindProgramPipelineEXT(GLuint pipeline);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindProgramPipelineEXT(GLuint pipeline);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindRenderbuffer(GLenum target, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindRenderbuffer(GLenum target, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindRenderbufferEXT(GLenum target, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindRenderbufferEXT(GLenum target, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindRenderbufferOES(GLenum target, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindRenderbufferOES(GLenum target, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindSampler(GLuint unit, GLuint sampler);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindSampler(GLuint unit, GLuint sampler);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindSamplers(GLuint first, GLsizei count, const GLuint * samplers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindSamplers(GLuint first, GLsizei count, const GLuint * samplers);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glBindTexGenParameterEXT(GLenum unit, GLenum coord, GLenum value);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glBindTexGenParameterEXT(GLenum unit, GLenum coord, GLenum value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindTexture(GLenum target, GLuint texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindTexture(GLenum target, GLuint texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindTextureEXT(GLenum target, GLuint texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindTextureEXT(GLenum target, GLuint texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindTextureUnit(GLuint unit, GLuint texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindTextureUnit(GLuint unit, GLuint texture);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glBindTextureUnitParameterEXT(GLenum unit, GLenum value);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glBindTextureUnitParameterEXT(GLenum unit, GLenum value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindTextures(GLuint first, GLsizei count, const GLuint * textures);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindTextures(GLuint first, GLsizei count, const GLuint * textures);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindTransformFeedback(GLenum target, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindTransformFeedback(GLenum target, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindTransformFeedbackNV(GLenum target, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindTransformFeedbackNV(GLenum target, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindVertexArray(GLuint array);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindVertexArray(GLuint array);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindVertexArrayAPPLE(GLuint array);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindVertexArrayAPPLE(GLuint array);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindVertexArrayOES(GLuint array);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindVertexArrayOES(GLuint array);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindVertexBuffers(GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizei * strides);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindVertexBuffers(GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizei * strides);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindVertexShaderEXT(GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindVertexShaderEXT(GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindVideoCaptureStreamBufferNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLintptrARB offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindVideoCaptureStreamBufferNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLintptrARB offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBindVideoCaptureStreamTextureNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLenum target, GLuint texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBindVideoCaptureStreamTextureNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLenum target, GLuint texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3bEXT(GLbyte bx, GLbyte by, GLbyte bz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3bEXT(GLbyte bx, GLbyte by, GLbyte bz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3bvEXT(const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3bvEXT(const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3dEXT(GLdouble bx, GLdouble by, GLdouble bz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3dEXT(GLdouble bx, GLdouble by, GLdouble bz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3dvEXT(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3dvEXT(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3fEXT(GLfloat bx, GLfloat by, GLfloat bz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3fEXT(GLfloat bx, GLfloat by, GLfloat bz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3fvEXT(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3fvEXT(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3iEXT(GLint bx, GLint by, GLint bz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3iEXT(GLint bx, GLint by, GLint bz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3ivEXT(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3ivEXT(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3sEXT(GLshort bx, GLshort by, GLshort bz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3sEXT(GLshort bx, GLshort by, GLshort bz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormal3svEXT(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormal3svEXT(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBinormalPointerEXT(GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBinormalPointerEXT(GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte * bitmap);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte * bitmap);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBitmapxOES(GLsizei width, GLsizei height, GLfixed xorig, GLfixed yorig, GLfixed xmove, GLfixed ymove, const GLubyte * bitmap);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBitmapxOES(GLsizei width, GLsizei height, GLfixed xorig, GLfixed yorig, GLfixed xmove, GLfixed ymove, const GLubyte * bitmap);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendBarrier(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendBarrier(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendBarrierKHR(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendBarrierKHR(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendBarrierNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendBarrierNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendColorEXT(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendColorEXT(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendColorxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendColorxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquation(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquation(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationEXT(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationEXT(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationIndexedAMD(GLuint buf, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationIndexedAMD(GLuint buf, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationOES(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationOES(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationSeparateEXT(GLenum modeRGB, GLenum modeAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationSeparateEXT(GLenum modeRGB, GLenum modeAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationSeparateIndexedAMD(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationSeparateIndexedAMD(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationSeparateOES(GLenum modeRGB, GLenum modeAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationSeparateOES(GLenum modeRGB, GLenum modeAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationSeparatei(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationSeparatei(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationSeparateiARB(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationSeparateiARB(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationSeparateiEXT(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationSeparateiEXT(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationSeparateiOES(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationSeparateiOES(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationi(GLuint buf, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationi(GLuint buf, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationiARB(GLuint buf, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationiARB(GLuint buf, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationiEXT(GLuint buf, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationiEXT(GLuint buf, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendEquationiOES(GLuint buf, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendEquationiOES(GLuint buf, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFunc(GLenum sfactor, GLenum dfactor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFunc(GLenum sfactor, GLenum dfactor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncIndexedAMD(GLuint buf, GLenum src, GLenum dst);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncIndexedAMD(GLuint buf, GLenum src, GLenum dst);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparateEXT(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparateEXT(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparateINGR(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparateINGR(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparateIndexedAMD(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparateIndexedAMD(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparateOES(GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparateOES(GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparateiEXT(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparateiEXT(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFuncSeparateiOES(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFuncSeparateiOES(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFunci(GLuint buf, GLenum src, GLenum dst);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFunci(GLuint buf, GLenum src, GLenum dst);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFunciARB(GLuint buf, GLenum src, GLenum dst);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFunciARB(GLuint buf, GLenum src, GLenum dst);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFunciEXT(GLuint buf, GLenum src, GLenum dst);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFunciEXT(GLuint buf, GLenum src, GLenum dst);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendFunciOES(GLuint buf, GLenum src, GLenum dst);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendFunciOES(GLuint buf, GLenum src, GLenum dst);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlendParameteriNV(GLenum pname, GLint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlendParameteriNV(GLenum pname, GLint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBlitNamedFramebuffer(GLuint readFramebuffer, GLuint drawFramebuffer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBlitNamedFramebuffer(GLuint readFramebuffer, GLuint drawFramebuffer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferData(GLenum target, GLsizeiptr size, const void * data, GLenum usage);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferData(GLenum target, GLsizeiptr size, const void * data, GLenum usage);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferDataARB(GLenum target, GLsizeiptrARB size, const void * data, GLenum usage);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferDataARB(GLenum target, GLsizeiptrARB size, const void * data, GLenum usage);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferStorage(GLenum target, GLsizeiptr size, const void * data, GLbitfield flags);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferStorage(GLenum target, GLsizeiptr size, const void * data, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferStorageEXT(GLenum target, GLsizeiptr size, const void * data, GLbitfield flags);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferStorageEXT(GLenum target, GLsizeiptr size, const void * data, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCallCommandListNV(GLuint list);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCallCommandListNV(GLuint list);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCallList(GLuint list);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCallList(GLuint list);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCallLists(GLsizei n, GLenum type, const void * lists);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCallLists(GLsizei n, GLenum type, const void * lists);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glCheckFramebufferStatus(GLenum target);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glCheckFramebufferStatus(GLenum target);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glCheckFramebufferStatusEXT(GLenum target);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glCheckFramebufferStatusEXT(GLenum target);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glCheckFramebufferStatusOES(GLenum target);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glCheckFramebufferStatusOES(GLenum target);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glCheckNamedFramebufferStatus(GLuint framebuffer, GLenum target);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glCheckNamedFramebufferStatus(GLuint framebuffer, GLenum target);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClampColor(GLenum target, GLenum clamp);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClampColor(GLenum target, GLenum clamp);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClampColorARB(GLenum target, GLenum clamp);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClampColorARB(GLenum target, GLenum clamp);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClear(GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClear(GLbitfield mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearAccumxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearAccumxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearBufferfi(GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearBufferfi(GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearBufferfv(GLenum buffer, GLint drawbuffer, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearBufferfv(GLenum buffer, GLint drawbuffer, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearBufferiv(GLenum buffer, GLint drawbuffer, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearBufferiv(GLenum buffer, GLint drawbuffer, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearBufferuiv(GLenum buffer, GLint drawbuffer, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearBufferuiv(GLenum buffer, GLint drawbuffer, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearColorIiEXT(GLint red, GLint green, GLint blue, GLint alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearColorIiEXT(GLint red, GLint green, GLint blue, GLint alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearColorIuiEXT(GLuint red, GLuint green, GLuint blue, GLuint alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearColorIuiEXT(GLuint red, GLuint green, GLuint blue, GLuint alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearColorx(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearColorx(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearColorxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearColorxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearDepth(GLdouble depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearDepth(GLdouble depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearDepthdNV(GLdouble depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearDepthdNV(GLdouble depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearDepthf(GLfloat d);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearDepthf(GLfloat d);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearDepthfOES(GLclampf depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearDepthfOES(GLclampf depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearDepthx(GLfixed depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearDepthx(GLfixed depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearDepthxOES(GLfixed depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearDepthxOES(GLfixed depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearIndex(GLfloat c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearIndex(GLfloat c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearNamedBufferData(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearNamedBufferData(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearNamedBufferSubData(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearNamedBufferSubData(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLsizeiptr offset, GLsizeiptr size, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLsizeiptr offset, GLsizeiptr size, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearNamedFramebufferfi(GLuint framebuffer, GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearNamedFramebufferfi(GLuint framebuffer, GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearNamedFramebufferfv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearNamedFramebufferfv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearNamedFramebufferiv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearNamedFramebufferiv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearNamedFramebufferuiv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearNamedFramebufferuiv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearPixelLocalStorageuiEXT(GLsizei offset, GLsizei n, const GLuint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearPixelLocalStorageuiEXT(GLsizei offset, GLsizei n, const GLuint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearStencil(GLint s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearStencil(GLint s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClientActiveTexture(GLenum texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClientActiveTexture(GLenum texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClientActiveTextureARB(GLenum texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClientActiveTextureARB(GLenum texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClientActiveVertexStreamATI(GLenum stream);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClientActiveVertexStreamATI(GLenum stream);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClientAttribDefaultEXT(GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClientAttribDefaultEXT(GLbitfield mask);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glClientWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glClientWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClipControl(GLenum origin, GLenum depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClipControl(GLenum origin, GLenum depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClipPlane(GLenum plane, const GLdouble * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClipPlane(GLenum plane, const GLdouble * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClipPlanef(GLenum p, const GLfloat * eqn);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClipPlanef(GLenum p, const GLfloat * eqn);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClipPlanefIMG(GLenum p, const GLfloat * eqn);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClipPlanefIMG(GLenum p, const GLfloat * eqn);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClipPlanefOES(GLenum plane, const GLfloat * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClipPlanefOES(GLenum plane, const GLfloat * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClipPlanex(GLenum plane, const GLfixed * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClipPlanex(GLenum plane, const GLfixed * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClipPlanexIMG(GLenum p, const GLfixed * eqn);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClipPlanexIMG(GLenum p, const GLfixed * eqn);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glClipPlanexOES(GLenum plane, const GLfixed * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glClipPlanexOES(GLenum plane, const GLfixed * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3b(GLbyte red, GLbyte green, GLbyte blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3b(GLbyte red, GLbyte green, GLbyte blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3bv(const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3bv(const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3d(GLdouble red, GLdouble green, GLdouble blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3d(GLdouble red, GLdouble green, GLdouble blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3f(GLfloat red, GLfloat green, GLfloat blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3f(GLfloat red, GLfloat green, GLfloat blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3fVertex3fvSUN(const GLfloat * c, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3fVertex3fvSUN(const GLfloat * c, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3i(GLint red, GLint green, GLint blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3i(GLint red, GLint green, GLint blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3s(GLshort red, GLshort green, GLshort blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3s(GLshort red, GLshort green, GLshort blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3ub(GLubyte red, GLubyte green, GLubyte blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3ub(GLubyte red, GLubyte green, GLubyte blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3ubv(const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3ubv(const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3ui(GLuint red, GLuint green, GLuint blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3ui(GLuint red, GLuint green, GLuint blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3uiv(const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3uiv(const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3us(GLushort red, GLushort green, GLushort blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3us(GLushort red, GLushort green, GLushort blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3usv(const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3usv(const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3xOES(GLfixed red, GLfixed green, GLfixed blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3xOES(GLfixed red, GLfixed green, GLfixed blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor3xvOES(const GLfixed * components);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor3xvOES(const GLfixed * components);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4bv(const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4bv(const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4fNormal3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4fNormal3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4fNormal3fVertex3fvSUN(const GLfloat * c, const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4fNormal3fVertex3fvSUN(const GLfloat * c, const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue, GLhalfNV alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue, GLhalfNV alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4i(GLint red, GLint green, GLint blue, GLint alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4i(GLint red, GLint green, GLint blue, GLint alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4s(GLshort red, GLshort green, GLshort blue, GLshort alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4s(GLshort red, GLshort green, GLshort blue, GLshort alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4ubVertex2fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4ubVertex2fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4ubVertex2fvSUN(const GLubyte * c, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4ubVertex2fvSUN(const GLubyte * c, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4ubVertex3fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4ubVertex3fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4ubVertex3fvSUN(const GLubyte * c, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4ubVertex3fvSUN(const GLubyte * c, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4ubv(const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4ubv(const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4uiv(const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4uiv(const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4usv(const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4usv(const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4xOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4xOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColor4xvOES(const GLfixed * components);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColor4xvOES(const GLfixed * components);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorFormatNV(GLint size, GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorFormatNV(GLint size, GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorMaskIndexedEXT(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorMaskIndexedEXT(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorMaskiEXT(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorMaskiEXT(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorMaskiOES(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorMaskiOES(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorMaterial(GLenum face, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorMaterial(GLenum face, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorP3ui(GLenum type, GLuint color);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorP3ui(GLenum type, GLuint color);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorP3uiv(GLenum type, const GLuint * color);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorP3uiv(GLenum type, const GLuint * color);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorP4ui(GLenum type, GLuint color);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorP4ui(GLenum type, GLuint color);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorP4uiv(GLenum type, const GLuint * color);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorP4uiv(GLenum type, const GLuint * color);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorPointer(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorPointer(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorPointervINTEL(GLint size, GLenum type, const void ** pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorPointervINTEL(GLint size, GLenum type, const void ** pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorSubTable(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorSubTable(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorSubTableEXT(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorSubTableEXT(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorTable(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * table);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorTable(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * table);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorTableEXT(GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const void * table);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorTableEXT(GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const void * table);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorTableParameterfv(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorTableParameterfv(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorTableParameterfvSGI(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorTableParameterfvSGI(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorTableParameteriv(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorTableParameteriv(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorTableParameterivSGI(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorTableParameterivSGI(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glColorTableSGI(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * table);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glColorTableSGI(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * table);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCombinerInputNV(GLenum stage, GLenum portion, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCombinerInputNV(GLenum stage, GLenum portion, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCombinerOutputNV(GLenum stage, GLenum portion, GLenum abOutput, GLenum cdOutput, GLenum sumOutput, GLenum scale, GLenum bias, GLboolean abDotProduct, GLboolean cdDotProduct, GLboolean muxSum);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCombinerOutputNV(GLenum stage, GLenum portion, GLenum abOutput, GLenum cdOutput, GLenum sumOutput, GLenum scale, GLenum bias, GLboolean abDotProduct, GLboolean cdDotProduct, GLboolean muxSum);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCombinerParameterfNV(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCombinerParameterfNV(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCombinerParameterfvNV(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCombinerParameterfvNV(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCombinerParameteriNV(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCombinerParameteriNV(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCombinerParameterivNV(GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCombinerParameterivNV(GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCombinerStageParameterfvNV(GLenum stage, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCombinerStageParameterfvNV(GLenum stage, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCommandListSegmentsNV(GLuint list, GLuint segments);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCommandListSegmentsNV(GLuint list, GLuint segments);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompileCommandListNV(GLuint list);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompileCommandListNV(GLuint list);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompileShader(GLuint shader);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompileShader(GLuint shader);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompileShaderARB(GLhandleARB shaderObj);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompileShaderARB(GLhandleARB shaderObj);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompileShaderIncludeARB(GLuint shader, GLsizei count, const GLchar *const* path, const GLint * length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompileShaderIncludeARB(GLuint shader, GLsizei count, const GLchar *const* path, const GLint * length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexImage2DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexImage2DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexImage3DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexImage3DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexSubImage1DARB(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexSubImage1DARB(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexSubImage2DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexSubImage2DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexSubImage3DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexSubImage3DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * bits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * bits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConservativeRasterParameterfNV(GLenum pname, GLfloat value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConservativeRasterParameterfNV(GLenum pname, GLfloat value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConservativeRasterParameteriNV(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConservativeRasterParameteriNV(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionFilter1D(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionFilter1D(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameterf(GLenum target, GLenum pname, GLfloat params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameterf(GLenum target, GLenum pname, GLfloat params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameterfEXT(GLenum target, GLenum pname, GLfloat params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameterfEXT(GLenum target, GLenum pname, GLfloat params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameterfv(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameterfv(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameterfvEXT(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameterfvEXT(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameteri(GLenum target, GLenum pname, GLint params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameteri(GLenum target, GLenum pname, GLint params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameteriEXT(GLenum target, GLenum pname, GLint params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameteriEXT(GLenum target, GLenum pname, GLint params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameteriv(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameteriv(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameterivEXT(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameterivEXT(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameterxOES(GLenum target, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameterxOES(GLenum target, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glConvolutionParameterxvOES(GLenum target, GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glConvolutionParameterxvOES(GLenum target, GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyBufferSubDataNV(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyBufferSubDataNV(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyColorSubTable(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyColorSubTable(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyColorSubTableEXT(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyColorSubTableEXT(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyColorTable(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyColorTable(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyColorTableSGI(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyColorTableSGI(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyConvolutionFilter1D(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyConvolutionFilter1D(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyConvolutionFilter2D(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyConvolutionFilter2D(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyImageSubDataEXT(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyImageSubDataEXT(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyImageSubDataNV(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyImageSubDataNV(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyImageSubDataOES(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyImageSubDataOES(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyNamedBufferSubData(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyNamedBufferSubData(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyPathNV(GLuint resultPath, GLuint srcPath);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyPathNV(GLuint resultPath, GLuint srcPath);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexImage1DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexImage1DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexImage2DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexImage2DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureLevelsAPPLE(GLuint destinationTexture, GLuint sourceTexture, GLint sourceBaseLevel, GLsizei sourceLevelCount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureLevelsAPPLE(GLuint destinationTexture, GLuint sourceTexture, GLint sourceBaseLevel, GLsizei sourceLevelCount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCopyTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCopyTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat * transformValues);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat * transformValues);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCoverFillPathNV(GLuint path, GLenum coverMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCoverFillPathNV(GLuint path, GLenum coverMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat * transformValues);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat * transformValues);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCoverStrokePathNV(GLuint path, GLenum coverMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCoverStrokePathNV(GLuint path, GLenum coverMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCoverageMaskNV(GLboolean mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCoverageMaskNV(GLboolean mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCoverageModulationNV(GLenum components);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCoverageModulationNV(GLenum components);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCoverageModulationTableNV(GLsizei n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCoverageModulationTableNV(GLsizei n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCoverageOperationNV(GLenum operation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCoverageOperationNV(GLenum operation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateBuffers(GLsizei n, GLuint * buffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateBuffers(GLsizei n, GLuint * buffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateCommandListsNV(GLsizei n, GLuint * lists);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateCommandListsNV(GLsizei n, GLuint * lists);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateFramebuffers(GLsizei n, GLuint * framebuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateFramebuffers(GLsizei n, GLuint * framebuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glCreateProgram(void);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glCreateProgram(void);
 
-glproxy_IMPORTEXPORT GLhandleARB glproxy_CALLSPEC glproxy_glCreateProgramObjectARB(void);
+GLPROXY_IMPORTEXPORT GLhandleARB GLPROXY_CALLSPEC glproxy_glCreateProgramObjectARB(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateProgramPipelines(GLsizei n, GLuint * pipelines);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateProgramPipelines(GLsizei n, GLuint * pipelines);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateQueries(GLenum target, GLsizei n, GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateQueries(GLenum target, GLsizei n, GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateRenderbuffers(GLsizei n, GLuint * renderbuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateRenderbuffers(GLsizei n, GLuint * renderbuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateSamplers(GLsizei n, GLuint * samplers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateSamplers(GLsizei n, GLuint * samplers);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glCreateShader(GLenum type);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glCreateShader(GLenum type);
 
-glproxy_IMPORTEXPORT GLhandleARB glproxy_CALLSPEC glproxy_glCreateShaderObjectARB(GLenum shaderType);
+GLPROXY_IMPORTEXPORT GLhandleARB GLPROXY_CALLSPEC glproxy_glCreateShaderObjectARB(GLenum shaderType);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glCreateShaderProgramEXT(GLenum type, const GLchar * string);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glCreateShaderProgramEXT(GLenum type, const GLchar * string);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar *const* strings);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar *const* strings);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glCreateShaderProgramvEXT(GLenum type, GLsizei count, const GLchar ** strings);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glCreateShaderProgramvEXT(GLenum type, GLsizei count, const GLchar ** strings);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateStatesNV(GLsizei n, GLuint * states);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateStatesNV(GLsizei n, GLuint * states);
 
-glproxy_IMPORTEXPORT GLsync glproxy_CALLSPEC glproxy_glCreateSyncFromCLeventARB(struct _cl_context * context, struct _cl_event * event, GLbitfield flags);
+GLPROXY_IMPORTEXPORT GLsync GLPROXY_CALLSPEC glproxy_glCreateSyncFromCLeventARB(struct _cl_context * context, struct _cl_event * event, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateTextures(GLenum target, GLsizei n, GLuint * textures);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateTextures(GLenum target, GLsizei n, GLuint * textures);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateTransformFeedbacks(GLsizei n, GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateTransformFeedbacks(GLsizei n, GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCreateVertexArrays(GLsizei n, GLuint * arrays);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCreateVertexArrays(GLsizei n, GLuint * arrays);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCullFace(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCullFace(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCullParameterdvEXT(GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCullParameterdvEXT(GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCullParameterfvEXT(GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCullParameterfvEXT(GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCurrentPaletteMatrixARB(GLint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCurrentPaletteMatrixARB(GLint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glCurrentPaletteMatrixOES(GLuint matrixpaletteindex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glCurrentPaletteMatrixOES(GLuint matrixpaletteindex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageCallback(GLDEBUGPROC callback, const void * userParam);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageCallback(GLDEBUGPROC callback, const void * userParam);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, void * userParam);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, void * userParam);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageCallbackARB(GLDEBUGPROCARB callback, const void * userParam);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageCallbackARB(GLDEBUGPROCARB callback, const void * userParam);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageCallbackKHR(GLDEBUGPROCKHR callback, const void * userParam);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageCallbackKHR(GLDEBUGPROCKHR callback, const void * userParam);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageControlARB(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageControlARB(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageControlKHR(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageControlKHR(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageEnableAMD(GLenum category, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageEnableAMD(GLenum category, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * buf);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * buf);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageInsertAMD(GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar * buf);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageInsertAMD(GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar * buf);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageInsertARB(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * buf);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageInsertARB(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * buf);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDebugMessageInsertKHR(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * buf);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDebugMessageInsertKHR(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * buf);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeformSGIX(GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeformSGIX(GLbitfield mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeformationMap3dSGIX(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, GLdouble w1, GLdouble w2, GLint wstride, GLint worder, const GLdouble * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeformationMap3dSGIX(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, GLdouble w1, GLdouble w2, GLint wstride, GLint worder, const GLdouble * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeformationMap3fSGIX(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, GLfloat w1, GLfloat w2, GLint wstride, GLint worder, const GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeformationMap3fSGIX(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, GLfloat w1, GLfloat w2, GLint wstride, GLint worder, const GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteAsyncMarkersSGIX(GLuint marker, GLsizei range);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteAsyncMarkersSGIX(GLuint marker, GLsizei range);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteBuffers(GLsizei n, const GLuint * buffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteBuffers(GLsizei n, const GLuint * buffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteBuffersARB(GLsizei n, const GLuint * buffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteBuffersARB(GLsizei n, const GLuint * buffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteCommandListsNV(GLsizei n, const GLuint * lists);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteCommandListsNV(GLsizei n, const GLuint * lists);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteFencesAPPLE(GLsizei n, const GLuint * fences);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteFencesAPPLE(GLsizei n, const GLuint * fences);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteFencesNV(GLsizei n, const GLuint * fences);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteFencesNV(GLsizei n, const GLuint * fences);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteFragmentShaderATI(GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteFragmentShaderATI(GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteFramebuffers(GLsizei n, const GLuint * framebuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteFramebuffers(GLsizei n, const GLuint * framebuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteFramebuffersEXT(GLsizei n, const GLuint * framebuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteFramebuffersEXT(GLsizei n, const GLuint * framebuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteFramebuffersOES(GLsizei n, const GLuint * framebuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteFramebuffersOES(GLsizei n, const GLuint * framebuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteLists(GLuint list, GLsizei range);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteLists(GLuint list, GLsizei range);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteNamedStringARB(GLint namelen, const GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteNamedStringARB(GLint namelen, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteNamesAMD(GLenum identifier, GLuint num, const GLuint * names);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteNamesAMD(GLenum identifier, GLuint num, const GLuint * names);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteObjectARB(GLhandleARB obj);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteObjectARB(GLhandleARB obj);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteOcclusionQueriesNV(GLsizei n, const GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteOcclusionQueriesNV(GLsizei n, const GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeletePathsNV(GLuint path, GLsizei range);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeletePathsNV(GLuint path, GLsizei range);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeletePerfMonitorsAMD(GLsizei n, GLuint * monitors);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeletePerfMonitorsAMD(GLsizei n, GLuint * monitors);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeletePerfQueryINTEL(GLuint queryHandle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeletePerfQueryINTEL(GLuint queryHandle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteProgram(GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteProgram(GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteProgramPipelines(GLsizei n, const GLuint * pipelines);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteProgramPipelines(GLsizei n, const GLuint * pipelines);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteProgramPipelinesEXT(GLsizei n, const GLuint * pipelines);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteProgramPipelinesEXT(GLsizei n, const GLuint * pipelines);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteProgramsARB(GLsizei n, const GLuint * programs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteProgramsARB(GLsizei n, const GLuint * programs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteProgramsNV(GLsizei n, const GLuint * programs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteProgramsNV(GLsizei n, const GLuint * programs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteQueries(GLsizei n, const GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteQueries(GLsizei n, const GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteQueriesARB(GLsizei n, const GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteQueriesARB(GLsizei n, const GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteQueriesEXT(GLsizei n, const GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteQueriesEXT(GLsizei n, const GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteRenderbuffersOES(GLsizei n, const GLuint * renderbuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteRenderbuffersOES(GLsizei n, const GLuint * renderbuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteSamplers(GLsizei count, const GLuint * samplers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteSamplers(GLsizei count, const GLuint * samplers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteShader(GLuint shader);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteShader(GLuint shader);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteStatesNV(GLsizei n, const GLuint * states);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteStatesNV(GLsizei n, const GLuint * states);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteSync(GLsync sync);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteSync(GLsync sync);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteSyncAPPLE(GLsync sync);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteSyncAPPLE(GLsync sync);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteTextures(GLsizei n, const GLuint * textures);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteTextures(GLsizei n, const GLuint * textures);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteTexturesEXT(GLsizei n, const GLuint * textures);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteTexturesEXT(GLsizei n, const GLuint * textures);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteTransformFeedbacks(GLsizei n, const GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteTransformFeedbacks(GLsizei n, const GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteTransformFeedbacksNV(GLsizei n, const GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteTransformFeedbacksNV(GLsizei n, const GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteVertexArrays(GLsizei n, const GLuint * arrays);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteVertexArrays(GLsizei n, const GLuint * arrays);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteVertexArraysAPPLE(GLsizei n, const GLuint * arrays);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteVertexArraysAPPLE(GLsizei n, const GLuint * arrays);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteVertexArraysOES(GLsizei n, const GLuint * arrays);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteVertexArraysOES(GLsizei n, const GLuint * arrays);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDeleteVertexShaderEXT(GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDeleteVertexShaderEXT(GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthBoundsEXT(GLclampd zmin, GLclampd zmax);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthBoundsEXT(GLclampd zmin, GLclampd zmax);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthBoundsdNV(GLdouble zmin, GLdouble zmax);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthBoundsdNV(GLdouble zmin, GLdouble zmax);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthFunc(GLenum func);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthFunc(GLenum func);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthMask(GLboolean flag);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthMask(GLboolean flag);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRange(GLdouble hither, GLdouble yon);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRange(GLdouble hither, GLdouble yon);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangeArrayfvNV(GLuint first, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangeArrayfvNV(GLuint first, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangeArrayv(GLuint first, GLsizei count, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangeArrayv(GLuint first, GLsizei count, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangeIndexed(GLuint index, GLdouble n, GLdouble f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangeIndexed(GLuint index, GLdouble n, GLdouble f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangeIndexedfNV(GLuint index, GLfloat n, GLfloat f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangeIndexedfNV(GLuint index, GLfloat n, GLfloat f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangedNV(GLdouble zNear, GLdouble zFar);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangedNV(GLdouble zNear, GLdouble zFar);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangef(GLfloat n, GLfloat f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangef(GLfloat n, GLfloat f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangefOES(GLclampf n, GLclampf f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangefOES(GLclampf n, GLclampf f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangex(GLfixed n, GLfixed f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangex(GLfixed n, GLfixed f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDepthRangexOES(GLfixed n, GLfixed f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDepthRangexOES(GLfixed n, GLfixed f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDetachObjectARB(GLhandleARB containerObj, GLhandleARB attachedObj);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDetachObjectARB(GLhandleARB containerObj, GLhandleARB attachedObj);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDetachShader(GLuint program, GLuint shader);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDetachShader(GLuint program, GLuint shader);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisable(GLenum cap);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisable(GLenum cap);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableClientState(GLenum array);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableClientState(GLenum array);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableClientStateIndexedEXT(GLenum array, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableClientStateIndexedEXT(GLenum array, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableClientStateiEXT(GLenum array, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableClientStateiEXT(GLenum array, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableDriverControlQCOM(GLuint driverControl);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableDriverControlQCOM(GLuint driverControl);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableIndexedEXT(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableIndexedEXT(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableVariantClientStateEXT(GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableVariantClientStateEXT(GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableVertexArrayAttrib(GLuint vaobj, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableVertexArrayAttrib(GLuint vaobj, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableVertexArrayAttribEXT(GLuint vaobj, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableVertexArrayAttribEXT(GLuint vaobj, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableVertexArrayEXT(GLuint vaobj, GLenum array);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableVertexArrayEXT(GLuint vaobj, GLenum array);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableVertexAttribAPPLE(GLuint index, GLenum pname);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableVertexAttribAPPLE(GLuint index, GLenum pname);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableVertexAttribArray(GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableVertexAttribArray(GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableVertexAttribArrayARB(GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableVertexAttribArrayARB(GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisablei(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisablei(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableiEXT(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableiEXT(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableiNV(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableiNV(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDisableiOES(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDisableiOES(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDiscardFramebufferEXT(GLenum target, GLsizei numAttachments, const GLenum * attachments);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDiscardFramebufferEXT(GLenum target, GLsizei numAttachments, const GLenum * attachments);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDispatchComputeGroupSizeARB(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDispatchComputeGroupSizeARB(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDispatchComputeIndirect(GLintptr indirect);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDispatchComputeIndirect(GLintptr indirect);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArrays(GLenum mode, GLint first, GLsizei count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArrays(GLenum mode, GLint first, GLsizei count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysIndirect(GLenum mode, const void * indirect);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysIndirect(GLenum mode, const void * indirect);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsizei instancecount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsizei instancecount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysInstancedANGLE(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysInstancedANGLE(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysInstancedARB(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysInstancedARB(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysInstancedBaseInstanceEXT(GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysInstancedBaseInstanceEXT(GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawArraysInstancedNV(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawArraysInstancedNV(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawBuffer(GLenum buf);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawBuffer(GLenum buf);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawBuffers(GLsizei n, const GLenum * bufs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawBuffers(GLsizei n, const GLenum * bufs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawBuffersARB(GLsizei n, const GLenum * bufs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawBuffersARB(GLsizei n, const GLenum * bufs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawBuffersATI(GLsizei n, const GLenum * bufs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawBuffersATI(GLsizei n, const GLenum * bufs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawBuffersEXT(GLsizei n, const GLenum * bufs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawBuffersEXT(GLsizei n, const GLenum * bufs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawBuffersIndexedEXT(GLint n, const GLenum * location, const GLint * indices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawBuffersIndexedEXT(GLint n, const GLenum * location, const GLint * indices);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawBuffersNV(GLsizei n, const GLenum * bufs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawBuffersNV(GLsizei n, const GLenum * bufs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawCommandsAddressNV(GLenum primitiveMode, const GLuint64 * indirects, const GLsizei * sizes, GLuint count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawCommandsAddressNV(GLenum primitiveMode, const GLuint64 * indirects, const GLsizei * sizes, GLuint count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawCommandsNV(GLenum primitiveMode, GLuint buffer, const GLintptr * indirects, const GLsizei * sizes, GLuint count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawCommandsNV(GLenum primitiveMode, GLuint buffer, const GLintptr * indirects, const GLsizei * sizes, GLuint count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawCommandsStatesAddressNV(const GLuint64 * indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawCommandsStatesAddressNV(const GLuint64 * indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawCommandsStatesNV(GLuint buffer, const GLintptr * indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawCommandsStatesNV(GLuint buffer, const GLintptr * indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementArrayATI(GLenum mode, GLsizei count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementArrayATI(GLenum mode, GLsizei count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void * indices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void * indices);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const void * indices, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const void * indices, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsBaseVertexEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsBaseVertexEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsBaseVertexOES(GLenum mode, GLsizei count, GLenum type, const void * indices, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsBaseVertexOES(GLenum mode, GLsizei count, GLenum type, const void * indices, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsIndirect(GLenum mode, GLenum type, const void * indirect);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsIndirect(GLenum mode, GLenum type, const void * indirect);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedANGLE(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedANGLE(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLuint baseinstance);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLuint baseinstance);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedBaseInstanceEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLuint baseinstance);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedBaseInstanceEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLuint baseinstance);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedBaseVertexBaseInstanceEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedBaseVertexBaseInstanceEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedBaseVertexEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedBaseVertexEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedBaseVertexOES(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedBaseVertexOES(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawElementsInstancedNV(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawElementsInstancedNV(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawRangeElementsBaseVertexEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawRangeElementsBaseVertexEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawRangeElementsBaseVertexOES(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices, GLint basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawRangeElementsBaseVertexOES(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices, GLint basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTexfOES(GLfloat x, GLfloat y, GLfloat z, GLfloat width, GLfloat height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTexfOES(GLfloat x, GLfloat y, GLfloat z, GLfloat width, GLfloat height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTexfvOES(const GLfloat * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTexfvOES(const GLfloat * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTexiOES(GLint x, GLint y, GLint z, GLint width, GLint height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTexiOES(GLint x, GLint y, GLint z, GLint width, GLint height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTexivOES(const GLint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTexivOES(const GLint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTexsOES(GLshort x, GLshort y, GLshort z, GLshort width, GLshort height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTexsOES(GLshort x, GLshort y, GLshort z, GLshort width, GLshort height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTexsvOES(const GLshort * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTexsvOES(const GLshort * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTextureNV(GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTextureNV(GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTexxOES(GLfixed x, GLfixed y, GLfixed z, GLfixed width, GLfixed height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTexxOES(GLfixed x, GLfixed y, GLfixed z, GLfixed width, GLfixed height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTexxvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTexxvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTransformFeedback(GLenum mode, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTransformFeedback(GLenum mode, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei instancecount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei instancecount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTransformFeedbackNV(GLenum mode, GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTransformFeedbackNV(GLenum mode, GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint stream);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint stream);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEGLImageTargetRenderbufferStorageOES(GLenum target, GLeglImageOES image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEGLImageTargetRenderbufferStorageOES(GLenum target, GLeglImageOES image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEGLImageTargetTexture2DOES(GLenum target, GLeglImageOES image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEGLImageTargetTexture2DOES(GLenum target, GLeglImageOES image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEdgeFlag(GLboolean flag);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEdgeFlag(GLboolean flag);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEdgeFlagFormatNV(GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEdgeFlagFormatNV(GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEdgeFlagPointer(GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEdgeFlagPointer(GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEdgeFlagPointerEXT(GLsizei stride, GLsizei count, const GLboolean * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEdgeFlagPointerEXT(GLsizei stride, GLsizei count, const GLboolean * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEdgeFlagPointerListIBM(GLint stride, const GLboolean ** pointer, GLint ptrstride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEdgeFlagPointerListIBM(GLint stride, const GLboolean ** pointer, GLint ptrstride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEdgeFlagv(const GLboolean * flag);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEdgeFlagv(const GLboolean * flag);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glElementPointerAPPLE(GLenum type, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glElementPointerAPPLE(GLenum type, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glElementPointerATI(GLenum type, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glElementPointerATI(GLenum type, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnable(GLenum cap);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnable(GLenum cap);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableClientState(GLenum array);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableClientState(GLenum array);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableClientStateIndexedEXT(GLenum array, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableClientStateIndexedEXT(GLenum array, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableClientStateiEXT(GLenum array, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableClientStateiEXT(GLenum array, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableDriverControlQCOM(GLuint driverControl);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableDriverControlQCOM(GLuint driverControl);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableIndexedEXT(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableIndexedEXT(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableVariantClientStateEXT(GLuint id);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableVariantClientStateEXT(GLuint id);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableVertexArrayAttrib(GLuint vaobj, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableVertexArrayAttrib(GLuint vaobj, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableVertexArrayAttribEXT(GLuint vaobj, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableVertexArrayAttribEXT(GLuint vaobj, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableVertexArrayEXT(GLuint vaobj, GLenum array);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableVertexArrayEXT(GLuint vaobj, GLenum array);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableVertexAttribAPPLE(GLuint index, GLenum pname);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableVertexAttribAPPLE(GLuint index, GLenum pname);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableVertexAttribArray(GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableVertexAttribArray(GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableVertexAttribArrayARB(GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableVertexAttribArrayARB(GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnablei(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnablei(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableiEXT(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableiEXT(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableiNV(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableiNV(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnableiOES(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnableiOES(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEnd(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEnd(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndConditionalRender(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndConditionalRender(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndConditionalRenderNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndConditionalRenderNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndConditionalRenderNVX(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndConditionalRenderNVX(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndFragmentShaderATI(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndFragmentShaderATI(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndList(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndList(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndOcclusionQueryNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndOcclusionQueryNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndPerfMonitorAMD(GLuint monitor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndPerfMonitorAMD(GLuint monitor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndPerfQueryINTEL(GLuint queryHandle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndPerfQueryINTEL(GLuint queryHandle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndQuery(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndQuery(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndQueryARB(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndQueryARB(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndQueryEXT(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndQueryEXT(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndQueryIndexed(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndQueryIndexed(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndTilingQCOM(GLbitfield preserveMask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndTilingQCOM(GLbitfield preserveMask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndTransformFeedback(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndTransformFeedback(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndTransformFeedbackEXT(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndTransformFeedbackEXT(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndTransformFeedbackNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndTransformFeedbackNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndVertexShaderEXT(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndVertexShaderEXT(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEndVideoCaptureNV(GLuint video_capture_slot);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEndVideoCaptureNV(GLuint video_capture_slot);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord1d(GLdouble u);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord1d(GLdouble u);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord1dv(const GLdouble * u);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord1dv(const GLdouble * u);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord1f(GLfloat u);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord1f(GLfloat u);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord1fv(const GLfloat * u);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord1fv(const GLfloat * u);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord1xOES(GLfixed u);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord1xOES(GLfixed u);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord1xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord1xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord2d(GLdouble u, GLdouble v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord2d(GLdouble u, GLdouble v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord2dv(const GLdouble * u);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord2dv(const GLdouble * u);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord2f(GLfloat u, GLfloat v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord2f(GLfloat u, GLfloat v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord2fv(const GLfloat * u);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord2fv(const GLfloat * u);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord2xOES(GLfixed u, GLfixed v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord2xOES(GLfixed u, GLfixed v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalCoord2xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalCoord2xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalMapsNV(GLenum target, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalMapsNV(GLenum target, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalMesh1(GLenum mode, GLint i1, GLint i2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalMesh1(GLenum mode, GLint i1, GLint i2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalPoint1(GLint i);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalPoint1(GLint i);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvalPoint2(GLint i, GLint j);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvalPoint2(GLint i, GLint j);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glEvaluateDepthValuesARB(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glEvaluateDepthValuesARB(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExecuteProgramNV(GLenum target, GLuint id, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExecuteProgramNV(GLenum target, GLuint id, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetBufferPointervQCOM(GLenum target, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetBufferPointervQCOM(GLenum target, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetBuffersQCOM(GLuint * buffers, GLint maxBuffers, GLint * numBuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetBuffersQCOM(GLuint * buffers, GLint maxBuffers, GLint * numBuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetFramebuffersQCOM(GLuint * framebuffers, GLint maxFramebuffers, GLint * numFramebuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetFramebuffersQCOM(GLuint * framebuffers, GLint maxFramebuffers, GLint * numFramebuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetProgramBinarySourceQCOM(GLuint program, GLenum shadertype, GLchar * source, GLint * length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetProgramBinarySourceQCOM(GLuint program, GLenum shadertype, GLchar * source, GLint * length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetProgramsQCOM(GLuint * programs, GLint maxPrograms, GLint * numPrograms);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetProgramsQCOM(GLuint * programs, GLint maxPrograms, GLint * numPrograms);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetRenderbuffersQCOM(GLuint * renderbuffers, GLint maxRenderbuffers, GLint * numRenderbuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetRenderbuffersQCOM(GLuint * renderbuffers, GLint maxRenderbuffers, GLint * numRenderbuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetShadersQCOM(GLuint * shaders, GLint maxShaders, GLint * numShaders);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetShadersQCOM(GLuint * shaders, GLint maxShaders, GLint * numShaders);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetTexLevelParameterivQCOM(GLuint texture, GLenum face, GLint level, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetTexLevelParameterivQCOM(GLuint texture, GLenum face, GLint level, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetTexSubImageQCOM(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, void * texels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetTexSubImageQCOM(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, void * texels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtGetTexturesQCOM(GLuint * textures, GLint maxTextures, GLint * numTextures);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtGetTexturesQCOM(GLuint * textures, GLint maxTextures, GLint * numTextures);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glExtIsProgramBinaryQCOM(GLuint program);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glExtIsProgramBinaryQCOM(GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtTexObjectStateOverrideiQCOM(GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtTexObjectStateOverrideiQCOM(GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glExtractComponentEXT(GLuint res, GLuint src, GLuint num);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glExtractComponentEXT(GLuint res, GLuint src, GLuint num);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFeedbackBuffer(GLsizei size, GLenum type, GLfloat * buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFeedbackBuffer(GLsizei size, GLenum type, GLfloat * buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFeedbackBufferxOES(GLsizei n, GLenum type, const GLfixed * buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFeedbackBufferxOES(GLsizei n, GLenum type, const GLfixed * buffer);
 
-glproxy_IMPORTEXPORT GLsync glproxy_CALLSPEC glproxy_glFenceSync(GLenum condition, GLbitfield flags);
+GLPROXY_IMPORTEXPORT GLsync GLPROXY_CALLSPEC glproxy_glFenceSync(GLenum condition, GLbitfield flags);
 
-glproxy_IMPORTEXPORT GLsync glproxy_CALLSPEC glproxy_glFenceSyncAPPLE(GLenum condition, GLbitfield flags);
+GLPROXY_IMPORTEXPORT GLsync GLPROXY_CALLSPEC glproxy_glFenceSyncAPPLE(GLenum condition, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFinalCombinerInputNV(GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFinalCombinerInputNV(GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFinish(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFinish(void);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glFinishAsyncSGIX(GLuint * markerp);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glFinishAsyncSGIX(GLuint * markerp);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFinishFenceAPPLE(GLuint fence);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFinishFenceAPPLE(GLuint fence);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFinishFenceNV(GLuint fence);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFinishFenceNV(GLuint fence);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFinishObjectAPPLE(GLenum object, GLint name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFinishObjectAPPLE(GLenum object, GLint name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFinishTextureSUNX(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFinishTextureSUNX(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlush(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlush(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushMappedBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushMappedBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushMappedNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushMappedNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushPixelDataRangeNV(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushPixelDataRangeNV(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushRasterSGIX(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushRasterSGIX(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushStaticDataIBM(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushStaticDataIBM(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushVertexArrayRangeAPPLE(GLsizei length, void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushVertexArrayRangeAPPLE(GLsizei length, void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFlushVertexArrayRangeNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFlushVertexArrayRangeNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordFormatNV(GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordFormatNV(GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordPointer(GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordPointer(GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordPointerEXT(GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordPointerEXT(GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordPointerListIBM(GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordPointerListIBM(GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordd(GLdouble coord);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordd(GLdouble coord);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoorddEXT(GLdouble coord);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoorddEXT(GLdouble coord);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoorddv(const GLdouble * coord);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoorddv(const GLdouble * coord);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoorddvEXT(const GLdouble * coord);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoorddvEXT(const GLdouble * coord);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordf(GLfloat coord);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordf(GLfloat coord);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordfEXT(GLfloat coord);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordfEXT(GLfloat coord);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordfv(const GLfloat * coord);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordfv(const GLfloat * coord);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordfvEXT(const GLfloat * coord);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordfvEXT(const GLfloat * coord);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordhNV(GLhalfNV fog);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordhNV(GLhalfNV fog);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogCoordhvNV(const GLhalfNV * fog);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogCoordhvNV(const GLhalfNV * fog);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogFuncSGIS(GLsizei n, const GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogFuncSGIS(GLsizei n, const GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogf(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogf(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogfv(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogfv(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogi(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogi(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogiv(GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogiv(GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogx(GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogx(GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogxOES(GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogxOES(GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogxv(GLenum pname, const GLfixed * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogxv(GLenum pname, const GLfixed * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFogxvOES(GLenum pname, const GLfixed * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFogxvOES(GLenum pname, const GLfixed * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentColorMaterialSGIX(GLenum face, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentColorMaterialSGIX(GLenum face, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentCoverageColorNV(GLuint color);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentCoverageColorNV(GLuint color);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentLightModelfSGIX(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentLightModelfSGIX(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentLightModelfvSGIX(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentLightModelfvSGIX(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentLightModeliSGIX(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentLightModeliSGIX(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentLightModelivSGIX(GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentLightModelivSGIX(GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentLightfSGIX(GLenum light, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentLightfSGIX(GLenum light, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentLightfvSGIX(GLenum light, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentLightfvSGIX(GLenum light, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentLightiSGIX(GLenum light, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentLightiSGIX(GLenum light, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentLightivSGIX(GLenum light, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentLightivSGIX(GLenum light, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentMaterialfSGIX(GLenum face, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentMaterialfSGIX(GLenum face, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentMaterialfvSGIX(GLenum face, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentMaterialfvSGIX(GLenum face, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentMaterialiSGIX(GLenum face, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentMaterialiSGIX(GLenum face, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFragmentMaterialivSGIX(GLenum face, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFragmentMaterialivSGIX(GLenum face, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFrameTerminatorGREMEDY(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFrameTerminatorGREMEDY(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFrameZoomSGIX(GLint factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFrameZoomSGIX(GLint factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum * bufs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum * bufs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferPixelLocalStorageSizeEXT(GLuint target, GLsizei size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferPixelLocalStorageSizeEXT(GLuint target, GLsizei size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferRenderbufferOES(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferRenderbufferOES(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferSampleLocationsfvARB(GLenum target, GLuint start, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferSampleLocationsfvARB(GLenum target, GLuint start, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferSampleLocationsfvNV(GLenum target, GLuint start, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferSampleLocationsfvNV(GLenum target, GLuint start, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture1DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture1DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture2DDownsampleIMG(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint xscale, GLint yscale);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture2DDownsampleIMG(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint xscale, GLint yscale);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture2DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture2DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture2DMultisampleEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture2DMultisampleEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture2DMultisampleIMG(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture2DMultisampleIMG(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture2DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture2DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture3DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture3DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTexture3DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTexture3DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureARB(GLenum target, GLenum attachment, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureARB(GLenum target, GLenum attachment, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureFaceARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureFaceARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureLayerARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureLayerARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureLayerDownsampleIMG(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer, GLint xscale, GLint yscale);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureLayerDownsampleIMG(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer, GLint xscale, GLint yscale);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureMultisampleMultiviewOVR(GLenum target, GLenum attachment, GLuint texture, GLint level, GLsizei samples, GLint baseViewIndex, GLsizei numViews);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureMultisampleMultiviewOVR(GLenum target, GLenum attachment, GLuint texture, GLint level, GLsizei samples, GLint baseViewIndex, GLsizei numViews);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureMultiviewOVR(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureMultiviewOVR(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFramebufferTextureOES(GLenum target, GLenum attachment, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFramebufferTextureOES(GLenum target, GLenum attachment, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFreeObjectBufferATI(GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFreeObjectBufferATI(GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFrontFace(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFrontFace(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFrustumf(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFrustumf(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFrustumx(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFrustumx(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glFrustumxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glFrustumxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGenAsyncMarkersSGIX(GLsizei range);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGenAsyncMarkersSGIX(GLsizei range);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenBuffers(GLsizei n, GLuint * buffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenBuffers(GLsizei n, GLuint * buffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenBuffersARB(GLsizei n, GLuint * buffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenBuffersARB(GLsizei n, GLuint * buffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenFencesAPPLE(GLsizei n, GLuint * fences);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenFencesAPPLE(GLsizei n, GLuint * fences);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenFencesNV(GLsizei n, GLuint * fences);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenFencesNV(GLsizei n, GLuint * fences);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGenFragmentShadersATI(GLuint range);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGenFragmentShadersATI(GLuint range);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenFramebuffers(GLsizei n, GLuint * framebuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenFramebuffers(GLsizei n, GLuint * framebuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenFramebuffersEXT(GLsizei n, GLuint * framebuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenFramebuffersEXT(GLsizei n, GLuint * framebuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenFramebuffersOES(GLsizei n, GLuint * framebuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenFramebuffersOES(GLsizei n, GLuint * framebuffers);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGenLists(GLsizei range);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGenLists(GLsizei range);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenNamesAMD(GLenum identifier, GLuint num, GLuint * names);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenNamesAMD(GLenum identifier, GLuint num, GLuint * names);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenOcclusionQueriesNV(GLsizei n, GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenOcclusionQueriesNV(GLsizei n, GLuint * ids);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGenPathsNV(GLsizei range);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGenPathsNV(GLsizei range);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenPerfMonitorsAMD(GLsizei n, GLuint * monitors);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenPerfMonitorsAMD(GLsizei n, GLuint * monitors);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenProgramPipelines(GLsizei n, GLuint * pipelines);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenProgramPipelines(GLsizei n, GLuint * pipelines);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenProgramPipelinesEXT(GLsizei n, GLuint * pipelines);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenProgramPipelinesEXT(GLsizei n, GLuint * pipelines);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenProgramsARB(GLsizei n, GLuint * programs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenProgramsARB(GLsizei n, GLuint * programs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenProgramsNV(GLsizei n, GLuint * programs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenProgramsNV(GLsizei n, GLuint * programs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenQueries(GLsizei n, GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenQueries(GLsizei n, GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenQueriesARB(GLsizei n, GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenQueriesARB(GLsizei n, GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenQueriesEXT(GLsizei n, GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenQueriesEXT(GLsizei n, GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenRenderbuffers(GLsizei n, GLuint * renderbuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenRenderbuffers(GLsizei n, GLuint * renderbuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenRenderbuffersEXT(GLsizei n, GLuint * renderbuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenRenderbuffersEXT(GLsizei n, GLuint * renderbuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenRenderbuffersOES(GLsizei n, GLuint * renderbuffers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenRenderbuffersOES(GLsizei n, GLuint * renderbuffers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenSamplers(GLsizei count, GLuint * samplers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenSamplers(GLsizei count, GLuint * samplers);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGenSymbolsEXT(GLenum datatype, GLenum storagetype, GLenum range, GLuint components);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGenSymbolsEXT(GLenum datatype, GLenum storagetype, GLenum range, GLuint components);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenTextures(GLsizei n, GLuint * textures);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenTextures(GLsizei n, GLuint * textures);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenTexturesEXT(GLsizei n, GLuint * textures);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenTexturesEXT(GLsizei n, GLuint * textures);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenTransformFeedbacks(GLsizei n, GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenTransformFeedbacks(GLsizei n, GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenTransformFeedbacksNV(GLsizei n, GLuint * ids);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenTransformFeedbacksNV(GLsizei n, GLuint * ids);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenVertexArrays(GLsizei n, GLuint * arrays);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenVertexArrays(GLsizei n, GLuint * arrays);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenVertexArraysAPPLE(GLsizei n, GLuint * arrays);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenVertexArraysAPPLE(GLsizei n, GLuint * arrays);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenVertexArraysOES(GLsizei n, GLuint * arrays);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenVertexArraysOES(GLsizei n, GLuint * arrays);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGenVertexShadersEXT(GLuint range);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGenVertexShadersEXT(GLuint range);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenerateMipmap(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenerateMipmap(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenerateMipmapEXT(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenerateMipmapEXT(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenerateMipmapOES(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenerateMipmapOES(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenerateTextureMipmap(GLuint texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenerateTextureMipmap(GLuint texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGenerateTextureMipmapEXT(GLuint texture, GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGenerateTextureMipmapEXT(GLuint texture, GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveAttribARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei * length, GLint * size, GLenum * type, GLcharARB * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveAttribARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei * length, GLint * size, GLenum * type, GLcharARB * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveSubroutineName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveSubroutineName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveSubroutineUniformName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveSubroutineUniformName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveSubroutineUniformiv(GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveSubroutineUniformiv(GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveUniformARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei * length, GLint * size, GLenum * type, GLcharARB * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveUniformARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei * length, GLint * size, GLenum * type, GLcharARB * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei * length, GLchar * uniformBlockName);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei * length, GLchar * uniformBlockName);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei * length, GLchar * uniformName);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei * length, GLchar * uniformName);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint * uniformIndices, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint * uniformIndices, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetActiveVaryingNV(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetActiveVaryingNV(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetArrayObjectfvATI(GLenum array, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetArrayObjectfvATI(GLenum array, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetArrayObjectivATI(GLenum array, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetArrayObjectivATI(GLenum array, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei * count, GLhandleARB * obj);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei * count, GLhandleARB * obj);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei * count, GLuint * shaders);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei * count, GLuint * shaders);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetAttribLocation(GLuint program, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetAttribLocation(GLuint program, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBooleanIndexedvEXT(GLenum target, GLuint index, GLboolean * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBooleanIndexedvEXT(GLenum target, GLuint index, GLboolean * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBooleani_v(GLenum target, GLuint index, GLboolean * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBooleani_v(GLenum target, GLuint index, GLboolean * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBooleanv(GLenum pname, GLboolean * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBooleanv(GLenum pname, GLboolean * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferParameteri64v(GLenum target, GLenum pname, GLint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferParameteri64v(GLenum target, GLenum pname, GLint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferParameteriv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferParameteriv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferParameterivARB(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferParameterivARB(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferParameterui64vNV(GLenum target, GLenum pname, GLuint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferParameterui64vNV(GLenum target, GLenum pname, GLuint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferPointerv(GLenum target, GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferPointerv(GLenum target, GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferPointervARB(GLenum target, GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferPointervARB(GLenum target, GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferPointervOES(GLenum target, GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferPointervOES(GLenum target, GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetClipPlane(GLenum plane, GLdouble * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetClipPlane(GLenum plane, GLdouble * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetClipPlanef(GLenum plane, GLfloat * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetClipPlanef(GLenum plane, GLfloat * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetClipPlanefOES(GLenum plane, GLfloat * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetClipPlanefOES(GLenum plane, GLfloat * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetClipPlanex(GLenum plane, GLfixed * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetClipPlanex(GLenum plane, GLfixed * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetClipPlanexOES(GLenum plane, GLfixed * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetClipPlanexOES(GLenum plane, GLfixed * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTable(GLenum target, GLenum format, GLenum type, void * table);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTable(GLenum target, GLenum format, GLenum type, void * table);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTableEXT(GLenum target, GLenum format, GLenum type, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTableEXT(GLenum target, GLenum format, GLenum type, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTableParameterfv(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTableParameterfv(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTableParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTableParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTableParameterfvSGI(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTableParameterfvSGI(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTableParameteriv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTableParameteriv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTableParameterivEXT(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTableParameterivEXT(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTableParameterivSGI(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTableParameterivSGI(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetColorTableSGI(GLenum target, GLenum format, GLenum type, void * table);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetColorTableSGI(GLenum target, GLenum format, GLenum type, void * table);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCombinerInputParameterfvNV(GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCombinerInputParameterfvNV(GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCombinerInputParameterivNV(GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCombinerInputParameterivNV(GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCombinerOutputParameterfvNV(GLenum stage, GLenum portion, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCombinerOutputParameterfvNV(GLenum stage, GLenum portion, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCombinerOutputParameterivNV(GLenum stage, GLenum portion, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCombinerOutputParameterivNV(GLenum stage, GLenum portion, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCombinerStageParameterfvNV(GLenum stage, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCombinerStageParameterfvNV(GLenum stage, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGetCommandHeaderNV(GLenum tokenID, GLuint size);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGetCommandHeaderNV(GLenum tokenID, GLuint size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenum target, GLint lod, void * img);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenum target, GLint lod, void * img);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCompressedTexImage(GLenum target, GLint level, void * img);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCompressedTexImage(GLenum target, GLint level, void * img);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCompressedTexImageARB(GLenum target, GLint level, void * img);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCompressedTexImageARB(GLenum target, GLint level, void * img);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCompressedTextureImage(GLuint texture, GLint level, GLsizei bufSize, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCompressedTextureImage(GLuint texture, GLint level, GLsizei bufSize, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCompressedTextureImageEXT(GLuint texture, GLenum target, GLint lod, void * img);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCompressedTextureImageEXT(GLuint texture, GLenum target, GLint lod, void * img);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCompressedTextureSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei bufSize, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCompressedTextureSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei bufSize, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetConvolutionFilter(GLenum target, GLenum format, GLenum type, void * image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetConvolutionFilter(GLenum target, GLenum format, GLenum type, void * image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetConvolutionFilterEXT(GLenum target, GLenum format, GLenum type, void * image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetConvolutionFilterEXT(GLenum target, GLenum format, GLenum type, void * image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetConvolutionParameterfv(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetConvolutionParameterfv(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetConvolutionParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetConvolutionParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetConvolutionParameteriv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetConvolutionParameteriv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetConvolutionParameterivEXT(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetConvolutionParameterivEXT(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetConvolutionParameterxvOES(GLenum target, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetConvolutionParameterxvOES(GLenum target, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetCoverageModulationTableNV(GLsizei bufsize, GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetCoverageModulationTableNV(GLsizei bufsize, GLfloat * v);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGetDebugMessageLog(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGetDebugMessageLog(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGetDebugMessageLogAMD(GLuint count, GLsizei bufsize, GLenum * categories, GLuint * severities, GLuint * ids, GLsizei * lengths, GLchar * message);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGetDebugMessageLogAMD(GLuint count, GLsizei bufsize, GLenum * categories, GLuint * severities, GLuint * ids, GLsizei * lengths, GLchar * message);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGetDebugMessageLogARB(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGetDebugMessageLogARB(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGetDebugMessageLogKHR(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGetDebugMessageLogKHR(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetDetailTexFuncSGIS(GLenum target, GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetDetailTexFuncSGIS(GLenum target, GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetDoubleIndexedvEXT(GLenum target, GLuint index, GLdouble * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetDoubleIndexedvEXT(GLenum target, GLuint index, GLdouble * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetDoublei_v(GLenum target, GLuint index, GLdouble * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetDoublei_v(GLenum target, GLuint index, GLdouble * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetDoublei_vEXT(GLenum pname, GLuint index, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetDoublei_vEXT(GLenum pname, GLuint index, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetDoublev(GLenum pname, GLdouble * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetDoublev(GLenum pname, GLdouble * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetDriverControlStringQCOM(GLuint driverControl, GLsizei bufSize, GLsizei * length, GLchar * driverControlString);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetDriverControlStringQCOM(GLuint driverControl, GLsizei bufSize, GLsizei * length, GLchar * driverControlString);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetDriverControlsQCOM(GLint * num, GLsizei size, GLuint * driverControls);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetDriverControlsQCOM(GLint * num, GLsizei size, GLuint * driverControls);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glGetError(void);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glGetError(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFenceivNV(GLuint fence, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFenceivNV(GLuint fence, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFinalCombinerInputParameterfvNV(GLenum variable, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFinalCombinerInputParameterfvNV(GLenum variable, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFinalCombinerInputParameterivNV(GLenum variable, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFinalCombinerInputParameterivNV(GLenum variable, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFirstPerfQueryIdINTEL(GLuint * queryId);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFirstPerfQueryIdINTEL(GLuint * queryId);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFixedv(GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFixedv(GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFixedvOES(GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFixedvOES(GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFloati_v(GLenum target, GLuint index, GLfloat * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFloati_v(GLenum target, GLuint index, GLfloat * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFloati_vEXT(GLenum pname, GLuint index, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFloati_vEXT(GLenum pname, GLuint index, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFloati_vNV(GLenum target, GLuint index, GLfloat * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFloati_vNV(GLenum target, GLuint index, GLfloat * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFloatv(GLenum pname, GLfloat * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFloatv(GLenum pname, GLfloat * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFogFuncSGIS(GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFogFuncSGIS(GLfloat * points);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetFragDataIndex(GLuint program, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetFragDataIndex(GLuint program, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetFragDataIndexEXT(GLuint program, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetFragDataIndexEXT(GLuint program, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetFragDataLocation(GLuint program, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetFragDataLocation(GLuint program, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetFragDataLocationEXT(GLuint program, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetFragDataLocationEXT(GLuint program, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFragmentLightfvSGIX(GLenum light, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFragmentLightfvSGIX(GLenum light, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFragmentLightivSGIX(GLenum light, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFragmentLightivSGIX(GLenum light, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFragmentMaterialfvSGIX(GLenum face, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFragmentMaterialfvSGIX(GLenum face, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFragmentMaterialivSGIX(GLenum face, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFragmentMaterialivSGIX(GLenum face, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFramebufferAttachmentParameterivOES(GLenum target, GLenum attachment, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFramebufferAttachmentParameterivOES(GLenum target, GLenum attachment, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT GLsizei glproxy_CALLSPEC glproxy_glGetFramebufferPixelLocalStorageSizeEXT(GLuint target);
+GLPROXY_IMPORTEXPORT GLsizei GLPROXY_CALLSPEC glproxy_glGetFramebufferPixelLocalStorageSizeEXT(GLuint target);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glGetGraphicsResetStatus(void);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glGetGraphicsResetStatus(void);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glGetGraphicsResetStatusARB(void);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glGetGraphicsResetStatusARB(void);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glGetGraphicsResetStatusEXT(void);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glGetGraphicsResetStatusEXT(void);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glGetGraphicsResetStatusKHR(void);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glGetGraphicsResetStatusKHR(void);
 
-glproxy_IMPORTEXPORT GLhandleARB glproxy_CALLSPEC glproxy_glGetHandleARB(GLenum pname);
+GLPROXY_IMPORTEXPORT GLhandleARB GLPROXY_CALLSPEC glproxy_glGetHandleARB(GLenum pname);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetHistogram(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetHistogram(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetHistogramEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetHistogramEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetHistogramParameterfv(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetHistogramParameterfv(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetHistogramParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetHistogramParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetHistogramParameteriv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetHistogramParameteriv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetHistogramParameterivEXT(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetHistogramParameterivEXT(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetHistogramParameterxvOES(GLenum target, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetHistogramParameterxvOES(GLenum target, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT GLuint64 glproxy_CALLSPEC glproxy_glGetImageHandleARB(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+GLPROXY_IMPORTEXPORT GLuint64 GLPROXY_CALLSPEC glproxy_glGetImageHandleARB(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
 
-glproxy_IMPORTEXPORT GLuint64 glproxy_CALLSPEC glproxy_glGetImageHandleNV(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+GLPROXY_IMPORTEXPORT GLuint64 GLPROXY_CALLSPEC glproxy_glGetImageHandleNV(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetImageTransformParameterfvHP(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetImageTransformParameterfvHP(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetImageTransformParameterivHP(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetImageTransformParameterivHP(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei * length, GLcharARB * infoLog);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei * length, GLcharARB * infoLog);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetInstrumentsSGIX(void);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetInstrumentsSGIX(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInteger64i_v(GLenum target, GLuint index, GLint64 * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInteger64i_v(GLenum target, GLuint index, GLint64 * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInteger64v(GLenum pname, GLint64 * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInteger64v(GLenum pname, GLint64 * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInteger64vAPPLE(GLenum pname, GLint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInteger64vAPPLE(GLenum pname, GLint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetIntegerIndexedvEXT(GLenum target, GLuint index, GLint * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetIntegerIndexedvEXT(GLenum target, GLuint index, GLint * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetIntegeri_v(GLenum target, GLuint index, GLint * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetIntegeri_v(GLenum target, GLuint index, GLint * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetIntegeri_vEXT(GLenum target, GLuint index, GLint * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetIntegeri_vEXT(GLenum target, GLuint index, GLint * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetIntegerui64i_vNV(GLenum value, GLuint index, GLuint64EXT * result);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetIntegerui64i_vNV(GLenum value, GLuint index, GLuint64EXT * result);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetIntegerui64vNV(GLenum value, GLuint64EXT * result);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetIntegerui64vNV(GLenum value, GLuint64EXT * result);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetIntegerv(GLenum pname, GLint * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetIntegerv(GLenum pname, GLint * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInternalformatSampleivNV(GLenum target, GLenum internalformat, GLsizei samples, GLenum pname, GLsizei bufSize, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInternalformatSampleivNV(GLenum target, GLenum internalformat, GLsizei samples, GLenum pname, GLsizei bufSize, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInvariantBooleanvEXT(GLuint id, GLenum value, GLboolean * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInvariantBooleanvEXT(GLuint id, GLenum value, GLboolean * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInvariantFloatvEXT(GLuint id, GLenum value, GLfloat * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInvariantFloatvEXT(GLuint id, GLenum value, GLfloat * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetInvariantIntegervEXT(GLuint id, GLenum value, GLint * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetInvariantIntegervEXT(GLuint id, GLenum value, GLint * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetLightfv(GLenum light, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetLightfv(GLenum light, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetLightiv(GLenum light, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetLightiv(GLenum light, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetLightxOES(GLenum light, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetLightxOES(GLenum light, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetLightxv(GLenum light, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetLightxv(GLenum light, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetLightxvOES(GLenum light, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetLightxvOES(GLenum light, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetListParameterfvSGIX(GLuint list, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetListParameterfvSGIX(GLuint list, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetListParameterivSGIX(GLuint list, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetListParameterivSGIX(GLuint list, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetLocalConstantBooleanvEXT(GLuint id, GLenum value, GLboolean * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetLocalConstantBooleanvEXT(GLuint id, GLenum value, GLboolean * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetLocalConstantFloatvEXT(GLuint id, GLenum value, GLfloat * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetLocalConstantFloatvEXT(GLuint id, GLenum value, GLfloat * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetLocalConstantIntegervEXT(GLuint id, GLenum value, GLint * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetLocalConstantIntegervEXT(GLuint id, GLenum value, GLint * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapAttribParameterfvNV(GLenum target, GLuint index, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapAttribParameterfvNV(GLenum target, GLuint index, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapAttribParameterivNV(GLenum target, GLuint index, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapAttribParameterivNV(GLenum target, GLuint index, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLboolean packed, void * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLboolean packed, void * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapParameterfvNV(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapParameterfvNV(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapParameterivNV(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapParameterivNV(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapdv(GLenum target, GLenum query, GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapdv(GLenum target, GLenum query, GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapfv(GLenum target, GLenum query, GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapfv(GLenum target, GLenum query, GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapiv(GLenum target, GLenum query, GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapiv(GLenum target, GLenum query, GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMapxvOES(GLenum target, GLenum query, GLfixed * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMapxvOES(GLenum target, GLenum query, GLfixed * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMaterialfv(GLenum face, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMaterialfv(GLenum face, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMaterialiv(GLenum face, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMaterialiv(GLenum face, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMaterialxOES(GLenum face, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMaterialxOES(GLenum face, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMaterialxv(GLenum face, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMaterialxv(GLenum face, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMaterialxvOES(GLenum face, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMaterialxvOES(GLenum face, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMinmaxEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMinmaxEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMinmaxParameterfv(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMinmaxParameterfv(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMinmaxParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMinmaxParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMinmaxParameteriv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMinmaxParameteriv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMinmaxParameterivEXT(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMinmaxParameterivEXT(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexImageEXT(GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexImageEXT(GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexLevelParameterivEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexLevelParameterivEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultisamplefv(GLenum pname, GLuint index, GLfloat * val);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultisamplefv(GLenum pname, GLuint index, GLfloat * val);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetMultisamplefvNV(GLenum pname, GLuint index, GLfloat * val);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetMultisamplefvNV(GLenum pname, GLuint index, GLfloat * val);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedBufferParameteri64v(GLuint buffer, GLenum pname, GLint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedBufferParameteri64v(GLuint buffer, GLenum pname, GLint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedBufferParameteriv(GLuint buffer, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedBufferParameteriv(GLuint buffer, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedBufferParameterui64vNV(GLuint buffer, GLenum pname, GLuint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedBufferParameterui64vNV(GLuint buffer, GLenum pname, GLuint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedBufferPointerv(GLuint buffer, GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedBufferPointerv(GLuint buffer, GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedBufferPointervEXT(GLuint buffer, GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedBufferPointervEXT(GLuint buffer, GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedFramebufferAttachmentParameteriv(GLuint framebuffer, GLenum attachment, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedFramebufferAttachmentParameteriv(GLuint framebuffer, GLenum attachment, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedFramebufferParameteriv(GLuint framebuffer, GLenum pname, GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedFramebufferParameteriv(GLuint framebuffer, GLenum pname, GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedProgramLocalParameterIivEXT(GLuint program, GLenum target, GLuint index, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedProgramLocalParameterIivEXT(GLuint program, GLenum target, GLuint index, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedProgramLocalParameterIuivEXT(GLuint program, GLenum target, GLuint index, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedProgramLocalParameterIuivEXT(GLuint program, GLenum target, GLuint index, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedProgramLocalParameterdvEXT(GLuint program, GLenum target, GLuint index, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedProgramLocalParameterdvEXT(GLuint program, GLenum target, GLuint index, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedProgramLocalParameterfvEXT(GLuint program, GLenum target, GLuint index, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedProgramLocalParameterfvEXT(GLuint program, GLenum target, GLuint index, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedProgramStringEXT(GLuint program, GLenum target, GLenum pname, void * string);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedProgramStringEXT(GLuint program, GLenum target, GLenum pname, void * string);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedRenderbufferParameteriv(GLuint renderbuffer, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedRenderbufferParameteriv(GLuint renderbuffer, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedRenderbufferParameterivEXT(GLuint renderbuffer, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedRenderbufferParameterivEXT(GLuint renderbuffer, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedStringARB(GLint namelen, const GLchar * name, GLsizei bufSize, GLint * stringlen, GLchar * string);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedStringARB(GLint namelen, const GLchar * name, GLsizei bufSize, GLint * stringlen, GLchar * string);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNamedStringivARB(GLint namelen, const GLchar * name, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNamedStringivARB(GLint namelen, const GLchar * name, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetNextPerfQueryIdINTEL(GLuint queryId, GLuint * nextQueryId);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetNextPerfQueryIdINTEL(GLuint queryId, GLuint * nextQueryId);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectBufferfvATI(GLuint buffer, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectBufferfvATI(GLuint buffer, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectBufferivATI(GLuint buffer, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectBufferivATI(GLuint buffer, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei * length, GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei * length, GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectLabelEXT(GLenum type, GLuint object, GLsizei bufSize, GLsizei * length, GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectLabelEXT(GLenum type, GLuint object, GLsizei bufSize, GLsizei * length, GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectLabelKHR(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei * length, GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectLabelKHR(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei * length, GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectParameterivAPPLE(GLenum objectType, GLuint name, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectParameterivAPPLE(GLenum objectType, GLuint name, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectPtrLabel(const void * ptr, GLsizei bufSize, GLsizei * length, GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectPtrLabel(const void * ptr, GLsizei bufSize, GLsizei * length, GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetObjectPtrLabelKHR(const void * ptr, GLsizei bufSize, GLsizei * length, GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetObjectPtrLabelKHR(const void * ptr, GLsizei bufSize, GLsizei * length, GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetOcclusionQueryivNV(GLuint id, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetOcclusionQueryivNV(GLuint id, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetOcclusionQueryuivNV(GLuint id, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetOcclusionQueryuivNV(GLuint id, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathColorGenfvNV(GLenum color, GLenum pname, GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathColorGenfvNV(GLenum color, GLenum pname, GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathColorGenivNV(GLenum color, GLenum pname, GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathColorGenivNV(GLenum color, GLenum pname, GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathCommandsNV(GLuint path, GLubyte * commands);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathCommandsNV(GLuint path, GLubyte * commands);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathCoordsNV(GLuint path, GLfloat * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathCoordsNV(GLuint path, GLfloat * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathDashArrayNV(GLuint path, GLfloat * dashArray);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathDashArrayNV(GLuint path, GLfloat * dashArray);
 
-glproxy_IMPORTEXPORT GLfloat glproxy_CALLSPEC glproxy_glGetPathLengthNV(GLuint path, GLsizei startSegment, GLsizei numSegments);
+GLPROXY_IMPORTEXPORT GLfloat GLPROXY_CALLSPEC glproxy_glGetPathLengthNV(GLuint path, GLsizei startSegment, GLsizei numSegments);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathMetricRangeNV(GLbitfield metricQueryMask, GLuint firstPathName, GLsizei numPaths, GLsizei stride, GLfloat * metrics);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathMetricRangeNV(GLbitfield metricQueryMask, GLuint firstPathName, GLsizei numPaths, GLsizei stride, GLfloat * metrics);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathMetricsNV(GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLsizei stride, GLfloat * metrics);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathMetricsNV(GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLsizei stride, GLfloat * metrics);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathParameterfvNV(GLuint path, GLenum pname, GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathParameterfvNV(GLuint path, GLenum pname, GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathParameterivNV(GLuint path, GLenum pname, GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathParameterivNV(GLuint path, GLenum pname, GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathSpacingNV(GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat * returnedSpacing);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathSpacingNV(GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat * returnedSpacing);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathTexGenfvNV(GLenum texCoordSet, GLenum pname, GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathTexGenfvNV(GLenum texCoordSet, GLenum pname, GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPathTexGenivNV(GLenum texCoordSet, GLenum pname, GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPathTexGenivNV(GLenum texCoordSet, GLenum pname, GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfCounterInfoINTEL(GLuint queryId, GLuint counterId, GLuint counterNameLength, GLchar * counterName, GLuint counterDescLength, GLchar * counterDesc, GLuint * counterOffset, GLuint * counterDataSize, GLuint * counterTypeEnum, GLuint * counterDataTypeEnum, GLuint64 * rawCounterMaxValue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfCounterInfoINTEL(GLuint queryId, GLuint counterId, GLuint counterNameLength, GLchar * counterName, GLuint counterDescLength, GLchar * counterDesc, GLuint * counterOffset, GLuint * counterDataSize, GLuint * counterTypeEnum, GLuint * counterDataTypeEnum, GLuint64 * rawCounterMaxValue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfMonitorCounterDataAMD(GLuint monitor, GLenum pname, GLsizei dataSize, GLuint * data, GLint * bytesWritten);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfMonitorCounterDataAMD(GLuint monitor, GLenum pname, GLsizei dataSize, GLuint * data, GLint * bytesWritten);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfMonitorCounterInfoAMD(GLuint group, GLuint counter, GLenum pname, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfMonitorCounterInfoAMD(GLuint group, GLuint counter, GLenum pname, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfMonitorCounterStringAMD(GLuint group, GLuint counter, GLsizei bufSize, GLsizei * length, GLchar * counterString);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfMonitorCounterStringAMD(GLuint group, GLuint counter, GLsizei bufSize, GLsizei * length, GLchar * counterString);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfMonitorCountersAMD(GLuint group, GLint * numCounters, GLint * maxActiveCounters, GLsizei counterSize, GLuint * counters);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfMonitorCountersAMD(GLuint group, GLint * numCounters, GLint * maxActiveCounters, GLsizei counterSize, GLuint * counters);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfMonitorGroupStringAMD(GLuint group, GLsizei bufSize, GLsizei * length, GLchar * groupString);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfMonitorGroupStringAMD(GLuint group, GLsizei bufSize, GLsizei * length, GLchar * groupString);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfMonitorGroupsAMD(GLint * numGroups, GLsizei groupsSize, GLuint * groups);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfMonitorGroupsAMD(GLint * numGroups, GLsizei groupsSize, GLuint * groups);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, GLvoid * data, GLuint * bytesWritten);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, GLvoid * data, GLuint * bytesWritten);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfQueryIdByNameINTEL(GLchar * queryName, GLuint * queryId);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfQueryIdByNameINTEL(GLchar * queryName, GLuint * queryId);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPerfQueryInfoINTEL(GLuint queryId, GLuint queryNameLength, GLchar * queryName, GLuint * dataSize, GLuint * noCounters, GLuint * noInstances, GLuint * capsMask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPerfQueryInfoINTEL(GLuint queryId, GLuint queryNameLength, GLchar * queryName, GLuint * dataSize, GLuint * noCounters, GLuint * noInstances, GLuint * capsMask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPixelMapfv(GLenum map, GLfloat * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPixelMapfv(GLenum map, GLfloat * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPixelMapuiv(GLenum map, GLuint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPixelMapuiv(GLenum map, GLuint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPixelMapusv(GLenum map, GLushort * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPixelMapusv(GLenum map, GLushort * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPixelMapxv(GLenum map, GLint size, GLfixed * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPixelMapxv(GLenum map, GLint size, GLfixed * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPixelTexGenParameterfvSGIS(GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPixelTexGenParameterfvSGIS(GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPixelTexGenParameterivSGIS(GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPixelTexGenParameterivSGIS(GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPointerIndexedvEXT(GLenum target, GLuint index, void ** data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPointerIndexedvEXT(GLenum target, GLuint index, void ** data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPointeri_vEXT(GLenum pname, GLuint index, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPointeri_vEXT(GLenum pname, GLuint index, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPointerv(GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPointerv(GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPointervEXT(GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPointervEXT(GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPointervKHR(GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPointervKHR(GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetPolygonStipple(GLubyte * mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetPolygonStipple(GLubyte * mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramBinary(GLuint program, GLsizei bufSize, GLsizei * length, GLenum * binaryFormat, void * binary);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramBinary(GLuint program, GLsizei bufSize, GLsizei * length, GLenum * binaryFormat, void * binary);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramBinaryOES(GLuint program, GLsizei bufSize, GLsizei * length, GLenum * binaryFormat, void * binary);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramBinaryOES(GLuint program, GLsizei bufSize, GLsizei * length, GLenum * binaryFormat, void * binary);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramEnvParameterIivNV(GLenum target, GLuint index, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramEnvParameterIivNV(GLenum target, GLuint index, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramEnvParameterIuivNV(GLenum target, GLuint index, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramEnvParameterIuivNV(GLenum target, GLuint index, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramEnvParameterdvARB(GLenum target, GLuint index, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramEnvParameterdvARB(GLenum target, GLuint index, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramEnvParameterfvARB(GLenum target, GLuint index, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramEnvParameterfvARB(GLenum target, GLuint index, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramLocalParameterIivNV(GLenum target, GLuint index, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramLocalParameterIivNV(GLenum target, GLuint index, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramLocalParameterIuivNV(GLenum target, GLuint index, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramLocalParameterIuivNV(GLenum target, GLuint index, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramLocalParameterdvARB(GLenum target, GLuint index, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramLocalParameterdvARB(GLenum target, GLuint index, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramLocalParameterfvARB(GLenum target, GLuint index, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramLocalParameterfvARB(GLenum target, GLuint index, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramNamedParameterdvNV(GLuint id, GLsizei len, const GLubyte * name, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramNamedParameterdvNV(GLuint id, GLsizei len, const GLubyte * name, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramNamedParameterfvNV(GLuint id, GLsizei len, const GLubyte * name, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramNamedParameterfvNV(GLuint id, GLsizei len, const GLubyte * name, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramParameterdvNV(GLenum target, GLuint index, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramParameterdvNV(GLenum target, GLuint index, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramParameterfvNV(GLenum target, GLuint index, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramParameterfvNV(GLenum target, GLuint index, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramPipelineInfoLog(GLuint pipeline, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramPipelineInfoLog(GLuint pipeline, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramPipelineInfoLogEXT(GLuint pipeline, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramPipelineInfoLogEXT(GLuint pipeline, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramPipelineiv(GLuint pipeline, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramPipelineiv(GLuint pipeline, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramPipelineivEXT(GLuint pipeline, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramPipelineivEXT(GLuint pipeline, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetProgramResourceLocationIndexEXT(GLuint program, GLenum programInterface, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetProgramResourceLocationIndexEXT(GLuint program, GLenum programInterface, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei * length, GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei * length, GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramResourcefvNV(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramResourcefvNV(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramStageiv(GLuint program, GLenum shadertype, GLenum pname, GLint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramStageiv(GLuint program, GLenum shadertype, GLenum pname, GLint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramStringARB(GLenum target, GLenum pname, void * string);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramStringARB(GLenum target, GLenum pname, void * string);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramStringNV(GLuint id, GLenum pname, GLubyte * program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramStringNV(GLuint id, GLenum pname, GLubyte * program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramSubroutineParameteruivNV(GLenum target, GLuint index, GLuint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramSubroutineParameteruivNV(GLenum target, GLuint index, GLuint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramiv(GLuint program, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramiv(GLuint program, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramivARB(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramivARB(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetProgramivNV(GLuint id, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetProgramivNV(GLuint id, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryBufferObjecti64v(GLuint id, GLuint buffer, GLenum pname, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryBufferObjecti64v(GLuint id, GLuint buffer, GLenum pname, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryBufferObjectiv(GLuint id, GLuint buffer, GLenum pname, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryBufferObjectiv(GLuint id, GLuint buffer, GLenum pname, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryBufferObjectui64v(GLuint id, GLuint buffer, GLenum pname, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryBufferObjectui64v(GLuint id, GLuint buffer, GLenum pname, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryBufferObjectuiv(GLuint id, GLuint buffer, GLenum pname, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryBufferObjectuiv(GLuint id, GLuint buffer, GLenum pname, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjecti64v(GLuint id, GLenum pname, GLint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjecti64v(GLuint id, GLenum pname, GLint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjecti64vEXT(GLuint id, GLenum pname, GLint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjecti64vEXT(GLuint id, GLenum pname, GLint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjectiv(GLuint id, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjectiv(GLuint id, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjectivARB(GLuint id, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjectivARB(GLuint id, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjectivEXT(GLuint id, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjectivEXT(GLuint id, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjectui64v(GLuint id, GLenum pname, GLuint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjectui64v(GLuint id, GLenum pname, GLuint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjectui64vEXT(GLuint id, GLenum pname, GLuint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjectui64vEXT(GLuint id, GLenum pname, GLuint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjectuiv(GLuint id, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjectuiv(GLuint id, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjectuivARB(GLuint id, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjectuivARB(GLuint id, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryObjectuivEXT(GLuint id, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryObjectuivEXT(GLuint id, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryiv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryiv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryivARB(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryivARB(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetQueryivEXT(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetQueryivEXT(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetRenderbufferParameterivEXT(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetRenderbufferParameterivEXT(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetRenderbufferParameterivOES(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetRenderbufferParameterivOES(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSamplerParameterIivEXT(GLuint sampler, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSamplerParameterIivEXT(GLuint sampler, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSamplerParameterIivOES(GLuint sampler, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSamplerParameterIivOES(GLuint sampler, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSamplerParameterIuivEXT(GLuint sampler, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSamplerParameterIuivEXT(GLuint sampler, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSamplerParameterIuivOES(GLuint sampler, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSamplerParameterIuivOES(GLuint sampler, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSeparableFilter(GLenum target, GLenum format, GLenum type, void * row, void * column, void * span);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSeparableFilter(GLenum target, GLenum format, GLenum type, void * row, void * column, void * span);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSeparableFilterEXT(GLenum target, GLenum format, GLenum type, void * row, void * column, void * span);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSeparableFilterEXT(GLenum target, GLenum format, GLenum type, void * row, void * column, void * span);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetShaderPrecisionFormat(GLenum shadertype, GLenum precisiontype, GLint * range, GLint * precision);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetShaderPrecisionFormat(GLenum shadertype, GLenum precisiontype, GLint * range, GLint * precision);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei * length, GLchar * source);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei * length, GLchar * source);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLength, GLsizei * length, GLcharARB * source);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLength, GLsizei * length, GLcharARB * source);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetShaderiv(GLuint shader, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetShaderiv(GLuint shader, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSharpenTexFuncSGIS(GLenum target, GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSharpenTexFuncSGIS(GLenum target, GLfloat * points);
 
-glproxy_IMPORTEXPORT GLushort glproxy_CALLSPEC glproxy_glGetStageIndexNV(GLenum shadertype);
+GLPROXY_IMPORTEXPORT GLushort GLPROXY_CALLSPEC glproxy_glGetStageIndexNV(GLenum shadertype);
 
-glproxy_IMPORTEXPORT const GLubyte * glproxy_CALLSPEC glproxy_glGetString(GLenum name);
+GLPROXY_IMPORTEXPORT const GLubyte * GLPROXY_CALLSPEC glproxy_glGetString(GLenum name);
 
-glproxy_IMPORTEXPORT const GLubyte * glproxy_CALLSPEC glproxy_glGetStringi(GLenum name, GLuint index);
+GLPROXY_IMPORTEXPORT const GLubyte * GLPROXY_CALLSPEC glproxy_glGetStringi(GLenum name, GLuint index);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGetSubroutineIndex(GLuint program, GLenum shadertype, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGetSubroutineIndex(GLuint program, GLenum shadertype, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetSubroutineUniformLocation(GLuint program, GLenum shadertype, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetSubroutineUniformLocation(GLuint program, GLenum shadertype, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetSyncivAPPLE(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetSyncivAPPLE(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexBumpParameterfvATI(GLenum pname, GLfloat * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexBumpParameterfvATI(GLenum pname, GLfloat * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexBumpParameterivATI(GLenum pname, GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexBumpParameterivATI(GLenum pname, GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexEnviv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexEnviv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexEnvxv(GLenum target, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexEnvxv(GLenum target, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexEnvxvOES(GLenum target, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexEnvxvOES(GLenum target, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexFilterFuncSGIS(GLenum target, GLenum filter, GLfloat * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexFilterFuncSGIS(GLenum target, GLenum filter, GLfloat * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexGendv(GLenum coord, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexGendv(GLenum coord, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexGenfv(GLenum coord, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexGenfv(GLenum coord, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexGenfvOES(GLenum coord, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexGenfvOES(GLenum coord, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexGeniv(GLenum coord, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexGeniv(GLenum coord, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexGenivOES(GLenum coord, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexGenivOES(GLenum coord, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexGenxvOES(GLenum coord, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexGenxvOES(GLenum coord, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexLevelParameterxvOES(GLenum target, GLint level, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexLevelParameterxvOES(GLenum target, GLint level, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterIiv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterIiv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterIivEXT(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterIivEXT(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterIivOES(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterIivOES(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterIuivEXT(GLenum target, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterIuivEXT(GLenum target, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterIuivOES(GLenum target, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterIuivOES(GLenum target, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterPointervAPPLE(GLenum target, GLenum pname, void ** params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterPointervAPPLE(GLenum target, GLenum pname, void ** params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameteriv(GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameteriv(GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTexParameterxvOES(GLenum target, GLenum pname, GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTexParameterxvOES(GLenum target, GLenum pname, GLfixed * params);
 
-glproxy_IMPORTEXPORT GLuint64 glproxy_CALLSPEC glproxy_glGetTextureHandleARB(GLuint texture);
+GLPROXY_IMPORTEXPORT GLuint64 GLPROXY_CALLSPEC glproxy_glGetTextureHandleARB(GLuint texture);
 
-glproxy_IMPORTEXPORT GLuint64 glproxy_CALLSPEC glproxy_glGetTextureHandleNV(GLuint texture);
+GLPROXY_IMPORTEXPORT GLuint64 GLPROXY_CALLSPEC glproxy_glGetTextureHandleNV(GLuint texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureImage(GLuint texture, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureImage(GLuint texture, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureLevelParameterfv(GLuint texture, GLint level, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureLevelParameterfv(GLuint texture, GLint level, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureLevelParameteriv(GLuint texture, GLint level, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureLevelParameteriv(GLuint texture, GLint level, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureParameterIiv(GLuint texture, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureParameterIiv(GLuint texture, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureParameterIuiv(GLuint texture, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureParameterIuiv(GLuint texture, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureParameterfv(GLuint texture, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureParameterfv(GLuint texture, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureParameteriv(GLuint texture, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureParameteriv(GLuint texture, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT GLuint64 glproxy_CALLSPEC glproxy_glGetTextureSamplerHandleARB(GLuint texture, GLuint sampler);
+GLPROXY_IMPORTEXPORT GLuint64 GLPROXY_CALLSPEC glproxy_glGetTextureSamplerHandleARB(GLuint texture, GLuint sampler);
 
-glproxy_IMPORTEXPORT GLuint64 glproxy_CALLSPEC glproxy_glGetTextureSamplerHandleNV(GLuint texture, GLuint sampler);
+GLPROXY_IMPORTEXPORT GLuint64 GLPROXY_CALLSPEC glproxy_glGetTextureSamplerHandleNV(GLuint texture, GLuint sampler);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTextureSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLsizei bufSize, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTextureSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLsizei bufSize, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTrackMatrixivNV(GLenum target, GLuint address, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTrackMatrixivNV(GLenum target, GLuint address, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTransformFeedbackVaryingEXT(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTransformFeedbackVaryingEXT(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTransformFeedbackVaryingNV(GLuint program, GLuint index, GLint * location);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTransformFeedbackVaryingNV(GLuint program, GLuint index, GLint * location);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTransformFeedbacki64_v(GLuint xfb, GLenum pname, GLuint index, GLint64 * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTransformFeedbacki64_v(GLuint xfb, GLenum pname, GLuint index, GLint64 * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTransformFeedbacki_v(GLuint xfb, GLenum pname, GLuint index, GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTransformFeedbacki_v(GLuint xfb, GLenum pname, GLuint index, GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTransformFeedbackiv(GLuint xfb, GLenum pname, GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTransformFeedbackiv(GLuint xfb, GLenum pname, GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetTranslatedShaderSourceANGLE(GLuint shader, GLsizei bufsize, GLsizei * length, GLchar * source);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetTranslatedShaderSourceANGLE(GLuint shader, GLsizei bufsize, GLsizei * length, GLchar * source);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glGetUniformBlockIndex(GLuint program, const GLchar * uniformBlockName);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glGetUniformBlockIndex(GLuint program, const GLchar * uniformBlockName);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetUniformBufferSizeEXT(GLuint program, GLint location);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetUniformBufferSizeEXT(GLuint program, GLint location);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar *const* uniformNames, GLuint * uniformIndices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar *const* uniformNames, GLuint * uniformIndices);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetUniformLocation(GLuint program, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetUniformLocation(GLuint program, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB * name);
 
-glproxy_IMPORTEXPORT GLintptr glproxy_CALLSPEC glproxy_glGetUniformOffsetEXT(GLuint program, GLint location);
+GLPROXY_IMPORTEXPORT GLintptr GLPROXY_CALLSPEC glproxy_glGetUniformOffsetEXT(GLuint program, GLint location);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformSubroutineuiv(GLenum shadertype, GLint location, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformSubroutineuiv(GLenum shadertype, GLint location, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformdv(GLuint program, GLint location, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformdv(GLuint program, GLint location, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformfv(GLuint program, GLint location, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformfv(GLuint program, GLint location, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformfvARB(GLhandleARB programObj, GLint location, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformfvARB(GLhandleARB programObj, GLint location, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformi64vARB(GLuint program, GLint location, GLint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformi64vARB(GLuint program, GLint location, GLint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformi64vNV(GLuint program, GLint location, GLint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformi64vNV(GLuint program, GLint location, GLint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformiv(GLuint program, GLint location, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformiv(GLuint program, GLint location, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformivARB(GLhandleARB programObj, GLint location, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformivARB(GLhandleARB programObj, GLint location, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformui64vARB(GLuint program, GLint location, GLuint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformui64vARB(GLuint program, GLint location, GLuint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformui64vNV(GLuint program, GLint location, GLuint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformui64vNV(GLuint program, GLint location, GLuint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformuiv(GLuint program, GLint location, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformuiv(GLuint program, GLint location, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetUniformuivEXT(GLuint program, GLint location, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetUniformuivEXT(GLuint program, GLint location, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVariantArrayObjectfvATI(GLuint id, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVariantArrayObjectfvATI(GLuint id, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVariantArrayObjectivATI(GLuint id, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVariantArrayObjectivATI(GLuint id, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVariantBooleanvEXT(GLuint id, GLenum value, GLboolean * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVariantBooleanvEXT(GLuint id, GLenum value, GLboolean * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVariantFloatvEXT(GLuint id, GLenum value, GLfloat * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVariantFloatvEXT(GLuint id, GLenum value, GLfloat * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVariantIntegervEXT(GLuint id, GLenum value, GLint * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVariantIntegervEXT(GLuint id, GLenum value, GLint * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVariantPointervEXT(GLuint id, GLenum value, void ** data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVariantPointervEXT(GLuint id, GLenum value, void ** data);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glGetVaryingLocationNV(GLuint program, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glGetVaryingLocationNV(GLuint program, const GLchar * name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexArrayIndexed64iv(GLuint vaobj, GLuint index, GLenum pname, GLint64 * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexArrayIndexed64iv(GLuint vaobj, GLuint index, GLenum pname, GLint64 * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexArrayIndexediv(GLuint vaobj, GLuint index, GLenum pname, GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexArrayIndexediv(GLuint vaobj, GLuint index, GLenum pname, GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, void ** param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, void ** param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, void ** param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, void ** param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexArrayiv(GLuint vaobj, GLenum pname, GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexArrayiv(GLuint vaobj, GLenum pname, GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribArrayObjectfvATI(GLuint index, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribArrayObjectfvATI(GLuint index, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribArrayObjectivATI(GLuint index, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribArrayObjectivATI(GLuint index, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribIiv(GLuint index, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribIiv(GLuint index, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribIuiv(GLuint index, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribIuiv(GLuint index, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribLdv(GLuint index, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribLdv(GLuint index, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribLdvEXT(GLuint index, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribLdvEXT(GLuint index, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribLi64vNV(GLuint index, GLenum pname, GLint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribLi64vNV(GLuint index, GLenum pname, GLint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribLui64vARB(GLuint index, GLenum pname, GLuint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribLui64vARB(GLuint index, GLenum pname, GLuint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribLui64vNV(GLuint index, GLenum pname, GLuint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribLui64vNV(GLuint index, GLenum pname, GLuint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribPointerv(GLuint index, GLenum pname, void ** pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribPointerv(GLuint index, GLenum pname, void ** pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribPointervARB(GLuint index, GLenum pname, void ** pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribPointervARB(GLuint index, GLenum pname, void ** pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribPointervNV(GLuint index, GLenum pname, void ** pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribPointervNV(GLuint index, GLenum pname, void ** pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribdv(GLuint index, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribdv(GLuint index, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribdvARB(GLuint index, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribdvARB(GLuint index, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribdvNV(GLuint index, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribdvNV(GLuint index, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribfvARB(GLuint index, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribfvARB(GLuint index, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribfvNV(GLuint index, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribfvNV(GLuint index, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribiv(GLuint index, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribiv(GLuint index, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribivARB(GLuint index, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribivARB(GLuint index, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVertexAttribivNV(GLuint index, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVertexAttribivNV(GLuint index, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVideoCaptureStreamdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVideoCaptureStreamdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVideoCaptureStreamfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVideoCaptureStreamfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVideoCaptureStreamivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVideoCaptureStreamivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVideoCaptureivNV(GLuint video_capture_slot, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVideoCaptureivNV(GLuint video_capture_slot, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVideoi64vNV(GLuint video_slot, GLenum pname, GLint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVideoi64vNV(GLuint video_slot, GLenum pname, GLint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVideoivNV(GLuint video_slot, GLenum pname, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVideoivNV(GLuint video_slot, GLenum pname, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVideoui64vNV(GLuint video_slot, GLenum pname, GLuint64EXT * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVideoui64vNV(GLuint video_slot, GLenum pname, GLuint64EXT * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnColorTable(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnColorTable(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnColorTableARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnColorTableARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnCompressedTexImage(GLenum target, GLint lod, GLsizei bufSize, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnCompressedTexImage(GLenum target, GLint lod, GLsizei bufSize, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnCompressedTexImageARB(GLenum target, GLint lod, GLsizei bufSize, void * img);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnCompressedTexImageARB(GLenum target, GLint lod, GLsizei bufSize, void * img);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnConvolutionFilter(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnConvolutionFilter(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnConvolutionFilterARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * image);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnConvolutionFilterARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * image);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnHistogram(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnHistogram(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnHistogramARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnHistogramARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnMapdv(GLenum target, GLenum query, GLsizei bufSize, GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnMapdv(GLenum target, GLenum query, GLsizei bufSize, GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnMapdvARB(GLenum target, GLenum query, GLsizei bufSize, GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnMapdvARB(GLenum target, GLenum query, GLsizei bufSize, GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnMapfv(GLenum target, GLenum query, GLsizei bufSize, GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnMapfv(GLenum target, GLenum query, GLsizei bufSize, GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnMapfvARB(GLenum target, GLenum query, GLsizei bufSize, GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnMapfvARB(GLenum target, GLenum query, GLsizei bufSize, GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnMapiv(GLenum target, GLenum query, GLsizei bufSize, GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnMapiv(GLenum target, GLenum query, GLsizei bufSize, GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnMapivARB(GLenum target, GLenum query, GLsizei bufSize, GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnMapivARB(GLenum target, GLenum query, GLsizei bufSize, GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnMinmaxARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnMinmaxARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnPixelMapfv(GLenum map, GLsizei bufSize, GLfloat * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnPixelMapfv(GLenum map, GLsizei bufSize, GLfloat * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnPixelMapfvARB(GLenum map, GLsizei bufSize, GLfloat * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnPixelMapfvARB(GLenum map, GLsizei bufSize, GLfloat * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnPixelMapuiv(GLenum map, GLsizei bufSize, GLuint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnPixelMapuiv(GLenum map, GLsizei bufSize, GLuint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnPixelMapuivARB(GLenum map, GLsizei bufSize, GLuint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnPixelMapuivARB(GLenum map, GLsizei bufSize, GLuint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnPixelMapusv(GLenum map, GLsizei bufSize, GLushort * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnPixelMapusv(GLenum map, GLsizei bufSize, GLushort * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnPixelMapusvARB(GLenum map, GLsizei bufSize, GLushort * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnPixelMapusvARB(GLenum map, GLsizei bufSize, GLushort * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnPolygonStipple(GLsizei bufSize, GLubyte * pattern);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnPolygonStipple(GLsizei bufSize, GLubyte * pattern);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnPolygonStippleARB(GLsizei bufSize, GLubyte * pattern);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnPolygonStippleARB(GLsizei bufSize, GLubyte * pattern);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnSeparableFilter(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, void * row, GLsizei columnBufSize, void * column, void * span);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnSeparableFilter(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, void * row, GLsizei columnBufSize, void * column, void * span);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnSeparableFilterARB(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, void * row, GLsizei columnBufSize, void * column, void * span);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnSeparableFilterARB(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, void * row, GLsizei columnBufSize, void * column, void * span);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnTexImageARB(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * img);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnTexImageARB(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * img);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformdv(GLuint program, GLint location, GLsizei bufSize, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformdv(GLuint program, GLint location, GLsizei bufSize, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformdvARB(GLuint program, GLint location, GLsizei bufSize, GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformdvARB(GLuint program, GLint location, GLsizei bufSize, GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformfv(GLuint program, GLint location, GLsizei bufSize, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformfv(GLuint program, GLint location, GLsizei bufSize, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformfvEXT(GLuint program, GLint location, GLsizei bufSize, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformfvEXT(GLuint program, GLint location, GLsizei bufSize, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformfvKHR(GLuint program, GLint location, GLsizei bufSize, GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformfvKHR(GLuint program, GLint location, GLsizei bufSize, GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformi64vARB(GLuint program, GLint location, GLsizei bufSize, GLint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformi64vARB(GLuint program, GLint location, GLsizei bufSize, GLint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformiv(GLuint program, GLint location, GLsizei bufSize, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformiv(GLuint program, GLint location, GLsizei bufSize, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformivARB(GLuint program, GLint location, GLsizei bufSize, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformivARB(GLuint program, GLint location, GLsizei bufSize, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformivEXT(GLuint program, GLint location, GLsizei bufSize, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformivEXT(GLuint program, GLint location, GLsizei bufSize, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformivKHR(GLuint program, GLint location, GLsizei bufSize, GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformivKHR(GLuint program, GLint location, GLsizei bufSize, GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformui64vARB(GLuint program, GLint location, GLsizei bufSize, GLuint64 * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformui64vARB(GLuint program, GLint location, GLsizei bufSize, GLuint64 * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformuiv(GLuint program, GLint location, GLsizei bufSize, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformuiv(GLuint program, GLint location, GLsizei bufSize, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformuivARB(GLuint program, GLint location, GLsizei bufSize, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformuivARB(GLuint program, GLint location, GLsizei bufSize, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGetnUniformuivKHR(GLuint program, GLint location, GLsizei bufSize, GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGetnUniformuivKHR(GLuint program, GLint location, GLsizei bufSize, GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGlobalAlphaFactorbSUN(GLbyte factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGlobalAlphaFactorbSUN(GLbyte factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGlobalAlphaFactordSUN(GLdouble factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGlobalAlphaFactordSUN(GLdouble factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGlobalAlphaFactorfSUN(GLfloat factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGlobalAlphaFactorfSUN(GLfloat factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGlobalAlphaFactoriSUN(GLint factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGlobalAlphaFactoriSUN(GLint factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGlobalAlphaFactorsSUN(GLshort factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGlobalAlphaFactorsSUN(GLshort factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGlobalAlphaFactorubSUN(GLubyte factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGlobalAlphaFactorubSUN(GLubyte factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGlobalAlphaFactoruiSUN(GLuint factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGlobalAlphaFactoruiSUN(GLuint factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glGlobalAlphaFactorusSUN(GLushort factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glGlobalAlphaFactorusSUN(GLushort factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glHint(GLenum target, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glHint(GLenum target, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glHintPGI(GLenum target, GLint mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glHintPGI(GLenum target, GLint mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glHistogram(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glHistogram(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glHistogramEXT(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glHistogramEXT(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIglooInterfaceSGIX(GLenum pname, const void * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIglooInterfaceSGIX(GLenum pname, const void * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glImageTransformParameterfHP(GLenum target, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glImageTransformParameterfHP(GLenum target, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glImageTransformParameterfvHP(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glImageTransformParameterfvHP(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glImageTransformParameteriHP(GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glImageTransformParameteriHP(GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glImageTransformParameterivHP(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glImageTransformParameterivHP(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT GLsync glproxy_CALLSPEC glproxy_glImportSyncEXT(GLenum external_sync_type, GLintptr external_sync, GLbitfield flags);
+GLPROXY_IMPORTEXPORT GLsync GLPROXY_CALLSPEC glproxy_glImportSyncEXT(GLenum external_sync_type, GLintptr external_sync, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexFormatNV(GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexFormatNV(GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexFuncEXT(GLenum func, GLclampf ref);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexFuncEXT(GLenum func, GLclampf ref);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexMask(GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexMask(GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexMaterialEXT(GLenum face, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexMaterialEXT(GLenum face, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexPointer(GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexPointer(GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexPointerEXT(GLenum type, GLsizei stride, GLsizei count, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexPointerEXT(GLenum type, GLsizei stride, GLsizei count, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexPointerListIBM(GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexPointerListIBM(GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexd(GLdouble c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexd(GLdouble c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexdv(const GLdouble * c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexdv(const GLdouble * c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexf(GLfloat c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexf(GLfloat c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexfv(const GLfloat * c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexfv(const GLfloat * c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexi(GLint c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexi(GLint c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexiv(const GLint * c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexiv(const GLint * c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexs(GLshort c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexs(GLshort c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexsv(const GLshort * c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexsv(const GLshort * c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexub(GLubyte c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexub(GLubyte c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexubv(const GLubyte * c);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexubv(const GLubyte * c);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexxOES(GLfixed component);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexxOES(GLfixed component);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glIndexxvOES(const GLfixed * component);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glIndexxvOES(const GLfixed * component);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInitNames(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInitNames(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInsertComponentEXT(GLuint res, GLuint src, GLuint num);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInsertComponentEXT(GLuint res, GLuint src, GLuint num);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInsertEventMarkerEXT(GLsizei length, const GLchar * marker);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInsertEventMarkerEXT(GLsizei length, const GLchar * marker);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInstrumentsBufferSGIX(GLsizei size, GLint * buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInstrumentsBufferSGIX(GLsizei size, GLint * buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInterleavedArrays(GLenum format, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInterleavedArrays(GLenum format, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInterpolatePathsNV(GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInterpolatePathsNV(GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInvalidateBufferData(GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInvalidateBufferData(GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum * attachments);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum * attachments);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInvalidateNamedFramebufferData(GLuint framebuffer, GLsizei numAttachments, const GLenum * attachments);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInvalidateNamedFramebufferData(GLuint framebuffer, GLsizei numAttachments, const GLenum * attachments);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInvalidateNamedFramebufferSubData(GLuint framebuffer, GLsizei numAttachments, const GLenum * attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInvalidateNamedFramebufferSubData(GLuint framebuffer, GLsizei numAttachments, const GLenum * attachments, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum * attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum * attachments, GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInvalidateTexImage(GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInvalidateTexImage(GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsAsyncMarkerSGIX(GLuint marker);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsAsyncMarkerSGIX(GLuint marker);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsBuffer(GLuint buffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsBuffer(GLuint buffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsBufferARB(GLuint buffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsBufferARB(GLuint buffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsBufferResidentNV(GLenum target);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsBufferResidentNV(GLenum target);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsCommandListNV(GLuint list);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsCommandListNV(GLuint list);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsEnabled(GLenum cap);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsEnabled(GLenum cap);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsEnabledIndexedEXT(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsEnabledIndexedEXT(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsEnabledi(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsEnabledi(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsEnablediEXT(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsEnablediEXT(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsEnablediNV(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsEnablediNV(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsEnablediOES(GLenum target, GLuint index);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsEnablediOES(GLenum target, GLuint index);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsFenceAPPLE(GLuint fence);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsFenceAPPLE(GLuint fence);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsFenceNV(GLuint fence);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsFenceNV(GLuint fence);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsFramebuffer(GLuint framebuffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsFramebuffer(GLuint framebuffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsFramebufferEXT(GLuint framebuffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsFramebufferEXT(GLuint framebuffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsFramebufferOES(GLuint framebuffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsFramebufferOES(GLuint framebuffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsImageHandleResidentARB(GLuint64 handle);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsImageHandleResidentARB(GLuint64 handle);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsImageHandleResidentNV(GLuint64 handle);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsImageHandleResidentNV(GLuint64 handle);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsList(GLuint list);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsList(GLuint list);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsNameAMD(GLenum identifier, GLuint name);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsNameAMD(GLenum identifier, GLuint name);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsNamedBufferResidentNV(GLuint buffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsNamedBufferResidentNV(GLuint buffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsNamedStringARB(GLint namelen, const GLchar * name);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsNamedStringARB(GLint namelen, const GLchar * name);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsObjectBufferATI(GLuint buffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsObjectBufferATI(GLuint buffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsOcclusionQueryNV(GLuint id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsOcclusionQueryNV(GLuint id);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsPathNV(GLuint path);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsPathNV(GLuint path);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsPointInFillPathNV(GLuint path, GLuint mask, GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsPointInFillPathNV(GLuint path, GLuint mask, GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsPointInStrokePathNV(GLuint path, GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsPointInStrokePathNV(GLuint path, GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsProgram(GLuint program);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsProgram(GLuint program);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsProgramARB(GLuint program);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsProgramARB(GLuint program);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsProgramNV(GLuint id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsProgramNV(GLuint id);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsProgramPipeline(GLuint pipeline);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsProgramPipeline(GLuint pipeline);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsProgramPipelineEXT(GLuint pipeline);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsProgramPipelineEXT(GLuint pipeline);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsQuery(GLuint id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsQuery(GLuint id);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsQueryARB(GLuint id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsQueryARB(GLuint id);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsQueryEXT(GLuint id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsQueryEXT(GLuint id);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsRenderbuffer(GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsRenderbuffer(GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsRenderbufferEXT(GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsRenderbufferEXT(GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsRenderbufferOES(GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsRenderbufferOES(GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsSampler(GLuint sampler);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsSampler(GLuint sampler);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsShader(GLuint shader);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsShader(GLuint shader);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsStateNV(GLuint state);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsStateNV(GLuint state);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsSync(GLsync sync);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsSync(GLsync sync);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsSyncAPPLE(GLsync sync);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsSyncAPPLE(GLsync sync);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsTexture(GLuint texture);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsTexture(GLuint texture);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsTextureEXT(GLuint texture);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsTextureEXT(GLuint texture);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsTextureHandleResidentARB(GLuint64 handle);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsTextureHandleResidentARB(GLuint64 handle);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsTextureHandleResidentNV(GLuint64 handle);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsTextureHandleResidentNV(GLuint64 handle);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsTransformFeedback(GLuint id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsTransformFeedback(GLuint id);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsTransformFeedbackNV(GLuint id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsTransformFeedbackNV(GLuint id);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsVariantEnabledEXT(GLuint id, GLenum cap);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsVariantEnabledEXT(GLuint id, GLenum cap);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsVertexArray(GLuint array);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsVertexArray(GLuint array);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsVertexArrayAPPLE(GLuint array);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsVertexArrayAPPLE(GLuint array);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsVertexArrayOES(GLuint array);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsVertexArrayOES(GLuint array);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLabelObjectEXT(GLenum type, GLuint object, GLsizei length, const GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLabelObjectEXT(GLenum type, GLuint object, GLsizei length, const GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightEnviSGIX(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightEnviSGIX(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightModelf(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightModelf(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightModelfv(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightModelfv(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightModeli(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightModeli(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightModeliv(GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightModeliv(GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightModelx(GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightModelx(GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightModelxOES(GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightModelxOES(GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightModelxv(GLenum pname, const GLfixed * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightModelxv(GLenum pname, const GLfixed * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightModelxvOES(GLenum pname, const GLfixed * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightModelxvOES(GLenum pname, const GLfixed * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightf(GLenum light, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightf(GLenum light, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightfv(GLenum light, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightfv(GLenum light, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLighti(GLenum light, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLighti(GLenum light, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightiv(GLenum light, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightiv(GLenum light, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightx(GLenum light, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightx(GLenum light, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightxOES(GLenum light, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightxOES(GLenum light, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightxv(GLenum light, GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightxv(GLenum light, GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLightxvOES(GLenum light, GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLightxvOES(GLenum light, GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLineStipple(GLint factor, GLushort pattern);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLineStipple(GLint factor, GLushort pattern);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLineWidth(GLfloat width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLineWidth(GLfloat width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLineWidthx(GLfixed width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLineWidthx(GLfixed width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLineWidthxOES(GLfixed width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLineWidthxOES(GLfixed width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLinkProgram(GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLinkProgram(GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLinkProgramARB(GLhandleARB programObj);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLinkProgramARB(GLhandleARB programObj);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glListBase(GLuint base);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glListBase(GLuint base);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glListDrawCommandsStatesClientNV(GLuint list, GLuint segment, const void ** indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glListDrawCommandsStatesClientNV(GLuint list, GLuint segment, const void ** indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glListParameterfSGIX(GLuint list, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glListParameterfSGIX(GLuint list, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glListParameterfvSGIX(GLuint list, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glListParameterfvSGIX(GLuint list, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glListParameteriSGIX(GLuint list, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glListParameteriSGIX(GLuint list, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glListParameterivSGIX(GLuint list, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glListParameterivSGIX(GLuint list, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadIdentity(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadIdentity(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadIdentityDeformationMapSGIX(GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadIdentityDeformationMapSGIX(GLbitfield mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadMatrixd(const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadMatrixd(const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadMatrixf(const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadMatrixf(const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadMatrixx(const GLfixed * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadMatrixx(const GLfixed * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadMatrixxOES(const GLfixed * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadMatrixxOES(const GLfixed * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadName(GLuint name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadName(GLuint name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadPaletteFromModelViewMatrixOES(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadPaletteFromModelViewMatrixOES(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadProgramNV(GLenum target, GLuint id, GLsizei len, const GLubyte * program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadProgramNV(GLenum target, GLuint id, GLsizei len, const GLubyte * program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadTransposeMatrixd(const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadTransposeMatrixd(const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadTransposeMatrixdARB(const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadTransposeMatrixdARB(const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadTransposeMatrixf(const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadTransposeMatrixf(const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadTransposeMatrixfARB(const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadTransposeMatrixfARB(const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLoadTransposeMatrixxOES(const GLfixed * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLoadTransposeMatrixxOES(const GLfixed * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLockArraysEXT(GLint first, GLsizei count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLockArraysEXT(GLint first, GLsizei count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glLogicOp(GLenum opcode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glLogicOp(GLenum opcode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeBufferNonResidentNV(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeBufferNonResidentNV(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeBufferResidentNV(GLenum target, GLenum access);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeBufferResidentNV(GLenum target, GLenum access);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeImageHandleNonResidentARB(GLuint64 handle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeImageHandleNonResidentARB(GLuint64 handle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeImageHandleNonResidentNV(GLuint64 handle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeImageHandleNonResidentNV(GLuint64 handle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeImageHandleResidentARB(GLuint64 handle, GLenum access);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeImageHandleResidentARB(GLuint64 handle, GLenum access);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeImageHandleResidentNV(GLuint64 handle, GLenum access);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeImageHandleResidentNV(GLuint64 handle, GLenum access);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeNamedBufferNonResidentNV(GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeNamedBufferNonResidentNV(GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeNamedBufferResidentNV(GLuint buffer, GLenum access);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeNamedBufferResidentNV(GLuint buffer, GLenum access);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeTextureHandleNonResidentARB(GLuint64 handle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeTextureHandleNonResidentARB(GLuint64 handle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeTextureHandleNonResidentNV(GLuint64 handle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeTextureHandleNonResidentNV(GLuint64 handle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeTextureHandleResidentARB(GLuint64 handle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeTextureHandleResidentARB(GLuint64 handle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMakeTextureHandleResidentNV(GLuint64 handle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMakeTextureHandleResidentNV(GLuint64 handle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMap1xOES(GLenum target, GLfixed u1, GLfixed u2, GLint stride, GLint order, GLfixed points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMap1xOES(GLenum target, GLfixed u1, GLfixed u2, GLint stride, GLint order, GLfixed points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMap2xOES(GLenum target, GLfixed u1, GLfixed u2, GLint ustride, GLint uorder, GLfixed v1, GLfixed v2, GLint vstride, GLint vorder, GLfixed points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMap2xOES(GLenum target, GLfixed u1, GLfixed u2, GLint ustride, GLint uorder, GLfixed v1, GLfixed v2, GLint vstride, GLint vorder, GLfixed points);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapBuffer(GLenum target, GLenum access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapBuffer(GLenum target, GLenum access);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapBufferARB(GLenum target, GLenum access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapBufferARB(GLenum target, GLenum access);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapBufferOES(GLenum target, GLenum access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapBufferOES(GLenum target, GLenum access);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const void * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const void * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapGrid1xOES(GLint n, GLfixed u1, GLfixed u2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapGrid1xOES(GLint n, GLfixed u1, GLfixed u2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapGrid2xOES(GLint n, GLfixed u1, GLfixed u2, GLfixed v1, GLfixed v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapGrid2xOES(GLint n, GLfixed u1, GLfixed u2, GLfixed v1, GLfixed v2);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapNamedBuffer(GLuint buffer, GLenum access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapNamedBuffer(GLuint buffer, GLenum access);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapNamedBufferEXT(GLuint buffer, GLenum access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapNamedBufferEXT(GLuint buffer, GLenum access);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapObjectBufferATI(GLuint buffer);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapObjectBufferATI(GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapParameterfvNV(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapParameterfvNV(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapParameterivNV(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapParameterivNV(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_glMapTexture2DINTEL(GLuint texture, GLint level, GLbitfield access, GLint * stride, GLenum * layout);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_glMapTexture2DINTEL(GLuint texture, GLint level, GLbitfield access, GLint * stride, GLenum * layout);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapVertexAttrib1dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapVertexAttrib1dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapVertexAttrib1fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapVertexAttrib1fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapVertexAttrib2dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapVertexAttrib2dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMapVertexAttrib2fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMapVertexAttrib2fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMaterialf(GLenum face, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMaterialf(GLenum face, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMaterialfv(GLenum face, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMaterialfv(GLenum face, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMateriali(GLenum face, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMateriali(GLenum face, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMaterialiv(GLenum face, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMaterialiv(GLenum face, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMaterialx(GLenum face, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMaterialx(GLenum face, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMaterialxOES(GLenum face, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMaterialxOES(GLenum face, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMaterialxv(GLenum face, GLenum pname, const GLfixed * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMaterialxv(GLenum face, GLenum pname, const GLfixed * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMaterialxvOES(GLenum face, GLenum pname, const GLfixed * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMaterialxvOES(GLenum face, GLenum pname, const GLfixed * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixIndexPointerARB(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixIndexPointerARB(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixIndexPointerOES(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixIndexPointerOES(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixIndexubvARB(GLint size, const GLubyte * indices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixIndexubvARB(GLint size, const GLubyte * indices);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixIndexuivARB(GLint size, const GLuint * indices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixIndexuivARB(GLint size, const GLuint * indices);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixIndexusvARB(GLint size, const GLushort * indices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixIndexusvARB(GLint size, const GLushort * indices);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixLoad3x2fNV(GLenum matrixMode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixLoad3x2fNV(GLenum matrixMode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixLoad3x3fNV(GLenum matrixMode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixLoad3x3fNV(GLenum matrixMode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixLoadIdentityEXT(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixLoadIdentityEXT(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixLoadTranspose3x3fNV(GLenum matrixMode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixLoadTranspose3x3fNV(GLenum matrixMode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixLoadTransposedEXT(GLenum mode, const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixLoadTransposedEXT(GLenum mode, const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixLoadTransposefEXT(GLenum mode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixLoadTransposefEXT(GLenum mode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixLoaddEXT(GLenum mode, const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixLoaddEXT(GLenum mode, const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixLoadfEXT(GLenum mode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixLoadfEXT(GLenum mode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixMode(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixMode(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixMult3x2fNV(GLenum matrixMode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixMult3x2fNV(GLenum matrixMode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixMult3x3fNV(GLenum matrixMode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixMult3x3fNV(GLenum matrixMode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixMultTranspose3x3fNV(GLenum matrixMode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixMultTranspose3x3fNV(GLenum matrixMode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixMultTransposedEXT(GLenum mode, const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixMultTransposedEXT(GLenum mode, const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixMultTransposefEXT(GLenum mode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixMultTransposefEXT(GLenum mode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixMultdEXT(GLenum mode, const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixMultdEXT(GLenum mode, const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixMultfEXT(GLenum mode, const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixMultfEXT(GLenum mode, const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixPopEXT(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixPopEXT(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixPushEXT(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixPushEXT(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMaxShaderCompilerThreadsARB(GLuint count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMaxShaderCompilerThreadsARB(GLuint count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMemoryBarrier(GLbitfield barriers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMemoryBarrier(GLbitfield barriers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMemoryBarrierByRegion(GLbitfield barriers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMemoryBarrierByRegion(GLbitfield barriers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMemoryBarrierEXT(GLbitfield barriers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMemoryBarrierEXT(GLbitfield barriers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMinSampleShading(GLfloat value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMinSampleShading(GLfloat value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMinSampleShadingARB(GLfloat value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMinSampleShadingARB(GLfloat value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMinSampleShadingOES(GLfloat value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMinSampleShadingOES(GLfloat value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMinmax(GLenum target, GLenum internalformat, GLboolean sink);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMinmax(GLenum target, GLenum internalformat, GLboolean sink);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMinmaxEXT(GLenum target, GLenum internalformat, GLboolean sink);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMinmaxEXT(GLenum target, GLenum internalformat, GLboolean sink);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultMatrixd(const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultMatrixd(const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultMatrixf(const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultMatrixf(const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultMatrixx(const GLfixed * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultMatrixx(const GLfixed * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultMatrixxOES(const GLfixed * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultMatrixxOES(const GLfixed * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultTransposeMatrixd(const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultTransposeMatrixd(const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultTransposeMatrixdARB(const GLdouble * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultTransposeMatrixdARB(const GLdouble * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultTransposeMatrixf(const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultTransposeMatrixf(const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultTransposeMatrixfARB(const GLfloat * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultTransposeMatrixfARB(const GLfloat * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultTransposeMatrixxOES(const GLfixed * m);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultTransposeMatrixxOES(const GLfixed * m);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawArrays(GLenum mode, const GLint * first, const GLsizei * count, GLsizei drawcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawArrays(GLenum mode, const GLint * first, const GLsizei * count, GLsizei drawcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawArraysEXT(GLenum mode, const GLint * first, const GLsizei * count, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawArraysEXT(GLenum mode, const GLint * first, const GLsizei * count, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawArraysIndirect(GLenum mode, const void * indirect, GLsizei drawcount, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawArraysIndirect(GLenum mode, const void * indirect, GLsizei drawcount, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawArraysIndirectAMD(GLenum mode, const void * indirect, GLsizei primcount, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawArraysIndirectAMD(GLenum mode, const void * indirect, GLsizei primcount, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawArraysIndirectBindlessCountNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawArraysIndirectBindlessCountNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawArraysIndirectBindlessNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawArraysIndirectBindlessNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawArraysIndirectCountARB(GLenum mode, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawArraysIndirectCountARB(GLenum mode, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawArraysIndirectEXT(GLenum mode, const void * indirect, GLsizei drawcount, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawArraysIndirectEXT(GLenum mode, const void * indirect, GLsizei drawcount, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint * first, const GLsizei * count, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint * first, const GLsizei * count, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElements(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElements(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount, const GLint * basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount, const GLint * basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsBaseVertexEXT(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount, const GLint * basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsBaseVertexEXT(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount, const GLint * basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsBaseVertexOES(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount, const GLint * basevertex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsBaseVertexOES(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount, const GLint * basevertex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsEXT(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsEXT(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const void * indirect, GLsizei drawcount, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const void * indirect, GLsizei drawcount, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const void * indirect, GLsizei primcount, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const void * indirect, GLsizei primcount, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsIndirectBindlessCountNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsIndirectBindlessCountNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsIndirectBindlessNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsIndirectBindlessNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawElementsIndirectEXT(GLenum mode, GLenum type, const void * indirect, GLsizei drawcount, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawElementsIndirectEXT(GLenum mode, GLenum type, const void * indirect, GLsizei drawcount, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint * first, const GLsizei * count, GLsizei primcount);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint * first, const GLsizei * count, GLsizei primcount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiModeDrawArraysIBM(const GLenum * mode, const GLint * first, const GLsizei * count, GLsizei primcount, GLint modestride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiModeDrawArraysIBM(const GLenum * mode, const GLint * first, const GLsizei * count, GLsizei primcount, GLint modestride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiModeDrawElementsIBM(const GLenum * mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount, GLint modestride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiModeDrawElementsIBM(const GLenum * mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount, GLint modestride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexBufferEXT(GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexBufferEXT(GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1bOES(GLenum texture, GLbyte s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1bOES(GLenum texture, GLbyte s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1bvOES(GLenum texture, const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1bvOES(GLenum texture, const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1d(GLenum target, GLdouble s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1d(GLenum target, GLdouble s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1dARB(GLenum target, GLdouble s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1dARB(GLenum target, GLdouble s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1dv(GLenum target, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1dv(GLenum target, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1dvARB(GLenum target, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1dvARB(GLenum target, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1f(GLenum target, GLfloat s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1f(GLenum target, GLfloat s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1fARB(GLenum target, GLfloat s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1fARB(GLenum target, GLfloat s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1fv(GLenum target, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1fv(GLenum target, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1fvARB(GLenum target, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1fvARB(GLenum target, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1hNV(GLenum target, GLhalfNV s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1hNV(GLenum target, GLhalfNV s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1hvNV(GLenum target, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1hvNV(GLenum target, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1i(GLenum target, GLint s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1i(GLenum target, GLint s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1iARB(GLenum target, GLint s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1iARB(GLenum target, GLint s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1iv(GLenum target, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1iv(GLenum target, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1ivARB(GLenum target, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1ivARB(GLenum target, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1s(GLenum target, GLshort s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1s(GLenum target, GLshort s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1sARB(GLenum target, GLshort s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1sARB(GLenum target, GLshort s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1sv(GLenum target, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1sv(GLenum target, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1svARB(GLenum target, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1svARB(GLenum target, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1xOES(GLenum texture, GLfixed s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1xOES(GLenum texture, GLfixed s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord1xvOES(GLenum texture, const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord1xvOES(GLenum texture, const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2bOES(GLenum texture, GLbyte s, GLbyte t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2bOES(GLenum texture, GLbyte s, GLbyte t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2bvOES(GLenum texture, const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2bvOES(GLenum texture, const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2d(GLenum target, GLdouble s, GLdouble t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2d(GLenum target, GLdouble s, GLdouble t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2dARB(GLenum target, GLdouble s, GLdouble t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2dARB(GLenum target, GLdouble s, GLdouble t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2dv(GLenum target, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2dv(GLenum target, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2dvARB(GLenum target, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2dvARB(GLenum target, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2f(GLenum target, GLfloat s, GLfloat t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2f(GLenum target, GLfloat s, GLfloat t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2fARB(GLenum target, GLfloat s, GLfloat t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2fARB(GLenum target, GLfloat s, GLfloat t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2fv(GLenum target, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2fv(GLenum target, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2fvARB(GLenum target, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2fvARB(GLenum target, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2hNV(GLenum target, GLhalfNV s, GLhalfNV t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2hNV(GLenum target, GLhalfNV s, GLhalfNV t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2hvNV(GLenum target, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2hvNV(GLenum target, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2i(GLenum target, GLint s, GLint t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2i(GLenum target, GLint s, GLint t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2iARB(GLenum target, GLint s, GLint t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2iARB(GLenum target, GLint s, GLint t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2iv(GLenum target, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2iv(GLenum target, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2ivARB(GLenum target, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2ivARB(GLenum target, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2s(GLenum target, GLshort s, GLshort t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2s(GLenum target, GLshort s, GLshort t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2sARB(GLenum target, GLshort s, GLshort t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2sARB(GLenum target, GLshort s, GLshort t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2sv(GLenum target, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2sv(GLenum target, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2svARB(GLenum target, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2svARB(GLenum target, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2xOES(GLenum texture, GLfixed s, GLfixed t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2xOES(GLenum texture, GLfixed s, GLfixed t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord2xvOES(GLenum texture, const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord2xvOES(GLenum texture, const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3bOES(GLenum texture, GLbyte s, GLbyte t, GLbyte r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3bOES(GLenum texture, GLbyte s, GLbyte t, GLbyte r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3bvOES(GLenum texture, const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3bvOES(GLenum texture, const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3d(GLenum target, GLdouble s, GLdouble t, GLdouble r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3d(GLenum target, GLdouble s, GLdouble t, GLdouble r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3dv(GLenum target, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3dv(GLenum target, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3dvARB(GLenum target, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3dvARB(GLenum target, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3f(GLenum target, GLfloat s, GLfloat t, GLfloat r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3f(GLenum target, GLfloat s, GLfloat t, GLfloat r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3fv(GLenum target, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3fv(GLenum target, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3fvARB(GLenum target, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3fvARB(GLenum target, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3hvNV(GLenum target, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3hvNV(GLenum target, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3i(GLenum target, GLint s, GLint t, GLint r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3i(GLenum target, GLint s, GLint t, GLint r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3iARB(GLenum target, GLint s, GLint t, GLint r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3iARB(GLenum target, GLint s, GLint t, GLint r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3iv(GLenum target, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3iv(GLenum target, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3ivARB(GLenum target, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3ivARB(GLenum target, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3s(GLenum target, GLshort s, GLshort t, GLshort r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3s(GLenum target, GLshort s, GLshort t, GLshort r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3sARB(GLenum target, GLshort s, GLshort t, GLshort r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3sARB(GLenum target, GLshort s, GLshort t, GLshort r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3sv(GLenum target, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3sv(GLenum target, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3svARB(GLenum target, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3svARB(GLenum target, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3xOES(GLenum texture, GLfixed s, GLfixed t, GLfixed r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3xOES(GLenum texture, GLfixed s, GLfixed t, GLfixed r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord3xvOES(GLenum texture, const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord3xvOES(GLenum texture, const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4bOES(GLenum texture, GLbyte s, GLbyte t, GLbyte r, GLbyte q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4bOES(GLenum texture, GLbyte s, GLbyte t, GLbyte r, GLbyte q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4bvOES(GLenum texture, const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4bvOES(GLenum texture, const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4d(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4d(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4dv(GLenum target, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4dv(GLenum target, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4dvARB(GLenum target, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4dvARB(GLenum target, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4f(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4f(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4fv(GLenum target, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4fv(GLenum target, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4fvARB(GLenum target, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4fvARB(GLenum target, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4hvNV(GLenum target, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4hvNV(GLenum target, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4i(GLenum target, GLint s, GLint t, GLint r, GLint q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4i(GLenum target, GLint s, GLint t, GLint r, GLint q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4iARB(GLenum target, GLint s, GLint t, GLint r, GLint q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4iARB(GLenum target, GLint s, GLint t, GLint r, GLint q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4iv(GLenum target, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4iv(GLenum target, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4ivARB(GLenum target, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4ivARB(GLenum target, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4s(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4s(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4sARB(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4sARB(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4sv(GLenum target, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4sv(GLenum target, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4svARB(GLenum target, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4svARB(GLenum target, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4x(GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4x(GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4xOES(GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4xOES(GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoord4xvOES(GLenum texture, const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoord4xvOES(GLenum texture, const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordP1ui(GLenum texture, GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordP1ui(GLenum texture, GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordP1uiv(GLenum texture, GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordP1uiv(GLenum texture, GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordP2ui(GLenum texture, GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordP2ui(GLenum texture, GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordP2uiv(GLenum texture, GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordP2uiv(GLenum texture, GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordP3ui(GLenum texture, GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordP3ui(GLenum texture, GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordP3uiv(GLenum texture, GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordP3uiv(GLenum texture, GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordP4ui(GLenum texture, GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordP4ui(GLenum texture, GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordP4uiv(GLenum texture, GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordP4uiv(GLenum texture, GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexParameterfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexParameterfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexParameteriEXT(GLenum texunit, GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexParameteriEXT(GLenum texunit, GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexRenderbufferEXT(GLenum texunit, GLenum target, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexRenderbufferEXT(GLenum texunit, GLenum target, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedBufferData(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedBufferData(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, GLbitfield flags);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, GLbitfield flags);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferDrawBuffer(GLuint framebuffer, GLenum buf);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferDrawBuffer(GLuint framebuffer, GLenum buf);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferDrawBuffers(GLuint framebuffer, GLsizei n, const GLenum * bufs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferDrawBuffers(GLuint framebuffer, GLsizei n, const GLenum * bufs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferParameteri(GLuint framebuffer, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferParameteri(GLuint framebuffer, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferReadBuffer(GLuint framebuffer, GLenum src);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferReadBuffer(GLuint framebuffer, GLenum src);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferRenderbuffer(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferRenderbuffer(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferSampleLocationsfvARB(GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferSampleLocationsfvARB(GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferSampleLocationsfvNV(GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferSampleLocationsfvNV(GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferTexture(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferTexture(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferTexture1DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferTexture1DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferTexture2DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferTexture2DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferTexture3DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferTexture3DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferTextureEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferTextureEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferTextureFaceEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferTextureFaceEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferTextureLayer(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferTextureLayer(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedFramebufferTextureLayerEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedFramebufferTextureLayerEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameter4dEXT(GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameter4dEXT(GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameter4dvEXT(GLuint program, GLenum target, GLuint index, const GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameter4dvEXT(GLuint program, GLenum target, GLuint index, const GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameter4fEXT(GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameter4fEXT(GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameter4fvEXT(GLuint program, GLenum target, GLuint index, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameter4fvEXT(GLuint program, GLenum target, GLuint index, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameterI4iEXT(GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameterI4iEXT(GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameterI4ivEXT(GLuint program, GLenum target, GLuint index, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameterI4ivEXT(GLuint program, GLenum target, GLuint index, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameterI4uiEXT(GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameterI4uiEXT(GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameterI4uivEXT(GLuint program, GLenum target, GLuint index, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameterI4uivEXT(GLuint program, GLenum target, GLuint index, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParameters4fvEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParameters4fvEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParametersI4ivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParametersI4ivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramLocalParametersI4uivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramLocalParametersI4uivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedProgramStringEXT(GLuint program, GLenum target, GLenum format, GLsizei len, const void * string);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedProgramStringEXT(GLuint program, GLenum target, GLenum format, GLsizei len, const void * string);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedRenderbufferStorage(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedRenderbufferStorage(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedRenderbufferStorageMultisample(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedRenderbufferStorageMultisample(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedRenderbufferStorageMultisampleCoverageEXT(GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedRenderbufferStorageMultisampleCoverageEXT(GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedRenderbufferStorageMultisampleEXT(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedRenderbufferStorageMultisampleEXT(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNamedStringARB(GLenum type, GLint namelen, const GLchar * name, GLint stringlen, const GLchar * string);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNamedStringARB(GLenum type, GLint namelen, const GLchar * name, GLint stringlen, const GLchar * string);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNewList(GLuint list, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNewList(GLuint list, GLenum mode);
 
-glproxy_IMPORTEXPORT GLuint glproxy_CALLSPEC glproxy_glNewObjectBufferATI(GLsizei size, const void * pointer, GLenum usage);
+GLPROXY_IMPORTEXPORT GLuint GLPROXY_CALLSPEC glproxy_glNewObjectBufferATI(GLsizei size, const void * pointer, GLenum usage);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3bv(const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3bv(const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3fVertex3fSUN(GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3fVertex3fSUN(GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3fVertex3fvSUN(const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3fVertex3fvSUN(const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3hNV(GLhalfNV nx, GLhalfNV ny, GLhalfNV nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3hNV(GLhalfNV nx, GLhalfNV ny, GLhalfNV nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3i(GLint nx, GLint ny, GLint nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3i(GLint nx, GLint ny, GLint nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3s(GLshort nx, GLshort ny, GLshort nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3s(GLshort nx, GLshort ny, GLshort nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3xOES(GLfixed nx, GLfixed ny, GLfixed nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3xOES(GLfixed nx, GLfixed ny, GLfixed nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormal3xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormal3xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalFormatNV(GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalFormatNV(GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalP3ui(GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalP3ui(GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalP3uiv(GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalP3uiv(GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalPointer(GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalPointer(GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalPointerListIBM(GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalPointerListIBM(GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalPointervINTEL(GLenum type, const void ** pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalPointervINTEL(GLenum type, const void ** pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3bATI(GLenum stream, GLbyte nx, GLbyte ny, GLbyte nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3bATI(GLenum stream, GLbyte nx, GLbyte ny, GLbyte nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3bvATI(GLenum stream, const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3bvATI(GLenum stream, const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3dATI(GLenum stream, GLdouble nx, GLdouble ny, GLdouble nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3dATI(GLenum stream, GLdouble nx, GLdouble ny, GLdouble nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3dvATI(GLenum stream, const GLdouble * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3dvATI(GLenum stream, const GLdouble * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3fATI(GLenum stream, GLfloat nx, GLfloat ny, GLfloat nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3fATI(GLenum stream, GLfloat nx, GLfloat ny, GLfloat nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3fvATI(GLenum stream, const GLfloat * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3fvATI(GLenum stream, const GLfloat * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3iATI(GLenum stream, GLint nx, GLint ny, GLint nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3iATI(GLenum stream, GLint nx, GLint ny, GLint nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3ivATI(GLenum stream, const GLint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3ivATI(GLenum stream, const GLint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3sATI(GLenum stream, GLshort nx, GLshort ny, GLshort nz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3sATI(GLenum stream, GLshort nx, GLshort ny, GLshort nz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glNormalStream3svATI(GLenum stream, const GLshort * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glNormalStream3svATI(GLenum stream, const GLshort * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glObjectLabelKHR(GLenum identifier, GLuint name, GLsizei length, const GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glObjectLabelKHR(GLenum identifier, GLuint name, GLsizei length, const GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glObjectPtrLabel(const void * ptr, GLsizei length, const GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glObjectPtrLabel(const void * ptr, GLsizei length, const GLchar * label);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glObjectPtrLabelKHR(const void * ptr, GLsizei length, const GLchar * label);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glObjectPtrLabelKHR(const void * ptr, GLsizei length, const GLchar * label);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glObjectPurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glObjectPurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glObjectUnpurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glObjectUnpurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glOrthof(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glOrthof(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glOrthox(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glOrthox(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glOrthoxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glOrthoxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPNTrianglesfATI(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPNTrianglesfATI(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPNTrianglesiATI(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPNTrianglesiATI(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPassTexCoordATI(GLuint dst, GLuint coord, GLenum swizzle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPassTexCoordATI(GLuint dst, GLuint coord, GLenum swizzle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPassThrough(GLfloat token);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPassThrough(GLfloat token);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPassThroughxOES(GLfixed token);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPassThroughxOES(GLfixed token);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPatchParameterfv(GLenum pname, const GLfloat * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPatchParameterfv(GLenum pname, const GLfloat * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPatchParameteri(GLenum pname, GLint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPatchParameteri(GLenum pname, GLint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPatchParameteriEXT(GLenum pname, GLint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPatchParameteriEXT(GLenum pname, GLint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPatchParameteriOES(GLenum pname, GLint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPatchParameteriOES(GLenum pname, GLint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathColorGenNV(GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat * coeffs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathColorGenNV(GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat * coeffs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathCommandsNV(GLuint path, GLsizei numCommands, const GLubyte * commands, GLsizei numCoords, GLenum coordType, const void * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathCommandsNV(GLuint path, GLsizei numCommands, const GLubyte * commands, GLsizei numCoords, GLenum coordType, const void * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum coordType, const void * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum coordType, const void * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathCoverDepthFuncNV(GLenum func);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathCoverDepthFuncNV(GLenum func);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathDashArrayNV(GLuint path, GLsizei dashCount, const GLfloat * dashArray);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathDashArrayNV(GLuint path, GLsizei dashCount, const GLfloat * dashArray);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathFogGenNV(GLenum genMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathFogGenNV(GLenum genMode);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glPathGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, GLbitfield fontStyle, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glPathGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, GLbitfield fontStyle, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glPathGlyphIndexRangeNV(GLenum fontTarget, const void * fontName, GLbitfield fontStyle, GLuint pathParameterTemplate, GLfloat emScale, GLuint baseAndCount);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glPathGlyphIndexRangeNV(GLenum fontTarget, const void * fontName, GLbitfield fontStyle, GLuint pathParameterTemplate, GLfloat emScale, GLuint baseAndCount);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const void * charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const void * charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glPathMemoryGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, GLsizeiptr fontSize, const void * fontData, GLsizei faceIndex, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glPathMemoryGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, GLsizeiptr fontSize, const void * fontData, GLsizei faceIndex, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathParameterfNV(GLuint path, GLenum pname, GLfloat value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathParameterfNV(GLuint path, GLenum pname, GLfloat value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathParameterfvNV(GLuint path, GLenum pname, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathParameterfvNV(GLuint path, GLenum pname, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathParameteriNV(GLuint path, GLenum pname, GLint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathParameteriNV(GLuint path, GLenum pname, GLint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathParameterivNV(GLuint path, GLenum pname, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathParameterivNV(GLuint path, GLenum pname, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathStencilDepthOffsetNV(GLfloat factor, GLfloat units);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathStencilDepthOffsetNV(GLfloat factor, GLfloat units);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathStencilFuncNV(GLenum func, GLint ref, GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathStencilFuncNV(GLenum func, GLint ref, GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathStringNV(GLuint path, GLenum format, GLsizei length, const void * pathString);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathStringNV(GLuint path, GLenum format, GLsizei length, const void * pathString);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathSubCommandsNV(GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte * commands, GLsizei numCoords, GLenum coordType, const void * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathSubCommandsNV(GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte * commands, GLsizei numCoords, GLenum coordType, const void * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathSubCoordsNV(GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const void * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathSubCoordsNV(GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const void * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPathTexGenNV(GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat * coeffs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPathTexGenNV(GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat * coeffs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPauseTransformFeedback(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPauseTransformFeedback(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPauseTransformFeedbackNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPauseTransformFeedbackNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelDataRangeNV(GLenum target, GLsizei length, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelDataRangeNV(GLenum target, GLsizei length, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelMapuiv(GLenum map, GLsizei mapsize, const GLuint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelMapuiv(GLenum map, GLsizei mapsize, const GLuint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelMapusv(GLenum map, GLsizei mapsize, const GLushort * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelMapusv(GLenum map, GLsizei mapsize, const GLushort * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelMapx(GLenum map, GLint size, const GLfixed * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelMapx(GLenum map, GLint size, const GLfixed * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelStoref(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelStoref(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelStorei(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelStorei(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelStorex(GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelStorex(GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTexGenParameterfSGIS(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTexGenParameterfSGIS(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTexGenParameterfvSGIS(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTexGenParameterfvSGIS(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTexGenParameteriSGIS(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTexGenParameteriSGIS(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTexGenParameterivSGIS(GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTexGenParameterivSGIS(GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTexGenSGIX(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTexGenSGIX(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTransferf(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTransferf(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTransferi(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTransferi(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTransferxOES(GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTransferxOES(GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTransformParameterfEXT(GLenum target, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTransformParameterfEXT(GLenum target, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTransformParameteriEXT(GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTransformParameteriEXT(GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelZoom(GLfloat xfactor, GLfloat yfactor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelZoom(GLfloat xfactor, GLfloat yfactor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPixelZoomxOES(GLfixed xfactor, GLfixed yfactor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPixelZoomxOES(GLfixed xfactor, GLfixed yfactor);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glPointAlongPathNV(GLuint path, GLsizei startSegment, GLsizei numSegments, GLfloat distance, GLfloat * x, GLfloat * y, GLfloat * tangentX, GLfloat * tangentY);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glPointAlongPathNV(GLuint path, GLsizei startSegment, GLsizei numSegments, GLfloat distance, GLfloat * x, GLfloat * y, GLfloat * tangentX, GLfloat * tangentY);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterf(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterf(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterfARB(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterfARB(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterfEXT(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterfEXT(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterfSGIS(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterfSGIS(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterfv(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterfv(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterfvARB(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterfvARB(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterfvEXT(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterfvEXT(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterfvSGIS(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterfvSGIS(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameteri(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameteri(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameteriNV(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameteriNV(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameteriv(GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameteriv(GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterivNV(GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterivNV(GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterx(GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterx(GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterxOES(GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterxOES(GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterxv(GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterxv(GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointParameterxvOES(GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointParameterxvOES(GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointSize(GLfloat size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointSize(GLfloat size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointSizePointerOES(GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointSizePointerOES(GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointSizex(GLfixed size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointSizex(GLfixed size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPointSizexOES(GLfixed size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPointSizexOES(GLfixed size);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glPollAsyncSGIX(GLuint * markerp);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glPollAsyncSGIX(GLuint * markerp);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glPollInstrumentsSGIX(GLint * marker_p);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glPollInstrumentsSGIX(GLint * marker_p);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPolygonMode(GLenum face, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPolygonMode(GLenum face, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPolygonModeNV(GLenum face, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPolygonModeNV(GLenum face, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPolygonOffset(GLfloat factor, GLfloat units);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPolygonOffset(GLfloat factor, GLfloat units);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPolygonOffsetClampEXT(GLfloat factor, GLfloat units, GLfloat clamp);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPolygonOffsetClampEXT(GLfloat factor, GLfloat units, GLfloat clamp);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPolygonOffsetEXT(GLfloat factor, GLfloat bias);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPolygonOffsetEXT(GLfloat factor, GLfloat bias);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPolygonOffsetx(GLfixed factor, GLfixed units);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPolygonOffsetx(GLfixed factor, GLfixed units);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPolygonOffsetxOES(GLfixed factor, GLfixed units);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPolygonOffsetxOES(GLfixed factor, GLfixed units);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPolygonStipple(const GLubyte * mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPolygonStipple(const GLubyte * mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPopAttrib(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPopAttrib(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPopClientAttrib(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPopClientAttrib(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPopDebugGroup(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPopDebugGroup(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPopDebugGroupKHR(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPopDebugGroupKHR(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPopGroupMarkerEXT(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPopGroupMarkerEXT(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPopMatrix(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPopMatrix(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPopName(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPopName(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPresentFrameDualFillNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLenum target1, GLuint fill1, GLenum target2, GLuint fill2, GLenum target3, GLuint fill3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPresentFrameDualFillNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLenum target1, GLuint fill1, GLenum target2, GLuint fill2, GLenum target3, GLuint fill3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrimitiveBoundingBox(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrimitiveBoundingBox(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrimitiveBoundingBoxARB(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrimitiveBoundingBoxARB(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrimitiveBoundingBoxEXT(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrimitiveBoundingBoxEXT(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrimitiveBoundingBoxOES(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrimitiveBoundingBoxOES(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrimitiveRestartIndex(GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrimitiveRestartIndex(GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrimitiveRestartIndexNV(GLuint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrimitiveRestartIndexNV(GLuint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrimitiveRestartNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrimitiveRestartNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrioritizeTextures(GLsizei n, const GLuint * textures, const GLfloat * priorities);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrioritizeTextures(GLsizei n, const GLuint * textures, const GLfloat * priorities);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrioritizeTexturesEXT(GLsizei n, const GLuint * textures, const GLclampf * priorities);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrioritizeTexturesEXT(GLsizei n, const GLuint * textures, const GLclampf * priorities);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPrioritizeTexturesxOES(GLsizei n, const GLuint * textures, const GLfixed * priorities);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPrioritizeTexturesxOES(GLsizei n, const GLuint * textures, const GLfixed * priorities);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramBinary(GLuint program, GLenum binaryFormat, const void * binary, GLsizei length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramBinary(GLuint program, GLenum binaryFormat, const void * binary, GLsizei length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramBinaryOES(GLuint program, GLenum binaryFormat, const void * binary, GLint length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramBinaryOES(GLuint program, GLenum binaryFormat, const void * binary, GLint length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramBufferParametersIivNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramBufferParametersIivNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramBufferParametersIuivNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramBufferParametersIuivNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramBufferParametersfvNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramBufferParametersfvNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameter4dvARB(GLenum target, GLuint index, const GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameter4dvARB(GLenum target, GLuint index, const GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameter4fvARB(GLenum target, GLuint index, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameter4fvARB(GLenum target, GLuint index, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameterI4ivNV(GLenum target, GLuint index, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameterI4ivNV(GLenum target, GLuint index, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameterI4uivNV(GLenum target, GLuint index, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameterI4uivNV(GLenum target, GLuint index, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramEnvParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramEnvParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameter4dvARB(GLenum target, GLuint index, const GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameter4dvARB(GLenum target, GLuint index, const GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameter4fvARB(GLenum target, GLuint index, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameter4fvARB(GLenum target, GLuint index, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameterI4ivNV(GLenum target, GLuint index, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameterI4ivNV(GLenum target, GLuint index, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameterI4uivNV(GLenum target, GLuint index, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameterI4uivNV(GLenum target, GLuint index, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramLocalParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramLocalParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramNamedParameter4dNV(GLuint id, GLsizei len, const GLubyte * name, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramNamedParameter4dNV(GLuint id, GLsizei len, const GLubyte * name, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramNamedParameter4dvNV(GLuint id, GLsizei len, const GLubyte * name, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramNamedParameter4dvNV(GLuint id, GLsizei len, const GLubyte * name, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramNamedParameter4fNV(GLuint id, GLsizei len, const GLubyte * name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramNamedParameter4fNV(GLuint id, GLsizei len, const GLubyte * name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramNamedParameter4fvNV(GLuint id, GLsizei len, const GLubyte * name, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramNamedParameter4fvNV(GLuint id, GLsizei len, const GLubyte * name, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameter4dNV(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameter4dNV(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameter4dvNV(GLenum target, GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameter4dvNV(GLenum target, GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameter4fNV(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameter4fNV(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameter4fvNV(GLenum target, GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameter4fvNV(GLenum target, GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameteri(GLuint program, GLenum pname, GLint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameteri(GLuint program, GLenum pname, GLint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameteriARB(GLuint program, GLenum pname, GLint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameteriARB(GLuint program, GLenum pname, GLint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameteriEXT(GLuint program, GLenum pname, GLint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameteriEXT(GLuint program, GLenum pname, GLint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameters4dvNV(GLenum target, GLuint index, GLsizei count, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameters4dvNV(GLenum target, GLuint index, GLsizei count, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramParameters4fvNV(GLenum target, GLuint index, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramParameters4fvNV(GLenum target, GLuint index, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramPathFragmentInputGenNV(GLuint program, GLint location, GLenum genMode, GLint components, const GLfloat * coeffs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramPathFragmentInputGenNV(GLuint program, GLint location, GLenum genMode, GLint components, const GLfloat * coeffs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramStringARB(GLenum target, GLenum format, GLsizei len, const void * string);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramStringARB(GLenum target, GLenum format, GLsizei len, const void * string);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramSubroutineParametersuivNV(GLenum target, GLsizei count, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramSubroutineParametersuivNV(GLenum target, GLsizei count, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1d(GLuint program, GLint location, GLdouble v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1d(GLuint program, GLint location, GLdouble v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1dEXT(GLuint program, GLint location, GLdouble x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1dEXT(GLuint program, GLint location, GLdouble x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1dv(GLuint program, GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1dv(GLuint program, GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1f(GLuint program, GLint location, GLfloat v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1f(GLuint program, GLint location, GLfloat v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1fEXT(GLuint program, GLint location, GLfloat v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1fEXT(GLuint program, GLint location, GLfloat v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1fv(GLuint program, GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1fv(GLuint program, GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1i(GLuint program, GLint location, GLint v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1i(GLuint program, GLint location, GLint v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1i64ARB(GLuint program, GLint location, GLint64 x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1i64ARB(GLuint program, GLint location, GLint64 x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1i64NV(GLuint program, GLint location, GLint64EXT x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1i64NV(GLuint program, GLint location, GLint64EXT x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1iEXT(GLuint program, GLint location, GLint v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1iEXT(GLuint program, GLint location, GLint v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1iv(GLuint program, GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1iv(GLuint program, GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1ivEXT(GLuint program, GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1ivEXT(GLuint program, GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1ui(GLuint program, GLint location, GLuint v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1ui(GLuint program, GLint location, GLuint v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1ui64ARB(GLuint program, GLint location, GLuint64 x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1ui64ARB(GLuint program, GLint location, GLuint64 x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1ui64NV(GLuint program, GLint location, GLuint64EXT x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1ui64NV(GLuint program, GLint location, GLuint64EXT x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1uiEXT(GLuint program, GLint location, GLuint v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1uiEXT(GLuint program, GLint location, GLuint v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1uiv(GLuint program, GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1uiv(GLuint program, GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform1uivEXT(GLuint program, GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform1uivEXT(GLuint program, GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2d(GLuint program, GLint location, GLdouble v0, GLdouble v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2d(GLuint program, GLint location, GLdouble v0, GLdouble v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2dEXT(GLuint program, GLint location, GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2dEXT(GLuint program, GLint location, GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2dv(GLuint program, GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2dv(GLuint program, GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2f(GLuint program, GLint location, GLfloat v0, GLfloat v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2f(GLuint program, GLint location, GLfloat v0, GLfloat v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2fv(GLuint program, GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2fv(GLuint program, GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2i(GLuint program, GLint location, GLint v0, GLint v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2i(GLuint program, GLint location, GLint v0, GLint v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2iEXT(GLuint program, GLint location, GLint v0, GLint v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2iEXT(GLuint program, GLint location, GLint v0, GLint v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2iv(GLuint program, GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2iv(GLuint program, GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2ivEXT(GLuint program, GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2ivEXT(GLuint program, GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2ui(GLuint program, GLint location, GLuint v0, GLuint v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2ui(GLuint program, GLint location, GLuint v0, GLuint v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2uiv(GLuint program, GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2uiv(GLuint program, GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform2uivEXT(GLuint program, GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform2uivEXT(GLuint program, GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3d(GLuint program, GLint location, GLdouble v0, GLdouble v1, GLdouble v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3d(GLuint program, GLint location, GLdouble v0, GLdouble v1, GLdouble v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3dv(GLuint program, GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3dv(GLuint program, GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3f(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3f(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3fv(GLuint program, GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3fv(GLuint program, GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3i(GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3i(GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y, GLint64 z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y, GLint64 z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3iv(GLuint program, GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3iv(GLuint program, GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3ivEXT(GLuint program, GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3ivEXT(GLuint program, GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3ui(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3ui(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y, GLuint64 z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y, GLuint64 z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3uiv(GLuint program, GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3uiv(GLuint program, GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform3uivEXT(GLuint program, GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform3uivEXT(GLuint program, GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4d(GLuint program, GLint location, GLdouble v0, GLdouble v1, GLdouble v2, GLdouble v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4d(GLuint program, GLint location, GLdouble v0, GLdouble v1, GLdouble v2, GLdouble v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4dv(GLuint program, GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4dv(GLuint program, GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4f(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4f(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4fv(GLuint program, GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4fv(GLuint program, GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4i(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4i(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y, GLint64 z, GLint64 w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y, GLint64 z, GLint64 w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4iv(GLuint program, GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4iv(GLuint program, GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4ivEXT(GLuint program, GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4ivEXT(GLuint program, GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4ui(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4ui(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4uiv(GLuint program, GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4uiv(GLuint program, GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniform4uivEXT(GLuint program, GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniform4uivEXT(GLuint program, GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformHandleui64ARB(GLuint program, GLint location, GLuint64 value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformHandleui64ARB(GLuint program, GLint location, GLuint64 value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformHandleui64NV(GLuint program, GLint location, GLuint64 value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformHandleui64NV(GLuint program, GLint location, GLuint64 value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformHandleui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformHandleui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformHandleui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64 * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformHandleui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64 * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2x3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2x3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2x3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2x3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2x4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2x4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2x4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2x4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix2x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix2x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3x2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3x2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3x2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3x2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3x4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3x4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3x4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3x4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix3x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix3x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4x2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4x2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4x2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4x2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4x3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4x3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4x3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4x3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformMatrix4x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformMatrix4x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformui64NV(GLuint program, GLint location, GLuint64EXT value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformui64NV(GLuint program, GLint location, GLuint64EXT value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramUniformui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramUniformui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProgramVertexLimitNV(GLenum target, GLint limit);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProgramVertexLimitNV(GLenum target, GLint limit);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProvokingVertex(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProvokingVertex(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glProvokingVertexEXT(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glProvokingVertexEXT(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPushAttrib(GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPushAttrib(GLbitfield mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPushClientAttrib(GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPushClientAttrib(GLbitfield mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPushClientAttribDefaultEXT(GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPushClientAttribDefaultEXT(GLbitfield mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar * message);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar * message);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPushDebugGroupKHR(GLenum source, GLuint id, GLsizei length, const GLchar * message);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPushDebugGroupKHR(GLenum source, GLuint id, GLsizei length, const GLchar * message);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPushGroupMarkerEXT(GLsizei length, const GLchar * marker);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPushGroupMarkerEXT(GLsizei length, const GLchar * marker);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPushMatrix(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPushMatrix(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glPushName(GLuint name);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glPushName(GLuint name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glQueryCounter(GLuint id, GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glQueryCounter(GLuint id, GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glQueryCounterEXT(GLuint id, GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glQueryCounterEXT(GLuint id, GLenum target);
 
-glproxy_IMPORTEXPORT GLbitfield glproxy_CALLSPEC glproxy_glQueryMatrixxOES(GLfixed * mantissa, GLint * exponent);
+GLPROXY_IMPORTEXPORT GLbitfield GLPROXY_CALLSPEC glproxy_glQueryMatrixxOES(GLfixed * mantissa, GLint * exponent);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glQueryObjectParameteruiAMD(GLenum target, GLuint id, GLenum pname, GLuint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glQueryObjectParameteruiAMD(GLenum target, GLuint id, GLenum pname, GLuint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2d(GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2d(GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2f(GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2f(GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2i(GLint x, GLint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2i(GLint x, GLint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2s(GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2s(GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2xOES(GLfixed x, GLfixed y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2xOES(GLfixed x, GLfixed y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos2xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos2xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3i(GLint x, GLint y, GLint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3i(GLint x, GLint y, GLint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3s(GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3s(GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3xOES(GLfixed x, GLfixed y, GLfixed z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3xOES(GLfixed x, GLfixed y, GLfixed z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos3xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos3xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4i(GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4i(GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4xOES(GLfixed x, GLfixed y, GLfixed z, GLfixed w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4xOES(GLfixed x, GLfixed y, GLfixed z, GLfixed w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterPos4xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterPos4xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRasterSamplesEXT(GLuint samples, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRasterSamplesEXT(GLuint samples, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadBuffer(GLenum src);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadBuffer(GLenum src);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadBufferIndexedEXT(GLenum src, GLint index);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadBufferIndexedEXT(GLenum src, GLint index);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadBufferNV(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadBufferNV(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadInstrumentsSGIX(GLint marker);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadInstrumentsSGIX(GLint marker);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadnPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadnPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadnPixelsARB(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadnPixelsARB(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadnPixelsEXT(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadnPixelsEXT(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReadnPixelsKHR(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReadnPixelsKHR(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRectdv(const GLdouble * v1, const GLdouble * v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRectdv(const GLdouble * v1, const GLdouble * v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRectfv(const GLfloat * v1, const GLfloat * v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRectfv(const GLfloat * v1, const GLfloat * v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRecti(GLint x1, GLint y1, GLint x2, GLint y2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRecti(GLint x1, GLint y1, GLint x2, GLint y2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRectiv(const GLint * v1, const GLint * v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRectiv(const GLint * v1, const GLint * v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRectsv(const GLshort * v1, const GLshort * v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRectsv(const GLshort * v1, const GLshort * v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRectxOES(GLfixed x1, GLfixed y1, GLfixed x2, GLfixed y2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRectxOES(GLfixed x1, GLfixed y1, GLfixed x2, GLfixed y2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRectxvOES(const GLfixed * v1, const GLfixed * v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRectxvOES(const GLfixed * v1, const GLfixed * v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReferencePlaneSGIX(const GLdouble * equation);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReferencePlaneSGIX(const GLdouble * equation);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReleaseShaderCompiler(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReleaseShaderCompiler(void);
 
-glproxy_IMPORTEXPORT GLint glproxy_CALLSPEC glproxy_glRenderMode(GLenum mode);
+GLPROXY_IMPORTEXPORT GLint GLPROXY_CALLSPEC glproxy_glRenderMode(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageMultisampleANGLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageMultisampleANGLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageMultisampleAPPLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageMultisampleAPPLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageMultisampleEXT(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageMultisampleEXT(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageMultisampleIMG(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageMultisampleIMG(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageMultisampleNV(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageMultisampleNV(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRenderbufferStorageOES(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRenderbufferStorageOES(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodePointerSUN(GLenum type, GLsizei stride, const void ** pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodePointerSUN(GLenum type, GLsizei stride, const void ** pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeubSUN(GLubyte code);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeubSUN(GLubyte code);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeubvSUN(const GLubyte * code);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeubvSUN(const GLubyte * code);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiColor3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiColor3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiColor3fVertex3fvSUN(const GLuint * rc, const GLfloat * c, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiColor3fVertex3fvSUN(const GLuint * rc, const GLfloat * c, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiColor4fNormal3fVertex3fvSUN(const GLuint * rc, const GLfloat * c, const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiColor4fNormal3fVertex3fvSUN(const GLuint * rc, const GLfloat * c, const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiColor4ubVertex3fSUN(GLuint rc, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiColor4ubVertex3fSUN(GLuint rc, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiColor4ubVertex3fvSUN(const GLuint * rc, const GLubyte * c, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiColor4ubVertex3fvSUN(const GLuint * rc, const GLubyte * c, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiNormal3fVertex3fSUN(GLuint rc, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiNormal3fVertex3fSUN(GLuint rc, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiNormal3fVertex3fvSUN(const GLuint * rc, const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiNormal3fVertex3fvSUN(const GLuint * rc, const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiSUN(GLuint code);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiSUN(GLuint code);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(const GLuint * rc, const GLfloat * tc, const GLfloat * c, const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(const GLuint * rc, const GLfloat * tc, const GLfloat * c, const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(const GLuint * rc, const GLfloat * tc, const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(const GLuint * rc, const GLfloat * tc, const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fVertex3fvSUN(const GLuint * rc, const GLfloat * tc, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiTexCoord2fVertex3fvSUN(const GLuint * rc, const GLfloat * tc, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiVertex3fSUN(GLuint rc, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiVertex3fSUN(GLuint rc, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuiVertex3fvSUN(const GLuint * rc, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuiVertex3fvSUN(const GLuint * rc, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeuivSUN(const GLuint * code);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeuivSUN(const GLuint * code);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeusSUN(GLushort code);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeusSUN(GLushort code);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glReplacementCodeusvSUN(const GLushort * code);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glReplacementCodeusvSUN(const GLushort * code);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRequestResidentProgramsNV(GLsizei n, const GLuint * programs);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRequestResidentProgramsNV(GLsizei n, const GLuint * programs);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResetHistogram(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResetHistogram(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResetHistogramEXT(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResetHistogramEXT(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResetMinmax(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResetMinmax(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResetMinmaxEXT(GLenum target);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResetMinmaxEXT(GLenum target);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResizeBuffersMESA(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResizeBuffersMESA(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResolveDepthValuesNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResolveDepthValuesNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResolveMultisampleFramebufferAPPLE(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResolveMultisampleFramebufferAPPLE(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResumeTransformFeedback(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResumeTransformFeedback(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glResumeTransformFeedbackNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glResumeTransformFeedbackNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleCoverage(GLfloat value, GLboolean invert);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleCoverage(GLfloat value, GLboolean invert);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleCoverageARB(GLfloat value, GLboolean invert);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleCoverageARB(GLfloat value, GLboolean invert);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleCoveragex(GLclampx value, GLboolean invert);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleCoveragex(GLclampx value, GLboolean invert);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleCoveragexOES(GLclampx value, GLboolean invert);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleCoveragexOES(GLclampx value, GLboolean invert);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleMaskEXT(GLclampf value, GLboolean invert);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleMaskEXT(GLclampf value, GLboolean invert);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleMaskIndexedNV(GLuint index, GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleMaskIndexedNV(GLuint index, GLbitfield mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleMaskSGIS(GLclampf value, GLboolean invert);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleMaskSGIS(GLclampf value, GLboolean invert);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSampleMaski(GLuint maskNumber, GLbitfield mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSampleMaski(GLuint maskNumber, GLbitfield mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplePatternEXT(GLenum pattern);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplePatternEXT(GLenum pattern);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplePatternSGIS(GLenum pattern);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplePatternSGIS(GLenum pattern);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameterIivEXT(GLuint sampler, GLenum pname, const GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameterIivEXT(GLuint sampler, GLenum pname, const GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameterIivOES(GLuint sampler, GLenum pname, const GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameterIivOES(GLuint sampler, GLenum pname, const GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameterIuivEXT(GLuint sampler, GLenum pname, const GLuint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameterIuivEXT(GLuint sampler, GLenum pname, const GLuint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameterIuivOES(GLuint sampler, GLenum pname, const GLuint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameterIuivOES(GLuint sampler, GLenum pname, const GLuint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameterfv(GLuint sampler, GLenum pname, const GLfloat * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameterfv(GLuint sampler, GLenum pname, const GLfloat * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameteri(GLuint sampler, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameteri(GLuint sampler, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSamplerParameteriv(GLuint sampler, GLenum pname, const GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSamplerParameteriv(GLuint sampler, GLenum pname, const GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScaled(GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScaled(GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScalef(GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScalef(GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScalex(GLfixed x, GLfixed y, GLfixed z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScalex(GLfixed x, GLfixed y, GLfixed z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScalexOES(GLfixed x, GLfixed y, GLfixed z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScalexOES(GLfixed x, GLfixed y, GLfixed z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScissor(GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScissor(GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScissorArrayv(GLuint first, GLsizei count, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScissorArrayv(GLuint first, GLsizei count, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScissorArrayvNV(GLuint first, GLsizei count, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScissorArrayvNV(GLuint first, GLsizei count, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScissorIndexed(GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScissorIndexed(GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScissorIndexedNV(GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScissorIndexedNV(GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScissorIndexedv(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScissorIndexedv(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glScissorIndexedvNV(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glScissorIndexedvNV(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyte blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyte blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3bv(const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3bv(const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3bvEXT(const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3bvEXT(const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3d(GLdouble red, GLdouble green, GLdouble blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3d(GLdouble red, GLdouble green, GLdouble blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3dEXT(GLdouble red, GLdouble green, GLdouble blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3dEXT(GLdouble red, GLdouble green, GLdouble blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3dvEXT(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3dvEXT(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3f(GLfloat red, GLfloat green, GLfloat blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3f(GLfloat red, GLfloat green, GLfloat blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3fEXT(GLfloat red, GLfloat green, GLfloat blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3fEXT(GLfloat red, GLfloat green, GLfloat blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3fvEXT(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3fvEXT(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3i(GLint red, GLint green, GLint blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3i(GLint red, GLint green, GLint blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3iEXT(GLint red, GLint green, GLint blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3iEXT(GLint red, GLint green, GLint blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3ivEXT(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3ivEXT(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3s(GLshort red, GLshort green, GLshort blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3s(GLshort red, GLshort green, GLshort blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3sEXT(GLshort red, GLshort green, GLshort blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3sEXT(GLshort red, GLshort green, GLshort blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3svEXT(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3svEXT(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3ub(GLubyte red, GLubyte green, GLubyte blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3ub(GLubyte red, GLubyte green, GLubyte blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3ubEXT(GLubyte red, GLubyte green, GLubyte blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3ubEXT(GLubyte red, GLubyte green, GLubyte blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3ubv(const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3ubv(const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3ubvEXT(const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3ubvEXT(const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3ui(GLuint red, GLuint green, GLuint blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3ui(GLuint red, GLuint green, GLuint blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3uiEXT(GLuint red, GLuint green, GLuint blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3uiEXT(GLuint red, GLuint green, GLuint blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3uiv(const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3uiv(const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3uivEXT(const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3uivEXT(const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3us(GLushort red, GLushort green, GLushort blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3us(GLushort red, GLushort green, GLushort blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3usEXT(GLushort red, GLushort green, GLushort blue);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3usEXT(GLushort red, GLushort green, GLushort blue);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3usv(const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3usv(const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColor3usvEXT(const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColor3usvEXT(const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColorFormatNV(GLint size, GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColorFormatNV(GLint size, GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColorP3ui(GLenum type, GLuint color);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColorP3ui(GLenum type, GLuint color);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColorP3uiv(GLenum type, const GLuint * color);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColorP3uiv(GLenum type, const GLuint * color);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColorPointer(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColorPointer(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColorPointerEXT(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColorPointerEXT(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSecondaryColorPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSecondaryColorPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSelectBuffer(GLsizei size, GLuint * buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSelectBuffer(GLsizei size, GLuint * buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint * counterList);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint * counterList);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSeparableFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * row, const void * column);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSeparableFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * row, const void * column);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSeparableFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * row, const void * column);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSeparableFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * row, const void * column);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSetFenceAPPLE(GLuint fence);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSetFenceAPPLE(GLuint fence);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSetFenceNV(GLuint fence, GLenum condition);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSetFenceNV(GLuint fence, GLenum condition);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSetFragmentShaderConstantATI(GLuint dst, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSetFragmentShaderConstantATI(GLuint dst, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSetInvariantEXT(GLuint id, GLenum type, const void * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSetInvariantEXT(GLuint id, GLenum type, const void * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSetLocalConstantEXT(GLuint id, GLenum type, const void * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSetLocalConstantEXT(GLuint id, GLenum type, const void * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSetMultisamplefvAMD(GLenum pname, GLuint index, const GLfloat * val);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSetMultisamplefvAMD(GLenum pname, GLuint index, const GLfloat * val);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glShadeModel(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glShadeModel(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glShaderBinary(GLsizei count, const GLuint * shaders, GLenum binaryformat, const void * binary, GLsizei length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glShaderBinary(GLsizei count, const GLuint * shaders, GLenum binaryformat, const void * binary, GLsizei length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glShaderOp1EXT(GLenum op, GLuint res, GLuint arg1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glShaderOp1EXT(GLenum op, GLuint res, GLuint arg1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glShaderOp2EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glShaderOp2EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glShaderOp3EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2, GLuint arg3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glShaderOp3EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2, GLuint arg3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glShaderSource(GLuint shader, GLsizei count, const GLchar *const* string, const GLint * length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glShaderSource(GLuint shader, GLsizei count, const GLchar *const* string, const GLint * length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB ** string, const GLint * length);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB ** string, const GLint * length);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSpriteParameterfSGIX(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSpriteParameterfSGIX(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSpriteParameterfvSGIX(GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSpriteParameterfvSGIX(GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSpriteParameteriSGIX(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSpriteParameteriSGIX(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSpriteParameterivSGIX(GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSpriteParameterivSGIX(GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStartInstrumentsSGIX(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStartInstrumentsSGIX(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStartTilingQCOM(GLuint x, GLuint y, GLuint width, GLuint height, GLbitfield preserveMask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStartTilingQCOM(GLuint x, GLuint y, GLuint width, GLuint height, GLbitfield preserveMask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStateCaptureNV(GLuint state, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStateCaptureNV(GLuint state, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilClearTagEXT(GLsizei stencilTagBits, GLuint stencilClearTag);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilClearTagEXT(GLsizei stencilTagBits, GLuint stencilClearTag);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat * transformValues);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat * transformValues);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilFillPathNV(GLuint path, GLenum fillMode, GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilFillPathNV(GLuint path, GLenum fillMode, GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilFunc(GLenum func, GLint ref, GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilFunc(GLenum func, GLint ref, GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilFuncSeparateATI(GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilFuncSeparateATI(GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilMask(GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilMask(GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilMaskSeparate(GLenum face, GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilMaskSeparate(GLenum face, GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilOpSeparate(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilOpSeparate(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilOpSeparateATI(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilOpSeparateATI(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilOpValueAMD(GLenum face, GLuint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilOpValueAMD(GLenum face, GLuint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat * transformValues);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat * transformValues);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilStrokePathNV(GLuint path, GLint reference, GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilStrokePathNV(GLuint path, GLint reference, GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilThenCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum coverMode, GLenum transformType, const GLfloat * transformValues);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilThenCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum coverMode, GLenum transformType, const GLfloat * transformValues);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilThenCoverFillPathNV(GLuint path, GLenum fillMode, GLuint mask, GLenum coverMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilThenCoverFillPathNV(GLuint path, GLenum fillMode, GLuint mask, GLenum coverMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilThenCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLint reference, GLuint mask, GLenum coverMode, GLenum transformType, const GLfloat * transformValues);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilThenCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLint reference, GLuint mask, GLenum coverMode, GLenum transformType, const GLfloat * transformValues);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStencilThenCoverStrokePathNV(GLuint path, GLint reference, GLuint mask, GLenum coverMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStencilThenCoverStrokePathNV(GLuint path, GLint reference, GLuint mask, GLenum coverMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStopInstrumentsSGIX(GLint marker);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStopInstrumentsSGIX(GLint marker);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glStringMarkerGREMEDY(GLsizei len, const void * string);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glStringMarkerGREMEDY(GLsizei len, const void * string);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSubpixelPrecisionBiasNV(GLuint xbits, GLuint ybits);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSubpixelPrecisionBiasNV(GLuint xbits, GLuint ybits);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSwizzleEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSwizzleEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glSyncTextureINTEL(GLuint texture);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glSyncTextureINTEL(GLuint texture);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTagSampleBufferSGIX(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTagSampleBufferSGIX(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3bvEXT(const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3bvEXT(const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3dEXT(GLdouble tx, GLdouble ty, GLdouble tz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3dEXT(GLdouble tx, GLdouble ty, GLdouble tz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3dvEXT(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3dvEXT(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3fEXT(GLfloat tx, GLfloat ty, GLfloat tz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3fEXT(GLfloat tx, GLfloat ty, GLfloat tz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3fvEXT(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3fvEXT(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3iEXT(GLint tx, GLint ty, GLint tz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3iEXT(GLint tx, GLint ty, GLint tz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3ivEXT(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3ivEXT(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3sEXT(GLshort tx, GLshort ty, GLshort tz);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3sEXT(GLshort tx, GLshort ty, GLshort tz);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangent3svEXT(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangent3svEXT(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTangentPointerEXT(GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTangentPointerEXT(GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTbufferMask3DFX(GLuint mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTbufferMask3DFX(GLuint mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTessellationFactorAMD(GLfloat factor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTessellationFactorAMD(GLfloat factor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTessellationModeAMD(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTessellationModeAMD(GLenum mode);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glTestFenceAPPLE(GLuint fence);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glTestFenceAPPLE(GLuint fence);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glTestFenceNV(GLuint fence);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glTestFenceNV(GLuint fence);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glTestObjectAPPLE(GLenum object, GLuint name);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glTestObjectAPPLE(GLenum object, GLuint name);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBufferARB(GLenum target, GLenum internalformat, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBufferARB(GLenum target, GLenum internalformat, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBufferEXT(GLenum target, GLenum internalformat, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBufferEXT(GLenum target, GLenum internalformat, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBufferOES(GLenum target, GLenum internalformat, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBufferOES(GLenum target, GLenum internalformat, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBufferRangeEXT(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBufferRangeEXT(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBufferRangeOES(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBufferRangeOES(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBumpParameterfvATI(GLenum pname, const GLfloat * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBumpParameterfvATI(GLenum pname, const GLfloat * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexBumpParameterivATI(GLenum pname, const GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexBumpParameterivATI(GLenum pname, const GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1bOES(GLbyte s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1bOES(GLbyte s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1bvOES(const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1bvOES(const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1d(GLdouble s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1d(GLdouble s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1f(GLfloat s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1f(GLfloat s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1hNV(GLhalfNV s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1hNV(GLhalfNV s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1i(GLint s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1i(GLint s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1s(GLshort s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1s(GLshort s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1xOES(GLfixed s);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1xOES(GLfixed s);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord1xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord1xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2bOES(GLbyte s, GLbyte t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2bOES(GLbyte s, GLbyte t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2bvOES(const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2bvOES(const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2d(GLdouble s, GLdouble t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2d(GLdouble s, GLdouble t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2f(GLfloat s, GLfloat t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2f(GLfloat s, GLfloat t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fColor3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fColor3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fColor3fVertex3fvSUN(const GLfloat * tc, const GLfloat * c, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fColor3fVertex3fvSUN(const GLfloat * tc, const GLfloat * c, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fColor4fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fColor4fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fColor4fNormal3fVertex3fvSUN(const GLfloat * tc, const GLfloat * c, const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fColor4fNormal3fVertex3fvSUN(const GLfloat * tc, const GLfloat * c, const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fColor4ubVertex3fSUN(GLfloat s, GLfloat t, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fColor4ubVertex3fSUN(GLfloat s, GLfloat t, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fColor4ubVertex3fvSUN(const GLfloat * tc, const GLubyte * c, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fColor4ubVertex3fvSUN(const GLfloat * tc, const GLubyte * c, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fNormal3fVertex3fvSUN(const GLfloat * tc, const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fNormal3fVertex3fvSUN(const GLfloat * tc, const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fVertex3fSUN(GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fVertex3fSUN(GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fVertex3fvSUN(const GLfloat * tc, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fVertex3fvSUN(const GLfloat * tc, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2hNV(GLhalfNV s, GLhalfNV t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2hNV(GLhalfNV s, GLhalfNV t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2i(GLint s, GLint t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2i(GLint s, GLint t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2s(GLshort s, GLshort t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2s(GLshort s, GLshort t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2xOES(GLfixed s, GLfixed t);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2xOES(GLfixed s, GLfixed t);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord2xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord2xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3bOES(GLbyte s, GLbyte t, GLbyte r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3bOES(GLbyte s, GLbyte t, GLbyte r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3bvOES(const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3bvOES(const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3d(GLdouble s, GLdouble t, GLdouble r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3d(GLdouble s, GLdouble t, GLdouble r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3i(GLint s, GLint t, GLint r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3i(GLint s, GLint t, GLint r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3s(GLshort s, GLshort t, GLshort r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3s(GLshort s, GLshort t, GLshort r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3xOES(GLfixed s, GLfixed t, GLfixed r);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3xOES(GLfixed s, GLfixed t, GLfixed r);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord3xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord3xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4bOES(GLbyte s, GLbyte t, GLbyte r, GLbyte q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4bOES(GLbyte s, GLbyte t, GLbyte r, GLbyte q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4bvOES(const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4bvOES(const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4fColor4fNormal3fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4fColor4fNormal3fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4fColor4fNormal3fVertex4fvSUN(const GLfloat * tc, const GLfloat * c, const GLfloat * n, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4fColor4fNormal3fVertex4fvSUN(const GLfloat * tc, const GLfloat * c, const GLfloat * n, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4fVertex4fvSUN(const GLfloat * tc, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4fVertex4fvSUN(const GLfloat * tc, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4i(GLint s, GLint t, GLint r, GLint q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4i(GLint s, GLint t, GLint r, GLint q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4xOES(GLfixed s, GLfixed t, GLfixed r, GLfixed q);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4xOES(GLfixed s, GLfixed t, GLfixed r, GLfixed q);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoord4xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoord4xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordFormatNV(GLint size, GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordFormatNV(GLint size, GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordP1ui(GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordP1ui(GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordP1uiv(GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordP1uiv(GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordP2ui(GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordP2ui(GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordP2uiv(GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordP2uiv(GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordP3ui(GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordP3ui(GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordP3uiv(GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordP3uiv(GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordP4ui(GLenum type, GLuint coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordP4ui(GLenum type, GLuint coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordP4uiv(GLenum type, const GLuint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordP4uiv(GLenum type, const GLuint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexCoordPointervINTEL(GLint size, GLenum type, const void ** pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexCoordPointervINTEL(GLint size, GLenum type, const void ** pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexEnvf(GLenum target, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexEnvf(GLenum target, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexEnvfv(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexEnvfv(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexEnvi(GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexEnvi(GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexEnviv(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexEnviv(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexEnvx(GLenum target, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexEnvx(GLenum target, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexEnvxOES(GLenum target, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexEnvxOES(GLenum target, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexEnvxv(GLenum target, GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexEnvxv(GLenum target, GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexEnvxvOES(GLenum target, GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexEnvxvOES(GLenum target, GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexFilterFuncSGIS(GLenum target, GLenum filter, GLsizei n, const GLfloat * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexFilterFuncSGIS(GLenum target, GLenum filter, GLsizei n, const GLfloat * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGend(GLenum coord, GLenum pname, GLdouble param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGend(GLenum coord, GLenum pname, GLdouble param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGendv(GLenum coord, GLenum pname, const GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGendv(GLenum coord, GLenum pname, const GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGenf(GLenum coord, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGenf(GLenum coord, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGenfOES(GLenum coord, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGenfOES(GLenum coord, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGenfv(GLenum coord, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGenfv(GLenum coord, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGenfvOES(GLenum coord, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGenfvOES(GLenum coord, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGeni(GLenum coord, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGeni(GLenum coord, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGeniOES(GLenum coord, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGeniOES(GLenum coord, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGeniv(GLenum coord, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGeniv(GLenum coord, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGenivOES(GLenum coord, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGenivOES(GLenum coord, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGenxOES(GLenum coord, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGenxOES(GLenum coord, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexGenxvOES(GLenum coord, GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexGenxvOES(GLenum coord, GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage2DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage2DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage3DEXT(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage3DEXT(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexPageCommitmentARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexPageCommitmentARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexPageCommitmentEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexPageCommitmentEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterIiv(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterIiv(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterIivEXT(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterIivEXT(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterIivOES(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterIivOES(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterIuiv(GLenum target, GLenum pname, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterIuiv(GLenum target, GLenum pname, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterIuivEXT(GLenum target, GLenum pname, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterIuivEXT(GLenum target, GLenum pname, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterIuivOES(GLenum target, GLenum pname, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterIuivOES(GLenum target, GLenum pname, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterf(GLenum target, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterf(GLenum target, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterfv(GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterfv(GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameteri(GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameteri(GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameteriv(GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameteriv(GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterx(GLenum target, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterx(GLenum target, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterxOES(GLenum target, GLenum pname, GLfixed param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterxOES(GLenum target, GLenum pname, GLfixed param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterxv(GLenum target, GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterxv(GLenum target, GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexParameterxvOES(GLenum target, GLenum pname, const GLfixed * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexParameterxvOES(GLenum target, GLenum pname, const GLfixed * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexRenderbufferNV(GLenum target, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexRenderbufferNV(GLenum target, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorage3DMultisampleOES(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorage3DMultisampleOES(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureBarrier(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureBarrier(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureBarrierNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureBarrierNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureBuffer(GLuint texture, GLenum internalformat, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureBuffer(GLuint texture, GLenum internalformat, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureBufferEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureBufferEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureBufferRange(GLuint texture, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureBufferRange(GLuint texture, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureColorMaskSGIS(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureColorMaskSGIS(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureImage2DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureImage2DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureImage2DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureImage2DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureImage3DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureImage3DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureImage3DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureImage3DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureLightEXT(GLenum pname);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureLightEXT(GLenum pname);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureMaterialEXT(GLenum face, GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureMaterialEXT(GLenum face, GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureNormalEXT(GLenum mode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureNormalEXT(GLenum mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTexturePageCommitmentEXT(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTexturePageCommitmentEXT(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterIiv(GLuint texture, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterIiv(GLuint texture, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterIuiv(GLuint texture, GLenum pname, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterIuiv(GLuint texture, GLenum pname, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, const GLuint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, const GLuint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterf(GLuint texture, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterf(GLuint texture, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterfEXT(GLuint texture, GLenum target, GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterfEXT(GLuint texture, GLenum target, GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterfv(GLuint texture, GLenum pname, const GLfloat * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterfv(GLuint texture, GLenum pname, const GLfloat * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameteri(GLuint texture, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameteri(GLuint texture, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameteriEXT(GLuint texture, GLenum target, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameteriEXT(GLuint texture, GLenum target, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameteriv(GLuint texture, GLenum pname, const GLint * param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameteriv(GLuint texture, GLenum pname, const GLint * param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureRangeAPPLE(GLenum target, GLsizei length, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureRangeAPPLE(GLenum target, GLsizei length, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureRenderbufferEXT(GLuint texture, GLenum target, GLuint renderbuffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureRenderbufferEXT(GLuint texture, GLenum target, GLuint renderbuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage1D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage1D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage1DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage1DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage2D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage2D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage2DMultisample(GLuint texture, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage2DMultisample(GLuint texture, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage3D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage3D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage3DMultisample(GLuint texture, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage3DMultisample(GLuint texture, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureViewEXT(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureViewEXT(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTextureViewOES(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTextureViewOES(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTrackMatrixNV(GLenum target, GLuint address, GLenum matrix, GLenum transform);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTrackMatrixNV(GLenum target, GLuint address, GLenum matrix, GLenum transform);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTransformFeedbackAttribsNV(GLsizei count, const GLint * attribs, GLenum bufferMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTransformFeedbackAttribsNV(GLsizei count, const GLint * attribs, GLenum bufferMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTransformFeedbackBufferBase(GLuint xfb, GLuint index, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTransformFeedbackBufferBase(GLuint xfb, GLuint index, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTransformFeedbackBufferRange(GLuint xfb, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTransformFeedbackBufferRange(GLuint xfb, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTransformFeedbackStreamAttribsNV(GLsizei count, const GLint * attribs, GLsizei nbuffers, const GLint * bufstreams, GLenum bufferMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTransformFeedbackStreamAttribsNV(GLsizei count, const GLint * attribs, GLsizei nbuffers, const GLint * bufstreams, GLenum bufferMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar *const* varyings, GLenum bufferMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar *const* varyings, GLenum bufferMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTransformFeedbackVaryingsEXT(GLuint program, GLsizei count, const GLchar *const* varyings, GLenum bufferMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTransformFeedbackVaryingsEXT(GLuint program, GLsizei count, const GLchar *const* varyings, GLenum bufferMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTransformFeedbackVaryingsNV(GLuint program, GLsizei count, const GLint * locations, GLenum bufferMode);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTransformFeedbackVaryingsNV(GLuint program, GLsizei count, const GLint * locations, GLenum bufferMode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTransformPathNV(GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat * transformValues);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTransformPathNV(GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat * transformValues);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTranslated(GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTranslated(GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTranslatef(GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTranslatef(GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTranslatex(GLfixed x, GLfixed y, GLfixed z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTranslatex(GLfixed x, GLfixed y, GLfixed z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glTranslatexOES(GLfixed x, GLfixed y, GLfixed z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glTranslatexOES(GLfixed x, GLfixed y, GLfixed z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1d(GLint location, GLdouble x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1d(GLint location, GLdouble x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1dv(GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1dv(GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1f(GLint location, GLfloat v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1f(GLint location, GLfloat v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1fARB(GLint location, GLfloat v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1fARB(GLint location, GLfloat v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1fv(GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1fv(GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1fvARB(GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1fvARB(GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1i(GLint location, GLint v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1i(GLint location, GLint v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1i64ARB(GLint location, GLint64 x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1i64ARB(GLint location, GLint64 x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1i64NV(GLint location, GLint64EXT x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1i64NV(GLint location, GLint64EXT x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1i64vARB(GLint location, GLsizei count, const GLint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1i64vARB(GLint location, GLsizei count, const GLint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1i64vNV(GLint location, GLsizei count, const GLint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1i64vNV(GLint location, GLsizei count, const GLint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1iARB(GLint location, GLint v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1iARB(GLint location, GLint v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1iv(GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1iv(GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1ivARB(GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1ivARB(GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1ui(GLint location, GLuint v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1ui(GLint location, GLuint v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1ui64ARB(GLint location, GLuint64 x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1ui64ARB(GLint location, GLuint64 x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1ui64NV(GLint location, GLuint64EXT x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1ui64NV(GLint location, GLuint64EXT x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1ui64vARB(GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1ui64vARB(GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1uiEXT(GLint location, GLuint v0);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1uiEXT(GLint location, GLuint v0);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1uiv(GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1uiv(GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform1uivEXT(GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform1uivEXT(GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2d(GLint location, GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2d(GLint location, GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2dv(GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2dv(GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2f(GLint location, GLfloat v0, GLfloat v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2f(GLint location, GLfloat v0, GLfloat v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2fARB(GLint location, GLfloat v0, GLfloat v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2fARB(GLint location, GLfloat v0, GLfloat v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2fv(GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2fv(GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2fvARB(GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2fvARB(GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2i(GLint location, GLint v0, GLint v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2i(GLint location, GLint v0, GLint v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2i64ARB(GLint location, GLint64 x, GLint64 y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2i64ARB(GLint location, GLint64 x, GLint64 y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2i64NV(GLint location, GLint64EXT x, GLint64EXT y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2i64NV(GLint location, GLint64EXT x, GLint64EXT y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2i64vARB(GLint location, GLsizei count, const GLint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2i64vARB(GLint location, GLsizei count, const GLint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2i64vNV(GLint location, GLsizei count, const GLint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2i64vNV(GLint location, GLsizei count, const GLint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2iARB(GLint location, GLint v0, GLint v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2iARB(GLint location, GLint v0, GLint v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2iv(GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2iv(GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2ivARB(GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2ivARB(GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2ui(GLint location, GLuint v0, GLuint v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2ui(GLint location, GLuint v0, GLuint v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2ui64ARB(GLint location, GLuint64 x, GLuint64 y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2ui64ARB(GLint location, GLuint64 x, GLuint64 y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2ui64vARB(GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2ui64vARB(GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2uiEXT(GLint location, GLuint v0, GLuint v1);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2uiEXT(GLint location, GLuint v0, GLuint v1);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2uiv(GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2uiv(GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform2uivEXT(GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform2uivEXT(GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3d(GLint location, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3d(GLint location, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3dv(GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3dv(GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3fv(GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3fv(GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3fvARB(GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3fvARB(GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3i64ARB(GLint location, GLint64 x, GLint64 y, GLint64 z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3i64ARB(GLint location, GLint64 x, GLint64 y, GLint64 z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3i64vARB(GLint location, GLsizei count, const GLint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3i64vARB(GLint location, GLsizei count, const GLint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3i64vNV(GLint location, GLsizei count, const GLint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3i64vNV(GLint location, GLsizei count, const GLint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3iARB(GLint location, GLint v0, GLint v1, GLint v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3iARB(GLint location, GLint v0, GLint v1, GLint v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3iv(GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3iv(GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3ivARB(GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3ivARB(GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3ui(GLint location, GLuint v0, GLuint v1, GLuint v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3ui(GLint location, GLuint v0, GLuint v1, GLuint v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3ui64ARB(GLint location, GLuint64 x, GLuint64 y, GLuint64 z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3ui64ARB(GLint location, GLuint64 x, GLuint64 y, GLuint64 z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3ui64vARB(GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3ui64vARB(GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3uiv(GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3uiv(GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform3uivEXT(GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform3uivEXT(GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4d(GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4d(GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4dv(GLint location, GLsizei count, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4dv(GLint location, GLsizei count, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4fv(GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4fv(GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4fvARB(GLint location, GLsizei count, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4fvARB(GLint location, GLsizei count, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4i64ARB(GLint location, GLint64 x, GLint64 y, GLint64 z, GLint64 w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4i64ARB(GLint location, GLint64 x, GLint64 y, GLint64 z, GLint64 w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4i64vARB(GLint location, GLsizei count, const GLint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4i64vARB(GLint location, GLsizei count, const GLint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4i64vNV(GLint location, GLsizei count, const GLint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4i64vNV(GLint location, GLsizei count, const GLint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4iARB(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4iARB(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4iv(GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4iv(GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4ivARB(GLint location, GLsizei count, const GLint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4ivARB(GLint location, GLsizei count, const GLint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4ui(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4ui(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4ui64ARB(GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4ui64ARB(GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4ui64vARB(GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4ui64vARB(GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4uiv(GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4uiv(GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniform4uivEXT(GLint location, GLsizei count, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniform4uivEXT(GLint location, GLsizei count, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformBufferEXT(GLuint program, GLint location, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformBufferEXT(GLuint program, GLint location, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformHandleui64ARB(GLint location, GLuint64 value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformHandleui64ARB(GLint location, GLuint64 value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformHandleui64NV(GLint location, GLuint64 value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformHandleui64NV(GLint location, GLuint64 value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformHandleui64vARB(GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformHandleui64vARB(GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformHandleui64vNV(GLint location, GLsizei count, const GLuint64 * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformHandleui64vNV(GLint location, GLsizei count, const GLuint64 * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix2x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix2x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix3x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix3x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformMatrix4x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformMatrix4x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformSubroutinesuiv(GLenum shadertype, GLsizei count, const GLuint * indices);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformSubroutinesuiv(GLenum shadertype, GLsizei count, const GLuint * indices);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformui64NV(GLint location, GLuint64EXT value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformui64NV(GLint location, GLuint64EXT value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUniformui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUniformui64vNV(GLint location, GLsizei count, const GLuint64EXT * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUnlockArraysEXT(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUnlockArraysEXT(void);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glUnmapBuffer(GLenum target);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glUnmapBuffer(GLenum target);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glUnmapBufferARB(GLenum target);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glUnmapBufferARB(GLenum target);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glUnmapBufferOES(GLenum target);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glUnmapBufferOES(GLenum target);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glUnmapNamedBuffer(GLuint buffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glUnmapNamedBuffer(GLuint buffer);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glUnmapNamedBufferEXT(GLuint buffer);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glUnmapNamedBufferEXT(GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUnmapObjectBufferATI(GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUnmapObjectBufferATI(GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUnmapTexture2DINTEL(GLuint texture, GLint level);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUnmapTexture2DINTEL(GLuint texture, GLint level);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUpdateObjectBufferATI(GLuint buffer, GLuint offset, GLsizei size, const void * pointer, GLenum preserve);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUpdateObjectBufferATI(GLuint buffer, GLuint offset, GLsizei size, const void * pointer, GLenum preserve);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUseProgram(GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUseProgram(GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUseProgramObjectARB(GLhandleARB programObj);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUseProgramObjectARB(GLhandleARB programObj);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUseProgramStages(GLuint pipeline, GLbitfield stages, GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUseProgramStages(GLuint pipeline, GLbitfield stages, GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUseProgramStagesEXT(GLuint pipeline, GLbitfield stages, GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUseProgramStagesEXT(GLuint pipeline, GLbitfield stages, GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glUseShaderProgramEXT(GLenum type, GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glUseShaderProgramEXT(GLenum type, GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVDPAUFiniNV(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVDPAUFiniNV(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVDPAUInitNV(const void * vdpDevice, const void * getProcAddress);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVDPAUInitNV(const void * vdpDevice, const void * getProcAddress);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVDPAUMapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV * surfaces);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVDPAUMapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV * surfaces);
 
-glproxy_IMPORTEXPORT GLvdpauSurfaceNV glproxy_CALLSPEC glproxy_glVDPAURegisterOutputSurfaceNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames);
+GLPROXY_IMPORTEXPORT GLvdpauSurfaceNV GLPROXY_CALLSPEC glproxy_glVDPAURegisterOutputSurfaceNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames);
 
-glproxy_IMPORTEXPORT GLvdpauSurfaceNV glproxy_CALLSPEC glproxy_glVDPAURegisterVideoSurfaceNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames);
+GLPROXY_IMPORTEXPORT GLvdpauSurfaceNV GLPROXY_CALLSPEC glproxy_glVDPAURegisterVideoSurfaceNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GLenum access);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GLenum access);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVDPAUUnmapSurfacesNV(GLsizei numSurface, const GLvdpauSurfaceNV * surfaces);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVDPAUUnmapSurfacesNV(GLsizei numSurface, const GLvdpauSurfaceNV * surfaces);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV surface);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV surface);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glValidateProgram(GLuint program);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glValidateProgram(GLuint program);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glValidateProgramARB(GLhandleARB programObj);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glValidateProgramARB(GLhandleARB programObj);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glValidateProgramPipeline(GLuint pipeline);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glValidateProgramPipeline(GLuint pipeline);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glValidateProgramPipelineEXT(GLuint pipeline);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glValidateProgramPipelineEXT(GLuint pipeline);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantArrayObjectATI(GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantArrayObjectATI(GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantPointerEXT(GLuint id, GLenum type, GLuint stride, const void * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantPointerEXT(GLuint id, GLenum type, GLuint stride, const void * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantbvEXT(GLuint id, const GLbyte * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantbvEXT(GLuint id, const GLbyte * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantdvEXT(GLuint id, const GLdouble * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantdvEXT(GLuint id, const GLdouble * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantfvEXT(GLuint id, const GLfloat * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantfvEXT(GLuint id, const GLfloat * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantivEXT(GLuint id, const GLint * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantivEXT(GLuint id, const GLint * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantsvEXT(GLuint id, const GLshort * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantsvEXT(GLuint id, const GLshort * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantubvEXT(GLuint id, const GLubyte * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantubvEXT(GLuint id, const GLubyte * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantuivEXT(GLuint id, const GLuint * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantuivEXT(GLuint id, const GLuint * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVariantusvEXT(GLuint id, const GLushort * addr);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVariantusvEXT(GLuint id, const GLushort * addr);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2bOES(GLbyte x, GLbyte y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2bOES(GLbyte x, GLbyte y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2bvOES(const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2bvOES(const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2d(GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2d(GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2f(GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2f(GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2hNV(GLhalfNV x, GLhalfNV y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2hNV(GLhalfNV x, GLhalfNV y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2i(GLint x, GLint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2i(GLint x, GLint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2s(GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2s(GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2xOES(GLfixed x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2xOES(GLfixed x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex2xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex2xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3bOES(GLbyte x, GLbyte y, GLbyte z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3bOES(GLbyte x, GLbyte y, GLbyte z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3bvOES(const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3bvOES(const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3d(GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3d(GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3f(GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3f(GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3i(GLint x, GLint y, GLint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3i(GLint x, GLint y, GLint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3s(GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3s(GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3xOES(GLfixed x, GLfixed y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3xOES(GLfixed x, GLfixed y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex3xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex3xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4bOES(GLbyte x, GLbyte y, GLbyte z, GLbyte w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4bOES(GLbyte x, GLbyte y, GLbyte z, GLbyte w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4bvOES(const GLbyte * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4bvOES(const GLbyte * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4hvNV(const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4hvNV(const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4i(GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4i(GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4xOES(GLfixed x, GLfixed y, GLfixed z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4xOES(GLfixed x, GLfixed y, GLfixed z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertex4xvOES(const GLfixed * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertex4xvOES(const GLfixed * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayAttribBinding(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayAttribBinding(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayAttribFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayAttribFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayAttribIFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayAttribIFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayAttribLFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayAttribLFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayBindingDivisor(GLuint vaobj, GLuint bindingindex, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayBindingDivisor(GLuint vaobj, GLuint bindingindex, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayElementBuffer(GLuint vaobj, GLuint buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayElementBuffer(GLuint vaobj, GLuint buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayParameteriAPPLE(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayParameteriAPPLE(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayRangeAPPLE(GLsizei length, void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayRangeAPPLE(GLsizei length, void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayRangeNV(GLsizei length, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayRangeNV(GLsizei length, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexAttribDivisorEXT(GLuint vaobj, GLuint index, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexAttribDivisorEXT(GLuint vaobj, GLuint index, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexAttribLOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexAttribLOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexBuffer(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexBuffer(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexBuffers(GLuint vaobj, GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizei * strides);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexBuffers(GLuint vaobj, GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizei * strides);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1d(GLuint index, GLdouble x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1d(GLuint index, GLdouble x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1dARB(GLuint index, GLdouble x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1dARB(GLuint index, GLdouble x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1dNV(GLuint index, GLdouble x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1dNV(GLuint index, GLdouble x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1dv(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1dv(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1dvARB(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1dvARB(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1dvNV(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1dvNV(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1f(GLuint index, GLfloat x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1f(GLuint index, GLfloat x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1fARB(GLuint index, GLfloat x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1fARB(GLuint index, GLfloat x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1fNV(GLuint index, GLfloat x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1fNV(GLuint index, GLfloat x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1fv(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1fv(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1fvARB(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1fvARB(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1fvNV(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1fvNV(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1hNV(GLuint index, GLhalfNV x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1hNV(GLuint index, GLhalfNV x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1hvNV(GLuint index, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1hvNV(GLuint index, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1s(GLuint index, GLshort x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1s(GLuint index, GLshort x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1sARB(GLuint index, GLshort x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1sARB(GLuint index, GLshort x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1sNV(GLuint index, GLshort x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1sNV(GLuint index, GLshort x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1sv(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1sv(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1svARB(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1svARB(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib1svNV(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib1svNV(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2dNV(GLuint index, GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2dNV(GLuint index, GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2dv(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2dv(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2dvARB(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2dvARB(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2dvNV(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2dvNV(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2fNV(GLuint index, GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2fNV(GLuint index, GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2fv(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2fv(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2fvARB(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2fvARB(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2fvNV(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2fvNV(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2hNV(GLuint index, GLhalfNV x, GLhalfNV y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2hNV(GLuint index, GLhalfNV x, GLhalfNV y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2hvNV(GLuint index, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2hvNV(GLuint index, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2s(GLuint index, GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2s(GLuint index, GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2sARB(GLuint index, GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2sARB(GLuint index, GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2sNV(GLuint index, GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2sNV(GLuint index, GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2sv(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2sv(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2svARB(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2svARB(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib2svNV(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib2svNV(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3dNV(GLuint index, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3dNV(GLuint index, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3dv(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3dv(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3dvARB(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3dvARB(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3dvNV(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3dvNV(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3fNV(GLuint index, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3fNV(GLuint index, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3fv(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3fv(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3fvARB(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3fvARB(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3fvNV(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3fvNV(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3hvNV(GLuint index, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3hvNV(GLuint index, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3sARB(GLuint index, GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3sARB(GLuint index, GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3sNV(GLuint index, GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3sNV(GLuint index, GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3sv(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3sv(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3svARB(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3svARB(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib3svNV(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib3svNV(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4Nbv(GLuint index, const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4Nbv(GLuint index, const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4NbvARB(GLuint index, const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4NbvARB(GLuint index, const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4Niv(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4Niv(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4NivARB(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4NivARB(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4Nsv(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4Nsv(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4NsvARB(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4NsvARB(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4Nubv(GLuint index, const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4Nubv(GLuint index, const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4NubvARB(GLuint index, const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4NubvARB(GLuint index, const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4Nuiv(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4Nuiv(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4NuivARB(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4NuivARB(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4Nusv(GLuint index, const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4Nusv(GLuint index, const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4NusvARB(GLuint index, const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4NusvARB(GLuint index, const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4bv(GLuint index, const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4bv(GLuint index, const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4bvARB(GLuint index, const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4bvARB(GLuint index, const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4dNV(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4dNV(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4dv(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4dv(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4dvARB(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4dvARB(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4dvNV(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4dvNV(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4fNV(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4fNV(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4fv(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4fv(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4fvARB(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4fvARB(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4fvNV(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4fvNV(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4hvNV(GLuint index, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4hvNV(GLuint index, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4iv(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4iv(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4ivARB(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4ivARB(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4sARB(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4sARB(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4sNV(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4sNV(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4sv(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4sv(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4svARB(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4svARB(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4svNV(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4svNV(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4ubNV(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4ubNV(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4ubv(GLuint index, const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4ubv(GLuint index, const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4ubvARB(GLuint index, const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4ubvARB(GLuint index, const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4ubvNV(GLuint index, const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4ubvNV(GLuint index, const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4uiv(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4uiv(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4uivARB(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4uivARB(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4usv(GLuint index, const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4usv(GLuint index, const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttrib4usvARB(GLuint index, const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttrib4usvARB(GLuint index, const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribArrayObjectATI(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLuint buffer, GLuint offset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribArrayObjectATI(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLuint buffer, GLuint offset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribDivisor(GLuint index, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribDivisor(GLuint index, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribDivisorANGLE(GLuint index, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribDivisorANGLE(GLuint index, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribDivisorARB(GLuint index, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribDivisorARB(GLuint index, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribDivisorEXT(GLuint index, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribDivisorEXT(GLuint index, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribDivisorNV(GLuint index, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribDivisorNV(GLuint index, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribFormatNV(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribFormatNV(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI1i(GLuint index, GLint x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI1i(GLuint index, GLint x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI1iEXT(GLuint index, GLint x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI1iEXT(GLuint index, GLint x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI1iv(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI1iv(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI1ivEXT(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI1ivEXT(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI1ui(GLuint index, GLuint x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI1ui(GLuint index, GLuint x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI1uiEXT(GLuint index, GLuint x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI1uiEXT(GLuint index, GLuint x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI1uiv(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI1uiv(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI1uivEXT(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI1uivEXT(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI2i(GLuint index, GLint x, GLint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI2i(GLuint index, GLint x, GLint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI2iv(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI2iv(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI2ivEXT(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI2ivEXT(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI2ui(GLuint index, GLuint x, GLuint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI2ui(GLuint index, GLuint x, GLuint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI2uiv(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI2uiv(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI2uivEXT(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI2uivEXT(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI3i(GLuint index, GLint x, GLint y, GLint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI3i(GLuint index, GLint x, GLint y, GLint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI3iv(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI3iv(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI3ivEXT(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI3ivEXT(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI3ui(GLuint index, GLuint x, GLuint y, GLuint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI3ui(GLuint index, GLuint x, GLuint y, GLuint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI3uiv(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI3uiv(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI3uivEXT(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI3uivEXT(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4bv(GLuint index, const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4bv(GLuint index, const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4bvEXT(GLuint index, const GLbyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4bvEXT(GLuint index, const GLbyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4i(GLuint index, GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4i(GLuint index, GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4iv(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4iv(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4ivEXT(GLuint index, const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4ivEXT(GLuint index, const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4sv(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4sv(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4svEXT(GLuint index, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4svEXT(GLuint index, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4ubv(GLuint index, const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4ubv(GLuint index, const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4ubvEXT(GLuint index, const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4ubvEXT(GLuint index, const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4ui(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4ui(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4uiv(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4uiv(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4uivEXT(GLuint index, const GLuint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4uivEXT(GLuint index, const GLuint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4usv(GLuint index, const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4usv(GLuint index, const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribI4usvEXT(GLuint index, const GLushort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribI4usvEXT(GLuint index, const GLushort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribIFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribIFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1d(GLuint index, GLdouble x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1d(GLuint index, GLdouble x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1dEXT(GLuint index, GLdouble x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1dEXT(GLuint index, GLdouble x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1dv(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1dv(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1dvEXT(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1dvEXT(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1i64NV(GLuint index, GLint64EXT x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1i64NV(GLuint index, GLint64EXT x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1i64vNV(GLuint index, const GLint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1i64vNV(GLuint index, const GLint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1ui64ARB(GLuint index, GLuint64EXT x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1ui64ARB(GLuint index, GLuint64EXT x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1ui64NV(GLuint index, GLuint64EXT x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1ui64NV(GLuint index, GLuint64EXT x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1ui64vARB(GLuint index, const GLuint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1ui64vARB(GLuint index, const GLuint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL1ui64vNV(GLuint index, const GLuint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL1ui64vNV(GLuint index, const GLuint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL2d(GLuint index, GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL2d(GLuint index, GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL2dEXT(GLuint index, GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL2dEXT(GLuint index, GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL2dv(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL2dv(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL2dvEXT(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL2dvEXT(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL2i64NV(GLuint index, GLint64EXT x, GLint64EXT y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL2i64NV(GLuint index, GLint64EXT x, GLint64EXT y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL2i64vNV(GLuint index, const GLint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL2i64vNV(GLuint index, const GLint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL2ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL2ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL2ui64vNV(GLuint index, const GLuint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL2ui64vNV(GLuint index, const GLuint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL3d(GLuint index, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL3d(GLuint index, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL3dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL3dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL3dv(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL3dv(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL3dvEXT(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL3dvEXT(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL3i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL3i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL3i64vNV(GLuint index, const GLint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL3i64vNV(GLuint index, const GLint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL3ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL3ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL3ui64vNV(GLuint index, const GLuint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL3ui64vNV(GLuint index, const GLuint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL4dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL4dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL4dv(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL4dv(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL4dvEXT(GLuint index, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL4dvEXT(GLuint index, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL4i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL4i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL4i64vNV(GLuint index, const GLint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL4i64vNV(GLuint index, const GLint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL4ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL4ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribL4ui64vNV(GLuint index, const GLuint64EXT * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribL4ui64vNV(GLuint index, const GLuint64EXT * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribLFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribLFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribLPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribLPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribLPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribLPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribP1ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribP1ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribP1uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribP1uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribP2ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribP2ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribP2uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribP2uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribP3ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribP3ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribP3uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribP3uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribP4ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribP4ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribP4uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribP4uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribParameteriAMD(GLuint index, GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribParameteriAMD(GLuint index, GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribPointerNV(GLuint index, GLint fsize, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribPointerNV(GLuint index, GLint fsize, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs1dvNV(GLuint index, GLsizei count, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs1dvNV(GLuint index, GLsizei count, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs1fvNV(GLuint index, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs1fvNV(GLuint index, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs1hvNV(GLuint index, GLsizei n, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs1hvNV(GLuint index, GLsizei n, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs1svNV(GLuint index, GLsizei count, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs1svNV(GLuint index, GLsizei count, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs2dvNV(GLuint index, GLsizei count, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs2dvNV(GLuint index, GLsizei count, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs2fvNV(GLuint index, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs2fvNV(GLuint index, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs2hvNV(GLuint index, GLsizei n, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs2hvNV(GLuint index, GLsizei n, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs2svNV(GLuint index, GLsizei count, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs2svNV(GLuint index, GLsizei count, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs3dvNV(GLuint index, GLsizei count, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs3dvNV(GLuint index, GLsizei count, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs3fvNV(GLuint index, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs3fvNV(GLuint index, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs3hvNV(GLuint index, GLsizei n, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs3hvNV(GLuint index, GLsizei n, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs3svNV(GLuint index, GLsizei count, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs3svNV(GLuint index, GLsizei count, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs4dvNV(GLuint index, GLsizei count, const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs4dvNV(GLuint index, GLsizei count, const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs4fvNV(GLuint index, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs4fvNV(GLuint index, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs4hvNV(GLuint index, GLsizei n, const GLhalfNV * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs4hvNV(GLuint index, GLsizei n, const GLhalfNV * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs4svNV(GLuint index, GLsizei count, const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs4svNV(GLuint index, GLsizei count, const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexAttribs4ubvNV(GLuint index, GLsizei count, const GLubyte * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexAttribs4ubvNV(GLuint index, GLsizei count, const GLubyte * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexBlendARB(GLint count);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexBlendARB(GLint count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexBlendEnvfATI(GLenum pname, GLfloat param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexBlendEnvfATI(GLenum pname, GLfloat param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexBlendEnviATI(GLenum pname, GLint param);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexBlendEnviATI(GLenum pname, GLint param);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexFormatNV(GLint size, GLenum type, GLsizei stride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexFormatNV(GLint size, GLenum type, GLsizei stride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexP2ui(GLenum type, GLuint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexP2ui(GLenum type, GLuint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexP2uiv(GLenum type, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexP2uiv(GLenum type, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexP3ui(GLenum type, GLuint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexP3ui(GLenum type, GLuint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexP3uiv(GLenum type, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexP3uiv(GLenum type, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexP4ui(GLenum type, GLuint value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexP4ui(GLenum type, GLuint value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexP4uiv(GLenum type, const GLuint * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexP4uiv(GLenum type, const GLuint * value);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexPointer(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexPointer(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexPointervINTEL(GLint size, GLenum type, const void ** pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexPointervINTEL(GLint size, GLenum type, const void ** pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream1dATI(GLenum stream, GLdouble x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream1dATI(GLenum stream, GLdouble x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream1dvATI(GLenum stream, const GLdouble * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream1dvATI(GLenum stream, const GLdouble * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream1fATI(GLenum stream, GLfloat x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream1fATI(GLenum stream, GLfloat x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream1fvATI(GLenum stream, const GLfloat * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream1fvATI(GLenum stream, const GLfloat * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream1iATI(GLenum stream, GLint x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream1iATI(GLenum stream, GLint x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream1ivATI(GLenum stream, const GLint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream1ivATI(GLenum stream, const GLint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream1sATI(GLenum stream, GLshort x);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream1sATI(GLenum stream, GLshort x);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream1svATI(GLenum stream, const GLshort * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream1svATI(GLenum stream, const GLshort * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream2dATI(GLenum stream, GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream2dATI(GLenum stream, GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream2dvATI(GLenum stream, const GLdouble * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream2dvATI(GLenum stream, const GLdouble * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream2fATI(GLenum stream, GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream2fATI(GLenum stream, GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream2fvATI(GLenum stream, const GLfloat * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream2fvATI(GLenum stream, const GLfloat * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream2iATI(GLenum stream, GLint x, GLint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream2iATI(GLenum stream, GLint x, GLint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream2ivATI(GLenum stream, const GLint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream2ivATI(GLenum stream, const GLint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream2sATI(GLenum stream, GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream2sATI(GLenum stream, GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream2svATI(GLenum stream, const GLshort * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream2svATI(GLenum stream, const GLshort * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream3dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream3dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream3dvATI(GLenum stream, const GLdouble * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream3dvATI(GLenum stream, const GLdouble * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream3fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream3fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream3fvATI(GLenum stream, const GLfloat * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream3fvATI(GLenum stream, const GLfloat * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream3iATI(GLenum stream, GLint x, GLint y, GLint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream3iATI(GLenum stream, GLint x, GLint y, GLint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream3ivATI(GLenum stream, const GLint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream3ivATI(GLenum stream, const GLint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream3sATI(GLenum stream, GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream3sATI(GLenum stream, GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream3svATI(GLenum stream, const GLshort * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream3svATI(GLenum stream, const GLshort * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream4dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream4dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream4dvATI(GLenum stream, const GLdouble * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream4dvATI(GLenum stream, const GLdouble * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream4fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream4fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream4fvATI(GLenum stream, const GLfloat * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream4fvATI(GLenum stream, const GLfloat * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream4iATI(GLenum stream, GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream4iATI(GLenum stream, GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream4ivATI(GLenum stream, const GLint * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream4ivATI(GLenum stream, const GLint * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream4sATI(GLenum stream, GLshort x, GLshort y, GLshort z, GLshort w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream4sATI(GLenum stream, GLshort x, GLshort y, GLshort z, GLshort w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexStream4svATI(GLenum stream, const GLshort * coords);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexStream4svATI(GLenum stream, const GLshort * coords);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexWeightPointerEXT(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexWeightPointerEXT(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexWeightfEXT(GLfloat weight);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexWeightfEXT(GLfloat weight);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexWeightfvEXT(const GLfloat * weight);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexWeightfvEXT(const GLfloat * weight);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexWeighthNV(GLhalfNV weight);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexWeighthNV(GLhalfNV weight);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVertexWeighthvNV(const GLhalfNV * weight);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVertexWeighthvNV(const GLhalfNV * weight);
 
-glproxy_IMPORTEXPORT GLenum glproxy_CALLSPEC glproxy_glVideoCaptureNV(GLuint video_capture_slot, GLuint * sequence_num, GLuint64EXT * capture_time);
+GLPROXY_IMPORTEXPORT GLenum GLPROXY_CALLSPEC glproxy_glVideoCaptureNV(GLuint video_capture_slot, GLuint * sequence_num, GLuint64EXT * capture_time);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVideoCaptureStreamParameterdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVideoCaptureStreamParameterdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVideoCaptureStreamParameterfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVideoCaptureStreamParameterfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glVideoCaptureStreamParameterivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint * params);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glVideoCaptureStreamParameterivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint * params);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewportArrayv(GLuint first, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewportArrayv(GLuint first, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewportArrayvNV(GLuint first, GLsizei count, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewportArrayvNV(GLuint first, GLsizei count, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewportIndexedfNV(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewportIndexedfNV(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewportIndexedfv(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewportIndexedfv(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewportIndexedfvNV(GLuint index, const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewportIndexedfvNV(GLuint index, const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewportPositionWScaleNV(GLuint index, GLfloat xcoeff, GLfloat ycoeff);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewportPositionWScaleNV(GLuint index, GLfloat xcoeff, GLfloat ycoeff);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightPointerARB(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightPointerARB(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightPointerOES(GLint size, GLenum type, GLsizei stride, const void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightPointerOES(GLint size, GLenum type, GLsizei stride, const void * pointer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightbvARB(GLint size, const GLbyte * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightbvARB(GLint size, const GLbyte * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightdvARB(GLint size, const GLdouble * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightdvARB(GLint size, const GLdouble * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightfvARB(GLint size, const GLfloat * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightfvARB(GLint size, const GLfloat * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightivARB(GLint size, const GLint * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightivARB(GLint size, const GLint * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightsvARB(GLint size, const GLshort * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightsvARB(GLint size, const GLshort * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightubvARB(GLint size, const GLubyte * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightubvARB(GLint size, const GLubyte * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightuivARB(GLint size, const GLuint * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightuivARB(GLint size, const GLuint * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWeightusvARB(GLint size, const GLushort * weights);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWeightusvARB(GLint size, const GLushort * weights);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2d(GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2d(GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2dARB(GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2dARB(GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2dMESA(GLdouble x, GLdouble y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2dMESA(GLdouble x, GLdouble y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2dvARB(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2dvARB(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2dvMESA(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2dvMESA(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2f(GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2f(GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2fARB(GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2fARB(GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2fMESA(GLfloat x, GLfloat y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2fMESA(GLfloat x, GLfloat y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2fvARB(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2fvARB(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2fvMESA(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2fvMESA(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2i(GLint x, GLint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2i(GLint x, GLint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2iARB(GLint x, GLint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2iARB(GLint x, GLint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2iMESA(GLint x, GLint y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2iMESA(GLint x, GLint y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2ivARB(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2ivARB(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2ivMESA(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2ivMESA(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2s(GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2s(GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2sARB(GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2sARB(GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2sMESA(GLshort x, GLshort y);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2sMESA(GLshort x, GLshort y);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2svARB(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2svARB(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos2svMESA(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos2svMESA(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3dARB(GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3dARB(GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3dMESA(GLdouble x, GLdouble y, GLdouble z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3dMESA(GLdouble x, GLdouble y, GLdouble z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3dv(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3dv(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3dvARB(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3dvARB(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3dvMESA(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3dvMESA(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3fARB(GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3fARB(GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3fMESA(GLfloat x, GLfloat y, GLfloat z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3fMESA(GLfloat x, GLfloat y, GLfloat z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3fv(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3fv(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3fvARB(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3fvARB(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3fvMESA(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3fvMESA(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3i(GLint x, GLint y, GLint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3i(GLint x, GLint y, GLint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3iARB(GLint x, GLint y, GLint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3iARB(GLint x, GLint y, GLint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3iMESA(GLint x, GLint y, GLint z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3iMESA(GLint x, GLint y, GLint z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3iv(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3iv(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3ivARB(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3ivARB(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3ivMESA(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3ivMESA(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3s(GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3s(GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3sARB(GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3sARB(GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3sMESA(GLshort x, GLshort y, GLshort z);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3sMESA(GLshort x, GLshort y, GLshort z);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3sv(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3sv(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3svARB(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3svARB(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos3svMESA(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos3svMESA(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos4dMESA(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos4dMESA(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos4dvMESA(const GLdouble * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos4dvMESA(const GLdouble * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos4fMESA(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos4fMESA(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos4fvMESA(const GLfloat * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos4fvMESA(const GLfloat * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos4iMESA(GLint x, GLint y, GLint z, GLint w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos4iMESA(GLint x, GLint y, GLint z, GLint w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos4ivMESA(const GLint * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos4ivMESA(const GLint * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos4sMESA(GLshort x, GLshort y, GLshort z, GLshort w);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos4sMESA(GLshort x, GLshort y, GLshort z, GLshort w);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowPos4svMESA(const GLshort * v);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowPos4svMESA(const GLshort * v);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWindowRectanglesEXT(GLenum mode, GLsizei count, const GLint * box);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWindowRectanglesEXT(GLenum mode, GLsizei count, const GLint * box);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
 
 #define glAccum glproxy_glAccum
 #define glAccumxOES glproxy_glAccumxOES

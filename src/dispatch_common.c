@@ -293,7 +293,7 @@ static bool glproxy_internal_has_gl_extension(const char *ext, bool invalid_op_m
 
 #if PLATFORM_HAS_WGL
 
-glproxy_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *ext) {
+GLPROXY_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *ext) {
     PFNWGLGETEXTENSIONSSTRINGARBPROC getext;
 
     getext = (void *)wglGetProcAddress("wglGetExtensionsStringARB");
@@ -344,7 +344,7 @@ int glproxy_conservative_glx_version(void) {
     return glproxy_glx_version(dpy, screen);
 }
 
-glproxy_IMPORTEXPORT int glproxy_glx_version(Display *dpy, int screen) {
+GLPROXY_IMPORTEXPORT int glproxy_glx_version(Display *dpy, int screen) {
     int server_major, server_minor;
     int client_major, client_minor;
     int server, client;
@@ -386,7 +386,7 @@ bool glproxy_conservative_has_glx_extension(const char *ext) {
     return glproxy_has_glx_extension(dpy, screen, ext);
 }
 
-glproxy_IMPORTEXPORT bool glproxy_has_glx_extension(Display *dpy, int screen, const char *ext) {
+GLPROXY_IMPORTEXPORT bool glproxy_has_glx_extension(Display *dpy, int screen, const char *ext) {
     /* No, you can't just use glXGetClientString or
     * glXGetServerString() here.  Those each tell you about one half
     * of what's needed for an extension to be supported, and
@@ -398,7 +398,7 @@ glproxy_IMPORTEXPORT bool glproxy_has_glx_extension(Display *dpy, int screen, co
 
 #endif /* PLATFORM_HAS_GLX */
 
-glproxy_IMPORTEXPORT int glproxy_egl_version(EGLDisplay dpy) {
+GLPROXY_IMPORTEXPORT int glproxy_egl_version(EGLDisplay dpy) {
     int major, minor;
     const char *version_string;
     int ret;
@@ -418,7 +418,7 @@ int glproxy_conservative_egl_version(void) {
     return glproxy_egl_version(dpy);
 }
 
-glproxy_IMPORTEXPORT bool glproxy_has_egl_extension(EGLDisplay dpy, const char *ext)
+GLPROXY_IMPORTEXPORT bool glproxy_has_egl_extension(EGLDisplay dpy, const char *ext)
 {
     return glproxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);
 }
@@ -434,7 +434,7 @@ bool glproxy_conservative_has_egl_extension(const char *ext)
 }
 
 
-glproxy_IMPORTEXPORT bool glproxy_has_gl_extension(const char *ext) {
+GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension(const char *ext) {
     return glproxy_internal_has_gl_extension(ext, false);
 }
 
@@ -444,7 +444,7 @@ static tls_ptr global_context = NULL;
 /* thread local storage index */
 TLS_TYPE glproxy_dispatch_common_tls_index = 0;
 
-glproxy_IMPORTEXPORT void glproxy_init_tls(void) {
+GLPROXY_IMPORTEXPORT void glproxy_init_tls(void) {
     if (inited) {
         return;
     }
@@ -459,7 +459,7 @@ glproxy_IMPORTEXPORT void glproxy_init_tls(void) {
 }
 CONSTRUCT(glproxy_init_tls)
 
-glproxy_IMPORTEXPORT void glproxy_uninit_tls(void) {
+GLPROXY_IMPORTEXPORT void glproxy_uninit_tls(void) {
     if (!inited) {
         return;
     }
@@ -499,7 +499,7 @@ static void glproxy_context_handles_close(tls_ptr tls) {
     }
 }
 
-glproxy_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *params) {
+GLPROXY_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *params) {
     tls_ptr tls = (tls_ptr)malloc(sizeof(tls[0]));
     memset(tls, 0, sizeof(tls[0]));
     if (params != NULL) {
@@ -517,11 +517,11 @@ glproxy_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *par
     return tls;
 }
 
-glproxy_IMPORTEXPORT void* glproxy_context_get() {
+GLPROXY_IMPORTEXPORT void* glproxy_context_get() {
     return (void*)get_tls_by_index(glproxy_dispatch_common_tls_index);
 }
 
-glproxy_IMPORTEXPORT void glproxy_context_set(void* new_context) {
+GLPROXY_IMPORTEXPORT void glproxy_context_set(void* new_context) {
     if (!inited) {
         fprintf(stderr, "The glproxy are not inited yet");
         return;
@@ -529,7 +529,7 @@ glproxy_IMPORTEXPORT void glproxy_context_set(void* new_context) {
     set_tls_by_index(glproxy_dispatch_common_tls_index, new_context);
 }
 
-glproxy_IMPORTEXPORT void glproxy_context_destroy(void* context) {
+GLPROXY_IMPORTEXPORT void glproxy_context_destroy(void* context) {
     tls_ptr tls = context;
     tls_ptr exist_context = NULL;
     if (!inited) {
@@ -559,7 +559,7 @@ static void* find_function_pointer_pos(void** table_start, const struct dispatch
     return 0;
 }
 
-glproxy_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* target, const char* membername) {
+GLPROXY_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* target, const char* membername) {
     tls_ptr tls = glproxy_context_get();
 #if PLATFORM_HAS_WGL
     if (strcmp(target, "wgl") == 0) {
@@ -580,7 +580,7 @@ glproxy_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* tar
     return NULL;
 }
 
-glproxy_IMPORTEXPORT bool glproxy_is_desktop_gl(void) {
+GLPROXY_IMPORTEXPORT bool glproxy_is_desktop_gl(void) {
     tls_ptr tls = glproxy_context_get();
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
         gl_glproxy_resolve_init(tls);
@@ -588,7 +588,7 @@ glproxy_IMPORTEXPORT bool glproxy_is_desktop_gl(void) {
     return tls->open_gl_type != DISPATCH_OPENGL_ES;
 }
 
-glproxy_IMPORTEXPORT int glproxy_gl_version(void) {
+GLPROXY_IMPORTEXPORT int glproxy_gl_version(void) {
     tls_ptr tls = glproxy_context_get();
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW || tls->gl_version == 0) {
         gl_glproxy_resolve_init(tls);

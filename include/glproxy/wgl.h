@@ -27,8 +27,8 @@
  * vtable.
  */
 
-#ifndef glproxy_WGL_H
-#define glproxy_WGL_H
+#ifndef GLPROXY_WGL_H
+#define GLPROXY_WGL_H
 
 #if defined(__wglxext_h_)
 #error "glproxy/wgl.h" must be included before (or in place of) "wglext.h"
@@ -53,10 +53,10 @@ extern "C" {
 
 #include "glproxy/wgl_generated.h"
 
-glproxy_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *extension);
+GLPROXY_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *extension);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* glproxy_WGL_H */
+#endif /* GLPROXY_WGL_H */

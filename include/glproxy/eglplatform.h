@@ -1,5 +1,5 @@
-#ifndef glproxy_EGLPLATFORM_H
-#define glproxy_EGLPLATFORM_H
+#ifndef GLPROXY_EGLPLATFORM_H
+#define GLPROXY_EGLPLATFORM_H
 
 /*
 ** Copyright (c) 2007-2009 The Khronos Group Inc.
@@ -131,4 +131,4 @@ typedef EGLNativeWindowType  NativeWindowType;
  */
 typedef khronos_int32_t EGLint;
 
-#endif /* glproxy_EGLPLATFORM_H */
+#endif /* GLPROXY_EGLPLATFORM_H */

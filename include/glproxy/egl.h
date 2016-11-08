@@ -27,8 +27,8 @@
  * function pointers
  */
 
-#ifndef glproxy_EGL_H
-#define glproxy_EGL_H
+#ifndef GLPROXY_EGL_H
+#define GLPROXY_EGL_H
 
 #if defined(__egl_h_) || defined(__eglext_h_)
 #error "glproxy/egl.h" must be included before (or in place of) "EGL/egl.h"
@@ -46,11 +46,11 @@ extern "C" {
 
 #include "glproxy/egl_generated.h"
 
-glproxy_IMPORTEXPORT bool glproxy_has_egl_extension(EGLDisplay dpy, const char *extension);
-glproxy_IMPORTEXPORT int glproxy_egl_version(EGLDisplay dpy);
+GLPROXY_IMPORTEXPORT bool glproxy_has_egl_extension(EGLDisplay dpy, const char *extension);
+GLPROXY_IMPORTEXPORT int glproxy_egl_version(EGLDisplay dpy);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* glproxy_EGL_H */
+#endif /* GLPROXY_EGL_H */

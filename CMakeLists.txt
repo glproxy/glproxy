@@ -8,11 +8,11 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.3")
 else ()
     set (HONOR_VISIBILITY FALSE)
 endif ()
-project (glproxy VERSION 1.3.1 LANGUAGES C)
-set (glproxy_TARGET_NAME glproxy)
+project (GLproxy VERSION 1.3.1 LANGUAGES C)
+set (GLPROXY_TARGET_NAME glproxy)
 set (TARGET_VER 1.3.1_yaronct-5)
 set (TARGET_ABI_VER 0)
-set (TARGET_OUTPUT_NAME "${glproxy_TARGET_NAME}")
+set (TARGET_OUTPUT_NAME "${GLPROXY_TARGET_NAME}")
 
 include (GNUInstallDirs)
 include (CMakeDependentOption)
@@ -49,43 +49,43 @@ find_package (GLESv2)
 endif()
 find_package (OpenGL)
 
-option (glproxy_REBUILD_FROM_SPECS "Rebuild the auto-generated sources and headers from the specs" FALSE)
-if (glproxy_REBUILD_FROM_SPECS AND NOT PYTHONINTERP_FOUND)
-    message (FATAL_ERROR "You've set \"glproxy_REBUILD_FROM_SPECS\" to \"TRUE\", which requires a python interpreter, but one couldn't be found.")
+option (GLPROXY_REBUILD_FROM_SPECS "Rebuild the auto-generated sources and headers from the specs" FALSE)
+if (GLPROXY_REBUILD_FROM_SPECS AND NOT PYTHONINTERP_FOUND)
+    message (FATAL_ERROR "You've set \"GLPROXY_REBUILD_FROM_SPECS\" to \"TRUE\", which requires a python interpreter, but one couldn't be found.")
 endif ()
 
-option (glproxy_SUPPORT_EGL "Build with EGL support" ON)
-cmake_dependent_option (glproxy_SUPPORT_WGL "Build with WGL support" ON WIN32 OFF)
+option (GLPROXY_SUPPORT_EGL "Build with EGL support" ON)
+cmake_dependent_option (GLPROXY_SUPPORT_WGL "Build with WGL support" ON WIN32 OFF)
 
 if (X11_FOUND AND OPENGL_FOUND)
-    set (glproxy_GLX_FOUND TRUE)
+    set (GLPROXY_GLX_FOUND TRUE)
 else ()
-    set (glproxy_GLX_FOUND FALSE)
+    set (GLPROXY_GLX_FOUND FALSE)
 endif ()
-cmake_dependent_option (glproxy_SUPPORT_GLX "Build with GLX support"
-                        "${glproxy_GLX_FOUND}" "NOT (WIN32 OR ANDROID)" OFF)
+cmake_dependent_option (GLPROXY_SUPPORT_GLX "Build with GLX support"
+                        "${GLPROXY_GLX_FOUND}" "NOT (WIN32 OR ANDROID)" OFF)
 
-option (glproxy_BUILD_SHARED "Build a shared library" ON)
-option (glproxy_BUILD_STATIC "Build a static library" OFF)
+option (GLPROXY_BUILD_SHARED "Build a shared library" ON)
+option (GLPROXY_BUILD_STATIC "Build a static library" OFF)
 
 if (DEFINED CMAKE_TOOLCHAIN_FILE)
-    set (glproxy_BUILD_TESTS_DEFAULT FALSE)
+    set (GLPROXY_BUILD_TESTS_DEFAULT FALSE)
 else ()
-    set (glproxy_BUILD_TESTS_DEFAULT TRUE)
+    set (GLPROXY_BUILD_TESTS_DEFAULT TRUE)
 endif ()
-option (glproxy_BUILD_TESTS "Build tests" "${glproxy_BUILD_TESTS_DEFAULT}")
+option (GLPROXY_BUILD_TESTS "Build tests" "${GLPROXY_BUILD_TESTS_DEFAULT}")
 
-cmake_dependent_option (glproxy_MSVC_USE_RUNTIME_LIBRARY_DLL "Link with MSVC Runtime Library DLL" ON
+cmake_dependent_option (GLPROXY_MSVC_USE_RUNTIME_LIBRARY_DLL "Link with MSVC Runtime Library DLL" ON
                         "CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC" OFF)
 
 configure_file ("include/glproxy/config.h.in" "include/glproxy/config.h")
 
-set (glproxy_INCLUDE_DIRS  "${CMAKE_CURRENT_SOURCE_DIR}/include"
+set (GLPROXY_INCLUDE_DIRS  "${CMAKE_CURRENT_SOURCE_DIR}/include"
                          "${CMAKE_CURRENT_BINARY_DIR}/include"
                          "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC
-    AND NOT glproxy_MSVC_USE_RUNTIME_LIBRARY_DLL)
+    AND NOT GLPROXY_MSVC_USE_RUNTIME_LIBRARY_DLL)
     foreach (flags CMAKE_C_FLAGS
                    CMAKE_C_FLAGS_DEBUG
                    CMAKE_C_FLAGS_RELEASE
@@ -98,7 +98,7 @@ endif ()
 
 add_subdirectory (src)
 
-if (glproxy_BUILD_TESTS)
+if (GLPROXY_BUILD_TESTS)
     enable_testing ()
     add_subdirectory (test)
 endif ()

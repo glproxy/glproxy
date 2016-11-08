@@ -476,283 +476,283 @@ typedef BOOL (GLAPIENTRY *PFNWGLUSEFONTOUTLINESAPROC)(HDC hDC, DWORD first, DWOR
 typedef BOOL (GLAPIENTRY *PFNWGLUSEFONTOUTLINESWPROC)(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
 typedef BOOL (GLAPIENTRY *PFNWGLWAITFORMSCOMLPROC)(HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 * ust, INT64 * msc, INT64 * sbc);
 typedef BOOL (GLAPIENTRY *PFNWGLWAITFORSBCOMLPROC)(HDC hdc, INT64 target_sbc, INT64 * ust, INT64 * msc, INT64 * sbc);
-glproxy_IMPORTEXPORT void * glproxy_CALLSPEC glproxy_wglAllocateMemoryNV(GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
+GLPROXY_IMPORTEXPORT void * GLPROXY_CALLSPEC glproxy_wglAllocateMemoryNV(GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglAssociateImageBufferEventsI3D(HDC hDC, const HANDLE * pEvent, const LPVOID * pAddress, const DWORD * pSize, UINT count);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglAssociateImageBufferEventsI3D(HDC hDC, const HANDLE * pEvent, const LPVOID * pAddress, const DWORD * pSize, UINT count);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglBeginFrameTrackingI3D(void);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglBeginFrameTrackingI3D(void);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_wglBindDisplayColorTableEXT(GLushort id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_wglBindDisplayColorTableEXT(GLushort id);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglBindSwapBarrierNV(GLuint group, GLuint barrier);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglBindSwapBarrierNV(GLuint group, GLuint barrier);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglBindTexImageARB(HPBUFFERARB hPbuffer, int iBuffer);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglBindTexImageARB(HPBUFFERARB hPbuffer, int iBuffer);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglBindVideoCaptureDeviceNV(UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglBindVideoCaptureDeviceNV(UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglBindVideoDeviceNV(HDC hDC, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int * piAttribList);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglBindVideoDeviceNV(HDC hDC, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int * piAttribList);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglBindVideoImageNV(HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglBindVideoImageNV(HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
 
-glproxy_IMPORTEXPORT VOID glproxy_CALLSPEC glproxy_wglBlitContextFramebufferAMD(HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+GLPROXY_IMPORTEXPORT VOID GLPROXY_CALLSPEC glproxy_wglBlitContextFramebufferAMD(HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglChoosePixelFormatARB(HDC hdc, const int * piAttribIList, const FLOAT * pfAttribFList, UINT nMaxFormats, int * piFormats, UINT * nNumFormats);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglChoosePixelFormatARB(HDC hdc, const int * piAttribIList, const FLOAT * pfAttribFList, UINT nMaxFormats, int * piFormats, UINT * nNumFormats);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglChoosePixelFormatEXT(HDC hdc, const int * piAttribIList, const FLOAT * pfAttribFList, UINT nMaxFormats, int * piFormats, UINT * nNumFormats);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglChoosePixelFormatEXT(HDC hdc, const int * piAttribIList, const FLOAT * pfAttribFList, UINT nMaxFormats, int * piFormats, UINT * nNumFormats);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglCopyContext(HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglCopyContext(HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglCopyImageSubDataNV(HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglCopyImageSubDataNV(HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
 
-glproxy_IMPORTEXPORT HDC glproxy_CALLSPEC glproxy_wglCreateAffinityDCNV(const HGPUNV * phGpuList);
+GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglCreateAffinityDCNV(const HGPUNV * phGpuList);
 
-glproxy_IMPORTEXPORT HGLRC glproxy_CALLSPEC glproxy_wglCreateAssociatedContextAMD(UINT id);
+GLPROXY_IMPORTEXPORT HGLRC GLPROXY_CALLSPEC glproxy_wglCreateAssociatedContextAMD(UINT id);
 
-glproxy_IMPORTEXPORT HGLRC glproxy_CALLSPEC glproxy_wglCreateAssociatedContextAttribsAMD(UINT id, HGLRC hShareContext, const int * attribList);
+GLPROXY_IMPORTEXPORT HGLRC GLPROXY_CALLSPEC glproxy_wglCreateAssociatedContextAttribsAMD(UINT id, HGLRC hShareContext, const int * attribList);
 
-glproxy_IMPORTEXPORT HANDLE glproxy_CALLSPEC glproxy_wglCreateBufferRegionARB(HDC hDC, int iLayerPlane, UINT uType);
+GLPROXY_IMPORTEXPORT HANDLE GLPROXY_CALLSPEC glproxy_wglCreateBufferRegionARB(HDC hDC, int iLayerPlane, UINT uType);
 
-glproxy_IMPORTEXPORT HGLRC glproxy_CALLSPEC glproxy_wglCreateContext(HDC hDc);
+GLPROXY_IMPORTEXPORT HGLRC GLPROXY_CALLSPEC glproxy_wglCreateContext(HDC hDc);
 
-glproxy_IMPORTEXPORT HGLRC glproxy_CALLSPEC glproxy_wglCreateContextAttribsARB(HDC hDC, HGLRC hShareContext, const int * attribList);
+GLPROXY_IMPORTEXPORT HGLRC GLPROXY_CALLSPEC glproxy_wglCreateContextAttribsARB(HDC hDC, HGLRC hShareContext, const int * attribList);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_wglCreateDisplayColorTableEXT(GLushort id);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_wglCreateDisplayColorTableEXT(GLushort id);
 
-glproxy_IMPORTEXPORT LPVOID glproxy_CALLSPEC glproxy_wglCreateImageBufferI3D(HDC hDC, DWORD dwSize, UINT uFlags);
+GLPROXY_IMPORTEXPORT LPVOID GLPROXY_CALLSPEC glproxy_wglCreateImageBufferI3D(HDC hDC, DWORD dwSize, UINT uFlags);
 
-glproxy_IMPORTEXPORT HGLRC glproxy_CALLSPEC glproxy_wglCreateLayerContext(HDC hDc, int level);
+GLPROXY_IMPORTEXPORT HGLRC GLPROXY_CALLSPEC glproxy_wglCreateLayerContext(HDC hDc, int level);
 
-glproxy_IMPORTEXPORT HPBUFFERARB glproxy_CALLSPEC glproxy_wglCreatePbufferARB(HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int * piAttribList);
+GLPROXY_IMPORTEXPORT HPBUFFERARB GLPROXY_CALLSPEC glproxy_wglCreatePbufferARB(HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int * piAttribList);
 
-glproxy_IMPORTEXPORT HPBUFFEREXT glproxy_CALLSPEC glproxy_wglCreatePbufferEXT(HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int * piAttribList);
+GLPROXY_IMPORTEXPORT HPBUFFEREXT GLPROXY_CALLSPEC glproxy_wglCreatePbufferEXT(HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int * piAttribList);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDXCloseDeviceNV(HANDLE hDevice);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDXCloseDeviceNV(HANDLE hDevice);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDXLockObjectsNV(HANDLE hDevice, GLint count, HANDLE * hObjects);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDXLockObjectsNV(HANDLE hDevice, GLint count, HANDLE * hObjects);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDXObjectAccessNV(HANDLE hObject, GLenum access);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDXObjectAccessNV(HANDLE hObject, GLenum access);
 
-glproxy_IMPORTEXPORT HANDLE glproxy_CALLSPEC glproxy_wglDXOpenDeviceNV(void * dxDevice);
+GLPROXY_IMPORTEXPORT HANDLE GLPROXY_CALLSPEC glproxy_wglDXOpenDeviceNV(void * dxDevice);
 
-glproxy_IMPORTEXPORT HANDLE glproxy_CALLSPEC glproxy_wglDXRegisterObjectNV(HANDLE hDevice, void * dxObject, GLuint name, GLenum type, GLenum access);
+GLPROXY_IMPORTEXPORT HANDLE GLPROXY_CALLSPEC glproxy_wglDXRegisterObjectNV(HANDLE hDevice, void * dxObject, GLuint name, GLenum type, GLenum access);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDXSetResourceShareHandleNV(void * dxObject, HANDLE shareHandle);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDXSetResourceShareHandleNV(void * dxObject, HANDLE shareHandle);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDXUnlockObjectsNV(HANDLE hDevice, GLint count, HANDLE * hObjects);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDXUnlockObjectsNV(HANDLE hDevice, GLint count, HANDLE * hObjects);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDXUnregisterObjectNV(HANDLE hDevice, HANDLE hObject);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDXUnregisterObjectNV(HANDLE hDevice, HANDLE hObject);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDelayBeforeSwapNV(HDC hDC, GLfloat seconds);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDelayBeforeSwapNV(HDC hDC, GLfloat seconds);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDeleteAssociatedContextAMD(HGLRC hglrc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDeleteAssociatedContextAMD(HGLRC hglrc);
 
-glproxy_IMPORTEXPORT VOID glproxy_CALLSPEC glproxy_wglDeleteBufferRegionARB(HANDLE hRegion);
+GLPROXY_IMPORTEXPORT VOID GLPROXY_CALLSPEC glproxy_wglDeleteBufferRegionARB(HANDLE hRegion);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDeleteContext(HGLRC oldContext);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDeleteContext(HGLRC oldContext);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDeleteDCNV(HDC hdc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDeleteDCNV(HDC hdc);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDescribeLayerPlane(HDC hDc, int pixelFormat, int layerPlane, UINT nBytes, const LAYERPLANEDESCRIPTOR * plpd);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDescribeLayerPlane(HDC hDc, int pixelFormat, int layerPlane, UINT nBytes, const LAYERPLANEDESCRIPTOR * plpd);
 
-glproxy_IMPORTEXPORT VOID glproxy_CALLSPEC glproxy_wglDestroyDisplayColorTableEXT(GLushort id);
+GLPROXY_IMPORTEXPORT VOID GLPROXY_CALLSPEC glproxy_wglDestroyDisplayColorTableEXT(GLushort id);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDestroyImageBufferI3D(HDC hDC, LPVOID pAddress);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDestroyImageBufferI3D(HDC hDC, LPVOID pAddress);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDestroyPbufferARB(HPBUFFERARB hPbuffer);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDestroyPbufferARB(HPBUFFERARB hPbuffer);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDestroyPbufferEXT(HPBUFFEREXT hPbuffer);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDestroyPbufferEXT(HPBUFFEREXT hPbuffer);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDisableFrameLockI3D(void);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDisableFrameLockI3D(void);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglDisableGenlockI3D(HDC hDC);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDisableGenlockI3D(HDC hDC);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglEnableFrameLockI3D(void);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglEnableFrameLockI3D(void);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglEnableGenlockI3D(HDC hDC);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglEnableGenlockI3D(HDC hDC);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglEndFrameTrackingI3D(void);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglEndFrameTrackingI3D(void);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglEnumGpuDevicesNV(HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglEnumGpuDevicesNV(HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglEnumGpusFromAffinityDCNV(HDC hAffinityDC, UINT iGpuIndex, HGPUNV * hGpu);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglEnumGpusFromAffinityDCNV(HDC hAffinityDC, UINT iGpuIndex, HGPUNV * hGpu);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglEnumGpusNV(UINT iGpuIndex, HGPUNV * phGpu);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglEnumGpusNV(UINT iGpuIndex, HGPUNV * phGpu);
 
-glproxy_IMPORTEXPORT UINT glproxy_CALLSPEC glproxy_wglEnumerateVideoCaptureDevicesNV(HDC hDc, HVIDEOINPUTDEVICENV * phDeviceList);
+GLPROXY_IMPORTEXPORT UINT GLPROXY_CALLSPEC glproxy_wglEnumerateVideoCaptureDevicesNV(HDC hDc, HVIDEOINPUTDEVICENV * phDeviceList);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_wglEnumerateVideoDevicesNV(HDC hDC, HVIDEOOUTPUTDEVICENV * phDeviceList);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglEnumerateVideoDevicesNV(HDC hDC, HVIDEOOUTPUTDEVICENV * phDeviceList);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_wglFreeMemoryNV(void * pointer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_wglFreeMemoryNV(void * pointer);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGenlockSampleRateI3D(HDC hDC, UINT uRate);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGenlockSampleRateI3D(HDC hDC, UINT uRate);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGenlockSourceDelayI3D(HDC hDC, UINT uDelay);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGenlockSourceDelayI3D(HDC hDC, UINT uDelay);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGenlockSourceEdgeI3D(HDC hDC, UINT uEdge);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGenlockSourceEdgeI3D(HDC hDC, UINT uEdge);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGenlockSourceI3D(HDC hDC, UINT uSource);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGenlockSourceI3D(HDC hDC, UINT uSource);
 
-glproxy_IMPORTEXPORT UINT glproxy_CALLSPEC glproxy_wglGetContextGPUIDAMD(HGLRC hglrc);
+GLPROXY_IMPORTEXPORT UINT GLPROXY_CALLSPEC glproxy_wglGetContextGPUIDAMD(HGLRC hglrc);
 
-glproxy_IMPORTEXPORT HGLRC glproxy_CALLSPEC glproxy_wglGetCurrentAssociatedContextAMD(void);
+GLPROXY_IMPORTEXPORT HGLRC GLPROXY_CALLSPEC glproxy_wglGetCurrentAssociatedContextAMD(void);
 
-glproxy_IMPORTEXPORT HGLRC glproxy_CALLSPEC glproxy_wglGetCurrentContext(void);
+GLPROXY_IMPORTEXPORT HGLRC GLPROXY_CALLSPEC glproxy_wglGetCurrentContext(void);
 
-glproxy_IMPORTEXPORT HDC glproxy_CALLSPEC glproxy_wglGetCurrentDC(void);
+GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetCurrentDC(void);
 
-glproxy_IMPORTEXPORT HDC glproxy_CALLSPEC glproxy_wglGetCurrentReadDCARB(void);
+GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetCurrentReadDCARB(void);
 
-glproxy_IMPORTEXPORT HDC glproxy_CALLSPEC glproxy_wglGetCurrentReadDCEXT(void);
+GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetCurrentReadDCEXT(void);
 
-glproxy_IMPORTEXPORT PROC glproxy_CALLSPEC glproxy_wglGetDefaultProcAddress(LPCSTR lpszProc);
+GLPROXY_IMPORTEXPORT PROC GLPROXY_CALLSPEC glproxy_wglGetDefaultProcAddress(LPCSTR lpszProc);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetDigitalVideoParametersI3D(HDC hDC, int iAttribute, int * piValue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetDigitalVideoParametersI3D(HDC hDC, int iAttribute, int * piValue);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_wglGetExtensionsStringARB(HDC hdc);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_wglGetExtensionsStringARB(HDC hdc);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_wglGetExtensionsStringEXT(void);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_wglGetExtensionsStringEXT(void);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetFrameUsageI3D(float * pUsage);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetFrameUsageI3D(float * pUsage);
 
-glproxy_IMPORTEXPORT UINT glproxy_CALLSPEC glproxy_wglGetGPUIDsAMD(UINT maxCount, UINT * ids);
+GLPROXY_IMPORTEXPORT UINT GLPROXY_CALLSPEC glproxy_wglGetGPUIDsAMD(UINT maxCount, UINT * ids);
 
-glproxy_IMPORTEXPORT INT glproxy_CALLSPEC glproxy_wglGetGPUInfoAMD(UINT id, int property, GLenum dataType, UINT size, void * data);
+GLPROXY_IMPORTEXPORT INT GLPROXY_CALLSPEC glproxy_wglGetGPUInfoAMD(UINT id, int property, GLenum dataType, UINT size, void * data);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetGammaTableI3D(HDC hDC, int iEntries, USHORT * puRed, USHORT * puGreen, USHORT * puBlue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetGammaTableI3D(HDC hDC, int iEntries, USHORT * puRed, USHORT * puGreen, USHORT * puBlue);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetGammaTableParametersI3D(HDC hDC, int iAttribute, int * piValue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetGammaTableParametersI3D(HDC hDC, int iAttribute, int * piValue);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetGenlockSampleRateI3D(HDC hDC, UINT * uRate);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetGenlockSampleRateI3D(HDC hDC, UINT * uRate);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetGenlockSourceDelayI3D(HDC hDC, UINT * uDelay);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetGenlockSourceDelayI3D(HDC hDC, UINT * uDelay);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetGenlockSourceEdgeI3D(HDC hDC, UINT * uEdge);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetGenlockSourceEdgeI3D(HDC hDC, UINT * uEdge);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetGenlockSourceI3D(HDC hDC, UINT * uSource);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetGenlockSourceI3D(HDC hDC, UINT * uSource);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_wglGetLayerPaletteEntries(HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglGetLayerPaletteEntries(HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetMscRateOML(HDC hdc, INT32 * numerator, INT32 * denominator);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetMscRateOML(HDC hdc, INT32 * numerator, INT32 * denominator);
 
-glproxy_IMPORTEXPORT HDC glproxy_CALLSPEC glproxy_wglGetPbufferDCARB(HPBUFFERARB hPbuffer);
+GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetPbufferDCARB(HPBUFFERARB hPbuffer);
 
-glproxy_IMPORTEXPORT HDC glproxy_CALLSPEC glproxy_wglGetPbufferDCEXT(HPBUFFEREXT hPbuffer);
+GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetPbufferDCEXT(HPBUFFEREXT hPbuffer);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetPixelFormatAttribfvARB(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, FLOAT * pfValues);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetPixelFormatAttribfvARB(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, FLOAT * pfValues);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetPixelFormatAttribfvEXT(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, FLOAT * pfValues);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetPixelFormatAttribfvEXT(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, FLOAT * pfValues);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetPixelFormatAttribivARB(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, int * piValues);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetPixelFormatAttribivARB(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, int * piValues);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetPixelFormatAttribivEXT(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, int * piValues);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetPixelFormatAttribivEXT(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, int * piValues);
 
-glproxy_IMPORTEXPORT PROC glproxy_CALLSPEC glproxy_wglGetProcAddress(LPCSTR lpszProc);
+GLPROXY_IMPORTEXPORT PROC GLPROXY_CALLSPEC glproxy_wglGetProcAddress(LPCSTR lpszProc);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_wglGetSwapIntervalEXT(void);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglGetSwapIntervalEXT(void);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetSyncValuesOML(HDC hdc, INT64 * ust, INT64 * msc, INT64 * sbc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetSyncValuesOML(HDC hdc, INT64 * ust, INT64 * msc, INT64 * sbc);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetVideoDeviceNV(HDC hDC, int numDevices, HPVIDEODEV * hVideoDevice);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetVideoDeviceNV(HDC hDC, int numDevices, HPVIDEODEV * hVideoDevice);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglGetVideoInfoNV(HPVIDEODEV hpVideoDevice, unsigned long * pulCounterOutputPbuffer, unsigned long * pulCounterOutputVideo);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetVideoInfoNV(HPVIDEODEV hpVideoDevice, unsigned long * pulCounterOutputPbuffer, unsigned long * pulCounterOutputVideo);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglIsEnabledFrameLockI3D(BOOL * pFlag);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglIsEnabledFrameLockI3D(BOOL * pFlag);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglIsEnabledGenlockI3D(HDC hDC, BOOL * pFlag);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglIsEnabledGenlockI3D(HDC hDC, BOOL * pFlag);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglJoinSwapGroupNV(HDC hDC, GLuint group);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglJoinSwapGroupNV(HDC hDC, GLuint group);
 
-glproxy_IMPORTEXPORT GLboolean glproxy_CALLSPEC glproxy_wglLoadDisplayColorTableEXT(const GLushort * table, GLuint length);
+GLPROXY_IMPORTEXPORT GLboolean GLPROXY_CALLSPEC glproxy_wglLoadDisplayColorTableEXT(const GLushort * table, GLuint length);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglLockVideoCaptureDeviceNV(HDC hDc, HVIDEOINPUTDEVICENV hDevice);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglLockVideoCaptureDeviceNV(HDC hDc, HVIDEOINPUTDEVICENV hDevice);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglMakeAssociatedContextCurrentAMD(HGLRC hglrc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglMakeAssociatedContextCurrentAMD(HGLRC hglrc);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglMakeContextCurrentARB(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglMakeContextCurrentARB(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglMakeContextCurrentEXT(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglMakeContextCurrentEXT(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglMakeCurrent(HDC hDc, HGLRC newContext);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglMakeCurrent(HDC hDc, HGLRC newContext);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryCurrentContextNV(int iAttribute, int * piValue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryCurrentContextNV(int iAttribute, int * piValue);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryFrameCountNV(HDC hDC, GLuint * count);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryFrameCountNV(HDC hDC, GLuint * count);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryFrameLockMasterI3D(BOOL * pFlag);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryFrameLockMasterI3D(BOOL * pFlag);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryFrameTrackingI3D(DWORD * pFrameCount, DWORD * pMissedFrames, float * pLastMissedUsage);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryFrameTrackingI3D(DWORD * pFrameCount, DWORD * pMissedFrames, float * pLastMissedUsage);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryGenlockMaxSourceDelayI3D(HDC hDC, UINT * uMaxLineDelay, UINT * uMaxPixelDelay);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryGenlockMaxSourceDelayI3D(HDC hDC, UINT * uMaxLineDelay, UINT * uMaxPixelDelay);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryMaxSwapGroupsNV(HDC hDC, GLuint * maxGroups, GLuint * maxBarriers);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryMaxSwapGroupsNV(HDC hDC, GLuint * maxGroups, GLuint * maxBarriers);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryPbufferARB(HPBUFFERARB hPbuffer, int iAttribute, int * piValue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryPbufferARB(HPBUFFERARB hPbuffer, int iAttribute, int * piValue);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryPbufferEXT(HPBUFFEREXT hPbuffer, int iAttribute, int * piValue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryPbufferEXT(HPBUFFEREXT hPbuffer, int iAttribute, int * piValue);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQuerySwapGroupNV(HDC hDC, GLuint * group, GLuint * barrier);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQuerySwapGroupNV(HDC hDC, GLuint * group, GLuint * barrier);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglQueryVideoCaptureDeviceNV(HDC hDc, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int * piValue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglQueryVideoCaptureDeviceNV(HDC hDc, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int * piValue);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglRealizeLayerPalette(HDC hdc, int iLayerPlane, BOOL bRealize);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglRealizeLayerPalette(HDC hdc, int iLayerPlane, BOOL bRealize);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglReleaseImageBufferEventsI3D(HDC hDC, const LPVOID * pAddress, UINT count);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglReleaseImageBufferEventsI3D(HDC hDC, const LPVOID * pAddress, UINT count);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_wglReleasePbufferDCARB(HPBUFFERARB hPbuffer, HDC hDC);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglReleasePbufferDCARB(HPBUFFERARB hPbuffer, HDC hDC);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_wglReleasePbufferDCEXT(HPBUFFEREXT hPbuffer, HDC hDC);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglReleasePbufferDCEXT(HPBUFFEREXT hPbuffer, HDC hDC);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglReleaseTexImageARB(HPBUFFERARB hPbuffer, int iBuffer);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglReleaseTexImageARB(HPBUFFERARB hPbuffer, int iBuffer);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglReleaseVideoCaptureDeviceNV(HDC hDc, HVIDEOINPUTDEVICENV hDevice);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglReleaseVideoCaptureDeviceNV(HDC hDc, HVIDEOINPUTDEVICENV hDevice);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglReleaseVideoDeviceNV(HPVIDEODEV hVideoDevice);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglReleaseVideoDeviceNV(HPVIDEODEV hVideoDevice);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglReleaseVideoImageNV(HPBUFFERARB hPbuffer, int iVideoBuffer);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglReleaseVideoImageNV(HPBUFFERARB hPbuffer, int iVideoBuffer);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglResetFrameCountNV(HDC hDC);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglResetFrameCountNV(HDC hDC);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglRestoreBufferRegionARB(HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglRestoreBufferRegionARB(HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSaveBufferRegionARB(HANDLE hRegion, int x, int y, int width, int height);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSaveBufferRegionARB(HANDLE hRegion, int x, int y, int width, int height);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSendPbufferToVideoNV(HPBUFFERARB hPbuffer, int iBufferType, unsigned long * pulCounterPbuffer, BOOL bBlock);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSendPbufferToVideoNV(HPBUFFERARB hPbuffer, int iBufferType, unsigned long * pulCounterPbuffer, BOOL bBlock);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSetDigitalVideoParametersI3D(HDC hDC, int iAttribute, const int * piValue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSetDigitalVideoParametersI3D(HDC hDC, int iAttribute, const int * piValue);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSetGammaTableI3D(HDC hDC, int iEntries, const USHORT * puRed, const USHORT * puGreen, const USHORT * puBlue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSetGammaTableI3D(HDC hDC, int iEntries, const USHORT * puRed, const USHORT * puGreen, const USHORT * puBlue);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSetGammaTableParametersI3D(HDC hDC, int iAttribute, const int * piValue);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSetGammaTableParametersI3D(HDC hDC, int iAttribute, const int * piValue);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_wglSetLayerPaletteEntries(HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglSetLayerPaletteEntries(HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSetPbufferAttribARB(HPBUFFERARB hPbuffer, const int * piAttribList);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSetPbufferAttribARB(HPBUFFERARB hPbuffer, const int * piAttribList);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSetStereoEmitterState3DL(HDC hDC, UINT uState);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSetStereoEmitterState3DL(HDC hDC, UINT uState);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglShareLists(HGLRC hrcSrvShare, HGLRC hrcSrvSource);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglShareLists(HGLRC hrcSrvShare, HGLRC hrcSrvSource);
 
-glproxy_IMPORTEXPORT INT64 glproxy_CALLSPEC glproxy_wglSwapBuffersMscOML(HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder);
+GLPROXY_IMPORTEXPORT INT64 GLPROXY_CALLSPEC glproxy_wglSwapBuffersMscOML(HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSwapIntervalEXT(int interval);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSwapIntervalEXT(int interval);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglSwapLayerBuffers(HDC hdc, UINT fuFlags);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSwapLayerBuffers(HDC hdc, UINT fuFlags);
 
-glproxy_IMPORTEXPORT INT64 glproxy_CALLSPEC glproxy_wglSwapLayerBuffersMscOML(HDC hdc, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder);
+GLPROXY_IMPORTEXPORT INT64 GLPROXY_CALLSPEC glproxy_wglSwapLayerBuffersMscOML(HDC hdc, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglUseFontBitmapsA(HDC hDC, DWORD first, DWORD count, DWORD listBase);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglUseFontBitmapsA(HDC hDC, DWORD first, DWORD count, DWORD listBase);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglUseFontBitmapsW(HDC hDC, DWORD first, DWORD count, DWORD listBase);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglUseFontBitmapsW(HDC hDC, DWORD first, DWORD count, DWORD listBase);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglUseFontOutlines(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglUseFontOutlines(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglUseFontOutlinesA(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglUseFontOutlinesA(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglUseFontOutlinesW(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglUseFontOutlinesW(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglWaitForMscOML(HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 * ust, INT64 * msc, INT64 * sbc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglWaitForMscOML(HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 * ust, INT64 * msc, INT64 * sbc);
 
-glproxy_IMPORTEXPORT BOOL glproxy_CALLSPEC glproxy_wglWaitForSbcOML(HDC hdc, INT64 target_sbc, INT64 * ust, INT64 * msc, INT64 * sbc);
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglWaitForSbcOML(HDC hdc, INT64 target_sbc, INT64 * ust, INT64 * msc, INT64 * sbc);
 
 #define wglAllocateMemoryNV glproxy_wglAllocateMemoryNV
 #define wglAssociateImageBufferEventsI3D glproxy_wglAssociateImageBufferEventsI3D

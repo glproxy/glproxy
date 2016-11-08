@@ -714,243 +714,243 @@ typedef EGLBoolean (GLAPIENTRY *PFNEGLWAITGLPROC)(void);
 typedef EGLBoolean (GLAPIENTRY *PFNEGLWAITNATIVEPROC)(EGLint engine);
 typedef EGLBoolean (GLAPIENTRY *PFNEGLWAITSYNCPROC)(EGLDisplay dpy, EGLSync sync, EGLint flags);
 typedef EGLint (GLAPIENTRY *PFNEGLWAITSYNCKHRPROC)(EGLDisplay dpy, EGLSyncKHR sync, EGLint flags);
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglBindAPI(EGLenum api);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglBindAPI(EGLenum api);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglBindTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglBindTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglChooseConfig(EGLDisplay dpy, const EGLint * attrib_list, EGLConfig * configs, EGLint config_size, EGLint * num_config);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglChooseConfig(EGLDisplay dpy, const EGLint * attrib_list, EGLConfig * configs, EGLint config_size, EGLint * num_config);
 
-glproxy_IMPORTEXPORT EGLint glproxy_CALLSPEC glproxy_eglClientWaitSync(EGLDisplay dpy, EGLSync sync, EGLint flags, EGLTime timeout);
+GLPROXY_IMPORTEXPORT EGLint GLPROXY_CALLSPEC glproxy_eglClientWaitSync(EGLDisplay dpy, EGLSync sync, EGLint flags, EGLTime timeout);
 
-glproxy_IMPORTEXPORT EGLint glproxy_CALLSPEC glproxy_eglClientWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint flags, EGLTimeKHR timeout);
+GLPROXY_IMPORTEXPORT EGLint GLPROXY_CALLSPEC glproxy_eglClientWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint flags, EGLTimeKHR timeout);
 
-glproxy_IMPORTEXPORT EGLint glproxy_CALLSPEC glproxy_eglClientWaitSyncNV(EGLSyncNV sync, EGLint flags, EGLTimeNV timeout);
+GLPROXY_IMPORTEXPORT EGLint GLPROXY_CALLSPEC glproxy_eglClientWaitSyncNV(EGLSyncNV sync, EGLint flags, EGLTimeNV timeout);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglCopyBuffers(EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglCopyBuffers(EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target);
 
-glproxy_IMPORTEXPORT EGLContext glproxy_CALLSPEC glproxy_eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLContext GLPROXY_CALLSPEC glproxy_eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLImageKHR glproxy_CALLSPEC glproxy_eglCreateDRMImageMESA(EGLDisplay dpy, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLImageKHR GLPROXY_CALLSPEC glproxy_eglCreateDRMImageMESA(EGLDisplay dpy, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSyncNV glproxy_CALLSPEC glproxy_eglCreateFenceSyncNV(EGLDisplay dpy, EGLenum condition, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSyncNV GLPROXY_CALLSPEC glproxy_eglCreateFenceSyncNV(EGLDisplay dpy, EGLenum condition, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLImage glproxy_CALLSPEC glproxy_eglCreateImage(EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLAttrib * attrib_list);
+GLPROXY_IMPORTEXPORT EGLImage GLPROXY_CALLSPEC glproxy_eglCreateImage(EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLAttrib * attrib_list);
 
-glproxy_IMPORTEXPORT EGLImageKHR glproxy_CALLSPEC glproxy_eglCreateImageKHR(EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLImageKHR GLPROXY_CALLSPEC glproxy_eglCreateImageKHR(EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLClientBuffer glproxy_CALLSPEC glproxy_eglCreateNativeClientBufferANDROID(const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLClientBuffer GLPROXY_CALLSPEC glproxy_eglCreateNativeClientBufferANDROID(const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreatePbufferFromClientBuffer(EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreatePbufferFromClientBuffer(EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreatePbufferSurface(EGLDisplay dpy, EGLConfig config, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreatePbufferSurface(EGLDisplay dpy, EGLConfig config, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreatePixmapSurface(EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreatePixmapSurface(EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreatePixmapSurfaceHI(EGLDisplay dpy, EGLConfig config, struct EGLClientPixmapHI * pixmap);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreatePixmapSurfaceHI(EGLDisplay dpy, EGLConfig config, struct EGLClientPixmapHI * pixmap);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreatePlatformPixmapSurface(EGLDisplay dpy, EGLConfig config, void * native_pixmap, const EGLAttrib * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreatePlatformPixmapSurface(EGLDisplay dpy, EGLConfig config, void * native_pixmap, const EGLAttrib * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreatePlatformPixmapSurfaceEXT(EGLDisplay dpy, EGLConfig config, void * native_pixmap, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreatePlatformPixmapSurfaceEXT(EGLDisplay dpy, EGLConfig config, void * native_pixmap, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreatePlatformWindowSurface(EGLDisplay dpy, EGLConfig config, void * native_window, const EGLAttrib * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreatePlatformWindowSurface(EGLDisplay dpy, EGLConfig config, void * native_window, const EGLAttrib * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreatePlatformWindowSurfaceEXT(EGLDisplay dpy, EGLConfig config, void * native_window, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreatePlatformWindowSurfaceEXT(EGLDisplay dpy, EGLConfig config, void * native_window, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLStreamKHR glproxy_CALLSPEC glproxy_eglCreateStreamFromFileDescriptorKHR(EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor);
+GLPROXY_IMPORTEXPORT EGLStreamKHR GLPROXY_CALLSPEC glproxy_eglCreateStreamFromFileDescriptorKHR(EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor);
 
-glproxy_IMPORTEXPORT EGLStreamKHR glproxy_CALLSPEC glproxy_eglCreateStreamKHR(EGLDisplay dpy, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLStreamKHR GLPROXY_CALLSPEC glproxy_eglCreateStreamKHR(EGLDisplay dpy, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreateStreamProducerSurfaceKHR(EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreateStreamProducerSurfaceKHR(EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSyncKHR glproxy_CALLSPEC glproxy_eglCreateStreamSyncNV(EGLDisplay dpy, EGLStreamKHR stream, EGLenum type, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSyncKHR GLPROXY_CALLSPEC glproxy_eglCreateStreamSyncNV(EGLDisplay dpy, EGLStreamKHR stream, EGLenum type, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSync glproxy_CALLSPEC glproxy_eglCreateSync(EGLDisplay dpy, EGLenum type, const EGLAttrib * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSync GLPROXY_CALLSPEC glproxy_eglCreateSync(EGLDisplay dpy, EGLenum type, const EGLAttrib * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSyncKHR glproxy_CALLSPEC glproxy_eglCreateSync64KHR(EGLDisplay dpy, EGLenum type, const EGLAttribKHR * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSyncKHR GLPROXY_CALLSPEC glproxy_eglCreateSync64KHR(EGLDisplay dpy, EGLenum type, const EGLAttribKHR * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSyncKHR glproxy_CALLSPEC glproxy_eglCreateSyncKHR(EGLDisplay dpy, EGLenum type, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSyncKHR GLPROXY_CALLSPEC glproxy_eglCreateSyncKHR(EGLDisplay dpy, EGLenum type, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglCreateWindowSurface(EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglCreateWindowSurface(EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLint glproxy_CALLSPEC glproxy_eglDebugMessageControlKHR(EGLDEBUGPROCKHR callback, const EGLAttrib * attrib_list);
+GLPROXY_IMPORTEXPORT EGLint GLPROXY_CALLSPEC glproxy_eglDebugMessageControlKHR(EGLDEBUGPROCKHR callback, const EGLAttrib * attrib_list);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglDestroyContext(EGLDisplay dpy, EGLContext ctx);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglDestroyContext(EGLDisplay dpy, EGLContext ctx);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglDestroyImage(EGLDisplay dpy, EGLImage image);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglDestroyImage(EGLDisplay dpy, EGLImage image);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglDestroyImageKHR(EGLDisplay dpy, EGLImageKHR image);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglDestroyImageKHR(EGLDisplay dpy, EGLImageKHR image);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglDestroyStreamKHR(EGLDisplay dpy, EGLStreamKHR stream);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglDestroyStreamKHR(EGLDisplay dpy, EGLStreamKHR stream);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglDestroySurface(EGLDisplay dpy, EGLSurface surface);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglDestroySurface(EGLDisplay dpy, EGLSurface surface);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglDestroySync(EGLDisplay dpy, EGLSync sync);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglDestroySync(EGLDisplay dpy, EGLSync sync);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglDestroySyncKHR(EGLDisplay dpy, EGLSyncKHR sync);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglDestroySyncKHR(EGLDisplay dpy, EGLSyncKHR sync);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglDestroySyncNV(EGLSyncNV sync);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglDestroySyncNV(EGLSyncNV sync);
 
-glproxy_IMPORTEXPORT EGLint glproxy_CALLSPEC glproxy_eglDupNativeFenceFDANDROID(EGLDisplay dpy, EGLSyncKHR sync);
+GLPROXY_IMPORTEXPORT EGLint GLPROXY_CALLSPEC glproxy_eglDupNativeFenceFDANDROID(EGLDisplay dpy, EGLSyncKHR sync);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglExportDMABUFImageMESA(EGLDisplay dpy, EGLImageKHR image, int * fds, EGLint * strides, EGLint * offsets);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglExportDMABUFImageMESA(EGLDisplay dpy, EGLImageKHR image, int * fds, EGLint * strides, EGLint * offsets);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglExportDMABUFImageQueryMESA(EGLDisplay dpy, EGLImageKHR image, int * fourcc, int * num_planes, EGLuint64KHR * modifiers);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglExportDMABUFImageQueryMESA(EGLDisplay dpy, EGLImageKHR image, int * fourcc, int * num_planes, EGLuint64KHR * modifiers);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglExportDRMImageMESA(EGLDisplay dpy, EGLImageKHR image, EGLint * name, EGLint * handle, EGLint * stride);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglExportDRMImageMESA(EGLDisplay dpy, EGLImageKHR image, EGLint * name, EGLint * handle, EGLint * stride);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglFenceNV(EGLSyncNV sync);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglFenceNV(EGLSyncNV sync);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglGetConfigs(EGLDisplay dpy, EGLConfig * configs, EGLint config_size, EGLint * num_config);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglGetConfigs(EGLDisplay dpy, EGLConfig * configs, EGLint config_size, EGLint * num_config);
 
-glproxy_IMPORTEXPORT EGLContext glproxy_CALLSPEC glproxy_eglGetCurrentContext(void);
+GLPROXY_IMPORTEXPORT EGLContext GLPROXY_CALLSPEC glproxy_eglGetCurrentContext(void);
 
-glproxy_IMPORTEXPORT EGLDisplay glproxy_CALLSPEC glproxy_eglGetCurrentDisplay(void);
+GLPROXY_IMPORTEXPORT EGLDisplay GLPROXY_CALLSPEC glproxy_eglGetCurrentDisplay(void);
 
-glproxy_IMPORTEXPORT EGLSurface glproxy_CALLSPEC glproxy_eglGetCurrentSurface(EGLint readdraw);
+GLPROXY_IMPORTEXPORT EGLSurface GLPROXY_CALLSPEC glproxy_eglGetCurrentSurface(EGLint readdraw);
 
-glproxy_IMPORTEXPORT EGLDisplay glproxy_CALLSPEC glproxy_eglGetDisplay(EGLNativeDisplayType display_id);
+GLPROXY_IMPORTEXPORT EGLDisplay GLPROXY_CALLSPEC glproxy_eglGetDisplay(EGLNativeDisplayType display_id);
 
-glproxy_IMPORTEXPORT EGLint glproxy_CALLSPEC glproxy_eglGetError(void);
+GLPROXY_IMPORTEXPORT EGLint GLPROXY_CALLSPEC glproxy_eglGetError(void);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglGetOutputLayersEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint max_layers, EGLint * num_layers);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglGetOutputLayersEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint max_layers, EGLint * num_layers);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglGetOutputPortsEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputPortEXT * ports, EGLint max_ports, EGLint * num_ports);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglGetOutputPortsEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputPortEXT * ports, EGLint max_ports, EGLint * num_ports);
 
-glproxy_IMPORTEXPORT EGLDisplay glproxy_CALLSPEC glproxy_eglGetPlatformDisplay(EGLenum platform, void * native_display, const EGLAttrib * attrib_list);
+GLPROXY_IMPORTEXPORT EGLDisplay GLPROXY_CALLSPEC glproxy_eglGetPlatformDisplay(EGLenum platform, void * native_display, const EGLAttrib * attrib_list);
 
-glproxy_IMPORTEXPORT EGLDisplay glproxy_CALLSPEC glproxy_eglGetPlatformDisplayEXT(EGLenum platform, void * native_display, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLDisplay GLPROXY_CALLSPEC glproxy_eglGetPlatformDisplayEXT(EGLenum platform, void * native_display, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT __eglMustCastToProperFunctionPointerType glproxy_CALLSPEC glproxy_eglGetProcAddress(const char * procname);
+GLPROXY_IMPORTEXPORT __eglMustCastToProperFunctionPointerType GLPROXY_CALLSPEC glproxy_eglGetProcAddress(const char * procname);
 
-glproxy_IMPORTEXPORT EGLNativeFileDescriptorKHR glproxy_CALLSPEC glproxy_eglGetStreamFileDescriptorKHR(EGLDisplay dpy, EGLStreamKHR stream);
+GLPROXY_IMPORTEXPORT EGLNativeFileDescriptorKHR GLPROXY_CALLSPEC glproxy_eglGetStreamFileDescriptorKHR(EGLDisplay dpy, EGLStreamKHR stream);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglGetSyncAttrib(EGLDisplay dpy, EGLSync sync, EGLint attribute, EGLAttrib * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglGetSyncAttrib(EGLDisplay dpy, EGLSync sync, EGLint attribute, EGLAttrib * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglGetSyncAttribKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint attribute, EGLint * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglGetSyncAttribKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint attribute, EGLint * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglGetSyncAttribNV(EGLSyncNV sync, EGLint attribute, EGLint * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglGetSyncAttribNV(EGLSyncNV sync, EGLint attribute, EGLint * value);
 
-glproxy_IMPORTEXPORT EGLuint64NV glproxy_CALLSPEC glproxy_eglGetSystemTimeFrequencyNV(void);
+GLPROXY_IMPORTEXPORT EGLuint64NV GLPROXY_CALLSPEC glproxy_eglGetSystemTimeFrequencyNV(void);
 
-glproxy_IMPORTEXPORT EGLuint64NV glproxy_CALLSPEC glproxy_eglGetSystemTimeNV(void);
+GLPROXY_IMPORTEXPORT EGLuint64NV GLPROXY_CALLSPEC glproxy_eglGetSystemTimeNV(void);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglInitialize(EGLDisplay dpy, EGLint * major, EGLint * minor);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglInitialize(EGLDisplay dpy, EGLint * major, EGLint * minor);
 
-glproxy_IMPORTEXPORT EGLint glproxy_CALLSPEC glproxy_eglLabelObjectKHR(EGLDisplay display, EGLenum objectType, EGLObjectKHR object, EGLLabelKHR label);
+GLPROXY_IMPORTEXPORT EGLint GLPROXY_CALLSPEC glproxy_eglLabelObjectKHR(EGLDisplay display, EGLenum objectType, EGLObjectKHR object, EGLLabelKHR label);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglLockSurfaceKHR(EGLDisplay dpy, EGLSurface surface, const EGLint * attrib_list);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglLockSurfaceKHR(EGLDisplay dpy, EGLSurface surface, const EGLint * attrib_list);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglPostSubBufferNV(EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglPostSubBufferNV(EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglPresentationTimeANDROID(EGLDisplay dpy, EGLSurface surface, EGLnsecsANDROID time);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglPresentationTimeANDROID(EGLDisplay dpy, EGLSurface surface, EGLnsecsANDROID time);
 
-glproxy_IMPORTEXPORT EGLenum glproxy_CALLSPEC glproxy_eglQueryAPI(void);
+GLPROXY_IMPORTEXPORT EGLenum GLPROXY_CALLSPEC glproxy_eglQueryAPI(void);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryContext(EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryContext(EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryDebugKHR(EGLint attribute, EGLAttrib * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryDebugKHR(EGLint attribute, EGLAttrib * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryDeviceAttribEXT(EGLDeviceEXT device, EGLint attribute, EGLAttrib * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryDeviceAttribEXT(EGLDeviceEXT device, EGLint attribute, EGLAttrib * value);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_eglQueryDeviceStringEXT(EGLDeviceEXT device, EGLint name);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_eglQueryDeviceStringEXT(EGLDeviceEXT device, EGLint name);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryDevicesEXT(EGLint max_devices, EGLDeviceEXT * devices, EGLint * num_devices);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryDevicesEXT(EGLint max_devices, EGLDeviceEXT * devices, EGLint * num_devices);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryDisplayAttribEXT(EGLDisplay dpy, EGLint attribute, EGLAttrib * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryDisplayAttribEXT(EGLDisplay dpy, EGLint attribute, EGLAttrib * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryDisplayAttribNV(EGLDisplay dpy, EGLint attribute, EGLAttrib * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryDisplayAttribNV(EGLDisplay dpy, EGLint attribute, EGLAttrib * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryNativeDisplayNV(EGLDisplay dpy, EGLNativeDisplayType * display_id);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryNativeDisplayNV(EGLDisplay dpy, EGLNativeDisplayType * display_id);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryNativePixmapNV(EGLDisplay dpy, EGLSurface surf, EGLNativePixmapType * pixmap);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryNativePixmapNV(EGLDisplay dpy, EGLSurface surf, EGLNativePixmapType * pixmap);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryNativeWindowNV(EGLDisplay dpy, EGLSurface surf, EGLNativeWindowType * window);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryNativeWindowNV(EGLDisplay dpy, EGLSurface surf, EGLNativeWindowType * window);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib * value);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_eglQueryOutputLayerStringEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint name);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_eglQueryOutputLayerStringEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint name);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib * value);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_eglQueryOutputPortStringEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint name);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_eglQueryOutputPortStringEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint name);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryStreamKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryStreamKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryStreamMetadataNV(EGLDisplay dpy, EGLStreamKHR stream, EGLenum name, EGLint n, EGLint offset, EGLint size, void * data);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryStreamMetadataNV(EGLDisplay dpy, EGLStreamKHR stream, EGLenum name, EGLint n, EGLint offset, EGLint size, void * data);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryStreamTimeKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLTimeKHR * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryStreamTimeKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLTimeKHR * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQueryStreamu64KHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLuint64KHR * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQueryStreamu64KHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLuint64KHR * value);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_eglQueryString(EGLDisplay dpy, EGLint name);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_eglQueryString(EGLDisplay dpy, EGLint name);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQuerySurface64KHR(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLAttribKHR * value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQuerySurface64KHR(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLAttribKHR * value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglQuerySurfacePointerANGLE(EGLDisplay dpy, EGLSurface surface, EGLint attribute, void ** value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglQuerySurfacePointerANGLE(EGLDisplay dpy, EGLSurface surface, EGLint attribute, void ** value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglReleaseTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglReleaseTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglReleaseThread(void);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglReleaseThread(void);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_eglSetBlobCacheFuncsANDROID(EGLDisplay dpy, EGLSetBlobFuncANDROID set, EGLGetBlobFuncANDROID get);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_eglSetBlobCacheFuncsANDROID(EGLDisplay dpy, EGLSetBlobFuncANDROID set, EGLGetBlobFuncANDROID get);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSetDamageRegionKHR(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSetDamageRegionKHR(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSetStreamMetadataNV(EGLDisplay dpy, EGLStreamKHR stream, EGLint n, EGLint offset, EGLint size, const void * data);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSetStreamMetadataNV(EGLDisplay dpy, EGLStreamKHR stream, EGLint n, EGLint offset, EGLint size, const void * data);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSignalSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLenum mode);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSignalSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLenum mode);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSignalSyncNV(EGLSyncNV sync, EGLenum mode);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSignalSyncNV(EGLSyncNV sync, EGLenum mode);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglStreamAttribKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglStreamAttribKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglStreamConsumerAcquireKHR(EGLDisplay dpy, EGLStreamKHR stream);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglStreamConsumerAcquireKHR(EGLDisplay dpy, EGLStreamKHR stream);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglStreamConsumerGLTextureExternalAttribsNV(EGLDisplay dpy, EGLStreamKHR stream, EGLAttrib * attrib_list);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglStreamConsumerGLTextureExternalAttribsNV(EGLDisplay dpy, EGLStreamKHR stream, EGLAttrib * attrib_list);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglStreamConsumerGLTextureExternalKHR(EGLDisplay dpy, EGLStreamKHR stream);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglStreamConsumerGLTextureExternalKHR(EGLDisplay dpy, EGLStreamKHR stream);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglStreamConsumerOutputEXT(EGLDisplay dpy, EGLStreamKHR stream, EGLOutputLayerEXT layer);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglStreamConsumerOutputEXT(EGLDisplay dpy, EGLStreamKHR stream, EGLOutputLayerEXT layer);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglStreamConsumerReleaseKHR(EGLDisplay dpy, EGLStreamKHR stream);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglStreamConsumerReleaseKHR(EGLDisplay dpy, EGLStreamKHR stream);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSurfaceAttrib(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSurfaceAttrib(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSwapBuffersRegion2NOK(EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSwapBuffersRegion2NOK(EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSwapBuffersRegionNOK(EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSwapBuffersRegionNOK(EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSwapBuffersWithDamageEXT(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSwapBuffersWithDamageEXT(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglSwapInterval(EGLDisplay dpy, EGLint interval);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglSwapInterval(EGLDisplay dpy, EGLint interval);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglTerminate(EGLDisplay dpy);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglTerminate(EGLDisplay dpy);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglUnlockSurfaceKHR(EGLDisplay dpy, EGLSurface surface);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglUnlockSurfaceKHR(EGLDisplay dpy, EGLSurface surface);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglWaitClient(void);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglWaitClient(void);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglWaitGL(void);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglWaitGL(void);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglWaitNative(EGLint engine);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglWaitNative(EGLint engine);
 
-glproxy_IMPORTEXPORT EGLBoolean glproxy_CALLSPEC glproxy_eglWaitSync(EGLDisplay dpy, EGLSync sync, EGLint flags);
+GLPROXY_IMPORTEXPORT EGLBoolean GLPROXY_CALLSPEC glproxy_eglWaitSync(EGLDisplay dpy, EGLSync sync, EGLint flags);
 
-glproxy_IMPORTEXPORT EGLint glproxy_CALLSPEC glproxy_eglWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint flags);
+GLPROXY_IMPORTEXPORT EGLint GLPROXY_CALLSPEC glproxy_eglWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint flags);
 
 #define eglBindAPI glproxy_eglBindAPI
 #define eglBindTexImage glproxy_eglBindTexImage

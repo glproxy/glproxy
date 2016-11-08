@@ -1,5 +1,5 @@
-#ifndef glproxy_KHRPLATFORM_H
-#define glproxy_KHRPLATFORM_H
+#ifndef GLPROXY_KHRPLATFORM_H
+#define GLPROXY_KHRPLATFORM_H
 
 /*
 ** Copyright (c) 2008-2009 The Khronos Group Inc.
@@ -273,4 +273,4 @@ typedef enum {
     KHRONOS_BOOLEAN_ENUM_FORCE_SIZE = KHRONOS_MAX_ENUM
 } khronos_boolean_enum_t;
 
-#endif /* glproxy_KHRPLATFORM_H */
+#endif /* GLPROXY_KHRPLATFORM_H */

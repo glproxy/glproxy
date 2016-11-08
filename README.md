@@ -1,4 +1,4 @@
-glproxy is a library for handling OpenGL function pointer management for
+GLproxy is a library for handling OpenGL function pointer management for
 you.
 
 It hides the complexity of `dlopen()`, `dlsym()`,
@@ -21,7 +21,7 @@ Features
   used with `GL_ARB_vertex_buffer_object` implementations, along
   with desktop OpenGL 1.5+ implementations.
 * GLX, and WGL support.
-* EGL support. EGL headers are included, so they're not necessary to build glproxy
+* EGL support. EGL headers are included, so they're not necessary to build GLproxy
   with EGL support.
 * Can be mixed with non-glproxy OpenGL usage.
 
@@ -41,31 +41,77 @@ Building with CMake should be as simple as running:
 depending on the type of generator you use, e.g. for Unix type `make`, and for
 MSVC open the solution in Visual studio and build the solution.
 
-* To build for 32 bit with MSVC, using generator `Visual Studio 14 2015`
-
-* To build for 64 bit with MSVC add ` Win64` to the generator name, e.g.
-  `Visual Studio 14 2015 Win64`.
+* NOTE: To build for 64 bit with MSVC add ` Win64` to the generator name, e.g.
+  `Visual Studio 14 2015 Win64` or `Visual Studio 14 2015`.
 
 * To rebuild the generated headers from the specs, add
-`-Dglproxy_REBUILD_FROM_SPECS=ON` to the `cmake` invocation.
+`-DGLPROXY_REBUILD_FROM_SPECS=ON` to the `cmake` invocation.
 
 * To build also static libraries, add
-`-Dglproxy_BUILD_STATIC=ON` to the `cmake` invocation.
+`-DGLPROXY_BUILD_STATIC=ON` to the `cmake` invocation.
 
 * To disable building shared libraries, add
-`-Dglproxy_BUILD_SHARED=OFF` to the `cmake` invocation.
+`-DGLPROXY_BUILD_SHARED=OFF` to the `cmake` invocation.
 
 * To disable building tests, add
-`-Dglproxy_BUILD_TESTS=OFF` to the `cmake` invocation.
+`-DGLPROXY_BUILD_TESTS=OFF` to the `cmake` invocation.
 
 * To link to the static Runtime Library with MSVC (rather than to the DLL), add
-`-Dglproxy_MSVC_USE_RUNTIME_LIBRARY_DLL=OFF` to the `cmake` invocation.
+`-DGLPROXY_MSVC_USE_RUNTIME_LIBRARY_DLL=OFF` to the `cmake` invocation.
 
-Switching your Code to Use glproxy
+Building (Autotools)
+---------------------
+
+On Unix you can also use autotools to build. This type of build only supports
+building shared libraries. However it also supports building and running tests.
+To build with autotools, write:
+
+    ./autogen.sh
+    make
+    make check [optional]
+    sudo make install
+
+Dependencies for debian:
+
+* libegl1-mesa-dev
+* xutils-dev
+
+Dependencies for OS X (macports):
+
+* xorg-util-macros
+* pkgconfig
+
+The test suite has additional dependencies depending on the platform.
+(X11, EGL, a running X Server).
+
+Building (NMAKE)
+-----------------
+
+With MSVC you can also build directly with NMAKE. This type of build only
+supports building shared libraries. However it also supports building
+tests.
+
+1. Check `src\Makefile.vc` to ensure that `PYTHONDIR` is pointing to your Python
+   installation, either a 32-bit or a 64-bit (x64) installation of Python 2 or 3
+   will do.
+2. Copy `include\glproxy\config.h.guess` to `include\glproxy\config.h`.
+3. Open an MSVC Command prompt and run `nmake Makefile.vc CFG=release` or
+   `nmake Makefile.vc CFG=debug` in src\ for a release or debug build.
+4. Optionally, add src\ into your PATH and run the previous step in test\. Run
+   the tests by running the built `.exe`s.
+5. Assuming you want to install in `%INSTALL_DIR%`, copy `common.h`, `config.h`,
+   `khrplatform.h`, `eglplatform.h`, `gl.h`, `gl_generated.h`, `wgl.h`, `wgl_generated.h`,
+   `egl.h` and `egl_generated.h` from `include\glproxy\` to
+   `%INSTALL_DIR%\include\glproxy\`, copy `src\glproxy.lib` to `%INSTALL_DIR%\lib\` and
+   copy `glproxy-vs12.dll` and `glproxy-vs12.pdb` (if you've built a debug build) from
+   `src\` to `%INSTALL_DIR%\bin\`. Create directories as needed.
+6. To clean the project, repeat steps 2 and 3, adding ` clean` to the commands.
+
+Switching your Code to Use GLproxy
 ---------------------------------
 
-* NOTE: If you use the static version of glproxy, you must build your project with
-  "glproxy_STATIC_LIB" defined!
+* NOTE: If you use the static version of GLproxy, you must build your project with
+  "GLPROXY_STATIC_LIB" defined!
 
 It should be as easy as replacing:
 
@@ -102,17 +148,17 @@ ok?
 Using OpenGL ES / EGL
 ----------------------
 
-Building glproxy with OpenGL ES / EGL support is now built-in. However, to
+Building GLproxy with OpenGL ES / EGL support is now built-in. However, to
 actually make use OpenGL ES and/or EGL on a computer, it's recommended (and in
 some platforms necessary) to use an OpenGL ES / EGL emulator. I recommend using
 [PowerVR SDK](http://community.imgtec.com/developers/powervr/graphics-sdk/),
 which is available for Linux, OS X and Windows. Download it and run the
 installer. In the installer, you don't have to check everything: Enough to check
 `PowerVR Tools -> PVRVFrame` and `PowerVR SDK -> Native SDK`. There's no need to
-add anything from PowerVR SDK to the include directories to build or use glproxy,
+add anything from PowerVR SDK to the include directories to build or use GLproxy,
 as it already includes all the necessary headers for using OpenGL ES / EGL.
 There's also no need to link with anything from PowerVR SDK to build or use
-glproxy, as it loads the necessary libraries at run-time. However, when running
+GLproxy, as it loads the necessary libraries at run-time. However, when running
 your app, if want to use EGL / OpenGL ES, you'll have to add the directory that
 contains the right shared libraries (`GLES_CM`, `GLESv2` and `EGL`) to your
 `PATH` environment variable. For instance, if you're on Windows, and used the

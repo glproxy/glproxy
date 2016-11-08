@@ -79,7 +79,7 @@ test_gl_version(void)
     glproxy_version = glproxy_gl_version();
     if (glproxy_version != gl_version) {
         fprintf(stderr,
-                "glproxy reported GL version %d, should be %d\n",
+                "GLproxy reported GL version %d, should be %d\n",
                 glproxy_version, gl_version);
         return false;
     }

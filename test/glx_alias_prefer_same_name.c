@@ -53,14 +53,14 @@ override_GL_glBindTextureEXT(GLenum target);
 void
 override_GL_glBindTexture(GLenum target)
 {
-    glproxy_UNUSED(target);
+    GLPROXY_UNUSED(target);
     last_call = CORE_FUNC_VAL;
 }
 
 void
 override_GL_glBindTextureEXT(GLenum target)
 {
-    glproxy_UNUSED(target);
+    GLPROXY_UNUSED(target);
     last_call = EXT_FUNC_VAL;
 }
 

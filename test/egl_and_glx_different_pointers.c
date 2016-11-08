@@ -83,14 +83,14 @@ override_GLES2_glGetString(GLenum e)
 GLuint
 override_GL_glCreateShader(GLenum type)
 {
-    glproxy_UNUSED(type);
+    GLPROXY_UNUSED(type);
     return GL_CREATESHADER_VALUE;
 }
 
 GLuint
 override_GLES2_glCreateShader(GLenum type)
 {
-    glproxy_UNUSED(type);
+    GLPROXY_UNUSED(type);
     return GLES2_CREATESHADER_VALUE;
 }
 

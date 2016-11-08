@@ -27,8 +27,8 @@
  * function pointers.
  */
 
-#ifndef glproxy_GLX_H
-#define glproxy_GLX_H
+#ifndef GLPROXY_GLX_H
+#define GLPROXY_GLX_H
 
 #if defined(GLX_H) || defined(__glx_h__) || defined(__glxext_h_)
 #error "glproxy/glx.h" must be included before (or in place of) "GL/glx.h".
@@ -48,11 +48,11 @@ extern "C" {
 
 #include "glproxy/glx_generated.h"
 
-glproxy_IMPORTEXPORT bool glproxy_has_glx_extension(Display *dpy, int screen, const char *extension);
-glproxy_IMPORTEXPORT int glproxy_glx_version(Display *dpy, int screen);
+GLPROXY_IMPORTEXPORT bool glproxy_has_glx_extension(Display *dpy, int screen, const char *extension);
+GLPROXY_IMPORTEXPORT int glproxy_glx_version(Display *dpy, int screen);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* glproxy_GLX_H */
+#endif /* GLPROXY_GLX_H */

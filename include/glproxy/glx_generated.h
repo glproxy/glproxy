@@ -578,265 +578,265 @@ typedef Bool (GLAPIENTRY *PFNGLXWAITFORSBCOMLPROC)(Display * dpy, GLXDrawable dr
 typedef void (GLAPIENTRY *PFNGLXWAITGLPROC)(void);
 typedef int (GLAPIENTRY *PFNGLXWAITVIDEOSYNCSGIPROC)(int divisor, int remainder, unsigned int * count);
 typedef void (GLAPIENTRY *PFNGLXWAITXPROC)(void);
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXBindChannelToWindowSGIX(Display * display, int screen, int channel, Window window);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXBindChannelToWindowSGIX(Display * display, int screen, int channel, Window window);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXBindHyperpipeSGIX(Display * dpy, int hpId);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXBindHyperpipeSGIX(Display * dpy, int hpId);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXBindSwapBarrierNV(Display * dpy, GLuint group, GLuint barrier);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXBindSwapBarrierNV(Display * dpy, GLuint group, GLuint barrier);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXBindSwapBarrierSGIX(Display * dpy, GLXDrawable drawable, int barrier);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXBindSwapBarrierSGIX(Display * dpy, GLXDrawable drawable, int barrier);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXBindTexImageEXT(Display * dpy, GLXDrawable drawable, int buffer, const int * attrib_list);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXBindTexImageEXT(Display * dpy, GLXDrawable drawable, int buffer, const int * attrib_list);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXBindVideoCaptureDeviceNV(Display * dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXBindVideoCaptureDeviceNV(Display * dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXBindVideoDeviceNV(Display * dpy, unsigned int video_slot, unsigned int video_device, const int * attrib_list);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXBindVideoDeviceNV(Display * dpy, unsigned int video_slot, unsigned int video_device, const int * attrib_list);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXBindVideoImageNV(Display * dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXBindVideoImageNV(Display * dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXBlitContextFramebufferAMD(GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXBlitContextFramebufferAMD(GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXChannelRectSGIX(Display * display, int screen, int channel, int x, int y, int w, int h);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXChannelRectSGIX(Display * display, int screen, int channel, int x, int y, int w, int h);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXChannelRectSyncSGIX(Display * display, int screen, int channel, GLenum synctype);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXChannelRectSyncSGIX(Display * display, int screen, int channel, GLenum synctype);
 
-glproxy_IMPORTEXPORT GLXFBConfig * glproxy_CALLSPEC glproxy_glXChooseFBConfig(Display * dpy, int screen, const int * attrib_list, int * nelements);
+GLPROXY_IMPORTEXPORT GLXFBConfig * GLPROXY_CALLSPEC glproxy_glXChooseFBConfig(Display * dpy, int screen, const int * attrib_list, int * nelements);
 
-glproxy_IMPORTEXPORT GLXFBConfigSGIX * glproxy_CALLSPEC glproxy_glXChooseFBConfigSGIX(Display * dpy, int screen, int * attrib_list, int * nelements);
+GLPROXY_IMPORTEXPORT GLXFBConfigSGIX * GLPROXY_CALLSPEC glproxy_glXChooseFBConfigSGIX(Display * dpy, int screen, int * attrib_list, int * nelements);
 
-glproxy_IMPORTEXPORT XVisualInfo * glproxy_CALLSPEC glproxy_glXChooseVisual(Display * dpy, int screen, int * attribList);
+GLPROXY_IMPORTEXPORT XVisualInfo * GLPROXY_CALLSPEC glproxy_glXChooseVisual(Display * dpy, int screen, int * attribList);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXCopyBufferSubDataNV(Display * dpy, GLXContext readCtx, GLXContext writeCtx, GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXCopyBufferSubDataNV(Display * dpy, GLXContext readCtx, GLXContext writeCtx, GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXCopyContext(Display * dpy, GLXContext src, GLXContext dst, unsigned long mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXCopyContext(Display * dpy, GLXContext src, GLXContext dst, unsigned long mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXCopyImageSubDataNV(Display * dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXCopyImageSubDataNV(Display * dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXCopySubBufferMESA(Display * dpy, GLXDrawable drawable, int x, int y, int width, int height);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXCopySubBufferMESA(Display * dpy, GLXDrawable drawable, int x, int y, int width, int height);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXCreateAssociatedContextAMD(unsigned int id, GLXContext share_list);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXCreateAssociatedContextAMD(unsigned int id, GLXContext share_list);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXCreateAssociatedContextAttribsAMD(unsigned int id, GLXContext share_context, const int * attribList);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXCreateAssociatedContextAttribsAMD(unsigned int id, GLXContext share_context, const int * attribList);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXCreateContext(Display * dpy, XVisualInfo * vis, GLXContext shareList, Bool direct);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXCreateContext(Display * dpy, XVisualInfo * vis, GLXContext shareList, Bool direct);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXCreateContextAttribsARB(Display * dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int * attrib_list);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXCreateContextAttribsARB(Display * dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int * attrib_list);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXCreateContextWithConfigSGIX(Display * dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXCreateContextWithConfigSGIX(Display * dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct);
 
-glproxy_IMPORTEXPORT GLXPbufferSGIX glproxy_CALLSPEC glproxy_glXCreateGLXPbufferSGIX(Display * dpy, GLXFBConfigSGIX config, unsigned int width, unsigned int height, int * attrib_list);
+GLPROXY_IMPORTEXPORT GLXPbufferSGIX GLPROXY_CALLSPEC glproxy_glXCreateGLXPbufferSGIX(Display * dpy, GLXFBConfigSGIX config, unsigned int width, unsigned int height, int * attrib_list);
 
-glproxy_IMPORTEXPORT GLXPixmap glproxy_CALLSPEC glproxy_glXCreateGLXPixmap(Display * dpy, XVisualInfo * visual, Pixmap pixmap);
+GLPROXY_IMPORTEXPORT GLXPixmap GLPROXY_CALLSPEC glproxy_glXCreateGLXPixmap(Display * dpy, XVisualInfo * visual, Pixmap pixmap);
 
-glproxy_IMPORTEXPORT GLXPixmap glproxy_CALLSPEC glproxy_glXCreateGLXPixmapMESA(Display * dpy, XVisualInfo * visual, Pixmap pixmap, Colormap cmap);
+GLPROXY_IMPORTEXPORT GLXPixmap GLPROXY_CALLSPEC glproxy_glXCreateGLXPixmapMESA(Display * dpy, XVisualInfo * visual, Pixmap pixmap, Colormap cmap);
 
-glproxy_IMPORTEXPORT GLXPixmap glproxy_CALLSPEC glproxy_glXCreateGLXPixmapWithConfigSGIX(Display * dpy, GLXFBConfigSGIX config, Pixmap pixmap);
+GLPROXY_IMPORTEXPORT GLXPixmap GLPROXY_CALLSPEC glproxy_glXCreateGLXPixmapWithConfigSGIX(Display * dpy, GLXFBConfigSGIX config, Pixmap pixmap);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXCreateNewContext(Display * dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXCreateNewContext(Display * dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
 
-glproxy_IMPORTEXPORT GLXPbuffer glproxy_CALLSPEC glproxy_glXCreatePbuffer(Display * dpy, GLXFBConfig config, const int * attrib_list);
+GLPROXY_IMPORTEXPORT GLXPbuffer GLPROXY_CALLSPEC glproxy_glXCreatePbuffer(Display * dpy, GLXFBConfig config, const int * attrib_list);
 
-glproxy_IMPORTEXPORT GLXPixmap glproxy_CALLSPEC glproxy_glXCreatePixmap(Display * dpy, GLXFBConfig config, Pixmap pixmap, const int * attrib_list);
+GLPROXY_IMPORTEXPORT GLXPixmap GLPROXY_CALLSPEC glproxy_glXCreatePixmap(Display * dpy, GLXFBConfig config, Pixmap pixmap, const int * attrib_list);
 
-glproxy_IMPORTEXPORT GLXWindow glproxy_CALLSPEC glproxy_glXCreateWindow(Display * dpy, GLXFBConfig config, Window win, const int * attrib_list);
+GLPROXY_IMPORTEXPORT GLXWindow GLPROXY_CALLSPEC glproxy_glXCreateWindow(Display * dpy, GLXFBConfig config, Window win, const int * attrib_list);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXCushionSGI(Display * dpy, Window window, float cushion);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXCushionSGI(Display * dpy, Window window, float cushion);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXDelayBeforeSwapNV(Display * dpy, GLXDrawable drawable, GLfloat seconds);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXDelayBeforeSwapNV(Display * dpy, GLXDrawable drawable, GLfloat seconds);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXDeleteAssociatedContextAMD(GLXContext ctx);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXDeleteAssociatedContextAMD(GLXContext ctx);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXDestroyContext(Display * dpy, GLXContext ctx);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXDestroyContext(Display * dpy, GLXContext ctx);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXDestroyGLXPbufferSGIX(Display * dpy, GLXPbufferSGIX pbuf);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXDestroyGLXPbufferSGIX(Display * dpy, GLXPbufferSGIX pbuf);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXDestroyGLXPixmap(Display * dpy, GLXPixmap pixmap);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXDestroyGLXPixmap(Display * dpy, GLXPixmap pixmap);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXDestroyGLXVideoSourceSGIX(Display * dpy, GLXVideoSourceSGIX glxvideosource);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXDestroyGLXVideoSourceSGIX(Display * dpy, GLXVideoSourceSGIX glxvideosource);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXDestroyHyperpipeConfigSGIX(Display * dpy, int hpId);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXDestroyHyperpipeConfigSGIX(Display * dpy, int hpId);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXDestroyPbuffer(Display * dpy, GLXPbuffer pbuf);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXDestroyPbuffer(Display * dpy, GLXPbuffer pbuf);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXDestroyPixmap(Display * dpy, GLXPixmap pixmap);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXDestroyPixmap(Display * dpy, GLXPixmap pixmap);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXDestroyWindow(Display * dpy, GLXWindow win);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXDestroyWindow(Display * dpy, GLXWindow win);
 
-glproxy_IMPORTEXPORT GLXVideoCaptureDeviceNV * glproxy_CALLSPEC glproxy_glXEnumerateVideoCaptureDevicesNV(Display * dpy, int screen, int * nelements);
+GLPROXY_IMPORTEXPORT GLXVideoCaptureDeviceNV * GLPROXY_CALLSPEC glproxy_glXEnumerateVideoCaptureDevicesNV(Display * dpy, int screen, int * nelements);
 
-glproxy_IMPORTEXPORT unsigned int * glproxy_CALLSPEC glproxy_glXEnumerateVideoDevicesNV(Display * dpy, int screen, int * nelements);
+GLPROXY_IMPORTEXPORT unsigned int * GLPROXY_CALLSPEC glproxy_glXEnumerateVideoDevicesNV(Display * dpy, int screen, int * nelements);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXFreeContextEXT(Display * dpy, GLXContext context);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXFreeContextEXT(Display * dpy, GLXContext context);
 
-glproxy_IMPORTEXPORT unsigned int glproxy_CALLSPEC glproxy_glXGetAGPOffsetMESA(const void * pointer);
+GLPROXY_IMPORTEXPORT unsigned int GLPROXY_CALLSPEC glproxy_glXGetAGPOffsetMESA(const void * pointer);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_glXGetClientString(Display * dpy, int name);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_glXGetClientString(Display * dpy, int name);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXGetConfig(Display * dpy, XVisualInfo * visual, int attrib, int * value);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXGetConfig(Display * dpy, XVisualInfo * visual, int attrib, int * value);
 
-glproxy_IMPORTEXPORT unsigned int glproxy_CALLSPEC glproxy_glXGetContextGPUIDAMD(GLXContext ctx);
+GLPROXY_IMPORTEXPORT unsigned int GLPROXY_CALLSPEC glproxy_glXGetContextGPUIDAMD(GLXContext ctx);
 
-glproxy_IMPORTEXPORT GLXContextID glproxy_CALLSPEC glproxy_glXGetContextIDEXT(const GLXContext context);
+GLPROXY_IMPORTEXPORT GLXContextID GLPROXY_CALLSPEC glproxy_glXGetContextIDEXT(const GLXContext context);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXGetCurrentAssociatedContextAMD(void);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXGetCurrentAssociatedContextAMD(void);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXGetCurrentContext(void);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXGetCurrentContext(void);
 
-glproxy_IMPORTEXPORT Display * glproxy_CALLSPEC glproxy_glXGetCurrentDisplay(void);
+GLPROXY_IMPORTEXPORT Display * GLPROXY_CALLSPEC glproxy_glXGetCurrentDisplay(void);
 
-glproxy_IMPORTEXPORT Display * glproxy_CALLSPEC glproxy_glXGetCurrentDisplayEXT(void);
+GLPROXY_IMPORTEXPORT Display * GLPROXY_CALLSPEC glproxy_glXGetCurrentDisplayEXT(void);
 
-glproxy_IMPORTEXPORT GLXDrawable glproxy_CALLSPEC glproxy_glXGetCurrentDrawable(void);
+GLPROXY_IMPORTEXPORT GLXDrawable GLPROXY_CALLSPEC glproxy_glXGetCurrentDrawable(void);
 
-glproxy_IMPORTEXPORT GLXDrawable glproxy_CALLSPEC glproxy_glXGetCurrentReadDrawable(void);
+GLPROXY_IMPORTEXPORT GLXDrawable GLPROXY_CALLSPEC glproxy_glXGetCurrentReadDrawable(void);
 
-glproxy_IMPORTEXPORT GLXDrawable glproxy_CALLSPEC glproxy_glXGetCurrentReadDrawableSGI(void);
+GLPROXY_IMPORTEXPORT GLXDrawable GLPROXY_CALLSPEC glproxy_glXGetCurrentReadDrawableSGI(void);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXGetFBConfigAttrib(Display * dpy, GLXFBConfig config, int attribute, int * value);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXGetFBConfigAttrib(Display * dpy, GLXFBConfig config, int attribute, int * value);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXGetFBConfigAttribSGIX(Display * dpy, GLXFBConfigSGIX config, int attribute, int * value);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXGetFBConfigAttribSGIX(Display * dpy, GLXFBConfigSGIX config, int attribute, int * value);
 
-glproxy_IMPORTEXPORT GLXFBConfigSGIX glproxy_CALLSPEC glproxy_glXGetFBConfigFromVisualSGIX(Display * dpy, XVisualInfo * vis);
+GLPROXY_IMPORTEXPORT GLXFBConfigSGIX GLPROXY_CALLSPEC glproxy_glXGetFBConfigFromVisualSGIX(Display * dpy, XVisualInfo * vis);
 
-glproxy_IMPORTEXPORT GLXFBConfig * glproxy_CALLSPEC glproxy_glXGetFBConfigs(Display * dpy, int screen, int * nelements);
+GLPROXY_IMPORTEXPORT GLXFBConfig * GLPROXY_CALLSPEC glproxy_glXGetFBConfigs(Display * dpy, int screen, int * nelements);
 
-glproxy_IMPORTEXPORT unsigned int glproxy_CALLSPEC glproxy_glXGetGPUIDsAMD(unsigned int maxCount, unsigned int * ids);
+GLPROXY_IMPORTEXPORT unsigned int GLPROXY_CALLSPEC glproxy_glXGetGPUIDsAMD(unsigned int maxCount, unsigned int * ids);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXGetGPUInfoAMD(unsigned int id, int property, GLenum dataType, unsigned int size, void * data);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXGetGPUInfoAMD(unsigned int id, int property, GLenum dataType, unsigned int size, void * data);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXGetMscRateOML(Display * dpy, GLXDrawable drawable, int32_t * numerator, int32_t * denominator);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXGetMscRateOML(Display * dpy, GLXDrawable drawable, int32_t * numerator, int32_t * denominator);
 
-glproxy_IMPORTEXPORT __GLXextFuncPtr glproxy_CALLSPEC glproxy_glXGetProcAddress(const GLubyte * procName);
+GLPROXY_IMPORTEXPORT __GLXextFuncPtr GLPROXY_CALLSPEC glproxy_glXGetProcAddress(const GLubyte * procName);
 
-glproxy_IMPORTEXPORT __GLXextFuncPtr glproxy_CALLSPEC glproxy_glXGetProcAddressARB(const GLubyte * procName);
+GLPROXY_IMPORTEXPORT __GLXextFuncPtr GLPROXY_CALLSPEC glproxy_glXGetProcAddressARB(const GLubyte * procName);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXGetSelectedEvent(Display * dpy, GLXDrawable draw, unsigned long * event_mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXGetSelectedEvent(Display * dpy, GLXDrawable draw, unsigned long * event_mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXGetSelectedEventSGIX(Display * dpy, GLXDrawable drawable, unsigned long * mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXGetSelectedEventSGIX(Display * dpy, GLXDrawable drawable, unsigned long * mask);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXGetSyncValuesOML(Display * dpy, GLXDrawable drawable, int64_t * ust, int64_t * msc, int64_t * sbc);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXGetSyncValuesOML(Display * dpy, GLXDrawable drawable, int64_t * ust, int64_t * msc, int64_t * sbc);
 
-glproxy_IMPORTEXPORT Status glproxy_CALLSPEC glproxy_glXGetTransparentIndexSUN(Display * dpy, Window overlay, Window underlay, long * pTransparentIndex);
+GLPROXY_IMPORTEXPORT Status GLPROXY_CALLSPEC glproxy_glXGetTransparentIndexSUN(Display * dpy, Window overlay, Window underlay, long * pTransparentIndex);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXGetVideoDeviceNV(Display * dpy, int screen, int numVideoDevices, GLXVideoDeviceNV * pVideoDevice);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXGetVideoDeviceNV(Display * dpy, int screen, int numVideoDevices, GLXVideoDeviceNV * pVideoDevice);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXGetVideoInfoNV(Display * dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long * pulCounterOutputPbuffer, unsigned long * pulCounterOutputVideo);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXGetVideoInfoNV(Display * dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long * pulCounterOutputPbuffer, unsigned long * pulCounterOutputVideo);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXGetVideoSyncSGI(unsigned int * count);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXGetVideoSyncSGI(unsigned int * count);
 
-glproxy_IMPORTEXPORT XVisualInfo * glproxy_CALLSPEC glproxy_glXGetVisualFromFBConfig(Display * dpy, GLXFBConfig config);
+GLPROXY_IMPORTEXPORT XVisualInfo * GLPROXY_CALLSPEC glproxy_glXGetVisualFromFBConfig(Display * dpy, GLXFBConfig config);
 
-glproxy_IMPORTEXPORT XVisualInfo * glproxy_CALLSPEC glproxy_glXGetVisualFromFBConfigSGIX(Display * dpy, GLXFBConfigSGIX config);
+GLPROXY_IMPORTEXPORT XVisualInfo * GLPROXY_CALLSPEC glproxy_glXGetVisualFromFBConfigSGIX(Display * dpy, GLXFBConfigSGIX config);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXHyperpipeAttribSGIX(Display * dpy, int timeSlice, int attrib, int size, void * attribList);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXHyperpipeAttribSGIX(Display * dpy, int timeSlice, int attrib, int size, void * attribList);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXHyperpipeConfigSGIX(Display * dpy, int networkId, int npipes, GLXHyperpipeConfigSGIX * cfg, int * hpId);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXHyperpipeConfigSGIX(Display * dpy, int networkId, int npipes, GLXHyperpipeConfigSGIX * cfg, int * hpId);
 
-glproxy_IMPORTEXPORT GLXContext glproxy_CALLSPEC glproxy_glXImportContextEXT(Display * dpy, GLXContextID contextID);
+GLPROXY_IMPORTEXPORT GLXContext GLPROXY_CALLSPEC glproxy_glXImportContextEXT(Display * dpy, GLXContextID contextID);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXIsDirect(Display * dpy, GLXContext ctx);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXIsDirect(Display * dpy, GLXContext ctx);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXJoinSwapGroupNV(Display * dpy, GLXDrawable drawable, GLuint group);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXJoinSwapGroupNV(Display * dpy, GLXDrawable drawable, GLuint group);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXJoinSwapGroupSGIX(Display * dpy, GLXDrawable drawable, GLXDrawable member);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXJoinSwapGroupSGIX(Display * dpy, GLXDrawable drawable, GLXDrawable member);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXLockVideoCaptureDeviceNV(Display * dpy, GLXVideoCaptureDeviceNV device);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXLockVideoCaptureDeviceNV(Display * dpy, GLXVideoCaptureDeviceNV device);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXMakeAssociatedContextCurrentAMD(GLXContext ctx);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXMakeAssociatedContextCurrentAMD(GLXContext ctx);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXMakeContextCurrent(Display * dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXMakeContextCurrent(Display * dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXMakeCurrent(Display * dpy, GLXDrawable drawable, GLXContext ctx);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXMakeCurrent(Display * dpy, GLXDrawable drawable, GLXContext ctx);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXMakeCurrentReadSGI(Display * dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXMakeCurrentReadSGI(Display * dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXNamedCopyBufferSubDataNV(Display * dpy, GLXContext readCtx, GLXContext writeCtx, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXNamedCopyBufferSubDataNV(Display * dpy, GLXContext readCtx, GLXContext writeCtx, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXQueryChannelDeltasSGIX(Display * display, int screen, int channel, int * x, int * y, int * w, int * h);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXQueryChannelDeltasSGIX(Display * display, int screen, int channel, int * x, int * y, int * w, int * h);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXQueryChannelRectSGIX(Display * display, int screen, int channel, int * dx, int * dy, int * dw, int * dh);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXQueryChannelRectSGIX(Display * display, int screen, int channel, int * dx, int * dy, int * dw, int * dh);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXQueryContext(Display * dpy, GLXContext ctx, int attribute, int * value);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXQueryContext(Display * dpy, GLXContext ctx, int attribute, int * value);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXQueryContextInfoEXT(Display * dpy, GLXContext context, int attribute, int * value);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXQueryContextInfoEXT(Display * dpy, GLXContext context, int attribute, int * value);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXQueryCurrentRendererIntegerMESA(int attribute, unsigned int * value);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXQueryCurrentRendererIntegerMESA(int attribute, unsigned int * value);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_glXQueryCurrentRendererStringMESA(int attribute);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_glXQueryCurrentRendererStringMESA(int attribute);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXQueryDrawable(Display * dpy, GLXDrawable draw, int attribute, unsigned int * value);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXQueryDrawable(Display * dpy, GLXDrawable draw, int attribute, unsigned int * value);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXQueryExtension(Display * dpy, int * errorb, int * event);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXQueryExtension(Display * dpy, int * errorb, int * event);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_glXQueryExtensionsString(Display * dpy, int screen);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_glXQueryExtensionsString(Display * dpy, int screen);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXQueryFrameCountNV(Display * dpy, int screen, GLuint * count);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXQueryFrameCountNV(Display * dpy, int screen, GLuint * count);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXQueryGLXPbufferSGIX(Display * dpy, GLXPbufferSGIX pbuf, int attribute, unsigned int * value);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXQueryGLXPbufferSGIX(Display * dpy, GLXPbufferSGIX pbuf, int attribute, unsigned int * value);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXQueryHyperpipeAttribSGIX(Display * dpy, int timeSlice, int attrib, int size, void * returnAttribList);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXQueryHyperpipeAttribSGIX(Display * dpy, int timeSlice, int attrib, int size, void * returnAttribList);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXQueryHyperpipeBestAttribSGIX(Display * dpy, int timeSlice, int attrib, int size, void * attribList, void * returnAttribList);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXQueryHyperpipeBestAttribSGIX(Display * dpy, int timeSlice, int attrib, int size, void * attribList, void * returnAttribList);
 
-glproxy_IMPORTEXPORT GLXHyperpipeConfigSGIX * glproxy_CALLSPEC glproxy_glXQueryHyperpipeConfigSGIX(Display * dpy, int hpId, int * npipes);
+GLPROXY_IMPORTEXPORT GLXHyperpipeConfigSGIX * GLPROXY_CALLSPEC glproxy_glXQueryHyperpipeConfigSGIX(Display * dpy, int hpId, int * npipes);
 
-glproxy_IMPORTEXPORT GLXHyperpipeNetworkSGIX * glproxy_CALLSPEC glproxy_glXQueryHyperpipeNetworkSGIX(Display * dpy, int * npipes);
+GLPROXY_IMPORTEXPORT GLXHyperpipeNetworkSGIX * GLPROXY_CALLSPEC glproxy_glXQueryHyperpipeNetworkSGIX(Display * dpy, int * npipes);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXQueryMaxSwapBarriersSGIX(Display * dpy, int screen, int * max);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXQueryMaxSwapBarriersSGIX(Display * dpy, int screen, int * max);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXQueryMaxSwapGroupsNV(Display * dpy, int screen, GLuint * maxGroups, GLuint * maxBarriers);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXQueryMaxSwapGroupsNV(Display * dpy, int screen, GLuint * maxGroups, GLuint * maxBarriers);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXQueryRendererIntegerMESA(Display * dpy, int screen, int renderer, int attribute, unsigned int * value);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXQueryRendererIntegerMESA(Display * dpy, int screen, int renderer, int attribute, unsigned int * value);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_glXQueryRendererStringMESA(Display * dpy, int screen, int renderer, int attribute);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_glXQueryRendererStringMESA(Display * dpy, int screen, int renderer, int attribute);
 
-glproxy_IMPORTEXPORT const char * glproxy_CALLSPEC glproxy_glXQueryServerString(Display * dpy, int screen, int name);
+GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_glXQueryServerString(Display * dpy, int screen, int name);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXQuerySwapGroupNV(Display * dpy, GLXDrawable drawable, GLuint * group, GLuint * barrier);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXQuerySwapGroupNV(Display * dpy, GLXDrawable drawable, GLuint * group, GLuint * barrier);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXQueryVersion(Display * dpy, int * maj, int * min);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXQueryVersion(Display * dpy, int * maj, int * min);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXQueryVideoCaptureDeviceNV(Display * dpy, GLXVideoCaptureDeviceNV device, int attribute, int * value);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXQueryVideoCaptureDeviceNV(Display * dpy, GLXVideoCaptureDeviceNV device, int attribute, int * value);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXReleaseBuffersMESA(Display * dpy, GLXDrawable drawable);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXReleaseBuffersMESA(Display * dpy, GLXDrawable drawable);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXReleaseTexImageEXT(Display * dpy, GLXDrawable drawable, int buffer);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXReleaseTexImageEXT(Display * dpy, GLXDrawable drawable, int buffer);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXReleaseVideoCaptureDeviceNV(Display * dpy, GLXVideoCaptureDeviceNV device);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXReleaseVideoCaptureDeviceNV(Display * dpy, GLXVideoCaptureDeviceNV device);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXReleaseVideoDeviceNV(Display * dpy, int screen, GLXVideoDeviceNV VideoDevice);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXReleaseVideoDeviceNV(Display * dpy, int screen, GLXVideoDeviceNV VideoDevice);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXReleaseVideoImageNV(Display * dpy, GLXPbuffer pbuf);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXReleaseVideoImageNV(Display * dpy, GLXPbuffer pbuf);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXResetFrameCountNV(Display * dpy, int screen);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXResetFrameCountNV(Display * dpy, int screen);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXSelectEvent(Display * dpy, GLXDrawable draw, unsigned long event_mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXSelectEvent(Display * dpy, GLXDrawable draw, unsigned long event_mask);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXSelectEventSGIX(Display * dpy, GLXDrawable drawable, unsigned long mask);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXSelectEventSGIX(Display * dpy, GLXDrawable drawable, unsigned long mask);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXSendPbufferToVideoNV(Display * dpy, GLXPbuffer pbuf, int iBufferType, unsigned long * pulCounterPbuffer, GLboolean bBlock);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXSendPbufferToVideoNV(Display * dpy, GLXPbuffer pbuf, int iBufferType, unsigned long * pulCounterPbuffer, GLboolean bBlock);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXSet3DfxModeMESA(int mode);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXSet3DfxModeMESA(int mode);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXSwapBuffers(Display * dpy, GLXDrawable drawable);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXSwapBuffers(Display * dpy, GLXDrawable drawable);
 
-glproxy_IMPORTEXPORT int64_t glproxy_CALLSPEC glproxy_glXSwapBuffersMscOML(Display * dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
+GLPROXY_IMPORTEXPORT int64_t GLPROXY_CALLSPEC glproxy_glXSwapBuffersMscOML(Display * dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXSwapIntervalEXT(Display * dpy, GLXDrawable drawable, int interval);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXSwapIntervalEXT(Display * dpy, GLXDrawable drawable, int interval);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXSwapIntervalSGI(int interval);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXSwapIntervalSGI(int interval);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXUseXFont(Font font, int first, int count, int list);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXUseXFont(Font font, int first, int count, int list);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXWaitForMscOML(Display * dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t * ust, int64_t * msc, int64_t * sbc);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXWaitForMscOML(Display * dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t * ust, int64_t * msc, int64_t * sbc);
 
-glproxy_IMPORTEXPORT Bool glproxy_CALLSPEC glproxy_glXWaitForSbcOML(Display * dpy, GLXDrawable drawable, int64_t target_sbc, int64_t * ust, int64_t * msc, int64_t * sbc);
+GLPROXY_IMPORTEXPORT Bool GLPROXY_CALLSPEC glproxy_glXWaitForSbcOML(Display * dpy, GLXDrawable drawable, int64_t target_sbc, int64_t * ust, int64_t * msc, int64_t * sbc);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXWaitGL(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXWaitGL(void);
 
-glproxy_IMPORTEXPORT int glproxy_CALLSPEC glproxy_glXWaitVideoSyncSGI(int divisor, int remainder, unsigned int * count);
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_glXWaitVideoSyncSGI(int divisor, int remainder, unsigned int * count);
 
-glproxy_IMPORTEXPORT void glproxy_CALLSPEC glproxy_glXWaitX(void);
+GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC glproxy_glXWaitX(void);
 
 #define glXBindChannelToWindowSGIX glproxy_glXBindChannelToWindowSGIX
 #define glXBindHyperpipeSGIX glproxy_glXBindHyperpipeSGIX
