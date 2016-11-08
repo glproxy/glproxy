@@ -32,8 +32,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include <err.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/glx.h"
 #include <X11/Xlib.h>
 
 #include "glx_common.h"
@@ -46,7 +46,7 @@ override_GLES2_glCreateShader(GLenum target);
 GLuint
 override_GLES2_glCreateShader(GLenum target)
 {
-    EPOXY_UNUSED(target);
+    glproxy_UNUSED(target);
     return 0;
 }
 
@@ -78,7 +78,7 @@ int main(void)
 
     dpy = get_display_or_skip();
 
-    if (!epoxy_has_glx_extension(dpy, 0, "GLX_EXT_create_context_es2_profile"))
+    if (!glproxy_has_glx_extension(dpy, 0, "GLX_EXT_create_context_es2_profile"))
         errx(77, "Test requires GLX_EXT_create_context_es2_profile");
 
     vis = get_glx_visual(dpy);
@@ -90,13 +90,13 @@ int main(void)
 
     glXMakeCurrent(dpy, win, ctx);
 
-    if (epoxy_is_desktop_gl()) {
+    if (glproxy_is_desktop_gl()) {
         errx(1, "GLES2 context creation made a desktop context\n");
     }
 
-    if (epoxy_gl_version() < 20) {
+    if (glproxy_gl_version() < 20) {
         errx(1, "GLES2 context creation made a version %f context\n",
-             epoxy_gl_version() / 10.0f);
+             glproxy_gl_version() / 10.0f);
     }
 
     /* Test using an entrypoint that's in GLES2, but not the desktop GL ABI. */
@@ -105,7 +105,7 @@ int main(void)
         errx(1, "glCreateShader() failed\n");
     glDeleteShader(shader);
 
-    if (epoxy_gl_version() >= 30) {
+    if (glproxy_gl_version() >= 30) {
         GLuint q = 0;
 
         glGenQueries(1, &q);

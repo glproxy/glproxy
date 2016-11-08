@@ -46,14 +46,14 @@
 #endif
 
 #if PLATFORM_HAS_WGL
-#include "epoxy/wgl.h"
+#include "glproxy/wgl.h"
 #endif
 #if PLATFORM_HAS_GLX
-#include "epoxy/glx.h"
+#include "glproxy/glx.h"
 #endif
 
-#include "epoxy/egl.h"
-#include "epoxy/gl.h"
+#include "glproxy/egl.h"
+#include "glproxy/gl.h"
 
 #include "wgl_generated_dispatch_table_type.inc"
 #include "glx_generated_dispatch_table_type.inc"
@@ -85,13 +85,13 @@
 #endif
 
 #ifdef __GNUC__
-#define EPOXY_NOINLINE __attribute__((noinline))
+#define glproxy_NOINLINE __attribute__((noinline))
 #elif defined (_MSC_VER)
-#define EPOXY_NOINLINE __declspec(noinline)
+#define glproxy_NOINLINE __declspec(noinline)
 #endif
 
 #define GEN_THUNK(target, name, args, passthrough, offset, func_type)         \
-    EPOXY_IMPORTEXPORT void EPOXY_CALLSPEC                                     \
+    glproxy_IMPORTEXPORT void glproxy_CALLSPEC                                     \
     name args                                                                  \
     {                                                                          \
         func_type func_symbol = target##_resolve(offset);                      \
@@ -99,7 +99,7 @@
     }
 
 #define GEN_THUNK_RET(target, ret, name, args, passthrough, offset, func_type)\
-    EPOXY_IMPORTEXPORT ret EPOXY_CALLSPEC                                      \
+    glproxy_IMPORTEXPORT ret glproxy_CALLSPEC                                      \
     name args                                                                  \
     {                                                                          \
         func_type func_symbol = target##_resolve(offset);                      \
@@ -165,8 +165,8 @@ struct dispatch_common_tls {
     struct dispatch_metadata egl_metadata;
 
     bool has_parameters;
-    struct epoxy_gl_context param_context;
-    struct epoxy_gl_context context;
+    struct glproxy_gl_context param_context;
+    struct glproxy_gl_context context;
     void* gl_handle;
     void* gles_handle;
     PFNEGLGETPROCADDRESSPROC egl_get_proc;
@@ -183,7 +183,7 @@ typedef struct dispatch_common_tls *tls_ptr;
 #define TLS_TYPE pthread_key_t
 #endif
 
-extern TLS_TYPE epoxy_dispatch_common_tls_index;
+extern TLS_TYPE glproxy_dispatch_common_tls_index;
 
 static inline tls_ptr get_tls_by_index(TLS_TYPE index) {
 #if defined(_WIN32)
@@ -201,24 +201,24 @@ static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
 #endif
 }
 
-void wgl_epoxy_resolve_init(tls_ptr tls);
-enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+void wgl_glproxy_resolve_init(tls_ptr tls);
+enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 
-void glx_epoxy_resolve_init(tls_ptr tls);
-enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+void glx_glproxy_resolve_init(tls_ptr tls);
+enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 
-void gl_epoxy_resolve_init(tls_ptr tls);
-enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
-enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+void gl_glproxy_resolve_init(tls_ptr tls);
+enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
+enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 
-void egl_epoxy_resolve_init(tls_ptr tls);
-enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
-enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+void egl_glproxy_resolve_init(tls_ptr tls);
+enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
+enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
+enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 
-void epoxy_dispatch_common_tls_init(tls_ptr tls, bool inited);
+void glproxy_dispatch_common_tls_init(tls_ptr tls, bool inited);
 
 #endif /* _DISPATCH_COMMON_H */

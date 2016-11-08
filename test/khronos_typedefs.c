@@ -23,12 +23,12 @@
 
 #include <stdio.h>
 #include "khronos_typedefs.h"
-#include "epoxy/gl.h"
+#include "glproxy/gl.h"
 
 #define COMPARE_SIZE(type)                                              \
     do {                                                                \
         if (sizeof(type) != system_sizes[type ## _slot]) {              \
-            fprintf(stderr, "system %s is size %d, epoxy is %d\n",      \
+            fprintf(stderr, "system %s is size %d, glproxy is %d\n",      \
                     #type,                                              \
                     (int)system_sizes[type ## _slot],                   \
                     (int)sizeof(type));                                 \

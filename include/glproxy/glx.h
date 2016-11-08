@@ -21,36 +21,38 @@
  * IN THE SOFTWARE.
  */
 
-/** @file egl.h
+/** @file glx.h
  *
- * Provides an implementation of an EGL dispatch layer using global
- * function pointers
+ * Provides an implementation of a GLX dispatch layer using global
+ * function pointers.
  */
 
-#ifndef EPOXY_EGL_H
-#define EPOXY_EGL_H
+#ifndef glproxy_GLX_H
+#define glproxy_GLX_H
 
-#if defined(__egl_h_) || defined(__eglext_h_)
-#error "epoxy/egl.h" must be included before (or in place of) "EGL/egl.h"
+#if defined(GLX_H) || defined(__glx_h__) || defined(__glxext_h_)
+#error "glproxy/glx.h" must be included before (or in place of) "GL/glx.h".
 #endif
 
-#define __egl_h_
-#define __eglext_h_
+#define GLX_H
+#define __glx_h__
+#define __glxext_h_
 
-#include "epoxy/gl.h"
-#include "epoxy/eglplatform.h"
+#include "glproxy/gl.h"
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "epoxy/egl_generated.h"
+#include "glproxy/glx_generated.h"
 
-EPOXY_IMPORTEXPORT bool epoxy_has_egl_extension(EGLDisplay dpy, const char *extension);
-EPOXY_IMPORTEXPORT int epoxy_egl_version(EGLDisplay dpy);
+glproxy_IMPORTEXPORT bool glproxy_has_glx_extension(Display *dpy, int screen, const char *extension);
+glproxy_IMPORTEXPORT int glproxy_glx_version(Display *dpy, int screen);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* EPOXY_EGL_H */
+#endif /* glproxy_GLX_H */

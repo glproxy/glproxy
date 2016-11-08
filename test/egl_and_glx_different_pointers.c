@@ -24,7 +24,7 @@
 /**
  * @file egl_and_glx_different_pointers.c
  *
- * Tests that epoxy correctly handles an EGL and GLX implementation
+ * Tests that glproxy correctly handles an EGL and GLX implementation
  * that return different function pointers between the two.
  *
  * This is the case for EGL and GLX on nvidia binary drivers
@@ -41,16 +41,16 @@
 #include <assert.h>
 #include <err.h>
 #include <dlfcn.h>
-#include "epoxy/gl.h"
-#include "epoxy/egl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/egl.h"
+#include "glproxy/glx.h"
 
 #include "egl_common.h"
 #include "glx_common.h"
 #include "dlwrap.h"
 
-#define GLX_FAKED_VENDOR_STRING "libepoxy override GLX"
-#define EGL_FAKED_VENDOR_STRING "libepoxy override EGL"
+#define GLX_FAKED_VENDOR_STRING "libglproxy override GLX"
+#define EGL_FAKED_VENDOR_STRING "libglproxy override EGL"
 
 #define GL_CREATESHADER_VALUE 1234
 #define GLES2_CREATESHADER_VALUE 5678
@@ -83,14 +83,14 @@ override_GLES2_glGetString(GLenum e)
 GLuint
 override_GL_glCreateShader(GLenum type)
 {
-    EPOXY_UNUSED(type);
+    glproxy_UNUSED(type);
     return GL_CREATESHADER_VALUE;
 }
 
 GLuint
 override_GLES2_glCreateShader(GLenum type)
 {
-    EPOXY_UNUSED(type);
+    glproxy_UNUSED(type);
     return GLES2_CREATESHADER_VALUE;
 }
 
@@ -104,7 +104,7 @@ make_glx_current_and_test(Display *dpy, GLXContext ctx, Drawable draw)
 
     glXMakeCurrent(dpy, draw, ctx);
 
-    if (!epoxy_is_desktop_gl()) {
+    if (!glproxy_is_desktop_gl()) {
         fprintf(stderr, "Claimed to be ES\n");
         pass = false;
     }
@@ -146,14 +146,14 @@ make_egl_current_and_test(EGLDisplay dpy, EGLContext ctx)
 
     eglMakeCurrent(dpy, NULL, NULL, ctx);
 
-    if (epoxy_is_desktop_gl()) {
+    if (glproxy_is_desktop_gl()) {
         fprintf(stderr, "Claimed to be desktop\n");
         pass = false;
     }
 
-    if (epoxy_gl_version() < 20) {
+    if (glproxy_gl_version() < 20) {
         fprintf(stderr, "Claimed to be GL version %d\n",
-                epoxy_gl_version());
+                glproxy_gl_version());
         pass = false;
     }
 
@@ -192,7 +192,7 @@ init_egl(EGLDisplay *out_dpy, EGLContext *out_ctx)
     EGLConfig cfg;
     EGLint count;
 
-    if (!epoxy_has_egl_extension(dpy, "EGL_KHR_surfaceless_context"))
+    if (!glproxy_has_egl_extension(dpy, "EGL_KHR_surfaceless_context"))
         errx(77, "Test requires EGL_KHR_surfaceless_context");
 
     eglBindAPI(EGL_OPENGL_ES_API);
@@ -222,7 +222,7 @@ int main(void)
     Drawable glx_draw;
 #endif
 
-    /* Force epoxy to have loaded both EGL and GLX libs already -- we
+    /* Force glproxy to have loaded both EGL and GLX libs already -- we
      * can't assume anything about symbol resolution based on having
      * EGL or GLX loaded.
      */

@@ -26,7 +26,7 @@
 
 #include "khronos_typedefs.h"
 
-#include "epoxy/khrplatform.h"
+#include "glproxy/khrplatform.h"
 
 #define GET_SIZE(type) sizes[type ## _slot] = sizeof(type)
 

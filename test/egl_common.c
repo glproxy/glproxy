@@ -21,7 +21,7 @@
  * IN THE SOFTWARE.
  */
 
-#include <epoxy/egl.h>
+#include <glproxy/egl.h>
 #include <stdio.h>
 #include "egl_common.h"
 #ifndef _WIN32
@@ -49,8 +49,8 @@ window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 HDC
 make_window_and_test(void** nativeWindow)
 {
-    LPCTSTR class_name = TEXT("epoxy");
-    LPCTSTR window_name = TEXT("epoxy");
+    LPCTSTR class_name = TEXT("glproxy");
+    LPCTSTR window_name = TEXT("glproxy");
     int width = 150;
     int height = 150;
     HWND hwnd;

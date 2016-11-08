@@ -23,8 +23,8 @@
 
 #include <stdio.h>
 #include <assert.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/glx.h"
 #include <X11/Xlib.h>
 
 #include "glx_common.h"
@@ -33,7 +33,7 @@ static Display *dpy;
 static bool has_argb2101010;
 
 static bool
-test_with_epoxy(void)
+test_with_glproxy(void)
 {
     glBegin(GL_TRIANGLES);
     {
@@ -44,7 +44,7 @@ test_with_epoxy(void)
         glMultiTexCoord4f(GL_TEXTURE0, 0.0, 0.0, 0.0, 0.0);
 
         /* Hit an entrypoint that will probably call
-         * epoxy_conservative_has_extension();
+         * glproxy_conservative_has_extension();
          */
         if (has_argb2101010) {
             glTexCoordP4ui(GL_UNSIGNED_INT_2_10_10_10_REV, 0);
@@ -64,7 +64,7 @@ extern void glBegin(GLenum primtype);
 extern void glEnd(void);
 
 static bool
-test_without_epoxy(void)
+test_without_glproxy(void)
 {
     glBegin(GL_TRIANGLES);
     {
@@ -75,7 +75,7 @@ test_without_epoxy(void)
         glMultiTexCoord3f(GL_TEXTURE0, 0.0, 0.0, 0.0);
 
         /* Hit an entrypoint that will probably call
-         * epoxy_conservative_has_extension();
+         * glproxy_conservative_has_extension();
          */
         if (has_argb2101010) {
             glTexCoordP3ui(GL_UNSIGNED_INT_2_10_10_10_REV, 0);
@@ -97,10 +97,10 @@ int main(void)
     make_glx_context_current_or_skip(dpy);
 
     has_argb2101010 =
-        epoxy_has_gl_extension("GL_ARB_vertex_type_2_10_10_10_rev");
+        glproxy_has_gl_extension("GL_ARB_vertex_type_2_10_10_10_rev");
 
-    pass = pass && test_with_epoxy();
-    pass = pass && test_without_epoxy();
+    pass = pass && test_with_glproxy();
+    pass = pass && test_without_glproxy();
 
     return pass != true;
 }

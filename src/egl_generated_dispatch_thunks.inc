@@ -369,14 +369,14 @@ static khronos_uint32_t egl_method_name_offsets[119] = {0};
 #define HAS_DISPATCH_RESOLVE_DIRECT 1
 #define HAS_DISPATCH_RESOLVE_VERSION 1
 #define current_resolve egl_resolve
-#define current_epoxy_resolve_init egl_epoxy_resolve_init
-#define current_epoxy_resolve_direct egl_epoxy_resolve_direct
-#define current_epoxy_resolve_version egl_epoxy_resolve_version
-#define current_epoxy_resolve_extension egl_epoxy_resolve_extension
+#define current_glproxy_resolve_init egl_glproxy_resolve_init
+#define current_glproxy_resolve_direct egl_glproxy_resolve_direct
+#define current_glproxy_resolve_version egl_glproxy_resolve_version
+#define current_glproxy_resolve_extension egl_glproxy_resolve_extension
 #define current_dispatch_table egl_dispatch_table
 #define current_metadata egl_metadata
-#define current_epoxy_resolve_local egl_epoxy_resolve_local
-#define current_epoxy_dispatch_metadata_init egl_epoxy_dispatch_metadata_init
+#define current_glproxy_resolve_local egl_glproxy_resolve_local
+#define current_glproxy_dispatch_metadata_init egl_glproxy_dispatch_metadata_init
 #define current_extensions_count egl_extensions_count
 #define current_extension_enum_strings egl_extension_enum_strings
 #define current_entrypoint_strings egl_entrypoint_strings
@@ -385,14 +385,14 @@ static khronos_uint32_t egl_method_name_offsets[119] = {0};
 #define current_method_name_offsets egl_method_name_offsets
 #include "dispatch_generated.inc"
 #undef current_resolve
-#undef current_epoxy_resolve_init
-#undef current_epoxy_resolve_direct
-#undef current_epoxy_resolve_version
-#undef current_epoxy_resolve_extension
+#undef current_glproxy_resolve_init
+#undef current_glproxy_resolve_direct
+#undef current_glproxy_resolve_version
+#undef current_glproxy_resolve_extension
 #undef current_dispatch_table
 #undef current_metadata
-#undef current_epoxy_resolve_local
-#undef current_epoxy_dispatch_metadata_init
+#undef current_glproxy_resolve_local
+#undef current_glproxy_dispatch_metadata_init
 #undef current_extensions_count
 #undef current_extension_enum_strings
 #undef current_entrypoint_strings

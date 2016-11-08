@@ -8,11 +8,11 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.3")
 else ()
     set (HONOR_VISIBILITY FALSE)
 endif ()
-project (Epoxy VERSION 1.3.1 LANGUAGES C)
-set (EPOXY_TARGET_NAME epoxy)
+project (glproxy VERSION 1.3.1 LANGUAGES C)
+set (glproxy_TARGET_NAME glproxy)
 set (TARGET_VER 1.3.1_yaronct-5)
 set (TARGET_ABI_VER 0)
-set (TARGET_OUTPUT_NAME "${EPOXY_TARGET_NAME}")
+set (TARGET_OUTPUT_NAME "${glproxy_TARGET_NAME}")
 
 include (GNUInstallDirs)
 include (CMakeDependentOption)
@@ -49,43 +49,43 @@ find_package (GLESv2)
 endif()
 find_package (OpenGL)
 
-option (EPOXY_REBUILD_FROM_SPECS "Rebuild the auto-generated sources and headers from the specs" FALSE)
-if (EPOXY_REBUILD_FROM_SPECS AND NOT PYTHONINTERP_FOUND)
-    message (FATAL_ERROR "You've set \"EPOXY_REBUILD_FROM_SPECS\" to \"TRUE\", which requires a python interpreter, but one couldn't be found.")
+option (glproxy_REBUILD_FROM_SPECS "Rebuild the auto-generated sources and headers from the specs" FALSE)
+if (glproxy_REBUILD_FROM_SPECS AND NOT PYTHONINTERP_FOUND)
+    message (FATAL_ERROR "You've set \"glproxy_REBUILD_FROM_SPECS\" to \"TRUE\", which requires a python interpreter, but one couldn't be found.")
 endif ()
 
-option (EPOXY_SUPPORT_EGL "Build with EGL support" ON)
-cmake_dependent_option (EPOXY_SUPPORT_WGL "Build with WGL support" ON WIN32 OFF)
+option (glproxy_SUPPORT_EGL "Build with EGL support" ON)
+cmake_dependent_option (glproxy_SUPPORT_WGL "Build with WGL support" ON WIN32 OFF)
 
 if (X11_FOUND AND OPENGL_FOUND)
-    set (EPOXY_GLX_FOUND TRUE)
+    set (glproxy_GLX_FOUND TRUE)
 else ()
-    set (EPOXY_GLX_FOUND FALSE)
+    set (glproxy_GLX_FOUND FALSE)
 endif ()
-cmake_dependent_option (EPOXY_SUPPORT_GLX "Build with GLX support"
-                        "${EPOXY_GLX_FOUND}" "NOT (WIN32 OR ANDROID)" OFF)
+cmake_dependent_option (glproxy_SUPPORT_GLX "Build with GLX support"
+                        "${glproxy_GLX_FOUND}" "NOT (WIN32 OR ANDROID)" OFF)
 
-option (EPOXY_BUILD_SHARED "Build a shared library" ON)
-option (EPOXY_BUILD_STATIC "Build a static library" OFF)
+option (glproxy_BUILD_SHARED "Build a shared library" ON)
+option (glproxy_BUILD_STATIC "Build a static library" OFF)
 
 if (DEFINED CMAKE_TOOLCHAIN_FILE)
-    set (EPOXY_BUILD_TESTS_DEFAULT FALSE)
+    set (glproxy_BUILD_TESTS_DEFAULT FALSE)
 else ()
-    set (EPOXY_BUILD_TESTS_DEFAULT TRUE)
+    set (glproxy_BUILD_TESTS_DEFAULT TRUE)
 endif ()
-option (EPOXY_BUILD_TESTS "Build tests" "${EPOXY_BUILD_TESTS_DEFAULT}")
+option (glproxy_BUILD_TESTS "Build tests" "${glproxy_BUILD_TESTS_DEFAULT}")
 
-cmake_dependent_option (EPOXY_MSVC_USE_RUNTIME_LIBRARY_DLL "Link with MSVC Runtime Library DLL" ON
+cmake_dependent_option (glproxy_MSVC_USE_RUNTIME_LIBRARY_DLL "Link with MSVC Runtime Library DLL" ON
                         "CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC" OFF)
 
-configure_file ("include/epoxy/config.h.in" "include/epoxy/config.h")
+configure_file ("include/glproxy/config.h.in" "include/glproxy/config.h")
 
-set (EPOXY_INCLUDE_DIRS  "${CMAKE_CURRENT_SOURCE_DIR}/include"
+set (glproxy_INCLUDE_DIRS  "${CMAKE_CURRENT_SOURCE_DIR}/include"
                          "${CMAKE_CURRENT_BINARY_DIR}/include"
                          "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC
-    AND NOT EPOXY_MSVC_USE_RUNTIME_LIBRARY_DLL)
+    AND NOT glproxy_MSVC_USE_RUNTIME_LIBRARY_DLL)
     foreach (flags CMAKE_C_FLAGS
                    CMAKE_C_FLAGS_DEBUG
                    CMAKE_C_FLAGS_RELEASE
@@ -98,7 +98,7 @@ endif ()
 
 add_subdirectory (src)
 
-if (EPOXY_BUILD_TESTS)
+if (glproxy_BUILD_TESTS)
     enable_testing ()
     add_subdirectory (test)
 endif ()

@@ -24,7 +24,7 @@
 #include <stdio.h>
 
 #include "wgl_common.h"
-#include <epoxy/gl.h>
+#include <glproxy/gl.h>
 
 static int
 test_function(HDC hdc)

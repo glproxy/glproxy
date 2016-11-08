@@ -22,20 +22,20 @@ static init_dispatch_metadata_metadata(struct dispatch_metadata *data) {
 #include "gl_generated_dispatch_thunks.inc"
 #include "egl_generated_dispatch_thunks.inc"
 
-void epoxy_dispatch_common_tls_init(tls_ptr tls, bool inited) {
+void glproxy_dispatch_common_tls_init(tls_ptr tls, bool inited) {
     tls->open_gl_type = DISPATCH_OPENGL_UNKNOW;
     fprintf(stderr, "sizeof dispatch_resolve_info :%d", sizeof(struct dispatch_resolve_info));
 
 #if PLATFORM_HAS_WGL
-    wgl_epoxy_dispatch_metadata_init(&(tls->wgl_metadata), inited);
+    wgl_glproxy_dispatch_metadata_init(&(tls->wgl_metadata), inited);
 #endif
 #if PLATFORM_HAS_GLX
-    glx_epoxy_dispatch_metadata_init(&(tls->glx_metadata), inited);
+    glx_glproxy_dispatch_metadata_init(&(tls->glx_metadata), inited);
 #endif
 
-    gl_epoxy_dispatch_metadata_init(&(tls->gl_metadata), inited);
+    gl_glproxy_dispatch_metadata_init(&(tls->gl_metadata), inited);
 
 #if PLATFORM_HAS_EGL
-    egl_epoxy_dispatch_metadata_init(&(tls->egl_metadata), inited);
+    egl_glproxy_dispatch_metadata_init(&(tls->egl_metadata), inited);
 #endif
 }

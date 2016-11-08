@@ -32,8 +32,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include <err.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/glx.h"
 #include <X11/Xlib.h>
 
 #include "glx_common.h"
@@ -53,14 +53,14 @@ override_GL_glBindTextureEXT(GLenum target);
 void
 override_GL_glBindTexture(GLenum target)
 {
-    EPOXY_UNUSED(target);
+    glproxy_UNUSED(target);
     last_call = CORE_FUNC_VAL;
 }
 
 void
 override_GL_glBindTextureEXT(GLenum target)
 {
-    EPOXY_UNUSED(target);
+    glproxy_UNUSED(target);
     last_call = EXT_FUNC_VAL;
 }
 
@@ -71,7 +71,7 @@ int main(void)
     dpy = get_display_or_skip();
     make_glx_context_current_or_skip(dpy);
 
-    if (!epoxy_has_gl_extension("GL_EXT_texture_object"))
+    if (!glproxy_has_gl_extension("GL_EXT_texture_object"))
         errx(77, "Test requires GL_EXT_texture_object");
 
     glBindTexture(GL_TEXTURE_2D, 1);

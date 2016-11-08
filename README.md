@@ -1,4 +1,4 @@
-Epoxy is a library for handling OpenGL function pointer management for
+glproxy is a library for handling OpenGL function pointer management for
 you.
 
 It hides the complexity of `dlopen()`, `dlsym()`,
@@ -21,14 +21,14 @@ Features
   used with `GL_ARB_vertex_buffer_object` implementations, along
   with desktop OpenGL 1.5+ implementations.
 * GLX, and WGL support.
-* EGL support. EGL headers are included, so they're not necessary to build Epoxy
+* EGL support. EGL headers are included, so they're not necessary to build glproxy
   with EGL support.
-* Can be mixed with non-epoxy OpenGL usage.
+* Can be mixed with non-glproxy OpenGL usage.
 
 Building (CMake)
 -----------------
 
-CMake is now the recommended way to build epoxy. It supports building both
+CMake is now the recommended way to build glproxy. It supports building both
 shared and static libraries (by default only shared library is built). It also
 supports building and running tests, both for the static and the shared library.
 
@@ -45,19 +45,19 @@ MSVC open the solution in Visual studio and build the solution.
   `Visual Studio 14 2015 Win64` or `Visual Studio 14 2015`.
 
 * To rebuild the generated headers from the specs, add
-`-DEPOXY_REBUILD_FROM_SPECS=ON` to the `cmake` invocation.
+`-Dglproxy_REBUILD_FROM_SPECS=ON` to the `cmake` invocation.
 
 * To build also static libraries, add
-`-DEPOXY_BUILD_STATIC=ON` to the `cmake` invocation.
+`-Dglproxy_BUILD_STATIC=ON` to the `cmake` invocation.
 
 * To disable building shared libraries, add
-`-DEPOXY_BUILD_SHARED=OFF` to the `cmake` invocation.
+`-Dglproxy_BUILD_SHARED=OFF` to the `cmake` invocation.
 
 * To disable building tests, add
-`-DEPOXY_BUILD_TESTS=OFF` to the `cmake` invocation.
+`-Dglproxy_BUILD_TESTS=OFF` to the `cmake` invocation.
 
 * To link to the static Runtime Library with MSVC (rather than to the DLL), add
-`-DEPOXY_MSVC_USE_RUNTIME_LIBRARY_DLL=OFF` to the `cmake` invocation.
+`-Dglproxy_MSVC_USE_RUNTIME_LIBRARY_DLL=OFF` to the `cmake` invocation.
 
 Building (Autotools)
 ---------------------
@@ -94,24 +94,24 @@ tests.
 1. Check `src\Makefile.vc` to ensure that `PYTHONDIR` is pointing to your Python
    installation, either a 32-bit or a 64-bit (x64) installation of Python 2 or 3
    will do.
-2. Copy `include\epoxy\config.h.guess` to `include\epoxy\config.h`.
+2. Copy `include\glproxy\config.h.guess` to `include\glproxy\config.h`.
 3. Open an MSVC Command prompt and run `nmake Makefile.vc CFG=release` or
    `nmake Makefile.vc CFG=debug` in src\ for a release or debug build.
 4. Optionally, add src\ into your PATH and run the previous step in test\. Run
    the tests by running the built `.exe`s.
 5. Assuming you want to install in `%INSTALL_DIR%`, copy `common.h`, `config.h`,
    `khrplatform.h`, `eglplatform.h`, `gl.h`, `gl_generated.h`, `wgl.h`, `wgl_generated.h`,
-   `egl.h` and `egl_generated.h` from `include\epoxy\` to
-   `%INSTALL_DIR%\include\epoxy\`, copy `src\epoxy.lib` to `%INSTALL_DIR%\lib\` and
-   copy `epoxy-vs12.dll` and `epoxy-vs12.pdb` (if you've built a debug build) from
+   `egl.h` and `egl_generated.h` from `include\glproxy\` to
+   `%INSTALL_DIR%\include\glproxy\`, copy `src\glproxy.lib` to `%INSTALL_DIR%\lib\` and
+   copy `glproxy-vs12.dll` and `glproxy-vs12.pdb` (if you've built a debug build) from
    `src\` to `%INSTALL_DIR%\bin\`. Create directories as needed.
 6. To clean the project, repeat steps 2 and 3, adding ` clean` to the commands.
 
-Switching your Code to Use Epoxy
+Switching your Code to Use glproxy
 ---------------------------------
 
-* NOTE: If you use the static version of Epoxy, you must build your project with
-  "EPOXY_STATIC_LIB" defined!
+* NOTE: If you use the static version of glproxy, you must build your project with
+  "glproxy_STATIC_LIB" defined!
 
 It should be as easy as replacing:
 
@@ -124,22 +124,22 @@ It should be as easy as replacing:
 
 with:
 
-    #include <epoxy/gl.h>
-    #include <epoxy/glx.h>
-    #include <epoxy/egl.h>
-    #include <epoxy/wgl.h>
+    #include <glproxy/gl.h>
+    #include <glproxy/glx.h>
+    #include <glproxy/egl.h>
+    #include <glproxy/wgl.h>
 
-As long as epoxy's headers appear first, you should be ready to go.
+As long as glproxy's headers appear first, you should be ready to go.
 Additionally, some new helpers become available, so you don't have to
 write them:
 
-`int epoxy_gl_version()` returns the GL version:
+`int glproxy_gl_version()` returns the GL version:
 
 * 12 for GL 1.2
 * 20 for GL 2.0
 * 44 for GL 4.4
 
-`bool epoxy_has_gl_extension()` returns whether a GL extension is
+`bool glproxy_has_gl_extension()` returns whether a GL extension is
 available (`GL_ARB_texture_buffer_object`, for example).
 
 Note that this is not terribly fast, so keep it out of your hot paths,
@@ -148,17 +148,17 @@ ok?
 Using OpenGL ES / EGL
 ----------------------
 
-Building Epoxy with OpenGL ES / EGL support is now built-in. However, to
+Building glproxy with OpenGL ES / EGL support is now built-in. However, to
 actually make use OpenGL ES and/or EGL on a computer, it's recommended (and in
 some platforms necessary) to use an OpenGL ES / EGL emulator. I recommend using
 [PowerVR SDK](http://community.imgtec.com/developers/powervr/graphics-sdk/),
 which is available for Linux, OS X and Windows. Download it and run the
 installer. In the installer, you don't have to check everything: Enough to check
 `PowerVR Tools -> PVRVFrame` and `PowerVR SDK -> Native SDK`. There's no need to
-add anything from PowerVR SDK to the include directories to build or use Epoxy,
+add anything from PowerVR SDK to the include directories to build or use glproxy,
 as it already includes all the necessary headers for using OpenGL ES / EGL.
 There's also no need to link with anything from PowerVR SDK to build or use
-Epoxy, as it loads the necessary libraries at run-time. However, when running
+glproxy, as it loads the necessary libraries at run-time. However, when running
 your app, if want to use EGL / OpenGL ES, you'll have to add the directory that
 contains the right shared libraries (`GLES_CM`, `GLESv2` and `EGL`) to your
 `PATH` environment variable. For instance, if you're on Windows, and used the
@@ -200,12 +200,12 @@ Windows issues
 ---------------
 
 The automatic per-context symbol resolution for win32 requires that
-epoxy knows when `wglMakeCurrent()` is called, because
+glproxy knows when `wglMakeCurrent()` is called, because
 wglGetProcAddress() return values depend on the context's device and
 pixel format.  If `wglMakeCurrent()` is called from outside of
-epoxy (in a way that might change the device or pixel format), then
-epoxy needs to be notified of the change using the
-`epoxy_handle_external_wglMakeCurrent()` function.
+glproxy (in a way that might change the device or pixel format), then
+glproxy needs to be notified of the change using the
+`glproxy_handle_external_wglMakeCurrent()` function.
 
 The win32 `wglMakeCurrent()` variants are slower than they should be,
 because they should be caching the resolved dispatch tables instead of

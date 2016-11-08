@@ -24,7 +24,7 @@
 /**
  * @file glx_static.c
  *
- * Simple touch-test of using epoxy when linked statically.  On Linux,
+ * Simple touch-test of using glproxy when linked statically.  On Linux,
  * the ifunc support we'd like to use has some significant behavior
  * changes depending on whether it's a static build or shared library
  * build.
@@ -35,8 +35,8 @@
 
 #include <stdio.h>
 #include <assert.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/glx.h"
 #include <X11/Xlib.h>
 #include <dlfcn.h>
 
@@ -48,8 +48,8 @@ int main(void)
     int val;
 
 #if NEEDS_TO_BE_STATIC
-    if (dlsym(NULL, "epoxy_glCompileShader")) {
-        fprintf(stderr, "glx_static requires epoxy built with --enable-static\n");
+    if (dlsym(NULL, "glproxy_glCompileShader")) {
+        fprintf(stderr, "glx_static requires glproxy built with --enable-static\n");
         return 77;
     }
 #endif

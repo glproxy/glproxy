@@ -22,7 +22,7 @@
  */
 
 #include <stdio.h>
-#include <epoxy/wgl.h>
+#include <glproxy/wgl.h>
 #include "wgl_common.h"
 
 static int (*test_callback)(HDC hdc);
@@ -85,8 +85,8 @@ window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 void
 make_window_and_test(int (*callback)(HDC hdc))
 {
-    LPCTSTR class_name = TEXT("epoxy");
-    LPCTSTR window_name = TEXT("epoxy");
+    LPCTSTR class_name = TEXT("glproxy");
+    LPCTSTR window_name = TEXT("glproxy");
     int width = 150;
     int height = 150;
     HWND hwnd;

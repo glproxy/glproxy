@@ -21,7 +21,7 @@
  * IN THE SOFTWARE.
  */
 
-#include "epoxy/glx.h"
+#include "glproxy/glx.h"
 
 Display *
 get_display_or_skip(void);

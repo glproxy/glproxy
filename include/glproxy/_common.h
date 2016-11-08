@@ -23,57 +23,57 @@
 
 /** @file common.h
  *
- * Provides basic definitions for Epoxy. Included by all other Epoxy files.
+ * Provides basic definitions for glproxy. Included by all other glproxy files.
  */
 
-#ifndef EPOXY_GL_H
-#error "epoxy/_common.h" must be included by epoxy/gl.h directly, do not include it outside
+#ifndef glproxy_GL_H
+#error "glproxy/_common.h" must be included by glproxy/gl.h directly, do not include it outside
 #endif
 
-#ifndef EPOXY_COMMON_H
-#define EPOXY_COMMON_H
+#ifndef glproxy_COMMON_H
+#define glproxy_COMMON_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #if defined _WIN32 || defined __CYGWIN__
-    #if defined(EPOXY_IMPORTEXPORT)
-        #undef EPOXY_IMPORTEXPORT
-        #define EPOXY_STATIC_LIB
+    #if defined(glproxy_IMPORTEXPORT)
+        #undef glproxy_IMPORTEXPORT
+        #define glproxy_STATIC_LIB
     #endif
 
-    #if defined(EPOXY_STATIC_LIB)
-        #define EPOXY_IMPORTEXPORT
+    #if defined(glproxy_STATIC_LIB)
+        #define glproxy_IMPORTEXPORT
     #else
-        #if defined EPOXY_BUILDING_LIB
+        #if defined glproxy_BUILDING_LIB
             #ifdef __GNUC__
-                #define EPOXY_IMPORTEXPORT __attribute__((dllexport))
+                #define glproxy_IMPORTEXPORT __attribute__((dllexport))
             #else
-                #define EPOXY_IMPORTEXPORT __declspec(dllexport)
+                #define glproxy_IMPORTEXPORT __declspec(dllexport)
             #endif
         #else
             #ifdef __GNUC__
-                #define EPOXY_IMPORTEXPORT __attribute__((dllimport))
+                #define glproxy_IMPORTEXPORT __attribute__((dllimport))
             #else
-                #define EPOXY_IMPORTEXPORT __declspec(dllimport)
+                #define glproxy_IMPORTEXPORT __declspec(dllimport)
             #endif
         #endif
     #endif
 #elif defined __ANDROID__
     #include <sys/cdefs.h>
-    #define EPOXY_IMPORTEXPORT __attribute__((visibility("default"))) __NDK_FPABI__
+    #define glproxy_IMPORTEXPORT __attribute__((visibility("default"))) __NDK_FPABI__
 #elif (defined __GNUC__ && __GNUC__ >= 4)  ||  (defined __SUNPRO_C && __SUNPRO_C >= 0x590)
-    #define EPOXY_IMPORTEXPORT __attribute__((visibility("default")))
+    #define glproxy_IMPORTEXPORT __attribute__((visibility("default")))
 #else
-    #define EPOXY_IMPORTEXPORT
+    #define glproxy_IMPORTEXPORT
 #endif
 
 // Prevent "unused variable/parameter" warnings.
-#define EPOXY_UNUSED(var) ((void)var)
+#define glproxy_UNUSED(var) ((void)var)
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* EPOXY_COMMON_H */
+#endif /* glproxy_COMMON_H */

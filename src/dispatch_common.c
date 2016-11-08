@@ -125,11 +125,11 @@ static const char *GLX_NAME = "libGL.so.1";
 #endif
 
 #if defined(ANDROID)
-const struct epoxy_gles_names GLES_NAMES = { "libEGL.so" , "libGLESv1_CM.so", "libGLESv2.so" };
+const struct glproxy_gles_names GLES_NAMES = { "libEGL.so" , "libGLESv1_CM.so", "libGLESv2.so" };
 #elif defined(_WIN32)
-const struct epoxy_gles_names GLES_NAMES = { "libEGL.dll", "libGLESv1_CM.dll", "libGLESv2.dll" };
+const struct glproxy_gles_names GLES_NAMES = { "libEGL.dll", "libGLESv1_CM.dll", "libGLESv2.dll" };
 #else
-const struct epoxy_gles_names GLES_NAMES =  { "libEGL.so.1", "libGLESv1_CM.so.1", "libGLESv2.1" };
+const struct glproxy_gles_names GLES_NAMES =  { "libEGL.so.1", "libGLESv1_CM.so.1", "libGLESv2.1" };
 #endif
 
 static inline void *dlopen_handle(const char *lib_name, const char** error) {
@@ -190,7 +190,7 @@ static void *do_dlsym_by_handle(void*handle, const char* name, const char**error
     return result;
 }
 
-static int epoxy_internal_gl_version(const char *version, int error_version) {
+static int glproxy_internal_gl_version(const char *version, int error_version) {
     GLint major, minor;
     int scanf_count;
 
@@ -211,7 +211,7 @@ static int epoxy_internal_gl_version(const char *version, int error_version) {
     return 10 * major + minor;
 }
 
-static EGLenum epoxy_egl_get_current_context_type_by_handle(void* handle) {
+static EGLenum glproxy_egl_get_current_context_type_by_handle(void* handle) {
     const char *error = "unknow";
     PFNEGLQUERYAPIPROC eglQueryAPILocal = do_dlsym_by_handle(handle, "eglQueryAPI", &error, true);
     PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContextLocal = do_dlsym_by_handle(handle, "eglGetCurrentContext", &error, true);
@@ -248,7 +248,7 @@ static EGLenum epoxy_egl_get_current_context_type_by_handle(void* handle) {
     return EGL_NONE;
 }
 
-bool epoxy_extension_in_string(const char *extension_list, const char *ext) {
+bool glproxy_extension_in_string(const char *extension_list, const char *ext) {
     const char *ptr = extension_list;
     size_t len = strlen(ext);
 
@@ -264,12 +264,12 @@ bool epoxy_extension_in_string(const char *extension_list, const char *ext) {
     }
 }
 
-static bool epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode) {
-    if (epoxy_gl_version() < 30) {
+static bool glproxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode) {
+    if (glproxy_gl_version() < 30) {
         const char *exts = (const char *)glGetString(GL_EXTENSIONS);
         if (!exts)
             return invalid_op_mode;
-        return epoxy_extension_in_string(exts, ext);
+        return glproxy_extension_in_string(exts, ext);
     } else {
         int num_extensions;
         int i;
@@ -293,18 +293,18 @@ static bool epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mod
 
 #if PLATFORM_HAS_WGL
 
-EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *ext) {
+glproxy_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *ext) {
     PFNWGLGETEXTENSIONSSTRINGARBPROC getext;
 
     getext = (void *)wglGetProcAddress("wglGetExtensionsStringARB");
     if (!getext) {
         fprintf(stderr,
             "Implementation unexpectedly missing "
-            "WGL_ARB_extensions_string.  Probably a libepoxy bug.\n");
+            "WGL_ARB_extensions_string.  Probably a libglproxy bug.\n");
         return false;
     }
 
-    return epoxy_extension_in_string(getext(hdc), ext);
+    return glproxy_extension_in_string(getext(hdc), ext);
 }
 
 /**
@@ -312,15 +312,15 @@ EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *ext) {
 * context, then return that, otherwise give the answer that will just
 * send us on to get_proc_address().
 */
-bool epoxy_conservative_has_wgl_extension(const char *ext)
+bool glproxy_conservative_has_wgl_extension(const char *ext)
 {
-    tls_ptr tls = epoxy_context_get();
+    tls_ptr tls = glproxy_context_get();
     HDC hdc = wglGetCurrentDC();
 
     if (!hdc)
         return true;
 
-    return epoxy_has_wgl_extension(hdc, ext);
+    return glproxy_has_wgl_extension(hdc, ext);
 }
 
 #endif /* PLATFORM_HAS_WGL */
@@ -331,7 +331,7 @@ bool epoxy_conservative_has_wgl_extension(const char *ext)
 * return that, otherwise return a version that will just send us on
 * to dlsym() or get_proc_address().
 */
-int epoxy_conservative_glx_version(void) {
+int glproxy_conservative_glx_version(void) {
     Display *dpy = glXGetCurrentDisplay();
     GLXContext ctx = glXGetCurrentContext();
     int screen;
@@ -341,10 +341,10 @@ int epoxy_conservative_glx_version(void) {
 
     glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
 
-    return epoxy_glx_version(dpy, screen);
+    return glproxy_glx_version(dpy, screen);
 }
 
-EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen) {
+glproxy_IMPORTEXPORT int glproxy_glx_version(Display *dpy, int screen) {
     int server_major, server_minor;
     int client_major, client_minor;
     int server, client;
@@ -373,7 +373,7 @@ EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen) {
 * context, then return that, otherwise give the answer that will just
 * send us on to get_proc_address().
 */
-bool epoxy_conservative_has_glx_extension(const char *ext) {
+bool glproxy_conservative_has_glx_extension(const char *ext) {
     Display *dpy = glXGetCurrentDisplay();
     GLXContext ctx = glXGetCurrentContext();
     int screen;
@@ -383,22 +383,22 @@ bool epoxy_conservative_has_glx_extension(const char *ext) {
 
     glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
 
-    return epoxy_has_glx_extension(dpy, screen, ext);
+    return glproxy_has_glx_extension(dpy, screen, ext);
 }
 
-EPOXY_IMPORTEXPORT bool epoxy_has_glx_extension(Display *dpy, int screen, const char *ext) {
+glproxy_IMPORTEXPORT bool glproxy_has_glx_extension(Display *dpy, int screen, const char *ext) {
     /* No, you can't just use glXGetClientString or
     * glXGetServerString() here.  Those each tell you about one half
     * of what's needed for an extension to be supported, and
     * glXQueryExtensionsString() is what gives you the intersection
     * of the two.
     */
-    return epoxy_extension_in_string(glXQueryExtensionsString(dpy, screen), ext);
+    return glproxy_extension_in_string(glXQueryExtensionsString(dpy, screen), ext);
 }
 
 #endif /* PLATFORM_HAS_GLX */
 
-EPOXY_IMPORTEXPORT int epoxy_egl_version(EGLDisplay dpy) {
+glproxy_IMPORTEXPORT int glproxy_egl_version(EGLDisplay dpy) {
     int major, minor;
     const char *version_string;
     int ret;
@@ -409,76 +409,76 @@ EPOXY_IMPORTEXPORT int epoxy_egl_version(EGLDisplay dpy) {
     return major * 10 + minor;
 }
 
-int epoxy_conservative_egl_version(void) {
+int glproxy_conservative_egl_version(void) {
     EGLDisplay dpy = eglGetCurrentDisplay();
 
     if (!dpy)
         return 14;
 
-    return epoxy_egl_version(dpy);
+    return glproxy_egl_version(dpy);
 }
 
-EPOXY_IMPORTEXPORT bool epoxy_has_egl_extension(EGLDisplay dpy, const char *ext)
+glproxy_IMPORTEXPORT bool glproxy_has_egl_extension(EGLDisplay dpy, const char *ext)
 {
-    return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);
+    return glproxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);
 }
 
-bool epoxy_conservative_has_egl_extension(const char *ext)
+bool glproxy_conservative_has_egl_extension(const char *ext)
 {
     EGLDisplay dpy = eglGetCurrentDisplay();
 
     if (!dpy)
         return true;
 
-    return epoxy_has_egl_extension(dpy, ext);
+    return glproxy_has_egl_extension(dpy, ext);
 }
 
 
-EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *ext) {
-    return epoxy_internal_has_gl_extension(ext, false);
+glproxy_IMPORTEXPORT bool glproxy_has_gl_extension(const char *ext) {
+    return glproxy_internal_has_gl_extension(ext, false);
 }
 
 static bool inited = false;
 /* The context for main thread */
 static tls_ptr global_context = NULL;
 /* thread local storage index */
-TLS_TYPE epoxy_dispatch_common_tls_index = 0;
+TLS_TYPE glproxy_dispatch_common_tls_index = 0;
 
-EPOXY_IMPORTEXPORT void epoxy_init_tls(void) {
+glproxy_IMPORTEXPORT void glproxy_init_tls(void) {
     if (inited) {
         return;
     }
 #if defined(_WIN32)
-    epoxy_dispatch_common_tls_index = TlsAlloc();
+    glproxy_dispatch_common_tls_index = TlsAlloc();
 #else
-    pthread_key_create(&epoxy_dispatch_common_tls_index, NULL);
+    pthread_key_create(&glproxy_dispatch_common_tls_index, NULL);
 #endif
-    global_context = epoxy_context_create(NULL);
+    global_context = glproxy_context_create(NULL);
     inited = true;
-    epoxy_context_set(global_context);
+    glproxy_context_set(global_context);
 }
-CONSTRUCT(epoxy_init_tls)
+CONSTRUCT(glproxy_init_tls)
 
-EPOXY_IMPORTEXPORT void epoxy_uninit_tls(void) {
+glproxy_IMPORTEXPORT void glproxy_uninit_tls(void) {
     if (!inited) {
         return;
     }
     if (!global_context) {
-        fprintf(stderr, "Should calling to epoxy_uninit_tls to destroy epoxy global context.\n");
+        fprintf(stderr, "Should calling to glproxy_uninit_tls to destroy glproxy global context.\n");
     }
-    epoxy_context_destroy(global_context);
+    glproxy_context_destroy(global_context);
     global_context = NULL;
 #if defined(_WIN32)
-    TlsFree(epoxy_dispatch_common_tls_index);
+    TlsFree(glproxy_dispatch_common_tls_index);
 #else
-    pthread_key_delete(epoxy_dispatch_common_tls_index);
+    pthread_key_delete(glproxy_dispatch_common_tls_index);
 #endif
-    epoxy_dispatch_common_tls_index = 0;
+    glproxy_dispatch_common_tls_index = 0;
     inited = false;
 }
-DESTRUCT(epoxy_uninit_tls)
+DESTRUCT(glproxy_uninit_tls)
 
-static void epoxy_context_handles_open(tls_ptr tls) {
+static void glproxy_context_handles_open(tls_ptr tls) {
     tls->context.handles.cgl = dlopen_handle(tls->context.cgl_name, NULL);
     tls->context.handles.wgl = dlopen_handle(tls->context.wgl_name, NULL);
     tls->context.handles.glx = dlopen_handle(tls->context.glx_name, NULL);
@@ -487,7 +487,7 @@ static void epoxy_context_handles_open(tls_ptr tls) {
     tls->context.handles.gles2 = dlopen_handle(tls->context.gles_names.gles2, NULL);
 }
 
-static void epoxy_context_handles_close(tls_ptr tls) {
+static void glproxy_context_handles_close(tls_ptr tls) {
     void** handles = (void**)&tls->context.handles;
     void** param_handles = (void**)&tls->param_context.handles;
     size_t count = sizeof(tls->context.handles) / sizeof(void*);
@@ -499,7 +499,7 @@ static void epoxy_context_handles_close(tls_ptr tls) {
     }
 }
 
-EPOXY_IMPORTEXPORT void* epoxy_context_create(struct epoxy_gl_context *params) {
+glproxy_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *params) {
     tls_ptr tls = (tls_ptr)malloc(sizeof(tls[0]));
     memset(tls, 0, sizeof(tls[0]));
     if (params != NULL) {
@@ -512,40 +512,40 @@ EPOXY_IMPORTEXPORT void* epoxy_context_create(struct epoxy_gl_context *params) {
         tls->context.glx_name = GLX_NAME;
         tls->context.gles_names = GLES_NAMES;
     }
-    epoxy_context_handles_open(tls);
-    epoxy_dispatch_common_tls_init(tls, inited);
+    glproxy_context_handles_open(tls);
+    glproxy_dispatch_common_tls_init(tls, inited);
     return tls;
 }
 
-EPOXY_IMPORTEXPORT void* epoxy_context_get() {
-    return (void*)get_tls_by_index(epoxy_dispatch_common_tls_index);
+glproxy_IMPORTEXPORT void* glproxy_context_get() {
+    return (void*)get_tls_by_index(glproxy_dispatch_common_tls_index);
 }
 
-EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_context) {
+glproxy_IMPORTEXPORT void glproxy_context_set(void* new_context) {
     if (!inited) {
-        fprintf(stderr, "The epoxy are not inited yet");
+        fprintf(stderr, "The glproxy are not inited yet");
         return;
     }
-    set_tls_by_index(epoxy_dispatch_common_tls_index, new_context);
+    set_tls_by_index(glproxy_dispatch_common_tls_index, new_context);
 }
 
-EPOXY_IMPORTEXPORT void epoxy_context_destroy(void* context) {
+glproxy_IMPORTEXPORT void glproxy_context_destroy(void* context) {
     tls_ptr tls = context;
     tls_ptr exist_context = NULL;
     if (!inited) {
-        fprintf(stderr, "The epoxy are not inited yet");
+        fprintf(stderr, "The glproxy are not inited yet");
         return;
     }
     if (!tls) {
-        fprintf(stderr, "The epoxy context are NULL");
+        fprintf(stderr, "The glproxy context are NULL");
         return;
     }
-    exist_context = epoxy_context_get();
+    exist_context = glproxy_context_get();
     if (exist_context == tls) {
-        epoxy_context_set(0);
+        glproxy_context_set(0);
     }
 
-    epoxy_context_handles_close(tls);
+    glproxy_context_handles_close(tls);
     free(tls);
 }
 
@@ -559,8 +559,8 @@ static void* find_function_pointer_pos(void** table_start, const struct dispatch
     return 0;
 }
 
-EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(const char* target, const char* membername) {
-    tls_ptr tls = epoxy_context_get();
+glproxy_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* target, const char* membername) {
+    tls_ptr tls = glproxy_context_get();
 #if PLATFORM_HAS_WGL
     if (strcmp(target, "wgl") == 0) {
         return find_function_pointer_pos((void**)&tls->wgl_dispatch_table, &tls->wgl_metadata, membername);
@@ -580,29 +580,29 @@ EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(const char* target,
     return NULL;
 }
 
-EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void) {
-    tls_ptr tls = epoxy_context_get();
+glproxy_IMPORTEXPORT bool glproxy_is_desktop_gl(void) {
+    tls_ptr tls = glproxy_context_get();
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
-        gl_epoxy_resolve_init(tls);
+        gl_glproxy_resolve_init(tls);
     }
     return tls->open_gl_type != DISPATCH_OPENGL_ES;
 }
 
-EPOXY_IMPORTEXPORT int epoxy_gl_version(void) {
-    tls_ptr tls = epoxy_context_get();
+glproxy_IMPORTEXPORT int glproxy_gl_version(void) {
+    tls_ptr tls = glproxy_context_get();
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW || tls->gl_version == 0) {
-        gl_epoxy_resolve_init(tls);
+        gl_glproxy_resolve_init(tls);
     }
     return tls->gl_version;
 }
 
-void cgl_epoxy_resolve_init(tls_ptr tls) {
+void cgl_glproxy_resolve_init(tls_ptr tls) {
 #if PLATFORM_HAS_CGL
 #error Implement it for apple cgl
 #endif
 }
 
-void wgl_epoxy_resolve_init(tls_ptr tls) {
+void wgl_glproxy_resolve_init(tls_ptr tls) {
 #if PLATFORM_HAS_WGL
     tls->wgl_metadata.inited = true;
     if (tls->gl_called && tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
@@ -616,14 +616,14 @@ void wgl_epoxy_resolve_init(tls_ptr tls) {
 #endif
 }
 
-enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
+enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
     *ptr = do_dlsym_by_handle(tls->context.handles.wgl, name, NULL, false);
     return DISPATCH_RESOLVE_RESULT_OK;
 }
 
-enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
+enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
 #if PLATFORM_HAS_WGL
-    if (epoxy_conservative_has_wgl_extension(extension)) {
+    if (glproxy_conservative_has_wgl_extension(extension)) {
         *ptr = tls->wgl_get_proc(name);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
@@ -631,7 +631,7 @@ enum DISPATCH_RESOLVE_RESULT wgl_epoxy_resolve_extension(tls_ptr tls, const char
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
 
-void glx_epoxy_resolve_init(tls_ptr tls) {
+void glx_glproxy_resolve_init(tls_ptr tls) {
 #if PLATFORM_HAS_GLX
     if (!tls->gl_called) {
         if (!tls->glx_metadata.inited) {
@@ -663,14 +663,14 @@ void glx_epoxy_resolve_init(tls_ptr tls) {
 #endif /* PLATFORM_HAS_GLX */
 }
 
-enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
+enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
     *ptr = do_dlsym_by_handle(tls->context.handles.glx, name, NULL, false);
     return DISPATCH_RESOLVE_RESULT_OK;
 }
 
-enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
+enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
 #if PLATFORM_HAS_GLX
-    if (epoxy_conservative_has_glx_extension(tls, extension)) {
+    if (glproxy_conservative_has_glx_extension(tls, extension)) {
         *ptr = glXGetProcAddress((const GLubyte *)name);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
@@ -678,30 +678,30 @@ enum DISPATCH_RESOLVE_RESULT glx_epoxy_resolve_extension(tls_ptr tls, const char
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
 
-void gl_epoxy_resolve_init(tls_ptr tls) {
+void gl_glproxy_resolve_init(tls_ptr tls) {
     tls->gl_called = true;
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
-        cgl_epoxy_resolve_init(tls);
-        wgl_epoxy_resolve_init(tls);
-        glx_epoxy_resolve_init(tls);
-        egl_epoxy_resolve_init(tls);
+        cgl_glproxy_resolve_init(tls);
+        wgl_glproxy_resolve_init(tls);
+        glx_glproxy_resolve_init(tls);
+        egl_glproxy_resolve_init(tls);
     }
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
         fprintf(stderr, "Did not found the current context\n");
     } else if (tls->gl_version == 0){
         PFNGLGETSTRINGPROC get_string = NULL;
-        gl_epoxy_resolve_direct(tls, "glGetString", (void**)&get_string);
+        gl_glproxy_resolve_direct(tls, "glGetString", (void**)&get_string);
         if (!get_string) {
             fprintf(stderr, "Can not resolve glGetString even though we have already found the current context\n");
         } else {
-            tls->gl_version = epoxy_internal_gl_version(get_string(GL_VERSION), 0);
+            tls->gl_version = glproxy_internal_gl_version(get_string(GL_VERSION), 0);
         }
     } else {
         tls->gl_metadata.inited = true;
     }
 }
 
-enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
+enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
     switch (tls->open_gl_type) {
     case DISPATCH_OPENGL_ES:
         *ptr = do_dlsym_by_handle(tls->gles_handle, name, NULL, false);
@@ -714,7 +714,7 @@ enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_direct(tls_ptr tls, const char* na
     return DISPATCH_RESOLVE_RESULT_OK;
 }
 
-static void epoxy_get_proc_address(tls_ptr tls, const char *name, void**ptr) {
+static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr) {
     switch (tls->open_gl_type) {
     case DISPATCH_OPENGL_EGL_DESKTOP:
     case DISPATCH_OPENGL_ES:
@@ -747,7 +747,7 @@ static void epoxy_get_proc_address(tls_ptr tls, const char *name, void**ptr) {
 * Performs either the dlsym or glXGetProcAddress()-equivalent for
 * core functions in desktop GL.
 */
-static void epoxy_get_core_proc_address(tls_ptr tls, const char *name, int core_version, void **ptr) {
+static void glproxy_get_core_proc_address(tls_ptr tls, const char *name, int core_version, void **ptr) {
 #ifdef _WIN32
     int core_symbol_support = 11;
 #elif defined(ANDROID)
@@ -761,16 +761,16 @@ static void epoxy_get_core_proc_address(tls_ptr tls, const char *name, int core_
 #endif
 
     if (core_version <= core_symbol_support) {
-        gl_epoxy_resolve_direct(tls, name, ptr);
+        gl_glproxy_resolve_direct(tls, name, ptr);
     } else {
-        epoxy_get_proc_address(tls, name, ptr);
+        glproxy_get_proc_address(tls, name, ptr);
     }
 }
-enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version) {
+enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version) {
     if (version <= OpenGL_Desktop_MAX) {
         if (tls->open_gl_type != DISPATCH_OPENGL_ES) {
             if (tls->gl_version == 0 ||  tls->gl_version >= version) {
-                epoxy_get_core_proc_address(tls, name, version, ptr);
+                glproxy_get_core_proc_address(tls, name, version, ptr);
                 return DISPATCH_RESOLVE_RESULT_OK;
             }
         }
@@ -781,14 +781,14 @@ enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_version(tls_ptr tls, const char* n
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
 
-enum DISPATCH_RESOLVE_RESULT gl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
-    if (epoxy_internal_has_gl_extension(extension, true)) {
+enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
+    if (glproxy_internal_has_gl_extension(extension, true)) {
         return DISPATCH_RESOLVE_RESULT_OK;
     }
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
 
-static const char* epoxy_get_string_by_handle(void*handle) {
+static const char* glproxy_get_string_by_handle(void*handle) {
     PFNGLGETSTRINGPROC get_string = do_dlsym_by_handle(handle, "glGetString", NULL, false);
     if (get_string) {
         return get_string(GL_VERSION);
@@ -796,7 +796,7 @@ static const char* epoxy_get_string_by_handle(void*handle) {
     return NULL;
 }
 
-void egl_epoxy_resolve_init(tls_ptr tls) {
+void egl_glproxy_resolve_init(tls_ptr tls) {
 	if (!tls->gl_called) {
         if (!tls->egl_metadata.inited) {
             if (!tls->has_parameters) {
@@ -808,11 +808,11 @@ void egl_epoxy_resolve_init(tls_ptr tls) {
             }
         }
     } else if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
-        EGLenum egl_context_api = epoxy_egl_get_current_context_type_by_handle(tls->context.handles.egl);
+        EGLenum egl_context_api = glproxy_egl_get_current_context_type_by_handle(tls->context.handles.egl);
         /* If has parameter, then using the paramter directly, do not try the NULL */
         if (egl_context_api == EGL_NONE && !tls->has_parameters && tls->context.handles.egl) {
             /* Try NULL */
-            egl_context_api = epoxy_egl_get_current_context_type_by_handle(NULL);
+            egl_context_api = glproxy_egl_get_current_context_type_by_handle(NULL);
             /* If NULL works, then setting tls->context.handles.egl to NULL */
             if (egl_context_api != EGL_NONE) {
                 try_close_handle(&(tls->context.handles.egl));
@@ -820,11 +820,11 @@ void egl_epoxy_resolve_init(tls_ptr tls) {
         }
         if (egl_context_api != EGL_NONE) {
             if (!tls->has_parameters) {
-                if (tls->context.handles.gles2 && epoxy_get_string_by_handle(tls->context.handles.gles2)) {
+                if (tls->context.handles.gles2 && glproxy_get_string_by_handle(tls->context.handles.gles2)) {
                     try_close_handle(&(tls->context.handles.gles1));
-                } else if (tls->context.handles.gles1 && epoxy_get_string_by_handle(tls->context.handles.gles1)) {
+                } else if (tls->context.handles.gles1 && glproxy_get_string_by_handle(tls->context.handles.gles1)) {
                     try_close_handle(&(tls->context.handles.gles2));
-                } else if (epoxy_get_string_by_handle(NULL)) {
+                } else if (glproxy_get_string_by_handle(NULL)) {
                     /* Means the gles1 & gles2 handle are NULL */
                     try_close_handle(&(tls->context.handles.gles1));
                     try_close_handle(&(tls->context.handles.gles2));
@@ -853,21 +853,21 @@ void egl_epoxy_resolve_init(tls_ptr tls) {
     tls->egl_metadata.inited = true;
 }
 
-enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
+enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
     *ptr = do_dlsym_by_handle(tls->context.handles.egl, name, NULL, false);
     return DISPATCH_RESOLVE_RESULT_OK;
 }
 
-enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version) {
-    if (epoxy_conservative_egl_version() >= version) {
+enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version) {
+    if (glproxy_conservative_egl_version() >= version) {
         *ptr = do_dlsym_by_handle(tls->context.handles.egl, name, NULL, false);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
 
-enum DISPATCH_RESOLVE_RESULT egl_epoxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
-    if (epoxy_conservative_has_egl_extension(extension)) {
+enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
+    if (glproxy_conservative_has_egl_extension(extension)) {
         *ptr = tls->egl_get_proc(name);
     }
     return DISPATCH_RESOLVE_RESULT_IGNORE;

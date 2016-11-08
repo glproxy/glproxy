@@ -24,7 +24,7 @@
 /**
  * @file egl_gl.c
  *
- * Tests that epoxy works with EGL using desktop OpenGL.
+ * Tests that glproxy works with EGL using desktop OpenGL.
  */
 
 #define _GNU_SOURCE
@@ -35,9 +35,9 @@
 #include <assert.h>
 #include <err.h>
 #include <dlfcn.h>
-#include "epoxy/gl.h"
-#include "epoxy/egl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/egl.h"
+#include "glproxy/glx.h"
 
 #include "egl_common.h"
 #include "glx_common.h"
@@ -52,14 +52,14 @@ make_egl_current_and_test(EGLDisplay dpy, EGLContext ctx)
 
     eglMakeCurrent(dpy, NULL, NULL, ctx);
 
-    if (!epoxy_is_desktop_gl()) {
+    if (!glproxy_is_desktop_gl()) {
         fprintf(stderr, "Claimed to be desktop\n");
         pass = false;
     }
 
-    if (epoxy_gl_version() < 20) {
+    if (glproxy_gl_version() < 20) {
         fprintf(stderr, "Claimed to be GL version %d\n",
-                epoxy_gl_version());
+                glproxy_gl_version());
         pass = false;
     }
 
@@ -92,7 +92,7 @@ init_egl(EGLDisplay *out_dpy, EGLContext *out_ctx)
     EGLConfig cfg;
     EGLint count;
 
-    if (!epoxy_has_egl_extension(dpy, "EGL_KHR_surfaceless_context"))
+    if (!glproxy_has_egl_extension(dpy, "EGL_KHR_surfaceless_context"))
         errx(77, "Test requires EGL_KHR_surfaceless_context");
 
     if (!eglBindAPI(EGL_OPENGL_API))
@@ -115,7 +115,7 @@ int main(void)
     EGLDisplay egl_dpy;
     EGLContext egl_ctx;
 
-    /* Force epoxy to have loaded both EGL and GLX libs already -- we
+    /* Force glproxy to have loaded both EGL and GLX libs already -- we
      * can't assume anything about symbol resolution based on having
      * EGL or GLX loaded.
      */

@@ -21,38 +21,24 @@
  * IN THE SOFTWARE.
  */
 
-/** @file glx.h
+/** @file config.h
  *
- * Provides an implementation of a GLX dispatch layer using global
- * function pointers.
+ * Provides configuration options for glproxy.
  */
 
-#ifndef EPOXY_GLX_H
-#define EPOXY_GLX_H
-
-#if defined(GLX_H) || defined(__glx_h__) || defined(__glxext_h_)
-#error "epoxy/glx.h" must be included before (or in place of) "GL/glx.h".
-#endif
-
-#define GLX_H
-#define __glx_h__
-#define __glxext_h_
-
-#include "epoxy/gl.h"
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
+#ifndef glproxy_CONFIG_H
+#define glproxy_CONFIG_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "epoxy/glx_generated.h"
-
-EPOXY_IMPORTEXPORT bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
-EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen);
+#cmakedefine01 glproxy_SUPPORT_EGL
+#cmakedefine01 glproxy_SUPPORT_GLX
+#cmakedefine01 glproxy_SUPPORT_WGL
 
 #ifdef __cplusplus
-} /* extern "C" */
+}
 #endif
 
-#endif /* EPOXY_GLX_H */
+#endif /* glproxy_CONFIG_H */

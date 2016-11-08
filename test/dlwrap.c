@@ -21,7 +21,7 @@
 
 /** @file dlwrap.c
  *
- * Implements a wrapper for dlopen() and dlsym() so that epoxy will
+ * Implements a wrapper for dlopen() and dlsym() so that glproxy will
  * end up finding symbols from the testcases named
  * "override_EGL_eglWhatever()" or "override_GLES2_glWhatever()" or
  * "override_GL_glWhatever()" when it tries to dlopen() and dlsym()

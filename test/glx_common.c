@@ -72,7 +72,7 @@ get_glx_window(Display *dpy, XVisualInfo *visinfo, bool map)
 	Window root_win = RootWindow(dpy, screen);
 	Window win;
 
-        EPOXY_UNUSED(map);
+        glproxy_UNUSED(map);
 
 	window_attr.background_pixel = 0;
 	window_attr.border_pixel = 0;

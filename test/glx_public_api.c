@@ -23,8 +23,8 @@
 
 #include <stdio.h>
 #include <assert.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/glx.h"
 #include <X11/Xlib.h>
 
 #include "glx_common.h"
@@ -34,7 +34,7 @@ static Display *dpy;
 static bool
 test_gl_version(void)
 {
-    int version = epoxy_gl_version();
+    int version = glproxy_gl_version();
     if (version < 12) {
         fprintf(stderr,
                 "Reported GL version %d, should be at least 12\n",
@@ -48,7 +48,7 @@ test_gl_version(void)
 static bool
 test_glx_version(void)
 {
-    int version = epoxy_glx_version(dpy, 0);
+    int version = glproxy_glx_version(dpy, 0);
     const char *version_string;
     int ret;
     int server_major, server_minor;
@@ -91,14 +91,14 @@ test_glx_version(void)
 static bool
 test_glx_extension_supported(void)
 {
-    if (!epoxy_has_glx_extension(dpy, 0, "GLX_ARB_get_proc_address")) {
+    if (!glproxy_has_glx_extension(dpy, 0, "GLX_ARB_get_proc_address")) {
         fprintf(stderr,
                 "Incorrectly reported no support for GLX_ARB_get_proc_address "
                 "(should always be present in Linux ABI)\n");
         return false;
     }
 
-    if (epoxy_has_glx_extension(dpy, 0, "GLX_EXT_ham_sandwich")) {
+    if (glproxy_has_glx_extension(dpy, 0, "GLX_EXT_ham_sandwich")) {
         fprintf(stderr,
                 "Incorrectly reported support for GLX_EXT_ham_sandwich\n");
         return false;

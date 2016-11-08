@@ -24,7 +24,7 @@
 #include <stdio.h>
 
 #include "wgl_common.h"
-#include <epoxy/gl.h>
+#include <glproxy/gl.h>
 
 static int
 test_function(HDC hdc)
@@ -52,8 +52,8 @@ test_function(HDC hdc)
         pass = false;
     }
 
-    if (epoxy_gl_version() >= 15 ||
-        epoxy_has_gl_extension("GL_ARB_vertex_buffer_object")) {
+    if (glproxy_gl_version() >= 15 ||
+        glproxy_has_gl_extension("GL_ARB_vertex_buffer_object")) {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 1234);
 
         val = 0;

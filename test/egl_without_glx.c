@@ -36,8 +36,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "epoxy/gl.h"
-#include "epoxy/egl.h"
+#include "glproxy/gl.h"
+#include "glproxy/egl.h"
 
 #include "egl_common.h"
 
@@ -147,10 +147,10 @@ int main(void)
     EGLContext ctx;
     const unsigned char *string;
 
-    *epoxy_context_get_function_pointer("egl", "eglBindAPI") = override_eglBindAPI;
-    *epoxy_context_get_function_pointer("egl", "eglGetError") = override_eglGetError;
+    *glproxy_context_get_function_pointer("egl", "eglBindAPI") = override_eglBindAPI;
+    *glproxy_context_get_function_pointer("egl", "eglGetError") = override_eglGetError;
 
-    if (!epoxy_has_egl_extension(dpy, "EGL_KHR_surfaceless_context"))
+    if (!glproxy_has_egl_extension(dpy, "EGL_KHR_surfaceless_context"))
         fprintf(stderr, "Test requires EGL_KHR_surfaceless_context\n");
 
     eglBindAPI(EGL_OPENGL_ES_API);

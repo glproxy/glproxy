@@ -21,14 +21,14 @@
  * IN THE SOFTWARE.
  */
 
-#include <epoxy/gl.h>
+#include <glproxy/gl.h>
 
-#if EPOXY_SUPPORT_EGL
-#include <epoxy/egl.h>
+#if glproxy_SUPPORT_EGL
+#include <glproxy/egl.h>
 #endif
 
-#if EPOXY_SUPPORT_GLX
-#include <epoxy/glx.h>
+#if glproxy_SUPPORT_GLX
+#include <glproxy/glx.h>
 #endif
 
 #if GL_VERSION_3_2 != 1

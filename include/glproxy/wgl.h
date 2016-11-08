@@ -21,24 +21,42 @@
  * IN THE SOFTWARE.
  */
 
-/** @file config.h
+/** @file wgl.h
  *
- * Provides configuration options for Epoxy.
+ * Provides an implementation of a WGL dispatch layer using a hidden
+ * vtable.
  */
 
-#ifndef EPOXY_CONFIG_H
-#define EPOXY_CONFIG_H
+#ifndef glproxy_WGL_H
+#define glproxy_WGL_H
+
+#if defined(__wglxext_h_)
+#error "glproxy/wgl.h" must be included before (or in place of) "wglext.h"
+#endif
+
+#define __wglxext_h_
+
+#include "glproxy/gl.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#cmakedefine01 EPOXY_SUPPORT_EGL
-#cmakedefine01 EPOXY_SUPPORT_GLX
-#cmakedefine01 EPOXY_SUPPORT_WGL
+#undef wglUseFontBitmaps
+#undef wglUseFontOutlines
 
-#ifdef __cplusplus
-}
+#if defined(_UNICODE) || defined(UNICODE)
+#define wglUseFontBitmaps wglUseFontBitmapsW
+#else
+#define wglUseFontBitmaps wglUseFontBitmapsA
 #endif
 
-#endif /* EPOXY_CONFIG_H */
+#include "glproxy/wgl_generated.h"
+
+glproxy_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *extension);
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
+
+#endif /* glproxy_WGL_H */

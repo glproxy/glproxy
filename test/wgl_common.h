@@ -21,7 +21,7 @@
  * IN THE SOFTWARE.
  */
 
-#include <epoxy/wgl.h>
+#include <glproxy/wgl.h>
 
 void
 make_window_and_test(int (*callback)(HDC hdc));

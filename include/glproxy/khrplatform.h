@@ -1,5 +1,5 @@
-#ifndef EPOXY_KHRPLATFORM_H
-#define EPOXY_KHRPLATFORM_H
+#ifndef glproxy_KHRPLATFORM_H
+#define glproxy_KHRPLATFORM_H
 
 /*
 ** Copyright (c) 2008-2009 The Khronos Group Inc.
@@ -93,7 +93,7 @@
  */
 
 #if defined(__khrplatform_h_)
-#error "epoxy/khrplatform.h" must be included before (or in place of) "KHR/khrplatform.h".
+#error "glproxy/khrplatform.h" must be included before (or in place of) "KHR/khrplatform.h".
 #endif
 
 #define __khrplatform_h_
@@ -273,4 +273,4 @@ typedef enum {
     KHRONOS_BOOLEAN_ENUM_FORCE_SIZE = KHRONOS_MAX_ENUM
 } khronos_boolean_enum_t;
 
-#endif /* EPOXY_KHRPLATFORM_H */
+#endif /* glproxy_KHRPLATFORM_H */

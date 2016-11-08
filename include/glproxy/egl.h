@@ -21,42 +21,36 @@
  * IN THE SOFTWARE.
  */
 
-/** @file wgl.h
+/** @file egl.h
  *
- * Provides an implementation of a WGL dispatch layer using a hidden
- * vtable.
+ * Provides an implementation of an EGL dispatch layer using global
+ * function pointers
  */
 
-#ifndef EPOXY_WGL_H
-#define EPOXY_WGL_H
+#ifndef glproxy_EGL_H
+#define glproxy_EGL_H
 
-#if defined(__wglxext_h_)
-#error "epoxy/wgl.h" must be included before (or in place of) "wglext.h"
+#if defined(__egl_h_) || defined(__eglext_h_)
+#error "glproxy/egl.h" must be included before (or in place of) "EGL/egl.h"
 #endif
 
-#define __wglxext_h_
+#define __egl_h_
+#define __eglext_h_
 
-#include "epoxy/gl.h"
+#include "glproxy/gl.h"
+#include "glproxy/eglplatform.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#undef wglUseFontBitmaps
-#undef wglUseFontOutlines
+#include "glproxy/egl_generated.h"
 
-#if defined(_UNICODE) || defined(UNICODE)
-#define wglUseFontBitmaps wglUseFontBitmapsW
-#else
-#define wglUseFontBitmaps wglUseFontBitmapsA
-#endif
-
-#include "epoxy/wgl_generated.h"
-
-EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
+glproxy_IMPORTEXPORT bool glproxy_has_egl_extension(EGLDisplay dpy, const char *extension);
+glproxy_IMPORTEXPORT int glproxy_egl_version(EGLDisplay dpy);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* EPOXY_WGL_H */
+#endif /* glproxy_EGL_H */

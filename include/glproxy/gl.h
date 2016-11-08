@@ -27,14 +27,14 @@
  * global function pointers or a hidden vtable.
  */
 
-#ifndef EPOXY_GL_H
-#define EPOXY_GL_H
+#ifndef glproxy_GL_H
+#define glproxy_GL_H
 
 #if    defined(__glplatform_h_)  || defined(__gl_h_)  || defined(__glext_h_)  \
     || defined(__gl2platform_h_) || defined(__gl2_h_) || defined(__gl2ext_h_) \
     || defined(__gl3platform_h_) || defined(__gl3_h_) || defined(__gl31_h_)
 
-#error "epoxy/gl.h" must be included before (or in place of) the desktop OpenGL / OpenGL ES headers.
+#error "glproxy/gl.h" must be included before (or in place of) the desktop OpenGL / OpenGL ES headers.
 #endif
 
 #define __glplatform_h_
@@ -47,8 +47,8 @@
 #define __gl3_h_ 1
 #define __gl31_h_ 1
 
-#include "epoxy/_common.h"
-#include "epoxy/khrplatform.h"
+#include "glproxy/_common.h"
+#include "glproxy/khrplatform.h"
 #ifdef _WIN32
 #   include <Windows.h>
 #endif
@@ -89,7 +89,7 @@ typedef khronos_boolean_enum_t bool;
 #define GLAPIENTRYP GLAPIENTRY *
 #endif
 
-#define EPOXY_CALLSPEC KHRONOS_APIENTRY
+#define glproxy_CALLSPEC KHRONOS_APIENTRY
 
 #if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
 #   define GLAPI __attribute__((visibility("default")))
@@ -97,15 +97,15 @@ typedef khronos_boolean_enum_t bool;
 #   define GLAPI extern
 #endif
 
-#include "epoxy/gl_generated.h"
+#include "glproxy/gl_generated.h"
 
-struct epoxy_gles_names {
+struct glproxy_gles_names {
     const char* egl;
     const char* gles1;
     const char* gles2;
 };
 
-struct epoxy_gl_handles {
+struct glproxy_gl_handles {
     /**
     * dlopen() return value for OS X's GL library.
     */
@@ -125,44 +125,44 @@ struct epoxy_gl_handles {
     void *gles2;
 };
 
-struct epoxy_gl_context {
+struct glproxy_gl_context {
     const char *cgl_name;
     const char *wgl_name;
     const char *glx_name;
-    struct epoxy_gles_names gles_names;
-    struct epoxy_gl_handles handles;
+    struct glproxy_gles_names gles_names;
+    struct glproxy_gl_handles handles;
 };
 
 /*
 * By default, the TLS are inited by global constructor and destructor, if the compiler doesn't support that,
 then calling to the following API to do that.
 */
-EPOXY_IMPORTEXPORT void epoxy_init_tls(void);
-EPOXY_IMPORTEXPORT void epoxy_uninit_tls(void);
+glproxy_IMPORTEXPORT void glproxy_init_tls(void);
+glproxy_IMPORTEXPORT void glproxy_uninit_tls(void);
 
-EPOXY_IMPORTEXPORT void* epoxy_context_create(struct epoxy_gl_context *params);
-EPOXY_IMPORTEXPORT void* epoxy_context_get();
-EPOXY_IMPORTEXPORT void epoxy_context_set(void* new_contex);
-EPOXY_IMPORTEXPORT void epoxy_context_destroy(void*);
+glproxy_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *params);
+glproxy_IMPORTEXPORT void* glproxy_context_get();
+glproxy_IMPORTEXPORT void glproxy_context_set(void* new_contex);
+glproxy_IMPORTEXPORT void glproxy_context_destroy(void*);
 
 /* target: (wgl, glx, egl, gl) */
-EPOXY_IMPORTEXPORT void** epoxy_context_get_function_pointer(const char* target, const char* membername);
+glproxy_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* target, const char* membername);
 
 /**
 * Returns true if the given GL extension is supported in the current context.
 *
 * Note that this function can't be called from within glBegin()/glEnd().
 *
-* \sa epoxy_has_wgl_extension()
-* \sa epoxy_has_glx_extension()
-* \sa epoxy_has_egl_extension()
+* \sa glproxy_has_wgl_extension()
+* \sa glproxy_has_glx_extension()
+* \sa glproxy_has_egl_extension()
 */
-EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *extension);
-EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void);
-EPOXY_IMPORTEXPORT int epoxy_gl_version(void);
+glproxy_IMPORTEXPORT bool glproxy_has_gl_extension(const char *extension);
+glproxy_IMPORTEXPORT bool glproxy_is_desktop_gl(void);
+glproxy_IMPORTEXPORT int glproxy_gl_version(void);
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* EPOXY_GL_H */
+#endif /* glproxy_GL_H */

@@ -1,6 +1,6 @@
 ﻿
-EPOXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
-    tls_ptr tls = get_tls_by_index(epoxy_dispatch_common_tls_index);
+glproxy_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
+    tls_ptr tls = get_tls_by_index(glproxy_dispatch_common_tls_index);
     void** ptr = ((void**)&tls->current_dispatch_table) + offset;
     if (!*ptr) {
         struct dispatch_metadata *metadata = &tls->current_metadata;
@@ -10,24 +10,24 @@ EPOXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
         enum DISPATCH_RESOLVE_RESULT result_resolved = DISPATCH_RESOLVE_RESULT_ERROR;
         const char* basic_name = metadata->entrypoint_strings + resolve_info->name_offset;
         if (!metadata->inited) {
-            current_epoxy_resolve_init(tls);
+            current_glproxy_resolve_init(tls);
         }
         for (; target_identity == resolve_info->identity; ++resolve_info) {
             const char* name = metadata->entrypoint_strings + resolve_info->name_offset;
             switch (resolve_info->resolve_type) {
 #if HAS_DISPATCH_RESOLVE_DIRECT
             case DISPATCH_RESOLVE_DIRECT:
-                result_resolved = current_epoxy_resolve_direct(tls, name, ptr);
+                result_resolved = current_glproxy_resolve_direct(tls, name, ptr);
                 break;
 #endif
 #if HAS_DISPATCH_RESOLVE_VERSION
             case DISPATCH_RESOLVE_VERSION:
-                result_resolved = current_epoxy_resolve_version(tls, name, ptr, resolve_info->condition);
+                result_resolved = current_glproxy_resolve_version(tls, name, ptr, resolve_info->condition);
                 break;
 #endif
             case DISPATCH_RESOLVE_EXTENSION: {
                 const char* extension_name = metadata->extension_enum_strings + resolve_info->condition;
-                result_resolved = current_epoxy_resolve_extension(tls, name, ptr, extension_name);
+                result_resolved = current_glproxy_resolve_extension(tls, name, ptr, extension_name);
                 break;
             }
             default:
@@ -50,7 +50,7 @@ EPOXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
     return *ptr;
 }
 
-static void current_epoxy_dispatch_metadata_init(struct dispatch_metadata *data, bool inited) {
+static void current_glproxy_dispatch_metadata_init(struct dispatch_metadata *data, bool inited) {
     data->extensions_count = current_extensions_count;
     data->extension_enum_strings = current_extension_enum_strings;
     data->entrypoint_strings = current_entrypoint_strings;

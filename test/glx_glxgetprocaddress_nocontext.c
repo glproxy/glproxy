@@ -31,8 +31,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include <err.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/glx.h"
 #include <X11/Xlib.h>
 
 #include "glx_common.h"
@@ -45,7 +45,7 @@ int main(void)
     void *func;
 
     dpy = get_display_or_skip();
-    if (epoxy_glx_version(dpy, 0) < 14)
+    if (glproxy_glx_version(dpy, 0) < 14)
         errx(77, "GLX version 1.4 required for glXGetProcAddress().\n");
 
     func = glXGetProcAddress((const GLubyte *)"glGetString");

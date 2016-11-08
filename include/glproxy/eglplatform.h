@@ -1,5 +1,5 @@
-#ifndef EPOXY_EGLPLATFORM_H
-#define EPOXY_EGLPLATFORM_H
+#ifndef glproxy_EGLPLATFORM_H
+#define glproxy_EGLPLATFORM_H
 
 /*
 ** Copyright (c) 2007-2009 The Khronos Group Inc.
@@ -34,7 +34,7 @@
  * by filing a bug against product "EGL" component "Registry".
  */
 
-#include "epoxy/khrplatform.h"
+#include "glproxy/khrplatform.h"
 
 /* Macros used in EGL function prototype declarations.
  *
@@ -47,7 +47,7 @@
  */
 
 #if defined(__eglplatform_h_)
-#error "epoxy/eglplatform.h" must be included before (or in place of) "EGL/eglplatform.h".
+#error "glproxy/eglplatform.h" must be included before (or in place of) "EGL/eglplatform.h".
 #endif
 
 #define __eglplatform_h_
@@ -131,4 +131,4 @@ typedef EGLNativeWindowType  NativeWindowType;
  */
 typedef khronos_int32_t EGLint;
 
-#endif /* EPOXY_EGLPLATFORM_H */
+#endif /* glproxy_EGLPLATFORM_H */

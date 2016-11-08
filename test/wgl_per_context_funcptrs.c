@@ -24,14 +24,14 @@
 /**
  * @file wgl_per_context_funcptrs.c
  *
- * Tests that epoxy works correctly when wglGetProcAddress() returns
+ * Tests that glproxy works correctly when wglGetProcAddress() returns
  * different function pointers for different contexts.
  *
  * wgl allows that to be the case when the device or pixel format are
  * different.  We don't know if the underlying implementation actually
  * *will* return different function pointers, so force the issue by
  * overriding wglGetProcAddress() to return our function pointers with
- * magic behavior.  This way we can test epoxy's implementation
+ * magic behavior.  This way we can test glproxy's implementation
  * regardless.
  */
 
@@ -39,7 +39,7 @@
 #include <assert.h>
 
 #include "wgl_common.h"
-#include <epoxy/gl.h>
+#include <glproxy/gl.h>
 
 #define CREATESHADER_CTX1_VAL 1001
 #define CREATESHADER_CTX2_VAL 1002
@@ -56,7 +56,7 @@ OVERRIDE_API (PROC) override_wglGetProcAddress(LPCSTR name);
 OVERRIDE_API (GLuint)
 override_glCreateShader_ctx1(GLenum target)
 {
-    EPOXY_UNUSED(target);
+    glproxy_UNUSED(target);
     if (current_context != ctx1) {
         fprintf(stderr, "ctx1 called while other context current\n");
         pass = false;
@@ -67,7 +67,7 @@ override_glCreateShader_ctx1(GLenum target)
 OVERRIDE_API (GLuint)
 override_glCreateShader_ctx2(GLenum target)
 {
-    EPOXY_UNUSED(target);
+    glproxy_UNUSED(target);
     if (current_context != ctx2) {
         fprintf(stderr, "ctx2 called while other context current\n");
         pass = false;
@@ -89,11 +89,11 @@ override_wglGetProcAddress(LPCSTR name)
 }
 
 static void
-test_createshader(HDC hdc, HGLRC ctx, void *epoxy_ctx)
+test_createshader(HDC hdc, HGLRC ctx, void *glproxy_ctx)
 {
     GLuint shader, expected;
     int ctxnum;
-    epoxy_context_set(epoxy_ctx);
+    glproxy_context_set(glproxy_ctx);
 
     wglMakeCurrent(hdc, ctx);
     current_context = ctx;
@@ -101,7 +101,7 @@ test_createshader(HDC hdc, HGLRC ctx, void *epoxy_ctx)
     /* Install our GPA override so we can force per-context function
      * pointers.
      */
-    *epoxy_context_get_function_pointer("wgl", "wglGetProcAddress") = override_wglGetProcAddress;
+    *glproxy_context_get_function_pointer("wgl", "wglGetProcAddress") = override_wglGetProcAddress;
 
     if (ctx == ctx1) {
         expected = CREATESHADER_CTX1_VAL;
@@ -123,51 +123,51 @@ test_createshader(HDC hdc, HGLRC ctx, void *epoxy_ctx)
 static int
 test_function(HDC hdc)
 {
-    void *epoxy_ctx1 = epoxy_context_create(NULL);
-    void *epoxy_ctx2 = epoxy_context_create(NULL);
+    void *glproxy_ctx1 = glproxy_context_create(NULL);
+    void *glproxy_ctx2 = glproxy_context_create(NULL);
 
-    epoxy_context_set(epoxy_ctx1);
+    glproxy_context_set(glproxy_ctx1);
     ctx1 = wglCreateContext(hdc);
 
-    epoxy_context_set(epoxy_ctx2);
+    glproxy_context_set(glproxy_ctx2);
     ctx2 = wglCreateContext(hdc);
 
     if (!ctx1 || !ctx2) {
         fprintf(stderr, "Failed to create wgl contexts\n");
         return 1;
     }
-    if (!epoxy_ctx1 || !epoxy_ctx2) {
-        fprintf(stderr, "Failed to create epoxy contexts\n");
+    if (!glproxy_ctx1 || !glproxy_ctx2) {
+        fprintf(stderr, "Failed to create glproxy contexts\n");
         return 1;
     }
 
-    epoxy_context_set(epoxy_ctx1);
+    glproxy_context_set(glproxy_ctx1);
     if (!wglMakeCurrent(hdc, ctx1)) {
         fprintf(stderr, "Failed to make context current\n");
         return 1;
     }
 
-    if (epoxy_gl_version() < 20) {
+    if (glproxy_gl_version() < 20) {
         /* We could possibly do a 1.3 entrypoint or something instead. */
         fprintf(stderr, "Test relies on overriding a GL 2.0 entrypoint\n");
         return 77;
     }
 
-    /* Force resolving epoxy_wglGetProcAddress. */
+    /* Force resolving glproxy_wglGetProcAddress. */
     void* x = wglGetProcAddress("glCreateShader");
 
-    test_createshader(hdc, ctx1, epoxy_ctx1);
-    test_createshader(hdc, ctx1, epoxy_ctx1);
-    test_createshader(hdc, ctx2, epoxy_ctx2);
-    test_createshader(hdc, ctx2, epoxy_ctx2);
-    test_createshader(hdc, ctx1, epoxy_ctx1);
-    test_createshader(hdc, ctx2, epoxy_ctx2);
+    test_createshader(hdc, ctx1, glproxy_ctx1);
+    test_createshader(hdc, ctx1, glproxy_ctx1);
+    test_createshader(hdc, ctx2, glproxy_ctx2);
+    test_createshader(hdc, ctx2, glproxy_ctx2);
+    test_createshader(hdc, ctx1, glproxy_ctx1);
+    test_createshader(hdc, ctx2, glproxy_ctx2);
 
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(ctx1);
     wglDeleteContext(ctx2);
-    epoxy_context_destroy(epoxy_ctx1);
-    epoxy_context_destroy(epoxy_ctx2);
+    glproxy_context_destroy(glproxy_ctx1);
+    glproxy_context_destroy(glproxy_ctx2);
 
     return !pass;
 }

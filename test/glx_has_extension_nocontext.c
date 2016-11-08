@@ -31,8 +31,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include <err.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/glx.h"
 #include <X11/Xlib.h>
 
 #include "glx_common.h"
@@ -45,10 +45,10 @@ int main(void)
 
     dpy = get_display_or_skip();
 
-    if (!epoxy_has_glx_extension(dpy, 0, "GLX_ARB_get_proc_address"))
+    if (!glproxy_has_glx_extension(dpy, 0, "GLX_ARB_get_proc_address"))
         errx(1, "Implementation reported absence of GLX_ARB_get_proc_address");
 
-    if (epoxy_has_glx_extension(dpy, 0, "GLX_ARB_ham_sandwich"))
+    if (glproxy_has_glx_extension(dpy, 0, "GLX_ARB_ham_sandwich"))
         errx(1, "Implementation reported presence of GLX_ARB_ham_sandwich");
 
     return pass != true;

@@ -54,7 +54,7 @@ class GLFunction(object):
 
 
         self.wrapped_name = name
-        self.public = 'EPOXY_IMPORTEXPORT '
+        self.public = 'glproxy_IMPORTEXPORT '
 
         # This is the string of C code for passing through the
         # arguments to the function.
@@ -451,13 +451,13 @@ class Generator(object):
         self.write_function_ptr_typedefs()
 
         for func in self.sorted_functions:
-            self.outln('EPOXY_IMPORTEXPORT {0} EPOXY_CALLSPEC epoxy_{1}({2});'.format(func.ret_type,
+            self.outln('glproxy_IMPORTEXPORT {0} glproxy_CALLSPEC glproxy_{1}({2});'.format(func.ret_type,
                                                                                      func.name,
                                                                                      func.args_decl))
             self.outln('')
 
         for func in self.sorted_functions:
-            self.outln('#define {0} epoxy_{0}'.format(func.name))
+            self.outln('#define {0} glproxy_{0}'.format(func.name))
 
     def get_function_ptr_providers(self, func):
         providers = []
@@ -601,7 +601,7 @@ class Generator(object):
         self.outln(' */')
         if is_table:
             self.outln('#if PLATFORM_HAS_{0}'.format(self.target.upper()))
-            self.outln('#include "epoxy/{0}.h"'.format(self.target))
+            self.outln('#include "glproxy/{0}.h"'.format(self.target))
         else:
             self.outln('#include "dispatch_common.h"')
             self.outln('#if PLATFORM_HAS_{0}'.format(self.target.upper()))
@@ -611,7 +611,7 @@ class Generator(object):
         self.write_inc_header(file, True)
         self.outln('struct {0}_dispatch_table {{'.format(self.target))
         for func in self.sorted_functions:
-            self.outln('    {0} epoxy_{1};'.format(func.ptr_type, func.wrapped_name))
+            self.outln('    {0} glproxy_{1};'.format(func.ptr_type, func.wrapped_name))
         self.outln('};')
         self.outln('')
         self.write_providers_version()
@@ -659,14 +659,14 @@ class Generator(object):
         self.outln('')
         self.dispatch_generated_inc_list = [
             'resolve',
-            'epoxy_resolve_init',
-            'epoxy_resolve_direct',
-            'epoxy_resolve_version',
-            'epoxy_resolve_extension',
+            'glproxy_resolve_init',
+            'glproxy_resolve_direct',
+            'glproxy_resolve_version',
+            'glproxy_resolve_extension',
             'dispatch_table',
             'metadata',
-            'epoxy_resolve_local',
-            'epoxy_dispatch_metadata_init',
+            'glproxy_resolve_local',
+            'glproxy_dispatch_metadata_init',
             'extensions_count',
             'extension_enum_strings',
             'entrypoint_strings',
@@ -702,7 +702,7 @@ argparser.add_argument('--dir', metavar='dir', required=True, help='Destination 
 args = argparser.parse_args()
 
 srcdir = args.dir + '/src/'
-incdir = args.dir + '/include/epoxy/'
+incdir = args.dir + '/include/glproxy/'
 
 for file in args.files:
     name = os.path.basename(file).split('.xml')[0]
@@ -712,7 +712,7 @@ for file in args.files:
     generator.drop_weird_glx_functions()
 
     # This is an ANSI vs Unicode function, handled specially by
-    # include/epoxy/wgl.h
+    # include/glproxy/wgl.h
     if 'wglUseFontBitmaps' in generator.functions:
         del generator.functions['wglUseFontBitmaps']
 

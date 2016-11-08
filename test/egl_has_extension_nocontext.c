@@ -32,8 +32,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "epoxy/gl.h"
-#include "epoxy/egl.h"
+#include "glproxy/gl.h"
+#include "glproxy/egl.h"
 
 #include "egl_common.h"
 
@@ -58,12 +58,12 @@ int main(void)
         an_extension = strdup(extensions);
     }
 
-    if (!epoxy_has_egl_extension(dpy, an_extension))
+    if (!glproxy_has_egl_extension(dpy, an_extension))
         fprintf(stderr, "Implementation reported absence of %s", an_extension);
 
     free(an_extension);
 
-    if (epoxy_has_egl_extension(dpy, "GLX_ARB_ham_sandwich"))
+    if (glproxy_has_egl_extension(dpy, "GLX_ARB_ham_sandwich"))
         fprintf(stderr, "Implementation reported presence of GLX_ARB_ham_sandwich");
 
     return pass != true;

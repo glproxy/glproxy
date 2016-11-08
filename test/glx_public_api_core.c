@@ -25,8 +25,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <err.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
+#include "glproxy/gl.h"
+#include "glproxy/glx.h"
 #include <X11/Xlib.h>
 
 #include "glx_common.h"
@@ -43,15 +43,15 @@ test_has_extensions(void)
     for (int i = 0; i < num_extensions; i++) {
         char *ext = (char *)glGetStringi(GL_EXTENSIONS, i);
 
-        if (!epoxy_has_gl_extension(ext)) {
+        if (!glproxy_has_gl_extension(ext)) {
             fprintf(stderr, "GL implementation reported support for %s, "
-                    "but epoxy didn't\n", ext);
+                    "but glproxy didn't\n", ext);
             return false;
         }
     }
 
-    if (epoxy_has_gl_extension("GL_ARB_ham_sandwich")) {
-        fprintf(stderr, "epoxy implementation reported support for "
+    if (glproxy_has_gl_extension("GL_ARB_ham_sandwich")) {
+        fprintf(stderr, "glproxy implementation reported support for "
                 "GL_ARB_ham_sandwich, but it shouldn't\n");
         return false;
     }
@@ -62,7 +62,7 @@ test_has_extensions(void)
 static bool
 test_gl_version(void)
 {
-    int gl_version, epoxy_version;
+    int gl_version, glproxy_version;
     int major, minor;
 
     glGetIntegerv(GL_MAJOR_VERSION, &major);
@@ -76,11 +76,11 @@ test_gl_version(void)
         return false;
     }
 
-    epoxy_version = epoxy_gl_version();
-    if (epoxy_version != gl_version) {
+    glproxy_version = glproxy_gl_version();
+    if (glproxy_version != gl_version) {
         fprintf(stderr,
-                "Epoxy reported GL version %d, should be %d\n",
-                epoxy_version, gl_version);
+                "glproxy reported GL version %d, should be %d\n",
+                glproxy_version, gl_version);
         return false;
     }
 
@@ -90,7 +90,7 @@ test_gl_version(void)
 static bool
 test_glx_version(void)
 {
-    int version = epoxy_glx_version(dpy, 0);
+    int version = glproxy_glx_version(dpy, 0);
     const char *version_string;
     int ret;
     int server_major, server_minor;
@@ -149,7 +149,7 @@ int main(void)
 
     dpy = get_display_or_skip();
 
-    if (!epoxy_has_glx_extension(dpy, 0, "GLX_ARB_create_context_profile"))
+    if (!glproxy_has_glx_extension(dpy, 0, "GLX_ARB_create_context_profile"))
         errx(77, "Test requires GLX_ARB_create_context_profile");
 
     visinfo = get_glx_visual(dpy);
