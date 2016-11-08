@@ -153,17 +153,21 @@ meant replacing every single piece of GLEW, so we built
 piglit-dispatch from scratch.  And since we wanted to reuse it in
 other GL-related projects, this is the result.
 
-Windows issues
+Multiple-Thread safe and multiple different context in the same thread
 ---------------
+For main thread single opengl context, we have a global constructor to
+initiate a GLproxy context to respond to WGL/EGL/GLX/GL calles, and choose
+the system default one, for the GL context manager, the detecting order is:
+* For Win32, the order is [`WGL`，`EGL`(Google ANGLE) ]
+* For Linux, the order is [`GLX`, `EGL`]
+* For MacOS, the order is [`CGL`(we provide no proxy for CGL), `GLX`]
+* For iOS, there order is [`EAGL`(we provide no proxy for EAGL)]
+* For iOS, there order is [`EAGL`(we provide no proxy for EAGL)]
+For GL calls proxy, we first detecting the which type of GL context it is.
+then binding the following calls to that context permanantly.
+If we want to switch the GL context, using the following APIs to do that:
+`glproxy_context_create`
+`glproxy_context_get`
+`glproxy_context_set`
+`glproxy_context_destroy`
 
-The automatic per-context symbol resolution for win32 requires that
-glproxy knows when `wglMakeCurrent()` is called, because
-wglGetProcAddress() return values depend on the context's device and
-pixel format.  If `wglMakeCurrent()` is called from outside of
-glproxy (in a way that might change the device or pixel format), then
-glproxy needs to be notified of the change using the
-`glproxy_handle_external_wglMakeCurrent()` function.
-
-The win32 `wglMakeCurrent()` variants are slower than they should be,
-because they should be caching the resolved dispatch tables instead of
-resetting an entire thread-local dispatch table every time.
