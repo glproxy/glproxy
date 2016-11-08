@@ -368,23 +368,6 @@ GLPROXY_IMPORTEXPORT int glproxy_glx_version(Display *dpy, int screen) {
     return ret;
 }
 
-/**
-* If we can determine the GLX extension support from the current
-* context, then return that, otherwise give the answer that will just
-* send us on to get_proc_address().
-*/
-bool glproxy_conservative_has_glx_extension(const char *ext) {
-    Display *dpy = glXGetCurrentDisplay();
-    GLXContext ctx = glXGetCurrentContext();
-    int screen;
-
-    if (!dpy || !ctx)
-        return true;
-
-    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
-
-    return glproxy_has_glx_extension(dpy, screen, ext);
-}
 
 GLPROXY_IMPORTEXPORT bool glproxy_has_glx_extension(Display *dpy, int screen, const char *ext) {
     /* No, you can't just use glXGetClientString or
@@ -596,11 +579,11 @@ GLPROXY_IMPORTEXPORT int glproxy_gl_version(void) {
     return tls->gl_version;
 }
 
-void cgl_glproxy_resolve_init(tls_ptr tls) {
 #if PLATFORM_HAS_CGL
+void cgl_glproxy_resolve_init(tls_ptr tls) {
 #error Implement it for apple cgl
-#endif
 }
+#endif
 
 #if PLATFORM_HAS_WGL
 void wgl_glproxy_resolve_init(tls_ptr tls) {
@@ -629,8 +612,8 @@ enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const ch
 }
 #endif
 
-void glx_glproxy_resolve_init(tls_ptr tls) {
 #if PLATFORM_HAS_GLX
+void glx_glproxy_resolve_init(tls_ptr tls) {
     if (!tls->gl_called) {
         if (!tls->glx_metadata.inited) {
             if (!tls->has_parameters) {
@@ -658,7 +641,6 @@ void glx_glproxy_resolve_init(tls_ptr tls) {
         }
     }
     tls->glx_metadata.inited = true;
-#endif /* PLATFORM_HAS_GLX */
 }
 
 enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
@@ -666,15 +648,33 @@ enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char*
     return DISPATCH_RESOLVE_RESULT_OK;
 }
 
+
+/**
+* If we can determine the GLX extension support from the current
+* context, then return that, otherwise give the answer that will just
+* send us on to get_proc_address().
+*/
+bool glproxy_conservative_has_glx_extension(const char *ext) {
+    Display *dpy = glXGetCurrentDisplay();
+    GLXContext ctx = glXGetCurrentContext();
+    int screen;
+
+    if (!dpy || !ctx)
+        return true;
+
+    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
+
+    return glproxy_has_glx_extension(dpy, screen, ext);
+}
+
 enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
-#if PLATFORM_HAS_GLX
-    if (glproxy_conservative_has_glx_extension(tls, extension)) {
+    if (glproxy_conservative_has_glx_extension(extension)) {
         *ptr = glXGetProcAddress((const GLubyte *)name);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
-#endif
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
+#endif /* PLATFORM_HAS_GLX */
 
 void gl_glproxy_resolve_init(tls_ptr tls) {
     tls->gl_called = true;

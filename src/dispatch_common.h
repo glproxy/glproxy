@@ -72,7 +72,8 @@
   static void _func ## _wrapper(void) { _func(); } \
 
 #define DESTRUCT(_func) \
-  static void _func ## _wrapper(void) __attribute__((destructor)) { _func(); }
+  static void _func ## _wrapper(void) __attribute__((destructor)); \
+  static void _func ## _wrapper(void) { _func(); }
 
 #elif defined (_MSC_VER) && (_MSC_VER >= 1500)
 #define CONSTRUCT(_func) \
@@ -212,9 +213,11 @@ enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char*
 enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
 #endif
 
+#if PLATFORM_HAS_GLX
 void glx_glproxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
 enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+#endif
 
 void gl_glproxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
