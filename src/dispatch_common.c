@@ -419,7 +419,6 @@ GLPROXY_IMPORTEXPORT void glproxy_init_tls(void) {
     inited = true;
     glproxy_context_set(global_context);
 }
-CONSTRUCT(glproxy_init_tls)
 
 GLPROXY_IMPORTEXPORT void glproxy_uninit_tls(void) {
     if (!inited) {
@@ -438,7 +437,8 @@ GLPROXY_IMPORTEXPORT void glproxy_uninit_tls(void) {
     glproxy_dispatch_common_tls_index = 0;
     inited = false;
 }
-DESTRUCT(glproxy_uninit_tls)
+
+GLOBAL_STAIC_FUNCTION(glproxy_init_tls, glproxy_uninit_tls)
 
 static void glproxy_context_handles_open(tls_ptr tls) {
     tls->context.handles.cgl = dlopen_handle(tls->context.cgl_name, NULL);

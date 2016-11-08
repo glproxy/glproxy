@@ -73,26 +73,32 @@
 #include <err.h>
 #include <pthread.h>
 #endif
-
 #ifdef __GNUC__
-#define CONSTRUCT(_func) \
-  static void _func ## _wrapper(void) __attribute__((constructor)); \
-  static void _func ## _wrapper(void) { _func(); } \
-
-#define DESTRUCT(_func) \
-  static void _func ## _wrapper(void) __attribute__((destructor)); \
-  static void _func ## _wrapper(void) { _func(); }
+#define GLOBAL_STAIC_FUNCTION(construct, destruct) \
+  static void construct ## _constructor(void) __attribute__((constructor)); \
+  static void construct ## _constructor(void) { construct(); } \
+  static void destruct ## _destructor(void) __attribute__((destructor)); \
+  static void destruct ## _destructor(void) { destruct(); }
 
 #elif defined (_MSC_VER) && (_MSC_VER >= 1500)
-#define CONSTRUCT(_func) \
-  static int _func ## _wrapper(void) { _func(); return 0; } \
-  __pragma(section(".CRT$XCU",read)) \
-  __declspec(allocate(".CRT$XCU")) static int (* _array ## _func)(void) = _func ## _wrapper;
 
-#define DESTRUCT(_func) \
-  static int _func ## _constructor(void) { atexit (_func); return 0; } \
-  __pragma(section(".CRT$XCU",read)) \
-  __declspec(allocate(".CRT$XCU")) static int (* _array ## _func)(void) = _func ## _constructor;
+// Refer to http://stackoverflow.com/questions/36841629/visual-c-2015-gl-whole-program-optimization-and-optref-optimize-referenc
+#ifdef _M_X64
+#define INCLUDE_SYM(s) comment(linker, "/include:" #s)
+#else
+#define INCLUDE_SYM(s) comment(linker, "/include:_" #s)
+#endif
+
+#pragma section(".CRT$XCU",read)
+#define GLOBAL_STAIC_FUNCTION(construct, destruct) \
+static void destruct ## _destructor(void) { destruct(); } \
+static int construct ## _constructor(void) { \
+    construct(); \
+    atexit(destruct ## _destructor); \
+    return 0; } \
+__declspec(allocate(".CRT$XCU")) \
+int (*construct ## _array)(void) = construct ## _constructor; \
+__pragma(INCLUDE_SYM(construct ## _array))
 
 #else
 #error "You will need constructor support for your compiler"
@@ -104,16 +110,16 @@
 #define GLPROXY_NOINLINE __declspec(noinline)
 #endif
 
-#define GEN_THUNK(target, name, args, passthrough, offset, func_type)         \
-    GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC                                     \
+#define GEN_THUNK(target, name, args, passthrough, offset, func_type)          \
+    GLPROXY_IMPORTEXPORT void GLPROXY_CALLSPEC                                 \
     name args                                                                  \
     {                                                                          \
         func_type func_symbol = target##_resolve(offset);                      \
         func_symbol passthrough;                                               \
     }
 
-#define GEN_THUNK_RET(target, ret, name, args, passthrough, offset, func_type)\
-    GLPROXY_IMPORTEXPORT ret GLPROXY_CALLSPEC                                      \
+#define GEN_THUNK_RET(target, ret, name, args, passthrough, offset, func_type) \
+    GLPROXY_IMPORTEXPORT ret GLPROXY_CALLSPEC                                  \
     name args                                                                  \
     {                                                                          \
         func_type func_symbol = target##_resolve(offset);                      \
