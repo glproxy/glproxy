@@ -68,7 +68,8 @@
 
 #ifdef __GNUC__
 #define CONSTRUCT(_func) \
-  static void _func ## _wrapper(void) __attribute__((constructor)) { _func(); }
+  static void _func ## _wrapper(void) __attribute__((constructor)); \
+  static void _func ## _wrapper(void) { _func(); } \
 
 #define DESTRUCT(_func) \
   static void _func ## _wrapper(void) __attribute__((destructor)) { _func(); }
