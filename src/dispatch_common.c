@@ -635,7 +635,7 @@ enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char*
 * context, then return that, otherwise give the answer that will just
 * send us on to get_proc_address().
 */
-bool glproxy_conservative_has_glx_extension(tls_ptr tls, const char *ext) {
+bool glproxy_conservative_has_glx_extension(const char *ext) {
     Display *dpy = glXGetCurrentDisplay();
     GLXContext ctx = glXGetCurrentContext();
     int screen;
@@ -649,7 +649,7 @@ bool glproxy_conservative_has_glx_extension(tls_ptr tls, const char *ext) {
 }
 
 enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
-    if (glproxy_conservative_has_glx_extension(tls, extension)) {
+    if (glproxy_conservative_has_glx_extension(extension)) {
         *ptr = tls->glx_get_proc((const GLubyte *)name);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
@@ -679,7 +679,7 @@ void gl_glproxy_resolve_init(tls_ptr tls) {
         if (!get_string) {
             fprintf(stderr, "Can not resolve glGetString even though we have already found the current context\n");
         } else {
-            tls->gl_version = glproxy_internal_gl_version(get_string(GL_VERSION), 0);
+            tls->gl_version = glproxy_internal_gl_version((const char*)get_string(GL_VERSION), 0);
         }
     } else {
         tls->gl_metadata.inited = true;

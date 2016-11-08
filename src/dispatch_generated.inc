@@ -53,7 +53,7 @@ GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
 static void current_glproxy_dispatch_metadata_init(struct dispatch_metadata *data, bool inited) {
     data->extensions_count = current_extensions_count;
     data->extension_enum_strings = current_extension_enum_strings;
-    data->entrypoint_strings = current_entrypoint_strings;
+    data->entrypoint_strings = (const char*)current_entrypoint_strings;
     data->resolve_info_table = current_resolve_info_table;
     data->resolve_offsets = current_resolve_offsets;
     data->method_name_offsets = current_method_name_offsets;

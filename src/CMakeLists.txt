@@ -27,7 +27,12 @@ if (GLPROXY_BUILD_SHARED)
 else ()
     add_library ("${GLPROXY_TARGET_NAME}" STATIC ${GLPROXY_TARGET_CODE})
 endif ()
-target_link_libraries ("${GLPROXY_TARGET_NAME}" ${CMAKE_DL_LIBS})
+set (GLPROXY_DL_LIBS ${CMAKE_DL_LIBS})
+if (NOT WIN32) 
+  list (APPEND GLPROXY_DL_LIBS "pthread")
+endif()
+
+target_link_libraries ("${GLPROXY_TARGET_NAME}" ${GLPROXY_DL_LIBS})
 if (WIN32 OR ANDROID)
     set_target_properties ("${GLPROXY_TARGET_NAME}" PROPERTIES
                            OUTPUT_NAME "${GLPROXY_TARGET_NAME}_${TARGET_ABI_VER}")

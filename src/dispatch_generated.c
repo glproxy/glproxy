@@ -2,7 +2,7 @@
 #include "dispatch_common.h"
 #include <stdio.h>
 
-static init_dispatch_metadata_metadata(struct dispatch_metadata *data) {
+static void init_dispatch_metadata_metadata(struct dispatch_metadata *data) {
     const struct dispatch_resolve_info *iter = NULL;
     khronos_uint16_t offset = 0;
     khronos_uint16_t pos = 0;
