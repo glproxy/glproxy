@@ -68,12 +68,10 @@
 
 #ifdef __GNUC__
 #define CONSTRUCT(_func) \
-static void _func ## _wrapper(void) __attribute__((constructor)) \
-{ _func(); }
+  static void _func ## _wrapper(void) __attribute__((constructor)) { _func(); }
 
 #define DESTRUCT(_func) \
-static void _func ## _wrapper(void) __attribute__((destructor)) \
-{ _func(); }
+  static void _func ## _wrapper(void) __attribute__((destructor)) { _func(); }
 
 #elif defined (_MSC_VER) && (_MSC_VER >= 1500)
 #define CONSTRUCT(_func) \
