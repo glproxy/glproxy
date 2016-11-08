@@ -52,10 +52,7 @@ MSVC open the solution in Visual studio and build the solution.
 * To rebuild the generated headers from the specs, add
 `-DGLPROXY_REBUILD_FROM_SPECS=ON` to the `cmake` invocation.
 
-* To build also static libraries, add
-`-DGLPROXY_BUILD_STATIC=ON` to the `cmake` invocation.
-
-* To disable building shared libraries, add
+* To disable building shared libraries and building static libraries, add
 `-DGLPROXY_BUILD_SHARED=OFF` to the `cmake` invocation.
 
 * To disable building tests, add

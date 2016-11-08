@@ -66,7 +66,6 @@ cmake_dependent_option (GLPROXY_SUPPORT_GLX "Build with GLX support"
                         "${GLPROXY_GLX_FOUND}" "NOT (WIN32 OR ANDROID)" OFF)
 
 option (GLPROXY_BUILD_SHARED "Build a shared library" ON)
-option (GLPROXY_BUILD_STATIC "Build a static library" OFF)
 
 if (DEFINED CMAKE_TOOLCHAIN_FILE)
     set (GLPROXY_BUILD_TESTS_DEFAULT FALSE)

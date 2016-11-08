@@ -1,11 +1,4 @@
 if (GLPROXY_BUILD_TESTS)
-
-    if (GLPROXY_BUILD_SHARED)
-        set (TESTS_TARGET_NAME "${GLPROXY_TARGET_NAME}_shared")
-    else ()
-        set (TESTS_TARGET_NAME "${GLPROXY_TARGET_NAME}_static")
-    endif ()
-
     if (GLPROXY_SUPPORT_EGL)
         if (EGL_FOUND)
             set (GLPROXY_BUILD_EGL_TESTS TRUE)
@@ -50,10 +43,10 @@ if (GLPROXY_BUILD_TESTS)
             set (GLPROXY_TEST_LINKAGE_TYPE BOTH)
         endif ()
         
-        if (GLPROXY_BUILD_SHARED AND NOT GLPROXY_TEST_LINKAGE_TYPE STREQUAL GLPROXY_LINKAGE_TYPE_STATIC)
+        if (NOT GLPROXY_TEST_LINKAGE_TYPE STREQUAL GLPROXY_LINKAGE_TYPE_STATIC)
             set (GLPROXY_TEST_TARGET_NAME "test_shared_${GLPROXY_TEST_NAME}")
             add_executable (${GLPROXY_TEST_TARGET_NAME} ${GLPROXY_TEST_CODE})
-            target_link_libraries (${GLPROXY_TEST_TARGET_NAME} "${GLPROXY_TARGET_NAME}_shared" ${GLPROXY_TEST_DEPS})
+            target_link_libraries (${GLPROXY_TEST_TARGET_NAME} "${GLPROXY_TARGET_NAME}" ${GLPROXY_TEST_DEPS})
             target_compile_definitions (${GLPROXY_TEST_TARGET_NAME} PRIVATE
                                         ${GLPROXY_TEST_COMPILE_DEFS})
             target_include_directories (${GLPROXY_TEST_TARGET_NAME} PRIVATE ${GLPROXY_INCLUDE_DIRS})
@@ -62,24 +55,10 @@ if (GLPROXY_BUILD_TESTS)
             add_test (NAME "${GLPROXY_TEST_TARGET_NAME}"
                       COMMAND "${CMAKE_COMMAND}"
                           "-DGLPROXY_TEST_CMD=$<TARGET_FILE:${GLPROXY_TEST_TARGET_NAME}>"
-                          "-DGLPROXY_SHARED_LIB=$<TARGET_FILE:${GLPROXY_TARGET_NAME}_shared>"
+                          "-DGLPROXY_SHARED_LIB=$<TARGET_FILE:${GLPROXY_TARGET_NAME}>"
                           "-P" "${CMAKE_CURRENT_SOURCE_DIR}/../cmake/glproxy_run_test_wrapper.cmake")
         endif ()
         
-        if (GLPROXY_BUILD_STATIC AND NOT GLPROXY_TEST_LINKAGE_TYPE STREQUAL GLPROXY_LINKAGE_TYPE_SHARED)
-            set (GLPROXY_TEST_TARGET_NAME "test_static_${GLPROXY_TEST_NAME}")
-            add_executable (${GLPROXY_TEST_TARGET_NAME} ${GLPROXY_TEST_CODE})
-            target_link_libraries (${GLPROXY_TEST_TARGET_NAME} "${GLPROXY_TARGET_NAME}_static" ${GLPROXY_TEST_DEPS})
-            target_compile_definitions (${GLPROXY_TEST_TARGET_NAME} PRIVATE
-                                        ${GLPROXY_TEST_COMPILE_DEFS} GLPROXY_STATIC_LIB)
-            target_include_directories (${GLPROXY_TEST_TARGET_NAME} PRIVATE ${GLPROXY_INCLUDE_DIRS})
-            set_target_properties (${GLPROXY_TEST_TARGET_NAME} PROPERTIES
-                                   LINK_FLAGS "${GLPROXY_TEST_LINK_FLAGS}")
-            add_test (NAME "${GLPROXY_TEST_TARGET_NAME}"
-                      COMMAND "${CMAKE_COMMAND}"
-                          "-DGLPROXY_TEST_CMD=$<TARGET_FILE:${GLPROXY_TEST_TARGET_NAME}>"
-                          "-P" "${CMAKE_CURRENT_SOURCE_DIR}/../cmake/glproxy_run_test_wrapper.cmake")
-        endif ()
         
     endfunction ()
 
