@@ -12,7 +12,6 @@ project (GLproxy VERSION 1.3.1 LANGUAGES C)
 set (GLPROXY_TARGET_NAME glproxy)
 set (TARGET_VER 1.3.1_yaronct-5)
 set (TARGET_ABI_VER 0)
-set (TARGET_OUTPUT_NAME "${GLPROXY_TARGET_NAME}")
 
 include (GNUInstallDirs)
 include (CMakeDependentOption)

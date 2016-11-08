@@ -39,15 +39,19 @@ supports building and running tests, both for the static and the shared library.
 
 Building with CMake should be as simple as running:
 
-    cd <my-build_dir>
-    cmake -G <my-generator> <my-source-dir>
+    mkdir build
+    cd build
+    cmake -G "<my-generator>" ..
 
 (run `cmake -h` see a list of possible generators). Then, to build the project,
 depending on the type of generator you use, e.g. for Unix type `make`, and for
 MSVC open the solution in Visual studio and build the solution.
 
-* NOTE: To build for 64 bit with MSVC add ` Win64` to the generator name, e.g.
-  `Visual Studio 14 2015 Win64` or `Visual Studio 14 2015`.
+* To build for 32 bit with MSVC, using the following command
+  cmake -G "Visual Studio 14 2015" ..
+
+* To build for 64 bit with MSVC add ` Win64` to the generator name, e.g.
+  cmake -G "Visual Studio 14 2015 Win64" ..
 
 * To rebuild the generated headers from the specs, add
 `-DGLPROXY_REBUILD_FROM_SPECS=ON` to the `cmake` invocation.

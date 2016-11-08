@@ -52,6 +52,9 @@ if (GLPROXY_BUILD_TESTS)
             target_include_directories (${GLPROXY_TEST_TARGET_NAME} PRIVATE ${GLPROXY_INCLUDE_DIRS})
             set_target_properties (${GLPROXY_TEST_TARGET_NAME} PROPERTIES
                                    LINK_FLAGS "${GLPROXY_TEST_LINK_FLAGS}")
+           if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC)
+              target_compile_options(${GLPROXY_TEST_TARGET_NAME} PRIVATE -wd4996)
+            endif ()
             add_test (NAME "${GLPROXY_TEST_TARGET_NAME}"
                       COMMAND "${CMAKE_COMMAND}"
                           "-DGLPROXY_TEST_CMD=$<TARGET_FILE:${GLPROXY_TEST_TARGET_NAME}>"

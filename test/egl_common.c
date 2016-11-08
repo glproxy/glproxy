@@ -56,7 +56,6 @@ make_window_and_test(void** nativeWindow)
     HWND hwnd;
     HINSTANCE hcurrentinst = NULL;
     WNDCLASS window_class;
-    MSG msg;
     bool finished = 0;
     bool *ptr = &finished;
 
