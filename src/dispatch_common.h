@@ -197,7 +197,7 @@ static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
 #if defined(_WIN32)
     TlsSetValue(index, (LPVOID)value);
 #else
-    pthread_setspecific(index, (void*)tls_value);
+    pthread_setspecific(index, (void*)value);
 #endif
 }
 
