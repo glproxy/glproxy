@@ -602,8 +602,8 @@ void cgl_glproxy_resolve_init(tls_ptr tls) {
 #endif
 }
 
-void wgl_glproxy_resolve_init(tls_ptr tls) {
 #if PLATFORM_HAS_WGL
+void wgl_glproxy_resolve_init(tls_ptr tls) {
     tls->wgl_metadata.inited = true;
     if (tls->gl_called && tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
         PFNWGLGETCURRENTCONTEXTPROC sym = do_dlsym_by_handle(tls->context.handles.wgl, "wglGetCurrentContext", NULL, false);
@@ -613,7 +613,6 @@ void wgl_glproxy_resolve_init(tls_ptr tls) {
         }
     }
     tls->wgl_get_proc = do_dlsym_by_handle(tls->context.handles.wgl, "wglGetProcAddress", NULL, false);
-#endif
 }
 
 enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr) {
@@ -622,14 +621,13 @@ enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char*
 }
 
 enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
-#if PLATFORM_HAS_WGL
     if (glproxy_conservative_has_wgl_extension(extension)) {
         *ptr = tls->wgl_get_proc(name);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
-#endif
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
+#endif
 
 void glx_glproxy_resolve_init(tls_ptr tls) {
 #if PLATFORM_HAS_GLX

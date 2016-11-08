@@ -201,9 +201,11 @@ static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
 #endif
 }
 
+#if PLATFORM_HAS_WGL
 void wgl_glproxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
 enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+#endif
 
 void glx_glproxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
