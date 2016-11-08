@@ -651,7 +651,9 @@ static void load_extension_list(struct dispatch_metadata *data, const char *exte
                 }
                 memcpy(tmp_str, prev, len);
                 tmp_str[len] = 0;
-                fprintf(stderr, "Can not found the extension %s for extension_bitmap, that's not possible!\n", tmp_str);
+                if (memcmp(tmp_str, "WGL_", 4) != 0) {
+                    fprintf(stderr, "Can not found the extension %s for extension_bitmap, that's not possible!\n", tmp_str);
+                }
             }
             prev = ptr + 1;
         }
@@ -694,7 +696,12 @@ void gl_glproxy_init_version_and_extensions(tls_ptr tls) {
             khronos_uint16_t i = find_extension_pos(data, gl_ext, len);
             if (i < data->extensions_count) {
                 data->extension_bitmap[i >> 5] |= ((khronos_uint32_t)1) << (i & 31);
-            } else {
+            }
+            else
+#if PLATFORM_HAS_WGL
+            if (memcmp(gl_ext, "WGL_", 4) != 0)
+#endif
+            {
                 fprintf(stderr, "Can not found the extension %s for extension_bitmap, that's not possible!\n", gl_ext);
             }
         }

@@ -856,26 +856,6 @@ typedef GLintptr GLvdpauSurfaceNV;
 #define GL_WIN_phong_shading 1
 #define GL_WIN_specular_fog 1
 #define GL_WIN_swap_hint 1
-#define WGL_ARB_buffer_region 1
-#define WGL_ARB_create_context 1
-#define WGL_ARB_create_context_profile 1
-#define WGL_ARB_create_context_robustness 1
-#define WGL_ARB_extensions_string 1
-#define WGL_ARB_framebuffer_sRGB 1
-#define WGL_ARB_make_current_read 1
-#define WGL_ARB_multisample 1
-#define WGL_ARB_pbuffer 1
-#define WGL_ARB_pixel_format 1
-#define WGL_EXT_create_context_es2_profile 1
-#define WGL_EXT_create_context_es_profile 1
-#define WGL_EXT_depth_float 1
-#define WGL_EXT_extensions_string 1
-#define WGL_EXT_pixel_format_packed_float 1
-#define WGL_EXT_swap_control 1
-#define WGL_EXT_swap_control_tear 1
-#define WGL_INTEL_cl_sharing 1
-#define WGL_NV_DX_interop 1
-#define WGL_NV_DX_interop2 1
 
 #define GL_NEXT_BUFFER_NV                                                          -2
 #define GL_SKIP_COMPONENTS4_NV                                                     -3

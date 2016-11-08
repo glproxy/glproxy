@@ -36392,26 +36392,6 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_SUN_multi_draw_arrays" supported="gl"></extension>
         <extension name="GL_EXT_texture_rectangle" supported="gl"></extension>
         <extension name="GL_WIN_swap_hint" supported="gl"></extension>
-        <extension name="WGL_EXT_depth_float" supported="gl"></extension>
-        <extension name="WGL_ARB_buffer_region" supported="gl"></extension>
-        <extension name="WGL_ARB_extensions_string" supported="gl"></extension>
-        <extension name="WGL_ARB_make_current_read" supported="gl"></extension>
-        <extension name="WGL_ARB_pixel_format" supported="gl"></extension>
-        <extension name="WGL_ARB_pbuffer" supported="gl"></extension>
-        <extension name="WGL_EXT_extensions_string" supported="gl"></extension>
-        <extension name="WGL_EXT_swap_control" supported="gl"></extension>
-        <extension name="WGL_EXT_swap_control_tear" supported="gl"></extension>
-        <extension name="WGL_ARB_multisample" supported="gl"></extension>
-        <extension name="WGL_ARB_framebuffer_sRGB" supported="gl"></extension>
-        <extension name="WGL_ARB_create_context" supported="gl"></extension>
-        <extension name="WGL_ARB_create_context_profile" supported="gl"></extension>
-        <extension name="WGL_EXT_pixel_format_packed_float" supported="gl"></extension>
-        <extension name="WGL_EXT_create_context_es_profile" supported="gl"></extension>
-        <extension name="WGL_EXT_create_context_es2_profile" supported="gl"></extension>
-        <extension name="WGL_NV_DX_interop" supported="gl"></extension>
-        <extension name="WGL_INTEL_cl_sharing" supported="gl"></extension>
-        <extension name="WGL_NV_DX_interop2" supported="gl"></extension>
-        <extension name="WGL_ARB_create_context_robustness" supported="gl"></extension>
 
         <extension name="GL_3DFX_multisample" supported="gl">
             <require>

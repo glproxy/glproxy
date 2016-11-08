@@ -63,6 +63,20 @@ test_function(HDC hdc)
             pass = false;
         }
     }
+    {
+        int i;
+        int num_extensions;
+        glGetIntegerv(GL_NUM_EXTENSIONS, &num_extensions);
+        for (i = 0; i < num_extensions; ++i) {
+            const char *gl_ext = (const char *)glGetStringi(GL_EXTENSIONS, i);
+            if (memcmp(gl_ext, "WGL_", 4) != 0) {
+                pass = pass && glproxy_has_gl_extension(gl_ext);
+                if (!pass) {
+                    fprintf(stderr, "Can not found the extension:%s\n", gl_ext);
+                }
+            }
+        }
+    }
 
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(ctx);

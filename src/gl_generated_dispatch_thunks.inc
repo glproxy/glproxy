@@ -26,9 +26,9 @@
 #include "dispatch_common.h"
 #if PLATFORM_HAS_GL
 
-#define gl_extensions_count 778
+#define gl_extensions_count 758
 
-static khronos_uint32_t gl_extension_bitmap[25];
+static khronos_uint32_t gl_extension_bitmap[24];
 
 static const char gl_extension_enum_strings[] =
     "GL_3DFX_multisample\0"
@@ -789,26 +789,6 @@ static const char gl_extension_enum_strings[] =
     "GL_WIN_phong_shading\0"
     "GL_WIN_specular_fog\0"
     "GL_WIN_swap_hint\0"
-    "WGL_ARB_buffer_region\0"
-    "WGL_ARB_create_context\0"
-    "WGL_ARB_create_context_profile\0"
-    "WGL_ARB_create_context_robustness\0"
-    "WGL_ARB_extensions_string\0"
-    "WGL_ARB_framebuffer_sRGB\0"
-    "WGL_ARB_make_current_read\0"
-    "WGL_ARB_multisample\0"
-    "WGL_ARB_pbuffer\0"
-    "WGL_ARB_pixel_format\0"
-    "WGL_EXT_create_context_es2_profile\0"
-    "WGL_EXT_create_context_es_profile\0"
-    "WGL_EXT_depth_float\0"
-    "WGL_EXT_extensions_string\0"
-    "WGL_EXT_pixel_format_packed_float\0"
-    "WGL_EXT_swap_control\0"
-    "WGL_EXT_swap_control_tear\0"
-    "WGL_INTEL_cl_sharing\0"
-    "WGL_NV_DX_interop\0"
-    "WGL_NV_DX_interop2\0"
 ;
 static const khronos_uint16_t gl_extension_offsets[] = {
     0,
@@ -1569,26 +1549,6 @@ static const khronos_uint16_t gl_extension_offsets[] = {
     19122,
     19143,
     19163,
-    19180,
-    19202,
-    19225,
-    19256,
-    19290,
-    19316,
-    19341,
-    19367,
-    19387,
-    19403,
-    19424,
-    19459,
-    19493,
-    19513,
-    19539,
-    19573,
-    19594,
-    19620,
-    19641,
-    19659,
 };
 
 static const khronos_uint8_t gl_entrypoint_strings[] = {
