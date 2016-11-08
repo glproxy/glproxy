@@ -24,7 +24,7 @@ static void init_dispatch_metadata_metadata(struct dispatch_metadata *data) {
 
 void glproxy_dispatch_common_tls_init(tls_ptr tls, bool inited) {
     tls->open_gl_type = DISPATCH_OPENGL_UNKNOW;
-    fprintf(stderr, "sizeof dispatch_resolve_info :%d", sizeof(struct dispatch_resolve_info));
+    fprintf(stdout, "sizeof dispatch_resolve_info :%d", (int)sizeof(struct dispatch_resolve_info));
 
 #if PLATFORM_HAS_WGL
     wgl_glproxy_dispatch_metadata_init(&(tls->wgl_metadata), inited);
