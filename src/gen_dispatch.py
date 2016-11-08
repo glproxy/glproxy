@@ -422,7 +422,9 @@ class Generator(object):
 
     def write_function_ptr_typedefs(self):
         for func in self.sorted_functions:
-            self.outln('typedef {0} (GLAPIENTRY *{1})({2});'.format(func.ret_type,
+            providers = self.get_function_ptr_providers(func)
+            if len(providers) > 0:
+              self.outln('typedef {0} (GLAPIENTRY *{1})({2});'.format(func.ret_type,
                                                                     func.ptr_type,
                                                                     func.args_decl))
 
@@ -451,7 +453,9 @@ class Generator(object):
         self.write_function_ptr_typedefs()
 
         for func in self.sorted_functions:
-            self.outln('GLPROXY_IMPORTEXPORT {0} GLPROXY_CALLSPEC glproxy_{1}({2});'.format(func.ret_type,
+            providers = self.get_function_ptr_providers(func)
+            if len(providers) > 0:
+              self.outln('GLPROXY_IMPORTEXPORT {0} GLPROXY_CALLSPEC glproxy_{1}({2});'.format(func.ret_type,
                                                                                      func.name,
                                                                                      func.args_decl))
             self.outln('')
@@ -611,7 +615,9 @@ class Generator(object):
         self.write_inc_header(file, True)
         self.outln('struct {0}_dispatch_table {{'.format(self.target))
         for func in self.sorted_functions:
-            self.outln('    {0} glproxy_{1};'.format(func.ptr_type, func.wrapped_name))
+            providers = self.get_function_ptr_providers(func)
+            if len(providers) > 0:
+              self.outln('    {0} glproxy_{1};'.format(func.ptr_type, func.wrapped_name))
         self.outln('};')
         self.outln('')
         self.write_providers_version()

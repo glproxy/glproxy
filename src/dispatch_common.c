@@ -285,10 +285,10 @@ static bool glproxy_internal_has_gl_extension(const char *ext, bool invalid_op_m
 
 #if PLATFORM_HAS_WGL
 
-GLPROXY_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *ext) {
+static bool glproxy_has_wgl_extension_internal(tls_ptr tls, HDC hdc, const char *ext) {
     PFNWGLGETEXTENSIONSSTRINGARBPROC getext;
 
-    getext = (void *)wglGetProcAddress("wglGetExtensionsStringARB");
+    getext = (void *)tls->wgl_get_proc("wglGetExtensionsStringARB");
     if (!getext) {
         fprintf(stderr,
             "Implementation unexpectedly missing "
@@ -299,20 +299,24 @@ GLPROXY_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *ext) {
     return glproxy_extension_in_string(getext(hdc), ext);
 }
 
+GLPROXY_IMPORTEXPORT bool glproxy_has_wgl_extension(HDC hdc, const char *ext) {
+    tls_ptr tls = glproxy_context_get();
+    return glproxy_has_wgl_extension_internal(tls, hdc, ext);
+}
+
 /**
 * If we can determine the WGL extension support from the current
 * context, then return that, otherwise give the answer that will just
 * send us on to get_proc_address().
 */
-bool glproxy_conservative_has_wgl_extension(const char *ext)
+bool glproxy_conservative_has_wgl_extension(tls_ptr tls, const char *ext)
 {
-    tls_ptr tls = glproxy_context_get();
     HDC hdc = wglGetCurrentDC();
 
     if (!hdc)
         return true;
 
-    return glproxy_has_wgl_extension(hdc, ext);
+    return glproxy_has_wgl_extension_internal(tls, hdc, ext);
 }
 
 #endif /* PLATFORM_HAS_WGL */
@@ -579,8 +583,8 @@ enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char*
 }
 
 enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
-    if (glproxy_conservative_has_wgl_extension(extension)) {
-        *ptr = tls->wgl_get_proc(name);
+    if (glproxy_conservative_has_wgl_extension(tls, extension)) {
+        *ptr = wglGetProcAddress(name);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
     return DISPATCH_RESOLVE_RESULT_IGNORE;
@@ -703,7 +707,7 @@ static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr) {
         break;
     case DISPATCH_OPENGL_WGL_DESKTOP:
 #if PLATFORM_HAS_WGL
-        *ptr = tls->wgl_get_proc(name);
+        *ptr = wglGetProcAddress(name);
 #endif
         break;
     case DISPATCH_OPENGL_GLX_DESKTOP:

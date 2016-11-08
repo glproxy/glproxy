@@ -69,7 +69,6 @@ struct wgl_dispatch_table {
     PFNWGLGETCURRENTDCPROC glproxy_wglGetCurrentDC;
     PFNWGLGETCURRENTREADDCARBPROC glproxy_wglGetCurrentReadDCARB;
     PFNWGLGETCURRENTREADDCEXTPROC glproxy_wglGetCurrentReadDCEXT;
-    PFNWGLGETDEFAULTPROCADDRESSPROC glproxy_wglGetDefaultProcAddress;
     PFNWGLGETDIGITALVIDEOPARAMETERSI3DPROC glproxy_wglGetDigitalVideoParametersI3D;
     PFNWGLGETEXTENSIONSSTRINGARBPROC glproxy_wglGetExtensionsStringARB;
     PFNWGLGETEXTENSIONSSTRINGEXTPROC glproxy_wglGetExtensionsStringEXT;
