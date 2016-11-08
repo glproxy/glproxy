@@ -43,8 +43,10 @@ Building with CMake should be as simple as running:
     cd build
     cmake -G "<my-generator>" ..
     cmake --build .
-Running tests should be as simple as running:
+Running tests for Win32 should be as simple as running:
     cmake --build . --target RUN_TESTS
+Running tests for Unix should be as simple as running:
+    make check
 
 (run `cmake -h` see a list of possible generators). Then, to build the project,
 depending on the type of generator you use, e.g. for Unix type `make`, and for
