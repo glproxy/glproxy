@@ -157,6 +157,8 @@ struct dispatch_resolve_info {
 
 struct dispatch_metadata {
     const char* extension_enum_strings;
+    khronos_uint32_t *extension_bitmap;
+    const khronos_uint16_t *extension_offsets;
     const char* entrypoint_strings;
     const struct dispatch_resolve_info *resolve_info_table;
     khronos_uint16_t *resolve_offsets;
@@ -227,24 +229,24 @@ static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
 #if PLATFORM_HAS_WGL
 void wgl_glproxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset);
 #endif
 
 #if PLATFORM_HAS_GLX
 void glx_glproxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
-enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset);
 #endif
 
 void gl_glproxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
 enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
-enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset);
 
 void egl_glproxy_resolve_init(tls_ptr tls);
 enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
 enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
-enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension);
+enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset);
 
 void glproxy_dispatch_common_tls_init(tls_ptr tls, bool inited);
 

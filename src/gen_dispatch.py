@@ -556,29 +556,28 @@ class Generator(object):
         self.outln('')
 
     def write_providers_extension(self):
-        providers = [self.provider_enum[k] for k in self.provider_enum.keys()]
-        extension_providers = [x for x in providers if 'extension' in x]
-        extension_providers = sorted(extension_providers, key=lambda x: x['extension'])
-        self.outln('#define {0}_extensions_count {1}'.format(self.target, len(extension_providers)))
+        self.extension_offset_map = {}
+        extension_providers = sorted(self.supported_extensions)
+        extension_count = len(extension_providers)
+        self.outln('#define {0}_extensions_count {1}'.format(self.target, extension_count))
         self.outln('')
-        self.outln('static const char *{0}_extension_enum_strings ='.format(self.target))
+        self.outln('static khronos_uint32_t {0}_extension_bitmap[{1}];'.format(self.target, ((extension_count - 1) >> 5) + 1))
+        self.outln('')
+        self.outln('static const char {0}_extension_enum_strings[] ='.format(self.target))
         offset = 0
         for extension_provider in extension_providers:
-            self.outln('    "{0}\\0"'.format(extension_provider["extension"]));
-            extension_provider["offset"] = offset
-            offset += len(extension_provider["extension"]) + 1
+            self.extension_offset_map[extension_provider] = offset
+            self.outln('    "{0}\\0"'.format(extension_provider))
+            offset = offset + 1
         self.outln(';')
-        self.outln('')
-        self.outln('enum {0}_provider_extensions {{'.format(self.target))
+        self.outln('static const khronos_uint16_t {0}_extension_offsets[] = {{'.format(self.target))
+        offset = 0
         for extension_provider in extension_providers:
-            enum_name = extension_provider["api"].upper() + "_extension_" + extension_provider["extension"]
-            extension_provider["enum_name"]= enum_name
-            self.outln('    {0} = {1},'.format(enum_name, extension_provider["offset"]))
-        self.outln('} PACKED;')
-
-        vertion_providers = [x for x in providers if 'extension' in x]
-
+            self.outln('    {0},'.format(offset))
+            offset += len(extension_provider) + 1
+        self.outln('};')
         self.outln('')
+
 
     def write_entrypoint_strings(self):
         self.entrypoint_string_offset = {}
@@ -649,7 +648,8 @@ class Generator(object):
                     self.out('DISPATCH_RESOLVE_VERSION, {0}, {1}, {2}'.format(identity, condition['enum_name'], name_offset))
                     self.has_dispatch_version = 1
                 elif ('extension' in condition):
-                    self.out('DISPATCH_RESOLVE_EXTENSION, {0}, {1}, {2}'.format(identity, condition['enum_name'], name_offset))
+                    extension_offset = self.extension_offset_map[condition['extension']]
+                    self.out('DISPATCH_RESOLVE_EXTENSION, {0}, {1} /* {2} */, {3}'.format(identity, extension_offset, condition['extension'], name_offset))
                 else:
                     raise Exception("not valid")
                 self.outln('}}, /* {0} */'.format(provider.name))
@@ -673,6 +673,8 @@ class Generator(object):
             'metadata',
             'glproxy_resolve_local',
             'glproxy_dispatch_metadata_init',
+            'extension_bitmap',
+            'extension_offsets',
             'extensions_count',
             'extension_enum_strings',
             'entrypoint_strings',

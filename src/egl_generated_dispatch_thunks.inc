@@ -4,93 +4,214 @@
 #include "dispatch_common.h"
 #if PLATFORM_HAS_EGL
 
-#define egl_extensions_count 40
+#define egl_extensions_count 100
 
-static const char *egl_extension_enum_strings =
+static khronos_uint32_t egl_extension_bitmap[4];
+
+static const char egl_extension_enum_strings[] =
     "EGL_ANDROID_blob_cache\0"
     "EGL_ANDROID_create_native_client_buffer\0"
+    "EGL_ANDROID_framebuffer_target\0"
+    "EGL_ANDROID_front_buffer_auto_refresh\0"
+    "EGL_ANDROID_image_native_buffer\0"
     "EGL_ANDROID_native_fence_sync\0"
     "EGL_ANDROID_presentation_time\0"
+    "EGL_ANDROID_recordable\0"
+    "EGL_ANGLE_d3d_share_handle_client_buffer\0"
+    "EGL_ANGLE_device_d3d\0"
     "EGL_ANGLE_query_surface_pointer\0"
+    "EGL_ANGLE_surface_d3d_texture_2d_share_handle\0"
+    "EGL_ANGLE_window_fixed_size\0"
+    "EGL_ARM_pixmap_multisample_discard\0"
+    "EGL_EXT_buffer_age\0"
+    "EGL_EXT_client_extensions\0"
+    "EGL_EXT_create_context_robustness\0"
     "EGL_EXT_device_base\0"
+    "EGL_EXT_device_drm\0"
     "EGL_EXT_device_enumeration\0"
+    "EGL_EXT_device_openwf\0"
     "EGL_EXT_device_query\0"
+    "EGL_EXT_image_dma_buf_import\0"
+    "EGL_EXT_multiview_window\0"
     "EGL_EXT_output_base\0"
+    "EGL_EXT_output_drm\0"
+    "EGL_EXT_output_openwf\0"
     "EGL_EXT_platform_base\0"
+    "EGL_EXT_platform_device\0"
+    "EGL_EXT_platform_wayland\0"
+    "EGL_EXT_platform_x11\0"
+    "EGL_EXT_protected_content\0"
+    "EGL_EXT_protected_surface\0"
     "EGL_EXT_stream_consumer_egloutput\0"
     "EGL_EXT_swap_buffers_with_damage\0"
+    "EGL_EXT_yuv_surface\0"
     "EGL_HI_clientpixmap\0"
+    "EGL_HI_colorformats\0"
+    "EGL_IMG_context_priority\0"
+    "EGL_IMG_image_plane_attribs\0"
+    "EGL_KHR_cl_event\0"
     "EGL_KHR_cl_event2\0"
+    "EGL_KHR_client_get_all_proc_addresses\0"
+    "EGL_KHR_config_attribs\0"
+    "EGL_KHR_create_context\0"
+    "EGL_KHR_create_context_no_error\0"
     "EGL_KHR_debug\0"
     "EGL_KHR_fence_sync\0"
+    "EGL_KHR_get_all_proc_addresses\0"
+    "EGL_KHR_gl_colorspace\0"
+    "EGL_KHR_gl_renderbuffer_image\0"
+    "EGL_KHR_gl_texture_2D_image\0"
+    "EGL_KHR_gl_texture_3D_image\0"
+    "EGL_KHR_gl_texture_cubemap_image\0"
     "EGL_KHR_image\0"
     "EGL_KHR_image_base\0"
+    "EGL_KHR_image_pixmap\0"
     "EGL_KHR_lock_surface\0"
+    "EGL_KHR_lock_surface2\0"
     "EGL_KHR_lock_surface3\0"
+    "EGL_KHR_mutable_render_buffer\0"
     "EGL_KHR_partial_update\0"
+    "EGL_KHR_platform_android\0"
+    "EGL_KHR_platform_gbm\0"
+    "EGL_KHR_platform_wayland\0"
+    "EGL_KHR_platform_x11\0"
     "EGL_KHR_reusable_sync\0"
     "EGL_KHR_stream\0"
     "EGL_KHR_stream_consumer_gltexture\0"
     "EGL_KHR_stream_cross_process_fd\0"
     "EGL_KHR_stream_fifo\0"
+    "EGL_KHR_stream_producer_aldatalocator\0"
     "EGL_KHR_stream_producer_eglsurface\0"
+    "EGL_KHR_surfaceless_context\0"
     "EGL_KHR_swap_buffers_with_damage\0"
+    "EGL_KHR_vg_parent_image\0"
     "EGL_KHR_wait_sync\0"
     "EGL_MESA_drm_image\0"
     "EGL_MESA_image_dma_buf_export\0"
+    "EGL_MESA_platform_gbm\0"
     "EGL_NOK_swap_region\0"
     "EGL_NOK_swap_region2\0"
+    "EGL_NOK_texture_from_pixmap\0"
+    "EGL_NV_3dvision_surface\0"
+    "EGL_NV_coverage_sample\0"
+    "EGL_NV_coverage_sample_resolve\0"
+    "EGL_NV_cuda_event\0"
+    "EGL_NV_depth_nonlinear\0"
+    "EGL_NV_device_cuda\0"
     "EGL_NV_native_query\0"
+    "EGL_NV_post_convert_rounding\0"
     "EGL_NV_post_sub_buffer\0"
+    "EGL_NV_robustness_video_memory_purge\0"
     "EGL_NV_stream_consumer_gltexture_yuv\0"
     "EGL_NV_stream_metadata\0"
     "EGL_NV_stream_sync\0"
     "EGL_NV_sync\0"
     "EGL_NV_system_time\0"
+    "EGL_TIZEN_image_native_buffer\0"
+    "EGL_TIZEN_image_native_surface\0"
 ;
-
-enum egl_provider_extensions {
-    EGL_extension_EGL_ANDROID_blob_cache = 0,
-    EGL_extension_EGL_ANDROID_create_native_client_buffer = 23,
-    EGL_extension_EGL_ANDROID_native_fence_sync = 63,
-    EGL_extension_EGL_ANDROID_presentation_time = 93,
-    EGL_extension_EGL_ANGLE_query_surface_pointer = 123,
-    EGL_extension_EGL_EXT_device_base = 155,
-    EGL_extension_EGL_EXT_device_enumeration = 175,
-    EGL_extension_EGL_EXT_device_query = 202,
-    EGL_extension_EGL_EXT_output_base = 223,
-    EGL_extension_EGL_EXT_platform_base = 243,
-    EGL_extension_EGL_EXT_stream_consumer_egloutput = 265,
-    EGL_extension_EGL_EXT_swap_buffers_with_damage = 299,
-    EGL_extension_EGL_HI_clientpixmap = 332,
-    EGL_extension_EGL_KHR_cl_event2 = 352,
-    EGL_extension_EGL_KHR_debug = 370,
-    EGL_extension_EGL_KHR_fence_sync = 384,
-    EGL_extension_EGL_KHR_image = 403,
-    EGL_extension_EGL_KHR_image_base = 417,
-    EGL_extension_EGL_KHR_lock_surface = 436,
-    EGL_extension_EGL_KHR_lock_surface3 = 457,
-    EGL_extension_EGL_KHR_partial_update = 479,
-    EGL_extension_EGL_KHR_reusable_sync = 502,
-    EGL_extension_EGL_KHR_stream = 524,
-    EGL_extension_EGL_KHR_stream_consumer_gltexture = 539,
-    EGL_extension_EGL_KHR_stream_cross_process_fd = 573,
-    EGL_extension_EGL_KHR_stream_fifo = 605,
-    EGL_extension_EGL_KHR_stream_producer_eglsurface = 625,
-    EGL_extension_EGL_KHR_swap_buffers_with_damage = 660,
-    EGL_extension_EGL_KHR_wait_sync = 693,
-    EGL_extension_EGL_MESA_drm_image = 711,
-    EGL_extension_EGL_MESA_image_dma_buf_export = 730,
-    EGL_extension_EGL_NOK_swap_region = 760,
-    EGL_extension_EGL_NOK_swap_region2 = 780,
-    EGL_extension_EGL_NV_native_query = 801,
-    EGL_extension_EGL_NV_post_sub_buffer = 821,
-    EGL_extension_EGL_NV_stream_consumer_gltexture_yuv = 844,
-    EGL_extension_EGL_NV_stream_metadata = 881,
-    EGL_extension_EGL_NV_stream_sync = 904,
-    EGL_extension_EGL_NV_sync = 923,
-    EGL_extension_EGL_NV_system_time = 935,
-} PACKED;
+static const khronos_uint16_t egl_extension_offsets[] = {
+    0,
+    23,
+    63,
+    94,
+    132,
+    164,
+    194,
+    224,
+    247,
+    288,
+    309,
+    341,
+    387,
+    415,
+    450,
+    469,
+    495,
+    529,
+    549,
+    568,
+    595,
+    617,
+    638,
+    667,
+    692,
+    712,
+    731,
+    753,
+    775,
+    799,
+    824,
+    845,
+    871,
+    897,
+    931,
+    964,
+    984,
+    1004,
+    1024,
+    1049,
+    1077,
+    1094,
+    1112,
+    1150,
+    1173,
+    1196,
+    1228,
+    1242,
+    1261,
+    1292,
+    1314,
+    1344,
+    1372,
+    1400,
+    1433,
+    1447,
+    1466,
+    1487,
+    1508,
+    1530,
+    1552,
+    1582,
+    1605,
+    1630,
+    1651,
+    1676,
+    1697,
+    1719,
+    1734,
+    1768,
+    1800,
+    1820,
+    1858,
+    1893,
+    1921,
+    1954,
+    1978,
+    1996,
+    2015,
+    2045,
+    2067,
+    2087,
+    2108,
+    2136,
+    2160,
+    2183,
+    2214,
+    2232,
+    2255,
+    2274,
+    2294,
+    2323,
+    2346,
+    2383,
+    2420,
+    2443,
+    2462,
+    2474,
+    2493,
+    2523,
+};
 
 static const khronos_uint8_t egl_entrypoint_strings[] = {
     101, 103, 108, 66, 105, 110, 100, 65, 80, 73, 0, /*eglBindAPI*/
@@ -219,61 +340,61 @@ static const struct dispatch_resolve_info egl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 1, EGL_1_1, 11}, /* eglBindTexImage */
     {DISPATCH_RESOLVE_DIRECT, 2, EGL_1_0, 27}, /* eglChooseConfig */
     {DISPATCH_RESOLVE_VERSION, 3, EGL_1_5, 43}, /* eglClientWaitSync */
-    {DISPATCH_RESOLVE_EXTENSION, 3, EGL_extension_EGL_KHR_fence_sync, 61}, /* eglClientWaitSyncKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 3, EGL_extension_EGL_KHR_reusable_sync, 61}, /* eglClientWaitSyncKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 4, EGL_extension_EGL_KHR_fence_sync, 61}, /* eglClientWaitSyncKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 4, EGL_extension_EGL_KHR_reusable_sync, 61}, /* eglClientWaitSyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 47 /* EGL_KHR_fence_sync */, 61}, /* eglClientWaitSyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 66 /* EGL_KHR_reusable_sync */, 61}, /* eglClientWaitSyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 47 /* EGL_KHR_fence_sync */, 61}, /* eglClientWaitSyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 66 /* EGL_KHR_reusable_sync */, 61}, /* eglClientWaitSyncKHR */
     {DISPATCH_RESOLVE_VERSION, 4, EGL_1_5, 43}, /* eglClientWaitSync */
-    {DISPATCH_RESOLVE_EXTENSION, 5, EGL_extension_EGL_NV_sync, 82}, /* eglClientWaitSyncNV */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 96 /* EGL_NV_sync */, 82}, /* eglClientWaitSyncNV */
     {DISPATCH_RESOLVE_DIRECT, 6, EGL_1_0, 102}, /* eglCopyBuffers */
     {DISPATCH_RESOLVE_DIRECT, 7, EGL_1_0, 117}, /* eglCreateContext */
-    {DISPATCH_RESOLVE_EXTENSION, 8, EGL_extension_EGL_MESA_drm_image, 134}, /* eglCreateDRMImageMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 9, EGL_extension_EGL_NV_sync, 156}, /* eglCreateFenceSyncNV */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 77 /* EGL_MESA_drm_image */, 134}, /* eglCreateDRMImageMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 96 /* EGL_NV_sync */, 156}, /* eglCreateFenceSyncNV */
     {DISPATCH_RESOLVE_VERSION, 10, EGL_1_5, 177}, /* eglCreateImage */
-    {DISPATCH_RESOLVE_EXTENSION, 11, EGL_extension_EGL_KHR_image, 192}, /* eglCreateImageKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 11, EGL_extension_EGL_KHR_image_base, 192}, /* eglCreateImageKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 12, EGL_extension_EGL_ANDROID_create_native_client_buffer, 210}, /* eglCreateNativeClientBufferANDROID */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 54 /* EGL_KHR_image */, 192}, /* eglCreateImageKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 55 /* EGL_KHR_image_base */, 192}, /* eglCreateImageKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 1 /* EGL_ANDROID_create_native_client_buffer */, 210}, /* eglCreateNativeClientBufferANDROID */
     {DISPATCH_RESOLVE_VERSION, 13, EGL_1_2, 245}, /* eglCreatePbufferFromClientBuffer */
     {DISPATCH_RESOLVE_DIRECT, 14, EGL_1_0, 278}, /* eglCreatePbufferSurface */
     {DISPATCH_RESOLVE_DIRECT, 15, EGL_1_0, 302}, /* eglCreatePixmapSurface */
-    {DISPATCH_RESOLVE_EXTENSION, 16, EGL_extension_EGL_HI_clientpixmap, 325}, /* eglCreatePixmapSurfaceHI */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 36 /* EGL_HI_clientpixmap */, 325}, /* eglCreatePixmapSurfaceHI */
     {DISPATCH_RESOLVE_VERSION, 17, EGL_1_5, 350}, /* eglCreatePlatformPixmapSurface */
-    {DISPATCH_RESOLVE_EXTENSION, 18, EGL_extension_EGL_EXT_platform_base, 381}, /* eglCreatePlatformPixmapSurfaceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 27 /* EGL_EXT_platform_base */, 381}, /* eglCreatePlatformPixmapSurfaceEXT */
     {DISPATCH_RESOLVE_VERSION, 19, EGL_1_5, 415}, /* eglCreatePlatformWindowSurface */
-    {DISPATCH_RESOLVE_EXTENSION, 20, EGL_extension_EGL_EXT_platform_base, 446}, /* eglCreatePlatformWindowSurfaceEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 21, EGL_extension_EGL_KHR_stream_cross_process_fd, 480}, /* eglCreateStreamFromFileDescriptorKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 22, EGL_extension_EGL_KHR_stream, 517}, /* eglCreateStreamKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 23, EGL_extension_EGL_KHR_stream_producer_eglsurface, 536}, /* eglCreateStreamProducerSurfaceKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 24, EGL_extension_EGL_NV_stream_sync, 570}, /* eglCreateStreamSyncNV */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 27 /* EGL_EXT_platform_base */, 446}, /* eglCreatePlatformWindowSurfaceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 69 /* EGL_KHR_stream_cross_process_fd */, 480}, /* eglCreateStreamFromFileDescriptorKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 67 /* EGL_KHR_stream */, 517}, /* eglCreateStreamKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 72 /* EGL_KHR_stream_producer_eglsurface */, 536}, /* eglCreateStreamProducerSurfaceKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 95 /* EGL_NV_stream_sync */, 570}, /* eglCreateStreamSyncNV */
     {DISPATCH_RESOLVE_VERSION, 25, EGL_1_5, 592}, /* eglCreateSync */
-    {DISPATCH_RESOLVE_EXTENSION, 25, EGL_extension_EGL_KHR_cl_event2, 606}, /* eglCreateSync64KHR */
-    {DISPATCH_RESOLVE_EXTENSION, 26, EGL_extension_EGL_KHR_cl_event2, 606}, /* eglCreateSync64KHR */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 41 /* EGL_KHR_cl_event2 */, 606}, /* eglCreateSync64KHR */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 41 /* EGL_KHR_cl_event2 */, 606}, /* eglCreateSync64KHR */
     {DISPATCH_RESOLVE_VERSION, 26, EGL_1_5, 592}, /* eglCreateSync */
-    {DISPATCH_RESOLVE_EXTENSION, 27, EGL_extension_EGL_KHR_fence_sync, 625}, /* eglCreateSyncKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 27, EGL_extension_EGL_KHR_reusable_sync, 625}, /* eglCreateSyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 47 /* EGL_KHR_fence_sync */, 625}, /* eglCreateSyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 66 /* EGL_KHR_reusable_sync */, 625}, /* eglCreateSyncKHR */
     {DISPATCH_RESOLVE_DIRECT, 28, EGL_1_0, 642}, /* eglCreateWindowSurface */
-    {DISPATCH_RESOLVE_EXTENSION, 29, EGL_extension_EGL_KHR_debug, 665}, /* eglDebugMessageControlKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 46 /* EGL_KHR_debug */, 665}, /* eglDebugMessageControlKHR */
     {DISPATCH_RESOLVE_DIRECT, 30, EGL_1_0, 691}, /* eglDestroyContext */
     {DISPATCH_RESOLVE_VERSION, 31, EGL_1_5, 709}, /* eglDestroyImage */
-    {DISPATCH_RESOLVE_EXTENSION, 31, EGL_extension_EGL_KHR_image, 725}, /* eglDestroyImageKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 31, EGL_extension_EGL_KHR_image_base, 725}, /* eglDestroyImageKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 32, EGL_extension_EGL_KHR_image, 725}, /* eglDestroyImageKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 32, EGL_extension_EGL_KHR_image_base, 725}, /* eglDestroyImageKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 54 /* EGL_KHR_image */, 725}, /* eglDestroyImageKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 55 /* EGL_KHR_image_base */, 725}, /* eglDestroyImageKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 54 /* EGL_KHR_image */, 725}, /* eglDestroyImageKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 55 /* EGL_KHR_image_base */, 725}, /* eglDestroyImageKHR */
     {DISPATCH_RESOLVE_VERSION, 32, EGL_1_5, 709}, /* eglDestroyImage */
-    {DISPATCH_RESOLVE_EXTENSION, 33, EGL_extension_EGL_KHR_stream, 744}, /* eglDestroyStreamKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 67 /* EGL_KHR_stream */, 744}, /* eglDestroyStreamKHR */
     {DISPATCH_RESOLVE_DIRECT, 34, EGL_1_0, 764}, /* eglDestroySurface */
     {DISPATCH_RESOLVE_VERSION, 35, EGL_1_5, 782}, /* eglDestroySync */
-    {DISPATCH_RESOLVE_EXTENSION, 35, EGL_extension_EGL_KHR_fence_sync, 797}, /* eglDestroySyncKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 35, EGL_extension_EGL_KHR_reusable_sync, 797}, /* eglDestroySyncKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 36, EGL_extension_EGL_KHR_fence_sync, 797}, /* eglDestroySyncKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 36, EGL_extension_EGL_KHR_reusable_sync, 797}, /* eglDestroySyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 47 /* EGL_KHR_fence_sync */, 797}, /* eglDestroySyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 66 /* EGL_KHR_reusable_sync */, 797}, /* eglDestroySyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 47 /* EGL_KHR_fence_sync */, 797}, /* eglDestroySyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 66 /* EGL_KHR_reusable_sync */, 797}, /* eglDestroySyncKHR */
     {DISPATCH_RESOLVE_VERSION, 36, EGL_1_5, 782}, /* eglDestroySync */
-    {DISPATCH_RESOLVE_EXTENSION, 37, EGL_extension_EGL_NV_sync, 815}, /* eglDestroySyncNV */
-    {DISPATCH_RESOLVE_EXTENSION, 38, EGL_extension_EGL_ANDROID_native_fence_sync, 832}, /* eglDupNativeFenceFDANDROID */
-    {DISPATCH_RESOLVE_EXTENSION, 39, EGL_extension_EGL_MESA_image_dma_buf_export, 859}, /* eglExportDMABUFImageMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 40, EGL_extension_EGL_MESA_image_dma_buf_export, 884}, /* eglExportDMABUFImageQueryMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 41, EGL_extension_EGL_MESA_drm_image, 914}, /* eglExportDRMImageMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 42, EGL_extension_EGL_NV_sync, 936}, /* eglFenceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 96 /* EGL_NV_sync */, 815}, /* eglDestroySyncNV */
+    {DISPATCH_RESOLVE_EXTENSION, 38, 5 /* EGL_ANDROID_native_fence_sync */, 832}, /* eglDupNativeFenceFDANDROID */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 78 /* EGL_MESA_image_dma_buf_export */, 859}, /* eglExportDMABUFImageMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 78 /* EGL_MESA_image_dma_buf_export */, 884}, /* eglExportDMABUFImageQueryMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 77 /* EGL_MESA_drm_image */, 914}, /* eglExportDRMImageMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 96 /* EGL_NV_sync */, 936}, /* eglFenceNV */
     {DISPATCH_RESOLVE_DIRECT, 43, EGL_1_0, 947}, /* eglGetConfigAttrib */
     {DISPATCH_RESOLVE_DIRECT, 44, EGL_1_0, 966}, /* eglGetConfigs */
     {DISPATCH_RESOLVE_VERSION, 45, EGL_1_4, 980}, /* eglGetCurrentContext */
@@ -281,85 +402,85 @@ static const struct dispatch_resolve_info egl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 47, EGL_1_0, 1022}, /* eglGetCurrentSurface */
     {DISPATCH_RESOLVE_DIRECT, 48, EGL_1_0, 1043}, /* eglGetDisplay */
     {DISPATCH_RESOLVE_DIRECT, 49, EGL_1_0, 1057}, /* eglGetError */
-    {DISPATCH_RESOLVE_EXTENSION, 50, EGL_extension_EGL_EXT_output_base, 1069}, /* eglGetOutputLayersEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 51, EGL_extension_EGL_EXT_output_base, 1091}, /* eglGetOutputPortsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 24 /* EGL_EXT_output_base */, 1069}, /* eglGetOutputLayersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 24 /* EGL_EXT_output_base */, 1091}, /* eglGetOutputPortsEXT */
     {DISPATCH_RESOLVE_VERSION, 52, EGL_1_5, 1112}, /* eglGetPlatformDisplay */
-    {DISPATCH_RESOLVE_EXTENSION, 53, EGL_extension_EGL_EXT_platform_base, 1134}, /* eglGetPlatformDisplayEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 27 /* EGL_EXT_platform_base */, 1134}, /* eglGetPlatformDisplayEXT */
     {DISPATCH_RESOLVE_DIRECT, 54, EGL_1_0, 1159}, /* eglGetProcAddress */
-    {DISPATCH_RESOLVE_EXTENSION, 55, EGL_extension_EGL_KHR_stream_cross_process_fd, 1177}, /* eglGetStreamFileDescriptorKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 69 /* EGL_KHR_stream_cross_process_fd */, 1177}, /* eglGetStreamFileDescriptorKHR */
     {DISPATCH_RESOLVE_VERSION, 56, EGL_1_5, 1207}, /* eglGetSyncAttrib */
-    {DISPATCH_RESOLVE_EXTENSION, 57, EGL_extension_EGL_KHR_fence_sync, 1224}, /* eglGetSyncAttribKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 57, EGL_extension_EGL_KHR_reusable_sync, 1224}, /* eglGetSyncAttribKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 58, EGL_extension_EGL_NV_sync, 1244}, /* eglGetSyncAttribNV */
-    {DISPATCH_RESOLVE_EXTENSION, 59, EGL_extension_EGL_NV_system_time, 1263}, /* eglGetSystemTimeFrequencyNV */
-    {DISPATCH_RESOLVE_EXTENSION, 60, EGL_extension_EGL_NV_system_time, 1291}, /* eglGetSystemTimeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 47 /* EGL_KHR_fence_sync */, 1224}, /* eglGetSyncAttribKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 66 /* EGL_KHR_reusable_sync */, 1224}, /* eglGetSyncAttribKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 96 /* EGL_NV_sync */, 1244}, /* eglGetSyncAttribNV */
+    {DISPATCH_RESOLVE_EXTENSION, 59, 97 /* EGL_NV_system_time */, 1263}, /* eglGetSystemTimeFrequencyNV */
+    {DISPATCH_RESOLVE_EXTENSION, 60, 97 /* EGL_NV_system_time */, 1291}, /* eglGetSystemTimeNV */
     {DISPATCH_RESOLVE_DIRECT, 61, EGL_1_0, 1310}, /* eglInitialize */
-    {DISPATCH_RESOLVE_EXTENSION, 62, EGL_extension_EGL_KHR_debug, 1324}, /* eglLabelObjectKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 63, EGL_extension_EGL_KHR_lock_surface, 1342}, /* eglLockSurfaceKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 63, EGL_extension_EGL_KHR_lock_surface3, 1342}, /* eglLockSurfaceKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 46 /* EGL_KHR_debug */, 1324}, /* eglLabelObjectKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 57 /* EGL_KHR_lock_surface */, 1342}, /* eglLockSurfaceKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 59 /* EGL_KHR_lock_surface3 */, 1342}, /* eglLockSurfaceKHR */
     {DISPATCH_RESOLVE_DIRECT, 64, EGL_1_0, 1360}, /* eglMakeCurrent */
-    {DISPATCH_RESOLVE_EXTENSION, 65, EGL_extension_EGL_EXT_output_base, 1375}, /* eglOutputLayerAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 66, EGL_extension_EGL_EXT_output_base, 1399}, /* eglOutputPortAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 67, EGL_extension_EGL_NV_post_sub_buffer, 1422}, /* eglPostSubBufferNV */
-    {DISPATCH_RESOLVE_EXTENSION, 68, EGL_extension_EGL_ANDROID_presentation_time, 1441}, /* eglPresentationTimeANDROID */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 24 /* EGL_EXT_output_base */, 1375}, /* eglOutputLayerAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 24 /* EGL_EXT_output_base */, 1399}, /* eglOutputPortAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 91 /* EGL_NV_post_sub_buffer */, 1422}, /* eglPostSubBufferNV */
+    {DISPATCH_RESOLVE_EXTENSION, 68, 6 /* EGL_ANDROID_presentation_time */, 1441}, /* eglPresentationTimeANDROID */
     {DISPATCH_RESOLVE_VERSION, 69, EGL_1_2, 1468}, /* eglQueryAPI */
     {DISPATCH_RESOLVE_DIRECT, 70, EGL_1_0, 1480}, /* eglQueryContext */
-    {DISPATCH_RESOLVE_EXTENSION, 71, EGL_extension_EGL_KHR_debug, 1496}, /* eglQueryDebugKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 72, EGL_extension_EGL_EXT_device_base, 1513}, /* eglQueryDeviceAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 72, EGL_extension_EGL_EXT_device_query, 1513}, /* eglQueryDeviceAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 73, EGL_extension_EGL_EXT_device_base, 1537}, /* eglQueryDeviceStringEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 73, EGL_extension_EGL_EXT_device_query, 1537}, /* eglQueryDeviceStringEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 74, EGL_extension_EGL_EXT_device_base, 1561}, /* eglQueryDevicesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 74, EGL_extension_EGL_EXT_device_enumeration, 1561}, /* eglQueryDevicesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 75, EGL_extension_EGL_EXT_device_base, 1580}, /* eglQueryDisplayAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 75, EGL_extension_EGL_EXT_device_query, 1580}, /* eglQueryDisplayAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 75, EGL_extension_EGL_NV_stream_metadata, 1605}, /* eglQueryDisplayAttribNV */
-    {DISPATCH_RESOLVE_EXTENSION, 76, EGL_extension_EGL_NV_stream_metadata, 1605}, /* eglQueryDisplayAttribNV */
-    {DISPATCH_RESOLVE_EXTENSION, 76, EGL_extension_EGL_EXT_device_base, 1580}, /* eglQueryDisplayAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 76, EGL_extension_EGL_EXT_device_query, 1580}, /* eglQueryDisplayAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 77, EGL_extension_EGL_NV_native_query, 1629}, /* eglQueryNativeDisplayNV */
-    {DISPATCH_RESOLVE_EXTENSION, 78, EGL_extension_EGL_NV_native_query, 1653}, /* eglQueryNativePixmapNV */
-    {DISPATCH_RESOLVE_EXTENSION, 79, EGL_extension_EGL_NV_native_query, 1676}, /* eglQueryNativeWindowNV */
-    {DISPATCH_RESOLVE_EXTENSION, 80, EGL_extension_EGL_EXT_output_base, 1699}, /* eglQueryOutputLayerAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 81, EGL_extension_EGL_EXT_output_base, 1728}, /* eglQueryOutputLayerStringEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 82, EGL_extension_EGL_EXT_output_base, 1757}, /* eglQueryOutputPortAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 83, EGL_extension_EGL_EXT_output_base, 1785}, /* eglQueryOutputPortStringEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 84, EGL_extension_EGL_KHR_stream, 1813}, /* eglQueryStreamKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 85, EGL_extension_EGL_NV_stream_metadata, 1831}, /* eglQueryStreamMetadataNV */
-    {DISPATCH_RESOLVE_EXTENSION, 86, EGL_extension_EGL_KHR_stream_fifo, 1856}, /* eglQueryStreamTimeKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 87, EGL_extension_EGL_KHR_stream, 1878}, /* eglQueryStreamu64KHR */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 46 /* EGL_KHR_debug */, 1496}, /* eglQueryDebugKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 17 /* EGL_EXT_device_base */, 1513}, /* eglQueryDeviceAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 21 /* EGL_EXT_device_query */, 1513}, /* eglQueryDeviceAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 17 /* EGL_EXT_device_base */, 1537}, /* eglQueryDeviceStringEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 21 /* EGL_EXT_device_query */, 1537}, /* eglQueryDeviceStringEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 17 /* EGL_EXT_device_base */, 1561}, /* eglQueryDevicesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 19 /* EGL_EXT_device_enumeration */, 1561}, /* eglQueryDevicesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 17 /* EGL_EXT_device_base */, 1580}, /* eglQueryDisplayAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 21 /* EGL_EXT_device_query */, 1580}, /* eglQueryDisplayAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 94 /* EGL_NV_stream_metadata */, 1605}, /* eglQueryDisplayAttribNV */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 94 /* EGL_NV_stream_metadata */, 1605}, /* eglQueryDisplayAttribNV */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 17 /* EGL_EXT_device_base */, 1580}, /* eglQueryDisplayAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 21 /* EGL_EXT_device_query */, 1580}, /* eglQueryDisplayAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 89 /* EGL_NV_native_query */, 1629}, /* eglQueryNativeDisplayNV */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 89 /* EGL_NV_native_query */, 1653}, /* eglQueryNativePixmapNV */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 89 /* EGL_NV_native_query */, 1676}, /* eglQueryNativeWindowNV */
+    {DISPATCH_RESOLVE_EXTENSION, 80, 24 /* EGL_EXT_output_base */, 1699}, /* eglQueryOutputLayerAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 24 /* EGL_EXT_output_base */, 1728}, /* eglQueryOutputLayerStringEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 24 /* EGL_EXT_output_base */, 1757}, /* eglQueryOutputPortAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 24 /* EGL_EXT_output_base */, 1785}, /* eglQueryOutputPortStringEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 67 /* EGL_KHR_stream */, 1813}, /* eglQueryStreamKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 94 /* EGL_NV_stream_metadata */, 1831}, /* eglQueryStreamMetadataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 70 /* EGL_KHR_stream_fifo */, 1856}, /* eglQueryStreamTimeKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 67 /* EGL_KHR_stream */, 1878}, /* eglQueryStreamu64KHR */
     {DISPATCH_RESOLVE_DIRECT, 88, EGL_1_0, 1899}, /* eglQueryString */
     {DISPATCH_RESOLVE_DIRECT, 89, EGL_1_0, 1914}, /* eglQuerySurface */
-    {DISPATCH_RESOLVE_EXTENSION, 90, EGL_extension_EGL_KHR_lock_surface3, 1930}, /* eglQuerySurface64KHR */
-    {DISPATCH_RESOLVE_EXTENSION, 91, EGL_extension_EGL_ANGLE_query_surface_pointer, 1951}, /* eglQuerySurfacePointerANGLE */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 59 /* EGL_KHR_lock_surface3 */, 1930}, /* eglQuerySurface64KHR */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 10 /* EGL_ANGLE_query_surface_pointer */, 1951}, /* eglQuerySurfacePointerANGLE */
     {DISPATCH_RESOLVE_VERSION, 92, EGL_1_1, 1979}, /* eglReleaseTexImage */
     {DISPATCH_RESOLVE_VERSION, 93, EGL_1_2, 1998}, /* eglReleaseThread */
-    {DISPATCH_RESOLVE_EXTENSION, 94, EGL_extension_EGL_ANDROID_blob_cache, 2015}, /* eglSetBlobCacheFuncsANDROID */
-    {DISPATCH_RESOLVE_EXTENSION, 95, EGL_extension_EGL_KHR_partial_update, 2043}, /* eglSetDamageRegionKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 96, EGL_extension_EGL_NV_stream_metadata, 2065}, /* eglSetStreamMetadataNV */
-    {DISPATCH_RESOLVE_EXTENSION, 97, EGL_extension_EGL_KHR_reusable_sync, 2088}, /* eglSignalSyncKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 98, EGL_extension_EGL_NV_sync, 2105}, /* eglSignalSyncNV */
-    {DISPATCH_RESOLVE_EXTENSION, 99, EGL_extension_EGL_KHR_stream, 2121}, /* eglStreamAttribKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 100, EGL_extension_EGL_KHR_stream_consumer_gltexture, 2140}, /* eglStreamConsumerAcquireKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 101, EGL_extension_EGL_NV_stream_consumer_gltexture_yuv, 2168}, /* eglStreamConsumerGLTextureExternalAttribsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 102, EGL_extension_EGL_KHR_stream_consumer_gltexture, 2212}, /* eglStreamConsumerGLTextureExternalKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 103, EGL_extension_EGL_EXT_stream_consumer_egloutput, 2250}, /* eglStreamConsumerOutputEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 104, EGL_extension_EGL_KHR_stream_consumer_gltexture, 2277}, /* eglStreamConsumerReleaseKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 94, 0 /* EGL_ANDROID_blob_cache */, 2015}, /* eglSetBlobCacheFuncsANDROID */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 61 /* EGL_KHR_partial_update */, 2043}, /* eglSetDamageRegionKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 94 /* EGL_NV_stream_metadata */, 2065}, /* eglSetStreamMetadataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 66 /* EGL_KHR_reusable_sync */, 2088}, /* eglSignalSyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 96 /* EGL_NV_sync */, 2105}, /* eglSignalSyncNV */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 67 /* EGL_KHR_stream */, 2121}, /* eglStreamAttribKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 68 /* EGL_KHR_stream_consumer_gltexture */, 2140}, /* eglStreamConsumerAcquireKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 93 /* EGL_NV_stream_consumer_gltexture_yuv */, 2168}, /* eglStreamConsumerGLTextureExternalAttribsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 68 /* EGL_KHR_stream_consumer_gltexture */, 2212}, /* eglStreamConsumerGLTextureExternalKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 33 /* EGL_EXT_stream_consumer_egloutput */, 2250}, /* eglStreamConsumerOutputEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 68 /* EGL_KHR_stream_consumer_gltexture */, 2277}, /* eglStreamConsumerReleaseKHR */
     {DISPATCH_RESOLVE_VERSION, 105, EGL_1_1, 2305}, /* eglSurfaceAttrib */
     {DISPATCH_RESOLVE_DIRECT, 106, EGL_1_0, 2322}, /* eglSwapBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 107, EGL_extension_EGL_NOK_swap_region2, 2337}, /* eglSwapBuffersRegion2NOK */
-    {DISPATCH_RESOLVE_EXTENSION, 108, EGL_extension_EGL_NOK_swap_region, 2362}, /* eglSwapBuffersRegionNOK */
-    {DISPATCH_RESOLVE_EXTENSION, 109, EGL_extension_EGL_EXT_swap_buffers_with_damage, 2386}, /* eglSwapBuffersWithDamageEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 110, EGL_extension_EGL_KHR_swap_buffers_with_damage, 2414}, /* eglSwapBuffersWithDamageKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 81 /* EGL_NOK_swap_region2 */, 2337}, /* eglSwapBuffersRegion2NOK */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 80 /* EGL_NOK_swap_region */, 2362}, /* eglSwapBuffersRegionNOK */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 34 /* EGL_EXT_swap_buffers_with_damage */, 2386}, /* eglSwapBuffersWithDamageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 74 /* EGL_KHR_swap_buffers_with_damage */, 2414}, /* eglSwapBuffersWithDamageKHR */
     {DISPATCH_RESOLVE_VERSION, 111, EGL_1_1, 2442}, /* eglSwapInterval */
     {DISPATCH_RESOLVE_DIRECT, 112, EGL_1_0, 2458}, /* eglTerminate */
-    {DISPATCH_RESOLVE_EXTENSION, 113, EGL_extension_EGL_KHR_lock_surface, 2471}, /* eglUnlockSurfaceKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 113, EGL_extension_EGL_KHR_lock_surface3, 2471}, /* eglUnlockSurfaceKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 57 /* EGL_KHR_lock_surface */, 2471}, /* eglUnlockSurfaceKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 59 /* EGL_KHR_lock_surface3 */, 2471}, /* eglUnlockSurfaceKHR */
     {DISPATCH_RESOLVE_VERSION, 114, EGL_1_2, 2491}, /* eglWaitClient */
     {DISPATCH_RESOLVE_DIRECT, 115, EGL_1_0, 2505}, /* eglWaitGL */
     {DISPATCH_RESOLVE_DIRECT, 116, EGL_1_0, 2515}, /* eglWaitNative */
     {DISPATCH_RESOLVE_VERSION, 117, EGL_1_5, 2529}, /* eglWaitSync */
-    {DISPATCH_RESOLVE_EXTENSION, 118, EGL_extension_EGL_KHR_wait_sync, 2541}, /* eglWaitSyncKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 76 /* EGL_KHR_wait_sync */, 2541}, /* eglWaitSyncKHR */
     {DISPATCH_RESOLVE_TERMINATOR, 119, 0, 0}
 };
 
@@ -377,6 +498,8 @@ static khronos_uint32_t egl_method_name_offsets[119] = {0};
 #define current_metadata egl_metadata
 #define current_glproxy_resolve_local egl_glproxy_resolve_local
 #define current_glproxy_dispatch_metadata_init egl_glproxy_dispatch_metadata_init
+#define current_extension_bitmap egl_extension_bitmap
+#define current_extension_offsets egl_extension_offsets
 #define current_extensions_count egl_extensions_count
 #define current_extension_enum_strings egl_extension_enum_strings
 #define current_entrypoint_strings egl_entrypoint_strings
@@ -393,6 +516,8 @@ static khronos_uint32_t egl_method_name_offsets[119] = {0};
 #undef current_metadata
 #undef current_glproxy_resolve_local
 #undef current_glproxy_dispatch_metadata_init
+#undef current_extension_bitmap
+#undef current_extension_offsets
 #undef current_extensions_count
 #undef current_extension_enum_strings
 #undef current_entrypoint_strings

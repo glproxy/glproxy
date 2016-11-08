@@ -183,64 +183,6 @@ static void *do_dlsym_by_handle(void*handle, const char* name, const char**error
     return result;
 }
 
-static int glproxy_internal_gl_version(const char *version, int error_version) {
-    GLint major, minor;
-    int scanf_count;
-
-    if (!version)
-        return error_version;
-
-    /* skip to version number */
-    while (!isdigit(*version) && *version != '\0')
-        version++;
-
-    /* Interpret version number */
-    scanf_count = sscanf(version, "%i.%i", &major, &minor);
-    if (scanf_count != 2) {
-        fprintf(stderr, "Unable to interpret GL_VERSION string: %s\n",
-            version);
-        exit(1);
-    }
-    return 10 * major + minor;
-}
-
-static EGLenum glproxy_egl_get_current_context_type_by_handle(void* handle) {
-    const char *error = "unknow";
-    PFNEGLQUERYAPIPROC eglQueryAPILocal = do_dlsym_by_handle(handle, "eglQueryAPI", &error, true);
-    PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContextLocal = do_dlsym_by_handle(handle, "eglGetCurrentContext", &error, true);
-    PFNEGLBINDAPIPROC eglBindAPILocal = do_dlsym_by_handle(handle, "eglBindAPI", &error, true);
-    PFNEGLGETERRORPROC eglGetErrorLocal = do_dlsym_by_handle(handle, "eglGetError", &error, true);
-    if (!eglQueryAPILocal) {
-        return EGL_NONE;
-    }
-
-    EGLenum save_api = eglQueryAPILocal();
-    EGLContext ctx;
-
-    if (eglBindAPILocal(EGL_OPENGL_API)) {
-        ctx = eglGetCurrentContextLocal();
-        if (ctx) {
-            eglBindAPILocal(save_api);
-            return EGL_OPENGL_API;
-        }
-    } else {
-        (void)eglGetErrorLocal();
-    }
-
-    if (eglBindAPILocal(EGL_OPENGL_ES_API)) {
-        ctx = eglGetCurrentContextLocal();
-        eglBindAPILocal(save_api);
-        if (ctx) {
-            eglBindAPILocal(save_api);
-            return EGL_OPENGL_ES_API;
-        }
-    } else {
-        (void)eglGetErrorLocal();
-    }
-
-    return EGL_NONE;
-}
-
 bool glproxy_extension_in_string(const char *extension_list, const char *ext) {
     const char *ptr = extension_list;
     size_t len = strlen(ext);
@@ -257,30 +199,7 @@ bool glproxy_extension_in_string(const char *extension_list, const char *ext) {
     }
 }
 
-static bool glproxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode) {
-    if (glproxy_gl_version() < 30) {
-        const char *exts = (const char *)glGetString(GL_EXTENSIONS);
-        if (!exts)
-            return invalid_op_mode;
-        return glproxy_extension_in_string(exts, ext);
-    } else {
-        int num_extensions;
-        int i;
-
-        glGetIntegerv(GL_NUM_EXTENSIONS, &num_extensions);
-        if (num_extensions == 0)
-            return invalid_op_mode;
-
-        for (i = 0; i < num_extensions; i++) {
-            const char *gl_ext = (const char *)glGetStringi(GL_EXTENSIONS, i);
-            if (strcmp(ext, gl_ext) == 0)
-                return true;
-        }
-
-        return false;
-    }
-}
-
+static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr, bool direct);
 // APIs required by resolvers
 
 #if PLATFORM_HAS_WGL
@@ -395,10 +314,6 @@ bool glproxy_conservative_has_egl_extension(const char *ext)
     return glproxy_has_egl_extension(dpy, ext);
 }
 
-
-GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension(const char *ext) {
-    return glproxy_internal_has_gl_extension(ext, false);
-}
 
 static bool inited = false;
 /* The context for main thread */
@@ -544,7 +459,7 @@ GLPROXY_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* tar
 
 GLPROXY_IMPORTEXPORT bool glproxy_is_desktop_gl(void) {
     tls_ptr tls = glproxy_context_get();
-    if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
+    if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW || tls->gl_version == 0) {
         gl_glproxy_resolve_init(tls);
     }
     return tls->open_gl_type != DISPATCH_OPENGL_ES;
@@ -556,6 +471,42 @@ GLPROXY_IMPORTEXPORT int glproxy_gl_version(void) {
         gl_glproxy_resolve_init(tls);
     }
     return tls->gl_version;
+}
+
+static khronos_uint16_t find_extension_pos(struct dispatch_metadata *data, const char *extension, size_t len) {
+    khronos_uint16_t i;
+    for (i = 0; i < data->extensions_count; ++i) {
+        const char* predefined_extension = data->extension_enum_strings + data->extension_offsets[i];
+        if (memcmp(predefined_extension, extension, len) == 0 && predefined_extension[len] == 0) {
+            return i;
+        }
+    }
+    return data->extensions_count;
+}
+
+static bool glproxy_internal_has_gl_extension(tls_ptr tls, khronos_uint16_t offset, bool invalid_op_mode) {
+    struct dispatch_metadata *data = &tls->gl_metadata;
+    khronos_uint32_t bit_pos = ((khronos_uint32_t)1) << (offset & 31);
+    if (tls->gl_version == 0)
+        return invalid_op_mode;
+    return (data->extension_bitmap[offset >> 5] & bit_pos) > 0;
+}
+
+GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension(const char *ext) {
+    tls_ptr tls = glproxy_context_get();
+    if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW || tls->gl_version == 0) {
+        gl_glproxy_resolve_init(tls);
+    }
+    if (tls->gl_version != 0) {
+        struct dispatch_metadata *data = &tls->gl_metadata;
+        khronos_uint16_t pos = find_extension_pos(data, ext, strlen(ext));
+        if (pos >= data->extensions_count) {
+            fprintf(stderr, "Can not found the extension %s for extension_bitmap, that's not possible!\n", ext);
+            return false;
+        }
+        return glproxy_internal_has_gl_extension(tls, pos, false);
+    }
+    return false;
 }
 
 #if PLATFORM_HAS_CGL
@@ -582,7 +533,8 @@ enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_direct(tls_ptr tls, const char*
     return DISPATCH_RESOLVE_RESULT_OK;
 }
 
-enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
+enum DISPATCH_RESOLVE_RESULT wgl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset) {
+    const char *extension = tls->wgl_metadata.extension_enum_strings + tls->wgl_metadata.extension_offsets[offset];
     if (glproxy_conservative_has_wgl_extension(tls, extension)) {
         *ptr = wglGetProcAddress(name);
         return DISPATCH_RESOLVE_RESULT_OK;
@@ -648,7 +600,8 @@ bool glproxy_conservative_has_glx_extension(const char *ext) {
     return glproxy_has_glx_extension(dpy, screen, ext);
 }
 
-enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
+enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset) {
+    const char *extension = tls->glx_metadata.extension_enum_strings + tls->glx_metadata.extension_offsets[offset];
     if (glproxy_conservative_has_glx_extension(extension)) {
         *ptr = tls->glx_get_proc((const GLubyte *)name);
         return DISPATCH_RESOLVE_RESULT_OK;
@@ -656,6 +609,97 @@ enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const ch
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
 #endif /* PLATFORM_HAS_GLX */
+
+static int glproxy_internal_gl_version(const char *version, int error_version) {
+    GLint major, minor;
+    int scanf_count;
+
+    if (!version)
+        return error_version;
+
+    /* skip to version number */
+    while (!isdigit(*version) && *version != '\0')
+        version++;
+
+    /* Interpret version number */
+    scanf_count = sscanf(version, "%i.%i", &major, &minor);
+    if (scanf_count != 2) {
+        fprintf(stderr, "Unable to interpret GL_VERSION string: %s\n",
+            version);
+        exit(1);
+    }
+    return 10 * major + minor;
+}
+
+static void load_extension_list(struct dispatch_metadata *data, const char *extension_list) {
+    const char *ptr = extension_list;
+    const char *prev = extension_list;
+    size_t bitmap_count = ((data->extensions_count - 1) >> 5);
+    memset(data->extension_bitmap, 0, sizeof(data->extension_bitmap[0]) * bitmap_count);
+    /* Make sure that don't just find an extension with our name as a prefix. */
+    do {
+        ++ptr;
+        if (*ptr == ' ' || *ptr == 0) {
+            khronos_uint16_t len = ptr - prev;
+            khronos_uint16_t i = find_extension_pos(data, prev, len);
+            if (i < data->extensions_count) {
+                data->extension_bitmap[i >> 5] |= ((khronos_uint32_t)1) << (i & 31);
+            } else if (len > 0) {
+                char tmp_str[128];
+                if (len >= 128) {
+                    len = 127;
+                }
+                memcpy(tmp_str, prev, len);
+                tmp_str[len] = 0;
+                fprintf(stderr, "Can not found the extension %s for extension_bitmap, that's not possible!\n", tmp_str);
+            }
+            prev = ptr + 1;
+        }
+    } while (*ptr);
+}
+
+void gl_glproxy_init_version_and_extensions(tls_ptr tls) {
+    PFNGLGETSTRINGPROC get_string = NULL;
+    struct dispatch_metadata *data = &tls->gl_metadata;
+    gl_glproxy_resolve_direct(tls, "glGetString", (void**)&get_string);
+    if (get_string) {
+        tls->gl_version = glproxy_internal_gl_version((const char*)get_string(GL_VERSION), 0);
+    } else {
+        fprintf(stderr, "Can not resolve glGetString even though we have already found the current context\n");
+    }
+    if (tls->gl_version == 0) {
+        return;
+    }
+    tls->gl_metadata.inited = true;
+
+    if (tls->gl_version < 30) {
+        const char *exts = (const char *)get_string(GL_EXTENSIONS);
+        load_extension_list(data, exts);
+    } else {
+        PFNGLGETSTRINGPROC get_string = NULL;
+        PFNGLGETINTEGERVPROC get_integerv = NULL;
+        PFNGLGETSTRINGIPROC get_stringi = NULL;
+        int num_extensions = 0;
+        int i = 0;
+        gl_glproxy_resolve_direct(tls, "glGetIntegerv", (void**)&get_integerv);
+        get_integerv(GL_NUM_EXTENSIONS, &num_extensions);
+        if (num_extensions == 0) {
+            fprintf(stderr, "There must be GL_NUM_EXTENSIONS parameters\n");
+            return;
+        }
+        glproxy_get_proc_address(tls, "glGetStringi", (void**)&get_stringi, true);
+        for (i = 0; i < num_extensions; i++) {
+            const char *gl_ext = (const char *)get_stringi(GL_EXTENSIONS, i);
+            size_t len = strlen(gl_ext);
+            khronos_uint16_t i = find_extension_pos(data, gl_ext, len);
+            if (i < data->extensions_count) {
+                data->extension_bitmap[i >> 5] |= ((khronos_uint32_t)1) << (i & 31);
+            } else {
+                fprintf(stderr, "Can not found the extension %s for extension_bitmap, that's not possible!\n", gl_ext);
+            }
+        }
+    }
+}
 
 void gl_glproxy_resolve_init(tls_ptr tls) {
     tls->gl_called = true;
@@ -673,16 +717,8 @@ void gl_glproxy_resolve_init(tls_ptr tls) {
     }
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
         fprintf(stderr, "Did not found the current context\n");
-    } else if (tls->gl_version == 0){
-        PFNGLGETSTRINGPROC get_string = NULL;
-        gl_glproxy_resolve_direct(tls, "glGetString", (void**)&get_string);
-        if (!get_string) {
-            fprintf(stderr, "Can not resolve glGetString even though we have already found the current context\n");
-        } else {
-            tls->gl_version = glproxy_internal_gl_version((const char*)get_string(GL_VERSION), 0);
-        }
-    } else {
-        tls->gl_metadata.inited = true;
+    } else if (tls->gl_version == 0) {
+        gl_glproxy_init_version_and_extensions(tls);
     }
 }
 
@@ -699,7 +735,7 @@ enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_direct(tls_ptr tls, const char* 
     return DISPATCH_RESOLVE_RESULT_OK;
 }
 
-static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr) {
+static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr, bool direct) {
     switch (tls->open_gl_type) {
     case DISPATCH_OPENGL_EGL_DESKTOP:
     case DISPATCH_OPENGL_ES:
@@ -707,7 +743,11 @@ static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr) {
         break;
     case DISPATCH_OPENGL_WGL_DESKTOP:
 #if PLATFORM_HAS_WGL
-        *ptr = wglGetProcAddress(name);
+        if (direct) {
+            *ptr = tls->wgl_get_proc(name);
+        } else {
+            *ptr = wglGetProcAddress(name);
+        }
 #endif
         break;
     case DISPATCH_OPENGL_GLX_DESKTOP:
@@ -748,7 +788,7 @@ static void glproxy_get_core_proc_address(tls_ptr tls, const char *name, int cor
     if (core_version <= core_symbol_support) {
         gl_glproxy_resolve_direct(tls, name, ptr);
     } else {
-        glproxy_get_proc_address(tls, name, ptr);
+        glproxy_get_proc_address(tls, name, ptr, false);
     }
 }
 
@@ -767,9 +807,9 @@ enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_version(tls_ptr tls, const char*
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
 
-enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
-    if (glproxy_internal_has_gl_extension(extension, true)) {
-        glproxy_get_proc_address(tls, name, ptr);
+enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset) {
+    if (glproxy_internal_has_gl_extension(tls, offset, true)) {
+        glproxy_get_proc_address(tls, name, ptr, false);
         return DISPATCH_RESOLVE_RESULT_OK;
     }
     return DISPATCH_RESOLVE_RESULT_IGNORE;
@@ -781,6 +821,43 @@ static const char* glproxy_get_string_by_handle(void*handle) {
         return (const char*)get_string(GL_VERSION);
     }
     return NULL;
+}
+
+static EGLenum glproxy_egl_get_current_context_type_by_handle(void* handle) {
+    const char *error = "unknow";
+    PFNEGLQUERYAPIPROC eglQueryAPILocal = do_dlsym_by_handle(handle, "eglQueryAPI", &error, true);
+    PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContextLocal = do_dlsym_by_handle(handle, "eglGetCurrentContext", &error, true);
+    PFNEGLBINDAPIPROC eglBindAPILocal = do_dlsym_by_handle(handle, "eglBindAPI", &error, true);
+    PFNEGLGETERRORPROC eglGetErrorLocal = do_dlsym_by_handle(handle, "eglGetError", &error, true);
+    if (!eglQueryAPILocal) {
+        return EGL_NONE;
+    }
+
+    EGLenum save_api = eglQueryAPILocal();
+    EGLContext ctx;
+
+    if (eglBindAPILocal(EGL_OPENGL_API)) {
+        ctx = eglGetCurrentContextLocal();
+        if (ctx) {
+            eglBindAPILocal(save_api);
+            return EGL_OPENGL_API;
+        }
+    } else {
+        (void)eglGetErrorLocal();
+    }
+
+    if (eglBindAPILocal(EGL_OPENGL_ES_API)) {
+        ctx = eglGetCurrentContextLocal();
+        eglBindAPILocal(save_api);
+        if (ctx) {
+            eglBindAPILocal(save_api);
+            return EGL_OPENGL_ES_API;
+        }
+    } else {
+        (void)eglGetErrorLocal();
+    }
+
+    return EGL_NONE;
 }
 
 void egl_glproxy_resolve_init(tls_ptr tls) {
@@ -853,7 +930,8 @@ enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_version(tls_ptr tls, const char
     return DISPATCH_RESOLVE_RESULT_IGNORE;
 }
 
-enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, const char *extension) {
+enum DISPATCH_RESOLVE_RESULT egl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset) {
+    const char *extension = tls->egl_metadata.extension_enum_strings + tls->egl_metadata.extension_offsets[offset];
     if (glproxy_conservative_has_egl_extension(extension)) {
         *ptr = tls->egl_get_proc(name);
     }

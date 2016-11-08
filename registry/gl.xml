@@ -36381,6 +36381,38 @@ typedef unsigned int GLhandleARB;
 
     <!-- SECTION: OpenGL / OpenGL ES extension interface definitions -->
     <extensions>
+        <!-- Comes From ANGLE of Google -->
+        <extension name="GL_NV_pixel_buffer_object" supported="gles2"></extension>
+        <extension name="GL_EXT_frag_depth" supported="gles2"></extension>
+        <extension name="GL_NV_pack_subimage" supported="gles2"></extension>
+        <extension name="GL_ANGLE_lossy_etc_decode" supported="gles2"></extension>
+
+        <!-- Comes From NVIDIA driver of 860M -->
+        <extension name="GL_EXT_texture_edge_clamp" supported="gl"></extension>
+        <extension name="GL_SUN_multi_draw_arrays" supported="gl"></extension>
+        <extension name="GL_EXT_texture_rectangle" supported="gl"></extension>
+        <extension name="GL_WIN_swap_hint" supported="gl"></extension>
+        <extension name="WGL_EXT_depth_float" supported="gl"></extension>
+        <extension name="WGL_ARB_buffer_region" supported="gl"></extension>
+        <extension name="WGL_ARB_extensions_string" supported="gl"></extension>
+        <extension name="WGL_ARB_make_current_read" supported="gl"></extension>
+        <extension name="WGL_ARB_pixel_format" supported="gl"></extension>
+        <extension name="WGL_ARB_pbuffer" supported="gl"></extension>
+        <extension name="WGL_EXT_extensions_string" supported="gl"></extension>
+        <extension name="WGL_EXT_swap_control" supported="gl"></extension>
+        <extension name="WGL_EXT_swap_control_tear" supported="gl"></extension>
+        <extension name="WGL_ARB_multisample" supported="gl"></extension>
+        <extension name="WGL_ARB_framebuffer_sRGB" supported="gl"></extension>
+        <extension name="WGL_ARB_create_context" supported="gl"></extension>
+        <extension name="WGL_ARB_create_context_profile" supported="gl"></extension>
+        <extension name="WGL_EXT_pixel_format_packed_float" supported="gl"></extension>
+        <extension name="WGL_EXT_create_context_es_profile" supported="gl"></extension>
+        <extension name="WGL_EXT_create_context_es2_profile" supported="gl"></extension>
+        <extension name="WGL_NV_DX_interop" supported="gl"></extension>
+        <extension name="WGL_INTEL_cl_sharing" supported="gl"></extension>
+        <extension name="WGL_NV_DX_interop2" supported="gl"></extension>
+        <extension name="WGL_ARB_create_context_robustness" supported="gl"></extension>
+
         <extension name="GL_3DFX_multisample" supported="gl">
             <require>
                 <enum name="GL_MULTISAMPLE_3DFX"/>
@@ -36388,7 +36420,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_SAMPLES_3DFX"/>
                 <enum name="GL_MULTISAMPLE_BIT_3DFX"/>
             </require>
-        </extension>
+        </extension> 
         <extension name="GL_3DFX_tbuffer" supported="gl">
             <require>
                 <command name="glTbufferMask3DFX"/>

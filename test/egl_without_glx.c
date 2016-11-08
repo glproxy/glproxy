@@ -177,7 +177,8 @@ int main(void)
 
     string = glGetString(GL_VERSION);
     printf("GL_VERSION: %s\n", string);
-
+    bool output = glproxy_has_gl_extension("GL_OES_texture_float");
+    pass = pass && output;
     assert(eglGetError() == EGL_SUCCESS);
 
     return pass != true;

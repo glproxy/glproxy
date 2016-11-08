@@ -26,8 +26,7 @@ GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
                 break;
 #endif
             case DISPATCH_RESOLVE_EXTENSION: {
-                const char* extension_name = metadata->extension_enum_strings + resolve_info->condition;
-                result_resolved = current_glproxy_resolve_extension(tls, name, ptr, extension_name);
+                result_resolved = current_glproxy_resolve_extension(tls, name, ptr, resolve_info->condition);
                 break;
             }
             default:
@@ -52,6 +51,8 @@ GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
 
 static void current_glproxy_dispatch_metadata_init(struct dispatch_metadata *data, bool inited) {
     data->extensions_count = current_extensions_count;
+    data->extension_bitmap = current_extension_bitmap;
+    data->extension_offsets = current_extension_offsets;
     data->extension_enum_strings = current_extension_enum_strings;
     data->entrypoint_strings = (const char*)current_entrypoint_strings;
     data->resolve_info_table = current_resolve_info_table;

@@ -4,24 +4,43 @@
 #include "dispatch_common.h"
 #if PLATFORM_HAS_WGL
 
-#define wgl_extensions_count 31
+#define wgl_extensions_count 53
 
-static const char *wgl_extension_enum_strings =
+static khronos_uint32_t wgl_extension_bitmap[2];
+
+static const char wgl_extension_enum_strings[] =
+    "WGL_3DFX_multisample\0"
     "WGL_3DL_stereo_control\0"
     "WGL_AMD_gpu_association\0"
     "WGL_ARB_buffer_region\0"
+    "WGL_ARB_context_flush_control\0"
     "WGL_ARB_create_context\0"
+    "WGL_ARB_create_context_profile\0"
+    "WGL_ARB_create_context_robustness\0"
     "WGL_ARB_extensions_string\0"
+    "WGL_ARB_framebuffer_sRGB\0"
     "WGL_ARB_make_current_read\0"
+    "WGL_ARB_multisample\0"
     "WGL_ARB_pbuffer\0"
     "WGL_ARB_pixel_format\0"
+    "WGL_ARB_pixel_format_float\0"
     "WGL_ARB_render_texture\0"
+    "WGL_ARB_robustness_application_isolation\0"
+    "WGL_ARB_robustness_share_group_isolation\0"
+    "WGL_ATI_pixel_format_float\0"
+    "WGL_EXT_create_context_es2_profile\0"
+    "WGL_EXT_create_context_es_profile\0"
+    "WGL_EXT_depth_float\0"
     "WGL_EXT_display_color_table\0"
     "WGL_EXT_extensions_string\0"
+    "WGL_EXT_framebuffer_sRGB\0"
     "WGL_EXT_make_current_read\0"
+    "WGL_EXT_multisample\0"
     "WGL_EXT_pbuffer\0"
     "WGL_EXT_pixel_format\0"
+    "WGL_EXT_pixel_format_packed_float\0"
     "WGL_EXT_swap_control\0"
+    "WGL_EXT_swap_control_tear\0"
     "WGL_I3D_digital_video_control\0"
     "WGL_I3D_gamma\0"
     "WGL_I3D_genlock\0"
@@ -29,50 +48,76 @@ static const char *wgl_extension_enum_strings =
     "WGL_I3D_swap_frame_lock\0"
     "WGL_I3D_swap_frame_usage\0"
     "WGL_NV_DX_interop\0"
+    "WGL_NV_DX_interop2\0"
     "WGL_NV_copy_image\0"
     "WGL_NV_delay_before_swap\0"
+    "WGL_NV_float_buffer\0"
     "WGL_NV_gpu_affinity\0"
+    "WGL_NV_multisample_coverage\0"
     "WGL_NV_present_video\0"
+    "WGL_NV_render_depth_texture\0"
+    "WGL_NV_render_texture_rectangle\0"
     "WGL_NV_swap_group\0"
     "WGL_NV_vertex_array_range\0"
     "WGL_NV_video_capture\0"
     "WGL_NV_video_output\0"
     "WGL_OML_sync_control\0"
 ;
-
-enum wgl_provider_extensions {
-    WGL_extension_WGL_3DL_stereo_control = 0,
-    WGL_extension_WGL_AMD_gpu_association = 23,
-    WGL_extension_WGL_ARB_buffer_region = 47,
-    WGL_extension_WGL_ARB_create_context = 69,
-    WGL_extension_WGL_ARB_extensions_string = 92,
-    WGL_extension_WGL_ARB_make_current_read = 118,
-    WGL_extension_WGL_ARB_pbuffer = 144,
-    WGL_extension_WGL_ARB_pixel_format = 160,
-    WGL_extension_WGL_ARB_render_texture = 181,
-    WGL_extension_WGL_EXT_display_color_table = 204,
-    WGL_extension_WGL_EXT_extensions_string = 232,
-    WGL_extension_WGL_EXT_make_current_read = 258,
-    WGL_extension_WGL_EXT_pbuffer = 284,
-    WGL_extension_WGL_EXT_pixel_format = 300,
-    WGL_extension_WGL_EXT_swap_control = 321,
-    WGL_extension_WGL_I3D_digital_video_control = 342,
-    WGL_extension_WGL_I3D_gamma = 372,
-    WGL_extension_WGL_I3D_genlock = 386,
-    WGL_extension_WGL_I3D_image_buffer = 402,
-    WGL_extension_WGL_I3D_swap_frame_lock = 423,
-    WGL_extension_WGL_I3D_swap_frame_usage = 447,
-    WGL_extension_WGL_NV_DX_interop = 472,
-    WGL_extension_WGL_NV_copy_image = 490,
-    WGL_extension_WGL_NV_delay_before_swap = 508,
-    WGL_extension_WGL_NV_gpu_affinity = 533,
-    WGL_extension_WGL_NV_present_video = 553,
-    WGL_extension_WGL_NV_swap_group = 574,
-    WGL_extension_WGL_NV_vertex_array_range = 592,
-    WGL_extension_WGL_NV_video_capture = 618,
-    WGL_extension_WGL_NV_video_output = 639,
-    WGL_extension_WGL_OML_sync_control = 659,
-} PACKED;
+static const khronos_uint16_t wgl_extension_offsets[] = {
+    0,
+    21,
+    44,
+    68,
+    90,
+    120,
+    143,
+    174,
+    208,
+    234,
+    259,
+    285,
+    305,
+    321,
+    342,
+    369,
+    392,
+    433,
+    474,
+    501,
+    536,
+    570,
+    590,
+    618,
+    644,
+    669,
+    695,
+    715,
+    731,
+    752,
+    786,
+    807,
+    833,
+    863,
+    877,
+    893,
+    914,
+    938,
+    963,
+    981,
+    1000,
+    1018,
+    1043,
+    1063,
+    1083,
+    1111,
+    1132,
+    1160,
+    1192,
+    1210,
+    1236,
+    1257,
+    1277,
+};
 
 static const khronos_uint8_t wgl_entrypoint_strings[] = {
     119, 103, 108, 65, 108, 108, 111, 99, 97, 116, 101, 77, 101, 109, 111, 114, 121, 78, 86, 0, /*wglAllocateMemoryNV*/
@@ -217,144 +262,144 @@ static const khronos_uint8_t wgl_entrypoint_strings[] = {
 };
 
 static const struct dispatch_resolve_info wgl_resolve_info_table[] = {
-    {DISPATCH_RESOLVE_EXTENSION, 0, WGL_extension_WGL_NV_vertex_array_range, 0}, /* wglAllocateMemoryNV */
-    {DISPATCH_RESOLVE_EXTENSION, 1, WGL_extension_WGL_I3D_image_buffer, 20}, /* wglAssociateImageBufferEventsI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 2, WGL_extension_WGL_I3D_swap_frame_usage, 53}, /* wglBeginFrameTrackingI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 3, WGL_extension_WGL_EXT_display_color_table, 78}, /* wglBindDisplayColorTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 4, WGL_extension_WGL_NV_swap_group, 106}, /* wglBindSwapBarrierNV */
-    {DISPATCH_RESOLVE_EXTENSION, 5, WGL_extension_WGL_ARB_render_texture, 127}, /* wglBindTexImageARB */
-    {DISPATCH_RESOLVE_EXTENSION, 6, WGL_extension_WGL_NV_video_capture, 146}, /* wglBindVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 7, WGL_extension_WGL_NV_present_video, 174}, /* wglBindVideoDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 8, WGL_extension_WGL_NV_video_output, 195}, /* wglBindVideoImageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 9, WGL_extension_WGL_AMD_gpu_association, 215}, /* wglBlitContextFramebufferAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 10, WGL_extension_WGL_ARB_pixel_format, 244}, /* wglChoosePixelFormatARB */
-    {DISPATCH_RESOLVE_EXTENSION, 11, WGL_extension_WGL_EXT_pixel_format, 268}, /* wglChoosePixelFormatEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 49 /* WGL_NV_vertex_array_range */, 0}, /* wglAllocateMemoryNV */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 35 /* WGL_I3D_image_buffer */, 20}, /* wglAssociateImageBufferEventsI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 37 /* WGL_I3D_swap_frame_usage */, 53}, /* wglBeginFrameTrackingI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 22 /* WGL_EXT_display_color_table */, 78}, /* wglBindDisplayColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 48 /* WGL_NV_swap_group */, 106}, /* wglBindSwapBarrierNV */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 15 /* WGL_ARB_render_texture */, 127}, /* wglBindTexImageARB */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 50 /* WGL_NV_video_capture */, 146}, /* wglBindVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 45 /* WGL_NV_present_video */, 174}, /* wglBindVideoDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 51 /* WGL_NV_video_output */, 195}, /* wglBindVideoImageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 2 /* WGL_AMD_gpu_association */, 215}, /* wglBlitContextFramebufferAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 13 /* WGL_ARB_pixel_format */, 244}, /* wglChoosePixelFormatARB */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 28 /* WGL_EXT_pixel_format */, 268}, /* wglChoosePixelFormatEXT */
     {DISPATCH_RESOLVE_DIRECT, 12, WGL_1_0, 292}, /* wglCopyContext */
-    {DISPATCH_RESOLVE_EXTENSION, 13, WGL_extension_WGL_NV_copy_image, 307}, /* wglCopyImageSubDataNV */
-    {DISPATCH_RESOLVE_EXTENSION, 14, WGL_extension_WGL_NV_gpu_affinity, 329}, /* wglCreateAffinityDCNV */
-    {DISPATCH_RESOLVE_EXTENSION, 15, WGL_extension_WGL_AMD_gpu_association, 351}, /* wglCreateAssociatedContextAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 16, WGL_extension_WGL_AMD_gpu_association, 381}, /* wglCreateAssociatedContextAttribsAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 17, WGL_extension_WGL_ARB_buffer_region, 418}, /* wglCreateBufferRegionARB */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 40 /* WGL_NV_copy_image */, 307}, /* wglCopyImageSubDataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 43 /* WGL_NV_gpu_affinity */, 329}, /* wglCreateAffinityDCNV */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 2 /* WGL_AMD_gpu_association */, 351}, /* wglCreateAssociatedContextAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 2 /* WGL_AMD_gpu_association */, 381}, /* wglCreateAssociatedContextAttribsAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 3 /* WGL_ARB_buffer_region */, 418}, /* wglCreateBufferRegionARB */
     {DISPATCH_RESOLVE_DIRECT, 18, WGL_1_0, 443}, /* wglCreateContext */
-    {DISPATCH_RESOLVE_EXTENSION, 19, WGL_extension_WGL_ARB_create_context, 460}, /* wglCreateContextAttribsARB */
-    {DISPATCH_RESOLVE_EXTENSION, 20, WGL_extension_WGL_EXT_display_color_table, 487}, /* wglCreateDisplayColorTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 21, WGL_extension_WGL_I3D_image_buffer, 517}, /* wglCreateImageBufferI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 5 /* WGL_ARB_create_context */, 460}, /* wglCreateContextAttribsARB */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 22 /* WGL_EXT_display_color_table */, 487}, /* wglCreateDisplayColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 35 /* WGL_I3D_image_buffer */, 517}, /* wglCreateImageBufferI3D */
     {DISPATCH_RESOLVE_DIRECT, 22, WGL_1_0, 541}, /* wglCreateLayerContext */
-    {DISPATCH_RESOLVE_EXTENSION, 23, WGL_extension_WGL_ARB_pbuffer, 563}, /* wglCreatePbufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 24, WGL_extension_WGL_EXT_pbuffer, 583}, /* wglCreatePbufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 25, WGL_extension_WGL_NV_DX_interop, 603}, /* wglDXCloseDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 26, WGL_extension_WGL_NV_DX_interop, 622}, /* wglDXLockObjectsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 27, WGL_extension_WGL_NV_DX_interop, 641}, /* wglDXObjectAccessNV */
-    {DISPATCH_RESOLVE_EXTENSION, 28, WGL_extension_WGL_NV_DX_interop, 661}, /* wglDXOpenDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 29, WGL_extension_WGL_NV_DX_interop, 679}, /* wglDXRegisterObjectNV */
-    {DISPATCH_RESOLVE_EXTENSION, 30, WGL_extension_WGL_NV_DX_interop, 701}, /* wglDXSetResourceShareHandleNV */
-    {DISPATCH_RESOLVE_EXTENSION, 31, WGL_extension_WGL_NV_DX_interop, 731}, /* wglDXUnlockObjectsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 32, WGL_extension_WGL_NV_DX_interop, 752}, /* wglDXUnregisterObjectNV */
-    {DISPATCH_RESOLVE_EXTENSION, 33, WGL_extension_WGL_NV_delay_before_swap, 776}, /* wglDelayBeforeSwapNV */
-    {DISPATCH_RESOLVE_EXTENSION, 34, WGL_extension_WGL_AMD_gpu_association, 797}, /* wglDeleteAssociatedContextAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 35, WGL_extension_WGL_ARB_buffer_region, 827}, /* wglDeleteBufferRegionARB */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 12 /* WGL_ARB_pbuffer */, 563}, /* wglCreatePbufferARB */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 27 /* WGL_EXT_pbuffer */, 583}, /* wglCreatePbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 38 /* WGL_NV_DX_interop */, 603}, /* wglDXCloseDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 38 /* WGL_NV_DX_interop */, 622}, /* wglDXLockObjectsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 38 /* WGL_NV_DX_interop */, 641}, /* wglDXObjectAccessNV */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 38 /* WGL_NV_DX_interop */, 661}, /* wglDXOpenDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 38 /* WGL_NV_DX_interop */, 679}, /* wglDXRegisterObjectNV */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 38 /* WGL_NV_DX_interop */, 701}, /* wglDXSetResourceShareHandleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 38 /* WGL_NV_DX_interop */, 731}, /* wglDXUnlockObjectsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 38 /* WGL_NV_DX_interop */, 752}, /* wglDXUnregisterObjectNV */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 41 /* WGL_NV_delay_before_swap */, 776}, /* wglDelayBeforeSwapNV */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 2 /* WGL_AMD_gpu_association */, 797}, /* wglDeleteAssociatedContextAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 3 /* WGL_ARB_buffer_region */, 827}, /* wglDeleteBufferRegionARB */
     {DISPATCH_RESOLVE_DIRECT, 36, WGL_1_0, 852}, /* wglDeleteContext */
-    {DISPATCH_RESOLVE_EXTENSION, 37, WGL_extension_WGL_NV_gpu_affinity, 869}, /* wglDeleteDCNV */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 43 /* WGL_NV_gpu_affinity */, 869}, /* wglDeleteDCNV */
     {DISPATCH_RESOLVE_DIRECT, 38, WGL_1_0, 883}, /* wglDescribeLayerPlane */
-    {DISPATCH_RESOLVE_EXTENSION, 39, WGL_extension_WGL_EXT_display_color_table, 905}, /* wglDestroyDisplayColorTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 40, WGL_extension_WGL_I3D_image_buffer, 936}, /* wglDestroyImageBufferI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 41, WGL_extension_WGL_ARB_pbuffer, 961}, /* wglDestroyPbufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 42, WGL_extension_WGL_EXT_pbuffer, 982}, /* wglDestroyPbufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 43, WGL_extension_WGL_I3D_swap_frame_lock, 1003}, /* wglDisableFrameLockI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 44, WGL_extension_WGL_I3D_genlock, 1026}, /* wglDisableGenlockI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 45, WGL_extension_WGL_I3D_swap_frame_lock, 1047}, /* wglEnableFrameLockI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 46, WGL_extension_WGL_I3D_genlock, 1069}, /* wglEnableGenlockI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 47, WGL_extension_WGL_I3D_swap_frame_usage, 1089}, /* wglEndFrameTrackingI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 48, WGL_extension_WGL_NV_gpu_affinity, 1112}, /* wglEnumGpuDevicesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 49, WGL_extension_WGL_NV_gpu_affinity, 1132}, /* wglEnumGpusFromAffinityDCNV */
-    {DISPATCH_RESOLVE_EXTENSION, 50, WGL_extension_WGL_NV_gpu_affinity, 1160}, /* wglEnumGpusNV */
-    {DISPATCH_RESOLVE_EXTENSION, 51, WGL_extension_WGL_NV_video_capture, 1174}, /* wglEnumerateVideoCaptureDevicesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 52, WGL_extension_WGL_NV_present_video, 1208}, /* wglEnumerateVideoDevicesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 53, WGL_extension_WGL_NV_vertex_array_range, 1235}, /* wglFreeMemoryNV */
-    {DISPATCH_RESOLVE_EXTENSION, 54, WGL_extension_WGL_I3D_genlock, 1251}, /* wglGenlockSampleRateI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 55, WGL_extension_WGL_I3D_genlock, 1275}, /* wglGenlockSourceDelayI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 56, WGL_extension_WGL_I3D_genlock, 1300}, /* wglGenlockSourceEdgeI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 57, WGL_extension_WGL_I3D_genlock, 1324}, /* wglGenlockSourceI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 58, WGL_extension_WGL_AMD_gpu_association, 1344}, /* wglGetContextGPUIDAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 59, WGL_extension_WGL_AMD_gpu_association, 1366}, /* wglGetCurrentAssociatedContextAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 22 /* WGL_EXT_display_color_table */, 905}, /* wglDestroyDisplayColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 35 /* WGL_I3D_image_buffer */, 936}, /* wglDestroyImageBufferI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 12 /* WGL_ARB_pbuffer */, 961}, /* wglDestroyPbufferARB */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 27 /* WGL_EXT_pbuffer */, 982}, /* wglDestroyPbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 36 /* WGL_I3D_swap_frame_lock */, 1003}, /* wglDisableFrameLockI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 34 /* WGL_I3D_genlock */, 1026}, /* wglDisableGenlockI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 36 /* WGL_I3D_swap_frame_lock */, 1047}, /* wglEnableFrameLockI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 34 /* WGL_I3D_genlock */, 1069}, /* wglEnableGenlockI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 37 /* WGL_I3D_swap_frame_usage */, 1089}, /* wglEndFrameTrackingI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 43 /* WGL_NV_gpu_affinity */, 1112}, /* wglEnumGpuDevicesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 43 /* WGL_NV_gpu_affinity */, 1132}, /* wglEnumGpusFromAffinityDCNV */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 43 /* WGL_NV_gpu_affinity */, 1160}, /* wglEnumGpusNV */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 50 /* WGL_NV_video_capture */, 1174}, /* wglEnumerateVideoCaptureDevicesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 45 /* WGL_NV_present_video */, 1208}, /* wglEnumerateVideoDevicesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 49 /* WGL_NV_vertex_array_range */, 1235}, /* wglFreeMemoryNV */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 34 /* WGL_I3D_genlock */, 1251}, /* wglGenlockSampleRateI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 34 /* WGL_I3D_genlock */, 1275}, /* wglGenlockSourceDelayI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 34 /* WGL_I3D_genlock */, 1300}, /* wglGenlockSourceEdgeI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 34 /* WGL_I3D_genlock */, 1324}, /* wglGenlockSourceI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 2 /* WGL_AMD_gpu_association */, 1344}, /* wglGetContextGPUIDAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 59, 2 /* WGL_AMD_gpu_association */, 1366}, /* wglGetCurrentAssociatedContextAMD */
     {DISPATCH_RESOLVE_DIRECT, 60, WGL_1_0, 1400}, /* wglGetCurrentContext */
     {DISPATCH_RESOLVE_DIRECT, 61, WGL_1_0, 1421}, /* wglGetCurrentDC */
-    {DISPATCH_RESOLVE_EXTENSION, 62, WGL_extension_WGL_ARB_make_current_read, 1437}, /* wglGetCurrentReadDCARB */
-    {DISPATCH_RESOLVE_EXTENSION, 63, WGL_extension_WGL_EXT_make_current_read, 1460}, /* wglGetCurrentReadDCEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 64, WGL_extension_WGL_I3D_digital_video_control, 1508}, /* wglGetDigitalVideoParametersI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 65, WGL_extension_WGL_ARB_extensions_string, 1540}, /* wglGetExtensionsStringARB */
-    {DISPATCH_RESOLVE_EXTENSION, 66, WGL_extension_WGL_EXT_extensions_string, 1566}, /* wglGetExtensionsStringEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 67, WGL_extension_WGL_I3D_swap_frame_usage, 1592}, /* wglGetFrameUsageI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 68, WGL_extension_WGL_AMD_gpu_association, 1612}, /* wglGetGPUIDsAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 69, WGL_extension_WGL_AMD_gpu_association, 1628}, /* wglGetGPUInfoAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 70, WGL_extension_WGL_I3D_gamma, 1645}, /* wglGetGammaTableI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 71, WGL_extension_WGL_I3D_gamma, 1665}, /* wglGetGammaTableParametersI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 72, WGL_extension_WGL_I3D_genlock, 1695}, /* wglGetGenlockSampleRateI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 73, WGL_extension_WGL_I3D_genlock, 1722}, /* wglGetGenlockSourceDelayI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 74, WGL_extension_WGL_I3D_genlock, 1750}, /* wglGetGenlockSourceEdgeI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 75, WGL_extension_WGL_I3D_genlock, 1777}, /* wglGetGenlockSourceI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 10 /* WGL_ARB_make_current_read */, 1437}, /* wglGetCurrentReadDCARB */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 25 /* WGL_EXT_make_current_read */, 1460}, /* wglGetCurrentReadDCEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 32 /* WGL_I3D_digital_video_control */, 1508}, /* wglGetDigitalVideoParametersI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 8 /* WGL_ARB_extensions_string */, 1540}, /* wglGetExtensionsStringARB */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 23 /* WGL_EXT_extensions_string */, 1566}, /* wglGetExtensionsStringEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 37 /* WGL_I3D_swap_frame_usage */, 1592}, /* wglGetFrameUsageI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 68, 2 /* WGL_AMD_gpu_association */, 1612}, /* wglGetGPUIDsAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 69, 2 /* WGL_AMD_gpu_association */, 1628}, /* wglGetGPUInfoAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 33 /* WGL_I3D_gamma */, 1645}, /* wglGetGammaTableI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 33 /* WGL_I3D_gamma */, 1665}, /* wglGetGammaTableParametersI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 34 /* WGL_I3D_genlock */, 1695}, /* wglGetGenlockSampleRateI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 34 /* WGL_I3D_genlock */, 1722}, /* wglGetGenlockSourceDelayI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 34 /* WGL_I3D_genlock */, 1750}, /* wglGetGenlockSourceEdgeI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 34 /* WGL_I3D_genlock */, 1777}, /* wglGetGenlockSourceI3D */
     {DISPATCH_RESOLVE_DIRECT, 76, WGL_1_0, 1800}, /* wglGetLayerPaletteEntries */
-    {DISPATCH_RESOLVE_EXTENSION, 77, WGL_extension_WGL_OML_sync_control, 1826}, /* wglGetMscRateOML */
-    {DISPATCH_RESOLVE_EXTENSION, 78, WGL_extension_WGL_ARB_pbuffer, 1843}, /* wglGetPbufferDCARB */
-    {DISPATCH_RESOLVE_EXTENSION, 79, WGL_extension_WGL_EXT_pbuffer, 1862}, /* wglGetPbufferDCEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 80, WGL_extension_WGL_ARB_pixel_format, 1881}, /* wglGetPixelFormatAttribfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 81, WGL_extension_WGL_EXT_pixel_format, 1910}, /* wglGetPixelFormatAttribfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 82, WGL_extension_WGL_ARB_pixel_format, 1939}, /* wglGetPixelFormatAttribivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 83, WGL_extension_WGL_EXT_pixel_format, 1968}, /* wglGetPixelFormatAttribivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 52 /* WGL_OML_sync_control */, 1826}, /* wglGetMscRateOML */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 12 /* WGL_ARB_pbuffer */, 1843}, /* wglGetPbufferDCARB */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 27 /* WGL_EXT_pbuffer */, 1862}, /* wglGetPbufferDCEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 80, 13 /* WGL_ARB_pixel_format */, 1881}, /* wglGetPixelFormatAttribfvARB */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 28 /* WGL_EXT_pixel_format */, 1910}, /* wglGetPixelFormatAttribfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 13 /* WGL_ARB_pixel_format */, 1939}, /* wglGetPixelFormatAttribivARB */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 28 /* WGL_EXT_pixel_format */, 1968}, /* wglGetPixelFormatAttribivEXT */
     {DISPATCH_RESOLVE_DIRECT, 84, WGL_1_0, 1997}, /* wglGetProcAddress */
-    {DISPATCH_RESOLVE_EXTENSION, 85, WGL_extension_WGL_EXT_swap_control, 2015}, /* wglGetSwapIntervalEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 86, WGL_extension_WGL_OML_sync_control, 2037}, /* wglGetSyncValuesOML */
-    {DISPATCH_RESOLVE_EXTENSION, 87, WGL_extension_WGL_NV_video_output, 2057}, /* wglGetVideoDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 88, WGL_extension_WGL_NV_video_output, 2077}, /* wglGetVideoInfoNV */
-    {DISPATCH_RESOLVE_EXTENSION, 89, WGL_extension_WGL_I3D_swap_frame_lock, 2095}, /* wglIsEnabledFrameLockI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 90, WGL_extension_WGL_I3D_genlock, 2120}, /* wglIsEnabledGenlockI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 91, WGL_extension_WGL_NV_swap_group, 2143}, /* wglJoinSwapGroupNV */
-    {DISPATCH_RESOLVE_EXTENSION, 92, WGL_extension_WGL_EXT_display_color_table, 2162}, /* wglLoadDisplayColorTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 93, WGL_extension_WGL_NV_video_capture, 2190}, /* wglLockVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 94, WGL_extension_WGL_AMD_gpu_association, 2218}, /* wglMakeAssociatedContextCurrentAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 95, WGL_extension_WGL_ARB_make_current_read, 2253}, /* wglMakeContextCurrentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 96, WGL_extension_WGL_EXT_make_current_read, 2278}, /* wglMakeContextCurrentEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 30 /* WGL_EXT_swap_control */, 2015}, /* wglGetSwapIntervalEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 52 /* WGL_OML_sync_control */, 2037}, /* wglGetSyncValuesOML */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 51 /* WGL_NV_video_output */, 2057}, /* wglGetVideoDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 51 /* WGL_NV_video_output */, 2077}, /* wglGetVideoInfoNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 36 /* WGL_I3D_swap_frame_lock */, 2095}, /* wglIsEnabledFrameLockI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 34 /* WGL_I3D_genlock */, 2120}, /* wglIsEnabledGenlockI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 48 /* WGL_NV_swap_group */, 2143}, /* wglJoinSwapGroupNV */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 22 /* WGL_EXT_display_color_table */, 2162}, /* wglLoadDisplayColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 50 /* WGL_NV_video_capture */, 2190}, /* wglLockVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 94, 2 /* WGL_AMD_gpu_association */, 2218}, /* wglMakeAssociatedContextCurrentAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 10 /* WGL_ARB_make_current_read */, 2253}, /* wglMakeContextCurrentARB */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 25 /* WGL_EXT_make_current_read */, 2278}, /* wglMakeContextCurrentEXT */
     {DISPATCH_RESOLVE_DIRECT, 97, WGL_1_0, 2303}, /* wglMakeCurrent */
-    {DISPATCH_RESOLVE_EXTENSION, 98, WGL_extension_WGL_NV_present_video, 2318}, /* wglQueryCurrentContextNV */
-    {DISPATCH_RESOLVE_EXTENSION, 99, WGL_extension_WGL_NV_swap_group, 2343}, /* wglQueryFrameCountNV */
-    {DISPATCH_RESOLVE_EXTENSION, 100, WGL_extension_WGL_I3D_swap_frame_lock, 2364}, /* wglQueryFrameLockMasterI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 101, WGL_extension_WGL_I3D_swap_frame_usage, 2391}, /* wglQueryFrameTrackingI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 102, WGL_extension_WGL_I3D_genlock, 2416}, /* wglQueryGenlockMaxSourceDelayI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 103, WGL_extension_WGL_NV_swap_group, 2449}, /* wglQueryMaxSwapGroupsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 104, WGL_extension_WGL_ARB_pbuffer, 2473}, /* wglQueryPbufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 105, WGL_extension_WGL_EXT_pbuffer, 2492}, /* wglQueryPbufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 106, WGL_extension_WGL_NV_swap_group, 2511}, /* wglQuerySwapGroupNV */
-    {DISPATCH_RESOLVE_EXTENSION, 107, WGL_extension_WGL_NV_video_capture, 2531}, /* wglQueryVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 45 /* WGL_NV_present_video */, 2318}, /* wglQueryCurrentContextNV */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 48 /* WGL_NV_swap_group */, 2343}, /* wglQueryFrameCountNV */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 36 /* WGL_I3D_swap_frame_lock */, 2364}, /* wglQueryFrameLockMasterI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 37 /* WGL_I3D_swap_frame_usage */, 2391}, /* wglQueryFrameTrackingI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 34 /* WGL_I3D_genlock */, 2416}, /* wglQueryGenlockMaxSourceDelayI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 48 /* WGL_NV_swap_group */, 2449}, /* wglQueryMaxSwapGroupsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 12 /* WGL_ARB_pbuffer */, 2473}, /* wglQueryPbufferARB */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 27 /* WGL_EXT_pbuffer */, 2492}, /* wglQueryPbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 48 /* WGL_NV_swap_group */, 2511}, /* wglQuerySwapGroupNV */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 50 /* WGL_NV_video_capture */, 2531}, /* wglQueryVideoCaptureDeviceNV */
     {DISPATCH_RESOLVE_DIRECT, 108, WGL_1_0, 2560}, /* wglRealizeLayerPalette */
-    {DISPATCH_RESOLVE_EXTENSION, 109, WGL_extension_WGL_I3D_image_buffer, 2583}, /* wglReleaseImageBufferEventsI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 110, WGL_extension_WGL_ARB_pbuffer, 2614}, /* wglReleasePbufferDCARB */
-    {DISPATCH_RESOLVE_EXTENSION, 111, WGL_extension_WGL_EXT_pbuffer, 2637}, /* wglReleasePbufferDCEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 112, WGL_extension_WGL_ARB_render_texture, 2660}, /* wglReleaseTexImageARB */
-    {DISPATCH_RESOLVE_EXTENSION, 113, WGL_extension_WGL_NV_video_capture, 2682}, /* wglReleaseVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 114, WGL_extension_WGL_NV_video_output, 2713}, /* wglReleaseVideoDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 115, WGL_extension_WGL_NV_video_output, 2737}, /* wglReleaseVideoImageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 116, WGL_extension_WGL_NV_swap_group, 2760}, /* wglResetFrameCountNV */
-    {DISPATCH_RESOLVE_EXTENSION, 117, WGL_extension_WGL_ARB_buffer_region, 2781}, /* wglRestoreBufferRegionARB */
-    {DISPATCH_RESOLVE_EXTENSION, 118, WGL_extension_WGL_ARB_buffer_region, 2807}, /* wglSaveBufferRegionARB */
-    {DISPATCH_RESOLVE_EXTENSION, 119, WGL_extension_WGL_NV_video_output, 2830}, /* wglSendPbufferToVideoNV */
-    {DISPATCH_RESOLVE_EXTENSION, 120, WGL_extension_WGL_I3D_digital_video_control, 2854}, /* wglSetDigitalVideoParametersI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 121, WGL_extension_WGL_I3D_gamma, 2886}, /* wglSetGammaTableI3D */
-    {DISPATCH_RESOLVE_EXTENSION, 122, WGL_extension_WGL_I3D_gamma, 2906}, /* wglSetGammaTableParametersI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 35 /* WGL_I3D_image_buffer */, 2583}, /* wglReleaseImageBufferEventsI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 12 /* WGL_ARB_pbuffer */, 2614}, /* wglReleasePbufferDCARB */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 27 /* WGL_EXT_pbuffer */, 2637}, /* wglReleasePbufferDCEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 15 /* WGL_ARB_render_texture */, 2660}, /* wglReleaseTexImageARB */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 50 /* WGL_NV_video_capture */, 2682}, /* wglReleaseVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 51 /* WGL_NV_video_output */, 2713}, /* wglReleaseVideoDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 51 /* WGL_NV_video_output */, 2737}, /* wglReleaseVideoImageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 48 /* WGL_NV_swap_group */, 2760}, /* wglResetFrameCountNV */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 3 /* WGL_ARB_buffer_region */, 2781}, /* wglRestoreBufferRegionARB */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 3 /* WGL_ARB_buffer_region */, 2807}, /* wglSaveBufferRegionARB */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 51 /* WGL_NV_video_output */, 2830}, /* wglSendPbufferToVideoNV */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 32 /* WGL_I3D_digital_video_control */, 2854}, /* wglSetDigitalVideoParametersI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 33 /* WGL_I3D_gamma */, 2886}, /* wglSetGammaTableI3D */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 33 /* WGL_I3D_gamma */, 2906}, /* wglSetGammaTableParametersI3D */
     {DISPATCH_RESOLVE_DIRECT, 123, WGL_1_0, 2936}, /* wglSetLayerPaletteEntries */
-    {DISPATCH_RESOLVE_EXTENSION, 124, WGL_extension_WGL_ARB_render_texture, 2962}, /* wglSetPbufferAttribARB */
-    {DISPATCH_RESOLVE_EXTENSION, 125, WGL_extension_WGL_3DL_stereo_control, 2985}, /* wglSetStereoEmitterState3DL */
+    {DISPATCH_RESOLVE_EXTENSION, 124, 15 /* WGL_ARB_render_texture */, 2962}, /* wglSetPbufferAttribARB */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 1 /* WGL_3DL_stereo_control */, 2985}, /* wglSetStereoEmitterState3DL */
     {DISPATCH_RESOLVE_DIRECT, 126, WGL_1_0, 3013}, /* wglShareLists */
-    {DISPATCH_RESOLVE_EXTENSION, 127, WGL_extension_WGL_OML_sync_control, 3027}, /* wglSwapBuffersMscOML */
-    {DISPATCH_RESOLVE_EXTENSION, 128, WGL_extension_WGL_EXT_swap_control, 3048}, /* wglSwapIntervalEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 52 /* WGL_OML_sync_control */, 3027}, /* wglSwapBuffersMscOML */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 30 /* WGL_EXT_swap_control */, 3048}, /* wglSwapIntervalEXT */
     {DISPATCH_RESOLVE_DIRECT, 129, WGL_1_0, 3067}, /* wglSwapLayerBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 130, WGL_extension_WGL_OML_sync_control, 3087}, /* wglSwapLayerBuffersMscOML */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 52 /* WGL_OML_sync_control */, 3087}, /* wglSwapLayerBuffersMscOML */
     {DISPATCH_RESOLVE_DIRECT, 131, WGL_1_0, 3113}, /* wglUseFontBitmapsA */
     {DISPATCH_RESOLVE_DIRECT, 132, WGL_1_0, 3132}, /* wglUseFontBitmapsW */
     {DISPATCH_RESOLVE_DIRECT, 133, WGL_1_0, 3151}, /* wglUseFontOutlines */
     {DISPATCH_RESOLVE_DIRECT, 134, WGL_1_0, 3170}, /* wglUseFontOutlinesA */
     {DISPATCH_RESOLVE_DIRECT, 135, WGL_1_0, 3190}, /* wglUseFontOutlinesW */
-    {DISPATCH_RESOLVE_EXTENSION, 136, WGL_extension_WGL_OML_sync_control, 3210}, /* wglWaitForMscOML */
-    {DISPATCH_RESOLVE_EXTENSION, 137, WGL_extension_WGL_OML_sync_control, 3227}, /* wglWaitForSbcOML */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 52 /* WGL_OML_sync_control */, 3210}, /* wglWaitForMscOML */
+    {DISPATCH_RESOLVE_EXTENSION, 137, 52 /* WGL_OML_sync_control */, 3227}, /* wglWaitForSbcOML */
     {DISPATCH_RESOLVE_TERMINATOR, 138, 0, 0}
 };
 
@@ -372,6 +417,8 @@ static khronos_uint32_t wgl_method_name_offsets[138] = {0};
 #define current_metadata wgl_metadata
 #define current_glproxy_resolve_local wgl_glproxy_resolve_local
 #define current_glproxy_dispatch_metadata_init wgl_glproxy_dispatch_metadata_init
+#define current_extension_bitmap wgl_extension_bitmap
+#define current_extension_offsets wgl_extension_offsets
 #define current_extensions_count wgl_extensions_count
 #define current_extension_enum_strings wgl_extension_enum_strings
 #define current_entrypoint_strings wgl_entrypoint_strings
@@ -388,6 +435,8 @@ static khronos_uint32_t wgl_method_name_offsets[138] = {0};
 #undef current_metadata
 #undef current_glproxy_resolve_local
 #undef current_glproxy_dispatch_metadata_init
+#undef current_extension_bitmap
+#undef current_extension_offsets
 #undef current_extensions_count
 #undef current_extension_enum_strings
 #undef current_entrypoint_strings

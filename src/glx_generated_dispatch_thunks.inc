@@ -4,15 +4,38 @@
 #include "dispatch_common.h"
 #if PLATFORM_HAS_GLX
 
-#define glx_extensions_count 32
+#define glx_extensions_count 62
 
-static const char *glx_extension_enum_strings =
+static khronos_uint32_t glx_extension_bitmap[2];
+
+static const char glx_extension_enum_strings[] =
+    "GLX_3DFX_multisample\0"
     "GLX_AMD_gpu_association\0"
+    "GLX_ARB_context_flush_control\0"
     "GLX_ARB_create_context\0"
+    "GLX_ARB_create_context_profile\0"
+    "GLX_ARB_create_context_robustness\0"
+    "GLX_ARB_fbconfig_float\0"
+    "GLX_ARB_framebuffer_sRGB\0"
     "GLX_ARB_get_proc_address\0"
+    "GLX_ARB_multisample\0"
+    "GLX_ARB_robustness_application_isolation\0"
+    "GLX_ARB_robustness_share_group_isolation\0"
+    "GLX_ARB_vertex_buffer_object\0"
+    "GLX_EXT_buffer_age\0"
+    "GLX_EXT_create_context_es2_profile\0"
+    "GLX_EXT_create_context_es_profile\0"
+    "GLX_EXT_fbconfig_packed_float\0"
+    "GLX_EXT_framebuffer_sRGB\0"
     "GLX_EXT_import_context\0"
+    "GLX_EXT_libglvnd\0"
+    "GLX_EXT_stereo_tree\0"
     "GLX_EXT_swap_control\0"
+    "GLX_EXT_swap_control_tear\0"
     "GLX_EXT_texture_from_pixmap\0"
+    "GLX_EXT_visual_info\0"
+    "GLX_EXT_visual_rating\0"
+    "GLX_INTEL_swap_event\0"
     "GLX_MESA_agp_offset\0"
     "GLX_MESA_copy_sub_buffer\0"
     "GLX_MESA_pixmap_colormap\0"
@@ -22,11 +45,19 @@ static const char *glx_extension_enum_strings =
     "GLX_NV_copy_buffer\0"
     "GLX_NV_copy_image\0"
     "GLX_NV_delay_before_swap\0"
+    "GLX_NV_float_buffer\0"
+    "GLX_NV_multisample_coverage\0"
     "GLX_NV_present_video\0"
+    "GLX_NV_robustness_video_memory_purge\0"
     "GLX_NV_swap_group\0"
     "GLX_NV_video_capture\0"
     "GLX_NV_video_out\0"
+    "GLX_OML_swap_method\0"
     "GLX_OML_sync_control\0"
+    "GLX_SGIS_blended_overlay\0"
+    "GLX_SGIS_multisample\0"
+    "GLX_SGIS_shared_multisample\0"
+    "GLX_SGIX_dmbuffer\0"
     "GLX_SGIX_fbconfig\0"
     "GLX_SGIX_hyperpipe\0"
     "GLX_SGIX_pbuffer\0"
@@ -34,47 +65,77 @@ static const char *glx_extension_enum_strings =
     "GLX_SGIX_swap_group\0"
     "GLX_SGIX_video_resize\0"
     "GLX_SGIX_video_source\0"
+    "GLX_SGIX_visual_select_group\0"
     "GLX_SGI_cushion\0"
     "GLX_SGI_make_current_read\0"
     "GLX_SGI_swap_control\0"
     "GLX_SGI_video_sync\0"
     "GLX_SUN_get_transparent_index\0"
 ;
-
-enum glx_provider_extensions {
-    GLX_extension_GLX_AMD_gpu_association = 0,
-    GLX_extension_GLX_ARB_create_context = 24,
-    GLX_extension_GLX_ARB_get_proc_address = 47,
-    GLX_extension_GLX_EXT_import_context = 72,
-    GLX_extension_GLX_EXT_swap_control = 95,
-    GLX_extension_GLX_EXT_texture_from_pixmap = 116,
-    GLX_extension_GLX_MESA_agp_offset = 144,
-    GLX_extension_GLX_MESA_copy_sub_buffer = 164,
-    GLX_extension_GLX_MESA_pixmap_colormap = 189,
-    GLX_extension_GLX_MESA_query_renderer = 214,
-    GLX_extension_GLX_MESA_release_buffers = 238,
-    GLX_extension_GLX_MESA_set_3dfx_mode = 263,
-    GLX_extension_GLX_NV_copy_buffer = 286,
-    GLX_extension_GLX_NV_copy_image = 305,
-    GLX_extension_GLX_NV_delay_before_swap = 323,
-    GLX_extension_GLX_NV_present_video = 348,
-    GLX_extension_GLX_NV_swap_group = 369,
-    GLX_extension_GLX_NV_video_capture = 387,
-    GLX_extension_GLX_NV_video_out = 408,
-    GLX_extension_GLX_OML_sync_control = 425,
-    GLX_extension_GLX_SGIX_fbconfig = 446,
-    GLX_extension_GLX_SGIX_hyperpipe = 464,
-    GLX_extension_GLX_SGIX_pbuffer = 483,
-    GLX_extension_GLX_SGIX_swap_barrier = 500,
-    GLX_extension_GLX_SGIX_swap_group = 522,
-    GLX_extension_GLX_SGIX_video_resize = 542,
-    GLX_extension_GLX_SGIX_video_source = 564,
-    GLX_extension_GLX_SGI_cushion = 586,
-    GLX_extension_GLX_SGI_make_current_read = 602,
-    GLX_extension_GLX_SGI_swap_control = 628,
-    GLX_extension_GLX_SGI_video_sync = 649,
-    GLX_extension_GLX_SUN_get_transparent_index = 668,
-} PACKED;
+static const khronos_uint16_t glx_extension_offsets[] = {
+    0,
+    21,
+    45,
+    75,
+    98,
+    129,
+    163,
+    186,
+    211,
+    236,
+    256,
+    297,
+    338,
+    367,
+    386,
+    421,
+    455,
+    485,
+    510,
+    533,
+    550,
+    570,
+    591,
+    617,
+    645,
+    665,
+    687,
+    708,
+    728,
+    753,
+    778,
+    802,
+    827,
+    850,
+    869,
+    887,
+    912,
+    932,
+    960,
+    981,
+    1018,
+    1036,
+    1057,
+    1074,
+    1094,
+    1115,
+    1140,
+    1161,
+    1189,
+    1207,
+    1225,
+    1244,
+    1261,
+    1283,
+    1303,
+    1325,
+    1347,
+    1376,
+    1392,
+    1418,
+    1439,
+    1458,
+};
 
 static const khronos_uint8_t glx_entrypoint_strings[] = {
     103, 108, 88, 66, 105, 110, 100, 67, 104, 97, 110, 110, 101, 108, 84, 111, 87, 105, 110, 100, 111, 119, 83, 71, 73, 88, 0, /*glXBindChannelToWindowSGIX*/
@@ -210,135 +271,135 @@ static const khronos_uint8_t glx_entrypoint_strings[] = {
 };
 
 static const struct dispatch_resolve_info glx_resolve_info_table[] = {
-    {DISPATCH_RESOLVE_EXTENSION, 0, GLX_extension_GLX_SGIX_video_resize, 0}, /* glXBindChannelToWindowSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 1, GLX_extension_GLX_SGIX_hyperpipe, 27}, /* glXBindHyperpipeSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 2, GLX_extension_GLX_NV_swap_group, 48}, /* glXBindSwapBarrierNV */
-    {DISPATCH_RESOLVE_EXTENSION, 3, GLX_extension_GLX_SGIX_swap_barrier, 69}, /* glXBindSwapBarrierSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 4, GLX_extension_GLX_EXT_texture_from_pixmap, 92}, /* glXBindTexImageEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 5, GLX_extension_GLX_NV_video_capture, 111}, /* glXBindVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 6, GLX_extension_GLX_NV_present_video, 139}, /* glXBindVideoDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 7, GLX_extension_GLX_NV_video_out, 160}, /* glXBindVideoImageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 8, GLX_extension_GLX_AMD_gpu_association, 180}, /* glXBlitContextFramebufferAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 9, GLX_extension_GLX_SGIX_video_resize, 209}, /* glXChannelRectSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 10, GLX_extension_GLX_SGIX_video_resize, 228}, /* glXChannelRectSyncSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 54 /* GLX_SGIX_video_resize */, 0}, /* glXBindChannelToWindowSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 50 /* GLX_SGIX_hyperpipe */, 27}, /* glXBindHyperpipeSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 40 /* GLX_NV_swap_group */, 48}, /* glXBindSwapBarrierNV */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 52 /* GLX_SGIX_swap_barrier */, 69}, /* glXBindSwapBarrierSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 23 /* GLX_EXT_texture_from_pixmap */, 92}, /* glXBindTexImageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 41 /* GLX_NV_video_capture */, 111}, /* glXBindVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 38 /* GLX_NV_present_video */, 139}, /* glXBindVideoDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 42 /* GLX_NV_video_out */, 160}, /* glXBindVideoImageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 1 /* GLX_AMD_gpu_association */, 180}, /* glXBlitContextFramebufferAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 54 /* GLX_SGIX_video_resize */, 209}, /* glXChannelRectSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 54 /* GLX_SGIX_video_resize */, 228}, /* glXChannelRectSyncSGIX */
     {DISPATCH_RESOLVE_DIRECT, 11, GLX_1_3, 251}, /* glXChooseFBConfig */
-    {DISPATCH_RESOLVE_EXTENSION, 12, GLX_extension_GLX_SGIX_fbconfig, 269}, /* glXChooseFBConfigSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 49 /* GLX_SGIX_fbconfig */, 269}, /* glXChooseFBConfigSGIX */
     {DISPATCH_RESOLVE_DIRECT, 13, GLX_1_0, 291}, /* glXChooseVisual */
-    {DISPATCH_RESOLVE_EXTENSION, 14, GLX_extension_GLX_NV_copy_buffer, 307}, /* glXCopyBufferSubDataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 33 /* GLX_NV_copy_buffer */, 307}, /* glXCopyBufferSubDataNV */
     {DISPATCH_RESOLVE_DIRECT, 15, GLX_1_0, 330}, /* glXCopyContext */
-    {DISPATCH_RESOLVE_EXTENSION, 16, GLX_extension_GLX_NV_copy_image, 345}, /* glXCopyImageSubDataNV */
-    {DISPATCH_RESOLVE_EXTENSION, 17, GLX_extension_GLX_MESA_copy_sub_buffer, 367}, /* glXCopySubBufferMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 18, GLX_extension_GLX_AMD_gpu_association, 388}, /* glXCreateAssociatedContextAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 19, GLX_extension_GLX_AMD_gpu_association, 418}, /* glXCreateAssociatedContextAttribsAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 34 /* GLX_NV_copy_image */, 345}, /* glXCopyImageSubDataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 28 /* GLX_MESA_copy_sub_buffer */, 367}, /* glXCopySubBufferMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 1 /* GLX_AMD_gpu_association */, 388}, /* glXCreateAssociatedContextAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 1 /* GLX_AMD_gpu_association */, 418}, /* glXCreateAssociatedContextAttribsAMD */
     {DISPATCH_RESOLVE_DIRECT, 20, GLX_1_0, 455}, /* glXCreateContext */
-    {DISPATCH_RESOLVE_EXTENSION, 21, GLX_extension_GLX_ARB_create_context, 472}, /* glXCreateContextAttribsARB */
-    {DISPATCH_RESOLVE_EXTENSION, 22, GLX_extension_GLX_SGIX_fbconfig, 499}, /* glXCreateContextWithConfigSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 23, GLX_extension_GLX_SGIX_pbuffer, 530}, /* glXCreateGLXPbufferSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 3 /* GLX_ARB_create_context */, 472}, /* glXCreateContextAttribsARB */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 49 /* GLX_SGIX_fbconfig */, 499}, /* glXCreateContextWithConfigSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 51 /* GLX_SGIX_pbuffer */, 530}, /* glXCreateGLXPbufferSGIX */
     {DISPATCH_RESOLVE_DIRECT, 24, GLX_1_0, 554}, /* glXCreateGLXPixmap */
-    {DISPATCH_RESOLVE_EXTENSION, 25, GLX_extension_GLX_MESA_pixmap_colormap, 573}, /* glXCreateGLXPixmapMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 26, GLX_extension_GLX_SGIX_fbconfig, 596}, /* glXCreateGLXPixmapWithConfigSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 29 /* GLX_MESA_pixmap_colormap */, 573}, /* glXCreateGLXPixmapMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 49 /* GLX_SGIX_fbconfig */, 596}, /* glXCreateGLXPixmapWithConfigSGIX */
     {DISPATCH_RESOLVE_DIRECT, 27, GLX_1_3, 629}, /* glXCreateNewContext */
     {DISPATCH_RESOLVE_DIRECT, 28, GLX_1_3, 649}, /* glXCreatePbuffer */
     {DISPATCH_RESOLVE_DIRECT, 29, GLX_1_3, 666}, /* glXCreatePixmap */
     {DISPATCH_RESOLVE_DIRECT, 30, GLX_1_3, 682}, /* glXCreateWindow */
-    {DISPATCH_RESOLVE_EXTENSION, 31, GLX_extension_GLX_SGI_cushion, 698}, /* glXCushionSGI */
-    {DISPATCH_RESOLVE_EXTENSION, 32, GLX_extension_GLX_NV_delay_before_swap, 712}, /* glXDelayBeforeSwapNV */
-    {DISPATCH_RESOLVE_EXTENSION, 33, GLX_extension_GLX_AMD_gpu_association, 733}, /* glXDeleteAssociatedContextAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 57 /* GLX_SGI_cushion */, 698}, /* glXCushionSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 35 /* GLX_NV_delay_before_swap */, 712}, /* glXDelayBeforeSwapNV */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 1 /* GLX_AMD_gpu_association */, 733}, /* glXDeleteAssociatedContextAMD */
     {DISPATCH_RESOLVE_DIRECT, 34, GLX_1_0, 763}, /* glXDestroyContext */
-    {DISPATCH_RESOLVE_EXTENSION, 35, GLX_extension_GLX_SGIX_pbuffer, 781}, /* glXDestroyGLXPbufferSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 51 /* GLX_SGIX_pbuffer */, 781}, /* glXDestroyGLXPbufferSGIX */
     {DISPATCH_RESOLVE_DIRECT, 36, GLX_1_0, 806}, /* glXDestroyGLXPixmap */
-    {DISPATCH_RESOLVE_EXTENSION, 37, GLX_extension_GLX_SGIX_video_source, 826}, /* glXDestroyGLXVideoSourceSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 38, GLX_extension_GLX_SGIX_hyperpipe, 855}, /* glXDestroyHyperpipeConfigSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 55 /* GLX_SGIX_video_source */, 826}, /* glXDestroyGLXVideoSourceSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 38, 50 /* GLX_SGIX_hyperpipe */, 855}, /* glXDestroyHyperpipeConfigSGIX */
     {DISPATCH_RESOLVE_DIRECT, 39, GLX_1_3, 885}, /* glXDestroyPbuffer */
     {DISPATCH_RESOLVE_DIRECT, 40, GLX_1_3, 903}, /* glXDestroyPixmap */
     {DISPATCH_RESOLVE_DIRECT, 41, GLX_1_3, 920}, /* glXDestroyWindow */
-    {DISPATCH_RESOLVE_EXTENSION, 42, GLX_extension_GLX_NV_video_capture, 937}, /* glXEnumerateVideoCaptureDevicesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 43, GLX_extension_GLX_NV_present_video, 971}, /* glXEnumerateVideoDevicesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 44, GLX_extension_GLX_EXT_import_context, 998}, /* glXFreeContextEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 45, GLX_extension_GLX_MESA_agp_offset, 1016}, /* glXGetAGPOffsetMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 41 /* GLX_NV_video_capture */, 937}, /* glXEnumerateVideoCaptureDevicesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 38 /* GLX_NV_present_video */, 971}, /* glXEnumerateVideoDevicesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 18 /* GLX_EXT_import_context */, 998}, /* glXFreeContextEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 27 /* GLX_MESA_agp_offset */, 1016}, /* glXGetAGPOffsetMESA */
     {DISPATCH_RESOLVE_DIRECT, 46, GLX_1_1, 1036}, /* glXGetClientString */
     {DISPATCH_RESOLVE_DIRECT, 47, GLX_1_0, 1055}, /* glXGetConfig */
-    {DISPATCH_RESOLVE_EXTENSION, 48, GLX_extension_GLX_AMD_gpu_association, 1068}, /* glXGetContextGPUIDAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 49, GLX_extension_GLX_EXT_import_context, 1090}, /* glXGetContextIDEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 50, GLX_extension_GLX_AMD_gpu_association, 1109}, /* glXGetCurrentAssociatedContextAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 1 /* GLX_AMD_gpu_association */, 1068}, /* glXGetContextGPUIDAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 18 /* GLX_EXT_import_context */, 1090}, /* glXGetContextIDEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 1 /* GLX_AMD_gpu_association */, 1109}, /* glXGetCurrentAssociatedContextAMD */
     {DISPATCH_RESOLVE_DIRECT, 51, GLX_1_0, 1143}, /* glXGetCurrentContext */
     {DISPATCH_RESOLVE_DIRECT, 52, GLX_1_2, 1164}, /* glXGetCurrentDisplay */
-    {DISPATCH_RESOLVE_EXTENSION, 53, GLX_extension_GLX_EXT_import_context, 1185}, /* glXGetCurrentDisplayEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 18 /* GLX_EXT_import_context */, 1185}, /* glXGetCurrentDisplayEXT */
     {DISPATCH_RESOLVE_DIRECT, 54, GLX_1_0, 1209}, /* glXGetCurrentDrawable */
     {DISPATCH_RESOLVE_DIRECT, 55, GLX_1_3, 1231}, /* glXGetCurrentReadDrawable */
-    {DISPATCH_RESOLVE_EXTENSION, 56, GLX_extension_GLX_SGI_make_current_read, 1257}, /* glXGetCurrentReadDrawableSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 58 /* GLX_SGI_make_current_read */, 1257}, /* glXGetCurrentReadDrawableSGI */
     {DISPATCH_RESOLVE_DIRECT, 57, GLX_1_3, 1286}, /* glXGetFBConfigAttrib */
-    {DISPATCH_RESOLVE_EXTENSION, 58, GLX_extension_GLX_SGIX_fbconfig, 1307}, /* glXGetFBConfigAttribSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 59, GLX_extension_GLX_SGIX_fbconfig, 1332}, /* glXGetFBConfigFromVisualSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 49 /* GLX_SGIX_fbconfig */, 1307}, /* glXGetFBConfigAttribSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 59, 49 /* GLX_SGIX_fbconfig */, 1332}, /* glXGetFBConfigFromVisualSGIX */
     {DISPATCH_RESOLVE_DIRECT, 60, GLX_1_3, 1361}, /* glXGetFBConfigs */
-    {DISPATCH_RESOLVE_EXTENSION, 61, GLX_extension_GLX_AMD_gpu_association, 1377}, /* glXGetGPUIDsAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 62, GLX_extension_GLX_AMD_gpu_association, 1393}, /* glXGetGPUInfoAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 63, GLX_extension_GLX_OML_sync_control, 1410}, /* glXGetMscRateOML */
+    {DISPATCH_RESOLVE_EXTENSION, 61, 1 /* GLX_AMD_gpu_association */, 1377}, /* glXGetGPUIDsAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 1 /* GLX_AMD_gpu_association */, 1393}, /* glXGetGPUInfoAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 44 /* GLX_OML_sync_control */, 1410}, /* glXGetMscRateOML */
     {DISPATCH_RESOLVE_DIRECT, 64, GLX_1_4, 1427}, /* glXGetProcAddress */
-    {DISPATCH_RESOLVE_EXTENSION, 65, GLX_extension_GLX_ARB_get_proc_address, 1445}, /* glXGetProcAddressARB */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 8 /* GLX_ARB_get_proc_address */, 1445}, /* glXGetProcAddressARB */
     {DISPATCH_RESOLVE_DIRECT, 66, GLX_1_3, 1466}, /* glXGetSelectedEvent */
-    {DISPATCH_RESOLVE_EXTENSION, 67, GLX_extension_GLX_SGIX_pbuffer, 1486}, /* glXGetSelectedEventSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 68, GLX_extension_GLX_OML_sync_control, 1510}, /* glXGetSyncValuesOML */
-    {DISPATCH_RESOLVE_EXTENSION, 69, GLX_extension_GLX_SUN_get_transparent_index, 1530}, /* glXGetTransparentIndexSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 70, GLX_extension_GLX_NV_video_out, 1556}, /* glXGetVideoDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 71, GLX_extension_GLX_NV_video_out, 1576}, /* glXGetVideoInfoNV */
-    {DISPATCH_RESOLVE_EXTENSION, 72, GLX_extension_GLX_SGI_video_sync, 1594}, /* glXGetVideoSyncSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 51 /* GLX_SGIX_pbuffer */, 1486}, /* glXGetSelectedEventSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 68, 44 /* GLX_OML_sync_control */, 1510}, /* glXGetSyncValuesOML */
+    {DISPATCH_RESOLVE_EXTENSION, 69, 61 /* GLX_SUN_get_transparent_index */, 1530}, /* glXGetTransparentIndexSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 42 /* GLX_NV_video_out */, 1556}, /* glXGetVideoDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 42 /* GLX_NV_video_out */, 1576}, /* glXGetVideoInfoNV */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 60 /* GLX_SGI_video_sync */, 1594}, /* glXGetVideoSyncSGI */
     {DISPATCH_RESOLVE_DIRECT, 73, GLX_1_3, 1613}, /* glXGetVisualFromFBConfig */
-    {DISPATCH_RESOLVE_EXTENSION, 74, GLX_extension_GLX_SGIX_fbconfig, 1638}, /* glXGetVisualFromFBConfigSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 75, GLX_extension_GLX_SGIX_hyperpipe, 1667}, /* glXHyperpipeAttribSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 76, GLX_extension_GLX_SGIX_hyperpipe, 1690}, /* glXHyperpipeConfigSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 77, GLX_extension_GLX_EXT_import_context, 1713}, /* glXImportContextEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 49 /* GLX_SGIX_fbconfig */, 1638}, /* glXGetVisualFromFBConfigSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 50 /* GLX_SGIX_hyperpipe */, 1667}, /* glXHyperpipeAttribSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 50 /* GLX_SGIX_hyperpipe */, 1690}, /* glXHyperpipeConfigSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 18 /* GLX_EXT_import_context */, 1713}, /* glXImportContextEXT */
     {DISPATCH_RESOLVE_DIRECT, 78, GLX_1_0, 1733}, /* glXIsDirect */
-    {DISPATCH_RESOLVE_EXTENSION, 79, GLX_extension_GLX_NV_swap_group, 1745}, /* glXJoinSwapGroupNV */
-    {DISPATCH_RESOLVE_EXTENSION, 80, GLX_extension_GLX_SGIX_swap_group, 1764}, /* glXJoinSwapGroupSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 81, GLX_extension_GLX_NV_video_capture, 1785}, /* glXLockVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 82, GLX_extension_GLX_AMD_gpu_association, 1813}, /* glXMakeAssociatedContextCurrentAMD */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 40 /* GLX_NV_swap_group */, 1745}, /* glXJoinSwapGroupNV */
+    {DISPATCH_RESOLVE_EXTENSION, 80, 53 /* GLX_SGIX_swap_group */, 1764}, /* glXJoinSwapGroupSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 41 /* GLX_NV_video_capture */, 1785}, /* glXLockVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 1 /* GLX_AMD_gpu_association */, 1813}, /* glXMakeAssociatedContextCurrentAMD */
     {DISPATCH_RESOLVE_DIRECT, 83, GLX_1_3, 1848}, /* glXMakeContextCurrent */
     {DISPATCH_RESOLVE_DIRECT, 84, GLX_1_0, 1870}, /* glXMakeCurrent */
-    {DISPATCH_RESOLVE_EXTENSION, 85, GLX_extension_GLX_SGI_make_current_read, 1885}, /* glXMakeCurrentReadSGI */
-    {DISPATCH_RESOLVE_EXTENSION, 86, GLX_extension_GLX_NV_copy_buffer, 1907}, /* glXNamedCopyBufferSubDataNV */
-    {DISPATCH_RESOLVE_EXTENSION, 87, GLX_extension_GLX_SGIX_video_resize, 1935}, /* glXQueryChannelDeltasSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 88, GLX_extension_GLX_SGIX_video_resize, 1961}, /* glXQueryChannelRectSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 58 /* GLX_SGI_make_current_read */, 1885}, /* glXMakeCurrentReadSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 33 /* GLX_NV_copy_buffer */, 1907}, /* glXNamedCopyBufferSubDataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 54 /* GLX_SGIX_video_resize */, 1935}, /* glXQueryChannelDeltasSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 54 /* GLX_SGIX_video_resize */, 1961}, /* glXQueryChannelRectSGIX */
     {DISPATCH_RESOLVE_DIRECT, 89, GLX_1_3, 1985}, /* glXQueryContext */
-    {DISPATCH_RESOLVE_EXTENSION, 90, GLX_extension_GLX_EXT_import_context, 2001}, /* glXQueryContextInfoEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 91, GLX_extension_GLX_MESA_query_renderer, 2024}, /* glXQueryCurrentRendererIntegerMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 92, GLX_extension_GLX_MESA_query_renderer, 2059}, /* glXQueryCurrentRendererStringMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 18 /* GLX_EXT_import_context */, 2001}, /* glXQueryContextInfoEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 30 /* GLX_MESA_query_renderer */, 2024}, /* glXQueryCurrentRendererIntegerMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 30 /* GLX_MESA_query_renderer */, 2059}, /* glXQueryCurrentRendererStringMESA */
     {DISPATCH_RESOLVE_DIRECT, 93, GLX_1_3, 2093}, /* glXQueryDrawable */
     {DISPATCH_RESOLVE_DIRECT, 94, GLX_1_0, 2110}, /* glXQueryExtension */
     {DISPATCH_RESOLVE_DIRECT, 95, GLX_1_1, 2128}, /* glXQueryExtensionsString */
-    {DISPATCH_RESOLVE_EXTENSION, 96, GLX_extension_GLX_NV_swap_group, 2153}, /* glXQueryFrameCountNV */
-    {DISPATCH_RESOLVE_EXTENSION, 97, GLX_extension_GLX_SGIX_pbuffer, 2174}, /* glXQueryGLXPbufferSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 98, GLX_extension_GLX_SGIX_hyperpipe, 2197}, /* glXQueryHyperpipeAttribSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 99, GLX_extension_GLX_SGIX_hyperpipe, 2225}, /* glXQueryHyperpipeBestAttribSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 100, GLX_extension_GLX_SGIX_hyperpipe, 2257}, /* glXQueryHyperpipeConfigSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 101, GLX_extension_GLX_SGIX_hyperpipe, 2285}, /* glXQueryHyperpipeNetworkSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 102, GLX_extension_GLX_SGIX_swap_barrier, 2314}, /* glXQueryMaxSwapBarriersSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 103, GLX_extension_GLX_NV_swap_group, 2342}, /* glXQueryMaxSwapGroupsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 104, GLX_extension_GLX_MESA_query_renderer, 2366}, /* glXQueryRendererIntegerMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 105, GLX_extension_GLX_MESA_query_renderer, 2394}, /* glXQueryRendererStringMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 40 /* GLX_NV_swap_group */, 2153}, /* glXQueryFrameCountNV */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 51 /* GLX_SGIX_pbuffer */, 2174}, /* glXQueryGLXPbufferSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 50 /* GLX_SGIX_hyperpipe */, 2197}, /* glXQueryHyperpipeAttribSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 50 /* GLX_SGIX_hyperpipe */, 2225}, /* glXQueryHyperpipeBestAttribSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 50 /* GLX_SGIX_hyperpipe */, 2257}, /* glXQueryHyperpipeConfigSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 50 /* GLX_SGIX_hyperpipe */, 2285}, /* glXQueryHyperpipeNetworkSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 52 /* GLX_SGIX_swap_barrier */, 2314}, /* glXQueryMaxSwapBarriersSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 40 /* GLX_NV_swap_group */, 2342}, /* glXQueryMaxSwapGroupsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 30 /* GLX_MESA_query_renderer */, 2366}, /* glXQueryRendererIntegerMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 30 /* GLX_MESA_query_renderer */, 2394}, /* glXQueryRendererStringMESA */
     {DISPATCH_RESOLVE_DIRECT, 106, GLX_1_1, 2421}, /* glXQueryServerString */
-    {DISPATCH_RESOLVE_EXTENSION, 107, GLX_extension_GLX_NV_swap_group, 2442}, /* glXQuerySwapGroupNV */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 40 /* GLX_NV_swap_group */, 2442}, /* glXQuerySwapGroupNV */
     {DISPATCH_RESOLVE_DIRECT, 108, GLX_1_0, 2462}, /* glXQueryVersion */
-    {DISPATCH_RESOLVE_EXTENSION, 109, GLX_extension_GLX_NV_video_capture, 2478}, /* glXQueryVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 110, GLX_extension_GLX_MESA_release_buffers, 2507}, /* glXReleaseBuffersMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 111, GLX_extension_GLX_EXT_texture_from_pixmap, 2529}, /* glXReleaseTexImageEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 112, GLX_extension_GLX_NV_video_capture, 2551}, /* glXReleaseVideoCaptureDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 113, GLX_extension_GLX_NV_video_out, 2582}, /* glXReleaseVideoDeviceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 114, GLX_extension_GLX_NV_video_out, 2606}, /* glXReleaseVideoImageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 115, GLX_extension_GLX_NV_swap_group, 2629}, /* glXResetFrameCountNV */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 41 /* GLX_NV_video_capture */, 2478}, /* glXQueryVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 31 /* GLX_MESA_release_buffers */, 2507}, /* glXReleaseBuffersMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 23 /* GLX_EXT_texture_from_pixmap */, 2529}, /* glXReleaseTexImageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 41 /* GLX_NV_video_capture */, 2551}, /* glXReleaseVideoCaptureDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 42 /* GLX_NV_video_out */, 2582}, /* glXReleaseVideoDeviceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 42 /* GLX_NV_video_out */, 2606}, /* glXReleaseVideoImageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 40 /* GLX_NV_swap_group */, 2629}, /* glXResetFrameCountNV */
     {DISPATCH_RESOLVE_DIRECT, 116, GLX_1_3, 2650}, /* glXSelectEvent */
-    {DISPATCH_RESOLVE_EXTENSION, 117, GLX_extension_GLX_SGIX_pbuffer, 2665}, /* glXSelectEventSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 118, GLX_extension_GLX_NV_video_out, 2684}, /* glXSendPbufferToVideoNV */
-    {DISPATCH_RESOLVE_EXTENSION, 119, GLX_extension_GLX_MESA_set_3dfx_mode, 2708}, /* glXSet3DfxModeMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 51 /* GLX_SGIX_pbuffer */, 2665}, /* glXSelectEventSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 42 /* GLX_NV_video_out */, 2684}, /* glXSendPbufferToVideoNV */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 32 /* GLX_MESA_set_3dfx_mode */, 2708}, /* glXSet3DfxModeMESA */
     {DISPATCH_RESOLVE_DIRECT, 120, GLX_1_0, 2727}, /* glXSwapBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 121, GLX_extension_GLX_OML_sync_control, 2742}, /* glXSwapBuffersMscOML */
-    {DISPATCH_RESOLVE_EXTENSION, 122, GLX_extension_GLX_EXT_swap_control, 2763}, /* glXSwapIntervalEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 123, GLX_extension_GLX_SGI_swap_control, 2782}, /* glXSwapIntervalSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 44 /* GLX_OML_sync_control */, 2742}, /* glXSwapBuffersMscOML */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 21 /* GLX_EXT_swap_control */, 2763}, /* glXSwapIntervalEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 59 /* GLX_SGI_swap_control */, 2782}, /* glXSwapIntervalSGI */
     {DISPATCH_RESOLVE_DIRECT, 124, GLX_1_0, 2801}, /* glXUseXFont */
-    {DISPATCH_RESOLVE_EXTENSION, 125, GLX_extension_GLX_OML_sync_control, 2813}, /* glXWaitForMscOML */
-    {DISPATCH_RESOLVE_EXTENSION, 126, GLX_extension_GLX_OML_sync_control, 2830}, /* glXWaitForSbcOML */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 44 /* GLX_OML_sync_control */, 2813}, /* glXWaitForMscOML */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 44 /* GLX_OML_sync_control */, 2830}, /* glXWaitForSbcOML */
     {DISPATCH_RESOLVE_DIRECT, 127, GLX_1_0, 2847}, /* glXWaitGL */
-    {DISPATCH_RESOLVE_EXTENSION, 128, GLX_extension_GLX_SGI_video_sync, 2857}, /* glXWaitVideoSyncSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 60 /* GLX_SGI_video_sync */, 2857}, /* glXWaitVideoSyncSGI */
     {DISPATCH_RESOLVE_DIRECT, 129, GLX_1_0, 2877}, /* glXWaitX */
     {DISPATCH_RESOLVE_TERMINATOR, 130, 0, 0}
 };
@@ -357,6 +418,8 @@ static khronos_uint32_t glx_method_name_offsets[130] = {0};
 #define current_metadata glx_metadata
 #define current_glproxy_resolve_local glx_glproxy_resolve_local
 #define current_glproxy_dispatch_metadata_init glx_glproxy_dispatch_metadata_init
+#define current_extension_bitmap glx_extension_bitmap
+#define current_extension_offsets glx_extension_offsets
 #define current_extensions_count glx_extensions_count
 #define current_extension_enum_strings glx_extension_enum_strings
 #define current_entrypoint_strings glx_entrypoint_strings
@@ -373,6 +436,8 @@ static khronos_uint32_t glx_method_name_offsets[130] = {0};
 #undef current_metadata
 #undef current_glproxy_resolve_local
 #undef current_glproxy_dispatch_metadata_init
+#undef current_extension_bitmap
+#undef current_extension_offsets
 #undef current_extensions_count
 #undef current_extension_enum_strings
 #undef current_entrypoint_strings
