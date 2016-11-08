@@ -789,7 +789,7 @@ enum DISPATCH_RESOLVE_RESULT gl_glproxy_resolve_extension(tls_ptr tls, const cha
 static const char* glproxy_get_string_by_handle(void*handle) {
     PFNGLGETSTRINGPROC get_string = do_dlsym_by_handle(handle, "glGetString", NULL, false);
     if (get_string) {
-        return get_string(GL_VERSION);
+        return (const char*)get_string(GL_VERSION);
     }
     return NULL;
 }

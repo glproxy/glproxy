@@ -162,7 +162,7 @@ the system default one, for the GL context manager, the detecting order is:
 * For Linux, the order is [`GLX`, `EGL`]
 * For MacOS, the order is [`CGL`(we provide no proxy for CGL), `GLX`]
 * For iOS, there order is [`EAGL`(we provide no proxy for EAGL)]
-* For iOS, there order is [`EAGL`(we provide no proxy for EAGL)]
+
 For GL calls proxy, we first detecting the which type of GL context it is.
 then binding the following calls to that context permanantly.
 If we want to switch the GL context, using the following APIs to do that:
