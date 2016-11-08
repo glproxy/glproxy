@@ -66,6 +66,14 @@
 #include "gl_generated_dispatch_table_type.inc"
 #include "egl_generated_dispatch_table_type.inc"
 
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <dlfcn.h>
+#include <err.h>
+#include <pthread.h>
+#endif
+
 #ifdef __GNUC__
 #define CONSTRUCT(_func) \
   static void _func ## _wrapper(void) __attribute__((constructor)); \

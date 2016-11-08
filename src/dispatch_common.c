@@ -89,13 +89,6 @@
 
 #include <assert.h>
 #include <stdlib.h>
-#ifdef _WIN32
-#include <Windows.h>
-#else
-#include <dlfcn.h>
-#include <err.h>
-#include <pthread.h>
-#endif
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
@@ -663,9 +656,15 @@ enum DISPATCH_RESOLVE_RESULT glx_glproxy_resolve_extension(tls_ptr tls, const ch
 void gl_glproxy_resolve_init(tls_ptr tls) {
     tls->gl_called = true;
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
+#if PLATFORM_HAS_CGL
         cgl_glproxy_resolve_init(tls);
+#endif
+#if PLATFORM_HAS_WGL
         wgl_glproxy_resolve_init(tls);
+#endif
+#if PLATFORM_HAS_GLX
         glx_glproxy_resolve_init(tls);
+#endif
         egl_glproxy_resolve_init(tls);
     }
     if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW) {
