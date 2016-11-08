@@ -10,4 +10,6 @@ install:
   - sudo apt-get update
   - sudo apt-get install xutils-dev libgl1-mesa-dev libegl1-mesa-dev libgl1-mesa-dri libgles1-mesa-dev libgles2-mesa-dev
 script:
-  - ./autogen.sh && make && make check
+  - mkdir build
+  - cd build
+  - cmake .. && make
