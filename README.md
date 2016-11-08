@@ -42,9 +42,9 @@ Building with CMake should be as simple as running:
     mkdir build
     cd build
     cmake -G "<my-generator>" ..
-    cmake.exe --build .
+    cmake --build .
 Running tests should be as simple as running:
-    cmake.exe --build . --target RUN_TESTS
+    cmake --build . --target RUN_TESTS
 
 (run `cmake -h` see a list of possible generators). Then, to build the project,
 depending on the type of generator you use, e.g. for Unix type `make`, and for
@@ -52,11 +52,11 @@ MSVC open the solution in Visual studio and build the solution.
 
 * To build & test for 32 bit with MSVC, using the following command
   cmake -G "Visual Studio 14 2015" ..
-  cmake.exe --build . --config Release
-  cmake.exe --build . --target RUN_TESTS --config Release
+  cmake --build . --config Release
+  cmake --build . --target RUN_TESTS --config Release
 
-  cmake.exe --build . --config Debug
-  cmake.exe --build . --target RUN_TESTS --config Debug
+  cmake --build . --config Debug
+  cmake --build . --target RUN_TESTS --config Debug
 
 * To build for 64 bit with MSVC add ` Win64` to the generator name, e.g.
   cmake -G "Visual Studio 14 2015 Win64" ..

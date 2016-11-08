@@ -20,5 +20,5 @@ script:
   - mkdir build
   - cd build
   - cmake ..
-  - cmake.exe --build .
-  - cmake.exe --build . --target RUN_TESTS
+  - cmake --build .
+  - cmake --build . --target RUN_TESTS
