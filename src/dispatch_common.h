@@ -75,10 +75,10 @@
 #endif
 #ifdef __GNUC__
 #define GLOBAL_STAIC_FUNCTION(construct, destruct) \
-  static void construct ## _constructor(void) __attribute__((constructor)); \
-  static void construct ## _constructor(void) { construct(); } \
-  static void destruct ## _destructor(void) __attribute__((destructor)); \
-  static void destruct ## _destructor(void) { destruct(); }
+static void construct ## _constructor(void) __attribute__((constructor)); \
+static void construct ## _constructor(void) { construct(); } \
+static void destruct ## _destructor(void) __attribute__((destructor)); \
+static void destruct ## _destructor(void) { destruct(); }
 
 #elif defined (_MSC_VER) && (_MSC_VER >= 1500)
 
