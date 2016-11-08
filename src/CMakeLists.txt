@@ -13,8 +13,8 @@ if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC)
   list (APPEND SOURCES "gen_dispatch.py")
 endif ()
 
-list (APPEND HEADERS "../include/glproxy/gl_generated.h"
-                     "${CMAKE_CURRENT_BINARY_DIR}/../include/glproxy/config.h")
+list (APPEND HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/../include/glproxy/gl_generated.h")
+list (APPEND HEADERS "${CMAKE_CURRENT_BINARY_DIR}/../include/glproxy/config.h")
 
 set (glproxy_COMPILE_DEFS PRIVATE glproxy_BUILDING_LIB)
 if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC)

@@ -16,6 +16,7 @@ before_install:
 install: ulimit -c
 
 script:
+  - cmake -version
   - mkdir build
   - cd build
   - cmake .. && make
