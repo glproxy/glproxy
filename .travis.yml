@@ -21,4 +21,4 @@ script:
   - cd build
   - cmake ..
   - cmake --build .
-  - make check
+  - ctest
