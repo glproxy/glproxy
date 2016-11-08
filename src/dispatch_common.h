@@ -55,6 +55,12 @@
 #include "glproxy/egl.h"
 #include "glproxy/gl.h"
 
+#if defined(__GNUC__)
+#define PACKED __attribute__((__packed__))
+#else
+#define PACKED
+#endif
+
 #include "wgl_generated_dispatch_table_type.inc"
 #include "glx_generated_dispatch_table_type.inc"
 #include "gl_generated_dispatch_table_type.inc"
@@ -76,12 +82,6 @@
 
 #else
 #error "You will need constructor support for your compiler"
-#endif
-
-#if defined(__GNUC__)
-#define PACKED __attribute__((__packed__))
-#else
-#define PACKED
 #endif
 
 #ifdef __GNUC__
