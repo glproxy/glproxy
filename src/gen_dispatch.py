@@ -1116,7 +1116,7 @@ class Generator(object):
             for name in self.extension_providers:
                 self.outln('  GLPROXY_{0} = {1},'.format(name, offset))
                 offset = offset + 1
-            self.outln('} PACKED;')
+            self.outln('};')
             self.outln('')
             self.outln('#define GLPROXY_GL_EXTENSION_enum_max {0}'.format(offset))
             self.outln('')

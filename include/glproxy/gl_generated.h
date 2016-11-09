@@ -1883,7 +1883,7 @@ enum glproxy_gl_extension_enum {
   GLPROXY_WGL_NV_video_capture = 889,
   GLPROXY_WGL_NV_video_output = 890,
   GLPROXY_WGL_OML_sync_control = 891,
-} PACKED;
+};
 
 #define GLPROXY_GL_EXTENSION_enum_max 892
 
