@@ -101,13 +101,17 @@ int (*construct ## _array)(void) = construct ## _constructor; \
 __pragma(INCLUDE_SYM(construct ## _array))
 
 #else
-#error "You will need constructor support for your compiler"
+
+#define GLOBAL_STAIC_FUNCTION(construct, destruct)
+//#message "You will need constructor support for your compiler"
 #endif
 
 #ifdef __GNUC__
 #define GLPROXY_NOINLINE __attribute__((noinline))
-#elif defined (_MSC_VER)
+#elif defined (_MSC_VER) && _MSC_VER >= 1500
 #define GLPROXY_NOINLINE __declspec(noinline)
+#else
+#define GLPROXY_NOINLINE
 #endif
 
 #define GEN_THUNK(target, name, args, passthrough, offset, func_type)          \

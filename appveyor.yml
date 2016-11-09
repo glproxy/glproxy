@@ -1,0 +1,54 @@
+version: 2.99.{build}
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  except:
+  - coverity_scan
+  - gh_pages
+skip_tags: true
+image:
+- Visual Studio 2015
+configuration:
+#- Debug
+- Release
+platform:
+- x64
+#- Win32
+
+init:
+- cmd: >-
+    cmake -version
+
+    git config --global core.autocrlf true
+
+before_build:
+- cmd: >-
+    cd %APPVEYOR_BUILD_FOLDER%/
+
+    git clone https://github.com/Microsoft/angle.git
+
+    "%ProgramFiles(x86)%\MSBuild\14.0\Bin\amd64\MSBuild.exe" /verbosity:minimal  angle/src/libEGL.vcxproj /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%"
+
+    "%ProgramFiles(x86)%\MSBuild\14.0\Bin\amd64\MSBuild.exe" /verbosity:minimal  angle/src/libGLESv2.vcxproj /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%"
+
+    set ANGLE_PATH=%APPVEYOR_BUILD_FOLDER%/angle/src/%CONFIGURATION%_%PLATFORM%
+
+    echo %ANGLE_PATH%
+
+    set PATH=%ANGLE_PATH%;%PATH%
+
+    if "%PLATFORM%"=="Win32" mkdir build & cd build & cmake -G"Visual Studio 10 2010" ..
+
+    if "%PLATFORM%"=="x64" mkdir build & cd build & cmake -G"Visual Studio 10 2010 Win64" ..
+
+build_script:
+- cmd: >-
+    cd %APPVEYOR_BUILD_FOLDER%/
+
+    "%ProgramFiles(x86)%\MSBuild\14.0\Bin\amd64\MSBuild.exe" /verbosity:minimal build/GLproxy.sln /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:PlatformToolset=v90
+
+test_script:
+- cmd: >-
+    cd %APPVEYOR_BUILD_FOLDER%/build
+
+    ctest -C %CONFIGURATION% --output-on-failure

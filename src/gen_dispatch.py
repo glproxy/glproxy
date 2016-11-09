@@ -100,10 +100,10 @@ class GLFunction(object):
         # We retain those aliases.  In the x86_64 ABI, the first 6
         # args are stored in 64-bit registers, so the calls end up
         # being the same despite the different types.  We just need to
-        # add a cast to uintptr_t to shut up the compiler.
+        # add a cast to khronos_uintptr_t to shut up the compiler.
         if type == 'GLhandleARB':
             assert(len(self.args) < 6)
-            arg_list_name = '(uintptr_t)' + name
+            arg_list_name = '(khronos_uintptr_t)' + name
         else:
             arg_list_name = name
 
@@ -439,7 +439,6 @@ class Generator(object):
 
         self.outln('#pragma once')
 
-        self.outln('#include <inttypes.h>')
         self.outln('#include <stddef.h>')
         self.outln('')
 

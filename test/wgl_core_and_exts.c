@@ -63,9 +63,11 @@ test_function(HDC hdc)
             pass = false;
         }
     }
+    if (glproxy_gl_version() >= 30)
     {
         int i;
         int num_extensions;
+        fprintf(stdout, "Testing for gl version >= 30\n");
         glGetIntegerv(GL_NUM_EXTENSIONS, &num_extensions);
         for (i = 0; i < num_extensions; ++i) {
             const char *gl_ext = (const char *)glGetStringi(GL_EXTENSIONS, i);
@@ -76,6 +78,32 @@ test_function(HDC hdc)
                 }
             }
         }
+    } else {
+        const char* exts = glGetString(GL_EXTENSIONS);
+        char* new_exts = strdup(exts);
+        size_t pos = 0;
+        size_t prev = 0;
+        fprintf(stdout, "Testing for gl version < 30\n");
+        fprintf(stdout, "The extensions are:%s\n", exts);
+        while (true) {
+            while (new_exts[pos] != ' ' && new_exts[pos] != '\0') {
+                ++pos;
+            }
+            if (new_exts[pos] == '\0') {
+                break;
+            }
+            new_exts[pos] = '\0';
+            if (pos > prev) {
+                const char *gl_ext = new_exts + prev;
+                pass = pass && glproxy_has_gl_extension(gl_ext);
+                if (!pass) {
+                    fprintf(stderr, "Can not found the extension:%s\n", gl_ext);
+                }
+            }
+            ++pos;
+            prev = pos;
+        }
+        free(new_exts);
     }
 
     wglMakeCurrent(NULL, NULL);

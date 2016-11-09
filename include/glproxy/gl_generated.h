@@ -25,7 +25,6 @@
  */
 
 #pragma once
-#include <inttypes.h>
 #include <stddef.h>
 
 typedef unsigned int GLenum;
@@ -57,12 +56,12 @@ typedef unsigned short GLhalf;
 typedef GLint GLfixed;
 typedef ptrdiff_t GLintptr;
 typedef ptrdiff_t GLsizeiptr;
-typedef int64_t GLint64;
-typedef uint64_t GLuint64;
+typedef khronos_int64_t GLint64;
+typedef khronos_uint64_t GLuint64;
 typedef ptrdiff_t GLintptrARB;
 typedef ptrdiff_t GLsizeiptrARB;
-typedef int64_t GLint64EXT;
-typedef uint64_t GLuint64EXT;
+typedef khronos_int64_t GLint64EXT;
+typedef khronos_uint64_t GLuint64EXT;
 typedef struct __GLsync *GLsync;
 struct _cl_context;
 struct _cl_event;

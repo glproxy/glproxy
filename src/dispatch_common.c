@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright © 2013-2014 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -400,7 +400,7 @@ GLPROXY_IMPORTEXPORT void* glproxy_context_get() {
 
 GLPROXY_IMPORTEXPORT void glproxy_context_set(void* new_context) {
     if (!inited) {
-        fprintf(stderr, "The glproxy are not inited yet");
+        fprintf(stderr, "The glproxy are not inited yet\n");
         return;
     }
     set_tls_by_index(glproxy_dispatch_common_tls_index, new_context);
@@ -410,7 +410,7 @@ GLPROXY_IMPORTEXPORT void glproxy_context_destroy(void* context) {
     tls_ptr tls = context;
     tls_ptr exist_context = NULL;
     if (!inited) {
-        fprintf(stderr, "The glproxy are not inited yet");
+        fprintf(stderr, "The glproxy are not inited yet\n");
         return;
     }
     if (!tls) {
@@ -427,7 +427,8 @@ GLPROXY_IMPORTEXPORT void glproxy_context_destroy(void* context) {
 }
 
 static void* find_function_pointer_pos(void** table_start, const struct dispatch_metadata *metadata, const char*expected) {
-    for (size_t i = 0; i < metadata->method_count; ++i) {
+    size_t i = 0;
+    for (i = 0; i < metadata->method_count; ++i) {
         const char* current_name = metadata->entrypoint_strings + metadata->method_name_offsets[i];
         if (strcmp(current_name, expected) == 0) {
             return table_start + i;
@@ -640,7 +641,7 @@ static void load_extension_list(struct dispatch_metadata *data, const char *exte
     do {
         ++ptr;
         if (*ptr == ' ' || *ptr == 0) {
-            khronos_uint16_t len = ptr - prev;
+            khronos_uint16_t len = (khronos_uint16_t)(ptr - prev);
             khronos_uint16_t i = find_extension_pos(data, prev, len);
             if (i < data->extensions_count) {
                 data->extension_bitmap[i >> 5] |= ((khronos_uint32_t)1) << (i & 31);
@@ -774,7 +775,6 @@ static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr, b
     }
 }
 
-
 /**
 * Performs either the dlsym or glXGetProcAddress()-equivalent for
 * core functions in desktop GL.
@@ -836,12 +836,14 @@ static EGLenum glproxy_egl_get_current_context_type_by_handle(void* handle) {
     PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContextLocal = do_dlsym_by_handle(handle, "eglGetCurrentContext", &error, true);
     PFNEGLBINDAPIPROC eglBindAPILocal = do_dlsym_by_handle(handle, "eglBindAPI", &error, true);
     PFNEGLGETERRORPROC eglGetErrorLocal = do_dlsym_by_handle(handle, "eglGetError", &error, true);
+    EGLenum save_api;
+    EGLContext ctx;
+
     if (!eglQueryAPILocal) {
         return EGL_NONE;
     }
 
-    EGLenum save_api = eglQueryAPILocal();
-    EGLContext ctx;
+    save_api = eglQueryAPILocal();
 
     if (eglBindAPILocal(EGL_OPENGL_API)) {
         ctx = eglGetCurrentContextLocal();

@@ -106,12 +106,12 @@ typedef unsigned int GLhandleARB;
         <type comment="Must be 32 bits">typedef GLint <name>GLfixed</name>;</type>
         <type requires="stddef">typedef ptrdiff_t <name>GLintptr</name>;</type>
         <type requires="stddef">typedef ptrdiff_t <name>GLsizeiptr</name>;</type>
-        <type requires="inttypes">typedef int64_t <name>GLint64</name>;</type>
-        <type requires="inttypes">typedef uint64_t <name>GLuint64</name>;</type>
+        <type requires="inttypes">typedef khronos_int64_t <name>GLint64</name>;</type>
+        <type requires="inttypes">typedef khronos_uint64_t <name>GLuint64</name>;</type>
         <type requires="stddef">typedef ptrdiff_t <name>GLintptrARB</name>;</type>
         <type requires="stddef">typedef ptrdiff_t <name>GLsizeiptrARB</name>;</type>
-        <type requires="inttypes">typedef int64_t <name>GLint64EXT</name>;</type>
-        <type requires="inttypes">typedef uint64_t <name>GLuint64EXT</name>;</type>
+        <type requires="inttypes">typedef khronos_int64_t <name>GLint64EXT</name>;</type>
+        <type requires="inttypes">typedef khronos_uint64_t <name>GLuint64EXT</name>;</type>
         <type>typedef struct __GLsync *<name>GLsync</name>;</type>
         <type comment="compatible with OpenCL cl_context"><name>struct _cl_context</name>;</type>
         <type comment="compatible with OpenCL cl_event"><name>struct _cl_event</name>;</type>

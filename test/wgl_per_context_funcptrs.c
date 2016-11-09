@@ -153,8 +153,10 @@ test_function(HDC hdc)
         return 77;
     }
 
-    /* Force resolving glproxy_wglGetProcAddress. */
-    void* x = wglGetProcAddress("glCreateShader");
+    {
+        /* Force resolving glproxy_wglGetProcAddress. */
+        void* x = wglGetProcAddress("glCreateShader");
+    }
 
     test_createshader(hdc, ctx1, glproxy_ctx1);
     test_createshader(hdc, ctx1, glproxy_ctx1);

@@ -1,4 +1,4 @@
-﻿
+
 GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
     tls_ptr tls = get_tls_by_index(glproxy_dispatch_common_tls_index);
     void** ptr = ((void**)&tls->current_dispatch_table) + offset;

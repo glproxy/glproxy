@@ -58,7 +58,7 @@ make_window_and_test(void** nativeWindow)
     WNDCLASS window_class;
     bool finished = 0;
     bool *ptr = &finished;
-
+    HDC hdc;
 
     memset(&window_class, 0, sizeof(window_class));
     window_class.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
@@ -83,7 +83,7 @@ make_window_and_test(void** nativeWindow)
     if (nativeWindow) {
         *nativeWindow = hwnd;
     }
-    HDC hdc = GetDC(hwnd);
+    hdc = GetDC(hwnd);
     return hdc;
 }
 
@@ -105,6 +105,9 @@ get_egl_display_or_skip(void** nativeWindow)
     EGLint major, minor;
     EGLDisplay edpy;
     bool ok;
+#if defined (_MSC_VER) && _MSC_VER < 1500
+    glproxy_init_tls();
+#endif
     if (!dpy)
         fprintf(stderr, "couldn't open display\n");
     edpy = eglGetDisplay((EGLNativeDisplayType)dpy);

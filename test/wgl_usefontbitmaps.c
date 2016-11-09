@@ -31,7 +31,7 @@ test_function(HDC hdc)
 {
     bool pass = true;
     HGLRC ctx;
-    GLuint dlist[2] = {100, 101};
+    static const GLuint dlist[2] = {100, 101};
     const char *string = "some string";
 
     ctx = wglCreateContext(hdc);

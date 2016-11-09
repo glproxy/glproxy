@@ -3,7 +3,6 @@
  */
 
 #pragma once
-#include <inttypes.h>
 #include <stddef.h>
 
 struct _GPU_DEVICE {

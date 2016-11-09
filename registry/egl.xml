@@ -52,8 +52,8 @@
             <!-- These are actual EGL types.  -->
         <type>typedef unsigned int <name>EGLBoolean</name>;</type>
         <type>typedef unsigned int <name>EGLenum</name>;</type>
-        <type requires="khrplatform">typedef intptr_t <name>EGLAttribKHR</name>;</type>
-        <type requires="khrplatform">typedef intptr_t <name>EGLAttrib</name>;</type>
+        <type requires="khrplatform">typedef khronos_intptr_t <name>EGLAttribKHR</name>;</type>
+        <type requires="khrplatform">typedef khronos_intptr_t <name>EGLAttrib</name>;</type>
         <type>typedef void *<name>EGLClientBuffer</name>;</type>
         <type>typedef void *<name>EGLConfig</name>;</type>
         <type>typedef void *<name>EGLContext</name>;</type>

@@ -168,12 +168,14 @@ int main(void)
         surfaceAttributes[attributesCount++] = EGL_TRUE;
     }
     surfaceAttributes[attributesCount++] = EGL_NONE;
-    EGLSurface surface = eglCreateWindowSurface(dpy, cfg, nativeWindow, &surfaceAttributes[0]);
-    ctx = eglCreateContext(dpy, cfg, NULL, context_attribs);
-    if (!ctx)
-        fprintf(stderr, "Couldn't create a GLES%d context\n", GLES_VERSION);
+    {
+        EGLSurface surface = eglCreateWindowSurface(dpy, cfg, nativeWindow, &surfaceAttributes[0]);
+        ctx = eglCreateContext(dpy, cfg, NULL, context_attribs);
+        if (!ctx)
+            fprintf(stderr, "Couldn't create a GLES%d context\n", GLES_VERSION);
 
-    eglMakeCurrent(dpy, surface, surface, ctx);
+        eglMakeCurrent(dpy, surface, surface, ctx);
+    }
 
     string = glGetString(GL_VERSION);
     printf("GL_VERSION: %s\n", string);

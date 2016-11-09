@@ -3,13 +3,12 @@
  */
 
 #pragma once
-#include <inttypes.h>
 #include <stddef.h>
 
 typedef unsigned int EGLBoolean;
 typedef unsigned int EGLenum;
-typedef intptr_t EGLAttribKHR;
-typedef intptr_t EGLAttrib;
+typedef khronos_intptr_t EGLAttribKHR;
+typedef khronos_intptr_t EGLAttrib;
 typedef void *EGLClientBuffer;
 typedef void *EGLConfig;
 typedef void *EGLContext;
