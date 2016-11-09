@@ -177,12 +177,28 @@ int main(void)
 
     string = glGetString(GL_VERSION);
     printf("GL_VERSION: %s\n", string);
-#ifdef _WIN32
     {
-        bool output = glproxy_has_gl_extension("GL_OES_texture_float");
-        pass = pass && output;
+        bool outputA = glproxy_has_gl_extension("GL_OES_texture_float");
+        bool outputB = glproxy_has_gl_extension_by_enum(GLPROXY_GL_OES_texture_float);
+        pass = pass && (outputA == outputB);
     }
-#endif
+    {
+        bool outputA = glproxy_has_gl_extension("GL_WIN_swap_hint");
+        bool outputB = glproxy_has_gl_extension_by_enum(GLPROXY_GL_WIN_swap_hint);
+        pass = pass && (outputA == outputB);
+    }
+    {
+        bool outputA = glproxy_has_gl_extension("GL_3DFX_multisample");
+        bool outputB = glproxy_has_gl_extension_by_enum(GLPROXY_GL_3DFX_multisample);
+        pass = pass && (outputA == outputB);
+    }
+
+    {
+        bool outputA = glproxy_has_gl_extension("GL_EXTENSION_enum_max");
+        bool outputB = glproxy_has_gl_extension_by_enum(GLPROXY_GL_EXTENSION_enum_max);
+        pass = pass && (outputA == outputB);
+    }
+
     assert(eglGetError() == EGL_SUCCESS);
 
     eglMakeCurrent(dpy, NULL, NULL, NULL);

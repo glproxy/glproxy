@@ -411,6 +411,17 @@ class Generator(object):
             self.outln('#define {0} 1'.format(name))
         self.outln('')
 
+        if self.target == 'gl':
+            offset = 0
+            self.outln('enum glproxy_gl_extension_enum {')
+            for name in self.extension_providers:
+                self.outln('  GLPROXY_{0} = {1},'.format(name, offset))
+                offset = offset + 1
+            self.outln('} PACKED;')
+            self.outln('')
+            self.outln('#define GLPROXY_GL_EXTENSION_enum_max {0}'.format(offset))
+            self.outln('')
+
         # We want to sort by enum number (which puts a bunch of things
         # in a logical order), then by name after that, so we do those
         # sorts in reverse.  This is still way uglier than doing some
@@ -572,6 +583,7 @@ class Generator(object):
         for extension_provider in self.extension_providers:
             self.outln('    {0},'.format(offset))
             offset += len(extension_provider) + 1
+        self.outln('    {0}'.format(offset))
         self.outln('};')
         self.outln('')
 

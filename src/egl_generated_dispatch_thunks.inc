@@ -209,6 +209,7 @@ static const khronos_uint16_t egl_extension_offsets[] = {
     2474,
     2493,
     2523,
+    2554
 };
 
 static const khronos_uint8_t egl_entrypoint_strings[] = {

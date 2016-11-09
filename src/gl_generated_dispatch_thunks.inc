@@ -1547,6 +1547,7 @@ static const khronos_uint16_t gl_extension_offsets[] = {
     19122,
     19143,
     19163,
+    19180
 };
 
 static const khronos_uint8_t gl_entrypoint_strings[] = {

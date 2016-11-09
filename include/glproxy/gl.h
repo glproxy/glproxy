@@ -159,6 +159,7 @@ GLPROXY_IMPORTEXPORT void** glproxy_context_get_function_pointer(const char* tar
 * \sa glproxy_has_egl_extension()
 */
 GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension(const char *extension);
+GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension_by_enum(enum glproxy_gl_extension_enum extension);
 GLPROXY_IMPORTEXPORT bool glproxy_is_desktop_gl(void);
 GLPROXY_IMPORTEXPORT int glproxy_gl_version(void);
 

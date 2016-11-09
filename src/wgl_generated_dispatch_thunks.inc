@@ -115,6 +115,7 @@ static const khronos_uint16_t wgl_extension_offsets[] = {
     1236,
     1257,
     1277,
+    1298
 };
 
 static const khronos_uint8_t wgl_entrypoint_strings[] = {

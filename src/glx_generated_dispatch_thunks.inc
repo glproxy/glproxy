@@ -133,6 +133,7 @@ static const khronos_uint16_t glx_extension_offsets[] = {
     1418,
     1439,
     1458,
+    1488
 };
 
 static const khronos_uint8_t glx_entrypoint_strings[] = {

@@ -525,18 +525,52 @@ GLPROXY_IMPORTEXPORT int glproxy_gl_version(void) {
     return tls->gl_version;
 }
 
-static khronos_uint16_t find_extension_pos(struct dispatch_metadata *data, const char *extension, size_t len) {
-    khronos_uint16_t i;
-    for (i = 0; i < data->extensions_count; ++i) {
-        const char* predefined_extension = data->extension_enum_strings + data->extension_offsets[i];
-        if (memcmp(predefined_extension, extension, len) == 0 && predefined_extension[len] == 0) {
-            return i;
+size_t binsearch(void*context, const void *key, size_t length, int(*compare)(const void* context, size_t mid, const void *key))
+{
+    size_t left = 0;
+    size_t right = length;
+    while (left < right)
+    {
+        size_t mid = (left + right) >> 1;
+        int comparison = compare(context,  mid, key);
+        if (comparison == 0)
+        {
+            return mid;
+        }
+        if (comparison < 0)
+        {
+            left = mid + 1;
+        } else {
+            right = mid;
         }
     }
-    return data->extensions_count;
+
+    return length;
 }
 
-static bool glproxy_internal_has_gl_extension(tls_ptr tls, khronos_uint16_t offset, bool invalid_op_mode) {
+typedef struct compare_context {
+    struct dispatch_metadata *data;
+    size_t len;
+} compare_context;
+
+static int compare_extension(const void *context, size_t mid, const void*key) {
+    compare_context *cmp_context = (compare_context *)context;
+    const struct dispatch_metadata *data = cmp_context->data;
+    const char* ext = key;
+    const char* mid_string = data->extension_enum_strings + data->extension_offsets[mid];
+    const size_t len = data->extension_offsets[mid + 1] - data->extension_offsets[mid] - 1;
+    if (len == cmp_context->len) {
+        return memcmp(mid_string, ext, len);
+    }
+    return strcmp(mid_string, ext);
+}
+
+static khronos_uint16_t find_extension_pos(struct dispatch_metadata *data, const char *extension, size_t len) {
+    compare_context context = {data, len};
+    return (khronos_uint16_t)binsearch(&context, extension, data->extensions_count, compare_extension);
+}
+
+static inline bool glproxy_internal_has_gl_extension(tls_ptr tls, khronos_uint16_t offset, bool invalid_op_mode) {
     struct dispatch_metadata *data = &tls->gl_metadata;
     khronos_uint32_t bit_pos = ((khronos_uint32_t)1) << (offset & 31);
     if (tls->gl_version == 0)
@@ -557,6 +591,22 @@ GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension(const char *ext) {
             return false;
         }
         return glproxy_internal_has_gl_extension(tls, pos, false);
+    }
+    return false;
+}
+
+GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension_by_enum(enum glproxy_gl_extension_enum extension) {
+    tls_ptr tls = glproxy_context_get();
+    if (tls->open_gl_type == DISPATCH_OPENGL_UNKNOW || tls->gl_version == 0) {
+        gl_glproxy_resolve_init(tls);
+    }
+    if (tls->gl_version != 0) {
+        struct dispatch_metadata *data = &tls->gl_metadata;
+        if (extension >= data->extensions_count) {
+            fprintf(stderr, "Can not found the extension  offset:%d for extension_bitmap, that's not possible!\n", extension);
+            return false;
+        }
+        return glproxy_internal_has_gl_extension(tls, (khronos_uint16_t)extension, false);
     }
     return false;
 }
