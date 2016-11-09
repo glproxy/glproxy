@@ -89,13 +89,13 @@ static void destruct ## _destructor(void) { destruct(); }
 #define INCLUDE_SYM(s) comment(linker, "/include:_" #s)
 #endif
 
-#pragma section(".CRT$XCU",read)
 #define GLOBAL_STAIC_FUNCTION(construct, destruct) \
 static void destruct ## _destructor(void) { destruct(); } \
 static int construct ## _constructor(void) { \
     construct(); \
     atexit(destruct ## _destructor); \
     return 0; } \
+__pragma(section(".CRT$XCU",read)) \
 __declspec(allocate(".CRT$XCU")) \
 int (*construct ## _array)(void) = construct ## _constructor; \
 __pragma(INCLUDE_SYM(construct ## _array))

@@ -72,9 +72,6 @@ window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 
     switch (message) {
     case WM_CREATE:
-#if defined (_MSC_VER) && _MSC_VER < 1500
-        glproxy_init_tls();
-#endif
         setup_pixel_format(hdc);
         ret = test_callback(hdc);
         ReleaseDC(hwnd, hdc);

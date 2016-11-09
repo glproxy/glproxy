@@ -9,11 +9,11 @@ skip_tags: true
 image:
 - Visual Studio 2015
 configuration:
-#- Debug
+- Debug
 - Release
 platform:
 - x64
-#- Win32
+- Win32
 
 init:
 - cmd: >-

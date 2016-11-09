@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013-2014 Intel Corporation
+ * Copyright C 2013-2014 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -60,7 +60,7 @@
  *
  *     eglGetProcAddress may be queried for all of the following functions:
  *
- *     • All EGL and client API extension functions supported by the
+ *     * All EGL and client API extension functions supported by the
  *       implementation (whether those extensions are supported by the current
  *       client API context or not). This includes any mandatory OpenGL ES
  *       extensions.
@@ -77,11 +77,11 @@
  *
  *     "glXGetProcAddress may be queried for all of the following functions:
  *
- *      • All GL and GLX extension functions supported by the implementation
+ *      * All GL and GLX extension functions supported by the implementation
  *        (whether those extensions are supported by the current context or
  *        not).
  *
- *      • All core (non-extension) functions in GL and GLX from version 1.0 up
+ *      * All core (non-extension) functions in GL and GLX from version 1.0 up
  *        to and including the versions of those specifications supported by
  *        the implementation, as determined by glGetString(GL VERSION) and
  *        glXQueryVersion queries."
@@ -354,6 +354,57 @@ GLPROXY_IMPORTEXPORT void glproxy_uninit_tls(void) {
 }
 
 GLOBAL_STAIC_FUNCTION(glproxy_init_tls, glproxy_uninit_tls)
+
+#if defined(_MSC_VER) && (_MSC_VER < 1500)
+
+#if (_MSC_VER < 1300) /* 1300 == VC++ 7.0 */
+typedef void(__cdecl *_PVFV)();
+#define INIRETSUCCESS
+#define PVAPI void __cdecl
+#else
+typedef int(__cdecl *_PVFV)();
+#define INIRETSUCCESS 0
+#define PVAPI int __cdecl
+#endif /* 1300 */
+
+static PVAPI glproxy_init_tls_construct() {
+    glproxy_init_tls();
+    return INIRETSUCCESS;
+}
+
+static PVAPI glproxy_uninit_tls_destruct() {
+    glproxy_uninit_tls();
+    return INIRETSUCCESS;
+}
+
+#if (_MSC_VER >= 1400)
+#pragma section(".CRT$XCU",long,read)
+#pragma section(".CRT$XTU",long,read)
+
+__declspec(allocate(".CRT$XCU"))_PVFV p_glproxy_init_tls_construct = glproxy_init_tls_construct;
+__declspec(allocate(".CRT$XTU"))_PVFV p_glproxy_uninit_tls_destruct = glproxy_uninit_tls_destruct;
+
+#else /* 1400 */
+
+#if (_MSC_VER >= 1300) /* 1300 == VC++ 7.0 */
+#   pragma data_seg(push, old_seg)
+#endif
+
+#pragma data_seg(".CRT$XCU")
+static _PVFV p_glproxy_init_tls_construct = glproxy_init_tls_construct;
+#pragma data_seg()
+
+#pragma data_seg(".CRT$XTU")
+static _PVFV p_glproxy_uninit_tls_destruct = glproxy_uninit_tls_destruct;
+#pragma data_seg()
+
+#if (_MSC_VER >= 1300) // 1300 == VC++ 7.0
+#   pragma data_seg(pop, old_seg)
+#endif
+
+#endif // 1400
+
+#endif
 
 static void glproxy_context_handles_open(tls_ptr tls) {
     tls->context.handles.cgl = dlopen_handle(tls->context.cgl_name, NULL);
@@ -765,7 +816,7 @@ static void glproxy_get_proc_address(tls_ptr tls, const char *name, void**ptr, b
     case DISPATCH_OPENGL_CGL_DESKTOP:
 #if PLATFORM_HAS_CGL
 #error TODO: Implement this
-        *ptr = cglGetProcAddressARB？((const GLubyte *)name);
+        *ptr = cglGetProcAddressARB ? (const GLubyte *)name);
 #endif
         break;
     default:

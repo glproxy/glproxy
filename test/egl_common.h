@@ -23,3 +23,4 @@
 
 EGLDisplay
 get_egl_display_or_skip(void**nativeWindow);
+void get_egl_display_finish();

@@ -146,7 +146,7 @@ int main(void)
     EGLint count;
     EGLContext ctx;
     const unsigned char *string;
-
+    EGLSurface surface;
     *glproxy_context_get_function_pointer("egl", "eglBindAPI") = override_eglBindAPI;
     *glproxy_context_get_function_pointer("egl", "eglGetError") = override_eglGetError;
 
@@ -168,14 +168,12 @@ int main(void)
         surfaceAttributes[attributesCount++] = EGL_TRUE;
     }
     surfaceAttributes[attributesCount++] = EGL_NONE;
-    {
-        EGLSurface surface = eglCreateWindowSurface(dpy, cfg, nativeWindow, &surfaceAttributes[0]);
-        ctx = eglCreateContext(dpy, cfg, NULL, context_attribs);
-        if (!ctx)
-            fprintf(stderr, "Couldn't create a GLES%d context\n", GLES_VERSION);
+    surface = eglCreateWindowSurface(dpy, cfg, nativeWindow, &surfaceAttributes[0]);
+    ctx = eglCreateContext(dpy, cfg, NULL, context_attribs);
+    if (!ctx)
+        fprintf(stderr, "Couldn't create a GLES%d context\n", GLES_VERSION);
 
-        eglMakeCurrent(dpy, surface, surface, ctx);
-    }
+    eglMakeCurrent(dpy, surface, surface, ctx);
 
     string = glGetString(GL_VERSION);
     printf("GL_VERSION: %s\n", string);
@@ -187,5 +185,11 @@ int main(void)
 #endif
     assert(eglGetError() == EGL_SUCCESS);
 
+    eglMakeCurrent(dpy, NULL, NULL, NULL);
+    eglBindAPI(EGL_NONE);
+    eglDestroySurface(dpy, surface);
+    eglDestroyContext(dpy, ctx);
+    eglGetDisplay(NULL);
+    get_egl_display_finish();
     return pass != true;
 }

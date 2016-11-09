@@ -89,6 +89,8 @@ make_window_and_test(void** nativeWindow)
 
 #endif
 
+void *glproxy_context = NULL;
+
 /**
  * Do whatever it takes to get us an EGL display for the system.
  *
@@ -105,11 +107,13 @@ get_egl_display_or_skip(void** nativeWindow)
     EGLint major, minor;
     EGLDisplay edpy;
     bool ok;
-#if defined (_MSC_VER) && _MSC_VER < 1500
-    glproxy_init_tls();
-#endif
+    struct glproxy_gl_context params = { 0 };
     if (!dpy)
         fprintf(stderr, "couldn't open display\n");
+    //params.gles_names.egl = "libEGLd.dll";
+    //params.gles_names.gles2 = "libGLESv2d.dll";
+    //glproxy_context = glproxy_context_create(&params);
+    //glproxy_context_set(glproxy_context);
     edpy = eglGetDisplay((EGLNativeDisplayType)dpy);
     if (edpy == EGL_NO_DISPLAY)
         fprintf(stderr, "Couldn't get EGL display for X11 Display.\n");
@@ -119,4 +123,9 @@ get_egl_display_or_skip(void** nativeWindow)
         fprintf(stderr, "eglInitialize() failed\n");
 
     return edpy;
+}
+
+
+void get_egl_display_finish() {
+    //glproxy_context_destroy(glproxy_context);
 }

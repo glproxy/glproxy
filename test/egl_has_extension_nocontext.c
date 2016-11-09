@@ -66,5 +66,6 @@ int main(void)
     if (glproxy_has_egl_extension(dpy, "GLX_ARB_ham_sandwich"))
         fprintf(stderr, "Implementation reported presence of GLX_ARB_ham_sandwich");
 
+    get_egl_display_finish();
     return pass != true;
 }
