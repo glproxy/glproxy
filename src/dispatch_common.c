@@ -571,7 +571,6 @@ static khronos_uint16_t find_extension_pos(struct dispatch_metadata *data, const
 }
 
 static inline bool glproxy_internal_has_gl_extension(tls_ptr tls, khronos_uint16_t offset, bool invalid_op_mode) {
-    struct dispatch_metadata *data = &tls->gl_metadata;
     khronos_uint32_t bit_pos = ((khronos_uint32_t)1) << (offset & 31);
     if (tls->gl_version == 0)
         return invalid_op_mode;
@@ -736,7 +735,6 @@ static int glproxy_internal_gl_version(const char *version, int error_version) {
 static void load_extension_list(tls_ptr tls, struct dispatch_metadata *data, const char *extension_list) {
     const char *ptr = extension_list;
     const char *prev = extension_list;
-    size_t bitmap_count = ((data->extensions_count - 1) >> 5);
     /* Make sure that don't just find an extension with our name as a prefix. */
     do {
         ++ptr;
@@ -777,7 +775,6 @@ void gl_glproxy_init_version_and_extensions(tls_ptr tls) {
         const char *exts = (const char *)get_string(GL_EXTENSIONS);
         load_extension_list(tls, data, exts);
     } else {
-        PFNGLGETSTRINGPROC get_string = NULL;
         PFNGLGETINTEGERVPROC get_integerv = NULL;
         PFNGLGETSTRINGIPROC get_stringi = NULL;
         int num_extensions = 0;
