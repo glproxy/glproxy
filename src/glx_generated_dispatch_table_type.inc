@@ -137,6 +137,8 @@ struct glx_dispatch_table {
     PFNGLXWAITXPROC glproxy_glXWaitX;
 };
 
+#define GLX_EXTENSIONS_BITMAP_COUNT 2
+
 enum glx_provider_versions {
     GLX_1_0 = 10,
     GLX_1_1 = 11,

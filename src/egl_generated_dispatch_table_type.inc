@@ -126,6 +126,8 @@ struct egl_dispatch_table {
     PFNEGLWAITSYNCKHRPROC glproxy_eglWaitSyncKHR;
 };
 
+#define EGL_EXTENSIONS_BITMAP_COUNT 4
+
 enum egl_provider_versions {
     EGL_1_0 = 10,
     EGL_1_1 = 11,

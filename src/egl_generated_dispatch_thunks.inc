@@ -6,8 +6,6 @@
 
 #define egl_extensions_count 100
 
-static khronos_uint32_t egl_extension_bitmap[4];
-
 static const char egl_extension_enum_strings[] =
     "EGL_ANDROID_blob_cache\0"
     "EGL_ANDROID_create_native_client_buffer\0"
@@ -498,7 +496,6 @@ static khronos_uint32_t egl_method_name_offsets[119] = {0};
 #define current_metadata egl_metadata
 #define current_glproxy_resolve_local egl_glproxy_resolve_local
 #define current_glproxy_dispatch_metadata_init egl_glproxy_dispatch_metadata_init
-#define current_extension_bitmap egl_extension_bitmap
 #define current_extension_offsets egl_extension_offsets
 #define current_extensions_count egl_extensions_count
 #define current_extension_enum_strings egl_extension_enum_strings
@@ -516,7 +513,6 @@ static khronos_uint32_t egl_method_name_offsets[119] = {0};
 #undef current_metadata
 #undef current_glproxy_resolve_local
 #undef current_glproxy_dispatch_metadata_init
-#undef current_extension_bitmap
 #undef current_extension_offsets
 #undef current_extensions_count
 #undef current_extension_enum_strings

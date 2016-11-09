@@ -6,8 +6,6 @@
 
 #define wgl_extensions_count 53
 
-static khronos_uint32_t wgl_extension_bitmap[2];
-
 static const char wgl_extension_enum_strings[] =
     "WGL_3DFX_multisample\0"
     "WGL_3DL_stereo_control\0"
@@ -417,7 +415,6 @@ static khronos_uint32_t wgl_method_name_offsets[138] = {0};
 #define current_metadata wgl_metadata
 #define current_glproxy_resolve_local wgl_glproxy_resolve_local
 #define current_glproxy_dispatch_metadata_init wgl_glproxy_dispatch_metadata_init
-#define current_extension_bitmap wgl_extension_bitmap
 #define current_extension_offsets wgl_extension_offsets
 #define current_extensions_count wgl_extensions_count
 #define current_extension_enum_strings wgl_extension_enum_strings
@@ -435,7 +432,6 @@ static khronos_uint32_t wgl_method_name_offsets[138] = {0};
 #undef current_metadata
 #undef current_glproxy_resolve_local
 #undef current_glproxy_dispatch_metadata_init
-#undef current_extension_bitmap
 #undef current_extension_offsets
 #undef current_extensions_count
 #undef current_extension_enum_strings

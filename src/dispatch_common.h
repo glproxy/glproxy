@@ -161,7 +161,6 @@ struct dispatch_resolve_info {
 
 struct dispatch_metadata {
     const char* extension_enum_strings;
-    khronos_uint32_t *extension_bitmap;
     const khronos_uint16_t *extension_offsets;
     const char* entrypoint_strings;
     const struct dispatch_resolve_info *resolve_info_table;
@@ -189,6 +188,7 @@ struct dispatch_common_tls {
 
     struct gl_dispatch_table gl_dispatch_table;
     struct dispatch_metadata gl_metadata;
+    khronos_uint32_t gl_extension_bitmap[GL_EXTENSIONS_BITMAP_COUNT];
 
     struct egl_dispatch_table egl_dispatch_table;
     struct dispatch_metadata egl_metadata;

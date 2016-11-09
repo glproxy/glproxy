@@ -6,8 +6,6 @@
 
 #define glx_extensions_count 62
 
-static khronos_uint32_t glx_extension_bitmap[2];
-
 static const char glx_extension_enum_strings[] =
     "GLX_3DFX_multisample\0"
     "GLX_AMD_gpu_association\0"
@@ -418,7 +416,6 @@ static khronos_uint32_t glx_method_name_offsets[130] = {0};
 #define current_metadata glx_metadata
 #define current_glproxy_resolve_local glx_glproxy_resolve_local
 #define current_glproxy_dispatch_metadata_init glx_glproxy_dispatch_metadata_init
-#define current_extension_bitmap glx_extension_bitmap
 #define current_extension_offsets glx_extension_offsets
 #define current_extensions_count glx_extensions_count
 #define current_extension_enum_strings glx_extension_enum_strings
@@ -436,7 +433,6 @@ static khronos_uint32_t glx_method_name_offsets[130] = {0};
 #undef current_metadata
 #undef current_glproxy_resolve_local
 #undef current_glproxy_dispatch_metadata_init
-#undef current_extension_bitmap
 #undef current_extension_offsets
 #undef current_extensions_count
 #undef current_extension_enum_strings

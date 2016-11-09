@@ -3169,6 +3169,8 @@ struct gl_dispatch_table {
     PFNGLWRITEMASKEXTPROC glproxy_glWriteMaskEXT;
 };
 
+#define GL_EXTENSIONS_BITMAP_COUNT 24
+
 enum gl_provider_versions {
     OpenGL_Desktop_MIN = 0,
     OpenGL_Desktop_1_0 = 10,

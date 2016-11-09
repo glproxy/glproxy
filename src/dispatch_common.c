@@ -490,7 +490,7 @@ static bool glproxy_internal_has_gl_extension(tls_ptr tls, khronos_uint16_t offs
     khronos_uint32_t bit_pos = ((khronos_uint32_t)1) << (offset & 31);
     if (tls->gl_version == 0)
         return invalid_op_mode;
-    return (data->extension_bitmap[offset >> 5] & bit_pos) > 0;
+    return (tls->gl_extension_bitmap[offset >> 5] & bit_pos) > 0;
 }
 
 GLPROXY_IMPORTEXPORT bool glproxy_has_gl_extension(const char *ext) {
@@ -632,11 +632,10 @@ static int glproxy_internal_gl_version(const char *version, int error_version) {
     return 10 * major + minor;
 }
 
-static void load_extension_list(struct dispatch_metadata *data, const char *extension_list) {
+static void load_extension_list(tls_ptr tls, struct dispatch_metadata *data, const char *extension_list) {
     const char *ptr = extension_list;
     const char *prev = extension_list;
     size_t bitmap_count = ((data->extensions_count - 1) >> 5);
-    memset(data->extension_bitmap, 0, sizeof(data->extension_bitmap[0]) * bitmap_count);
     /* Make sure that don't just find an extension with our name as a prefix. */
     do {
         ++ptr;
@@ -644,7 +643,7 @@ static void load_extension_list(struct dispatch_metadata *data, const char *exte
             khronos_uint16_t len = (khronos_uint16_t)(ptr - prev);
             khronos_uint16_t i = find_extension_pos(data, prev, len);
             if (i < data->extensions_count) {
-                data->extension_bitmap[i >> 5] |= ((khronos_uint32_t)1) << (i & 31);
+                tls->gl_extension_bitmap[i >> 5] |= ((khronos_uint32_t)1) << (i & 31);
             } else if (len > 0) {
                 char tmp_str[128];
                 if (len >= 128) {
@@ -677,7 +676,7 @@ void gl_glproxy_init_version_and_extensions(tls_ptr tls) {
 
     if (tls->gl_version < 30) {
         const char *exts = (const char *)get_string(GL_EXTENSIONS);
-        load_extension_list(data, exts);
+        load_extension_list(tls, data, exts);
     } else {
         PFNGLGETSTRINGPROC get_string = NULL;
         PFNGLGETINTEGERVPROC get_integerv = NULL;
@@ -696,7 +695,7 @@ void gl_glproxy_init_version_and_extensions(tls_ptr tls) {
             size_t len = strlen(gl_ext);
             khronos_uint16_t i = find_extension_pos(data, gl_ext, len);
             if (i < data->extensions_count) {
-                data->extension_bitmap[i >> 5] |= ((khronos_uint32_t)1) << (i & 31);
+                tls->gl_extension_bitmap[i >> 5] |= ((khronos_uint32_t)1) << (i & 31);
             }
             else
 #if PLATFORM_HAS_WGL

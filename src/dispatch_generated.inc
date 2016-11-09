@@ -51,7 +51,6 @@ GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
 
 static void current_glproxy_dispatch_metadata_init(struct dispatch_metadata *data, bool inited) {
     data->extensions_count = current_extensions_count;
-    data->extension_bitmap = current_extension_bitmap;
     data->extension_offsets = current_extension_offsets;
     data->extension_enum_strings = current_extension_enum_strings;
     data->entrypoint_strings = (const char*)current_entrypoint_strings;

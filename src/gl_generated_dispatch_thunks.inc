@@ -28,8 +28,6 @@
 
 #define gl_extensions_count 758
 
-static khronos_uint32_t gl_extension_bitmap[24];
-
 static const char gl_extension_enum_strings[] =
     "GL_3DFX_multisample\0"
     "GL_3DFX_tbuffer\0"
@@ -11168,7 +11166,6 @@ static khronos_uint32_t gl_method_name_offsets[3140] = {0};
 #define current_metadata gl_metadata
 #define current_glproxy_resolve_local gl_glproxy_resolve_local
 #define current_glproxy_dispatch_metadata_init gl_glproxy_dispatch_metadata_init
-#define current_extension_bitmap gl_extension_bitmap
 #define current_extension_offsets gl_extension_offsets
 #define current_extensions_count gl_extensions_count
 #define current_extension_enum_strings gl_extension_enum_strings
@@ -11186,7 +11183,6 @@ static khronos_uint32_t gl_method_name_offsets[3140] = {0};
 #undef current_metadata
 #undef current_glproxy_resolve_local
 #undef current_glproxy_dispatch_metadata_init
-#undef current_extension_bitmap
 #undef current_extension_offsets
 #undef current_extensions_count
 #undef current_extension_enum_strings

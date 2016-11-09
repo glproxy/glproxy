@@ -405,7 +405,9 @@ class Generator(object):
             self.outln('#define {0} 1'.format(name))
         self.outln('')
 
-        for name in sorted(self.supported_extensions):
+        self.extension_providers = sorted(self.supported_extensions)
+
+        for name in self.extension_providers:
             self.outln('#define {0} 1'.format(name))
         self.outln('')
 
@@ -556,22 +558,18 @@ class Generator(object):
 
     def write_providers_extension(self):
         self.extension_offset_map = {}
-        extension_providers = sorted(self.supported_extensions)
-        extension_count = len(extension_providers)
-        self.outln('#define {0}_extensions_count {1}'.format(self.target, extension_count))
-        self.outln('')
-        self.outln('static khronos_uint32_t {0}_extension_bitmap[{1}];'.format(self.target, ((extension_count - 1) >> 5) + 1))
+        self.outln('#define {0}_extensions_count {1}'.format(self.target, self.extension_count))
         self.outln('')
         self.outln('static const char {0}_extension_enum_strings[] ='.format(self.target))
         offset = 0
-        for extension_provider in extension_providers:
+        for extension_provider in self.extension_providers:
             self.extension_offset_map[extension_provider] = offset
             self.outln('    "{0}\\0"'.format(extension_provider))
             offset = offset + 1
         self.outln(';')
         self.outln('static const khronos_uint16_t {0}_extension_offsets[] = {{'.format(self.target))
         offset = 0
-        for extension_provider in extension_providers:
+        for extension_provider in self.extension_providers:
             self.outln('    {0},'.format(offset))
             offset += len(extension_provider) + 1
         self.outln('};')
@@ -617,6 +615,12 @@ class Generator(object):
             if len(providers) > 0:
               self.outln('    {0} glproxy_{1};'.format(func.ptr_type, func.wrapped_name))
         self.outln('};')
+        self.outln('')
+
+        self.extension_count = len(self.extension_providers)
+        extension_bitmap_count = ((self.extension_count - 1) >> 5) + 1
+
+        self.outln('#define {0}_EXTENSIONS_BITMAP_COUNT {1}'.format(self.target.upper(), extension_bitmap_count))
         self.outln('')
         self.write_providers_version()
         self.outln('')
@@ -672,7 +676,6 @@ class Generator(object):
             'metadata',
             'glproxy_resolve_local',
             'glproxy_dispatch_metadata_init',
-            'extension_bitmap',
             'extension_offsets',
             'extensions_count',
             'extension_enum_strings',

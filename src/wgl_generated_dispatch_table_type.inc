@@ -145,6 +145,8 @@ struct wgl_dispatch_table {
     PFNWGLWAITFORSBCOMLPROC glproxy_wglWaitForSbcOML;
 };
 
+#define WGL_EXTENSIONS_BITMAP_COUNT 2
+
 enum wgl_provider_versions {
     WGL_1_0 = 10,
 } PACKED;
