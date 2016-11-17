@@ -50,9 +50,10 @@
 #include "glproxy/_common.h"
 #include "glproxy/khrplatform.h"
 
-#if defined (_MSC_VER) && _MSC_VER >= 1900
-#include <stdbool.h>
-#else
+#if defined (_MSC_VER) && _MSC_VER < 1900 && !defined(__bool_true_false_are_defined)
+
+#define __bool_true_false_are_defined 1
+
 #ifndef __cplusplus
 #ifndef bool
 typedef khronos_boolean_enum_t bool;
@@ -64,6 +65,9 @@ typedef khronos_boolean_enum_t bool;
 #define false KHRONOS_FALSE
 #endif
 #endif
+
+#else
+#include <stdbool.h>
 #endif
 
 #ifdef _WIN32
