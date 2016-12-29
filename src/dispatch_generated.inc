@@ -33,6 +33,9 @@ GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
                 break;
             }
             if (result_resolved == DISPATCH_RESOLVE_RESULT_OK) {
+                if (*ptr == NULL) {
+                    continue;
+                }
                 break;
             }
             if (result_resolved == DISPATCH_RESOLVE_RESULT_IGNORE) {
