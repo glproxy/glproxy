@@ -178,7 +178,7 @@ static void *do_dlsym_by_handle(void*handle, const char* name, const char**error
         if (!*error) {
             *error = "unknow";
         }
-        fprintf(stderr, "%s() not found, has handle:%d error:%s\n", name, handle != NULL, *error);
+        fprintf(stderr, "%s() not found, has handle:%d error:%s\n", name, handle, *error);
     }
     return result;
 }
