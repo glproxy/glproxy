@@ -7,45 +7,33 @@ GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
         const khronos_uint16_t resolve_info_offset = metadata->resolve_offsets[offset];
         const struct dispatch_resolve_info *resolve_info = metadata->resolve_info_table + resolve_info_offset;
         const khronos_uint16_t target_identity = resolve_info->identity;
-        enum DISPATCH_RESOLVE_RESULT result_resolved = DISPATCH_RESOLVE_RESULT_ERROR;
         const char* basic_name = metadata->entrypoint_strings + resolve_info->name_offset;
         if (!metadata->inited) {
             current_glproxy_resolve_init(tls);
         }
-        for (; target_identity == resolve_info->identity; ++resolve_info) {
+        for (; target_identity == resolve_info->identity && *ptr == NULL; ++resolve_info) {
             const char* name = metadata->entrypoint_strings + resolve_info->name_offset;
             switch (resolve_info->resolve_type) {
 #if HAS_DISPATCH_RESOLVE_DIRECT
             case DISPATCH_RESOLVE_DIRECT:
-                result_resolved = current_glproxy_resolve_direct(tls, name, ptr);
+                current_glproxy_resolve_direct(tls, name, ptr);
                 break;
 #endif
 #if HAS_DISPATCH_RESOLVE_VERSION
             case DISPATCH_RESOLVE_VERSION:
-                result_resolved = current_glproxy_resolve_version(tls, name, ptr, resolve_info->condition);
+                current_glproxy_resolve_version(tls, name, ptr, resolve_info->condition);
                 break;
 #endif
             case DISPATCH_RESOLVE_EXTENSION: {
-                result_resolved = current_glproxy_resolve_extension(tls, name, ptr, resolve_info->condition);
+                current_glproxy_resolve_extension(tls, name, ptr, resolve_info->condition);
                 break;
             }
             default:
                 break;
             }
-            if (result_resolved == DISPATCH_RESOLVE_RESULT_OK) {
-                if (*ptr == NULL) {
-                    continue;
-                }
-                break;
-            }
-            if (result_resolved == DISPATCH_RESOLVE_RESULT_IGNORE) {
-                continue;
-            }
-            fprintf(stderr, "Resolve for name:%s type:%d condition:%d failed\n", name, (int)resolve_info->resolve_type, (int)resolve_info->condition);
-            break;
         }
-        if (result_resolved == DISPATCH_RESOLVE_RESULT_IGNORE) {
-            fprintf(stderr, "Resolve for name:%s type:%d condition:%d all ignored\n", basic_name, (int)resolve_info->resolve_type, (int)resolve_info->condition);
+        if (*ptr == NULL) {
+          fprintf(stderr, "[glproxy] Resolve failed for function:%s\n", basic_name);
         }
     }
 
