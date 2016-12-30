@@ -26,7 +26,7 @@
 #include "dispatch_common.h"
 #if PLATFORM_HAS_GL
 
-#define gl_extensions_count 896
+#define gl_extensions_count 901
 
 static const char gl_extension_enum_strings[] =
     "GLU_EXT_nurbs_tessellator\0"
@@ -337,6 +337,9 @@ static const char gl_extension_enum_strings[] =
     "GL_ARM_rgba8\0"
     "GL_ARM_shader_framebuffer_fetch\0"
     "GL_ARM_shader_framebuffer_fetch_depth_stencil\0"
+    "GL_ATIX_texture_env_combine3\0"
+    "GL_ATIX_texture_env_route\0"
+    "GL_ATIX_vertex_shader_output_point_size\0"
     "GL_ATI_blend_equation_separate\0"
     "GL_ATI_draw_buffers\0"
     "GL_ATI_element_array\0"
@@ -477,6 +480,7 @@ static const char gl_extension_enum_strings[] =
     "GL_EXT_swap_control\0"
     "GL_EXT_tessellation_point_size\0"
     "GL_EXT_tessellation_shader\0"
+    "GL_EXT_texgen_reflection\0"
     "GL_EXT_texture\0"
     "GL_EXT_texture3D\0"
     "GL_EXT_texture_array\0"
@@ -805,6 +809,7 @@ static const char gl_extension_enum_strings[] =
     "GL_SGIS_fog_function\0"
     "GL_SGIS_generate_mipmap\0"
     "GL_SGIS_multisample\0"
+    "GL_SGIS_multitexture\0"
     "GL_SGIS_pixel_texture\0"
     "GL_SGIS_point_line_texgen\0"
     "GL_SGIS_point_parameters\0"
@@ -1236,594 +1241,599 @@ static const khronos_uint16_t gl_extension_offsets[] = {
     7911,
     7943,
     7989,
-    8020,
-    8040,
-    8061,
-    8083,
-    8106,
-    8131,
-    8146,
-    8172,
-    8192,
-    8216,
-    8244,
-    8275,
-    8303,
-    8324,
-    8351,
-    8378,
-    8412,
-    8434,
-    8456,
-    8477,
-    8495,
-    8513,
-    8525,
-    8546,
-    8558,
-    8582,
-    8601,
-    8632,
-    8659,
-    8686,
-    8708,
-    8728,
-    8750,
-    8772,
-    8798,
-    8822,
-    8835,
-    8861,
-    8892,
-    8914,
-    8943,
-    8962,
-    8986,
-    9004,
-    9024,
-    9043,
-    9062,
-    9082,
-    9107,
-    9134,
-    9161,
-    9189,
-    9209,
-    9230,
-    9258,
-    9291,
-    9313,
-    9340,
-    9359,
-    9376,
-    9394,
-    9419,
-    9443,
-    9474,
-    9517,
-    9543,
-    9567,
-    9594,
-    9617,
-    9641,
-    9664,
-    9694,
-    9713,
-    9732,
-    9749,
-    9776,
-    9794,
-    9816,
-    9837,
-    9861,
-    9882,
-    9906,
-    9928,
-    9953,
-    9980,
-    9999,
-    10033,
-    10071,
-    10101,
-    10132,
-    10160,
-    10180,
-    10201,
-    10225,
-    10252,
+    8018,
+    8044,
+    8084,
+    8115,
+    8135,
+    8156,
+    8178,
+    8201,
+    8226,
+    8241,
+    8267,
+    8287,
+    8311,
+    8339,
+    8370,
+    8398,
+    8419,
+    8446,
+    8473,
+    8507,
+    8529,
+    8551,
+    8572,
+    8590,
+    8608,
+    8620,
+    8641,
+    8653,
+    8677,
+    8696,
+    8727,
+    8754,
+    8781,
+    8803,
+    8823,
+    8845,
+    8867,
+    8893,
+    8917,
+    8930,
+    8956,
+    8987,
+    9009,
+    9038,
+    9057,
+    9081,
+    9099,
+    9119,
+    9138,
+    9157,
+    9177,
+    9202,
+    9229,
+    9256,
+    9284,
+    9304,
+    9325,
+    9353,
+    9386,
+    9408,
+    9435,
+    9454,
+    9471,
+    9489,
+    9514,
+    9538,
+    9569,
+    9612,
+    9638,
+    9662,
+    9689,
+    9712,
+    9736,
+    9759,
+    9789,
+    9808,
+    9827,
+    9844,
+    9871,
+    9889,
+    9911,
+    9932,
+    9956,
+    9977,
+    10001,
+    10023,
+    10048,
+    10075,
+    10094,
+    10128,
+    10166,
+    10196,
+    10227,
+    10255,
     10275,
-    10310,
-    10334,
-    10356,
-    10384,
-    10411,
-    10441,
-    10467,
-    10491,
-    10509,
-    10535,
-    10559,
-    10579,
-    10601,
-    10619,
-    10631,
-    10657,
-    10677,
-    10700,
-    10731,
-    10762,
-    10794,
-    10819,
-    10854,
-    10885,
-    10920,
-    10946,
-    10970,
-    11017,
-    11051,
-    11086,
+    10296,
+    10320,
+    10347,
+    10370,
+    10405,
+    10429,
+    10451,
+    10479,
+    10506,
+    10536,
+    10562,
+    10586,
+    10604,
+    10630,
+    10654,
+    10674,
+    10696,
+    10714,
+    10726,
+    10752,
+    10772,
+    10795,
+    10826,
+    10857,
+    10889,
+    10914,
+    10949,
+    10980,
+    11015,
+    11041,
+    11065,
     11112,
-    11132,
-    11155,
-    11185,
+    11146,
+    11181,
     11207,
-    11230,
-    11257,
-    11282,
-    11306,
-    11326,
-    11344,
-    11364,
-    11395,
-    11422,
-    11437,
-    11454,
-    11475,
-    11503,
-    11525,
-    11554,
-    11586,
-    11618,
-    11650,
-    11682,
+    11227,
+    11250,
+    11280,
+    11302,
+    11325,
+    11352,
+    11377,
+    11401,
+    11421,
+    11439,
+    11459,
+    11490,
+    11517,
+    11542,
+    11557,
+    11574,
+    11595,
+    11623,
+    11645,
+    11674,
     11706,
-    11736,
-    11762,
-    11781,
-    11804,
-    11831,
-    11855,
-    11889,
-    11918,
-    11949,
-    11972,
-    11996,
-    12024,
-    12046,
-    12068,
-    12098,
-    12123,
-    12141,
-    12161,
-    12184,
-    12208,
-    12235,
-    12266,
-    12287,
-    12310,
-    12333,
-    12368,
-    12388,
+    11738,
+    11770,
+    11802,
+    11826,
+    11856,
+    11882,
+    11901,
+    11924,
+    11951,
+    11975,
+    12009,
+    12038,
+    12069,
+    12092,
+    12116,
+    12144,
+    12166,
+    12188,
+    12218,
+    12243,
+    12261,
+    12281,
+    12304,
+    12328,
+    12355,
+    12386,
     12407,
-    12433,
-    12456,
-    12476,
-    12501,
-    12525,
-    12552,
-    12579,
-    12600,
-    12624,
-    12649,
+    12430,
+    12453,
+    12488,
+    12508,
+    12527,
+    12553,
+    12576,
+    12596,
+    12621,
+    12645,
     12672,
-    12698,
-    12726,
-    12751,
-    12782,
-    12804,
-    12825,
-    12848,
-    12867,
-    12896,
-    12918,
-    12937,
+    12699,
+    12720,
+    12744,
+    12769,
+    12792,
+    12818,
+    12846,
+    12871,
+    12902,
+    12924,
+    12945,
     12968,
-    12994,
-    13024,
-    13062,
-    13084,
-    13103,
-    13124,
-    13157,
-    13191,
-    13234,
-    13262,
-    13285,
-    13313,
-    13333,
-    13356,
-    13392,
-    13426,
-    13452,
-    13473,
-    13498,
-    13525,
-    13550,
-    13581,
-    13621,
-    13650,
-    13663,
-    13679,
-    13716,
-    13734,
+    12987,
+    13016,
+    13038,
+    13057,
+    13088,
+    13114,
+    13144,
+    13182,
+    13204,
+    13223,
+    13244,
+    13277,
+    13311,
+    13354,
+    13382,
+    13405,
+    13433,
+    13453,
+    13476,
+    13512,
+    13546,
+    13572,
+    13593,
+    13618,
+    13645,
+    13670,
+    13701,
+    13741,
     13770,
-    13806,
-    13848,
-    13871,
-    13891,
-    13914,
-    13947,
-    13975,
-    13994,
-    14016,
-    14066,
-    14092,
-    14115,
-    14143,
-    14178,
-    14219,
-    14242,
-    14272,
-    14311,
-    14330,
-    14357,
-    14376,
-    14399,
-    14424,
+    13783,
+    13799,
+    13836,
+    13854,
+    13890,
+    13926,
+    13968,
+    13991,
+    14011,
+    14034,
+    14067,
+    14095,
+    14114,
+    14136,
+    14186,
+    14212,
+    14235,
+    14263,
+    14298,
+    14339,
+    14362,
+    14392,
+    14431,
     14450,
-    14483,
-    14528,
-    14546,
-    14572,
-    14589,
-    14611,
-    14632,
-    14657,
-    14675,
-    14697,
-    14716,
-    14737,
-    14756,
-    14773,
-    14804,
-    14831,
-    14859,
-    14871,
-    14892,
-    14911,
-    14930,
-    14963,
-    14986,
-    15010,
-    15034,
-    15064,
-    15096,
-    15119,
-    15151,
-    15181,
-    15220,
-    15247,
+    14477,
+    14496,
+    14519,
+    14544,
+    14570,
+    14603,
+    14648,
+    14666,
+    14692,
+    14709,
+    14731,
+    14752,
+    14777,
+    14795,
+    14817,
+    14836,
+    14857,
+    14876,
+    14893,
+    14924,
+    14951,
+    14979,
+    14991,
+    15012,
+    15031,
+    15050,
+    15083,
+    15106,
+    15130,
+    15154,
+    15184,
+    15216,
+    15239,
     15271,
-    15294,
-    15328,
-    15348,
+    15301,
+    15340,
     15367,
-    15386,
-    15418,
-    15436,
-    15453,
-    15473,
-    15496,
-    15530,
-    15555,
-    15582,
-    15612,
-    15638,
-    15660,
-    15680,
-    15707,
-    15737,
-    15768,
-    15789,
-    15822,
-    15848,
-    15871,
-    15890,
+    15391,
+    15414,
+    15448,
+    15468,
+    15487,
+    15506,
+    15538,
+    15556,
+    15573,
+    15593,
+    15616,
+    15650,
+    15675,
+    15702,
+    15732,
+    15758,
+    15780,
+    15800,
+    15827,
+    15857,
+    15888,
     15909,
-    15929,
-    15953,
-    15971,
-    15995,
-    16012,
-    16037,
-    16056,
-    16081,
-    16107,
-    16143,
-    16162,
-    16185,
-    16221,
-    16250,
-    16276,
-    16304,
-    16336,
-    16362,
-    16387,
-    16413,
-    16454,
-    16489,
-    16515,
-    16543,
-    16571,
-    16598,
-    16626,
-    16654,
-    16674,
-    16698,
-    16720,
-    16747,
-    16785,
-    16815,
-    16842,
-    16870,
-    16896,
-    16925,
-    16949,
-    16970,
-    16992,
-    17014,
-    17039,
-    17065,
-    17101,
-    17121,
-    17146,
-    17172,
-    17206,
+    15942,
+    15968,
+    15991,
+    16010,
+    16029,
+    16049,
+    16073,
+    16091,
+    16115,
+    16132,
+    16157,
+    16176,
+    16201,
+    16227,
+    16263,
+    16282,
+    16305,
+    16341,
+    16370,
+    16396,
+    16424,
+    16456,
+    16482,
+    16507,
+    16533,
+    16574,
+    16609,
+    16635,
+    16663,
+    16691,
+    16718,
+    16746,
+    16774,
+    16794,
+    16818,
+    16840,
+    16867,
+    16905,
+    16935,
+    16962,
+    16990,
+    17016,
+    17045,
+    17069,
+    17090,
+    17112,
+    17134,
+    17159,
+    17185,
+    17221,
     17241,
-    17262,
-    17286,
-    17308,
-    17337,
-    17359,
-    17381,
-    17401,
-    17422,
-    17444,
-    17467,
-    17484,
-    17510,
+    17266,
+    17292,
+    17326,
+    17361,
+    17382,
+    17406,
+    17428,
+    17457,
+    17479,
+    17501,
+    17521,
     17542,
-    17573,
-    17600,
-    17622,
-    17646,
-    17686,
-    17722,
-    17757,
-    17775,
-    17790,
-    17805,
-    17826,
-    17854,
-    17887,
-    17907,
-    17933,
-    17964,
-    17989,
-    18008,
-    18039,
-    18065,
-    18092,
-    18115,
-    18141,
-    18160,
-    18177,
-    18195,
-    18217,
-    18245,
-    18269,
-    18289,
-    18319,
-    18339,
-    18358,
+    17564,
+    17587,
+    17604,
+    17630,
+    17662,
+    17693,
+    17720,
+    17742,
+    17766,
+    17806,
+    17842,
+    17877,
+    17895,
+    17910,
+    17925,
+    17946,
+    17974,
+    18007,
+    18027,
+    18053,
+    18084,
+    18109,
+    18128,
+    18159,
+    18185,
+    18212,
+    18235,
+    18261,
+    18280,
+    18297,
+    18315,
+    18337,
+    18365,
     18389,
-    18407,
-    18429,
-    18453,
-    18480,
-    18504,
-    18544,
-    18568,
-    18596,
-    18612,
-    18628,
-    18644,
+    18409,
+    18439,
+    18459,
+    18478,
+    18509,
+    18527,
+    18549,
+    18573,
+    18600,
+    18624,
     18664,
-    18691,
-    18722,
-    18749,
-    18767,
-    18795,
-    18817,
-    18849,
-    18873,
-    18903,
-    18931,
-    18952,
-    18980,
-    19006,
-    19039,
-    19070,
-    19090,
-    19114,
-    19158,
-    19178,
-    19205,
-    19230,
-    19260,
-    19277,
-    19293,
-    19310,
-    19327,
-    19345,
-    19393,
-    19411,
-    19431,
-    19450,
-    19474,
-    19497,
-    19518,
-    19540,
-    19568,
-    19592,
-    19620,
-    19647,
-    19658,
-    19678,
-    19701,
-    19722,
-    19746,
-    19766,
-    19788,
-    19814,
-    19839,
-    19863,
-    19881,
-    19910,
-    19937,
-    19964,
-    19988,
-    20008,
-    20031,
-    20045,
-    20069,
-    20089,
-    20116,
-    20146,
-    20162,
-    20191,
-    20221,
-    20243,
-    20264,
-    20283,
+    18688,
+    18716,
+    18732,
+    18748,
+    18764,
+    18784,
+    18811,
+    18842,
+    18869,
+    18887,
+    18915,
+    18937,
+    18969,
+    18993,
+    19023,
+    19051,
+    19072,
+    19100,
+    19126,
+    19159,
+    19190,
+    19210,
+    19234,
+    19278,
+    19298,
+    19325,
+    19350,
+    19380,
+    19397,
+    19413,
+    19430,
+    19447,
+    19465,
+    19513,
+    19531,
+    19551,
+    19570,
+    19594,
+    19617,
+    19638,
+    19660,
+    19688,
+    19712,
+    19740,
+    19767,
+    19778,
+    19798,
+    19821,
+    19842,
+    19866,
+    19886,
+    19907,
+    19929,
+    19955,
+    19980,
+    20004,
+    20022,
+    20051,
+    20078,
+    20105,
+    20129,
+    20149,
+    20172,
+    20186,
+    20210,
+    20230,
+    20257,
+    20287,
     20303,
-    20329,
-    20364,
-    20382,
-    20406,
-    20426,
+    20332,
+    20362,
+    20384,
+    20405,
+    20424,
     20444,
-    20467,
-    20489,
-    20511,
-    20538,
-    20558,
-    20581,
-    20605,
-    20622,
-    20645,
-    20660,
-    20683,
-    20698,
-    20716,
-    20742,
-    20766,
-    20799,
+    20470,
+    20505,
+    20523,
+    20547,
+    20567,
+    20585,
+    20608,
+    20630,
+    20652,
+    20679,
+    20699,
+    20722,
+    20746,
+    20763,
+    20786,
+    20801,
     20824,
-    20853,
-    20875,
-    20902,
-    20925,
-    20953,
-    20967,
-    20991,
-    21006,
-    21026,
-    21045,
-    21072,
+    20839,
+    20857,
+    20883,
+    20907,
+    20940,
+    20965,
+    20994,
+    21016,
+    21043,
+    21066,
     21094,
-    21126,
-    21146,
-    21164,
-    21189,
-    21208,
-    21229,
-    21243,
-    21264,
-    21285,
+    21108,
+    21132,
+    21147,
+    21167,
+    21186,
+    21213,
+    21235,
+    21267,
+    21287,
     21305,
-    21322,
-    21345,
-    21369,
-    21391,
-    21421,
-    21444,
-    21475,
-    21509,
-    21535,
-    21560,
-    21586,
-    21606,
-    21622,
-    21643,
-    21670,
-    21693,
-    21734,
-    21775,
-    21802,
-    21837,
-    21871,
-    21891,
-    21919,
-    21945,
-    21970,
-    21996,
-    22016,
+    21330,
+    21349,
+    21370,
+    21384,
+    21405,
+    21426,
+    21446,
+    21463,
+    21486,
+    21510,
+    21532,
+    21562,
+    21585,
+    21616,
+    21650,
+    21676,
+    21701,
+    21727,
+    21747,
+    21763,
+    21784,
+    21811,
+    21834,
+    21875,
+    21916,
+    21943,
+    21978,
+    22012,
     22032,
-    22053,
-    22087,
-    22108,
-    22134,
-    22164,
-    22178,
+    22060,
+    22086,
+    22111,
+    22137,
+    22157,
+    22173,
     22194,
-    22215,
-    22239,
-    22264,
-    22285,
-    22303,
-    22322,
-    22340,
-    22365,
-    22385,
+    22228,
+    22249,
+    22275,
+    22305,
+    22319,
+    22335,
+    22356,
+    22380,
     22405,
     22426,
-    22454,
-    22486,
-    22504,
-    22525,
-    22545,
-    22566
+    22444,
+    22463,
+    22481,
+    22506,
+    22526,
+    22546,
+    22567,
+    22595,
+    22627,
+    22645,
+    22666,
+    22686,
+    22707
 };
 
 static const khronos_uint8_t gl_entrypoint_strings[] = {
@@ -4971,13 +4981,13 @@ static const khronos_uint8_t gl_entrypoint_strings[] = {
 
 static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 0, OpenGL_Desktop_1_0, 0}, /* glAccum */
-    {DISPATCH_RESOLVE_EXTENSION, 1, 702 /* GL_OES_fixed_point */, 8}, /* glAccumxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 422 /* GL_EXT_separate_shader_objects */, 20}, /* glActiveProgramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 706 /* GL_OES_fixed_point */, 8}, /* glAccumxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 425 /* GL_EXT_separate_shader_objects */, 20}, /* glActiveProgramEXT */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_Desktop_4_1, 39}, /* glActiveShaderProgram */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_ES_3_1, 39}, /* glActiveShaderProgram */
     {DISPATCH_RESOLVE_EXTENSION, 3, 222 /* GL_ARB_separate_shader_objects */, 39}, /* glActiveShaderProgram */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 422 /* GL_EXT_separate_shader_objects */, 61}, /* glActiveShaderProgramEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 442 /* GL_EXT_stencil_two_side */, 86}, /* glActiveStencilFaceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 425 /* GL_EXT_separate_shader_objects */, 61}, /* glActiveShaderProgramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 445 /* GL_EXT_stencil_two_side */, 86}, /* glActiveStencilFaceEXT */
     {DISPATCH_RESOLVE_VERSION, 6, OpenGL_Desktop_1_3, 109}, /* glActiveTexture */
     {DISPATCH_RESOLVE_DIRECT, 6, OpenGL_ES_1_0, 109}, /* glActiveTexture */
     {DISPATCH_RESOLVE_DIRECT, 6, OpenGL_ES_2_0, 109}, /* glActiveTexture */
@@ -4986,26 +4996,26 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 7, OpenGL_Desktop_1_3, 109}, /* glActiveTexture */
     {DISPATCH_RESOLVE_DIRECT, 7, OpenGL_ES_1_0, 109}, /* glActiveTexture */
     {DISPATCH_RESOLVE_DIRECT, 7, OpenGL_ES_2_0, 109}, /* glActiveTexture */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 664 /* GL_NV_transform_feedback */, 144}, /* glActiveVaryingNV */
-    {DISPATCH_RESOLVE_EXTENSION, 9, 312 /* GL_ATI_fragment_shader */, 162}, /* glAlphaFragmentOp1ATI */
-    {DISPATCH_RESOLVE_EXTENSION, 10, 312 /* GL_ATI_fragment_shader */, 184}, /* glAlphaFragmentOp2ATI */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 312 /* GL_ATI_fragment_shader */, 206}, /* glAlphaFragmentOp3ATI */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 668 /* GL_NV_transform_feedback */, 144}, /* glActiveVaryingNV */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 315 /* GL_ATI_fragment_shader */, 162}, /* glAlphaFragmentOp1ATI */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 315 /* GL_ATI_fragment_shader */, 184}, /* glAlphaFragmentOp2ATI */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 315 /* GL_ATI_fragment_shader */, 206}, /* glAlphaFragmentOp3ATI */
     {DISPATCH_RESOLVE_DIRECT, 12, OpenGL_Desktop_1_0, 228}, /* glAlphaFunc */
     {DISPATCH_RESOLVE_DIRECT, 12, OpenGL_ES_1_0, 228}, /* glAlphaFunc */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 761 /* GL_QCOM_alpha_test */, 240}, /* glAlphaFuncQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 765 /* GL_QCOM_alpha_test */, 240}, /* glAlphaFuncQCOM */
     {DISPATCH_RESOLVE_DIRECT, 14, OpenGL_ES_1_0, 256}, /* glAlphaFuncx */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 702 /* GL_OES_fixed_point */, 269}, /* glAlphaFuncxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 526 /* GL_INTEL_framebuffer_CMAA */, 285}, /* glApplyFramebufferAttachmentCMAAINTEL */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 388 /* GL_EXT_light_texture */, 323}, /* glApplyTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 672 /* GL_NV_vertex_program */, 341}, /* glAreProgramsResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 706 /* GL_OES_fixed_point */, 269}, /* glAlphaFuncxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 530 /* GL_INTEL_framebuffer_CMAA */, 285}, /* glApplyFramebufferAttachmentCMAAINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 391 /* GL_EXT_light_texture */, 323}, /* glApplyTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 676 /* GL_NV_vertex_program */, 341}, /* glAreProgramsResidentNV */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_Desktop_1_1, 365}, /* glAreTexturesResident */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 472 /* GL_EXT_texture_object */, 387}, /* glAreTexturesResidentEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 476 /* GL_EXT_texture_object */, 387}, /* glAreTexturesResidentEXT */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_1_1, 412}, /* glArrayElement */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 489 /* GL_EXT_vertex_array */, 427}, /* glArrayElementEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 489 /* GL_EXT_vertex_array */, 427}, /* glArrayElementEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 493 /* GL_EXT_vertex_array */, 427}, /* glArrayElementEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 493 /* GL_EXT_vertex_array */, 427}, /* glArrayElementEXT */
     {DISPATCH_RESOLVE_VERSION, 22, OpenGL_Desktop_1_1, 412}, /* glArrayElement */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 323 /* GL_ATI_vertex_array_object */, 445}, /* glArrayObjectATI */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 787 /* GL_SGIX_async */, 462}, /* glAsyncMarkerSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 326 /* GL_ATI_vertex_array_object */, 445}, /* glArrayObjectATI */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 792 /* GL_SGIX_async */, 462}, /* glAsyncMarkerSGIX */
     {DISPATCH_RESOLVE_EXTENSION, 25, 232 /* GL_ARB_shader_objects */, 480}, /* glAttachObjectARB */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_Desktop_2_0, 498}, /* glAttachShader */
     {DISPATCH_RESOLVE_DIRECT, 25, OpenGL_ES_2_0, 498}, /* glAttachShader */
@@ -5014,38 +5024,38 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 26, 232 /* GL_ARB_shader_objects */, 480}, /* glAttachObjectARB */
     {DISPATCH_RESOLVE_DIRECT, 27, OpenGL_Desktop_1_0, 513}, /* glBegin */
     {DISPATCH_RESOLVE_VERSION, 28, OpenGL_Desktop_3_0, 521}, /* glBeginConditionalRender */
-    {DISPATCH_RESOLVE_EXTENSION, 28, 561 /* GL_NV_conditional_render */, 546}, /* glBeginConditionalRenderNV */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 561 /* GL_NV_conditional_render */, 546}, /* glBeginConditionalRenderNV */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 565 /* GL_NV_conditional_render */, 546}, /* glBeginConditionalRenderNV */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 565 /* GL_NV_conditional_render */, 546}, /* glBeginConditionalRenderNV */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_Desktop_3_0, 521}, /* glBeginConditionalRender */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 549 /* GL_NVX_conditional_render */, 573}, /* glBeginConditionalRenderNVX */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 312 /* GL_ATI_fragment_shader */, 601}, /* glBeginFragmentShaderATI */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 611 /* GL_NV_occlusion_query */, 626}, /* glBeginOcclusionQueryNV */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 553 /* GL_NVX_conditional_render */, 573}, /* glBeginConditionalRenderNVX */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 315 /* GL_ATI_fragment_shader */, 601}, /* glBeginFragmentShaderATI */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 615 /* GL_NV_occlusion_query */, 626}, /* glBeginOcclusionQueryNV */
     {DISPATCH_RESOLVE_EXTENSION, 33, 77 /* GL_AMD_performance_monitor */, 650}, /* glBeginPerfMonitorAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 529 /* GL_INTEL_performance_query */, 672}, /* glBeginPerfQueryINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 533 /* GL_INTEL_performance_query */, 672}, /* glBeginPerfQueryINTEL */
     {DISPATCH_RESOLVE_VERSION, 35, OpenGL_Desktop_1_5, 694}, /* glBeginQuery */
     {DISPATCH_RESOLVE_VERSION, 35, OpenGL_ES_3_0, 694}, /* glBeginQuery */
     {DISPATCH_RESOLVE_EXTENSION, 35, 203 /* GL_ARB_occlusion_query */, 707}, /* glBeginQueryARB */
     {DISPATCH_RESOLVE_EXTENSION, 36, 203 /* GL_ARB_occlusion_query */, 707}, /* glBeginQueryARB */
     {DISPATCH_RESOLVE_VERSION, 36, OpenGL_Desktop_1_5, 694}, /* glBeginQuery */
     {DISPATCH_RESOLVE_VERSION, 36, OpenGL_ES_3_0, 694}, /* glBeginQuery */
-    {DISPATCH_RESOLVE_EXTENSION, 37, 359 /* GL_EXT_disjoint_timer_query */, 723}, /* glBeginQueryEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 37, 397 /* GL_EXT_occlusion_query_boolean */, 723}, /* glBeginQueryEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 362 /* GL_EXT_disjoint_timer_query */, 723}, /* glBeginQueryEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 400 /* GL_EXT_occlusion_query_boolean */, 723}, /* glBeginQueryEXT */
     {DISPATCH_RESOLVE_VERSION, 38, OpenGL_Desktop_4_0, 739}, /* glBeginQueryIndexed */
     {DISPATCH_RESOLVE_EXTENSION, 38, 286 /* GL_ARB_transform_feedback3 */, 739}, /* glBeginQueryIndexed */
     {DISPATCH_RESOLVE_VERSION, 39, OpenGL_Desktop_3_0, 759}, /* glBeginTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 39, OpenGL_ES_3_0, 759}, /* glBeginTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 487 /* GL_EXT_transform_feedback */, 784}, /* glBeginTransformFeedbackEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 664 /* GL_NV_transform_feedback */, 812}, /* glBeginTransformFeedbackNV */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 487 /* GL_EXT_transform_feedback */, 784}, /* glBeginTransformFeedbackEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 491 /* GL_EXT_transform_feedback */, 784}, /* glBeginTransformFeedbackEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 668 /* GL_NV_transform_feedback */, 812}, /* glBeginTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 491 /* GL_EXT_transform_feedback */, 784}, /* glBeginTransformFeedbackEXT */
     {DISPATCH_RESOLVE_VERSION, 40, OpenGL_Desktop_3_0, 759}, /* glBeginTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 40, OpenGL_ES_3_0, 759}, /* glBeginTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 664 /* GL_NV_transform_feedback */, 812}, /* glBeginTransformFeedbackNV */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 664 /* GL_NV_transform_feedback */, 812}, /* glBeginTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 668 /* GL_NV_transform_feedback */, 812}, /* glBeginTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 668 /* GL_NV_transform_feedback */, 812}, /* glBeginTransformFeedbackNV */
     {DISPATCH_RESOLVE_VERSION, 41, OpenGL_Desktop_3_0, 759}, /* glBeginTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 41, OpenGL_ES_3_0, 759}, /* glBeginTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 487 /* GL_EXT_transform_feedback */, 784}, /* glBeginTransformFeedbackEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 42, 494 /* GL_EXT_vertex_shader */, 839}, /* glBeginVertexShaderEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 43, 678 /* GL_NV_video_capture */, 862}, /* glBeginVideoCaptureNV */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 491 /* GL_EXT_transform_feedback */, 784}, /* glBeginTransformFeedbackEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 498 /* GL_EXT_vertex_shader */, 839}, /* glBeginVertexShaderEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 682 /* GL_NV_video_capture */, 862}, /* glBeginVideoCaptureNV */
     {DISPATCH_RESOLVE_VERSION, 44, OpenGL_Desktop_2_0, 884}, /* glBindAttribLocation */
     {DISPATCH_RESOLVE_DIRECT, 44, OpenGL_ES_2_0, 884}, /* glBindAttribLocation */
     {DISPATCH_RESOLVE_EXTENSION, 44, 298 /* GL_ARB_vertex_shader */, 905}, /* glBindAttribLocationARB */
@@ -5064,130 +5074,130 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_Desktop_3_1, 958}, /* glBindBufferBase */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_ES_3_0, 958}, /* glBindBufferBase */
     {DISPATCH_RESOLVE_EXTENSION, 48, 290 /* GL_ARB_uniform_buffer_object */, 958}, /* glBindBufferBase */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 487 /* GL_EXT_transform_feedback */, 975}, /* glBindBufferBaseEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 664 /* GL_NV_transform_feedback */, 995}, /* glBindBufferBaseNV */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 487 /* GL_EXT_transform_feedback */, 975}, /* glBindBufferBaseEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 491 /* GL_EXT_transform_feedback */, 975}, /* glBindBufferBaseEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 668 /* GL_NV_transform_feedback */, 995}, /* glBindBufferBaseNV */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 491 /* GL_EXT_transform_feedback */, 975}, /* glBindBufferBaseEXT */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_3_0, 958}, /* glBindBufferBase */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_3_1, 958}, /* glBindBufferBase */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_ES_3_0, 958}, /* glBindBufferBase */
     {DISPATCH_RESOLVE_EXTENSION, 49, 290 /* GL_ARB_uniform_buffer_object */, 958}, /* glBindBufferBase */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 664 /* GL_NV_transform_feedback */, 995}, /* glBindBufferBaseNV */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 664 /* GL_NV_transform_feedback */, 995}, /* glBindBufferBaseNV */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 668 /* GL_NV_transform_feedback */, 995}, /* glBindBufferBaseNV */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 668 /* GL_NV_transform_feedback */, 995}, /* glBindBufferBaseNV */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_Desktop_3_0, 958}, /* glBindBufferBase */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_Desktop_3_1, 958}, /* glBindBufferBase */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_ES_3_0, 958}, /* glBindBufferBase */
     {DISPATCH_RESOLVE_EXTENSION, 50, 290 /* GL_ARB_uniform_buffer_object */, 958}, /* glBindBufferBase */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 487 /* GL_EXT_transform_feedback */, 975}, /* glBindBufferBaseEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 487 /* GL_EXT_transform_feedback */, 1014}, /* glBindBufferOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 664 /* GL_NV_transform_feedback */, 1036}, /* glBindBufferOffsetNV */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 664 /* GL_NV_transform_feedback */, 1036}, /* glBindBufferOffsetNV */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 487 /* GL_EXT_transform_feedback */, 1014}, /* glBindBufferOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 491 /* GL_EXT_transform_feedback */, 975}, /* glBindBufferBaseEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 491 /* GL_EXT_transform_feedback */, 1014}, /* glBindBufferOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 668 /* GL_NV_transform_feedback */, 1036}, /* glBindBufferOffsetNV */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 668 /* GL_NV_transform_feedback */, 1036}, /* glBindBufferOffsetNV */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 491 /* GL_EXT_transform_feedback */, 1014}, /* glBindBufferOffsetEXT */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_Desktop_3_0, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_Desktop_3_1, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_ES_3_0, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 53, 290 /* GL_ARB_uniform_buffer_object */, 1057}, /* glBindBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 53, 487 /* GL_EXT_transform_feedback */, 1075}, /* glBindBufferRangeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 53, 664 /* GL_NV_transform_feedback */, 1096}, /* glBindBufferRangeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 487 /* GL_EXT_transform_feedback */, 1075}, /* glBindBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 491 /* GL_EXT_transform_feedback */, 1075}, /* glBindBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 668 /* GL_NV_transform_feedback */, 1096}, /* glBindBufferRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 491 /* GL_EXT_transform_feedback */, 1075}, /* glBindBufferRangeEXT */
     {DISPATCH_RESOLVE_VERSION, 54, OpenGL_Desktop_3_0, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_VERSION, 54, OpenGL_Desktop_3_1, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_VERSION, 54, OpenGL_ES_3_0, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 54, 290 /* GL_ARB_uniform_buffer_object */, 1057}, /* glBindBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 664 /* GL_NV_transform_feedback */, 1096}, /* glBindBufferRangeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 664 /* GL_NV_transform_feedback */, 1096}, /* glBindBufferRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 668 /* GL_NV_transform_feedback */, 1096}, /* glBindBufferRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 668 /* GL_NV_transform_feedback */, 1096}, /* glBindBufferRangeNV */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_Desktop_3_0, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_Desktop_3_1, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_ES_3_0, 1057}, /* glBindBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 55, 290 /* GL_ARB_uniform_buffer_object */, 1057}, /* glBindBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 487 /* GL_EXT_transform_feedback */, 1075}, /* glBindBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 491 /* GL_EXT_transform_feedback */, 1075}, /* glBindBufferRangeEXT */
     {DISPATCH_RESOLVE_VERSION, 56, OpenGL_Desktop_4_4, 1116}, /* glBindBuffersBase */
     {DISPATCH_RESOLVE_EXTENSION, 56, 199 /* GL_ARB_multi_bind */, 1116}, /* glBindBuffersBase */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_Desktop_4_4, 1134}, /* glBindBuffersRange */
     {DISPATCH_RESOLVE_EXTENSION, 57, 199 /* GL_ARB_multi_bind */, 1134}, /* glBindBuffersRange */
     {DISPATCH_RESOLVE_VERSION, 58, OpenGL_Desktop_3_0, 1153}, /* glBindFragDataLocation */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 336 /* GL_EXT_blend_func_extended */, 1176}, /* glBindFragDataLocationEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 380 /* GL_EXT_gpu_shader4 */, 1176}, /* glBindFragDataLocationEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 59, 336 /* GL_EXT_blend_func_extended */, 1176}, /* glBindFragDataLocationEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 59, 380 /* GL_EXT_gpu_shader4 */, 1176}, /* glBindFragDataLocationEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 339 /* GL_EXT_blend_func_extended */, 1176}, /* glBindFragDataLocationEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 383 /* GL_EXT_gpu_shader4 */, 1176}, /* glBindFragDataLocationEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 59, 339 /* GL_EXT_blend_func_extended */, 1176}, /* glBindFragDataLocationEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 59, 383 /* GL_EXT_gpu_shader4 */, 1176}, /* glBindFragDataLocationEXT */
     {DISPATCH_RESOLVE_VERSION, 59, OpenGL_Desktop_3_0, 1153}, /* glBindFragDataLocation */
     {DISPATCH_RESOLVE_VERSION, 60, OpenGL_Desktop_3_3, 1202}, /* glBindFragDataLocationIndexed */
     {DISPATCH_RESOLVE_EXTENSION, 60, 142 /* GL_ARB_blend_func_extended */, 1202}, /* glBindFragDataLocationIndexed */
-    {DISPATCH_RESOLVE_EXTENSION, 60, 336 /* GL_EXT_blend_func_extended */, 1232}, /* glBindFragDataLocationIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 61, 336 /* GL_EXT_blend_func_extended */, 1232}, /* glBindFragDataLocationIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 60, 339 /* GL_EXT_blend_func_extended */, 1232}, /* glBindFragDataLocationIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 61, 339 /* GL_EXT_blend_func_extended */, 1232}, /* glBindFragDataLocationIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 61, OpenGL_Desktop_3_3, 1202}, /* glBindFragDataLocationIndexed */
     {DISPATCH_RESOLVE_EXTENSION, 61, 142 /* GL_ARB_blend_func_extended */, 1202}, /* glBindFragDataLocationIndexed */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 312 /* GL_ATI_fragment_shader */, 1265}, /* glBindFragmentShaderATI */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 315 /* GL_ATI_fragment_shader */, 1265}, /* glBindFragmentShaderATI */
     {DISPATCH_RESOLVE_VERSION, 63, OpenGL_Desktop_3_0, 1289}, /* glBindFramebuffer */
     {DISPATCH_RESOLVE_DIRECT, 63, OpenGL_ES_2_0, 1289}, /* glBindFramebuffer */
     {DISPATCH_RESOLVE_EXTENSION, 63, 179 /* GL_ARB_framebuffer_object */, 1289}, /* glBindFramebuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 373 /* GL_EXT_framebuffer_object */, 1307}, /* glBindFramebufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 373 /* GL_EXT_framebuffer_object */, 1307}, /* glBindFramebufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 376 /* GL_EXT_framebuffer_object */, 1307}, /* glBindFramebufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 376 /* GL_EXT_framebuffer_object */, 1307}, /* glBindFramebufferEXT */
     {DISPATCH_RESOLVE_VERSION, 64, OpenGL_Desktop_3_0, 1289}, /* glBindFramebuffer */
     {DISPATCH_RESOLVE_DIRECT, 64, OpenGL_ES_2_0, 1289}, /* glBindFramebuffer */
     {DISPATCH_RESOLVE_EXTENSION, 64, 179 /* GL_ARB_framebuffer_object */, 1289}, /* glBindFramebuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 65, 704 /* GL_OES_framebuffer_object */, 1328}, /* glBindFramebufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 708 /* GL_OES_framebuffer_object */, 1328}, /* glBindFramebufferOES */
     {DISPATCH_RESOLVE_VERSION, 66, OpenGL_Desktop_4_2, 1349}, /* glBindImageTexture */
     {DISPATCH_RESOLVE_VERSION, 66, OpenGL_ES_3_1, 1349}, /* glBindImageTexture */
     {DISPATCH_RESOLVE_EXTENSION, 66, 230 /* GL_ARB_shader_image_load_store */, 1349}, /* glBindImageTexture */
-    {DISPATCH_RESOLVE_EXTENSION, 67, 427 /* GL_EXT_shader_image_load_store */, 1368}, /* glBindImageTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 430 /* GL_EXT_shader_image_load_store */, 1368}, /* glBindImageTextureEXT */
     {DISPATCH_RESOLVE_VERSION, 68, OpenGL_Desktop_4_4, 1390}, /* glBindImageTextures */
     {DISPATCH_RESOLVE_EXTENSION, 68, 199 /* GL_ARB_multi_bind */, 1390}, /* glBindImageTextures */
-    {DISPATCH_RESOLVE_EXTENSION, 69, 494 /* GL_EXT_vertex_shader */, 1410}, /* glBindLightParameterEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 494 /* GL_EXT_vertex_shader */, 1434}, /* glBindMaterialParameterEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 357 /* GL_EXT_direct_state_access */, 1461}, /* glBindMultiTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 494 /* GL_EXT_vertex_shader */, 1483}, /* glBindParameterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 69, 498 /* GL_EXT_vertex_shader */, 1410}, /* glBindLightParameterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 498 /* GL_EXT_vertex_shader */, 1434}, /* glBindMaterialParameterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 360 /* GL_EXT_direct_state_access */, 1461}, /* glBindMultiTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 498 /* GL_EXT_vertex_shader */, 1483}, /* glBindParameterEXT */
     {DISPATCH_RESOLVE_EXTENSION, 73, 174 /* GL_ARB_fragment_program */, 1502}, /* glBindProgramARB */
     {DISPATCH_RESOLVE_EXTENSION, 73, 297 /* GL_ARB_vertex_program */, 1502}, /* glBindProgramARB */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 672 /* GL_NV_vertex_program */, 1519}, /* glBindProgramNV */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 672 /* GL_NV_vertex_program */, 1519}, /* glBindProgramNV */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 676 /* GL_NV_vertex_program */, 1519}, /* glBindProgramNV */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 676 /* GL_NV_vertex_program */, 1519}, /* glBindProgramNV */
     {DISPATCH_RESOLVE_EXTENSION, 74, 174 /* GL_ARB_fragment_program */, 1502}, /* glBindProgramARB */
     {DISPATCH_RESOLVE_EXTENSION, 74, 297 /* GL_ARB_vertex_program */, 1502}, /* glBindProgramARB */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_Desktop_4_1, 1535}, /* glBindProgramPipeline */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_ES_3_1, 1535}, /* glBindProgramPipeline */
     {DISPATCH_RESOLVE_EXTENSION, 75, 222 /* GL_ARB_separate_shader_objects */, 1535}, /* glBindProgramPipeline */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 422 /* GL_EXT_separate_shader_objects */, 1557}, /* glBindProgramPipelineEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 425 /* GL_EXT_separate_shader_objects */, 1557}, /* glBindProgramPipelineEXT */
     {DISPATCH_RESOLVE_VERSION, 77, OpenGL_Desktop_3_0, 1582}, /* glBindRenderbuffer */
     {DISPATCH_RESOLVE_DIRECT, 77, OpenGL_ES_2_0, 1582}, /* glBindRenderbuffer */
     {DISPATCH_RESOLVE_EXTENSION, 77, 179 /* GL_ARB_framebuffer_object */, 1582}, /* glBindRenderbuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 373 /* GL_EXT_framebuffer_object */, 1601}, /* glBindRenderbufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 373 /* GL_EXT_framebuffer_object */, 1601}, /* glBindRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 376 /* GL_EXT_framebuffer_object */, 1601}, /* glBindRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 376 /* GL_EXT_framebuffer_object */, 1601}, /* glBindRenderbufferEXT */
     {DISPATCH_RESOLVE_VERSION, 78, OpenGL_Desktop_3_0, 1582}, /* glBindRenderbuffer */
     {DISPATCH_RESOLVE_DIRECT, 78, OpenGL_ES_2_0, 1582}, /* glBindRenderbuffer */
     {DISPATCH_RESOLVE_EXTENSION, 78, 179 /* GL_ARB_framebuffer_object */, 1582}, /* glBindRenderbuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 79, 704 /* GL_OES_framebuffer_object */, 1623}, /* glBindRenderbufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 708 /* GL_OES_framebuffer_object */, 1623}, /* glBindRenderbufferOES */
     {DISPATCH_RESOLVE_VERSION, 80, OpenGL_Desktop_3_3, 1645}, /* glBindSampler */
     {DISPATCH_RESOLVE_VERSION, 80, OpenGL_ES_3_0, 1645}, /* glBindSampler */
     {DISPATCH_RESOLVE_EXTENSION, 80, 219 /* GL_ARB_sampler_objects */, 1645}, /* glBindSampler */
     {DISPATCH_RESOLVE_VERSION, 81, OpenGL_Desktop_4_4, 1659}, /* glBindSamplers */
     {DISPATCH_RESOLVE_EXTENSION, 81, 199 /* GL_ARB_multi_bind */, 1659}, /* glBindSamplers */
-    {DISPATCH_RESOLVE_EXTENSION, 82, 494 /* GL_EXT_vertex_shader */, 1674}, /* glBindTexGenParameterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 498 /* GL_EXT_vertex_shader */, 1674}, /* glBindTexGenParameterEXT */
     {DISPATCH_RESOLVE_VERSION, 83, OpenGL_Desktop_1_1, 1699}, /* glBindTexture */
     {DISPATCH_RESOLVE_DIRECT, 83, OpenGL_ES_1_0, 1699}, /* glBindTexture */
     {DISPATCH_RESOLVE_DIRECT, 83, OpenGL_ES_2_0, 1699}, /* glBindTexture */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 472 /* GL_EXT_texture_object */, 1713}, /* glBindTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 472 /* GL_EXT_texture_object */, 1713}, /* glBindTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 476 /* GL_EXT_texture_object */, 1713}, /* glBindTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 476 /* GL_EXT_texture_object */, 1713}, /* glBindTextureEXT */
     {DISPATCH_RESOLVE_VERSION, 84, OpenGL_Desktop_1_1, 1699}, /* glBindTexture */
     {DISPATCH_RESOLVE_DIRECT, 84, OpenGL_ES_1_0, 1699}, /* glBindTexture */
     {DISPATCH_RESOLVE_DIRECT, 84, OpenGL_ES_2_0, 1699}, /* glBindTexture */
     {DISPATCH_RESOLVE_VERSION, 85, OpenGL_Desktop_4_5, 1730}, /* glBindTextureUnit */
     {DISPATCH_RESOLVE_EXTENSION, 85, 163 /* GL_ARB_direct_state_access */, 1730}, /* glBindTextureUnit */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 494 /* GL_EXT_vertex_shader */, 1748}, /* glBindTextureUnitParameterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 498 /* GL_EXT_vertex_shader */, 1748}, /* glBindTextureUnitParameterEXT */
     {DISPATCH_RESOLVE_VERSION, 87, OpenGL_Desktop_4_4, 1778}, /* glBindTextures */
     {DISPATCH_RESOLVE_EXTENSION, 87, 199 /* GL_ARB_multi_bind */, 1778}, /* glBindTextures */
     {DISPATCH_RESOLVE_VERSION, 88, OpenGL_Desktop_4_0, 1793}, /* glBindTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 88, OpenGL_ES_3_0, 1793}, /* glBindTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 88, 285 /* GL_ARB_transform_feedback2 */, 1793}, /* glBindTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 665 /* GL_NV_transform_feedback2 */, 1817}, /* glBindTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 669 /* GL_NV_transform_feedback2 */, 1817}, /* glBindTransformFeedbackNV */
     {DISPATCH_RESOLVE_VERSION, 90, OpenGL_Desktop_3_0, 1843}, /* glBindVertexArray */
     {DISPATCH_RESOLVE_VERSION, 90, OpenGL_ES_3_0, 1843}, /* glBindVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 90, 292 /* GL_ARB_vertex_array_object */, 1843}, /* glBindVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 90, 131 /* GL_APPLE_vertex_array_object */, 1861}, /* glBindVertexArrayAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 90, 750 /* GL_OES_vertex_array_object */, 1884}, /* glBindVertexArrayOES */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 754 /* GL_OES_vertex_array_object */, 1884}, /* glBindVertexArrayOES */
     {DISPATCH_RESOLVE_EXTENSION, 91, 131 /* GL_APPLE_vertex_array_object */, 1861}, /* glBindVertexArrayAPPLE */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_Desktop_3_0, 1843}, /* glBindVertexArray */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_ES_3_0, 1843}, /* glBindVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 91, 292 /* GL_ARB_vertex_array_object */, 1843}, /* glBindVertexArray */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 750 /* GL_OES_vertex_array_object */, 1884}, /* glBindVertexArrayOES */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 754 /* GL_OES_vertex_array_object */, 1884}, /* glBindVertexArrayOES */
     {DISPATCH_RESOLVE_VERSION, 92, OpenGL_Desktop_3_0, 1843}, /* glBindVertexArray */
     {DISPATCH_RESOLVE_VERSION, 92, OpenGL_ES_3_0, 1843}, /* glBindVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 92, 292 /* GL_ARB_vertex_array_object */, 1843}, /* glBindVertexArray */
@@ -5196,45 +5206,45 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 93, 294 /* GL_ARB_vertex_attrib_binding */, 1905}, /* glBindVertexBuffer */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_Desktop_4_4, 1924}, /* glBindVertexBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 94, 199 /* GL_ARB_multi_bind */, 1924}, /* glBindVertexBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 494 /* GL_EXT_vertex_shader */, 1944}, /* glBindVertexShaderEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 96, 678 /* GL_NV_video_capture */, 1966}, /* glBindVideoCaptureStreamBufferNV */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 678 /* GL_NV_video_capture */, 1999}, /* glBindVideoCaptureStreamTextureNV */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 350 /* GL_EXT_coordinate_frame */, 2033}, /* glBinormal3bEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 350 /* GL_EXT_coordinate_frame */, 2049}, /* glBinormal3bvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 350 /* GL_EXT_coordinate_frame */, 2066}, /* glBinormal3dEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 350 /* GL_EXT_coordinate_frame */, 2082}, /* glBinormal3dvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 350 /* GL_EXT_coordinate_frame */, 2099}, /* glBinormal3fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 350 /* GL_EXT_coordinate_frame */, 2115}, /* glBinormal3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 350 /* GL_EXT_coordinate_frame */, 2132}, /* glBinormal3iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 105, 350 /* GL_EXT_coordinate_frame */, 2148}, /* glBinormal3ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 106, 350 /* GL_EXT_coordinate_frame */, 2165}, /* glBinormal3sEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 350 /* GL_EXT_coordinate_frame */, 2181}, /* glBinormal3svEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 350 /* GL_EXT_coordinate_frame */, 2198}, /* glBinormalPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 498 /* GL_EXT_vertex_shader */, 1944}, /* glBindVertexShaderEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 682 /* GL_NV_video_capture */, 1966}, /* glBindVideoCaptureStreamBufferNV */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 682 /* GL_NV_video_capture */, 1999}, /* glBindVideoCaptureStreamTextureNV */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 353 /* GL_EXT_coordinate_frame */, 2033}, /* glBinormal3bEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 353 /* GL_EXT_coordinate_frame */, 2049}, /* glBinormal3bvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 353 /* GL_EXT_coordinate_frame */, 2066}, /* glBinormal3dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 353 /* GL_EXT_coordinate_frame */, 2082}, /* glBinormal3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 353 /* GL_EXT_coordinate_frame */, 2099}, /* glBinormal3fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 353 /* GL_EXT_coordinate_frame */, 2115}, /* glBinormal3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 353 /* GL_EXT_coordinate_frame */, 2132}, /* glBinormal3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 353 /* GL_EXT_coordinate_frame */, 2148}, /* glBinormal3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 353 /* GL_EXT_coordinate_frame */, 2165}, /* glBinormal3sEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 353 /* GL_EXT_coordinate_frame */, 2181}, /* glBinormal3svEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 353 /* GL_EXT_coordinate_frame */, 2198}, /* glBinormalPointerEXT */
     {DISPATCH_RESOLVE_DIRECT, 109, OpenGL_Desktop_1_0, 2219}, /* glBitmap */
-    {DISPATCH_RESOLVE_EXTENSION, 110, 702 /* GL_OES_fixed_point */, 2228}, /* glBitmapxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 706 /* GL_OES_fixed_point */, 2228}, /* glBitmapxOES */
     {DISPATCH_RESOLVE_VERSION, 111, OpenGL_ES_3_2, 2241}, /* glBlendBarrier */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 531 /* GL_KHR_blend_equation_advanced */, 2256}, /* glBlendBarrierKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 555 /* GL_NV_blend_equation_advanced */, 2274}, /* glBlendBarrierNV */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 531 /* GL_KHR_blend_equation_advanced */, 2256}, /* glBlendBarrierKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 535 /* GL_KHR_blend_equation_advanced */, 2256}, /* glBlendBarrierKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 559 /* GL_NV_blend_equation_advanced */, 2274}, /* glBlendBarrierNV */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 535 /* GL_KHR_blend_equation_advanced */, 2256}, /* glBlendBarrierKHR */
     {DISPATCH_RESOLVE_VERSION, 112, OpenGL_ES_3_2, 2241}, /* glBlendBarrier */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 555 /* GL_NV_blend_equation_advanced */, 2274}, /* glBlendBarrierNV */
-    {DISPATCH_RESOLVE_EXTENSION, 113, 555 /* GL_NV_blend_equation_advanced */, 2274}, /* glBlendBarrierNV */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 559 /* GL_NV_blend_equation_advanced */, 2274}, /* glBlendBarrierNV */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 559 /* GL_NV_blend_equation_advanced */, 2274}, /* glBlendBarrierNV */
     {DISPATCH_RESOLVE_VERSION, 113, OpenGL_ES_3_2, 2241}, /* glBlendBarrier */
-    {DISPATCH_RESOLVE_EXTENSION, 113, 531 /* GL_KHR_blend_equation_advanced */, 2256}, /* glBlendBarrierKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 535 /* GL_KHR_blend_equation_advanced */, 2256}, /* glBlendBarrierKHR */
     {DISPATCH_RESOLVE_VERSION, 114, OpenGL_Desktop_1_4, 2291}, /* glBlendColor */
     {DISPATCH_RESOLVE_DIRECT, 114, OpenGL_ES_2_0, 2291}, /* glBlendColor */
     {DISPATCH_RESOLVE_EXTENSION, 114, 190 /* GL_ARB_imaging */, 2291}, /* glBlendColor */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 334 /* GL_EXT_blend_color */, 2304}, /* glBlendColorEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 334 /* GL_EXT_blend_color */, 2304}, /* glBlendColorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 337 /* GL_EXT_blend_color */, 2304}, /* glBlendColorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 337 /* GL_EXT_blend_color */, 2304}, /* glBlendColorEXT */
     {DISPATCH_RESOLVE_VERSION, 115, OpenGL_Desktop_1_4, 2291}, /* glBlendColor */
     {DISPATCH_RESOLVE_DIRECT, 115, OpenGL_ES_2_0, 2291}, /* glBlendColor */
     {DISPATCH_RESOLVE_EXTENSION, 115, 190 /* GL_ARB_imaging */, 2291}, /* glBlendColor */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 702 /* GL_OES_fixed_point */, 2320}, /* glBlendColorxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 706 /* GL_OES_fixed_point */, 2320}, /* glBlendColorxOES */
     {DISPATCH_RESOLVE_VERSION, 117, OpenGL_Desktop_1_4, 2337}, /* glBlendEquation */
     {DISPATCH_RESOLVE_DIRECT, 117, OpenGL_ES_2_0, 2337}, /* glBlendEquation */
     {DISPATCH_RESOLVE_EXTENSION, 117, 190 /* GL_ARB_imaging */, 2337}, /* glBlendEquation */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 339 /* GL_EXT_blend_minmax */, 2353}, /* glBlendEquationEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 118, 339 /* GL_EXT_blend_minmax */, 2353}, /* glBlendEquationEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 342 /* GL_EXT_blend_minmax */, 2353}, /* glBlendEquationEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 342 /* GL_EXT_blend_minmax */, 2353}, /* glBlendEquationEXT */
     {DISPATCH_RESOLVE_VERSION, 118, OpenGL_Desktop_1_4, 2337}, /* glBlendEquation */
     {DISPATCH_RESOLVE_DIRECT, 118, OpenGL_ES_2_0, 2337}, /* glBlendEquation */
     {DISPATCH_RESOLVE_EXTENSION, 118, 190 /* GL_ARB_imaging */, 2337}, /* glBlendEquation */
@@ -5242,70 +5252,70 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_Desktop_4_0, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_ES_3_2, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_EXTENSION, 119, 165 /* GL_ARB_draw_buffers_blend */, 2655}, /* glBlendEquationiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 362 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 696 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 687 /* GL_OES_blend_subtract */, 2398}, /* glBlendEquationOES */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 365 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 700 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 691 /* GL_OES_blend_subtract */, 2398}, /* glBlendEquationOES */
     {DISPATCH_RESOLVE_VERSION, 121, OpenGL_Desktop_2_0, 2417}, /* glBlendEquationSeparate */
     {DISPATCH_RESOLVE_DIRECT, 121, OpenGL_ES_2_0, 2417}, /* glBlendEquationSeparate */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 335 /* GL_EXT_blend_equation_separate */, 2441}, /* glBlendEquationSeparateEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 335 /* GL_EXT_blend_equation_separate */, 2441}, /* glBlendEquationSeparateEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 338 /* GL_EXT_blend_equation_separate */, 2441}, /* glBlendEquationSeparateEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 338 /* GL_EXT_blend_equation_separate */, 2441}, /* glBlendEquationSeparateEXT */
     {DISPATCH_RESOLVE_VERSION, 122, OpenGL_Desktop_2_0, 2417}, /* glBlendEquationSeparate */
     {DISPATCH_RESOLVE_DIRECT, 122, OpenGL_ES_2_0, 2417}, /* glBlendEquationSeparate */
     {DISPATCH_RESOLVE_EXTENSION, 123, 69 /* GL_AMD_draw_buffers_blend */, 2468}, /* glBlendEquationSeparateIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 123, OpenGL_Desktop_4_0, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_VERSION, 123, OpenGL_ES_3_2, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_EXTENSION, 123, 165 /* GL_ARB_draw_buffers_blend */, 2554}, /* glBlendEquationSeparateiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 362 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 696 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 124, 685 /* GL_OES_blend_equation_separate */, 2502}, /* glBlendEquationSeparateOES */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 365 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 700 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 124, 689 /* GL_OES_blend_equation_separate */, 2502}, /* glBlendEquationSeparateOES */
     {DISPATCH_RESOLVE_VERSION, 125, OpenGL_Desktop_4_0, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_VERSION, 125, OpenGL_ES_3_2, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_EXTENSION, 125, 69 /* GL_AMD_draw_buffers_blend */, 2468}, /* glBlendEquationSeparateIndexedAMD */
     {DISPATCH_RESOLVE_EXTENSION, 125, 165 /* GL_ARB_draw_buffers_blend */, 2554}, /* glBlendEquationSeparateiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 362 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 696 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 365 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 700 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
     {DISPATCH_RESOLVE_EXTENSION, 126, 165 /* GL_ARB_draw_buffers_blend */, 2554}, /* glBlendEquationSeparateiARB */
     {DISPATCH_RESOLVE_EXTENSION, 126, 69 /* GL_AMD_draw_buffers_blend */, 2468}, /* glBlendEquationSeparateIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 126, OpenGL_Desktop_4_0, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_VERSION, 126, OpenGL_ES_3_2, 2529}, /* glBlendEquationSeparatei */
-    {DISPATCH_RESOLVE_EXTENSION, 126, 362 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 126, 696 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 362 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 365 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 700 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 365 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 127, 69 /* GL_AMD_draw_buffers_blend */, 2468}, /* glBlendEquationSeparateIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 127, OpenGL_Desktop_4_0, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_VERSION, 127, OpenGL_ES_3_2, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_EXTENSION, 127, 165 /* GL_ARB_draw_buffers_blend */, 2554}, /* glBlendEquationSeparateiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 696 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 696 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 700 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 700 /* GL_OES_draw_buffers_indexed */, 2610}, /* glBlendEquationSeparateiOES */
     {DISPATCH_RESOLVE_EXTENSION, 128, 69 /* GL_AMD_draw_buffers_blend */, 2468}, /* glBlendEquationSeparateIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_Desktop_4_0, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_ES_3_2, 2529}, /* glBlendEquationSeparatei */
     {DISPATCH_RESOLVE_EXTENSION, 128, 165 /* GL_ARB_draw_buffers_blend */, 2554}, /* glBlendEquationSeparateiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 362 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 365 /* GL_EXT_draw_buffers_indexed */, 2582}, /* glBlendEquationSeparateiEXT */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_Desktop_4_0, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_ES_3_2, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_EXTENSION, 129, 69 /* GL_AMD_draw_buffers_blend */, 2372}, /* glBlendEquationIndexedAMD */
     {DISPATCH_RESOLVE_EXTENSION, 129, 165 /* GL_ARB_draw_buffers_blend */, 2655}, /* glBlendEquationiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 362 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 696 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 365 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 700 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
     {DISPATCH_RESOLVE_EXTENSION, 130, 165 /* GL_ARB_draw_buffers_blend */, 2655}, /* glBlendEquationiARB */
     {DISPATCH_RESOLVE_EXTENSION, 130, 69 /* GL_AMD_draw_buffers_blend */, 2372}, /* glBlendEquationIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 130, OpenGL_Desktop_4_0, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_VERSION, 130, OpenGL_ES_3_2, 2638}, /* glBlendEquationi */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 362 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 696 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 362 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 365 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 700 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 365 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 131, 69 /* GL_AMD_draw_buffers_blend */, 2372}, /* glBlendEquationIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 131, OpenGL_Desktop_4_0, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_VERSION, 131, OpenGL_ES_3_2, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_EXTENSION, 131, 165 /* GL_ARB_draw_buffers_blend */, 2655}, /* glBlendEquationiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 696 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 696 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 700 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 700 /* GL_OES_draw_buffers_indexed */, 2695}, /* glBlendEquationiOES */
     {DISPATCH_RESOLVE_EXTENSION, 132, 69 /* GL_AMD_draw_buffers_blend */, 2372}, /* glBlendEquationIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 132, OpenGL_Desktop_4_0, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_VERSION, 132, OpenGL_ES_3_2, 2638}, /* glBlendEquationi */
     {DISPATCH_RESOLVE_EXTENSION, 132, 165 /* GL_ARB_draw_buffers_blend */, 2655}, /* glBlendEquationiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 362 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 365 /* GL_EXT_draw_buffers_indexed */, 2675}, /* glBlendEquationiEXT */
     {DISPATCH_RESOLVE_DIRECT, 133, OpenGL_Desktop_1_0, 2715}, /* glBlendFunc */
     {DISPATCH_RESOLVE_DIRECT, 133, OpenGL_ES_1_0, 2715}, /* glBlendFunc */
     {DISPATCH_RESOLVE_DIRECT, 133, OpenGL_ES_2_0, 2715}, /* glBlendFunc */
@@ -5313,95 +5323,95 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_Desktop_4_0, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_ES_3_2, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_EXTENSION, 134, 165 /* GL_ARB_draw_buffers_blend */, 2975}, /* glBlendFunciARB */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 362 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 696 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 365 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 700 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
     {DISPATCH_RESOLVE_VERSION, 135, OpenGL_Desktop_1_4, 2749}, /* glBlendFuncSeparate */
     {DISPATCH_RESOLVE_DIRECT, 135, OpenGL_ES_2_0, 2749}, /* glBlendFuncSeparate */
-    {DISPATCH_RESOLVE_EXTENSION, 135, 337 /* GL_EXT_blend_func_separate */, 2769}, /* glBlendFuncSeparateEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 135, 521 /* GL_INGR_blend_func_separate */, 2792}, /* glBlendFuncSeparateINGR */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 337 /* GL_EXT_blend_func_separate */, 2769}, /* glBlendFuncSeparateEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 135, 340 /* GL_EXT_blend_func_separate */, 2769}, /* glBlendFuncSeparateEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 135, 525 /* GL_INGR_blend_func_separate */, 2792}, /* glBlendFuncSeparateINGR */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 340 /* GL_EXT_blend_func_separate */, 2769}, /* glBlendFuncSeparateEXT */
     {DISPATCH_RESOLVE_VERSION, 136, OpenGL_Desktop_1_4, 2749}, /* glBlendFuncSeparate */
     {DISPATCH_RESOLVE_DIRECT, 136, OpenGL_ES_2_0, 2749}, /* glBlendFuncSeparate */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 521 /* GL_INGR_blend_func_separate */, 2792}, /* glBlendFuncSeparateINGR */
-    {DISPATCH_RESOLVE_EXTENSION, 137, 521 /* GL_INGR_blend_func_separate */, 2792}, /* glBlendFuncSeparateINGR */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 525 /* GL_INGR_blend_func_separate */, 2792}, /* glBlendFuncSeparateINGR */
+    {DISPATCH_RESOLVE_EXTENSION, 137, 525 /* GL_INGR_blend_func_separate */, 2792}, /* glBlendFuncSeparateINGR */
     {DISPATCH_RESOLVE_VERSION, 137, OpenGL_Desktop_1_4, 2749}, /* glBlendFuncSeparate */
     {DISPATCH_RESOLVE_DIRECT, 137, OpenGL_ES_2_0, 2749}, /* glBlendFuncSeparate */
-    {DISPATCH_RESOLVE_EXTENSION, 137, 337 /* GL_EXT_blend_func_separate */, 2769}, /* glBlendFuncSeparateEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 137, 340 /* GL_EXT_blend_func_separate */, 2769}, /* glBlendFuncSeparateEXT */
     {DISPATCH_RESOLVE_EXTENSION, 138, 69 /* GL_AMD_draw_buffers_blend */, 2816}, /* glBlendFuncSeparateIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 138, OpenGL_Desktop_4_0, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_VERSION, 138, OpenGL_ES_3_2, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_EXTENSION, 138, 165 /* GL_ARB_draw_buffers_blend */, 2890}, /* glBlendFuncSeparateiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 362 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 696 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 686 /* GL_OES_blend_func_separate */, 2846}, /* glBlendFuncSeparateOES */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 365 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 700 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 690 /* GL_OES_blend_func_separate */, 2846}, /* glBlendFuncSeparateOES */
     {DISPATCH_RESOLVE_VERSION, 140, OpenGL_Desktop_4_0, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_VERSION, 140, OpenGL_ES_3_2, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_EXTENSION, 140, 69 /* GL_AMD_draw_buffers_blend */, 2816}, /* glBlendFuncSeparateIndexedAMD */
     {DISPATCH_RESOLVE_EXTENSION, 140, 165 /* GL_ARB_draw_buffers_blend */, 2890}, /* glBlendFuncSeparateiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 362 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 696 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 365 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 700 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
     {DISPATCH_RESOLVE_EXTENSION, 141, 165 /* GL_ARB_draw_buffers_blend */, 2890}, /* glBlendFuncSeparateiARB */
     {DISPATCH_RESOLVE_EXTENSION, 141, 69 /* GL_AMD_draw_buffers_blend */, 2816}, /* glBlendFuncSeparateIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 141, OpenGL_Desktop_4_0, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_VERSION, 141, OpenGL_ES_3_2, 2869}, /* glBlendFuncSeparatei */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 362 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 696 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 362 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 365 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 700 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 365 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 142, 69 /* GL_AMD_draw_buffers_blend */, 2816}, /* glBlendFuncSeparateIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_Desktop_4_0, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_ES_3_2, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_EXTENSION, 142, 165 /* GL_ARB_draw_buffers_blend */, 2890}, /* glBlendFuncSeparateiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 696 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 696 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 700 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 700 /* GL_OES_draw_buffers_indexed */, 2938}, /* glBlendFuncSeparateiOES */
     {DISPATCH_RESOLVE_EXTENSION, 143, 69 /* GL_AMD_draw_buffers_blend */, 2816}, /* glBlendFuncSeparateIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_Desktop_4_0, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_ES_3_2, 2869}, /* glBlendFuncSeparatei */
     {DISPATCH_RESOLVE_EXTENSION, 143, 165 /* GL_ARB_draw_buffers_blend */, 2890}, /* glBlendFuncSeparateiARB */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 362 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 365 /* GL_EXT_draw_buffers_indexed */, 2914}, /* glBlendFuncSeparateiEXT */
     {DISPATCH_RESOLVE_VERSION, 144, OpenGL_Desktop_4_0, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_VERSION, 144, OpenGL_ES_3_2, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_EXTENSION, 144, 69 /* GL_AMD_draw_buffers_blend */, 2727}, /* glBlendFuncIndexedAMD */
     {DISPATCH_RESOLVE_EXTENSION, 144, 165 /* GL_ARB_draw_buffers_blend */, 2975}, /* glBlendFunciARB */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 362 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 696 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 365 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 700 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
     {DISPATCH_RESOLVE_EXTENSION, 145, 165 /* GL_ARB_draw_buffers_blend */, 2975}, /* glBlendFunciARB */
     {DISPATCH_RESOLVE_EXTENSION, 145, 69 /* GL_AMD_draw_buffers_blend */, 2727}, /* glBlendFuncIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_Desktop_4_0, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_ES_3_2, 2962}, /* glBlendFunci */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 362 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 696 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 362 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 365 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 700 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 365 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
     {DISPATCH_RESOLVE_EXTENSION, 146, 69 /* GL_AMD_draw_buffers_blend */, 2727}, /* glBlendFuncIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 146, OpenGL_Desktop_4_0, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_VERSION, 146, OpenGL_ES_3_2, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_EXTENSION, 146, 165 /* GL_ARB_draw_buffers_blend */, 2975}, /* glBlendFunciARB */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 696 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 696 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 700 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 700 /* GL_OES_draw_buffers_indexed */, 3007}, /* glBlendFunciOES */
     {DISPATCH_RESOLVE_EXTENSION, 147, 69 /* GL_AMD_draw_buffers_blend */, 2727}, /* glBlendFuncIndexedAMD */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_Desktop_4_0, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_ES_3_2, 2962}, /* glBlendFunci */
     {DISPATCH_RESOLVE_EXTENSION, 147, 165 /* GL_ARB_draw_buffers_blend */, 2975}, /* glBlendFunciARB */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 362 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 555 /* GL_NV_blend_equation_advanced */, 3023}, /* glBlendParameteriNV */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 365 /* GL_EXT_draw_buffers_indexed */, 2991}, /* glBlendFunciEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 559 /* GL_NV_blend_equation_advanced */, 3023}, /* glBlendParameteriNV */
     {DISPATCH_RESOLVE_VERSION, 149, OpenGL_Desktop_3_0, 3043}, /* glBlitFramebuffer */
     {DISPATCH_RESOLVE_VERSION, 149, OpenGL_ES_3_0, 3043}, /* glBlitFramebuffer */
     {DISPATCH_RESOLVE_EXTENSION, 149, 179 /* GL_ARB_framebuffer_object */, 3043}, /* glBlitFramebuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 370 /* GL_EXT_framebuffer_blit */, 3084}, /* glBlitFramebufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 590 /* GL_NV_framebuffer_blit */, 3105}, /* glBlitFramebufferNV */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 373 /* GL_EXT_framebuffer_blit */, 3084}, /* glBlitFramebufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 594 /* GL_NV_framebuffer_blit */, 3105}, /* glBlitFramebufferNV */
     {DISPATCH_RESOLVE_EXTENSION, 150, 99 /* GL_ANGLE_framebuffer_blit */, 3061}, /* glBlitFramebufferANGLE */
-    {DISPATCH_RESOLVE_EXTENSION, 151, 370 /* GL_EXT_framebuffer_blit */, 3084}, /* glBlitFramebufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 151, 373 /* GL_EXT_framebuffer_blit */, 3084}, /* glBlitFramebufferEXT */
     {DISPATCH_RESOLVE_VERSION, 151, OpenGL_Desktop_3_0, 3043}, /* glBlitFramebuffer */
     {DISPATCH_RESOLVE_VERSION, 151, OpenGL_ES_3_0, 3043}, /* glBlitFramebuffer */
     {DISPATCH_RESOLVE_EXTENSION, 151, 179 /* GL_ARB_framebuffer_object */, 3043}, /* glBlitFramebuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 151, 590 /* GL_NV_framebuffer_blit */, 3105}, /* glBlitFramebufferNV */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 590 /* GL_NV_framebuffer_blit */, 3105}, /* glBlitFramebufferNV */
+    {DISPATCH_RESOLVE_EXTENSION, 151, 594 /* GL_NV_framebuffer_blit */, 3105}, /* glBlitFramebufferNV */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 594 /* GL_NV_framebuffer_blit */, 3105}, /* glBlitFramebufferNV */
     {DISPATCH_RESOLVE_VERSION, 152, OpenGL_Desktop_3_0, 3043}, /* glBlitFramebuffer */
     {DISPATCH_RESOLVE_VERSION, 152, OpenGL_ES_3_0, 3043}, /* glBlitFramebuffer */
     {DISPATCH_RESOLVE_EXTENSION, 152, 179 /* GL_ARB_framebuffer_object */, 3043}, /* glBlitFramebuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 370 /* GL_EXT_framebuffer_blit */, 3084}, /* glBlitFramebufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 373 /* GL_EXT_framebuffer_blit */, 3084}, /* glBlitFramebufferEXT */
     {DISPATCH_RESOLVE_VERSION, 153, OpenGL_Desktop_4_5, 3125}, /* glBlitNamedFramebuffer */
     {DISPATCH_RESOLVE_EXTENSION, 153, 163 /* GL_ARB_direct_state_access */, 3125}, /* glBlitNamedFramebuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 154, 671 /* GL_NV_vertex_buffer_unified_memory */, 3148}, /* glBufferAddressRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 154, 675 /* GL_NV_vertex_buffer_unified_memory */, 3148}, /* glBufferAddressRangeNV */
     {DISPATCH_RESOLVE_VERSION, 155, OpenGL_Desktop_1_5, 3171}, /* glBufferData */
     {DISPATCH_RESOLVE_DIRECT, 155, OpenGL_ES_1_0, 3171}, /* glBufferData */
     {DISPATCH_RESOLVE_DIRECT, 155, OpenGL_ES_2_0, 3171}, /* glBufferData */
@@ -5414,8 +5424,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 158, 117 /* GL_APPLE_flush_buffer_range */, 3226}, /* glBufferParameteriAPPLE */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_Desktop_4_4, 3250}, /* glBufferStorage */
     {DISPATCH_RESOLVE_EXTENSION, 159, 143 /* GL_ARB_buffer_storage */, 3250}, /* glBufferStorage */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 341 /* GL_EXT_buffer_storage */, 3266}, /* glBufferStorageEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 341 /* GL_EXT_buffer_storage */, 3266}, /* glBufferStorageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 344 /* GL_EXT_buffer_storage */, 3266}, /* glBufferStorageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 344 /* GL_EXT_buffer_storage */, 3266}, /* glBufferStorageEXT */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_4_4, 3250}, /* glBufferStorage */
     {DISPATCH_RESOLVE_EXTENSION, 160, 143 /* GL_ARB_buffer_storage */, 3250}, /* glBufferStorage */
     {DISPATCH_RESOLVE_VERSION, 161, OpenGL_Desktop_1_5, 3285}, /* glBufferSubData */
@@ -5426,21 +5436,21 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 162, OpenGL_Desktop_1_5, 3285}, /* glBufferSubData */
     {DISPATCH_RESOLVE_DIRECT, 162, OpenGL_ES_1_0, 3285}, /* glBufferSubData */
     {DISPATCH_RESOLVE_DIRECT, 162, OpenGL_ES_2_0, 3285}, /* glBufferSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 163, 559 /* GL_NV_command_list */, 3320}, /* glCallCommandListNV */
+    {DISPATCH_RESOLVE_EXTENSION, 163, 563 /* GL_NV_command_list */, 3320}, /* glCallCommandListNV */
     {DISPATCH_RESOLVE_DIRECT, 164, OpenGL_Desktop_1_0, 3340}, /* glCallList */
     {DISPATCH_RESOLVE_DIRECT, 165, OpenGL_Desktop_1_0, 3351}, /* glCallLists */
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_Desktop_3_0, 3363}, /* glCheckFramebufferStatus */
     {DISPATCH_RESOLVE_DIRECT, 166, OpenGL_ES_2_0, 3363}, /* glCheckFramebufferStatus */
     {DISPATCH_RESOLVE_EXTENSION, 166, 179 /* GL_ARB_framebuffer_object */, 3363}, /* glCheckFramebufferStatus */
-    {DISPATCH_RESOLVE_EXTENSION, 166, 373 /* GL_EXT_framebuffer_object */, 3388}, /* glCheckFramebufferStatusEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 373 /* GL_EXT_framebuffer_object */, 3388}, /* glCheckFramebufferStatusEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 166, 376 /* GL_EXT_framebuffer_object */, 3388}, /* glCheckFramebufferStatusEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 376 /* GL_EXT_framebuffer_object */, 3388}, /* glCheckFramebufferStatusEXT */
     {DISPATCH_RESOLVE_VERSION, 167, OpenGL_Desktop_3_0, 3363}, /* glCheckFramebufferStatus */
     {DISPATCH_RESOLVE_DIRECT, 167, OpenGL_ES_2_0, 3363}, /* glCheckFramebufferStatus */
     {DISPATCH_RESOLVE_EXTENSION, 167, 179 /* GL_ARB_framebuffer_object */, 3363}, /* glCheckFramebufferStatus */
-    {DISPATCH_RESOLVE_EXTENSION, 168, 704 /* GL_OES_framebuffer_object */, 3416}, /* glCheckFramebufferStatusOES */
+    {DISPATCH_RESOLVE_EXTENSION, 168, 708 /* GL_OES_framebuffer_object */, 3416}, /* glCheckFramebufferStatusOES */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_Desktop_4_5, 3444}, /* glCheckNamedFramebufferStatus */
     {DISPATCH_RESOLVE_EXTENSION, 169, 163 /* GL_ARB_direct_state_access */, 3444}, /* glCheckNamedFramebufferStatus */
-    {DISPATCH_RESOLVE_EXTENSION, 170, 357 /* GL_EXT_direct_state_access */, 3474}, /* glCheckNamedFramebufferStatusEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 170, 360 /* GL_EXT_direct_state_access */, 3474}, /* glCheckNamedFramebufferStatusEXT */
     {DISPATCH_RESOLVE_VERSION, 171, OpenGL_Desktop_3_0, 3507}, /* glClampColor */
     {DISPATCH_RESOLVE_EXTENSION, 171, 148 /* GL_ARB_color_buffer_float */, 3520}, /* glClampColorARB */
     {DISPATCH_RESOLVE_EXTENSION, 172, 148 /* GL_ARB_color_buffer_float */, 3520}, /* glClampColorARB */
@@ -5449,7 +5459,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 173, OpenGL_ES_1_0, 3536}, /* glClear */
     {DISPATCH_RESOLVE_DIRECT, 173, OpenGL_ES_2_0, 3536}, /* glClear */
     {DISPATCH_RESOLVE_DIRECT, 174, OpenGL_Desktop_1_0, 3544}, /* glClearAccum */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 702 /* GL_OES_fixed_point */, 3557}, /* glClearAccumxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 706 /* GL_OES_fixed_point */, 3557}, /* glClearAccumxOES */
     {DISPATCH_RESOLVE_VERSION, 176, OpenGL_Desktop_4_3, 3574}, /* glClearBufferData */
     {DISPATCH_RESOLVE_EXTENSION, 176, 145 /* GL_ARB_clear_buffer_object */, 3574}, /* glClearBufferData */
     {DISPATCH_RESOLVE_VERSION, 177, OpenGL_Desktop_4_3, 3592}, /* glClearBufferSubData */
@@ -5465,31 +5475,31 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 182, OpenGL_Desktop_1_0, 3678}, /* glClearColor */
     {DISPATCH_RESOLVE_DIRECT, 182, OpenGL_ES_1_0, 3678}, /* glClearColor */
     {DISPATCH_RESOLVE_DIRECT, 182, OpenGL_ES_2_0, 3678}, /* glClearColor */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 468 /* GL_EXT_texture_integer */, 3691}, /* glClearColorIiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 468 /* GL_EXT_texture_integer */, 3709}, /* glClearColorIuiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 472 /* GL_EXT_texture_integer */, 3691}, /* glClearColorIiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 472 /* GL_EXT_texture_integer */, 3709}, /* glClearColorIuiEXT */
     {DISPATCH_RESOLVE_DIRECT, 185, OpenGL_ES_1_0, 3728}, /* glClearColorx */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 702 /* GL_OES_fixed_point */, 3742}, /* glClearColorxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 706 /* GL_OES_fixed_point */, 3742}, /* glClearColorxOES */
     {DISPATCH_RESOLVE_DIRECT, 187, OpenGL_Desktop_1_0, 3759}, /* glClearDepth */
-    {DISPATCH_RESOLVE_EXTENSION, 188, 570 /* GL_NV_depth_buffer_float */, 3772}, /* glClearDepthdNV */
+    {DISPATCH_RESOLVE_EXTENSION, 188, 574 /* GL_NV_depth_buffer_float */, 3772}, /* glClearDepthdNV */
     {DISPATCH_RESOLVE_VERSION, 189, OpenGL_Desktop_4_1, 3788}, /* glClearDepthf */
     {DISPATCH_RESOLVE_DIRECT, 189, OpenGL_ES_1_0, 3788}, /* glClearDepthf */
     {DISPATCH_RESOLVE_DIRECT, 189, OpenGL_ES_2_0, 3788}, /* glClearDepthf */
     {DISPATCH_RESOLVE_EXTENSION, 189, 135 /* GL_ARB_ES2_compatibility */, 3788}, /* glClearDepthf */
-    {DISPATCH_RESOLVE_EXTENSION, 189, 725 /* GL_OES_single_precision */, 3802}, /* glClearDepthfOES */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 725 /* GL_OES_single_precision */, 3802}, /* glClearDepthfOES */
+    {DISPATCH_RESOLVE_EXTENSION, 189, 729 /* GL_OES_single_precision */, 3802}, /* glClearDepthfOES */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 729 /* GL_OES_single_precision */, 3802}, /* glClearDepthfOES */
     {DISPATCH_RESOLVE_VERSION, 190, OpenGL_Desktop_4_1, 3788}, /* glClearDepthf */
     {DISPATCH_RESOLVE_DIRECT, 190, OpenGL_ES_1_0, 3788}, /* glClearDepthf */
     {DISPATCH_RESOLVE_DIRECT, 190, OpenGL_ES_2_0, 3788}, /* glClearDepthf */
     {DISPATCH_RESOLVE_EXTENSION, 190, 135 /* GL_ARB_ES2_compatibility */, 3788}, /* glClearDepthf */
     {DISPATCH_RESOLVE_DIRECT, 191, OpenGL_ES_1_0, 3819}, /* glClearDepthx */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 702 /* GL_OES_fixed_point */, 3833}, /* glClearDepthxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 706 /* GL_OES_fixed_point */, 3833}, /* glClearDepthxOES */
     {DISPATCH_RESOLVE_DIRECT, 193, OpenGL_Desktop_1_0, 3850}, /* glClearIndex */
     {DISPATCH_RESOLVE_VERSION, 194, OpenGL_Desktop_4_5, 3863}, /* glClearNamedBufferData */
     {DISPATCH_RESOLVE_EXTENSION, 194, 163 /* GL_ARB_direct_state_access */, 3863}, /* glClearNamedBufferData */
-    {DISPATCH_RESOLVE_EXTENSION, 195, 357 /* GL_EXT_direct_state_access */, 3886}, /* glClearNamedBufferDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 195, 360 /* GL_EXT_direct_state_access */, 3886}, /* glClearNamedBufferDataEXT */
     {DISPATCH_RESOLVE_VERSION, 196, OpenGL_Desktop_4_5, 3912}, /* glClearNamedBufferSubData */
     {DISPATCH_RESOLVE_EXTENSION, 196, 163 /* GL_ARB_direct_state_access */, 3912}, /* glClearNamedBufferSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 197, 357 /* GL_EXT_direct_state_access */, 3938}, /* glClearNamedBufferSubDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 197, 360 /* GL_EXT_direct_state_access */, 3938}, /* glClearNamedBufferSubDataEXT */
     {DISPATCH_RESOLVE_VERSION, 198, OpenGL_Desktop_4_5, 3967}, /* glClearNamedFramebufferfi */
     {DISPATCH_RESOLVE_EXTENSION, 198, 163 /* GL_ARB_direct_state_access */, 3967}, /* glClearNamedFramebufferfi */
     {DISPATCH_RESOLVE_VERSION, 199, OpenGL_Desktop_4_5, 3993}, /* glClearNamedFramebufferfv */
@@ -5498,7 +5508,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 200, 163 /* GL_ARB_direct_state_access */, 4019}, /* glClearNamedFramebufferiv */
     {DISPATCH_RESOLVE_VERSION, 201, OpenGL_Desktop_4_5, 4045}, /* glClearNamedFramebufferuiv */
     {DISPATCH_RESOLVE_EXTENSION, 201, 163 /* GL_ARB_direct_state_access */, 4045}, /* glClearNamedFramebufferuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 202, 433 /* GL_EXT_shader_pixel_local_storage2 */, 4072}, /* glClearPixelLocalStorageuiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 202, 436 /* GL_EXT_shader_pixel_local_storage2 */, 4072}, /* glClearPixelLocalStorageuiEXT */
     {DISPATCH_RESOLVE_DIRECT, 203, OpenGL_Desktop_1_0, 4102}, /* glClearStencil */
     {DISPATCH_RESOLVE_DIRECT, 203, OpenGL_ES_1_0, 4102}, /* glClearStencil */
     {DISPATCH_RESOLVE_DIRECT, 203, OpenGL_ES_2_0, 4102}, /* glClearStencil */
@@ -5512,8 +5522,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 207, 202 /* GL_ARB_multitexture */, 4174}, /* glClientActiveTextureARB */
     {DISPATCH_RESOLVE_VERSION, 207, OpenGL_Desktop_1_3, 4152}, /* glClientActiveTexture */
     {DISPATCH_RESOLVE_DIRECT, 207, OpenGL_ES_1_0, 4152}, /* glClientActiveTexture */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 325 /* GL_ATI_vertex_streams */, 4199}, /* glClientActiveVertexStreamATI */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 357 /* GL_EXT_direct_state_access */, 4229}, /* glClientAttribDefaultEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 328 /* GL_ATI_vertex_streams */, 4199}, /* glClientActiveVertexStreamATI */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 360 /* GL_EXT_direct_state_access */, 4229}, /* glClientAttribDefaultEXT */
     {DISPATCH_RESOLVE_VERSION, 210, OpenGL_Desktop_3_2, 4254}, /* glClientWaitSync */
     {DISPATCH_RESOLVE_VERSION, 210, OpenGL_ES_3_0, 4254}, /* glClientWaitSync */
     {DISPATCH_RESOLVE_EXTENSION, 210, 251 /* GL_ARB_sync */, 4254}, /* glClientWaitSync */
@@ -5526,21 +5536,21 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 212, 147 /* GL_ARB_clip_control */, 4293}, /* glClipControl */
     {DISPATCH_RESOLVE_DIRECT, 213, OpenGL_Desktop_1_0, 4307}, /* glClipPlane */
     {DISPATCH_RESOLVE_DIRECT, 214, OpenGL_ES_1_0, 4319}, /* glClipPlanef */
-    {DISPATCH_RESOLVE_EXTENSION, 215, 520 /* GL_IMG_user_clip_plane */, 4332}, /* glClipPlanefIMG */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 725 /* GL_OES_single_precision */, 4348}, /* glClipPlanefOES */
+    {DISPATCH_RESOLVE_EXTENSION, 215, 524 /* GL_IMG_user_clip_plane */, 4332}, /* glClipPlanefIMG */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 729 /* GL_OES_single_precision */, 4348}, /* glClipPlanefOES */
     {DISPATCH_RESOLVE_DIRECT, 217, OpenGL_ES_1_0, 4364}, /* glClipPlanex */
-    {DISPATCH_RESOLVE_EXTENSION, 218, 520 /* GL_IMG_user_clip_plane */, 4377}, /* glClipPlanexIMG */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 702 /* GL_OES_fixed_point */, 4393}, /* glClipPlanexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 218, 524 /* GL_IMG_user_clip_plane */, 4377}, /* glClipPlanexIMG */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 706 /* GL_OES_fixed_point */, 4393}, /* glClipPlanexOES */
     {DISPATCH_RESOLVE_DIRECT, 220, OpenGL_Desktop_1_0, 4409}, /* glColor3b */
     {DISPATCH_RESOLVE_DIRECT, 221, OpenGL_Desktop_1_0, 4419}, /* glColor3bv */
     {DISPATCH_RESOLVE_DIRECT, 222, OpenGL_Desktop_1_0, 4430}, /* glColor3d */
     {DISPATCH_RESOLVE_DIRECT, 223, OpenGL_Desktop_1_0, 4440}, /* glColor3dv */
     {DISPATCH_RESOLVE_DIRECT, 224, OpenGL_Desktop_1_0, 4451}, /* glColor3f */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 840 /* GL_SUN_vertex */, 4461}, /* glColor3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 840 /* GL_SUN_vertex */, 4482}, /* glColor3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 845 /* GL_SUN_vertex */, 4461}, /* glColor3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 845 /* GL_SUN_vertex */, 4482}, /* glColor3fVertex3fvSUN */
     {DISPATCH_RESOLVE_DIRECT, 227, OpenGL_Desktop_1_0, 4504}, /* glColor3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 603 /* GL_NV_half_float */, 4515}, /* glColor3hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 603 /* GL_NV_half_float */, 4527}, /* glColor3hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 607 /* GL_NV_half_float */, 4515}, /* glColor3hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 607 /* GL_NV_half_float */, 4527}, /* glColor3hvNV */
     {DISPATCH_RESOLVE_DIRECT, 230, OpenGL_Desktop_1_0, 4540}, /* glColor3i */
     {DISPATCH_RESOLVE_DIRECT, 231, OpenGL_Desktop_1_0, 4550}, /* glColor3iv */
     {DISPATCH_RESOLVE_DIRECT, 232, OpenGL_Desktop_1_0, 4561}, /* glColor3s */
@@ -5551,64 +5561,64 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 237, OpenGL_Desktop_1_0, 4616}, /* glColor3uiv */
     {DISPATCH_RESOLVE_DIRECT, 238, OpenGL_Desktop_1_0, 4628}, /* glColor3us */
     {DISPATCH_RESOLVE_DIRECT, 239, OpenGL_Desktop_1_0, 4639}, /* glColor3usv */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 702 /* GL_OES_fixed_point */, 4651}, /* glColor3xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 241, 702 /* GL_OES_fixed_point */, 4664}, /* glColor3xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 706 /* GL_OES_fixed_point */, 4651}, /* glColor3xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 241, 706 /* GL_OES_fixed_point */, 4664}, /* glColor3xvOES */
     {DISPATCH_RESOLVE_DIRECT, 242, OpenGL_Desktop_1_0, 4678}, /* glColor4b */
     {DISPATCH_RESOLVE_DIRECT, 243, OpenGL_Desktop_1_0, 4688}, /* glColor4bv */
     {DISPATCH_RESOLVE_DIRECT, 244, OpenGL_Desktop_1_0, 4699}, /* glColor4d */
     {DISPATCH_RESOLVE_DIRECT, 245, OpenGL_Desktop_1_0, 4709}, /* glColor4dv */
     {DISPATCH_RESOLVE_DIRECT, 246, OpenGL_Desktop_1_0, 4720}, /* glColor4f */
     {DISPATCH_RESOLVE_DIRECT, 246, OpenGL_ES_1_0, 4720}, /* glColor4f */
-    {DISPATCH_RESOLVE_EXTENSION, 247, 840 /* GL_SUN_vertex */, 4730}, /* glColor4fNormal3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 840 /* GL_SUN_vertex */, 4759}, /* glColor4fNormal3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 247, 845 /* GL_SUN_vertex */, 4730}, /* glColor4fNormal3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 845 /* GL_SUN_vertex */, 4759}, /* glColor4fNormal3fVertex3fvSUN */
     {DISPATCH_RESOLVE_DIRECT, 249, OpenGL_Desktop_1_0, 4789}, /* glColor4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 603 /* GL_NV_half_float */, 4800}, /* glColor4hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 603 /* GL_NV_half_float */, 4812}, /* glColor4hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 607 /* GL_NV_half_float */, 4800}, /* glColor4hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 607 /* GL_NV_half_float */, 4812}, /* glColor4hvNV */
     {DISPATCH_RESOLVE_DIRECT, 252, OpenGL_Desktop_1_0, 4825}, /* glColor4i */
     {DISPATCH_RESOLVE_DIRECT, 253, OpenGL_Desktop_1_0, 4835}, /* glColor4iv */
     {DISPATCH_RESOLVE_DIRECT, 254, OpenGL_Desktop_1_0, 4846}, /* glColor4s */
     {DISPATCH_RESOLVE_DIRECT, 255, OpenGL_Desktop_1_0, 4856}, /* glColor4sv */
     {DISPATCH_RESOLVE_DIRECT, 0, OpenGL_Desktop_1_0, 4867}, /* glColor4ub */
     {DISPATCH_RESOLVE_DIRECT, 0, OpenGL_ES_1_0, 4867}, /* glColor4ub */
-    {DISPATCH_RESOLVE_EXTENSION, 1, 840 /* GL_SUN_vertex */, 4878}, /* glColor4ubVertex2fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 840 /* GL_SUN_vertex */, 4900}, /* glColor4ubVertex2fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 840 /* GL_SUN_vertex */, 4923}, /* glColor4ubVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 840 /* GL_SUN_vertex */, 4945}, /* glColor4ubVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 845 /* GL_SUN_vertex */, 4878}, /* glColor4ubVertex2fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 845 /* GL_SUN_vertex */, 4900}, /* glColor4ubVertex2fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 845 /* GL_SUN_vertex */, 4923}, /* glColor4ubVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 845 /* GL_SUN_vertex */, 4945}, /* glColor4ubVertex3fvSUN */
     {DISPATCH_RESOLVE_DIRECT, 5, OpenGL_Desktop_1_0, 4968}, /* glColor4ubv */
     {DISPATCH_RESOLVE_DIRECT, 6, OpenGL_Desktop_1_0, 4980}, /* glColor4ui */
     {DISPATCH_RESOLVE_DIRECT, 7, OpenGL_Desktop_1_0, 4991}, /* glColor4uiv */
     {DISPATCH_RESOLVE_DIRECT, 8, OpenGL_Desktop_1_0, 5003}, /* glColor4us */
     {DISPATCH_RESOLVE_DIRECT, 9, OpenGL_Desktop_1_0, 5014}, /* glColor4usv */
     {DISPATCH_RESOLVE_DIRECT, 10, OpenGL_ES_1_0, 5026}, /* glColor4x */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 702 /* GL_OES_fixed_point */, 5036}, /* glColor4xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 702 /* GL_OES_fixed_point */, 5049}, /* glColor4xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 671 /* GL_NV_vertex_buffer_unified_memory */, 5063}, /* glColorFormatNV */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 312 /* GL_ATI_fragment_shader */, 5079}, /* glColorFragmentOp1ATI */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 312 /* GL_ATI_fragment_shader */, 5101}, /* glColorFragmentOp2ATI */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 312 /* GL_ATI_fragment_shader */, 5123}, /* glColorFragmentOp3ATI */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 706 /* GL_OES_fixed_point */, 5036}, /* glColor4xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 706 /* GL_OES_fixed_point */, 5049}, /* glColor4xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 675 /* GL_NV_vertex_buffer_unified_memory */, 5063}, /* glColorFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 315 /* GL_ATI_fragment_shader */, 5079}, /* glColorFragmentOp1ATI */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 315 /* GL_ATI_fragment_shader */, 5101}, /* glColorFragmentOp2ATI */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 315 /* GL_ATI_fragment_shader */, 5123}, /* glColorFragmentOp3ATI */
     {DISPATCH_RESOLVE_DIRECT, 17, OpenGL_Desktop_1_0, 5145}, /* glColorMask */
     {DISPATCH_RESOLVE_DIRECT, 17, OpenGL_ES_1_0, 5145}, /* glColorMask */
     {DISPATCH_RESOLVE_DIRECT, 17, OpenGL_ES_2_0, 5145}, /* glColorMask */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 361 /* GL_EXT_draw_buffers2 */, 5157}, /* glColorMaskIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 364 /* GL_EXT_draw_buffers2 */, 5157}, /* glColorMaskIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 18, OpenGL_Desktop_3_0, 5179}, /* glColorMaski */
     {DISPATCH_RESOLVE_VERSION, 18, OpenGL_ES_3_2, 5179}, /* glColorMaski */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 362 /* GL_EXT_draw_buffers_indexed */, 5192}, /* glColorMaskiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 696 /* GL_OES_draw_buffers_indexed */, 5208}, /* glColorMaskiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 365 /* GL_EXT_draw_buffers_indexed */, 5192}, /* glColorMaskiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 700 /* GL_OES_draw_buffers_indexed */, 5208}, /* glColorMaskiOES */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_Desktop_3_0, 5179}, /* glColorMaski */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_ES_3_2, 5179}, /* glColorMaski */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 361 /* GL_EXT_draw_buffers2 */, 5157}, /* glColorMaskIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 362 /* GL_EXT_draw_buffers_indexed */, 5192}, /* glColorMaskiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 696 /* GL_OES_draw_buffers_indexed */, 5208}, /* glColorMaskiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 362 /* GL_EXT_draw_buffers_indexed */, 5192}, /* glColorMaskiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 361 /* GL_EXT_draw_buffers2 */, 5157}, /* glColorMaskIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 364 /* GL_EXT_draw_buffers2 */, 5157}, /* glColorMaskIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 365 /* GL_EXT_draw_buffers_indexed */, 5192}, /* glColorMaskiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 700 /* GL_OES_draw_buffers_indexed */, 5208}, /* glColorMaskiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 365 /* GL_EXT_draw_buffers_indexed */, 5192}, /* glColorMaskiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 364 /* GL_EXT_draw_buffers2 */, 5157}, /* glColorMaskIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_3_0, 5179}, /* glColorMaski */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_ES_3_2, 5179}, /* glColorMaski */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 696 /* GL_OES_draw_buffers_indexed */, 5208}, /* glColorMaskiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 696 /* GL_OES_draw_buffers_indexed */, 5208}, /* glColorMaskiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 361 /* GL_EXT_draw_buffers2 */, 5157}, /* glColorMaskIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 700 /* GL_OES_draw_buffers_indexed */, 5208}, /* glColorMaskiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 700 /* GL_OES_draw_buffers_indexed */, 5208}, /* glColorMaskiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 364 /* GL_EXT_draw_buffers2 */, 5157}, /* glColorMaskIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_3_0, 5179}, /* glColorMaski */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_ES_3_2, 5179}, /* glColorMaski */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 362 /* GL_EXT_draw_buffers_indexed */, 5192}, /* glColorMaskiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 365 /* GL_EXT_draw_buffers_indexed */, 5192}, /* glColorMaskiEXT */
     {DISPATCH_RESOLVE_DIRECT, 22, OpenGL_Desktop_1_0, 5224}, /* glColorMaterial */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_Desktop_3_3, 5240}, /* glColorP3ui */
     {DISPATCH_RESOLVE_EXTENSION, 23, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 5240}, /* glColorP3ui */
@@ -5620,39 +5630,39 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 26, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 5277}, /* glColorP4uiv */
     {DISPATCH_RESOLVE_VERSION, 27, OpenGL_Desktop_1_1, 5290}, /* glColorPointer */
     {DISPATCH_RESOLVE_DIRECT, 27, OpenGL_ES_1_0, 5290}, /* glColorPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 28, 489 /* GL_EXT_vertex_array */, 5305}, /* glColorPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 510 /* GL_IBM_vertex_array_lists */, 5323}, /* glColorPointerListIBM */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 528 /* GL_INTEL_parallel_arrays */, 5345}, /* glColorPointervINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 493 /* GL_EXT_vertex_array */, 5305}, /* glColorPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 514 /* GL_IBM_vertex_array_lists */, 5323}, /* glColorPointerListIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 532 /* GL_INTEL_parallel_arrays */, 5345}, /* glColorPointervINTEL */
     {DISPATCH_RESOLVE_EXTENSION, 31, 190 /* GL_ARB_imaging */, 5366}, /* glColorSubTable */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 347 /* GL_EXT_color_subtable */, 5382}, /* glColorSubTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 347 /* GL_EXT_color_subtable */, 5382}, /* glColorSubTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 350 /* GL_EXT_color_subtable */, 5382}, /* glColorSubTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 350 /* GL_EXT_color_subtable */, 5382}, /* glColorSubTableEXT */
     {DISPATCH_RESOLVE_EXTENSION, 32, 190 /* GL_ARB_imaging */, 5366}, /* glColorSubTable */
     {DISPATCH_RESOLVE_EXTENSION, 33, 190 /* GL_ARB_imaging */, 5401}, /* glColorTable */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 401 /* GL_EXT_paletted_texture */, 5414}, /* glColorTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 831 /* GL_SGI_color_table */, 5532}, /* glColorTableSGI */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 401 /* GL_EXT_paletted_texture */, 5414}, /* glColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 404 /* GL_EXT_paletted_texture */, 5414}, /* glColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 836 /* GL_SGI_color_table */, 5532}, /* glColorTableSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 404 /* GL_EXT_paletted_texture */, 5414}, /* glColorTableEXT */
     {DISPATCH_RESOLVE_EXTENSION, 34, 190 /* GL_ARB_imaging */, 5401}, /* glColorTable */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 831 /* GL_SGI_color_table */, 5532}, /* glColorTableSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 836 /* GL_SGI_color_table */, 5532}, /* glColorTableSGI */
     {DISPATCH_RESOLVE_EXTENSION, 35, 190 /* GL_ARB_imaging */, 5430}, /* glColorTableParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 35, 831 /* GL_SGI_color_table */, 5454}, /* glColorTableParameterfvSGI */
-    {DISPATCH_RESOLVE_EXTENSION, 36, 831 /* GL_SGI_color_table */, 5454}, /* glColorTableParameterfvSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 836 /* GL_SGI_color_table */, 5454}, /* glColorTableParameterfvSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 836 /* GL_SGI_color_table */, 5454}, /* glColorTableParameterfvSGI */
     {DISPATCH_RESOLVE_EXTENSION, 36, 190 /* GL_ARB_imaging */, 5430}, /* glColorTableParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 37, 190 /* GL_ARB_imaging */, 5481}, /* glColorTableParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 37, 831 /* GL_SGI_color_table */, 5505}, /* glColorTableParameterivSGI */
-    {DISPATCH_RESOLVE_EXTENSION, 38, 831 /* GL_SGI_color_table */, 5505}, /* glColorTableParameterivSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 836 /* GL_SGI_color_table */, 5505}, /* glColorTableParameterivSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 38, 836 /* GL_SGI_color_table */, 5505}, /* glColorTableParameterivSGI */
     {DISPATCH_RESOLVE_EXTENSION, 38, 190 /* GL_ARB_imaging */, 5481}, /* glColorTableParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 831 /* GL_SGI_color_table */, 5532}, /* glColorTableSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 836 /* GL_SGI_color_table */, 5532}, /* glColorTableSGI */
     {DISPATCH_RESOLVE_EXTENSION, 39, 190 /* GL_ARB_imaging */, 5401}, /* glColorTable */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 401 /* GL_EXT_paletted_texture */, 5414}, /* glColorTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 629 /* GL_NV_register_combiners */, 5548}, /* glCombinerInputNV */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 629 /* GL_NV_register_combiners */, 5566}, /* glCombinerOutputNV */
-    {DISPATCH_RESOLVE_EXTENSION, 42, 629 /* GL_NV_register_combiners */, 5585}, /* glCombinerParameterfNV */
-    {DISPATCH_RESOLVE_EXTENSION, 43, 629 /* GL_NV_register_combiners */, 5608}, /* glCombinerParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 44, 629 /* GL_NV_register_combiners */, 5632}, /* glCombinerParameteriNV */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 629 /* GL_NV_register_combiners */, 5655}, /* glCombinerParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 630 /* GL_NV_register_combiners2 */, 5679}, /* glCombinerStageParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 559 /* GL_NV_command_list */, 5708}, /* glCommandListSegmentsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 559 /* GL_NV_command_list */, 5732}, /* glCompileCommandListNV */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 404 /* GL_EXT_paletted_texture */, 5414}, /* glColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 633 /* GL_NV_register_combiners */, 5548}, /* glCombinerInputNV */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 633 /* GL_NV_register_combiners */, 5566}, /* glCombinerOutputNV */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 633 /* GL_NV_register_combiners */, 5585}, /* glCombinerParameterfNV */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 633 /* GL_NV_register_combiners */, 5608}, /* glCombinerParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 633 /* GL_NV_register_combiners */, 5632}, /* glCombinerParameteriNV */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 633 /* GL_NV_register_combiners */, 5655}, /* glCombinerParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 634 /* GL_NV_register_combiners2 */, 5679}, /* glCombinerStageParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 563 /* GL_NV_command_list */, 5708}, /* glCommandListSegmentsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 563 /* GL_NV_command_list */, 5732}, /* glCompileCommandListNV */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_2_0, 5755}, /* glCompileShader */
     {DISPATCH_RESOLVE_DIRECT, 49, OpenGL_ES_2_0, 5755}, /* glCompileShader */
     {DISPATCH_RESOLVE_EXTENSION, 49, 232 /* GL_ARB_shader_objects */, 5771}, /* glCompileShaderARB */
@@ -5660,12 +5670,12 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_Desktop_2_0, 5755}, /* glCompileShader */
     {DISPATCH_RESOLVE_DIRECT, 50, OpenGL_ES_2_0, 5755}, /* glCompileShader */
     {DISPATCH_RESOLVE_EXTENSION, 51, 242 /* GL_ARB_shading_language_include */, 5790}, /* glCompileShaderIncludeARB */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 357 /* GL_EXT_direct_state_access */, 5816}, /* glCompressedMultiTexImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 53, 357 /* GL_EXT_direct_state_access */, 5847}, /* glCompressedMultiTexImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 357 /* GL_EXT_direct_state_access */, 5878}, /* glCompressedMultiTexImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 357 /* GL_EXT_direct_state_access */, 5909}, /* glCompressedMultiTexSubImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 357 /* GL_EXT_direct_state_access */, 5943}, /* glCompressedMultiTexSubImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 357 /* GL_EXT_direct_state_access */, 5977}, /* glCompressedMultiTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 360 /* GL_EXT_direct_state_access */, 5816}, /* glCompressedMultiTexImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 360 /* GL_EXT_direct_state_access */, 5847}, /* glCompressedMultiTexImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 360 /* GL_EXT_direct_state_access */, 5878}, /* glCompressedMultiTexImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 360 /* GL_EXT_direct_state_access */, 5909}, /* glCompressedMultiTexSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 360 /* GL_EXT_direct_state_access */, 5943}, /* glCompressedMultiTexSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 360 /* GL_EXT_direct_state_access */, 5977}, /* glCompressedMultiTexSubImage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 58, OpenGL_Desktop_1_3, 6011}, /* glCompressedTexImage1D */
     {DISPATCH_RESOLVE_EXTENSION, 58, 258 /* GL_ARB_texture_compression */, 6034}, /* glCompressedTexImage1DARB */
     {DISPATCH_RESOLVE_EXTENSION, 59, 258 /* GL_ARB_texture_compression */, 6034}, /* glCompressedTexImage1DARB */
@@ -5681,12 +5691,12 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 62, OpenGL_Desktop_1_3, 6109}, /* glCompressedTexImage3D */
     {DISPATCH_RESOLVE_VERSION, 62, OpenGL_ES_3_0, 6109}, /* glCompressedTexImage3D */
     {DISPATCH_RESOLVE_EXTENSION, 62, 258 /* GL_ARB_texture_compression */, 6132}, /* glCompressedTexImage3DARB */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 734 /* GL_OES_texture_3D */, 6158}, /* glCompressedTexImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 738 /* GL_OES_texture_3D */, 6158}, /* glCompressedTexImage3DOES */
     {DISPATCH_RESOLVE_EXTENSION, 63, 258 /* GL_ARB_texture_compression */, 6132}, /* glCompressedTexImage3DARB */
     {DISPATCH_RESOLVE_VERSION, 63, OpenGL_Desktop_1_3, 6109}, /* glCompressedTexImage3D */
     {DISPATCH_RESOLVE_VERSION, 63, OpenGL_ES_3_0, 6109}, /* glCompressedTexImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 734 /* GL_OES_texture_3D */, 6158}, /* glCompressedTexImage3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 734 /* GL_OES_texture_3D */, 6158}, /* glCompressedTexImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 738 /* GL_OES_texture_3D */, 6158}, /* glCompressedTexImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 738 /* GL_OES_texture_3D */, 6158}, /* glCompressedTexImage3DOES */
     {DISPATCH_RESOLVE_VERSION, 64, OpenGL_Desktop_1_3, 6109}, /* glCompressedTexImage3D */
     {DISPATCH_RESOLVE_VERSION, 64, OpenGL_ES_3_0, 6109}, /* glCompressedTexImage3D */
     {DISPATCH_RESOLVE_EXTENSION, 64, 258 /* GL_ARB_texture_compression */, 6132}, /* glCompressedTexImage3DARB */
@@ -5705,166 +5715,166 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_Desktop_1_3, 6294}, /* glCompressedTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_ES_3_0, 6294}, /* glCompressedTexSubImage3D */
     {DISPATCH_RESOLVE_EXTENSION, 69, 258 /* GL_ARB_texture_compression */, 6320}, /* glCompressedTexSubImage3DARB */
-    {DISPATCH_RESOLVE_EXTENSION, 69, 734 /* GL_OES_texture_3D */, 6349}, /* glCompressedTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 69, 738 /* GL_OES_texture_3D */, 6349}, /* glCompressedTexSubImage3DOES */
     {DISPATCH_RESOLVE_EXTENSION, 70, 258 /* GL_ARB_texture_compression */, 6320}, /* glCompressedTexSubImage3DARB */
     {DISPATCH_RESOLVE_VERSION, 70, OpenGL_Desktop_1_3, 6294}, /* glCompressedTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 70, OpenGL_ES_3_0, 6294}, /* glCompressedTexSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 734 /* GL_OES_texture_3D */, 6349}, /* glCompressedTexSubImage3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 734 /* GL_OES_texture_3D */, 6349}, /* glCompressedTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 738 /* GL_OES_texture_3D */, 6349}, /* glCompressedTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 738 /* GL_OES_texture_3D */, 6349}, /* glCompressedTexSubImage3DOES */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_Desktop_1_3, 6294}, /* glCompressedTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_ES_3_0, 6294}, /* glCompressedTexSubImage3D */
     {DISPATCH_RESOLVE_EXTENSION, 71, 258 /* GL_ARB_texture_compression */, 6320}, /* glCompressedTexSubImage3DARB */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 357 /* GL_EXT_direct_state_access */, 6378}, /* glCompressedTextureImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 357 /* GL_EXT_direct_state_access */, 6408}, /* glCompressedTextureImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 357 /* GL_EXT_direct_state_access */, 6438}, /* glCompressedTextureImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 360 /* GL_EXT_direct_state_access */, 6378}, /* glCompressedTextureImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 360 /* GL_EXT_direct_state_access */, 6408}, /* glCompressedTextureImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 360 /* GL_EXT_direct_state_access */, 6438}, /* glCompressedTextureImage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_Desktop_4_5, 6468}, /* glCompressedTextureSubImage1D */
     {DISPATCH_RESOLVE_EXTENSION, 75, 163 /* GL_ARB_direct_state_access */, 6468}, /* glCompressedTextureSubImage1D */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 357 /* GL_EXT_direct_state_access */, 6498}, /* glCompressedTextureSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 360 /* GL_EXT_direct_state_access */, 6498}, /* glCompressedTextureSubImage1DEXT */
     {DISPATCH_RESOLVE_VERSION, 77, OpenGL_Desktop_4_5, 6531}, /* glCompressedTextureSubImage2D */
     {DISPATCH_RESOLVE_EXTENSION, 77, 163 /* GL_ARB_direct_state_access */, 6531}, /* glCompressedTextureSubImage2D */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 357 /* GL_EXT_direct_state_access */, 6561}, /* glCompressedTextureSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 360 /* GL_EXT_direct_state_access */, 6561}, /* glCompressedTextureSubImage2DEXT */
     {DISPATCH_RESOLVE_VERSION, 79, OpenGL_Desktop_4_5, 6594}, /* glCompressedTextureSubImage3D */
     {DISPATCH_RESOLVE_EXTENSION, 79, 163 /* GL_ARB_direct_state_access */, 6594}, /* glCompressedTextureSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 80, 357 /* GL_EXT_direct_state_access */, 6624}, /* glCompressedTextureSubImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 81, 563 /* GL_NV_conservative_raster_dilate */, 6657}, /* glConservativeRasterParameterfNV */
-    {DISPATCH_RESOLVE_EXTENSION, 82, 564 /* GL_NV_conservative_raster_pre_snap_triangles */, 6690}, /* glConservativeRasterParameteriNV */
+    {DISPATCH_RESOLVE_EXTENSION, 80, 360 /* GL_EXT_direct_state_access */, 6624}, /* glCompressedTextureSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 567 /* GL_NV_conservative_raster_dilate */, 6657}, /* glConservativeRasterParameterfNV */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 568 /* GL_NV_conservative_raster_pre_snap_triangles */, 6690}, /* glConservativeRasterParameteriNV */
     {DISPATCH_RESOLVE_EXTENSION, 83, 190 /* GL_ARB_imaging */, 6723}, /* glConvolutionFilter1D */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 349 /* GL_EXT_convolution */, 6745}, /* glConvolutionFilter1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 349 /* GL_EXT_convolution */, 6745}, /* glConvolutionFilter1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 352 /* GL_EXT_convolution */, 6745}, /* glConvolutionFilter1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 352 /* GL_EXT_convolution */, 6745}, /* glConvolutionFilter1DEXT */
     {DISPATCH_RESOLVE_EXTENSION, 84, 190 /* GL_ARB_imaging */, 6723}, /* glConvolutionFilter1D */
     {DISPATCH_RESOLVE_EXTENSION, 85, 190 /* GL_ARB_imaging */, 6770}, /* glConvolutionFilter2D */
-    {DISPATCH_RESOLVE_EXTENSION, 85, 349 /* GL_EXT_convolution */, 6792}, /* glConvolutionFilter2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 349 /* GL_EXT_convolution */, 6792}, /* glConvolutionFilter2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 352 /* GL_EXT_convolution */, 6792}, /* glConvolutionFilter2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 352 /* GL_EXT_convolution */, 6792}, /* glConvolutionFilter2DEXT */
     {DISPATCH_RESOLVE_EXTENSION, 86, 190 /* GL_ARB_imaging */, 6770}, /* glConvolutionFilter2D */
     {DISPATCH_RESOLVE_EXTENSION, 87, 190 /* GL_ARB_imaging */, 6817}, /* glConvolutionParameterf */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 349 /* GL_EXT_convolution */, 6841}, /* glConvolutionParameterfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 349 /* GL_EXT_convolution */, 6841}, /* glConvolutionParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 352 /* GL_EXT_convolution */, 6841}, /* glConvolutionParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 352 /* GL_EXT_convolution */, 6841}, /* glConvolutionParameterfEXT */
     {DISPATCH_RESOLVE_EXTENSION, 88, 190 /* GL_ARB_imaging */, 6817}, /* glConvolutionParameterf */
     {DISPATCH_RESOLVE_EXTENSION, 89, 190 /* GL_ARB_imaging */, 6868}, /* glConvolutionParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 349 /* GL_EXT_convolution */, 6893}, /* glConvolutionParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 90, 349 /* GL_EXT_convolution */, 6893}, /* glConvolutionParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 352 /* GL_EXT_convolution */, 6893}, /* glConvolutionParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 352 /* GL_EXT_convolution */, 6893}, /* glConvolutionParameterfvEXT */
     {DISPATCH_RESOLVE_EXTENSION, 90, 190 /* GL_ARB_imaging */, 6868}, /* glConvolutionParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 91, 190 /* GL_ARB_imaging */, 6921}, /* glConvolutionParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 91, 349 /* GL_EXT_convolution */, 6945}, /* glConvolutionParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 349 /* GL_EXT_convolution */, 6945}, /* glConvolutionParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 352 /* GL_EXT_convolution */, 6945}, /* glConvolutionParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 352 /* GL_EXT_convolution */, 6945}, /* glConvolutionParameteriEXT */
     {DISPATCH_RESOLVE_EXTENSION, 92, 190 /* GL_ARB_imaging */, 6921}, /* glConvolutionParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 93, 190 /* GL_ARB_imaging */, 6972}, /* glConvolutionParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 349 /* GL_EXT_convolution */, 6997}, /* glConvolutionParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 94, 349 /* GL_EXT_convolution */, 6997}, /* glConvolutionParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 352 /* GL_EXT_convolution */, 6997}, /* glConvolutionParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 94, 352 /* GL_EXT_convolution */, 6997}, /* glConvolutionParameterivEXT */
     {DISPATCH_RESOLVE_EXTENSION, 94, 190 /* GL_ARB_imaging */, 6972}, /* glConvolutionParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 702 /* GL_OES_fixed_point */, 7025}, /* glConvolutionParameterxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 96, 702 /* GL_OES_fixed_point */, 7052}, /* glConvolutionParameterxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 706 /* GL_OES_fixed_point */, 7025}, /* glConvolutionParameterxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 706 /* GL_OES_fixed_point */, 7052}, /* glConvolutionParameterxvOES */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_Desktop_3_1, 7080}, /* glCopyBufferSubData */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_ES_3_0, 7080}, /* glCopyBufferSubData */
     {DISPATCH_RESOLVE_EXTENSION, 97, 155 /* GL_ARB_copy_buffer */, 7080}, /* glCopyBufferSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 565 /* GL_NV_copy_buffer */, 7100}, /* glCopyBufferSubDataNV */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 565 /* GL_NV_copy_buffer */, 7100}, /* glCopyBufferSubDataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 569 /* GL_NV_copy_buffer */, 7100}, /* glCopyBufferSubDataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 569 /* GL_NV_copy_buffer */, 7100}, /* glCopyBufferSubDataNV */
     {DISPATCH_RESOLVE_VERSION, 98, OpenGL_Desktop_3_1, 7080}, /* glCopyBufferSubData */
     {DISPATCH_RESOLVE_VERSION, 98, OpenGL_ES_3_0, 7080}, /* glCopyBufferSubData */
     {DISPATCH_RESOLVE_EXTENSION, 98, 155 /* GL_ARB_copy_buffer */, 7080}, /* glCopyBufferSubData */
     {DISPATCH_RESOLVE_EXTENSION, 99, 190 /* GL_ARB_imaging */, 7122}, /* glCopyColorSubTable */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 347 /* GL_EXT_color_subtable */, 7142}, /* glCopyColorSubTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 347 /* GL_EXT_color_subtable */, 7142}, /* glCopyColorSubTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 350 /* GL_EXT_color_subtable */, 7142}, /* glCopyColorSubTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 350 /* GL_EXT_color_subtable */, 7142}, /* glCopyColorSubTableEXT */
     {DISPATCH_RESOLVE_EXTENSION, 100, 190 /* GL_ARB_imaging */, 7122}, /* glCopyColorSubTable */
     {DISPATCH_RESOLVE_EXTENSION, 101, 190 /* GL_ARB_imaging */, 7165}, /* glCopyColorTable */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 831 /* GL_SGI_color_table */, 7182}, /* glCopyColorTableSGI */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 831 /* GL_SGI_color_table */, 7182}, /* glCopyColorTableSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 836 /* GL_SGI_color_table */, 7182}, /* glCopyColorTableSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 836 /* GL_SGI_color_table */, 7182}, /* glCopyColorTableSGI */
     {DISPATCH_RESOLVE_EXTENSION, 102, 190 /* GL_ARB_imaging */, 7165}, /* glCopyColorTable */
     {DISPATCH_RESOLVE_EXTENSION, 103, 190 /* GL_ARB_imaging */, 7202}, /* glCopyConvolutionFilter1D */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 349 /* GL_EXT_convolution */, 7228}, /* glCopyConvolutionFilter1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 349 /* GL_EXT_convolution */, 7228}, /* glCopyConvolutionFilter1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 352 /* GL_EXT_convolution */, 7228}, /* glCopyConvolutionFilter1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 352 /* GL_EXT_convolution */, 7228}, /* glCopyConvolutionFilter1DEXT */
     {DISPATCH_RESOLVE_EXTENSION, 104, 190 /* GL_ARB_imaging */, 7202}, /* glCopyConvolutionFilter1D */
     {DISPATCH_RESOLVE_EXTENSION, 105, 190 /* GL_ARB_imaging */, 7257}, /* glCopyConvolutionFilter2D */
-    {DISPATCH_RESOLVE_EXTENSION, 105, 349 /* GL_EXT_convolution */, 7283}, /* glCopyConvolutionFilter2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 106, 349 /* GL_EXT_convolution */, 7283}, /* glCopyConvolutionFilter2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 352 /* GL_EXT_convolution */, 7283}, /* glCopyConvolutionFilter2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 352 /* GL_EXT_convolution */, 7283}, /* glCopyConvolutionFilter2DEXT */
     {DISPATCH_RESOLVE_EXTENSION, 106, 190 /* GL_ARB_imaging */, 7257}, /* glCopyConvolutionFilter2D */
     {DISPATCH_RESOLVE_VERSION, 107, OpenGL_Desktop_4_3, 7312}, /* glCopyImageSubData */
     {DISPATCH_RESOLVE_VERSION, 107, OpenGL_ES_3_2, 7312}, /* glCopyImageSubData */
     {DISPATCH_RESOLVE_EXTENSION, 107, 156 /* GL_ARB_copy_image */, 7312}, /* glCopyImageSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 351 /* GL_EXT_copy_image */, 7331}, /* glCopyImageSubDataEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 692 /* GL_OES_copy_image */, 7374}, /* glCopyImageSubDataOES */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 351 /* GL_EXT_copy_image */, 7331}, /* glCopyImageSubDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 354 /* GL_EXT_copy_image */, 7331}, /* glCopyImageSubDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 696 /* GL_OES_copy_image */, 7374}, /* glCopyImageSubDataOES */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 354 /* GL_EXT_copy_image */, 7331}, /* glCopyImageSubDataEXT */
     {DISPATCH_RESOLVE_VERSION, 108, OpenGL_Desktop_4_3, 7312}, /* glCopyImageSubData */
     {DISPATCH_RESOLVE_VERSION, 108, OpenGL_ES_3_2, 7312}, /* glCopyImageSubData */
     {DISPATCH_RESOLVE_EXTENSION, 108, 156 /* GL_ARB_copy_image */, 7312}, /* glCopyImageSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 692 /* GL_OES_copy_image */, 7374}, /* glCopyImageSubDataOES */
-    {DISPATCH_RESOLVE_EXTENSION, 109, 567 /* GL_NV_copy_image */, 7353}, /* glCopyImageSubDataNV */
-    {DISPATCH_RESOLVE_EXTENSION, 110, 692 /* GL_OES_copy_image */, 7374}, /* glCopyImageSubDataOES */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 696 /* GL_OES_copy_image */, 7374}, /* glCopyImageSubDataOES */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 571 /* GL_NV_copy_image */, 7353}, /* glCopyImageSubDataNV */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 696 /* GL_OES_copy_image */, 7374}, /* glCopyImageSubDataOES */
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_Desktop_4_3, 7312}, /* glCopyImageSubData */
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_ES_3_2, 7312}, /* glCopyImageSubData */
     {DISPATCH_RESOLVE_EXTENSION, 110, 156 /* GL_ARB_copy_image */, 7312}, /* glCopyImageSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 110, 351 /* GL_EXT_copy_image */, 7331}, /* glCopyImageSubDataEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 357 /* GL_EXT_direct_state_access */, 7396}, /* glCopyMultiTexImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 357 /* GL_EXT_direct_state_access */, 7421}, /* glCopyMultiTexImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 113, 357 /* GL_EXT_direct_state_access */, 7446}, /* glCopyMultiTexSubImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 357 /* GL_EXT_direct_state_access */, 7474}, /* glCopyMultiTexSubImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 357 /* GL_EXT_direct_state_access */, 7502}, /* glCopyMultiTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 354 /* GL_EXT_copy_image */, 7331}, /* glCopyImageSubDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 360 /* GL_EXT_direct_state_access */, 7396}, /* glCopyMultiTexImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 360 /* GL_EXT_direct_state_access */, 7421}, /* glCopyMultiTexImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 360 /* GL_EXT_direct_state_access */, 7446}, /* glCopyMultiTexSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 360 /* GL_EXT_direct_state_access */, 7474}, /* glCopyMultiTexSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 360 /* GL_EXT_direct_state_access */, 7502}, /* glCopyMultiTexSubImage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 116, OpenGL_Desktop_4_5, 7530}, /* glCopyNamedBufferSubData */
     {DISPATCH_RESOLVE_EXTENSION, 116, 163 /* GL_ARB_direct_state_access */, 7530}, /* glCopyNamedBufferSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 616 /* GL_NV_path_rendering */, 7555}, /* glCopyPathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 620 /* GL_NV_path_rendering */, 7555}, /* glCopyPathNV */
     {DISPATCH_RESOLVE_DIRECT, 118, OpenGL_Desktop_1_0, 7568}, /* glCopyPixels */
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_Desktop_1_1, 7581}, /* glCopyTexImage1D */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 352 /* GL_EXT_copy_texture */, 7598}, /* glCopyTexImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 352 /* GL_EXT_copy_texture */, 7598}, /* glCopyTexImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 355 /* GL_EXT_copy_texture */, 7598}, /* glCopyTexImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 355 /* GL_EXT_copy_texture */, 7598}, /* glCopyTexImage1DEXT */
     {DISPATCH_RESOLVE_VERSION, 120, OpenGL_Desktop_1_1, 7581}, /* glCopyTexImage1D */
     {DISPATCH_RESOLVE_VERSION, 121, OpenGL_Desktop_1_1, 7618}, /* glCopyTexImage2D */
     {DISPATCH_RESOLVE_DIRECT, 121, OpenGL_ES_1_0, 7618}, /* glCopyTexImage2D */
     {DISPATCH_RESOLVE_DIRECT, 121, OpenGL_ES_2_0, 7618}, /* glCopyTexImage2D */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 352 /* GL_EXT_copy_texture */, 7635}, /* glCopyTexImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 352 /* GL_EXT_copy_texture */, 7635}, /* glCopyTexImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 355 /* GL_EXT_copy_texture */, 7635}, /* glCopyTexImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 355 /* GL_EXT_copy_texture */, 7635}, /* glCopyTexImage2DEXT */
     {DISPATCH_RESOLVE_VERSION, 122, OpenGL_Desktop_1_1, 7618}, /* glCopyTexImage2D */
     {DISPATCH_RESOLVE_DIRECT, 122, OpenGL_ES_1_0, 7618}, /* glCopyTexImage2D */
     {DISPATCH_RESOLVE_DIRECT, 122, OpenGL_ES_2_0, 7618}, /* glCopyTexImage2D */
     {DISPATCH_RESOLVE_VERSION, 123, OpenGL_Desktop_1_1, 7655}, /* glCopyTexSubImage1D */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 352 /* GL_EXT_copy_texture */, 7675}, /* glCopyTexSubImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 124, 352 /* GL_EXT_copy_texture */, 7675}, /* glCopyTexSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 355 /* GL_EXT_copy_texture */, 7675}, /* glCopyTexSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 124, 355 /* GL_EXT_copy_texture */, 7675}, /* glCopyTexSubImage1DEXT */
     {DISPATCH_RESOLVE_VERSION, 124, OpenGL_Desktop_1_1, 7655}, /* glCopyTexSubImage1D */
     {DISPATCH_RESOLVE_VERSION, 125, OpenGL_Desktop_1_1, 7698}, /* glCopyTexSubImage2D */
     {DISPATCH_RESOLVE_DIRECT, 125, OpenGL_ES_1_0, 7698}, /* glCopyTexSubImage2D */
     {DISPATCH_RESOLVE_DIRECT, 125, OpenGL_ES_2_0, 7698}, /* glCopyTexSubImage2D */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 352 /* GL_EXT_copy_texture */, 7718}, /* glCopyTexSubImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 126, 352 /* GL_EXT_copy_texture */, 7718}, /* glCopyTexSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 355 /* GL_EXT_copy_texture */, 7718}, /* glCopyTexSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 355 /* GL_EXT_copy_texture */, 7718}, /* glCopyTexSubImage2DEXT */
     {DISPATCH_RESOLVE_VERSION, 126, OpenGL_Desktop_1_1, 7698}, /* glCopyTexSubImage2D */
     {DISPATCH_RESOLVE_DIRECT, 126, OpenGL_ES_1_0, 7698}, /* glCopyTexSubImage2D */
     {DISPATCH_RESOLVE_DIRECT, 126, OpenGL_ES_2_0, 7698}, /* glCopyTexSubImage2D */
     {DISPATCH_RESOLVE_VERSION, 127, OpenGL_Desktop_1_2, 7741}, /* glCopyTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 127, OpenGL_ES_3_0, 7741}, /* glCopyTexSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 352 /* GL_EXT_copy_texture */, 7761}, /* glCopyTexSubImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 734 /* GL_OES_texture_3D */, 7784}, /* glCopyTexSubImage3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 352 /* GL_EXT_copy_texture */, 7761}, /* glCopyTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 355 /* GL_EXT_copy_texture */, 7761}, /* glCopyTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 738 /* GL_OES_texture_3D */, 7784}, /* glCopyTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 355 /* GL_EXT_copy_texture */, 7761}, /* glCopyTexSubImage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_Desktop_1_2, 7741}, /* glCopyTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_ES_3_0, 7741}, /* glCopyTexSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 734 /* GL_OES_texture_3D */, 7784}, /* glCopyTexSubImage3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 734 /* GL_OES_texture_3D */, 7784}, /* glCopyTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 738 /* GL_OES_texture_3D */, 7784}, /* glCopyTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 738 /* GL_OES_texture_3D */, 7784}, /* glCopyTexSubImage3DOES */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_Desktop_1_2, 7741}, /* glCopyTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_ES_3_0, 7741}, /* glCopyTexSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 352 /* GL_EXT_copy_texture */, 7761}, /* glCopyTexSubImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 357 /* GL_EXT_direct_state_access */, 7807}, /* glCopyTextureImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 357 /* GL_EXT_direct_state_access */, 7831}, /* glCopyTextureImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 355 /* GL_EXT_copy_texture */, 7761}, /* glCopyTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 360 /* GL_EXT_direct_state_access */, 7807}, /* glCopyTextureImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 360 /* GL_EXT_direct_state_access */, 7831}, /* glCopyTextureImage2DEXT */
     {DISPATCH_RESOLVE_EXTENSION, 132, 113 /* GL_APPLE_copy_texture_levels */, 7855}, /* glCopyTextureLevelsAPPLE */
     {DISPATCH_RESOLVE_VERSION, 133, OpenGL_Desktop_4_5, 7880}, /* glCopyTextureSubImage1D */
     {DISPATCH_RESOLVE_EXTENSION, 133, 163 /* GL_ARB_direct_state_access */, 7880}, /* glCopyTextureSubImage1D */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 357 /* GL_EXT_direct_state_access */, 7904}, /* glCopyTextureSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 360 /* GL_EXT_direct_state_access */, 7904}, /* glCopyTextureSubImage1DEXT */
     {DISPATCH_RESOLVE_VERSION, 135, OpenGL_Desktop_4_5, 7931}, /* glCopyTextureSubImage2D */
     {DISPATCH_RESOLVE_EXTENSION, 135, 163 /* GL_ARB_direct_state_access */, 7931}, /* glCopyTextureSubImage2D */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 357 /* GL_EXT_direct_state_access */, 7955}, /* glCopyTextureSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 360 /* GL_EXT_direct_state_access */, 7955}, /* glCopyTextureSubImage2DEXT */
     {DISPATCH_RESOLVE_VERSION, 137, OpenGL_Desktop_4_5, 7982}, /* glCopyTextureSubImage3D */
     {DISPATCH_RESOLVE_EXTENSION, 137, 163 /* GL_ARB_direct_state_access */, 7982}, /* glCopyTextureSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 357 /* GL_EXT_direct_state_access */, 8006}, /* glCopyTextureSubImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 616 /* GL_NV_path_rendering */, 8033}, /* glCoverFillPathInstancedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 616 /* GL_NV_path_rendering */, 8060}, /* glCoverFillPathNV */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 616 /* GL_NV_path_rendering */, 8078}, /* glCoverStrokePathInstancedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 616 /* GL_NV_path_rendering */, 8107}, /* glCoverStrokePathNV */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 568 /* GL_NV_coverage_sample */, 8127}, /* glCoverageMaskNV */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 591 /* GL_NV_framebuffer_mixed_samples */, 8144}, /* glCoverageModulationNV */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 591 /* GL_NV_framebuffer_mixed_samples */, 8167}, /* glCoverageModulationTableNV */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 568 /* GL_NV_coverage_sample */, 8195}, /* glCoverageOperationNV */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 360 /* GL_EXT_direct_state_access */, 8006}, /* glCopyTextureSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 620 /* GL_NV_path_rendering */, 8033}, /* glCoverFillPathInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 620 /* GL_NV_path_rendering */, 8060}, /* glCoverFillPathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 620 /* GL_NV_path_rendering */, 8078}, /* glCoverStrokePathInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 620 /* GL_NV_path_rendering */, 8107}, /* glCoverStrokePathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 572 /* GL_NV_coverage_sample */, 8127}, /* glCoverageMaskNV */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 595 /* GL_NV_framebuffer_mixed_samples */, 8144}, /* glCoverageModulationNV */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 595 /* GL_NV_framebuffer_mixed_samples */, 8167}, /* glCoverageModulationTableNV */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 572 /* GL_NV_coverage_sample */, 8195}, /* glCoverageOperationNV */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_Desktop_4_5, 8217}, /* glCreateBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 147, 163 /* GL_ARB_direct_state_access */, 8217}, /* glCreateBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 559 /* GL_NV_command_list */, 8233}, /* glCreateCommandListsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 563 /* GL_NV_command_list */, 8233}, /* glCreateCommandListsNV */
     {DISPATCH_RESOLVE_VERSION, 149, OpenGL_Desktop_4_5, 8256}, /* glCreateFramebuffers */
     {DISPATCH_RESOLVE_EXTENSION, 149, 163 /* GL_ARB_direct_state_access */, 8256}, /* glCreateFramebuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 529 /* GL_INTEL_performance_query */, 8277}, /* glCreatePerfQueryINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 533 /* GL_INTEL_performance_query */, 8277}, /* glCreatePerfQueryINTEL */
     {DISPATCH_RESOLVE_VERSION, 151, OpenGL_Desktop_2_0, 8300}, /* glCreateProgram */
     {DISPATCH_RESOLVE_DIRECT, 151, OpenGL_ES_2_0, 8300}, /* glCreateProgram */
     {DISPATCH_RESOLVE_EXTENSION, 151, 232 /* GL_ARB_shader_objects */, 8316}, /* glCreateProgramObjectARB */
@@ -5885,12 +5895,12 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 158, 232 /* GL_ARB_shader_objects */, 8436}, /* glCreateShaderObjectARB */
     {DISPATCH_RESOLVE_VERSION, 158, OpenGL_Desktop_2_0, 8421}, /* glCreateShader */
     {DISPATCH_RESOLVE_DIRECT, 158, OpenGL_ES_2_0, 8421}, /* glCreateShader */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 422 /* GL_EXT_separate_shader_objects */, 8460}, /* glCreateShaderProgramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 425 /* GL_EXT_separate_shader_objects */, 8460}, /* glCreateShaderProgramEXT */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_4_1, 8485}, /* glCreateShaderProgramv */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_ES_3_1, 8485}, /* glCreateShaderProgramv */
     {DISPATCH_RESOLVE_EXTENSION, 160, 222 /* GL_ARB_separate_shader_objects */, 8485}, /* glCreateShaderProgramv */
-    {DISPATCH_RESOLVE_EXTENSION, 161, 422 /* GL_EXT_separate_shader_objects */, 8508}, /* glCreateShaderProgramvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 162, 559 /* GL_NV_command_list */, 8534}, /* glCreateStatesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 161, 425 /* GL_EXT_separate_shader_objects */, 8508}, /* glCreateShaderProgramvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 162, 563 /* GL_NV_command_list */, 8534}, /* glCreateStatesNV */
     {DISPATCH_RESOLVE_EXTENSION, 163, 144 /* GL_ARB_cl_event */, 8551}, /* glCreateSyncFromCLeventARB */
     {DISPATCH_RESOLVE_VERSION, 164, OpenGL_Desktop_4_5, 8578}, /* glCreateTextures */
     {DISPATCH_RESOLVE_EXTENSION, 164, 163 /* GL_ARB_direct_state_access */, 8578}, /* glCreateTextures */
@@ -5901,62 +5911,62 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 167, OpenGL_Desktop_1_0, 8643}, /* glCullFace */
     {DISPATCH_RESOLVE_DIRECT, 167, OpenGL_ES_1_0, 8643}, /* glCullFace */
     {DISPATCH_RESOLVE_DIRECT, 167, OpenGL_ES_2_0, 8643}, /* glCullFace */
-    {DISPATCH_RESOLVE_EXTENSION, 168, 353 /* GL_EXT_cull_vertex */, 8654}, /* glCullParameterdvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 169, 353 /* GL_EXT_cull_vertex */, 8675}, /* glCullParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 168, 356 /* GL_EXT_cull_vertex */, 8654}, /* glCullParameterdvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 169, 356 /* GL_EXT_cull_vertex */, 8675}, /* glCullParameterfvEXT */
     {DISPATCH_RESOLVE_EXTENSION, 170, 198 /* GL_ARB_matrix_palette */, 8696}, /* glCurrentPaletteMatrixARB */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 711 /* GL_OES_matrix_palette */, 8722}, /* glCurrentPaletteMatrixOES */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 715 /* GL_OES_matrix_palette */, 8722}, /* glCurrentPaletteMatrixOES */
     {DISPATCH_RESOLVE_VERSION, 172, OpenGL_Desktop_4_3, 8748}, /* glDebugMessageCallback */
     {DISPATCH_RESOLVE_VERSION, 172, OpenGL_ES_3_2, 8748}, /* glDebugMessageCallback */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 534 /* GL_KHR_debug */, 8748}, /* glDebugMessageCallback */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 538 /* GL_KHR_debug */, 8748}, /* glDebugMessageCallback */
     {DISPATCH_RESOLVE_EXTENSION, 172, 158 /* GL_ARB_debug_output */, 8797}, /* glDebugMessageCallbackARB */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 534 /* GL_KHR_debug */, 8823}, /* glDebugMessageCallbackKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 538 /* GL_KHR_debug */, 8823}, /* glDebugMessageCallbackKHR */
     {DISPATCH_RESOLVE_EXTENSION, 173, 67 /* GL_AMD_debug_output */, 8771}, /* glDebugMessageCallbackAMD */
     {DISPATCH_RESOLVE_EXTENSION, 174, 158 /* GL_ARB_debug_output */, 8797}, /* glDebugMessageCallbackARB */
     {DISPATCH_RESOLVE_VERSION, 174, OpenGL_Desktop_4_3, 8748}, /* glDebugMessageCallback */
     {DISPATCH_RESOLVE_VERSION, 174, OpenGL_ES_3_2, 8748}, /* glDebugMessageCallback */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 534 /* GL_KHR_debug */, 8748}, /* glDebugMessageCallback */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 534 /* GL_KHR_debug */, 8823}, /* glDebugMessageCallbackKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 534 /* GL_KHR_debug */, 8823}, /* glDebugMessageCallbackKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 538 /* GL_KHR_debug */, 8748}, /* glDebugMessageCallback */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 538 /* GL_KHR_debug */, 8823}, /* glDebugMessageCallbackKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 538 /* GL_KHR_debug */, 8823}, /* glDebugMessageCallbackKHR */
     {DISPATCH_RESOLVE_VERSION, 175, OpenGL_Desktop_4_3, 8748}, /* glDebugMessageCallback */
     {DISPATCH_RESOLVE_VERSION, 175, OpenGL_ES_3_2, 8748}, /* glDebugMessageCallback */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 534 /* GL_KHR_debug */, 8748}, /* glDebugMessageCallback */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 538 /* GL_KHR_debug */, 8748}, /* glDebugMessageCallback */
     {DISPATCH_RESOLVE_EXTENSION, 175, 158 /* GL_ARB_debug_output */, 8797}, /* glDebugMessageCallbackARB */
     {DISPATCH_RESOLVE_VERSION, 176, OpenGL_Desktop_4_3, 8849}, /* glDebugMessageControl */
     {DISPATCH_RESOLVE_VERSION, 176, OpenGL_ES_3_2, 8849}, /* glDebugMessageControl */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 534 /* GL_KHR_debug */, 8849}, /* glDebugMessageControl */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 538 /* GL_KHR_debug */, 8849}, /* glDebugMessageControl */
     {DISPATCH_RESOLVE_EXTENSION, 176, 158 /* GL_ARB_debug_output */, 8871}, /* glDebugMessageControlARB */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 534 /* GL_KHR_debug */, 8896}, /* glDebugMessageControlKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 538 /* GL_KHR_debug */, 8896}, /* glDebugMessageControlKHR */
     {DISPATCH_RESOLVE_EXTENSION, 177, 158 /* GL_ARB_debug_output */, 8871}, /* glDebugMessageControlARB */
     {DISPATCH_RESOLVE_VERSION, 177, OpenGL_Desktop_4_3, 8849}, /* glDebugMessageControl */
     {DISPATCH_RESOLVE_VERSION, 177, OpenGL_ES_3_2, 8849}, /* glDebugMessageControl */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 534 /* GL_KHR_debug */, 8849}, /* glDebugMessageControl */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 534 /* GL_KHR_debug */, 8896}, /* glDebugMessageControlKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 534 /* GL_KHR_debug */, 8896}, /* glDebugMessageControlKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 538 /* GL_KHR_debug */, 8849}, /* glDebugMessageControl */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 538 /* GL_KHR_debug */, 8896}, /* glDebugMessageControlKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 538 /* GL_KHR_debug */, 8896}, /* glDebugMessageControlKHR */
     {DISPATCH_RESOLVE_VERSION, 178, OpenGL_Desktop_4_3, 8849}, /* glDebugMessageControl */
     {DISPATCH_RESOLVE_VERSION, 178, OpenGL_ES_3_2, 8849}, /* glDebugMessageControl */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 534 /* GL_KHR_debug */, 8849}, /* glDebugMessageControl */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 538 /* GL_KHR_debug */, 8849}, /* glDebugMessageControl */
     {DISPATCH_RESOLVE_EXTENSION, 178, 158 /* GL_ARB_debug_output */, 8871}, /* glDebugMessageControlARB */
     {DISPATCH_RESOLVE_EXTENSION, 179, 67 /* GL_AMD_debug_output */, 8921}, /* glDebugMessageEnableAMD */
     {DISPATCH_RESOLVE_VERSION, 180, OpenGL_Desktop_4_3, 8945}, /* glDebugMessageInsert */
     {DISPATCH_RESOLVE_VERSION, 180, OpenGL_ES_3_2, 8945}, /* glDebugMessageInsert */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 534 /* GL_KHR_debug */, 8945}, /* glDebugMessageInsert */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 538 /* GL_KHR_debug */, 8945}, /* glDebugMessageInsert */
     {DISPATCH_RESOLVE_EXTENSION, 180, 158 /* GL_ARB_debug_output */, 8990}, /* glDebugMessageInsertARB */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 534 /* GL_KHR_debug */, 9014}, /* glDebugMessageInsertKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 538 /* GL_KHR_debug */, 9014}, /* glDebugMessageInsertKHR */
     {DISPATCH_RESOLVE_EXTENSION, 181, 67 /* GL_AMD_debug_output */, 8966}, /* glDebugMessageInsertAMD */
     {DISPATCH_RESOLVE_EXTENSION, 182, 158 /* GL_ARB_debug_output */, 8990}, /* glDebugMessageInsertARB */
     {DISPATCH_RESOLVE_VERSION, 182, OpenGL_Desktop_4_3, 8945}, /* glDebugMessageInsert */
     {DISPATCH_RESOLVE_VERSION, 182, OpenGL_ES_3_2, 8945}, /* glDebugMessageInsert */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 534 /* GL_KHR_debug */, 8945}, /* glDebugMessageInsert */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 534 /* GL_KHR_debug */, 9014}, /* glDebugMessageInsertKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 534 /* GL_KHR_debug */, 9014}, /* glDebugMessageInsertKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 538 /* GL_KHR_debug */, 8945}, /* glDebugMessageInsert */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 538 /* GL_KHR_debug */, 9014}, /* glDebugMessageInsertKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 538 /* GL_KHR_debug */, 9014}, /* glDebugMessageInsertKHR */
     {DISPATCH_RESOLVE_VERSION, 183, OpenGL_Desktop_4_3, 8945}, /* glDebugMessageInsert */
     {DISPATCH_RESOLVE_VERSION, 183, OpenGL_ES_3_2, 8945}, /* glDebugMessageInsert */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 534 /* GL_KHR_debug */, 8945}, /* glDebugMessageInsert */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 538 /* GL_KHR_debug */, 8945}, /* glDebugMessageInsert */
     {DISPATCH_RESOLVE_EXTENSION, 183, 158 /* GL_ARB_debug_output */, 8990}, /* glDebugMessageInsertARB */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 810 /* GL_SGIX_polynomial_ffd */, 9038}, /* glDeformSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 810 /* GL_SGIX_polynomial_ffd */, 9051}, /* glDeformationMap3dSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 810 /* GL_SGIX_polynomial_ffd */, 9074}, /* glDeformationMap3fSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 787 /* GL_SGIX_async */, 9097}, /* glDeleteAsyncMarkersSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 815 /* GL_SGIX_polynomial_ffd */, 9038}, /* glDeformSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 815 /* GL_SGIX_polynomial_ffd */, 9051}, /* glDeformationMap3dSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 815 /* GL_SGIX_polynomial_ffd */, 9074}, /* glDeformationMap3fSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 792 /* GL_SGIX_async */, 9097}, /* glDeleteAsyncMarkersSGIX */
     {DISPATCH_RESOLVE_VERSION, 188, OpenGL_Desktop_1_5, 9122}, /* glDeleteBuffers */
     {DISPATCH_RESOLVE_DIRECT, 188, OpenGL_ES_1_0, 9122}, /* glDeleteBuffers */
     {DISPATCH_RESOLVE_DIRECT, 188, OpenGL_ES_2_0, 9122}, /* glDeleteBuffers */
@@ -5965,37 +5975,37 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 189, OpenGL_Desktop_1_5, 9122}, /* glDeleteBuffers */
     {DISPATCH_RESOLVE_DIRECT, 189, OpenGL_ES_1_0, 9122}, /* glDeleteBuffers */
     {DISPATCH_RESOLVE_DIRECT, 189, OpenGL_ES_2_0, 9122}, /* glDeleteBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 559 /* GL_NV_command_list */, 9157}, /* glDeleteCommandListsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 563 /* GL_NV_command_list */, 9157}, /* glDeleteCommandListsNV */
     {DISPATCH_RESOLVE_EXTENSION, 191, 115 /* GL_APPLE_fence */, 9180}, /* glDeleteFencesAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 580 /* GL_NV_fence */, 9200}, /* glDeleteFencesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 193, 312 /* GL_ATI_fragment_shader */, 9217}, /* glDeleteFragmentShaderATI */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 584 /* GL_NV_fence */, 9200}, /* glDeleteFencesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 193, 315 /* GL_ATI_fragment_shader */, 9217}, /* glDeleteFragmentShaderATI */
     {DISPATCH_RESOLVE_VERSION, 194, OpenGL_Desktop_3_0, 9243}, /* glDeleteFramebuffers */
     {DISPATCH_RESOLVE_DIRECT, 194, OpenGL_ES_2_0, 9243}, /* glDeleteFramebuffers */
     {DISPATCH_RESOLVE_EXTENSION, 194, 179 /* GL_ARB_framebuffer_object */, 9243}, /* glDeleteFramebuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 194, 373 /* GL_EXT_framebuffer_object */, 9264}, /* glDeleteFramebuffersEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 195, 373 /* GL_EXT_framebuffer_object */, 9264}, /* glDeleteFramebuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 194, 376 /* GL_EXT_framebuffer_object */, 9264}, /* glDeleteFramebuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 195, 376 /* GL_EXT_framebuffer_object */, 9264}, /* glDeleteFramebuffersEXT */
     {DISPATCH_RESOLVE_VERSION, 195, OpenGL_Desktop_3_0, 9243}, /* glDeleteFramebuffers */
     {DISPATCH_RESOLVE_DIRECT, 195, OpenGL_ES_2_0, 9243}, /* glDeleteFramebuffers */
     {DISPATCH_RESOLVE_EXTENSION, 195, 179 /* GL_ARB_framebuffer_object */, 9243}, /* glDeleteFramebuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 196, 704 /* GL_OES_framebuffer_object */, 9288}, /* glDeleteFramebuffersOES */
+    {DISPATCH_RESOLVE_EXTENSION, 196, 708 /* GL_OES_framebuffer_object */, 9288}, /* glDeleteFramebuffersOES */
     {DISPATCH_RESOLVE_DIRECT, 197, OpenGL_Desktop_1_0, 9312}, /* glDeleteLists */
     {DISPATCH_RESOLVE_EXTENSION, 198, 242 /* GL_ARB_shading_language_include */, 9326}, /* glDeleteNamedStringARB */
     {DISPATCH_RESOLVE_EXTENSION, 199, 75 /* GL_AMD_name_gen_delete */, 9349}, /* glDeleteNamesAMD */
     {DISPATCH_RESOLVE_EXTENSION, 200, 232 /* GL_ARB_shader_objects */, 9366}, /* glDeleteObjectARB */
-    {DISPATCH_RESOLVE_EXTENSION, 201, 611 /* GL_NV_occlusion_query */, 9384}, /* glDeleteOcclusionQueriesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 202, 616 /* GL_NV_path_rendering */, 9411}, /* glDeletePathsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 201, 615 /* GL_NV_occlusion_query */, 9384}, /* glDeleteOcclusionQueriesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 202, 620 /* GL_NV_path_rendering */, 9411}, /* glDeletePathsNV */
     {DISPATCH_RESOLVE_EXTENSION, 203, 77 /* GL_AMD_performance_monitor */, 9427}, /* glDeletePerfMonitorsAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 529 /* GL_INTEL_performance_query */, 9451}, /* glDeletePerfQueryINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 533 /* GL_INTEL_performance_query */, 9451}, /* glDeletePerfQueryINTEL */
     {DISPATCH_RESOLVE_VERSION, 205, OpenGL_Desktop_2_0, 9474}, /* glDeleteProgram */
     {DISPATCH_RESOLVE_DIRECT, 205, OpenGL_ES_2_0, 9474}, /* glDeleteProgram */
     {DISPATCH_RESOLVE_VERSION, 206, OpenGL_Desktop_4_1, 9490}, /* glDeleteProgramPipelines */
     {DISPATCH_RESOLVE_VERSION, 206, OpenGL_ES_3_1, 9490}, /* glDeleteProgramPipelines */
     {DISPATCH_RESOLVE_EXTENSION, 206, 222 /* GL_ARB_separate_shader_objects */, 9490}, /* glDeleteProgramPipelines */
-    {DISPATCH_RESOLVE_EXTENSION, 207, 422 /* GL_EXT_separate_shader_objects */, 9515}, /* glDeleteProgramPipelinesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 207, 425 /* GL_EXT_separate_shader_objects */, 9515}, /* glDeleteProgramPipelinesEXT */
     {DISPATCH_RESOLVE_EXTENSION, 208, 174 /* GL_ARB_fragment_program */, 9543}, /* glDeleteProgramsARB */
     {DISPATCH_RESOLVE_EXTENSION, 208, 297 /* GL_ARB_vertex_program */, 9543}, /* glDeleteProgramsARB */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 672 /* GL_NV_vertex_program */, 9563}, /* glDeleteProgramsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 672 /* GL_NV_vertex_program */, 9563}, /* glDeleteProgramsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 676 /* GL_NV_vertex_program */, 9563}, /* glDeleteProgramsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 676 /* GL_NV_vertex_program */, 9563}, /* glDeleteProgramsNV */
     {DISPATCH_RESOLVE_EXTENSION, 209, 174 /* GL_ARB_fragment_program */, 9543}, /* glDeleteProgramsARB */
     {DISPATCH_RESOLVE_EXTENSION, 209, 297 /* GL_ARB_vertex_program */, 9543}, /* glDeleteProgramsARB */
     {DISPATCH_RESOLVE_VERSION, 210, OpenGL_Desktop_1_5, 9582}, /* glDeleteQueries */
@@ -6004,23 +6014,23 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 211, 203 /* GL_ARB_occlusion_query */, 9598}, /* glDeleteQueriesARB */
     {DISPATCH_RESOLVE_VERSION, 211, OpenGL_Desktop_1_5, 9582}, /* glDeleteQueries */
     {DISPATCH_RESOLVE_VERSION, 211, OpenGL_ES_3_0, 9582}, /* glDeleteQueries */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 359 /* GL_EXT_disjoint_timer_query */, 9617}, /* glDeleteQueriesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 397 /* GL_EXT_occlusion_query_boolean */, 9617}, /* glDeleteQueriesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 362 /* GL_EXT_disjoint_timer_query */, 9617}, /* glDeleteQueriesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 400 /* GL_EXT_occlusion_query_boolean */, 9617}, /* glDeleteQueriesEXT */
     {DISPATCH_RESOLVE_VERSION, 213, OpenGL_Desktop_3_0, 9636}, /* glDeleteRenderbuffers */
     {DISPATCH_RESOLVE_DIRECT, 213, OpenGL_ES_2_0, 9636}, /* glDeleteRenderbuffers */
     {DISPATCH_RESOLVE_EXTENSION, 213, 179 /* GL_ARB_framebuffer_object */, 9636}, /* glDeleteRenderbuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 373 /* GL_EXT_framebuffer_object */, 9658}, /* glDeleteRenderbuffersEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 373 /* GL_EXT_framebuffer_object */, 9658}, /* glDeleteRenderbuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 376 /* GL_EXT_framebuffer_object */, 9658}, /* glDeleteRenderbuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 376 /* GL_EXT_framebuffer_object */, 9658}, /* glDeleteRenderbuffersEXT */
     {DISPATCH_RESOLVE_VERSION, 214, OpenGL_Desktop_3_0, 9636}, /* glDeleteRenderbuffers */
     {DISPATCH_RESOLVE_DIRECT, 214, OpenGL_ES_2_0, 9636}, /* glDeleteRenderbuffers */
     {DISPATCH_RESOLVE_EXTENSION, 214, 179 /* GL_ARB_framebuffer_object */, 9636}, /* glDeleteRenderbuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 215, 704 /* GL_OES_framebuffer_object */, 9683}, /* glDeleteRenderbuffersOES */
+    {DISPATCH_RESOLVE_EXTENSION, 215, 708 /* GL_OES_framebuffer_object */, 9683}, /* glDeleteRenderbuffersOES */
     {DISPATCH_RESOLVE_VERSION, 216, OpenGL_Desktop_3_3, 9708}, /* glDeleteSamplers */
     {DISPATCH_RESOLVE_VERSION, 216, OpenGL_ES_3_0, 9708}, /* glDeleteSamplers */
     {DISPATCH_RESOLVE_EXTENSION, 216, 219 /* GL_ARB_sampler_objects */, 9708}, /* glDeleteSamplers */
     {DISPATCH_RESOLVE_VERSION, 217, OpenGL_Desktop_2_0, 9725}, /* glDeleteShader */
     {DISPATCH_RESOLVE_DIRECT, 217, OpenGL_ES_2_0, 9725}, /* glDeleteShader */
-    {DISPATCH_RESOLVE_EXTENSION, 218, 559 /* GL_NV_command_list */, 9740}, /* glDeleteStatesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 218, 563 /* GL_NV_command_list */, 9740}, /* glDeleteStatesNV */
     {DISPATCH_RESOLVE_VERSION, 219, OpenGL_Desktop_3_2, 9757}, /* glDeleteSync */
     {DISPATCH_RESOLVE_VERSION, 219, OpenGL_ES_3_0, 9757}, /* glDeleteSync */
     {DISPATCH_RESOLVE_EXTENSION, 219, 251 /* GL_ARB_sync */, 9757}, /* glDeleteSync */
@@ -6032,12 +6042,12 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 221, OpenGL_Desktop_1_1, 9788}, /* glDeleteTextures */
     {DISPATCH_RESOLVE_DIRECT, 221, OpenGL_ES_1_0, 9788}, /* glDeleteTextures */
     {DISPATCH_RESOLVE_DIRECT, 221, OpenGL_ES_2_0, 9788}, /* glDeleteTextures */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 472 /* GL_EXT_texture_object */, 9805}, /* glDeleteTexturesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 476 /* GL_EXT_texture_object */, 9805}, /* glDeleteTexturesEXT */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_Desktop_4_0, 9825}, /* glDeleteTransformFeedbacks */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_ES_3_0, 9825}, /* glDeleteTransformFeedbacks */
     {DISPATCH_RESOLVE_EXTENSION, 223, 285 /* GL_ARB_transform_feedback2 */, 9825}, /* glDeleteTransformFeedbacks */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 665 /* GL_NV_transform_feedback2 */, 9852}, /* glDeleteTransformFeedbacksNV */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 665 /* GL_NV_transform_feedback2 */, 9852}, /* glDeleteTransformFeedbacksNV */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 669 /* GL_NV_transform_feedback2 */, 9852}, /* glDeleteTransformFeedbacksNV */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 669 /* GL_NV_transform_feedback2 */, 9852}, /* glDeleteTransformFeedbacksNV */
     {DISPATCH_RESOLVE_VERSION, 224, OpenGL_Desktop_4_0, 9825}, /* glDeleteTransformFeedbacks */
     {DISPATCH_RESOLVE_VERSION, 224, OpenGL_ES_3_0, 9825}, /* glDeleteTransformFeedbacks */
     {DISPATCH_RESOLVE_EXTENSION, 224, 285 /* GL_ARB_transform_feedback2 */, 9825}, /* glDeleteTransformFeedbacks */
@@ -6045,20 +6055,20 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 225, OpenGL_ES_3_0, 9881}, /* glDeleteVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 225, 292 /* GL_ARB_vertex_array_object */, 9881}, /* glDeleteVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 225, 131 /* GL_APPLE_vertex_array_object */, 9902}, /* glDeleteVertexArraysAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 750 /* GL_OES_vertex_array_object */, 9928}, /* glDeleteVertexArraysOES */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 754 /* GL_OES_vertex_array_object */, 9928}, /* glDeleteVertexArraysOES */
     {DISPATCH_RESOLVE_EXTENSION, 226, 131 /* GL_APPLE_vertex_array_object */, 9902}, /* glDeleteVertexArraysAPPLE */
     {DISPATCH_RESOLVE_VERSION, 226, OpenGL_Desktop_3_0, 9881}, /* glDeleteVertexArrays */
     {DISPATCH_RESOLVE_VERSION, 226, OpenGL_ES_3_0, 9881}, /* glDeleteVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 226, 292 /* GL_ARB_vertex_array_object */, 9881}, /* glDeleteVertexArrays */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 750 /* GL_OES_vertex_array_object */, 9928}, /* glDeleteVertexArraysOES */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 750 /* GL_OES_vertex_array_object */, 9928}, /* glDeleteVertexArraysOES */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 754 /* GL_OES_vertex_array_object */, 9928}, /* glDeleteVertexArraysOES */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 754 /* GL_OES_vertex_array_object */, 9928}, /* glDeleteVertexArraysOES */
     {DISPATCH_RESOLVE_VERSION, 227, OpenGL_Desktop_3_0, 9881}, /* glDeleteVertexArrays */
     {DISPATCH_RESOLVE_VERSION, 227, OpenGL_ES_3_0, 9881}, /* glDeleteVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 227, 292 /* GL_ARB_vertex_array_object */, 9881}, /* glDeleteVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 227, 131 /* GL_APPLE_vertex_array_object */, 9902}, /* glDeleteVertexArraysAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 494 /* GL_EXT_vertex_shader */, 9952}, /* glDeleteVertexShaderEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 356 /* GL_EXT_depth_bounds_test */, 9976}, /* glDepthBoundsEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 570 /* GL_NV_depth_buffer_float */, 9993}, /* glDepthBoundsdNV */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 498 /* GL_EXT_vertex_shader */, 9952}, /* glDeleteVertexShaderEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 359 /* GL_EXT_depth_bounds_test */, 9976}, /* glDepthBoundsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 574 /* GL_NV_depth_buffer_float */, 9993}, /* glDepthBoundsdNV */
     {DISPATCH_RESOLVE_DIRECT, 231, OpenGL_Desktop_1_0, 10010}, /* glDepthFunc */
     {DISPATCH_RESOLVE_DIRECT, 231, OpenGL_ES_1_0, 10010}, /* glDepthFunc */
     {DISPATCH_RESOLVE_DIRECT, 231, OpenGL_ES_2_0, 10010}, /* glDepthFunc */
@@ -6066,52 +6076,52 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 232, OpenGL_ES_1_0, 10022}, /* glDepthMask */
     {DISPATCH_RESOLVE_DIRECT, 232, OpenGL_ES_2_0, 10022}, /* glDepthMask */
     {DISPATCH_RESOLVE_DIRECT, 233, OpenGL_Desktop_1_0, 10034}, /* glDepthRange */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 679 /* GL_NV_viewport_array */, 10047}, /* glDepthRangeArrayfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 683 /* GL_NV_viewport_array */, 10047}, /* glDepthRangeArrayfvNV */
     {DISPATCH_RESOLVE_VERSION, 235, OpenGL_Desktop_4_1, 10069}, /* glDepthRangeArrayv */
     {DISPATCH_RESOLVE_EXTENSION, 235, 301 /* GL_ARB_viewport_array */, 10069}, /* glDepthRangeArrayv */
     {DISPATCH_RESOLVE_VERSION, 236, OpenGL_Desktop_4_1, 10088}, /* glDepthRangeIndexed */
     {DISPATCH_RESOLVE_EXTENSION, 236, 301 /* GL_ARB_viewport_array */, 10088}, /* glDepthRangeIndexed */
-    {DISPATCH_RESOLVE_EXTENSION, 237, 679 /* GL_NV_viewport_array */, 10108}, /* glDepthRangeIndexedfNV */
-    {DISPATCH_RESOLVE_EXTENSION, 238, 570 /* GL_NV_depth_buffer_float */, 10131}, /* glDepthRangedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 237, 683 /* GL_NV_viewport_array */, 10108}, /* glDepthRangeIndexedfNV */
+    {DISPATCH_RESOLVE_EXTENSION, 238, 574 /* GL_NV_depth_buffer_float */, 10131}, /* glDepthRangedNV */
     {DISPATCH_RESOLVE_VERSION, 239, OpenGL_Desktop_4_1, 10147}, /* glDepthRangef */
     {DISPATCH_RESOLVE_DIRECT, 239, OpenGL_ES_1_0, 10147}, /* glDepthRangef */
     {DISPATCH_RESOLVE_DIRECT, 239, OpenGL_ES_2_0, 10147}, /* glDepthRangef */
     {DISPATCH_RESOLVE_EXTENSION, 239, 135 /* GL_ARB_ES2_compatibility */, 10147}, /* glDepthRangef */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 725 /* GL_OES_single_precision */, 10161}, /* glDepthRangefOES */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 725 /* GL_OES_single_precision */, 10161}, /* glDepthRangefOES */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 729 /* GL_OES_single_precision */, 10161}, /* glDepthRangefOES */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 729 /* GL_OES_single_precision */, 10161}, /* glDepthRangefOES */
     {DISPATCH_RESOLVE_VERSION, 240, OpenGL_Desktop_4_1, 10147}, /* glDepthRangef */
     {DISPATCH_RESOLVE_DIRECT, 240, OpenGL_ES_1_0, 10147}, /* glDepthRangef */
     {DISPATCH_RESOLVE_DIRECT, 240, OpenGL_ES_2_0, 10147}, /* glDepthRangef */
     {DISPATCH_RESOLVE_EXTENSION, 240, 135 /* GL_ARB_ES2_compatibility */, 10147}, /* glDepthRangef */
     {DISPATCH_RESOLVE_DIRECT, 241, OpenGL_ES_1_0, 10178}, /* glDepthRangex */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 702 /* GL_OES_fixed_point */, 10192}, /* glDepthRangexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 706 /* GL_OES_fixed_point */, 10192}, /* glDepthRangexOES */
     {DISPATCH_RESOLVE_EXTENSION, 243, 232 /* GL_ARB_shader_objects */, 10209}, /* glDetachObjectARB */
     {DISPATCH_RESOLVE_VERSION, 243, OpenGL_Desktop_2_0, 10227}, /* glDetachShader */
     {DISPATCH_RESOLVE_DIRECT, 243, OpenGL_ES_2_0, 10227}, /* glDetachShader */
     {DISPATCH_RESOLVE_VERSION, 244, OpenGL_Desktop_2_0, 10227}, /* glDetachShader */
     {DISPATCH_RESOLVE_DIRECT, 244, OpenGL_ES_2_0, 10227}, /* glDetachShader */
     {DISPATCH_RESOLVE_EXTENSION, 244, 232 /* GL_ARB_shader_objects */, 10209}, /* glDetachObjectARB */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 772 /* GL_SGIS_detail_texture */, 10242}, /* glDetailTexFuncSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 776 /* GL_SGIS_detail_texture */, 10242}, /* glDetailTexFuncSGIS */
     {DISPATCH_RESOLVE_DIRECT, 246, OpenGL_Desktop_1_0, 10262}, /* glDisable */
     {DISPATCH_RESOLVE_DIRECT, 246, OpenGL_ES_1_0, 10262}, /* glDisable */
     {DISPATCH_RESOLVE_DIRECT, 246, OpenGL_ES_2_0, 10262}, /* glDisable */
     {DISPATCH_RESOLVE_VERSION, 247, OpenGL_Desktop_1_1, 10272}, /* glDisableClientState */
     {DISPATCH_RESOLVE_DIRECT, 247, OpenGL_ES_1_0, 10272}, /* glDisableClientState */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 357 /* GL_EXT_direct_state_access */, 10293}, /* glDisableClientStateIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 249, 357 /* GL_EXT_direct_state_access */, 10324}, /* glDisableClientStateiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 763 /* GL_QCOM_driver_control */, 10349}, /* glDisableDriverControlQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 357 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 361 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 360 /* GL_EXT_direct_state_access */, 10293}, /* glDisableClientStateIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 249, 360 /* GL_EXT_direct_state_access */, 10324}, /* glDisableClientStateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 767 /* GL_QCOM_driver_control */, 10349}, /* glDisableDriverControlQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 360 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 364 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 251, OpenGL_Desktop_3_0, 10592}, /* glDisablei */
     {DISPATCH_RESOLVE_VERSION, 251, OpenGL_ES_3_2, 10592}, /* glDisablei */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 362 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 679 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 696 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 494 /* GL_EXT_vertex_shader */, 10396}, /* glDisableVariantClientStateEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 365 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 683 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 700 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 498 /* GL_EXT_vertex_shader */, 10396}, /* glDisableVariantClientStateEXT */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_Desktop_4_5, 10427}, /* glDisableVertexArrayAttrib */
     {DISPATCH_RESOLVE_EXTENSION, 253, 163 /* GL_ARB_direct_state_access */, 10427}, /* glDisableVertexArrayAttrib */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 357 /* GL_EXT_direct_state_access */, 10454}, /* glDisableVertexArrayAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 357 /* GL_EXT_direct_state_access */, 10484}, /* glDisableVertexArrayEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 360 /* GL_EXT_direct_state_access */, 10454}, /* glDisableVertexArrayAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 360 /* GL_EXT_direct_state_access */, 10484}, /* glDisableVertexArrayEXT */
     {DISPATCH_RESOLVE_EXTENSION, 0, 133 /* GL_APPLE_vertex_program_evaluators */, 10508}, /* glDisableVertexAttribAPPLE */
     {DISPATCH_RESOLVE_VERSION, 1, OpenGL_Desktop_2_0, 10535}, /* glDisableVertexAttribArray */
     {DISPATCH_RESOLVE_DIRECT, 1, OpenGL_ES_2_0, 10535}, /* glDisableVertexAttribArray */
@@ -6123,33 +6133,33 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 2, OpenGL_ES_2_0, 10535}, /* glDisableVertexAttribArray */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_Desktop_3_0, 10592}, /* glDisablei */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_ES_3_2, 10592}, /* glDisablei */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 357 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 361 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 362 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 679 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 696 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 362 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 357 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 361 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 360 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 364 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 365 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 683 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 700 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 365 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 360 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 364 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 4, OpenGL_Desktop_3_0, 10592}, /* glDisablei */
     {DISPATCH_RESOLVE_VERSION, 4, OpenGL_ES_3_2, 10592}, /* glDisablei */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 679 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 696 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 679 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 357 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 361 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 683 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 700 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 683 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 360 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 364 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 5, OpenGL_Desktop_3_0, 10592}, /* glDisablei */
     {DISPATCH_RESOLVE_VERSION, 5, OpenGL_ES_3_2, 10592}, /* glDisablei */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 362 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 696 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 696 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 357 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 361 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 365 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 700 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 700 /* GL_OES_draw_buffers_indexed */, 10630}, /* glDisableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 360 /* GL_EXT_direct_state_access */, 10376}, /* glDisableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 364 /* GL_EXT_draw_buffers2 */, 10376}, /* glDisableIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 6, OpenGL_Desktop_3_0, 10592}, /* glDisablei */
     {DISPATCH_RESOLVE_VERSION, 6, OpenGL_ES_3_2, 10592}, /* glDisablei */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 362 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 679 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 7, 358 /* GL_EXT_discard_framebuffer */, 10644}, /* glDiscardFramebufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 365 /* GL_EXT_draw_buffers_indexed */, 10603}, /* glDisableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 683 /* GL_NV_viewport_array */, 10617}, /* glDisableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 361 /* GL_EXT_discard_framebuffer */, 10644}, /* glDiscardFramebufferEXT */
     {DISPATCH_RESOLVE_VERSION, 8, OpenGL_Desktop_4_3, 10668}, /* glDispatchCompute */
     {DISPATCH_RESOLVE_VERSION, 8, OpenGL_ES_3_1, 10668}, /* glDispatchCompute */
     {DISPATCH_RESOLVE_EXTENSION, 8, 151 /* GL_ARB_compute_shader */, 10668}, /* glDispatchCompute */
@@ -6160,8 +6170,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_Desktop_1_1, 10742}, /* glDrawArrays */
     {DISPATCH_RESOLVE_DIRECT, 11, OpenGL_ES_1_0, 10742}, /* glDrawArrays */
     {DISPATCH_RESOLVE_DIRECT, 11, OpenGL_ES_2_0, 10742}, /* glDrawArrays */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 489 /* GL_EXT_vertex_array */, 10755}, /* glDrawArraysEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 489 /* GL_EXT_vertex_array */, 10755}, /* glDrawArraysEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 493 /* GL_EXT_vertex_array */, 10755}, /* glDrawArraysEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 493 /* GL_EXT_vertex_array */, 10755}, /* glDrawArraysEXT */
     {DISPATCH_RESOLVE_VERSION, 12, OpenGL_Desktop_1_1, 10742}, /* glDrawArrays */
     {DISPATCH_RESOLVE_DIRECT, 12, OpenGL_ES_1_0, 10742}, /* glDrawArrays */
     {DISPATCH_RESOLVE_DIRECT, 12, OpenGL_ES_2_0, 10742}, /* glDrawArrays */
@@ -6172,90 +6182,90 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 14, OpenGL_ES_3_0, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 14, 101 /* GL_ANGLE_instanced_arrays */, 10814}, /* glDrawArraysInstancedANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 14, 168 /* GL_ARB_draw_instanced */, 10841}, /* glDrawArraysInstancedARB */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 364 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 387 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 574 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 367 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 390 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 578 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
     {DISPATCH_RESOLVE_EXTENSION, 15, 101 /* GL_ANGLE_instanced_arrays */, 10814}, /* glDrawArraysInstancedANGLE */
     {DISPATCH_RESOLVE_VERSION, 15, OpenGL_Desktop_3_1, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_VERSION, 15, OpenGL_ES_3_0, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 15, 168 /* GL_ARB_draw_instanced */, 10841}, /* glDrawArraysInstancedARB */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 364 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 387 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 574 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 367 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 390 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 578 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
     {DISPATCH_RESOLVE_EXTENSION, 16, 168 /* GL_ARB_draw_instanced */, 10841}, /* glDrawArraysInstancedARB */
     {DISPATCH_RESOLVE_VERSION, 16, OpenGL_Desktop_3_1, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_VERSION, 16, OpenGL_ES_3_0, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 16, 101 /* GL_ANGLE_instanced_arrays */, 10814}, /* glDrawArraysInstancedANGLE */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 364 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 387 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 574 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 367 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 390 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 578 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
     {DISPATCH_RESOLVE_VERSION, 17, OpenGL_Desktop_4_2, 10866}, /* glDrawArraysInstancedBaseInstance */
     {DISPATCH_RESOLVE_EXTENSION, 17, 140 /* GL_ARB_base_instance */, 10866}, /* glDrawArraysInstancedBaseInstance */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 331 /* GL_EXT_base_instance */, 10900}, /* glDrawArraysInstancedBaseInstanceEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 331 /* GL_EXT_base_instance */, 10900}, /* glDrawArraysInstancedBaseInstanceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 334 /* GL_EXT_base_instance */, 10900}, /* glDrawArraysInstancedBaseInstanceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 334 /* GL_EXT_base_instance */, 10900}, /* glDrawArraysInstancedBaseInstanceEXT */
     {DISPATCH_RESOLVE_VERSION, 18, OpenGL_Desktop_4_2, 10866}, /* glDrawArraysInstancedBaseInstance */
     {DISPATCH_RESOLVE_EXTENSION, 18, 140 /* GL_ARB_base_instance */, 10866}, /* glDrawArraysInstancedBaseInstance */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 364 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 387 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 367 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 390 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_Desktop_3_1, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_ES_3_0, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 19, 101 /* GL_ANGLE_instanced_arrays */, 10814}, /* glDrawArraysInstancedANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 19, 168 /* GL_ARB_draw_instanced */, 10841}, /* glDrawArraysInstancedARB */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 574 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 574 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 578 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 578 /* GL_NV_draw_instanced */, 10962}, /* glDrawArraysInstancedNV */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_3_1, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_ES_3_0, 10792}, /* glDrawArraysInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 20, 101 /* GL_ANGLE_instanced_arrays */, 10814}, /* glDrawArraysInstancedANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 20, 168 /* GL_ARB_draw_instanced */, 10841}, /* glDrawArraysInstancedARB */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 364 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 387 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 367 /* GL_EXT_draw_instanced */, 10937}, /* glDrawArraysInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 390 /* GL_EXT_instanced_arrays */, 10937}, /* glDrawArraysInstancedEXT */
     {DISPATCH_RESOLVE_DIRECT, 21, OpenGL_Desktop_1_0, 10986}, /* glDrawBuffer */
     {DISPATCH_RESOLVE_VERSION, 22, OpenGL_Desktop_2_0, 10999}, /* glDrawBuffers */
     {DISPATCH_RESOLVE_VERSION, 22, OpenGL_ES_3_0, 10999}, /* glDrawBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 22, 164 /* GL_ARB_draw_buffers */, 11013}, /* glDrawBuffersARB */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 309 /* GL_ATI_draw_buffers */, 11030}, /* glDrawBuffersATI */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 360 /* GL_EXT_draw_buffers */, 11047}, /* glDrawBuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 312 /* GL_ATI_draw_buffers */, 11030}, /* glDrawBuffersATI */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 363 /* GL_EXT_draw_buffers */, 11047}, /* glDrawBuffersEXT */
     {DISPATCH_RESOLVE_EXTENSION, 23, 164 /* GL_ARB_draw_buffers */, 11013}, /* glDrawBuffersARB */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_Desktop_2_0, 10999}, /* glDrawBuffers */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_ES_3_0, 10999}, /* glDrawBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 309 /* GL_ATI_draw_buffers */, 11030}, /* glDrawBuffersATI */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 360 /* GL_EXT_draw_buffers */, 11047}, /* glDrawBuffersEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 309 /* GL_ATI_draw_buffers */, 11030}, /* glDrawBuffersATI */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 312 /* GL_ATI_draw_buffers */, 11030}, /* glDrawBuffersATI */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 363 /* GL_EXT_draw_buffers */, 11047}, /* glDrawBuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 312 /* GL_ATI_draw_buffers */, 11030}, /* glDrawBuffersATI */
     {DISPATCH_RESOLVE_VERSION, 24, OpenGL_Desktop_2_0, 10999}, /* glDrawBuffers */
     {DISPATCH_RESOLVE_VERSION, 24, OpenGL_ES_3_0, 10999}, /* glDrawBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 24, 164 /* GL_ARB_draw_buffers */, 11013}, /* glDrawBuffersARB */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 360 /* GL_EXT_draw_buffers */, 11047}, /* glDrawBuffersEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 360 /* GL_EXT_draw_buffers */, 11047}, /* glDrawBuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 363 /* GL_EXT_draw_buffers */, 11047}, /* glDrawBuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 363 /* GL_EXT_draw_buffers */, 11047}, /* glDrawBuffersEXT */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_Desktop_2_0, 10999}, /* glDrawBuffers */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_ES_3_0, 10999}, /* glDrawBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 25, 164 /* GL_ARB_draw_buffers */, 11013}, /* glDrawBuffersARB */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 309 /* GL_ATI_draw_buffers */, 11030}, /* glDrawBuffersATI */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 396 /* GL_EXT_multiview_draw_buffers */, 11064}, /* glDrawBuffersIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 573 /* GL_NV_draw_buffers */, 11088}, /* glDrawBuffersNV */
-    {DISPATCH_RESOLVE_EXTENSION, 28, 559 /* GL_NV_command_list */, 11104}, /* glDrawCommandsAddressNV */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 559 /* GL_NV_command_list */, 11128}, /* glDrawCommandsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 559 /* GL_NV_command_list */, 11145}, /* glDrawCommandsStatesAddressNV */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 559 /* GL_NV_command_list */, 11175}, /* glDrawCommandsStatesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 312 /* GL_ATI_draw_buffers */, 11030}, /* glDrawBuffersATI */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 399 /* GL_EXT_multiview_draw_buffers */, 11064}, /* glDrawBuffersIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 577 /* GL_NV_draw_buffers */, 11088}, /* glDrawBuffersNV */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 563 /* GL_NV_command_list */, 11104}, /* glDrawCommandsAddressNV */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 563 /* GL_NV_command_list */, 11128}, /* glDrawCommandsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 563 /* GL_NV_command_list */, 11145}, /* glDrawCommandsStatesAddressNV */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 563 /* GL_NV_command_list */, 11175}, /* glDrawCommandsStatesNV */
     {DISPATCH_RESOLVE_EXTENSION, 32, 114 /* GL_APPLE_element_array */, 11198}, /* glDrawElementArrayAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 310 /* GL_ATI_element_array */, 11222}, /* glDrawElementArrayATI */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 313 /* GL_ATI_element_array */, 11222}, /* glDrawElementArrayATI */
     {DISPATCH_RESOLVE_VERSION, 34, OpenGL_Desktop_1_1, 11244}, /* glDrawElements */
     {DISPATCH_RESOLVE_DIRECT, 34, OpenGL_ES_1_0, 11244}, /* glDrawElements */
     {DISPATCH_RESOLVE_DIRECT, 34, OpenGL_ES_2_0, 11244}, /* glDrawElements */
     {DISPATCH_RESOLVE_VERSION, 35, OpenGL_Desktop_3_2, 11259}, /* glDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 35, OpenGL_ES_3_2, 11259}, /* glDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 35, 166 /* GL_ARB_draw_elements_base_vertex */, 11259}, /* glDrawElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 35, 363 /* GL_EXT_draw_elements_base_vertex */, 11284}, /* glDrawElementsBaseVertexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 35, 697 /* GL_OES_draw_elements_base_vertex */, 11312}, /* glDrawElementsBaseVertexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 36, 363 /* GL_EXT_draw_elements_base_vertex */, 11284}, /* glDrawElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 366 /* GL_EXT_draw_elements_base_vertex */, 11284}, /* glDrawElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 701 /* GL_OES_draw_elements_base_vertex */, 11312}, /* glDrawElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 366 /* GL_EXT_draw_elements_base_vertex */, 11284}, /* glDrawElementsBaseVertexEXT */
     {DISPATCH_RESOLVE_VERSION, 36, OpenGL_Desktop_3_2, 11259}, /* glDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 36, OpenGL_ES_3_2, 11259}, /* glDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 36, 166 /* GL_ARB_draw_elements_base_vertex */, 11259}, /* glDrawElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 36, 697 /* GL_OES_draw_elements_base_vertex */, 11312}, /* glDrawElementsBaseVertexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 37, 697 /* GL_OES_draw_elements_base_vertex */, 11312}, /* glDrawElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 701 /* GL_OES_draw_elements_base_vertex */, 11312}, /* glDrawElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 701 /* GL_OES_draw_elements_base_vertex */, 11312}, /* glDrawElementsBaseVertexOES */
     {DISPATCH_RESOLVE_VERSION, 37, OpenGL_Desktop_3_2, 11259}, /* glDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 37, OpenGL_ES_3_2, 11259}, /* glDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 37, 166 /* GL_ARB_draw_elements_base_vertex */, 11259}, /* glDrawElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 37, 363 /* GL_EXT_draw_elements_base_vertex */, 11284}, /* glDrawElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 366 /* GL_EXT_draw_elements_base_vertex */, 11284}, /* glDrawElementsBaseVertexEXT */
     {DISPATCH_RESOLVE_VERSION, 38, OpenGL_Desktop_4_0, 11340}, /* glDrawElementsIndirect */
     {DISPATCH_RESOLVE_VERSION, 38, OpenGL_ES_3_1, 11340}, /* glDrawElementsIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 38, 167 /* GL_ARB_draw_indirect */, 11340}, /* glDrawElementsIndirect */
@@ -6263,140 +6273,140 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 39, OpenGL_ES_3_0, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 39, 101 /* GL_ANGLE_instanced_arrays */, 11387}, /* glDrawElementsInstancedANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 39, 168 /* GL_ARB_draw_instanced */, 11416}, /* glDrawElementsInstancedARB */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 364 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 387 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 574 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 367 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 390 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 578 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
     {DISPATCH_RESOLVE_EXTENSION, 40, 101 /* GL_ANGLE_instanced_arrays */, 11387}, /* glDrawElementsInstancedANGLE */
     {DISPATCH_RESOLVE_VERSION, 40, OpenGL_Desktop_3_1, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_VERSION, 40, OpenGL_ES_3_0, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 40, 168 /* GL_ARB_draw_instanced */, 11416}, /* glDrawElementsInstancedARB */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 364 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 387 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 574 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 367 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 390 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 578 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
     {DISPATCH_RESOLVE_EXTENSION, 41, 168 /* GL_ARB_draw_instanced */, 11416}, /* glDrawElementsInstancedARB */
     {DISPATCH_RESOLVE_VERSION, 41, OpenGL_Desktop_3_1, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_VERSION, 41, OpenGL_ES_3_0, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 41, 101 /* GL_ANGLE_instanced_arrays */, 11387}, /* glDrawElementsInstancedANGLE */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 364 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 387 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 574 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 367 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 390 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 578 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
     {DISPATCH_RESOLVE_VERSION, 42, OpenGL_Desktop_4_2, 11443}, /* glDrawElementsInstancedBaseInstance */
     {DISPATCH_RESOLVE_EXTENSION, 42, 140 /* GL_ARB_base_instance */, 11443}, /* glDrawElementsInstancedBaseInstance */
-    {DISPATCH_RESOLVE_EXTENSION, 42, 331 /* GL_EXT_base_instance */, 11479}, /* glDrawElementsInstancedBaseInstanceEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 43, 331 /* GL_EXT_base_instance */, 11479}, /* glDrawElementsInstancedBaseInstanceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 334 /* GL_EXT_base_instance */, 11479}, /* glDrawElementsInstancedBaseInstanceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 334 /* GL_EXT_base_instance */, 11479}, /* glDrawElementsInstancedBaseInstanceEXT */
     {DISPATCH_RESOLVE_VERSION, 43, OpenGL_Desktop_4_2, 11443}, /* glDrawElementsInstancedBaseInstance */
     {DISPATCH_RESOLVE_EXTENSION, 43, 140 /* GL_ARB_base_instance */, 11443}, /* glDrawElementsInstancedBaseInstance */
     {DISPATCH_RESOLVE_VERSION, 44, OpenGL_Desktop_3_2, 11518}, /* glDrawElementsInstancedBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 44, OpenGL_ES_3_2, 11518}, /* glDrawElementsInstancedBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 44, 166 /* GL_ARB_draw_elements_base_vertex */, 11518}, /* glDrawElementsInstancedBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 44, 363 /* GL_EXT_draw_elements_base_vertex */, 11647}, /* glDrawElementsInstancedBaseVertexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 44, 697 /* GL_OES_draw_elements_base_vertex */, 11684}, /* glDrawElementsInstancedBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 366 /* GL_EXT_draw_elements_base_vertex */, 11647}, /* glDrawElementsInstancedBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 701 /* GL_OES_draw_elements_base_vertex */, 11684}, /* glDrawElementsInstancedBaseVertexOES */
     {DISPATCH_RESOLVE_VERSION, 45, OpenGL_Desktop_4_2, 11552}, /* glDrawElementsInstancedBaseVertexBaseInstance */
     {DISPATCH_RESOLVE_EXTENSION, 45, 140 /* GL_ARB_base_instance */, 11552}, /* glDrawElementsInstancedBaseVertexBaseInstance */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 331 /* GL_EXT_base_instance */, 11598}, /* glDrawElementsInstancedBaseVertexBaseInstanceEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 331 /* GL_EXT_base_instance */, 11598}, /* glDrawElementsInstancedBaseVertexBaseInstanceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 334 /* GL_EXT_base_instance */, 11598}, /* glDrawElementsInstancedBaseVertexBaseInstanceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 334 /* GL_EXT_base_instance */, 11598}, /* glDrawElementsInstancedBaseVertexBaseInstanceEXT */
     {DISPATCH_RESOLVE_VERSION, 46, OpenGL_Desktop_4_2, 11552}, /* glDrawElementsInstancedBaseVertexBaseInstance */
     {DISPATCH_RESOLVE_EXTENSION, 46, 140 /* GL_ARB_base_instance */, 11552}, /* glDrawElementsInstancedBaseVertexBaseInstance */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 363 /* GL_EXT_draw_elements_base_vertex */, 11647}, /* glDrawElementsInstancedBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 366 /* GL_EXT_draw_elements_base_vertex */, 11647}, /* glDrawElementsInstancedBaseVertexEXT */
     {DISPATCH_RESOLVE_VERSION, 47, OpenGL_Desktop_3_2, 11518}, /* glDrawElementsInstancedBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 47, OpenGL_ES_3_2, 11518}, /* glDrawElementsInstancedBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 47, 166 /* GL_ARB_draw_elements_base_vertex */, 11518}, /* glDrawElementsInstancedBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 697 /* GL_OES_draw_elements_base_vertex */, 11684}, /* glDrawElementsInstancedBaseVertexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 697 /* GL_OES_draw_elements_base_vertex */, 11684}, /* glDrawElementsInstancedBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 701 /* GL_OES_draw_elements_base_vertex */, 11684}, /* glDrawElementsInstancedBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 701 /* GL_OES_draw_elements_base_vertex */, 11684}, /* glDrawElementsInstancedBaseVertexOES */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_Desktop_3_2, 11518}, /* glDrawElementsInstancedBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_ES_3_2, 11518}, /* glDrawElementsInstancedBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 48, 166 /* GL_ARB_draw_elements_base_vertex */, 11518}, /* glDrawElementsInstancedBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 363 /* GL_EXT_draw_elements_base_vertex */, 11647}, /* glDrawElementsInstancedBaseVertexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 364 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 387 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 366 /* GL_EXT_draw_elements_base_vertex */, 11647}, /* glDrawElementsInstancedBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 367 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 390 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_3_1, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_ES_3_0, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 49, 101 /* GL_ANGLE_instanced_arrays */, 11387}, /* glDrawElementsInstancedANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 49, 168 /* GL_ARB_draw_instanced */, 11416}, /* glDrawElementsInstancedARB */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 574 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 574 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 578 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 578 /* GL_NV_draw_instanced */, 11748}, /* glDrawElementsInstancedNV */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_Desktop_3_1, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_ES_3_0, 11363}, /* glDrawElementsInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 50, 101 /* GL_ANGLE_instanced_arrays */, 11387}, /* glDrawElementsInstancedANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 50, 168 /* GL_ARB_draw_instanced */, 11416}, /* glDrawElementsInstancedARB */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 364 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 387 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 836 /* GL_SUN_mesh_array */, 11774}, /* glDrawMeshArraysSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 367 /* GL_EXT_draw_instanced */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 390 /* GL_EXT_instanced_arrays */, 11721}, /* glDrawElementsInstancedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 841 /* GL_SUN_mesh_array */, 11774}, /* glDrawMeshArraysSUN */
     {DISPATCH_RESOLVE_DIRECT, 52, OpenGL_Desktop_1_0, 11794}, /* glDrawPixels */
     {DISPATCH_RESOLVE_EXTENSION, 53, 114 /* GL_APPLE_element_array */, 11807}, /* glDrawRangeElementArrayAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 310 /* GL_ATI_element_array */, 11836}, /* glDrawRangeElementArrayATI */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 313 /* GL_ATI_element_array */, 11836}, /* glDrawRangeElementArrayATI */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_Desktop_1_2, 11863}, /* glDrawRangeElements */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_ES_3_0, 11863}, /* glDrawRangeElements */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 365 /* GL_EXT_draw_range_elements */, 11979}, /* glDrawRangeElementsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 368 /* GL_EXT_draw_range_elements */, 11979}, /* glDrawRangeElementsEXT */
     {DISPATCH_RESOLVE_VERSION, 56, OpenGL_Desktop_3_2, 11883}, /* glDrawRangeElementsBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 56, OpenGL_ES_3_2, 11883}, /* glDrawRangeElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 56, 166 /* GL_ARB_draw_elements_base_vertex */, 11883}, /* glDrawRangeElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 363 /* GL_EXT_draw_elements_base_vertex */, 11913}, /* glDrawRangeElementsBaseVertexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 697 /* GL_OES_draw_elements_base_vertex */, 11946}, /* glDrawRangeElementsBaseVertexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 363 /* GL_EXT_draw_elements_base_vertex */, 11913}, /* glDrawRangeElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 366 /* GL_EXT_draw_elements_base_vertex */, 11913}, /* glDrawRangeElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 701 /* GL_OES_draw_elements_base_vertex */, 11946}, /* glDrawRangeElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 366 /* GL_EXT_draw_elements_base_vertex */, 11913}, /* glDrawRangeElementsBaseVertexEXT */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_Desktop_3_2, 11883}, /* glDrawRangeElementsBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_ES_3_2, 11883}, /* glDrawRangeElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 57, 166 /* GL_ARB_draw_elements_base_vertex */, 11883}, /* glDrawRangeElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 697 /* GL_OES_draw_elements_base_vertex */, 11946}, /* glDrawRangeElementsBaseVertexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 697 /* GL_OES_draw_elements_base_vertex */, 11946}, /* glDrawRangeElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 701 /* GL_OES_draw_elements_base_vertex */, 11946}, /* glDrawRangeElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 701 /* GL_OES_draw_elements_base_vertex */, 11946}, /* glDrawRangeElementsBaseVertexOES */
     {DISPATCH_RESOLVE_VERSION, 58, OpenGL_Desktop_3_2, 11883}, /* glDrawRangeElementsBaseVertex */
     {DISPATCH_RESOLVE_VERSION, 58, OpenGL_ES_3_2, 11883}, /* glDrawRangeElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 58, 166 /* GL_ARB_draw_elements_base_vertex */, 11883}, /* glDrawRangeElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 363 /* GL_EXT_draw_elements_base_vertex */, 11913}, /* glDrawRangeElementsBaseVertexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 59, 365 /* GL_EXT_draw_range_elements */, 11979}, /* glDrawRangeElementsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 366 /* GL_EXT_draw_elements_base_vertex */, 11913}, /* glDrawRangeElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 59, 368 /* GL_EXT_draw_range_elements */, 11979}, /* glDrawRangeElementsEXT */
     {DISPATCH_RESOLVE_VERSION, 59, OpenGL_Desktop_1_2, 11863}, /* glDrawRangeElements */
     {DISPATCH_RESOLVE_VERSION, 59, OpenGL_ES_3_0, 11863}, /* glDrawRangeElements */
-    {DISPATCH_RESOLVE_EXTENSION, 60, 698 /* GL_OES_draw_texture */, 12002}, /* glDrawTexfOES */
-    {DISPATCH_RESOLVE_EXTENSION, 61, 698 /* GL_OES_draw_texture */, 12016}, /* glDrawTexfvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 698 /* GL_OES_draw_texture */, 12031}, /* glDrawTexiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 698 /* GL_OES_draw_texture */, 12045}, /* glDrawTexivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 698 /* GL_OES_draw_texture */, 12060}, /* glDrawTexsOES */
-    {DISPATCH_RESOLVE_EXTENSION, 65, 698 /* GL_OES_draw_texture */, 12074}, /* glDrawTexsvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 66, 575 /* GL_NV_draw_texture */, 12089}, /* glDrawTextureNV */
-    {DISPATCH_RESOLVE_EXTENSION, 67, 698 /* GL_OES_draw_texture */, 12105}, /* glDrawTexxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 68, 698 /* GL_OES_draw_texture */, 12119}, /* glDrawTexxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 60, 702 /* GL_OES_draw_texture */, 12002}, /* glDrawTexfOES */
+    {DISPATCH_RESOLVE_EXTENSION, 61, 702 /* GL_OES_draw_texture */, 12016}, /* glDrawTexfvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 702 /* GL_OES_draw_texture */, 12031}, /* glDrawTexiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 702 /* GL_OES_draw_texture */, 12045}, /* glDrawTexivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 702 /* GL_OES_draw_texture */, 12060}, /* glDrawTexsOES */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 702 /* GL_OES_draw_texture */, 12074}, /* glDrawTexsvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 579 /* GL_NV_draw_texture */, 12089}, /* glDrawTextureNV */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 702 /* GL_OES_draw_texture */, 12105}, /* glDrawTexxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 68, 702 /* GL_OES_draw_texture */, 12119}, /* glDrawTexxvOES */
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_Desktop_4_0, 12134}, /* glDrawTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 69, 285 /* GL_ARB_transform_feedback2 */, 12134}, /* glDrawTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 69, 665 /* GL_NV_transform_feedback2 */, 12191}, /* glDrawTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 69, 669 /* GL_NV_transform_feedback2 */, 12191}, /* glDrawTransformFeedbackNV */
     {DISPATCH_RESOLVE_VERSION, 70, OpenGL_Desktop_4_2, 12158}, /* glDrawTransformFeedbackInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 70, 287 /* GL_ARB_transform_feedback_instanced */, 12158}, /* glDrawTransformFeedbackInstanced */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 665 /* GL_NV_transform_feedback2 */, 12191}, /* glDrawTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 669 /* GL_NV_transform_feedback2 */, 12191}, /* glDrawTransformFeedbackNV */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_Desktop_4_0, 12134}, /* glDrawTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 71, 285 /* GL_ARB_transform_feedback2 */, 12134}, /* glDrawTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 72, OpenGL_Desktop_4_0, 12217}, /* glDrawTransformFeedbackStream */
     {DISPATCH_RESOLVE_EXTENSION, 72, 286 /* GL_ARB_transform_feedback3 */, 12217}, /* glDrawTransformFeedbackStream */
     {DISPATCH_RESOLVE_VERSION, 73, OpenGL_Desktop_4_2, 12247}, /* glDrawTransformFeedbackStreamInstanced */
     {DISPATCH_RESOLVE_EXTENSION, 73, 287 /* GL_ARB_transform_feedback_instanced */, 12247}, /* glDrawTransformFeedbackStreamInstanced */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 682 /* GL_OES_EGL_image */, 12286}, /* glEGLImageTargetRenderbufferStorageOES */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 682 /* GL_OES_EGL_image */, 12325}, /* glEGLImageTargetTexture2DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 686 /* GL_OES_EGL_image */, 12286}, /* glEGLImageTargetRenderbufferStorageOES */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 686 /* GL_OES_EGL_image */, 12325}, /* glEGLImageTargetTexture2DOES */
     {DISPATCH_RESOLVE_DIRECT, 76, OpenGL_Desktop_1_0, 12354}, /* glEdgeFlag */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 671 /* GL_NV_vertex_buffer_unified_memory */, 12365}, /* glEdgeFlagFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 675 /* GL_NV_vertex_buffer_unified_memory */, 12365}, /* glEdgeFlagFormatNV */
     {DISPATCH_RESOLVE_VERSION, 78, OpenGL_Desktop_1_1, 12384}, /* glEdgeFlagPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 79, 489 /* GL_EXT_vertex_array */, 12402}, /* glEdgeFlagPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 80, 510 /* GL_IBM_vertex_array_lists */, 12423}, /* glEdgeFlagPointerListIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 493 /* GL_EXT_vertex_array */, 12402}, /* glEdgeFlagPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 80, 514 /* GL_IBM_vertex_array_lists */, 12423}, /* glEdgeFlagPointerListIBM */
     {DISPATCH_RESOLVE_DIRECT, 81, OpenGL_Desktop_1_0, 12448}, /* glEdgeFlagv */
     {DISPATCH_RESOLVE_EXTENSION, 82, 114 /* GL_APPLE_element_array */, 12460}, /* glElementPointerAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 310 /* GL_ATI_element_array */, 12482}, /* glElementPointerATI */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 313 /* GL_ATI_element_array */, 12482}, /* glElementPointerATI */
     {DISPATCH_RESOLVE_DIRECT, 84, OpenGL_Desktop_1_0, 12502}, /* glEnable */
     {DISPATCH_RESOLVE_DIRECT, 84, OpenGL_ES_1_0, 12502}, /* glEnable */
     {DISPATCH_RESOLVE_DIRECT, 84, OpenGL_ES_2_0, 12502}, /* glEnable */
     {DISPATCH_RESOLVE_VERSION, 85, OpenGL_Desktop_1_1, 12511}, /* glEnableClientState */
     {DISPATCH_RESOLVE_DIRECT, 85, OpenGL_ES_1_0, 12511}, /* glEnableClientState */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 357 /* GL_EXT_direct_state_access */, 12531}, /* glEnableClientStateIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 357 /* GL_EXT_direct_state_access */, 12561}, /* glEnableClientStateiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 763 /* GL_QCOM_driver_control */, 12585}, /* glEnableDriverControlQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 357 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 361 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 360 /* GL_EXT_direct_state_access */, 12531}, /* glEnableClientStateIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 360 /* GL_EXT_direct_state_access */, 12561}, /* glEnableClientStateiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 767 /* GL_QCOM_driver_control */, 12585}, /* glEnableDriverControlQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 360 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 364 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 89, OpenGL_Desktop_3_0, 12819}, /* glEnablei */
     {DISPATCH_RESOLVE_VERSION, 89, OpenGL_ES_3_2, 12819}, /* glEnablei */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 362 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 679 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 696 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 90, 494 /* GL_EXT_vertex_shader */, 12630}, /* glEnableVariantClientStateEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 365 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 683 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 700 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 498 /* GL_EXT_vertex_shader */, 12630}, /* glEnableVariantClientStateEXT */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_Desktop_4_5, 12660}, /* glEnableVertexArrayAttrib */
     {DISPATCH_RESOLVE_EXTENSION, 91, 163 /* GL_ARB_direct_state_access */, 12660}, /* glEnableVertexArrayAttrib */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 357 /* GL_EXT_direct_state_access */, 12686}, /* glEnableVertexArrayAttribEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 357 /* GL_EXT_direct_state_access */, 12715}, /* glEnableVertexArrayEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 360 /* GL_EXT_direct_state_access */, 12686}, /* glEnableVertexArrayAttribEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 360 /* GL_EXT_direct_state_access */, 12715}, /* glEnableVertexArrayEXT */
     {DISPATCH_RESOLVE_EXTENSION, 94, 133 /* GL_APPLE_vertex_program_evaluators */, 12738}, /* glEnableVertexAttribAPPLE */
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_Desktop_2_0, 12764}, /* glEnableVertexAttribArray */
     {DISPATCH_RESOLVE_DIRECT, 95, OpenGL_ES_2_0, 12764}, /* glEnableVertexAttribArray */
@@ -6408,106 +6418,106 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 96, OpenGL_ES_2_0, 12764}, /* glEnableVertexAttribArray */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_Desktop_3_0, 12819}, /* glEnablei */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_ES_3_2, 12819}, /* glEnablei */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 357 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 361 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 362 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 679 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 696 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 362 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 357 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 361 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 360 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 364 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 365 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 683 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 700 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 365 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 360 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 364 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 98, OpenGL_Desktop_3_0, 12819}, /* glEnablei */
     {DISPATCH_RESOLVE_VERSION, 98, OpenGL_ES_3_2, 12819}, /* glEnablei */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 679 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 696 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 679 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 357 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 361 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 683 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 700 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 683 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 360 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 364 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 99, OpenGL_Desktop_3_0, 12819}, /* glEnablei */
     {DISPATCH_RESOLVE_VERSION, 99, OpenGL_ES_3_2, 12819}, /* glEnablei */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 362 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 696 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 696 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 357 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 361 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 365 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 700 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 700 /* GL_OES_draw_buffers_indexed */, 12854}, /* glEnableiOES */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 360 /* GL_EXT_direct_state_access */, 12611}, /* glEnableIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 364 /* GL_EXT_draw_buffers2 */, 12611}, /* glEnableIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 100, OpenGL_Desktop_3_0, 12819}, /* glEnablei */
     {DISPATCH_RESOLVE_VERSION, 100, OpenGL_ES_3_2, 12819}, /* glEnablei */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 362 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 679 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 365 /* GL_EXT_draw_buffers_indexed */, 12829}, /* glEnableiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 683 /* GL_NV_viewport_array */, 12842}, /* glEnableiNV */
     {DISPATCH_RESOLVE_DIRECT, 101, OpenGL_Desktop_1_0, 12867}, /* glEnd */
     {DISPATCH_RESOLVE_VERSION, 102, OpenGL_Desktop_3_0, 12873}, /* glEndConditionalRender */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 561 /* GL_NV_conditional_render */, 12896}, /* glEndConditionalRenderNV */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 549 /* GL_NVX_conditional_render */, 12921}, /* glEndConditionalRenderNVX */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 561 /* GL_NV_conditional_render */, 12896}, /* glEndConditionalRenderNV */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 565 /* GL_NV_conditional_render */, 12896}, /* glEndConditionalRenderNV */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 553 /* GL_NVX_conditional_render */, 12921}, /* glEndConditionalRenderNVX */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 565 /* GL_NV_conditional_render */, 12896}, /* glEndConditionalRenderNV */
     {DISPATCH_RESOLVE_VERSION, 103, OpenGL_Desktop_3_0, 12873}, /* glEndConditionalRender */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 549 /* GL_NVX_conditional_render */, 12921}, /* glEndConditionalRenderNVX */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 549 /* GL_NVX_conditional_render */, 12921}, /* glEndConditionalRenderNVX */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 553 /* GL_NVX_conditional_render */, 12921}, /* glEndConditionalRenderNVX */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 553 /* GL_NVX_conditional_render */, 12921}, /* glEndConditionalRenderNVX */
     {DISPATCH_RESOLVE_VERSION, 104, OpenGL_Desktop_3_0, 12873}, /* glEndConditionalRender */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 561 /* GL_NV_conditional_render */, 12896}, /* glEndConditionalRenderNV */
-    {DISPATCH_RESOLVE_EXTENSION, 105, 312 /* GL_ATI_fragment_shader */, 12947}, /* glEndFragmentShaderATI */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 565 /* GL_NV_conditional_render */, 12896}, /* glEndConditionalRenderNV */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 315 /* GL_ATI_fragment_shader */, 12947}, /* glEndFragmentShaderATI */
     {DISPATCH_RESOLVE_DIRECT, 106, OpenGL_Desktop_1_0, 12970}, /* glEndList */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 611 /* GL_NV_occlusion_query */, 12980}, /* glEndOcclusionQueryNV */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 615 /* GL_NV_occlusion_query */, 12980}, /* glEndOcclusionQueryNV */
     {DISPATCH_RESOLVE_EXTENSION, 108, 77 /* GL_AMD_performance_monitor */, 13002}, /* glEndPerfMonitorAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 109, 529 /* GL_INTEL_performance_query */, 13022}, /* glEndPerfQueryINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 533 /* GL_INTEL_performance_query */, 13022}, /* glEndPerfQueryINTEL */
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_Desktop_1_5, 13042}, /* glEndQuery */
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_ES_3_0, 13042}, /* glEndQuery */
     {DISPATCH_RESOLVE_EXTENSION, 110, 203 /* GL_ARB_occlusion_query */, 13053}, /* glEndQueryARB */
     {DISPATCH_RESOLVE_EXTENSION, 111, 203 /* GL_ARB_occlusion_query */, 13053}, /* glEndQueryARB */
     {DISPATCH_RESOLVE_VERSION, 111, OpenGL_Desktop_1_5, 13042}, /* glEndQuery */
     {DISPATCH_RESOLVE_VERSION, 111, OpenGL_ES_3_0, 13042}, /* glEndQuery */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 359 /* GL_EXT_disjoint_timer_query */, 13067}, /* glEndQueryEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 397 /* GL_EXT_occlusion_query_boolean */, 13067}, /* glEndQueryEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 362 /* GL_EXT_disjoint_timer_query */, 13067}, /* glEndQueryEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 400 /* GL_EXT_occlusion_query_boolean */, 13067}, /* glEndQueryEXT */
     {DISPATCH_RESOLVE_VERSION, 113, OpenGL_Desktop_4_0, 13081}, /* glEndQueryIndexed */
     {DISPATCH_RESOLVE_EXTENSION, 113, 286 /* GL_ARB_transform_feedback3 */, 13081}, /* glEndQueryIndexed */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 767 /* GL_QCOM_tiled_rendering */, 13099}, /* glEndTilingQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 771 /* GL_QCOM_tiled_rendering */, 13099}, /* glEndTilingQCOM */
     {DISPATCH_RESOLVE_VERSION, 115, OpenGL_Desktop_3_0, 13115}, /* glEndTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 115, OpenGL_ES_3_0, 13115}, /* glEndTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 487 /* GL_EXT_transform_feedback */, 13138}, /* glEndTransformFeedbackEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 664 /* GL_NV_transform_feedback */, 13164}, /* glEndTransformFeedbackNV */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 487 /* GL_EXT_transform_feedback */, 13138}, /* glEndTransformFeedbackEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 491 /* GL_EXT_transform_feedback */, 13138}, /* glEndTransformFeedbackEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 668 /* GL_NV_transform_feedback */, 13164}, /* glEndTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 491 /* GL_EXT_transform_feedback */, 13138}, /* glEndTransformFeedbackEXT */
     {DISPATCH_RESOLVE_VERSION, 116, OpenGL_Desktop_3_0, 13115}, /* glEndTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 116, OpenGL_ES_3_0, 13115}, /* glEndTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 664 /* GL_NV_transform_feedback */, 13164}, /* glEndTransformFeedbackNV */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 664 /* GL_NV_transform_feedback */, 13164}, /* glEndTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 668 /* GL_NV_transform_feedback */, 13164}, /* glEndTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 668 /* GL_NV_transform_feedback */, 13164}, /* glEndTransformFeedbackNV */
     {DISPATCH_RESOLVE_VERSION, 117, OpenGL_Desktop_3_0, 13115}, /* glEndTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 117, OpenGL_ES_3_0, 13115}, /* glEndTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 487 /* GL_EXT_transform_feedback */, 13138}, /* glEndTransformFeedbackEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 118, 494 /* GL_EXT_vertex_shader */, 13189}, /* glEndVertexShaderEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 678 /* GL_NV_video_capture */, 13210}, /* glEndVideoCaptureNV */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 491 /* GL_EXT_transform_feedback */, 13138}, /* glEndTransformFeedbackEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 498 /* GL_EXT_vertex_shader */, 13189}, /* glEndVertexShaderEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 682 /* GL_NV_video_capture */, 13210}, /* glEndVideoCaptureNV */
     {DISPATCH_RESOLVE_DIRECT, 120, OpenGL_Desktop_1_0, 13230}, /* glEvalCoord1d */
     {DISPATCH_RESOLVE_DIRECT, 121, OpenGL_Desktop_1_0, 13244}, /* glEvalCoord1dv */
     {DISPATCH_RESOLVE_DIRECT, 122, OpenGL_Desktop_1_0, 13259}, /* glEvalCoord1f */
     {DISPATCH_RESOLVE_DIRECT, 123, OpenGL_Desktop_1_0, 13273}, /* glEvalCoord1fv */
-    {DISPATCH_RESOLVE_EXTENSION, 124, 702 /* GL_OES_fixed_point */, 13288}, /* glEvalCoord1xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 702 /* GL_OES_fixed_point */, 13305}, /* glEvalCoord1xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 124, 706 /* GL_OES_fixed_point */, 13288}, /* glEvalCoord1xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 706 /* GL_OES_fixed_point */, 13305}, /* glEvalCoord1xvOES */
     {DISPATCH_RESOLVE_DIRECT, 126, OpenGL_Desktop_1_0, 13323}, /* glEvalCoord2d */
     {DISPATCH_RESOLVE_DIRECT, 127, OpenGL_Desktop_1_0, 13337}, /* glEvalCoord2dv */
     {DISPATCH_RESOLVE_DIRECT, 128, OpenGL_Desktop_1_0, 13352}, /* glEvalCoord2f */
     {DISPATCH_RESOLVE_DIRECT, 129, OpenGL_Desktop_1_0, 13366}, /* glEvalCoord2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 702 /* GL_OES_fixed_point */, 13381}, /* glEvalCoord2xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 702 /* GL_OES_fixed_point */, 13398}, /* glEvalCoord2xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 576 /* GL_NV_evaluators */, 13416}, /* glEvalMapsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 706 /* GL_OES_fixed_point */, 13381}, /* glEvalCoord2xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 706 /* GL_OES_fixed_point */, 13398}, /* glEvalCoord2xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 580 /* GL_NV_evaluators */, 13416}, /* glEvalMapsNV */
     {DISPATCH_RESOLVE_DIRECT, 133, OpenGL_Desktop_1_0, 13429}, /* glEvalMesh1 */
     {DISPATCH_RESOLVE_DIRECT, 134, OpenGL_Desktop_1_0, 13441}, /* glEvalMesh2 */
     {DISPATCH_RESOLVE_DIRECT, 135, OpenGL_Desktop_1_0, 13453}, /* glEvalPoint1 */
     {DISPATCH_RESOLVE_DIRECT, 136, OpenGL_Desktop_1_0, 13466}, /* glEvalPoint2 */
     {DISPATCH_RESOLVE_EXTENSION, 137, 217 /* GL_ARB_sample_locations */, 13479}, /* glEvaluateDepthValuesARB */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 672 /* GL_NV_vertex_program */, 13504}, /* glExecuteProgramNV */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 764 /* GL_QCOM_extended_get */, 13523}, /* glExtGetBufferPointervQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 764 /* GL_QCOM_extended_get */, 13550}, /* glExtGetBuffersQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 764 /* GL_QCOM_extended_get */, 13570}, /* glExtGetFramebuffersQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 765 /* GL_QCOM_extended_get2 */, 13595}, /* glExtGetProgramBinarySourceQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 765 /* GL_QCOM_extended_get2 */, 13627}, /* glExtGetProgramsQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 764 /* GL_QCOM_extended_get */, 13648}, /* glExtGetRenderbuffersQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 765 /* GL_QCOM_extended_get2 */, 13674}, /* glExtGetShadersQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 764 /* GL_QCOM_extended_get */, 13694}, /* glExtGetTexLevelParameterivQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 764 /* GL_QCOM_extended_get */, 13726}, /* glExtGetTexSubImageQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 764 /* GL_QCOM_extended_get */, 13750}, /* glExtGetTexturesQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 765 /* GL_QCOM_extended_get2 */, 13771}, /* glExtIsProgramBinaryQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 764 /* GL_QCOM_extended_get */, 13796}, /* glExtTexObjectStateOverrideiQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 151, 494 /* GL_EXT_vertex_shader */, 13829}, /* glExtractComponentEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 676 /* GL_NV_vertex_program */, 13504}, /* glExecuteProgramNV */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 768 /* GL_QCOM_extended_get */, 13523}, /* glExtGetBufferPointervQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 768 /* GL_QCOM_extended_get */, 13550}, /* glExtGetBuffersQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 768 /* GL_QCOM_extended_get */, 13570}, /* glExtGetFramebuffersQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 769 /* GL_QCOM_extended_get2 */, 13595}, /* glExtGetProgramBinarySourceQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 769 /* GL_QCOM_extended_get2 */, 13627}, /* glExtGetProgramsQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 768 /* GL_QCOM_extended_get */, 13648}, /* glExtGetRenderbuffersQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 769 /* GL_QCOM_extended_get2 */, 13674}, /* glExtGetShadersQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 768 /* GL_QCOM_extended_get */, 13694}, /* glExtGetTexLevelParameterivQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 768 /* GL_QCOM_extended_get */, 13726}, /* glExtGetTexSubImageQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 768 /* GL_QCOM_extended_get */, 13750}, /* glExtGetTexturesQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 769 /* GL_QCOM_extended_get2 */, 13771}, /* glExtIsProgramBinaryQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 768 /* GL_QCOM_extended_get */, 13796}, /* glExtTexObjectStateOverrideiQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 151, 498 /* GL_EXT_vertex_shader */, 13829}, /* glExtractComponentEXT */
     {DISPATCH_RESOLVE_DIRECT, 152, OpenGL_Desktop_1_0, 13851}, /* glFeedbackBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 153, 702 /* GL_OES_fixed_point */, 13868}, /* glFeedbackBufferxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 153, 706 /* GL_OES_fixed_point */, 13868}, /* glFeedbackBufferxOES */
     {DISPATCH_RESOLVE_VERSION, 154, OpenGL_Desktop_3_2, 13889}, /* glFenceSync */
     {DISPATCH_RESOLVE_VERSION, 154, OpenGL_ES_3_0, 13889}, /* glFenceSync */
     {DISPATCH_RESOLVE_EXTENSION, 154, 251 /* GL_ARB_sync */, 13889}, /* glFenceSync */
@@ -6516,15 +6526,15 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 155, OpenGL_Desktop_3_2, 13889}, /* glFenceSync */
     {DISPATCH_RESOLVE_VERSION, 155, OpenGL_ES_3_0, 13889}, /* glFenceSync */
     {DISPATCH_RESOLVE_EXTENSION, 155, 251 /* GL_ARB_sync */, 13889}, /* glFenceSync */
-    {DISPATCH_RESOLVE_EXTENSION, 156, 629 /* GL_NV_register_combiners */, 13918}, /* glFinalCombinerInputNV */
+    {DISPATCH_RESOLVE_EXTENSION, 156, 633 /* GL_NV_register_combiners */, 13918}, /* glFinalCombinerInputNV */
     {DISPATCH_RESOLVE_DIRECT, 157, OpenGL_Desktop_1_0, 13941}, /* glFinish */
     {DISPATCH_RESOLVE_DIRECT, 157, OpenGL_ES_1_0, 13941}, /* glFinish */
     {DISPATCH_RESOLVE_DIRECT, 157, OpenGL_ES_2_0, 13941}, /* glFinish */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 787 /* GL_SGIX_async */, 13950}, /* glFinishAsyncSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 792 /* GL_SGIX_async */, 13950}, /* glFinishAsyncSGIX */
     {DISPATCH_RESOLVE_EXTENSION, 159, 115 /* GL_APPLE_fence */, 13968}, /* glFinishFenceAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 580 /* GL_NV_fence */, 13987}, /* glFinishFenceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 584 /* GL_NV_fence */, 13987}, /* glFinishFenceNV */
     {DISPATCH_RESOLVE_EXTENSION, 161, 115 /* GL_APPLE_fence */, 14003}, /* glFinishObjectAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 162, 833 /* GL_SUNX_constant_data */, 14023}, /* glFinishTextureSUNX */
+    {DISPATCH_RESOLVE_EXTENSION, 162, 838 /* GL_SUNX_constant_data */, 14023}, /* glFinishTextureSUNX */
     {DISPATCH_RESOLVE_DIRECT, 163, OpenGL_Desktop_1_0, 14043}, /* glFlush */
     {DISPATCH_RESOLVE_DIRECT, 163, OpenGL_ES_1_0, 14043}, /* glFlush */
     {DISPATCH_RESOLVE_DIRECT, 163, OpenGL_ES_2_0, 14043}, /* glFlush */
@@ -6532,50 +6542,50 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 164, OpenGL_ES_3_0, 14051}, /* glFlushMappedBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 164, 197 /* GL_ARB_map_buffer_range */, 14051}, /* glFlushMappedBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 164, 117 /* GL_APPLE_flush_buffer_range */, 14076}, /* glFlushMappedBufferRangeAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 164, 389 /* GL_EXT_map_buffer_range */, 14106}, /* glFlushMappedBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 164, 392 /* GL_EXT_map_buffer_range */, 14106}, /* glFlushMappedBufferRangeEXT */
     {DISPATCH_RESOLVE_EXTENSION, 165, 117 /* GL_APPLE_flush_buffer_range */, 14076}, /* glFlushMappedBufferRangeAPPLE */
     {DISPATCH_RESOLVE_VERSION, 165, OpenGL_Desktop_3_0, 14051}, /* glFlushMappedBufferRange */
     {DISPATCH_RESOLVE_VERSION, 165, OpenGL_ES_3_0, 14051}, /* glFlushMappedBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 165, 197 /* GL_ARB_map_buffer_range */, 14051}, /* glFlushMappedBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 165, 389 /* GL_EXT_map_buffer_range */, 14106}, /* glFlushMappedBufferRangeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 166, 389 /* GL_EXT_map_buffer_range */, 14106}, /* glFlushMappedBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 165, 392 /* GL_EXT_map_buffer_range */, 14106}, /* glFlushMappedBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 166, 392 /* GL_EXT_map_buffer_range */, 14106}, /* glFlushMappedBufferRangeEXT */
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_Desktop_3_0, 14051}, /* glFlushMappedBufferRange */
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_ES_3_0, 14051}, /* glFlushMappedBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 166, 197 /* GL_ARB_map_buffer_range */, 14051}, /* glFlushMappedBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 166, 117 /* GL_APPLE_flush_buffer_range */, 14076}, /* glFlushMappedBufferRangeAPPLE */
     {DISPATCH_RESOLVE_VERSION, 167, OpenGL_Desktop_4_5, 14134}, /* glFlushMappedNamedBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 167, 163 /* GL_ARB_direct_state_access */, 14134}, /* glFlushMappedNamedBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 168, 357 /* GL_EXT_direct_state_access */, 14164}, /* glFlushMappedNamedBufferRangeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 169, 619 /* GL_NV_pixel_data_range */, 14197}, /* glFlushPixelDataRangeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 170, 796 /* GL_SGIX_flush_raster */, 14221}, /* glFlushRasterSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 508 /* GL_IBM_static_data */, 14239}, /* glFlushStaticDataIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 168, 360 /* GL_EXT_direct_state_access */, 14164}, /* glFlushMappedNamedBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 169, 623 /* GL_NV_pixel_data_range */, 14197}, /* glFlushPixelDataRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 170, 801 /* GL_SGIX_flush_raster */, 14221}, /* glFlushRasterSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 512 /* GL_IBM_static_data */, 14239}, /* glFlushStaticDataIBM */
     {DISPATCH_RESOLVE_EXTENSION, 172, 132 /* GL_APPLE_vertex_array_range */, 14260}, /* glFlushVertexArrayRangeAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 173, 668 /* GL_NV_vertex_array_range */, 14289}, /* glFlushVertexArrayRangeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 671 /* GL_NV_vertex_buffer_unified_memory */, 14315}, /* glFogCoordFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 173, 672 /* GL_NV_vertex_array_range */, 14289}, /* glFlushVertexArrayRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 675 /* GL_NV_vertex_buffer_unified_memory */, 14315}, /* glFogCoordFormatNV */
     {DISPATCH_RESOLVE_VERSION, 175, OpenGL_Desktop_1_4, 14334}, /* glFogCoordPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 367 /* GL_EXT_fog_coord */, 14352}, /* glFogCoordPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 367 /* GL_EXT_fog_coord */, 14352}, /* glFogCoordPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 370 /* GL_EXT_fog_coord */, 14352}, /* glFogCoordPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 370 /* GL_EXT_fog_coord */, 14352}, /* glFogCoordPointerEXT */
     {DISPATCH_RESOLVE_VERSION, 176, OpenGL_Desktop_1_4, 14334}, /* glFogCoordPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 510 /* GL_IBM_vertex_array_lists */, 14373}, /* glFogCoordPointerListIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 514 /* GL_IBM_vertex_array_lists */, 14373}, /* glFogCoordPointerListIBM */
     {DISPATCH_RESOLVE_VERSION, 178, OpenGL_Desktop_1_4, 14398}, /* glFogCoordd */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 367 /* GL_EXT_fog_coord */, 14410}, /* glFogCoorddEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 179, 367 /* GL_EXT_fog_coord */, 14410}, /* glFogCoorddEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 370 /* GL_EXT_fog_coord */, 14410}, /* glFogCoorddEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 179, 370 /* GL_EXT_fog_coord */, 14410}, /* glFogCoorddEXT */
     {DISPATCH_RESOLVE_VERSION, 179, OpenGL_Desktop_1_4, 14398}, /* glFogCoordd */
     {DISPATCH_RESOLVE_VERSION, 180, OpenGL_Desktop_1_4, 14425}, /* glFogCoorddv */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 367 /* GL_EXT_fog_coord */, 14438}, /* glFogCoorddvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 367 /* GL_EXT_fog_coord */, 14438}, /* glFogCoorddvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 370 /* GL_EXT_fog_coord */, 14438}, /* glFogCoorddvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 370 /* GL_EXT_fog_coord */, 14438}, /* glFogCoorddvEXT */
     {DISPATCH_RESOLVE_VERSION, 181, OpenGL_Desktop_1_4, 14425}, /* glFogCoorddv */
     {DISPATCH_RESOLVE_VERSION, 182, OpenGL_Desktop_1_4, 14454}, /* glFogCoordf */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 367 /* GL_EXT_fog_coord */, 14466}, /* glFogCoordfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 367 /* GL_EXT_fog_coord */, 14466}, /* glFogCoordfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 370 /* GL_EXT_fog_coord */, 14466}, /* glFogCoordfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 370 /* GL_EXT_fog_coord */, 14466}, /* glFogCoordfEXT */
     {DISPATCH_RESOLVE_VERSION, 183, OpenGL_Desktop_1_4, 14454}, /* glFogCoordf */
     {DISPATCH_RESOLVE_VERSION, 184, OpenGL_Desktop_1_4, 14481}, /* glFogCoordfv */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 367 /* GL_EXT_fog_coord */, 14494}, /* glFogCoordfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 367 /* GL_EXT_fog_coord */, 14494}, /* glFogCoordfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 370 /* GL_EXT_fog_coord */, 14494}, /* glFogCoordfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 370 /* GL_EXT_fog_coord */, 14494}, /* glFogCoordfvEXT */
     {DISPATCH_RESOLVE_VERSION, 185, OpenGL_Desktop_1_4, 14481}, /* glFogCoordfv */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 603 /* GL_NV_half_float */, 14510}, /* glFogCoordhNV */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 603 /* GL_NV_half_float */, 14524}, /* glFogCoordhvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 188, 773 /* GL_SGIS_fog_function */, 14539}, /* glFogFuncSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 607 /* GL_NV_half_float */, 14510}, /* glFogCoordhNV */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 607 /* GL_NV_half_float */, 14524}, /* glFogCoordhvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 188, 777 /* GL_SGIS_fog_function */, 14539}, /* glFogFuncSGIS */
     {DISPATCH_RESOLVE_DIRECT, 189, OpenGL_Desktop_1_0, 14553}, /* glFogf */
     {DISPATCH_RESOLVE_DIRECT, 189, OpenGL_ES_1_0, 14553}, /* glFogf */
     {DISPATCH_RESOLVE_DIRECT, 190, OpenGL_Desktop_1_0, 14560}, /* glFogfv */
@@ -6583,132 +6593,132 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 191, OpenGL_Desktop_1_0, 14568}, /* glFogi */
     {DISPATCH_RESOLVE_DIRECT, 192, OpenGL_Desktop_1_0, 14575}, /* glFogiv */
     {DISPATCH_RESOLVE_DIRECT, 193, OpenGL_ES_1_0, 14583}, /* glFogx */
-    {DISPATCH_RESOLVE_EXTENSION, 194, 702 /* GL_OES_fixed_point */, 14590}, /* glFogxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 194, 706 /* GL_OES_fixed_point */, 14590}, /* glFogxOES */
     {DISPATCH_RESOLVE_DIRECT, 195, OpenGL_ES_1_0, 14600}, /* glFogxv */
-    {DISPATCH_RESOLVE_EXTENSION, 196, 702 /* GL_OES_fixed_point */, 14608}, /* glFogxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 197, 799 /* GL_SGIX_fragment_lighting */, 14619}, /* glFragmentColorMaterialSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 584 /* GL_NV_fragment_coverage_to_color */, 14647}, /* glFragmentCoverageColorNV */
-    {DISPATCH_RESOLVE_EXTENSION, 199, 799 /* GL_SGIX_fragment_lighting */, 14673}, /* glFragmentLightModelfSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 799 /* GL_SGIX_fragment_lighting */, 14699}, /* glFragmentLightModelfvSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 201, 799 /* GL_SGIX_fragment_lighting */, 14726}, /* glFragmentLightModeliSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 202, 799 /* GL_SGIX_fragment_lighting */, 14752}, /* glFragmentLightModelivSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 203, 799 /* GL_SGIX_fragment_lighting */, 14779}, /* glFragmentLightfSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 799 /* GL_SGIX_fragment_lighting */, 14800}, /* glFragmentLightfvSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 205, 799 /* GL_SGIX_fragment_lighting */, 14822}, /* glFragmentLightiSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 799 /* GL_SGIX_fragment_lighting */, 14843}, /* glFragmentLightivSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 207, 799 /* GL_SGIX_fragment_lighting */, 14865}, /* glFragmentMaterialfSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 799 /* GL_SGIX_fragment_lighting */, 14889}, /* glFragmentMaterialfvSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 799 /* GL_SGIX_fragment_lighting */, 14914}, /* glFragmentMaterialiSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 799 /* GL_SGIX_fragment_lighting */, 14938}, /* glFragmentMaterialivSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 211, 499 /* GL_GREMEDY_frame_terminator */, 14963}, /* glFrameTerminatorGREMEDY */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 801 /* GL_SGIX_framezoom */, 14988}, /* glFrameZoomSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 357 /* GL_EXT_direct_state_access */, 15004}, /* glFramebufferDrawBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 357 /* GL_EXT_direct_state_access */, 15031}, /* glFramebufferDrawBuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 196, 706 /* GL_OES_fixed_point */, 14608}, /* glFogxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 197, 804 /* GL_SGIX_fragment_lighting */, 14619}, /* glFragmentColorMaterialSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 588 /* GL_NV_fragment_coverage_to_color */, 14647}, /* glFragmentCoverageColorNV */
+    {DISPATCH_RESOLVE_EXTENSION, 199, 804 /* GL_SGIX_fragment_lighting */, 14673}, /* glFragmentLightModelfSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 804 /* GL_SGIX_fragment_lighting */, 14699}, /* glFragmentLightModelfvSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 201, 804 /* GL_SGIX_fragment_lighting */, 14726}, /* glFragmentLightModeliSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 202, 804 /* GL_SGIX_fragment_lighting */, 14752}, /* glFragmentLightModelivSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 203, 804 /* GL_SGIX_fragment_lighting */, 14779}, /* glFragmentLightfSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 804 /* GL_SGIX_fragment_lighting */, 14800}, /* glFragmentLightfvSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 205, 804 /* GL_SGIX_fragment_lighting */, 14822}, /* glFragmentLightiSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 804 /* GL_SGIX_fragment_lighting */, 14843}, /* glFragmentLightivSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 207, 804 /* GL_SGIX_fragment_lighting */, 14865}, /* glFragmentMaterialfSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 804 /* GL_SGIX_fragment_lighting */, 14889}, /* glFragmentMaterialfvSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 804 /* GL_SGIX_fragment_lighting */, 14914}, /* glFragmentMaterialiSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 804 /* GL_SGIX_fragment_lighting */, 14938}, /* glFragmentMaterialivSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 211, 503 /* GL_GREMEDY_frame_terminator */, 14963}, /* glFrameTerminatorGREMEDY */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 806 /* GL_SGIX_framezoom */, 14988}, /* glFrameZoomSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 360 /* GL_EXT_direct_state_access */, 15004}, /* glFramebufferDrawBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 360 /* GL_EXT_direct_state_access */, 15031}, /* glFramebufferDrawBuffersEXT */
     {DISPATCH_RESOLVE_VERSION, 215, OpenGL_Desktop_4_3, 15059}, /* glFramebufferParameteri */
     {DISPATCH_RESOLVE_VERSION, 215, OpenGL_ES_3_1, 15059}, /* glFramebufferParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 215, 178 /* GL_ARB_framebuffer_no_attachments */, 15059}, /* glFramebufferParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 433 /* GL_EXT_shader_pixel_local_storage2 */, 15083}, /* glFramebufferPixelLocalStorageSizeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 217, 357 /* GL_EXT_direct_state_access */, 15121}, /* glFramebufferReadBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 436 /* GL_EXT_shader_pixel_local_storage2 */, 15083}, /* glFramebufferPixelLocalStorageSizeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 217, 360 /* GL_EXT_direct_state_access */, 15121}, /* glFramebufferReadBufferEXT */
     {DISPATCH_RESOLVE_VERSION, 218, OpenGL_Desktop_3_0, 15148}, /* glFramebufferRenderbuffer */
     {DISPATCH_RESOLVE_DIRECT, 218, OpenGL_ES_2_0, 15148}, /* glFramebufferRenderbuffer */
     {DISPATCH_RESOLVE_EXTENSION, 218, 179 /* GL_ARB_framebuffer_object */, 15148}, /* glFramebufferRenderbuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 218, 373 /* GL_EXT_framebuffer_object */, 15174}, /* glFramebufferRenderbufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 373 /* GL_EXT_framebuffer_object */, 15174}, /* glFramebufferRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 218, 376 /* GL_EXT_framebuffer_object */, 15174}, /* glFramebufferRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 376 /* GL_EXT_framebuffer_object */, 15174}, /* glFramebufferRenderbufferEXT */
     {DISPATCH_RESOLVE_VERSION, 219, OpenGL_Desktop_3_0, 15148}, /* glFramebufferRenderbuffer */
     {DISPATCH_RESOLVE_DIRECT, 219, OpenGL_ES_2_0, 15148}, /* glFramebufferRenderbuffer */
     {DISPATCH_RESOLVE_EXTENSION, 219, 179 /* GL_ARB_framebuffer_object */, 15148}, /* glFramebufferRenderbuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 220, 704 /* GL_OES_framebuffer_object */, 15203}, /* glFramebufferRenderbufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 220, 708 /* GL_OES_framebuffer_object */, 15203}, /* glFramebufferRenderbufferOES */
     {DISPATCH_RESOLVE_EXTENSION, 221, 217 /* GL_ARB_sample_locations */, 15232}, /* glFramebufferSampleLocationsfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 633 /* GL_NV_sample_locations */, 15266}, /* glFramebufferSampleLocationsfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 637 /* GL_NV_sample_locations */, 15266}, /* glFramebufferSampleLocationsfvNV */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_Desktop_3_2, 15299}, /* glFramebufferTexture */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_ES_3_2, 15299}, /* glFramebufferTexture */
     {DISPATCH_RESOLVE_EXTENSION, 223, 181 /* GL_ARB_geometry_shader4 */, 15629}, /* glFramebufferTextureARB */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 376 /* GL_EXT_geometry_shader */, 15653}, /* glFramebufferTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 595 /* GL_NV_geometry_program4 */, 15653}, /* glFramebufferTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 706 /* GL_OES_geometry_shader */, 15933}, /* glFramebufferTextureOES */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 379 /* GL_EXT_geometry_shader */, 15653}, /* glFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 599 /* GL_NV_geometry_program4 */, 15653}, /* glFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 710 /* GL_OES_geometry_shader */, 15933}, /* glFramebufferTextureOES */
     {DISPATCH_RESOLVE_VERSION, 224, OpenGL_Desktop_3_0, 15320}, /* glFramebufferTexture1D */
     {DISPATCH_RESOLVE_EXTENSION, 224, 179 /* GL_ARB_framebuffer_object */, 15320}, /* glFramebufferTexture1D */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 373 /* GL_EXT_framebuffer_object */, 15343}, /* glFramebufferTexture1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 373 /* GL_EXT_framebuffer_object */, 15343}, /* glFramebufferTexture1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 376 /* GL_EXT_framebuffer_object */, 15343}, /* glFramebufferTexture1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 376 /* GL_EXT_framebuffer_object */, 15343}, /* glFramebufferTexture1DEXT */
     {DISPATCH_RESOLVE_VERSION, 225, OpenGL_Desktop_3_0, 15320}, /* glFramebufferTexture1D */
     {DISPATCH_RESOLVE_EXTENSION, 225, 179 /* GL_ARB_framebuffer_object */, 15320}, /* glFramebufferTexture1D */
     {DISPATCH_RESOLVE_VERSION, 226, OpenGL_Desktop_3_0, 15369}, /* glFramebufferTexture2D */
     {DISPATCH_RESOLVE_DIRECT, 226, OpenGL_ES_2_0, 15369}, /* glFramebufferTexture2D */
     {DISPATCH_RESOLVE_EXTENSION, 226, 179 /* GL_ARB_framebuffer_object */, 15369}, /* glFramebufferTexture2D */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 373 /* GL_EXT_framebuffer_object */, 15428}, /* glFramebufferTexture2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 511 /* GL_IMG_framebuffer_downsample */, 15392}, /* glFramebufferTexture2DDownsampleIMG */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 373 /* GL_EXT_framebuffer_object */, 15428}, /* glFramebufferTexture2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 376 /* GL_EXT_framebuffer_object */, 15428}, /* glFramebufferTexture2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 515 /* GL_IMG_framebuffer_downsample */, 15392}, /* glFramebufferTexture2DDownsampleIMG */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 376 /* GL_EXT_framebuffer_object */, 15428}, /* glFramebufferTexture2DEXT */
     {DISPATCH_RESOLVE_VERSION, 228, OpenGL_Desktop_3_0, 15369}, /* glFramebufferTexture2D */
     {DISPATCH_RESOLVE_DIRECT, 228, OpenGL_ES_2_0, 15369}, /* glFramebufferTexture2D */
     {DISPATCH_RESOLVE_EXTENSION, 228, 179 /* GL_ARB_framebuffer_object */, 15369}, /* glFramebufferTexture2D */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 395 /* GL_EXT_multisampled_render_to_texture */, 15454}, /* glFramebufferTexture2DMultisampleEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 512 /* GL_IMG_multisampled_render_to_texture */, 15491}, /* glFramebufferTexture2DMultisampleIMG */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 704 /* GL_OES_framebuffer_object */, 15528}, /* glFramebufferTexture2DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 398 /* GL_EXT_multisampled_render_to_texture */, 15454}, /* glFramebufferTexture2DMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 516 /* GL_IMG_multisampled_render_to_texture */, 15491}, /* glFramebufferTexture2DMultisampleIMG */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 708 /* GL_OES_framebuffer_object */, 15528}, /* glFramebufferTexture2DOES */
     {DISPATCH_RESOLVE_VERSION, 232, OpenGL_Desktop_3_0, 15554}, /* glFramebufferTexture3D */
     {DISPATCH_RESOLVE_EXTENSION, 232, 179 /* GL_ARB_framebuffer_object */, 15554}, /* glFramebufferTexture3D */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 373 /* GL_EXT_framebuffer_object */, 15577}, /* glFramebufferTexture3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 734 /* GL_OES_texture_3D */, 15603}, /* glFramebufferTexture3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 373 /* GL_EXT_framebuffer_object */, 15577}, /* glFramebufferTexture3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 376 /* GL_EXT_framebuffer_object */, 15577}, /* glFramebufferTexture3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 738 /* GL_OES_texture_3D */, 15603}, /* glFramebufferTexture3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 376 /* GL_EXT_framebuffer_object */, 15577}, /* glFramebufferTexture3DEXT */
     {DISPATCH_RESOLVE_VERSION, 233, OpenGL_Desktop_3_0, 15554}, /* glFramebufferTexture3D */
     {DISPATCH_RESOLVE_EXTENSION, 233, 179 /* GL_ARB_framebuffer_object */, 15554}, /* glFramebufferTexture3D */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 734 /* GL_OES_texture_3D */, 15603}, /* glFramebufferTexture3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 734 /* GL_OES_texture_3D */, 15603}, /* glFramebufferTexture3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 738 /* GL_OES_texture_3D */, 15603}, /* glFramebufferTexture3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 738 /* GL_OES_texture_3D */, 15603}, /* glFramebufferTexture3DOES */
     {DISPATCH_RESOLVE_VERSION, 234, OpenGL_Desktop_3_0, 15554}, /* glFramebufferTexture3D */
     {DISPATCH_RESOLVE_EXTENSION, 234, 179 /* GL_ARB_framebuffer_object */, 15554}, /* glFramebufferTexture3D */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 373 /* GL_EXT_framebuffer_object */, 15577}, /* glFramebufferTexture3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 376 /* GL_EXT_framebuffer_object */, 15577}, /* glFramebufferTexture3DEXT */
     {DISPATCH_RESOLVE_EXTENSION, 235, 181 /* GL_ARB_geometry_shader4 */, 15629}, /* glFramebufferTextureARB */
     {DISPATCH_RESOLVE_VERSION, 235, OpenGL_Desktop_3_2, 15299}, /* glFramebufferTexture */
     {DISPATCH_RESOLVE_VERSION, 235, OpenGL_ES_3_2, 15299}, /* glFramebufferTexture */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 376 /* GL_EXT_geometry_shader */, 15653}, /* glFramebufferTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 595 /* GL_NV_geometry_program4 */, 15653}, /* glFramebufferTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 706 /* GL_OES_geometry_shader */, 15933}, /* glFramebufferTextureOES */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 376 /* GL_EXT_geometry_shader */, 15653}, /* glFramebufferTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 595 /* GL_NV_geometry_program4 */, 15653}, /* glFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 379 /* GL_EXT_geometry_shader */, 15653}, /* glFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 599 /* GL_NV_geometry_program4 */, 15653}, /* glFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 710 /* GL_OES_geometry_shader */, 15933}, /* glFramebufferTextureOES */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 379 /* GL_EXT_geometry_shader */, 15653}, /* glFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 599 /* GL_NV_geometry_program4 */, 15653}, /* glFramebufferTextureEXT */
     {DISPATCH_RESOLVE_VERSION, 236, OpenGL_Desktop_3_2, 15299}, /* glFramebufferTexture */
     {DISPATCH_RESOLVE_VERSION, 236, OpenGL_ES_3_2, 15299}, /* glFramebufferTexture */
     {DISPATCH_RESOLVE_EXTENSION, 236, 181 /* GL_ARB_geometry_shader4 */, 15629}, /* glFramebufferTextureARB */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 706 /* GL_OES_geometry_shader */, 15933}, /* glFramebufferTextureOES */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 710 /* GL_OES_geometry_shader */, 15933}, /* glFramebufferTextureOES */
     {DISPATCH_RESOLVE_EXTENSION, 237, 181 /* GL_ARB_geometry_shader4 */, 15677}, /* glFramebufferTextureFaceARB */
-    {DISPATCH_RESOLVE_EXTENSION, 237, 595 /* GL_NV_geometry_program4 */, 15705}, /* glFramebufferTextureFaceEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 238, 595 /* GL_NV_geometry_program4 */, 15705}, /* glFramebufferTextureFaceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 237, 599 /* GL_NV_geometry_program4 */, 15705}, /* glFramebufferTextureFaceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 238, 599 /* GL_NV_geometry_program4 */, 15705}, /* glFramebufferTextureFaceEXT */
     {DISPATCH_RESOLVE_EXTENSION, 238, 181 /* GL_ARB_geometry_shader4 */, 15677}, /* glFramebufferTextureFaceARB */
     {DISPATCH_RESOLVE_VERSION, 239, OpenGL_Desktop_3_0, 15733}, /* glFramebufferTextureLayer */
     {DISPATCH_RESOLVE_VERSION, 239, OpenGL_ES_3_0, 15733}, /* glFramebufferTextureLayer */
     {DISPATCH_RESOLVE_EXTENSION, 239, 179 /* GL_ARB_framebuffer_object */, 15733}, /* glFramebufferTextureLayer */
     {DISPATCH_RESOLVE_EXTENSION, 239, 181 /* GL_ARB_geometry_shader4 */, 15759}, /* glFramebufferTextureLayerARB */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 450 /* GL_EXT_texture_array */, 15827}, /* glFramebufferTextureLayerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 595 /* GL_NV_geometry_program4 */, 15827}, /* glFramebufferTextureLayerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 454 /* GL_EXT_texture_array */, 15827}, /* glFramebufferTextureLayerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 599 /* GL_NV_geometry_program4 */, 15827}, /* glFramebufferTextureLayerEXT */
     {DISPATCH_RESOLVE_EXTENSION, 240, 181 /* GL_ARB_geometry_shader4 */, 15759}, /* glFramebufferTextureLayerARB */
     {DISPATCH_RESOLVE_VERSION, 240, OpenGL_Desktop_3_0, 15733}, /* glFramebufferTextureLayer */
     {DISPATCH_RESOLVE_VERSION, 240, OpenGL_ES_3_0, 15733}, /* glFramebufferTextureLayer */
     {DISPATCH_RESOLVE_EXTENSION, 240, 179 /* GL_ARB_framebuffer_object */, 15733}, /* glFramebufferTextureLayer */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 450 /* GL_EXT_texture_array */, 15827}, /* glFramebufferTextureLayerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 595 /* GL_NV_geometry_program4 */, 15827}, /* glFramebufferTextureLayerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 241, 511 /* GL_IMG_framebuffer_downsample */, 15788}, /* glFramebufferTextureLayerDownsampleIMG */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 450 /* GL_EXT_texture_array */, 15827}, /* glFramebufferTextureLayerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 595 /* GL_NV_geometry_program4 */, 15827}, /* glFramebufferTextureLayerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 454 /* GL_EXT_texture_array */, 15827}, /* glFramebufferTextureLayerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 599 /* GL_NV_geometry_program4 */, 15827}, /* glFramebufferTextureLayerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 241, 515 /* GL_IMG_framebuffer_downsample */, 15788}, /* glFramebufferTextureLayerDownsampleIMG */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 454 /* GL_EXT_texture_array */, 15827}, /* glFramebufferTextureLayerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 599 /* GL_NV_geometry_program4 */, 15827}, /* glFramebufferTextureLayerEXT */
     {DISPATCH_RESOLVE_VERSION, 242, OpenGL_Desktop_3_0, 15733}, /* glFramebufferTextureLayer */
     {DISPATCH_RESOLVE_VERSION, 242, OpenGL_ES_3_0, 15733}, /* glFramebufferTextureLayer */
     {DISPATCH_RESOLVE_EXTENSION, 242, 179 /* GL_ARB_framebuffer_object */, 15733}, /* glFramebufferTextureLayer */
     {DISPATCH_RESOLVE_EXTENSION, 242, 181 /* GL_ARB_geometry_shader4 */, 15759}, /* glFramebufferTextureLayerARB */
-    {DISPATCH_RESOLVE_EXTENSION, 243, 758 /* GL_OVR_multiview_multisampled_render_to_texture */, 15856}, /* glFramebufferTextureMultisampleMultiviewOVR */
-    {DISPATCH_RESOLVE_EXTENSION, 244, 756 /* GL_OVR_multiview */, 15900}, /* glFramebufferTextureMultiviewOVR */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 706 /* GL_OES_geometry_shader */, 15933}, /* glFramebufferTextureOES */
+    {DISPATCH_RESOLVE_EXTENSION, 243, 762 /* GL_OVR_multiview_multisampled_render_to_texture */, 15856}, /* glFramebufferTextureMultisampleMultiviewOVR */
+    {DISPATCH_RESOLVE_EXTENSION, 244, 760 /* GL_OVR_multiview */, 15900}, /* glFramebufferTextureMultiviewOVR */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 710 /* GL_OES_geometry_shader */, 15933}, /* glFramebufferTextureOES */
     {DISPATCH_RESOLVE_VERSION, 245, OpenGL_Desktop_3_2, 15299}, /* glFramebufferTexture */
     {DISPATCH_RESOLVE_VERSION, 245, OpenGL_ES_3_2, 15299}, /* glFramebufferTexture */
     {DISPATCH_RESOLVE_EXTENSION, 245, 181 /* GL_ARB_geometry_shader4 */, 15629}, /* glFramebufferTextureARB */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 376 /* GL_EXT_geometry_shader */, 15653}, /* glFramebufferTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 595 /* GL_NV_geometry_program4 */, 15653}, /* glFramebufferTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 246, 323 /* GL_ATI_vertex_array_object */, 15957}, /* glFreeObjectBufferATI */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 379 /* GL_EXT_geometry_shader */, 15653}, /* glFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 599 /* GL_NV_geometry_program4 */, 15653}, /* glFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 246, 326 /* GL_ATI_vertex_array_object */, 15957}, /* glFreeObjectBufferATI */
     {DISPATCH_RESOLVE_DIRECT, 247, OpenGL_Desktop_1_0, 15979}, /* glFrontFace */
     {DISPATCH_RESOLVE_DIRECT, 247, OpenGL_ES_1_0, 15979}, /* glFrontFace */
     {DISPATCH_RESOLVE_DIRECT, 247, OpenGL_ES_2_0, 15979}, /* glFrontFace */
     {DISPATCH_RESOLVE_DIRECT, 248, OpenGL_Desktop_1_0, 15991}, /* glFrustum */
     {DISPATCH_RESOLVE_DIRECT, 249, OpenGL_ES_1_0, 16001}, /* glFrustumf */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 725 /* GL_OES_single_precision */, 16012}, /* glFrustumfOES */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 729 /* GL_OES_single_precision */, 16012}, /* glFrustumfOES */
     {DISPATCH_RESOLVE_DIRECT, 251, OpenGL_ES_1_0, 16026}, /* glFrustumx */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 702 /* GL_OES_fixed_point */, 16037}, /* glFrustumxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 253, 787 /* GL_SGIX_async */, 16051}, /* glGenAsyncMarkersSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 706 /* GL_OES_fixed_point */, 16037}, /* glFrustumxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 253, 792 /* GL_SGIX_async */, 16051}, /* glGenAsyncMarkersSGIX */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_Desktop_1_5, 16073}, /* glGenBuffers */
     {DISPATCH_RESOLVE_DIRECT, 254, OpenGL_ES_1_0, 16073}, /* glGenBuffers */
     {DISPATCH_RESOLVE_DIRECT, 254, OpenGL_ES_2_0, 16073}, /* glGenBuffers */
@@ -6718,30 +6728,30 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 255, OpenGL_ES_1_0, 16073}, /* glGenBuffers */
     {DISPATCH_RESOLVE_DIRECT, 255, OpenGL_ES_2_0, 16073}, /* glGenBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 0, 115 /* GL_APPLE_fence */, 16102}, /* glGenFencesAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 1, 580 /* GL_NV_fence */, 16119}, /* glGenFencesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 312 /* GL_ATI_fragment_shader */, 16133}, /* glGenFragmentShadersATI */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 584 /* GL_NV_fence */, 16119}, /* glGenFencesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 315 /* GL_ATI_fragment_shader */, 16133}, /* glGenFragmentShadersATI */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_Desktop_3_0, 16157}, /* glGenFramebuffers */
     {DISPATCH_RESOLVE_DIRECT, 3, OpenGL_ES_2_0, 16157}, /* glGenFramebuffers */
     {DISPATCH_RESOLVE_EXTENSION, 3, 179 /* GL_ARB_framebuffer_object */, 16157}, /* glGenFramebuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 373 /* GL_EXT_framebuffer_object */, 16175}, /* glGenFramebuffersEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 373 /* GL_EXT_framebuffer_object */, 16175}, /* glGenFramebuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 376 /* GL_EXT_framebuffer_object */, 16175}, /* glGenFramebuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 376 /* GL_EXT_framebuffer_object */, 16175}, /* glGenFramebuffersEXT */
     {DISPATCH_RESOLVE_VERSION, 4, OpenGL_Desktop_3_0, 16157}, /* glGenFramebuffers */
     {DISPATCH_RESOLVE_DIRECT, 4, OpenGL_ES_2_0, 16157}, /* glGenFramebuffers */
     {DISPATCH_RESOLVE_EXTENSION, 4, 179 /* GL_ARB_framebuffer_object */, 16157}, /* glGenFramebuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 704 /* GL_OES_framebuffer_object */, 16196}, /* glGenFramebuffersOES */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 708 /* GL_OES_framebuffer_object */, 16196}, /* glGenFramebuffersOES */
     {DISPATCH_RESOLVE_DIRECT, 6, OpenGL_Desktop_1_0, 16217}, /* glGenLists */
     {DISPATCH_RESOLVE_EXTENSION, 7, 75 /* GL_AMD_name_gen_delete */, 16228}, /* glGenNamesAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 611 /* GL_NV_occlusion_query */, 16242}, /* glGenOcclusionQueriesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 9, 616 /* GL_NV_path_rendering */, 16266}, /* glGenPathsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 615 /* GL_NV_occlusion_query */, 16242}, /* glGenOcclusionQueriesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 620 /* GL_NV_path_rendering */, 16266}, /* glGenPathsNV */
     {DISPATCH_RESOLVE_EXTENSION, 10, 77 /* GL_AMD_performance_monitor */, 16279}, /* glGenPerfMonitorsAMD */
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_Desktop_4_1, 16300}, /* glGenProgramPipelines */
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_ES_3_1, 16300}, /* glGenProgramPipelines */
     {DISPATCH_RESOLVE_EXTENSION, 11, 222 /* GL_ARB_separate_shader_objects */, 16300}, /* glGenProgramPipelines */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 422 /* GL_EXT_separate_shader_objects */, 16322}, /* glGenProgramPipelinesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 425 /* GL_EXT_separate_shader_objects */, 16322}, /* glGenProgramPipelinesEXT */
     {DISPATCH_RESOLVE_EXTENSION, 13, 174 /* GL_ARB_fragment_program */, 16347}, /* glGenProgramsARB */
     {DISPATCH_RESOLVE_EXTENSION, 13, 297 /* GL_ARB_vertex_program */, 16347}, /* glGenProgramsARB */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 672 /* GL_NV_vertex_program */, 16364}, /* glGenProgramsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 672 /* GL_NV_vertex_program */, 16364}, /* glGenProgramsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 676 /* GL_NV_vertex_program */, 16364}, /* glGenProgramsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 676 /* GL_NV_vertex_program */, 16364}, /* glGenProgramsNV */
     {DISPATCH_RESOLVE_EXTENSION, 14, 174 /* GL_ARB_fragment_program */, 16347}, /* glGenProgramsARB */
     {DISPATCH_RESOLVE_EXTENSION, 14, 297 /* GL_ARB_vertex_program */, 16347}, /* glGenProgramsARB */
     {DISPATCH_RESOLVE_VERSION, 15, OpenGL_Desktop_1_5, 16380}, /* glGenQueries */
@@ -6750,30 +6760,30 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 16, 203 /* GL_ARB_occlusion_query */, 16393}, /* glGenQueriesARB */
     {DISPATCH_RESOLVE_VERSION, 16, OpenGL_Desktop_1_5, 16380}, /* glGenQueries */
     {DISPATCH_RESOLVE_VERSION, 16, OpenGL_ES_3_0, 16380}, /* glGenQueries */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 359 /* GL_EXT_disjoint_timer_query */, 16409}, /* glGenQueriesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 397 /* GL_EXT_occlusion_query_boolean */, 16409}, /* glGenQueriesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 362 /* GL_EXT_disjoint_timer_query */, 16409}, /* glGenQueriesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 400 /* GL_EXT_occlusion_query_boolean */, 16409}, /* glGenQueriesEXT */
     {DISPATCH_RESOLVE_VERSION, 18, OpenGL_Desktop_3_0, 16425}, /* glGenRenderbuffers */
     {DISPATCH_RESOLVE_DIRECT, 18, OpenGL_ES_2_0, 16425}, /* glGenRenderbuffers */
     {DISPATCH_RESOLVE_EXTENSION, 18, 179 /* GL_ARB_framebuffer_object */, 16425}, /* glGenRenderbuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 373 /* GL_EXT_framebuffer_object */, 16444}, /* glGenRenderbuffersEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 373 /* GL_EXT_framebuffer_object */, 16444}, /* glGenRenderbuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 376 /* GL_EXT_framebuffer_object */, 16444}, /* glGenRenderbuffersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 376 /* GL_EXT_framebuffer_object */, 16444}, /* glGenRenderbuffersEXT */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_Desktop_3_0, 16425}, /* glGenRenderbuffers */
     {DISPATCH_RESOLVE_DIRECT, 19, OpenGL_ES_2_0, 16425}, /* glGenRenderbuffers */
     {DISPATCH_RESOLVE_EXTENSION, 19, 179 /* GL_ARB_framebuffer_object */, 16425}, /* glGenRenderbuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 704 /* GL_OES_framebuffer_object */, 16466}, /* glGenRenderbuffersOES */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 708 /* GL_OES_framebuffer_object */, 16466}, /* glGenRenderbuffersOES */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_3_3, 16488}, /* glGenSamplers */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_ES_3_0, 16488}, /* glGenSamplers */
     {DISPATCH_RESOLVE_EXTENSION, 21, 219 /* GL_ARB_sampler_objects */, 16488}, /* glGenSamplers */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 494 /* GL_EXT_vertex_shader */, 16502}, /* glGenSymbolsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 498 /* GL_EXT_vertex_shader */, 16502}, /* glGenSymbolsEXT */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_Desktop_1_1, 16518}, /* glGenTextures */
     {DISPATCH_RESOLVE_DIRECT, 23, OpenGL_ES_1_0, 16518}, /* glGenTextures */
     {DISPATCH_RESOLVE_DIRECT, 23, OpenGL_ES_2_0, 16518}, /* glGenTextures */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 472 /* GL_EXT_texture_object */, 16532}, /* glGenTexturesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 476 /* GL_EXT_texture_object */, 16532}, /* glGenTexturesEXT */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_Desktop_4_0, 16549}, /* glGenTransformFeedbacks */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_ES_3_0, 16549}, /* glGenTransformFeedbacks */
     {DISPATCH_RESOLVE_EXTENSION, 25, 285 /* GL_ARB_transform_feedback2 */, 16549}, /* glGenTransformFeedbacks */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 665 /* GL_NV_transform_feedback2 */, 16573}, /* glGenTransformFeedbacksNV */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 665 /* GL_NV_transform_feedback2 */, 16573}, /* glGenTransformFeedbacksNV */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 669 /* GL_NV_transform_feedback2 */, 16573}, /* glGenTransformFeedbacksNV */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 669 /* GL_NV_transform_feedback2 */, 16573}, /* glGenTransformFeedbacksNV */
     {DISPATCH_RESOLVE_VERSION, 26, OpenGL_Desktop_4_0, 16549}, /* glGenTransformFeedbacks */
     {DISPATCH_RESOLVE_VERSION, 26, OpenGL_ES_3_0, 16549}, /* glGenTransformFeedbacks */
     {DISPATCH_RESOLVE_EXTENSION, 26, 285 /* GL_ARB_transform_feedback2 */, 16549}, /* glGenTransformFeedbacks */
@@ -6781,31 +6791,31 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 27, OpenGL_ES_3_0, 16599}, /* glGenVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 27, 292 /* GL_ARB_vertex_array_object */, 16599}, /* glGenVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 27, 131 /* GL_APPLE_vertex_array_object */, 16617}, /* glGenVertexArraysAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 750 /* GL_OES_vertex_array_object */, 16640}, /* glGenVertexArraysOES */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 754 /* GL_OES_vertex_array_object */, 16640}, /* glGenVertexArraysOES */
     {DISPATCH_RESOLVE_EXTENSION, 28, 131 /* GL_APPLE_vertex_array_object */, 16617}, /* glGenVertexArraysAPPLE */
     {DISPATCH_RESOLVE_VERSION, 28, OpenGL_Desktop_3_0, 16599}, /* glGenVertexArrays */
     {DISPATCH_RESOLVE_VERSION, 28, OpenGL_ES_3_0, 16599}, /* glGenVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 28, 292 /* GL_ARB_vertex_array_object */, 16599}, /* glGenVertexArrays */
-    {DISPATCH_RESOLVE_EXTENSION, 28, 750 /* GL_OES_vertex_array_object */, 16640}, /* glGenVertexArraysOES */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 750 /* GL_OES_vertex_array_object */, 16640}, /* glGenVertexArraysOES */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 754 /* GL_OES_vertex_array_object */, 16640}, /* glGenVertexArraysOES */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 754 /* GL_OES_vertex_array_object */, 16640}, /* glGenVertexArraysOES */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_Desktop_3_0, 16599}, /* glGenVertexArrays */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_ES_3_0, 16599}, /* glGenVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 29, 292 /* GL_ARB_vertex_array_object */, 16599}, /* glGenVertexArrays */
     {DISPATCH_RESOLVE_EXTENSION, 29, 131 /* GL_APPLE_vertex_array_object */, 16617}, /* glGenVertexArraysAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 494 /* GL_EXT_vertex_shader */, 16661}, /* glGenVertexShadersEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 498 /* GL_EXT_vertex_shader */, 16661}, /* glGenVertexShadersEXT */
     {DISPATCH_RESOLVE_VERSION, 31, OpenGL_Desktop_3_0, 16683}, /* glGenerateMipmap */
     {DISPATCH_RESOLVE_DIRECT, 31, OpenGL_ES_2_0, 16683}, /* glGenerateMipmap */
     {DISPATCH_RESOLVE_EXTENSION, 31, 179 /* GL_ARB_framebuffer_object */, 16683}, /* glGenerateMipmap */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 373 /* GL_EXT_framebuffer_object */, 16700}, /* glGenerateMipmapEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 373 /* GL_EXT_framebuffer_object */, 16700}, /* glGenerateMipmapEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 376 /* GL_EXT_framebuffer_object */, 16700}, /* glGenerateMipmapEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 376 /* GL_EXT_framebuffer_object */, 16700}, /* glGenerateMipmapEXT */
     {DISPATCH_RESOLVE_VERSION, 32, OpenGL_Desktop_3_0, 16683}, /* glGenerateMipmap */
     {DISPATCH_RESOLVE_DIRECT, 32, OpenGL_ES_2_0, 16683}, /* glGenerateMipmap */
     {DISPATCH_RESOLVE_EXTENSION, 32, 179 /* GL_ARB_framebuffer_object */, 16683}, /* glGenerateMipmap */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 704 /* GL_OES_framebuffer_object */, 16720}, /* glGenerateMipmapOES */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 357 /* GL_EXT_direct_state_access */, 16740}, /* glGenerateMultiTexMipmapEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 708 /* GL_OES_framebuffer_object */, 16720}, /* glGenerateMipmapOES */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 360 /* GL_EXT_direct_state_access */, 16740}, /* glGenerateMultiTexMipmapEXT */
     {DISPATCH_RESOLVE_VERSION, 35, OpenGL_Desktop_4_5, 16768}, /* glGenerateTextureMipmap */
     {DISPATCH_RESOLVE_EXTENSION, 35, 163 /* GL_ARB_direct_state_access */, 16768}, /* glGenerateTextureMipmap */
-    {DISPATCH_RESOLVE_EXTENSION, 36, 357 /* GL_EXT_direct_state_access */, 16792}, /* glGenerateTextureMipmapEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 360 /* GL_EXT_direct_state_access */, 16792}, /* glGenerateTextureMipmapEXT */
     {DISPATCH_RESOLVE_VERSION, 37, OpenGL_Desktop_4_2, 16819}, /* glGetActiveAtomicCounterBufferiv */
     {DISPATCH_RESOLVE_EXTENSION, 37, 224 /* GL_ARB_shader_atomic_counters */, 16819}, /* glGetActiveAtomicCounterBufferiv */
     {DISPATCH_RESOLVE_VERSION, 38, OpenGL_Desktop_2_0, 16852}, /* glGetActiveAttrib */
@@ -6837,9 +6847,9 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_Desktop_3_1, 17099}, /* glGetActiveUniformsiv */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_ES_3_0, 17099}, /* glGetActiveUniformsiv */
     {DISPATCH_RESOLVE_EXTENSION, 48, 290 /* GL_ARB_uniform_buffer_object */, 17099}, /* glGetActiveUniformsiv */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 664 /* GL_NV_transform_feedback */, 17121}, /* glGetActiveVaryingNV */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 323 /* GL_ATI_vertex_array_object */, 17142}, /* glGetArrayObjectfvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 323 /* GL_ATI_vertex_array_object */, 17164}, /* glGetArrayObjectivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 668 /* GL_NV_transform_feedback */, 17121}, /* glGetActiveVaryingNV */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 326 /* GL_ATI_vertex_array_object */, 17142}, /* glGetArrayObjectfvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 326 /* GL_ATI_vertex_array_object */, 17164}, /* glGetArrayObjectivATI */
     {DISPATCH_RESOLVE_EXTENSION, 52, 232 /* GL_ARB_shader_objects */, 17186}, /* glGetAttachedObjectsARB */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_Desktop_2_0, 17210}, /* glGetAttachedShaders */
     {DISPATCH_RESOLVE_DIRECT, 53, OpenGL_ES_2_0, 17210}, /* glGetAttachedShaders */
@@ -6849,14 +6859,14 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 55, 298 /* GL_ARB_vertex_shader */, 17251}, /* glGetAttribLocationARB */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_Desktop_2_0, 17231}, /* glGetAttribLocation */
     {DISPATCH_RESOLVE_DIRECT, 55, OpenGL_ES_2_0, 17231}, /* glGetAttribLocation */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 357 /* GL_EXT_direct_state_access */, 17274}, /* glGetBooleanIndexedvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 361 /* GL_EXT_draw_buffers2 */, 17274}, /* glGetBooleanIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 360 /* GL_EXT_direct_state_access */, 17274}, /* glGetBooleanIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 364 /* GL_EXT_draw_buffers2 */, 17274}, /* glGetBooleanIndexedvEXT */
     {DISPATCH_RESOLVE_VERSION, 56, OpenGL_Desktop_3_0, 17298}, /* glGetBooleani_v */
     {DISPATCH_RESOLVE_VERSION, 56, OpenGL_ES_3_1, 17298}, /* glGetBooleani_v */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_Desktop_3_0, 17298}, /* glGetBooleani_v */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_ES_3_1, 17298}, /* glGetBooleani_v */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 357 /* GL_EXT_direct_state_access */, 17274}, /* glGetBooleanIndexedvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 361 /* GL_EXT_draw_buffers2 */, 17274}, /* glGetBooleanIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 360 /* GL_EXT_direct_state_access */, 17274}, /* glGetBooleanIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 364 /* GL_EXT_draw_buffers2 */, 17274}, /* glGetBooleanIndexedvEXT */
     {DISPATCH_RESOLVE_DIRECT, 58, OpenGL_Desktop_1_0, 17314}, /* glGetBooleanv */
     {DISPATCH_RESOLVE_DIRECT, 58, OpenGL_ES_1_0, 17314}, /* glGetBooleanv */
     {DISPATCH_RESOLVE_DIRECT, 58, OpenGL_ES_2_0, 17314}, /* glGetBooleanv */
@@ -6870,16 +6880,16 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 61, OpenGL_Desktop_1_5, 17353}, /* glGetBufferParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 61, OpenGL_ES_1_0, 17353}, /* glGetBufferParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 61, OpenGL_ES_2_0, 17353}, /* glGetBufferParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 640 /* GL_NV_shader_buffer_load */, 17402}, /* glGetBufferParameterui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 644 /* GL_NV_shader_buffer_load */, 17402}, /* glGetBufferParameterui64vNV */
     {DISPATCH_RESOLVE_VERSION, 63, OpenGL_Desktop_1_5, 17430}, /* glGetBufferPointerv */
     {DISPATCH_RESOLVE_VERSION, 63, OpenGL_ES_3_0, 17430}, /* glGetBufferPointerv */
     {DISPATCH_RESOLVE_EXTENSION, 63, 296 /* GL_ARB_vertex_buffer_object */, 17450}, /* glGetBufferPointervARB */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 709 /* GL_OES_mapbuffer */, 17473}, /* glGetBufferPointervOES */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 713 /* GL_OES_mapbuffer */, 17473}, /* glGetBufferPointervOES */
     {DISPATCH_RESOLVE_EXTENSION, 64, 296 /* GL_ARB_vertex_buffer_object */, 17450}, /* glGetBufferPointervARB */
     {DISPATCH_RESOLVE_VERSION, 64, OpenGL_Desktop_1_5, 17430}, /* glGetBufferPointerv */
     {DISPATCH_RESOLVE_VERSION, 64, OpenGL_ES_3_0, 17430}, /* glGetBufferPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 709 /* GL_OES_mapbuffer */, 17473}, /* glGetBufferPointervOES */
-    {DISPATCH_RESOLVE_EXTENSION, 65, 709 /* GL_OES_mapbuffer */, 17473}, /* glGetBufferPointervOES */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 713 /* GL_OES_mapbuffer */, 17473}, /* glGetBufferPointervOES */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 713 /* GL_OES_mapbuffer */, 17473}, /* glGetBufferPointervOES */
     {DISPATCH_RESOLVE_VERSION, 65, OpenGL_Desktop_1_5, 17430}, /* glGetBufferPointerv */
     {DISPATCH_RESOLVE_VERSION, 65, OpenGL_ES_3_0, 17430}, /* glGetBufferPointerv */
     {DISPATCH_RESOLVE_EXTENSION, 65, 296 /* GL_ARB_vertex_buffer_object */, 17450}, /* glGetBufferPointervARB */
@@ -6889,167 +6899,167 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 67, OpenGL_Desktop_1_5, 17496}, /* glGetBufferSubData */
     {DISPATCH_RESOLVE_DIRECT, 68, OpenGL_Desktop_1_0, 17537}, /* glGetClipPlane */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_ES_1_0, 17552}, /* glGetClipPlanef */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 725 /* GL_OES_single_precision */, 17568}, /* glGetClipPlanefOES */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 729 /* GL_OES_single_precision */, 17568}, /* glGetClipPlanefOES */
     {DISPATCH_RESOLVE_DIRECT, 71, OpenGL_ES_1_0, 17587}, /* glGetClipPlanex */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 702 /* GL_OES_fixed_point */, 17603}, /* glGetClipPlanexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 706 /* GL_OES_fixed_point */, 17603}, /* glGetClipPlanexOES */
     {DISPATCH_RESOLVE_EXTENSION, 73, 190 /* GL_ARB_imaging */, 17622}, /* glGetColorTable */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 401 /* GL_EXT_paletted_texture */, 17638}, /* glGetColorTableEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 401 /* GL_EXT_paletted_texture */, 17638}, /* glGetColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 404 /* GL_EXT_paletted_texture */, 17638}, /* glGetColorTableEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 404 /* GL_EXT_paletted_texture */, 17638}, /* glGetColorTableEXT */
     {DISPATCH_RESOLVE_EXTENSION, 74, 190 /* GL_ARB_imaging */, 17622}, /* glGetColorTable */
     {DISPATCH_RESOLVE_EXTENSION, 75, 190 /* GL_ARB_imaging */, 17657}, /* glGetColorTableParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 401 /* GL_EXT_paletted_texture */, 17684}, /* glGetColorTableParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 401 /* GL_EXT_paletted_texture */, 17684}, /* glGetColorTableParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 404 /* GL_EXT_paletted_texture */, 17684}, /* glGetColorTableParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 404 /* GL_EXT_paletted_texture */, 17684}, /* glGetColorTableParameterfvEXT */
     {DISPATCH_RESOLVE_EXTENSION, 76, 190 /* GL_ARB_imaging */, 17657}, /* glGetColorTableParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 831 /* GL_SGI_color_table */, 17714}, /* glGetColorTableParameterfvSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 836 /* GL_SGI_color_table */, 17714}, /* glGetColorTableParameterfvSGI */
     {DISPATCH_RESOLVE_EXTENSION, 78, 190 /* GL_ARB_imaging */, 17744}, /* glGetColorTableParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 401 /* GL_EXT_paletted_texture */, 17771}, /* glGetColorTableParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 79, 401 /* GL_EXT_paletted_texture */, 17771}, /* glGetColorTableParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 404 /* GL_EXT_paletted_texture */, 17771}, /* glGetColorTableParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 404 /* GL_EXT_paletted_texture */, 17771}, /* glGetColorTableParameterivEXT */
     {DISPATCH_RESOLVE_EXTENSION, 79, 190 /* GL_ARB_imaging */, 17744}, /* glGetColorTableParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 80, 831 /* GL_SGI_color_table */, 17801}, /* glGetColorTableParameterivSGI */
-    {DISPATCH_RESOLVE_EXTENSION, 81, 831 /* GL_SGI_color_table */, 17831}, /* glGetColorTableSGI */
-    {DISPATCH_RESOLVE_EXTENSION, 82, 629 /* GL_NV_register_combiners */, 17850}, /* glGetCombinerInputParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 629 /* GL_NV_register_combiners */, 17882}, /* glGetCombinerInputParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 629 /* GL_NV_register_combiners */, 17914}, /* glGetCombinerOutputParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 85, 629 /* GL_NV_register_combiners */, 17947}, /* glGetCombinerOutputParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 630 /* GL_NV_register_combiners2 */, 17980}, /* glGetCombinerStageParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 559 /* GL_NV_command_list */, 18012}, /* glGetCommandHeaderNV */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 357 /* GL_EXT_direct_state_access */, 18033}, /* glGetCompressedMultiTexImageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 80, 836 /* GL_SGI_color_table */, 17801}, /* glGetColorTableParameterivSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 836 /* GL_SGI_color_table */, 17831}, /* glGetColorTableSGI */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 633 /* GL_NV_register_combiners */, 17850}, /* glGetCombinerInputParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 633 /* GL_NV_register_combiners */, 17882}, /* glGetCombinerInputParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 633 /* GL_NV_register_combiners */, 17914}, /* glGetCombinerOutputParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 633 /* GL_NV_register_combiners */, 17947}, /* glGetCombinerOutputParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 634 /* GL_NV_register_combiners2 */, 17980}, /* glGetCombinerStageParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 563 /* GL_NV_command_list */, 18012}, /* glGetCommandHeaderNV */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 360 /* GL_EXT_direct_state_access */, 18033}, /* glGetCompressedMultiTexImageEXT */
     {DISPATCH_RESOLVE_VERSION, 89, OpenGL_Desktop_1_3, 18065}, /* glGetCompressedTexImage */
     {DISPATCH_RESOLVE_EXTENSION, 89, 258 /* GL_ARB_texture_compression */, 18089}, /* glGetCompressedTexImageARB */
     {DISPATCH_RESOLVE_EXTENSION, 90, 258 /* GL_ARB_texture_compression */, 18089}, /* glGetCompressedTexImageARB */
     {DISPATCH_RESOLVE_VERSION, 90, OpenGL_Desktop_1_3, 18065}, /* glGetCompressedTexImage */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_Desktop_4_5, 18116}, /* glGetCompressedTextureImage */
     {DISPATCH_RESOLVE_EXTENSION, 91, 163 /* GL_ARB_direct_state_access */, 18116}, /* glGetCompressedTextureImage */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 357 /* GL_EXT_direct_state_access */, 18144}, /* glGetCompressedTextureImageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 360 /* GL_EXT_direct_state_access */, 18144}, /* glGetCompressedTextureImageEXT */
     {DISPATCH_RESOLVE_VERSION, 93, OpenGL_Desktop_4_5, 18175}, /* glGetCompressedTextureSubImage */
     {DISPATCH_RESOLVE_EXTENSION, 93, 183 /* GL_ARB_get_texture_sub_image */, 18175}, /* glGetCompressedTextureSubImage */
     {DISPATCH_RESOLVE_EXTENSION, 94, 190 /* GL_ARB_imaging */, 18206}, /* glGetConvolutionFilter */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 349 /* GL_EXT_convolution */, 18229}, /* glGetConvolutionFilterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 352 /* GL_EXT_convolution */, 18229}, /* glGetConvolutionFilterEXT */
     {DISPATCH_RESOLVE_EXTENSION, 96, 190 /* GL_ARB_imaging */, 18255}, /* glGetConvolutionParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 349 /* GL_EXT_convolution */, 18283}, /* glGetConvolutionParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 352 /* GL_EXT_convolution */, 18283}, /* glGetConvolutionParameterfvEXT */
     {DISPATCH_RESOLVE_EXTENSION, 98, 190 /* GL_ARB_imaging */, 18314}, /* glGetConvolutionParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 349 /* GL_EXT_convolution */, 18342}, /* glGetConvolutionParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 702 /* GL_OES_fixed_point */, 18373}, /* glGetConvolutionParameterxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 591 /* GL_NV_framebuffer_mixed_samples */, 18404}, /* glGetCoverageModulationTableNV */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 352 /* GL_EXT_convolution */, 18342}, /* glGetConvolutionParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 706 /* GL_OES_fixed_point */, 18373}, /* glGetConvolutionParameterxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 595 /* GL_NV_framebuffer_mixed_samples */, 18404}, /* glGetCoverageModulationTableNV */
     {DISPATCH_RESOLVE_VERSION, 102, OpenGL_Desktop_4_3, 18435}, /* glGetDebugMessageLog */
     {DISPATCH_RESOLVE_VERSION, 102, OpenGL_ES_3_2, 18435}, /* glGetDebugMessageLog */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 534 /* GL_KHR_debug */, 18435}, /* glGetDebugMessageLog */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 538 /* GL_KHR_debug */, 18435}, /* glGetDebugMessageLog */
     {DISPATCH_RESOLVE_EXTENSION, 102, 158 /* GL_ARB_debug_output */, 18480}, /* glGetDebugMessageLogARB */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 534 /* GL_KHR_debug */, 18504}, /* glGetDebugMessageLogKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 538 /* GL_KHR_debug */, 18504}, /* glGetDebugMessageLogKHR */
     {DISPATCH_RESOLVE_EXTENSION, 103, 67 /* GL_AMD_debug_output */, 18456}, /* glGetDebugMessageLogAMD */
     {DISPATCH_RESOLVE_EXTENSION, 104, 158 /* GL_ARB_debug_output */, 18480}, /* glGetDebugMessageLogARB */
     {DISPATCH_RESOLVE_VERSION, 104, OpenGL_Desktop_4_3, 18435}, /* glGetDebugMessageLog */
     {DISPATCH_RESOLVE_VERSION, 104, OpenGL_ES_3_2, 18435}, /* glGetDebugMessageLog */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 534 /* GL_KHR_debug */, 18435}, /* glGetDebugMessageLog */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 534 /* GL_KHR_debug */, 18504}, /* glGetDebugMessageLogKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 105, 534 /* GL_KHR_debug */, 18504}, /* glGetDebugMessageLogKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 538 /* GL_KHR_debug */, 18435}, /* glGetDebugMessageLog */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 538 /* GL_KHR_debug */, 18504}, /* glGetDebugMessageLogKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 538 /* GL_KHR_debug */, 18504}, /* glGetDebugMessageLogKHR */
     {DISPATCH_RESOLVE_VERSION, 105, OpenGL_Desktop_4_3, 18435}, /* glGetDebugMessageLog */
     {DISPATCH_RESOLVE_VERSION, 105, OpenGL_ES_3_2, 18435}, /* glGetDebugMessageLog */
-    {DISPATCH_RESOLVE_EXTENSION, 105, 534 /* GL_KHR_debug */, 18435}, /* glGetDebugMessageLog */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 538 /* GL_KHR_debug */, 18435}, /* glGetDebugMessageLog */
     {DISPATCH_RESOLVE_EXTENSION, 105, 158 /* GL_ARB_debug_output */, 18480}, /* glGetDebugMessageLogARB */
-    {DISPATCH_RESOLVE_EXTENSION, 106, 772 /* GL_SGIS_detail_texture */, 18528}, /* glGetDetailTexFuncSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 357 /* GL_EXT_direct_state_access */, 18551}, /* glGetDoubleIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 776 /* GL_SGIS_detail_texture */, 18528}, /* glGetDetailTexFuncSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 360 /* GL_EXT_direct_state_access */, 18551}, /* glGetDoubleIndexedvEXT */
     {DISPATCH_RESOLVE_VERSION, 107, OpenGL_Desktop_4_1, 18574}, /* glGetDoublei_v */
     {DISPATCH_RESOLVE_EXTENSION, 107, 301 /* GL_ARB_viewport_array */, 18574}, /* glGetDoublei_v */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 357 /* GL_EXT_direct_state_access */, 18589}, /* glGetDoublei_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 360 /* GL_EXT_direct_state_access */, 18589}, /* glGetDoublei_vEXT */
     {DISPATCH_RESOLVE_VERSION, 108, OpenGL_Desktop_4_1, 18574}, /* glGetDoublei_v */
     {DISPATCH_RESOLVE_EXTENSION, 108, 301 /* GL_ARB_viewport_array */, 18574}, /* glGetDoublei_v */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 357 /* GL_EXT_direct_state_access */, 18551}, /* glGetDoubleIndexedvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 357 /* GL_EXT_direct_state_access */, 18589}, /* glGetDoublei_vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 109, 357 /* GL_EXT_direct_state_access */, 18589}, /* glGetDoublei_vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 109, 357 /* GL_EXT_direct_state_access */, 18551}, /* glGetDoubleIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 360 /* GL_EXT_direct_state_access */, 18551}, /* glGetDoubleIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 360 /* GL_EXT_direct_state_access */, 18589}, /* glGetDoublei_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 360 /* GL_EXT_direct_state_access */, 18589}, /* glGetDoublei_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 360 /* GL_EXT_direct_state_access */, 18551}, /* glGetDoubleIndexedvEXT */
     {DISPATCH_RESOLVE_VERSION, 109, OpenGL_Desktop_4_1, 18574}, /* glGetDoublei_v */
     {DISPATCH_RESOLVE_EXTENSION, 109, 301 /* GL_ARB_viewport_array */, 18574}, /* glGetDoublei_v */
     {DISPATCH_RESOLVE_DIRECT, 110, OpenGL_Desktop_1_0, 18607}, /* glGetDoublev */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 763 /* GL_QCOM_driver_control */, 18620}, /* glGetDriverControlStringQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 763 /* GL_QCOM_driver_control */, 18649}, /* glGetDriverControlsQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 767 /* GL_QCOM_driver_control */, 18620}, /* glGetDriverControlStringQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 767 /* GL_QCOM_driver_control */, 18649}, /* glGetDriverControlsQCOM */
     {DISPATCH_RESOLVE_DIRECT, 113, OpenGL_Desktop_1_0, 18673}, /* glGetError */
     {DISPATCH_RESOLVE_DIRECT, 113, OpenGL_ES_1_0, 18673}, /* glGetError */
     {DISPATCH_RESOLVE_DIRECT, 113, OpenGL_ES_2_0, 18673}, /* glGetError */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 580 /* GL_NV_fence */, 18684}, /* glGetFenceivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 629 /* GL_NV_register_combiners */, 18699}, /* glGetFinalCombinerInputParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 629 /* GL_NV_register_combiners */, 18736}, /* glGetFinalCombinerInputParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 529 /* GL_INTEL_performance_query */, 18773}, /* glGetFirstPerfQueryIdINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 584 /* GL_NV_fence */, 18684}, /* glGetFenceivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 633 /* GL_NV_register_combiners */, 18699}, /* glGetFinalCombinerInputParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 633 /* GL_NV_register_combiners */, 18736}, /* glGetFinalCombinerInputParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 533 /* GL_INTEL_performance_query */, 18773}, /* glGetFirstPerfQueryIdINTEL */
     {DISPATCH_RESOLVE_DIRECT, 118, OpenGL_ES_1_0, 18800}, /* glGetFixedv */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 702 /* GL_OES_fixed_point */, 18812}, /* glGetFixedvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 357 /* GL_EXT_direct_state_access */, 18827}, /* glGetFloatIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 706 /* GL_OES_fixed_point */, 18812}, /* glGetFixedvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 360 /* GL_EXT_direct_state_access */, 18827}, /* glGetFloatIndexedvEXT */
     {DISPATCH_RESOLVE_VERSION, 120, OpenGL_Desktop_4_1, 18849}, /* glGetFloati_v */
     {DISPATCH_RESOLVE_EXTENSION, 120, 301 /* GL_ARB_viewport_array */, 18849}, /* glGetFloati_v */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 357 /* GL_EXT_direct_state_access */, 18863}, /* glGetFloati_vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 679 /* GL_NV_viewport_array */, 18880}, /* glGetFloati_vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 360 /* GL_EXT_direct_state_access */, 18863}, /* glGetFloati_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 683 /* GL_NV_viewport_array */, 18880}, /* glGetFloati_vNV */
     {DISPATCH_RESOLVE_VERSION, 121, OpenGL_Desktop_4_1, 18849}, /* glGetFloati_v */
     {DISPATCH_RESOLVE_EXTENSION, 121, 301 /* GL_ARB_viewport_array */, 18849}, /* glGetFloati_v */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 357 /* GL_EXT_direct_state_access */, 18827}, /* glGetFloatIndexedvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 357 /* GL_EXT_direct_state_access */, 18863}, /* glGetFloati_vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 679 /* GL_NV_viewport_array */, 18880}, /* glGetFloati_vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 357 /* GL_EXT_direct_state_access */, 18863}, /* glGetFloati_vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 357 /* GL_EXT_direct_state_access */, 18827}, /* glGetFloatIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 360 /* GL_EXT_direct_state_access */, 18827}, /* glGetFloatIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 360 /* GL_EXT_direct_state_access */, 18863}, /* glGetFloati_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 683 /* GL_NV_viewport_array */, 18880}, /* glGetFloati_vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 360 /* GL_EXT_direct_state_access */, 18863}, /* glGetFloati_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 360 /* GL_EXT_direct_state_access */, 18827}, /* glGetFloatIndexedvEXT */
     {DISPATCH_RESOLVE_VERSION, 122, OpenGL_Desktop_4_1, 18849}, /* glGetFloati_v */
     {DISPATCH_RESOLVE_EXTENSION, 122, 301 /* GL_ARB_viewport_array */, 18849}, /* glGetFloati_v */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 679 /* GL_NV_viewport_array */, 18880}, /* glGetFloati_vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 679 /* GL_NV_viewport_array */, 18880}, /* glGetFloati_vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 357 /* GL_EXT_direct_state_access */, 18827}, /* glGetFloatIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 683 /* GL_NV_viewport_array */, 18880}, /* glGetFloati_vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 683 /* GL_NV_viewport_array */, 18880}, /* glGetFloati_vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 360 /* GL_EXT_direct_state_access */, 18827}, /* glGetFloatIndexedvEXT */
     {DISPATCH_RESOLVE_VERSION, 123, OpenGL_Desktop_4_1, 18849}, /* glGetFloati_v */
     {DISPATCH_RESOLVE_EXTENSION, 123, 301 /* GL_ARB_viewport_array */, 18849}, /* glGetFloati_v */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 357 /* GL_EXT_direct_state_access */, 18863}, /* glGetFloati_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 360 /* GL_EXT_direct_state_access */, 18863}, /* glGetFloati_vEXT */
     {DISPATCH_RESOLVE_DIRECT, 124, OpenGL_Desktop_1_0, 18896}, /* glGetFloatv */
     {DISPATCH_RESOLVE_DIRECT, 124, OpenGL_ES_1_0, 18896}, /* glGetFloatv */
     {DISPATCH_RESOLVE_DIRECT, 124, OpenGL_ES_2_0, 18896}, /* glGetFloatv */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 773 /* GL_SGIS_fog_function */, 18908}, /* glGetFogFuncSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 777 /* GL_SGIS_fog_function */, 18908}, /* glGetFogFuncSGIS */
     {DISPATCH_RESOLVE_VERSION, 126, OpenGL_Desktop_3_3, 18925}, /* glGetFragDataIndex */
     {DISPATCH_RESOLVE_EXTENSION, 126, 142 /* GL_ARB_blend_func_extended */, 18925}, /* glGetFragDataIndex */
-    {DISPATCH_RESOLVE_EXTENSION, 126, 336 /* GL_EXT_blend_func_extended */, 18944}, /* glGetFragDataIndexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 336 /* GL_EXT_blend_func_extended */, 18944}, /* glGetFragDataIndexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 339 /* GL_EXT_blend_func_extended */, 18944}, /* glGetFragDataIndexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 339 /* GL_EXT_blend_func_extended */, 18944}, /* glGetFragDataIndexEXT */
     {DISPATCH_RESOLVE_VERSION, 127, OpenGL_Desktop_3_3, 18925}, /* glGetFragDataIndex */
     {DISPATCH_RESOLVE_EXTENSION, 127, 142 /* GL_ARB_blend_func_extended */, 18925}, /* glGetFragDataIndex */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_Desktop_3_0, 18966}, /* glGetFragDataLocation */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_ES_3_0, 18966}, /* glGetFragDataLocation */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 380 /* GL_EXT_gpu_shader4 */, 18988}, /* glGetFragDataLocationEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 380 /* GL_EXT_gpu_shader4 */, 18988}, /* glGetFragDataLocationEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 383 /* GL_EXT_gpu_shader4 */, 18988}, /* glGetFragDataLocationEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 383 /* GL_EXT_gpu_shader4 */, 18988}, /* glGetFragDataLocationEXT */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_Desktop_3_0, 18966}, /* glGetFragDataLocation */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_ES_3_0, 18966}, /* glGetFragDataLocation */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 799 /* GL_SGIX_fragment_lighting */, 19013}, /* glGetFragmentLightfvSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 799 /* GL_SGIX_fragment_lighting */, 19038}, /* glGetFragmentLightivSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 799 /* GL_SGIX_fragment_lighting */, 19063}, /* glGetFragmentMaterialfvSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 799 /* GL_SGIX_fragment_lighting */, 19091}, /* glGetFragmentMaterialivSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 804 /* GL_SGIX_fragment_lighting */, 19013}, /* glGetFragmentLightfvSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 804 /* GL_SGIX_fragment_lighting */, 19038}, /* glGetFragmentLightivSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 804 /* GL_SGIX_fragment_lighting */, 19063}, /* glGetFragmentMaterialfvSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 804 /* GL_SGIX_fragment_lighting */, 19091}, /* glGetFragmentMaterialivSGIX */
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_Desktop_3_0, 19119}, /* glGetFramebufferAttachmentParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 134, OpenGL_ES_2_0, 19119}, /* glGetFramebufferAttachmentParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 134, 179 /* GL_ARB_framebuffer_object */, 19119}, /* glGetFramebufferAttachmentParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 373 /* GL_EXT_framebuffer_object */, 19157}, /* glGetFramebufferAttachmentParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 135, 373 /* GL_EXT_framebuffer_object */, 19157}, /* glGetFramebufferAttachmentParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 376 /* GL_EXT_framebuffer_object */, 19157}, /* glGetFramebufferAttachmentParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 135, 376 /* GL_EXT_framebuffer_object */, 19157}, /* glGetFramebufferAttachmentParameterivEXT */
     {DISPATCH_RESOLVE_VERSION, 135, OpenGL_Desktop_3_0, 19119}, /* glGetFramebufferAttachmentParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 135, OpenGL_ES_2_0, 19119}, /* glGetFramebufferAttachmentParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 135, 179 /* GL_ARB_framebuffer_object */, 19119}, /* glGetFramebufferAttachmentParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 704 /* GL_OES_framebuffer_object */, 19198}, /* glGetFramebufferAttachmentParameterivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 708 /* GL_OES_framebuffer_object */, 19198}, /* glGetFramebufferAttachmentParameterivOES */
     {DISPATCH_RESOLVE_VERSION, 137, OpenGL_Desktop_4_3, 19239}, /* glGetFramebufferParameteriv */
     {DISPATCH_RESOLVE_VERSION, 137, OpenGL_ES_3_1, 19239}, /* glGetFramebufferParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 137, 178 /* GL_ARB_framebuffer_no_attachments */, 19239}, /* glGetFramebufferParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 357 /* GL_EXT_direct_state_access */, 19267}, /* glGetFramebufferParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 433 /* GL_EXT_shader_pixel_local_storage2 */, 19298}, /* glGetFramebufferPixelLocalStorageSizeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 360 /* GL_EXT_direct_state_access */, 19267}, /* glGetFramebufferParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 436 /* GL_EXT_shader_pixel_local_storage2 */, 19298}, /* glGetFramebufferPixelLocalStorageSizeEXT */
     {DISPATCH_RESOLVE_VERSION, 140, OpenGL_Desktop_4_5, 19339}, /* glGetGraphicsResetStatus */
     {DISPATCH_RESOLVE_VERSION, 140, OpenGL_ES_3_2, 19339}, /* glGetGraphicsResetStatus */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 537 /* GL_KHR_robustness */, 19339}, /* glGetGraphicsResetStatus */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 537 /* GL_KHR_robustness */, 19420}, /* glGetGraphicsResetStatusKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 541 /* GL_KHR_robustness */, 19339}, /* glGetGraphicsResetStatus */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 541 /* GL_KHR_robustness */, 19420}, /* glGetGraphicsResetStatusKHR */
     {DISPATCH_RESOLVE_EXTENSION, 141, 215 /* GL_ARB_robustness */, 19364}, /* glGetGraphicsResetStatusARB */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 417 /* GL_EXT_robustness */, 19392}, /* glGetGraphicsResetStatusEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 537 /* GL_KHR_robustness */, 19420}, /* glGetGraphicsResetStatusKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 420 /* GL_EXT_robustness */, 19392}, /* glGetGraphicsResetStatusEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 541 /* GL_KHR_robustness */, 19420}, /* glGetGraphicsResetStatusKHR */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_Desktop_4_5, 19339}, /* glGetGraphicsResetStatus */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_ES_3_2, 19339}, /* glGetGraphicsResetStatus */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 537 /* GL_KHR_robustness */, 19339}, /* glGetGraphicsResetStatus */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 541 /* GL_KHR_robustness */, 19339}, /* glGetGraphicsResetStatus */
     {DISPATCH_RESOLVE_EXTENSION, 144, 232 /* GL_ARB_shader_objects */, 19448}, /* glGetHandleARB */
     {DISPATCH_RESOLVE_EXTENSION, 145, 190 /* GL_ARB_imaging */, 19463}, /* glGetHistogram */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 382 /* GL_EXT_histogram */, 19478}, /* glGetHistogramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 385 /* GL_EXT_histogram */, 19478}, /* glGetHistogramEXT */
     {DISPATCH_RESOLVE_EXTENSION, 147, 190 /* GL_ARB_imaging */, 19496}, /* glGetHistogramParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 382 /* GL_EXT_histogram */, 19522}, /* glGetHistogramParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 385 /* GL_EXT_histogram */, 19522}, /* glGetHistogramParameterfvEXT */
     {DISPATCH_RESOLVE_EXTENSION, 149, 190 /* GL_ARB_imaging */, 19551}, /* glGetHistogramParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 382 /* GL_EXT_histogram */, 19577}, /* glGetHistogramParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 151, 702 /* GL_OES_fixed_point */, 19606}, /* glGetHistogramParameterxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 385 /* GL_EXT_histogram */, 19577}, /* glGetHistogramParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 151, 706 /* GL_OES_fixed_point */, 19606}, /* glGetHistogramParameterxvOES */
     {DISPATCH_RESOLVE_EXTENSION, 152, 141 /* GL_ARB_bindless_texture */, 19635}, /* glGetImageHandleARB */
-    {DISPATCH_RESOLVE_EXTENSION, 153, 554 /* GL_NV_bindless_texture */, 19655}, /* glGetImageHandleNV */
-    {DISPATCH_RESOLVE_EXTENSION, 154, 502 /* GL_HP_image_transform */, 19674}, /* glGetImageTransformParameterfvHP */
-    {DISPATCH_RESOLVE_EXTENSION, 155, 502 /* GL_HP_image_transform */, 19707}, /* glGetImageTransformParameterivHP */
+    {DISPATCH_RESOLVE_EXTENSION, 153, 558 /* GL_NV_bindless_texture */, 19655}, /* glGetImageHandleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 154, 506 /* GL_HP_image_transform */, 19674}, /* glGetImageTransformParameterfvHP */
+    {DISPATCH_RESOLVE_EXTENSION, 155, 506 /* GL_HP_image_transform */, 19707}, /* glGetImageTransformParameterivHP */
     {DISPATCH_RESOLVE_EXTENSION, 156, 232 /* GL_ARB_shader_objects */, 19740}, /* glGetInfoLogARB */
-    {DISPATCH_RESOLVE_EXTENSION, 157, 803 /* GL_SGIX_instruments */, 19756}, /* glGetInstrumentsSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 157, 808 /* GL_SGIX_instruments */, 19756}, /* glGetInstrumentsSGIX */
     {DISPATCH_RESOLVE_VERSION, 158, OpenGL_Desktop_3_2, 19777}, /* glGetInteger64i_v */
     {DISPATCH_RESOLVE_VERSION, 158, OpenGL_ES_3_0, 19777}, /* glGetInteger64i_v */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_Desktop_3_2, 19795}, /* glGetInteger64v */
@@ -7060,8 +7070,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_3_2, 19795}, /* glGetInteger64v */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_ES_3_0, 19795}, /* glGetInteger64v */
     {DISPATCH_RESOLVE_EXTENSION, 160, 251 /* GL_ARB_sync */, 19795}, /* glGetInteger64v */
-    {DISPATCH_RESOLVE_EXTENSION, 161, 357 /* GL_EXT_direct_state_access */, 19832}, /* glGetIntegerIndexedvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 161, 361 /* GL_EXT_draw_buffers2 */, 19832}, /* glGetIntegerIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 161, 360 /* GL_EXT_direct_state_access */, 19832}, /* glGetIntegerIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 161, 364 /* GL_EXT_draw_buffers2 */, 19832}, /* glGetIntegerIndexedvEXT */
     {DISPATCH_RESOLVE_VERSION, 161, OpenGL_Desktop_3_0, 19856}, /* glGetIntegeri_v */
     {DISPATCH_RESOLVE_VERSION, 161, OpenGL_Desktop_3_1, 19856}, /* glGetIntegeri_v */
     {DISPATCH_RESOLVE_VERSION, 161, OpenGL_ES_3_0, 19856}, /* glGetIntegeri_v */
@@ -7070,72 +7080,72 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 162, OpenGL_Desktop_3_1, 19856}, /* glGetIntegeri_v */
     {DISPATCH_RESOLVE_VERSION, 162, OpenGL_ES_3_0, 19856}, /* glGetIntegeri_v */
     {DISPATCH_RESOLVE_EXTENSION, 162, 290 /* GL_ARB_uniform_buffer_object */, 19856}, /* glGetIntegeri_v */
-    {DISPATCH_RESOLVE_EXTENSION, 162, 357 /* GL_EXT_direct_state_access */, 19832}, /* glGetIntegerIndexedvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 162, 361 /* GL_EXT_draw_buffers2 */, 19832}, /* glGetIntegerIndexedvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 163, 396 /* GL_EXT_multiview_draw_buffers */, 19872}, /* glGetIntegeri_vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 164, 671 /* GL_NV_vertex_buffer_unified_memory */, 19891}, /* glGetIntegerui64i_vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 165, 640 /* GL_NV_shader_buffer_load */, 19913}, /* glGetIntegerui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 162, 360 /* GL_EXT_direct_state_access */, 19832}, /* glGetIntegerIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 162, 364 /* GL_EXT_draw_buffers2 */, 19832}, /* glGetIntegerIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 163, 399 /* GL_EXT_multiview_draw_buffers */, 19872}, /* glGetIntegeri_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 164, 675 /* GL_NV_vertex_buffer_unified_memory */, 19891}, /* glGetIntegerui64i_vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 165, 644 /* GL_NV_shader_buffer_load */, 19913}, /* glGetIntegerui64vNV */
     {DISPATCH_RESOLVE_DIRECT, 166, OpenGL_Desktop_1_0, 19933}, /* glGetIntegerv */
     {DISPATCH_RESOLVE_DIRECT, 166, OpenGL_ES_1_0, 19933}, /* glGetIntegerv */
     {DISPATCH_RESOLVE_DIRECT, 166, OpenGL_ES_2_0, 19933}, /* glGetIntegerv */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 606 /* GL_NV_internalformat_sample_query */, 19947}, /* glGetInternalformatSampleivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 610 /* GL_NV_internalformat_sample_query */, 19947}, /* glGetInternalformatSampleivNV */
     {DISPATCH_RESOLVE_VERSION, 168, OpenGL_Desktop_4_3, 19977}, /* glGetInternalformati64v */
     {DISPATCH_RESOLVE_EXTENSION, 168, 194 /* GL_ARB_internalformat_query2 */, 19977}, /* glGetInternalformati64v */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_Desktop_4_2, 20001}, /* glGetInternalformativ */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_ES_3_0, 20001}, /* glGetInternalformativ */
     {DISPATCH_RESOLVE_EXTENSION, 169, 193 /* GL_ARB_internalformat_query */, 20001}, /* glGetInternalformativ */
-    {DISPATCH_RESOLVE_EXTENSION, 170, 494 /* GL_EXT_vertex_shader */, 20023}, /* glGetInvariantBooleanvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 494 /* GL_EXT_vertex_shader */, 20049}, /* glGetInvariantFloatvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 494 /* GL_EXT_vertex_shader */, 20073}, /* glGetInvariantIntegervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 170, 498 /* GL_EXT_vertex_shader */, 20023}, /* glGetInvariantBooleanvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 498 /* GL_EXT_vertex_shader */, 20049}, /* glGetInvariantFloatvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 498 /* GL_EXT_vertex_shader */, 20073}, /* glGetInvariantIntegervEXT */
     {DISPATCH_RESOLVE_DIRECT, 173, OpenGL_Desktop_1_0, 20099}, /* glGetLightfv */
     {DISPATCH_RESOLVE_DIRECT, 173, OpenGL_ES_1_0, 20099}, /* glGetLightfv */
     {DISPATCH_RESOLVE_DIRECT, 174, OpenGL_Desktop_1_0, 20112}, /* glGetLightiv */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 702 /* GL_OES_fixed_point */, 20125}, /* glGetLightxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 706 /* GL_OES_fixed_point */, 20125}, /* glGetLightxOES */
     {DISPATCH_RESOLVE_DIRECT, 176, OpenGL_ES_1_0, 20140}, /* glGetLightxv */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 702 /* GL_OES_fixed_point */, 20153}, /* glGetLightxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 806 /* GL_SGIX_list_priority */, 20169}, /* glGetListParameterfvSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 179, 806 /* GL_SGIX_list_priority */, 20194}, /* glGetListParameterivSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 494 /* GL_EXT_vertex_shader */, 20219}, /* glGetLocalConstantBooleanvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 494 /* GL_EXT_vertex_shader */, 20249}, /* glGetLocalConstantFloatvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 494 /* GL_EXT_vertex_shader */, 20277}, /* glGetLocalConstantIntegervEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 576 /* GL_NV_evaluators */, 20307}, /* glGetMapAttribParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 576 /* GL_NV_evaluators */, 20335}, /* glGetMapAttribParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 576 /* GL_NV_evaluators */, 20363}, /* glGetMapControlPointsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 576 /* GL_NV_evaluators */, 20387}, /* glGetMapParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 576 /* GL_NV_evaluators */, 20409}, /* glGetMapParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 706 /* GL_OES_fixed_point */, 20153}, /* glGetLightxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 811 /* GL_SGIX_list_priority */, 20169}, /* glGetListParameterfvSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 179, 811 /* GL_SGIX_list_priority */, 20194}, /* glGetListParameterivSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 498 /* GL_EXT_vertex_shader */, 20219}, /* glGetLocalConstantBooleanvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 498 /* GL_EXT_vertex_shader */, 20249}, /* glGetLocalConstantFloatvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 498 /* GL_EXT_vertex_shader */, 20277}, /* glGetLocalConstantIntegervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 580 /* GL_NV_evaluators */, 20307}, /* glGetMapAttribParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 580 /* GL_NV_evaluators */, 20335}, /* glGetMapAttribParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 580 /* GL_NV_evaluators */, 20363}, /* glGetMapControlPointsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 580 /* GL_NV_evaluators */, 20387}, /* glGetMapParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 580 /* GL_NV_evaluators */, 20409}, /* glGetMapParameterivNV */
     {DISPATCH_RESOLVE_DIRECT, 188, OpenGL_Desktop_1_0, 20431}, /* glGetMapdv */
     {DISPATCH_RESOLVE_DIRECT, 189, OpenGL_Desktop_1_0, 20442}, /* glGetMapfv */
     {DISPATCH_RESOLVE_DIRECT, 190, OpenGL_Desktop_1_0, 20453}, /* glGetMapiv */
-    {DISPATCH_RESOLVE_EXTENSION, 191, 702 /* GL_OES_fixed_point */, 20464}, /* glGetMapxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 191, 706 /* GL_OES_fixed_point */, 20464}, /* glGetMapxvOES */
     {DISPATCH_RESOLVE_DIRECT, 192, OpenGL_Desktop_1_0, 20478}, /* glGetMaterialfv */
     {DISPATCH_RESOLVE_DIRECT, 192, OpenGL_ES_1_0, 20478}, /* glGetMaterialfv */
     {DISPATCH_RESOLVE_DIRECT, 193, OpenGL_Desktop_1_0, 20494}, /* glGetMaterialiv */
-    {DISPATCH_RESOLVE_EXTENSION, 194, 702 /* GL_OES_fixed_point */, 20510}, /* glGetMaterialxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 194, 706 /* GL_OES_fixed_point */, 20510}, /* glGetMaterialxOES */
     {DISPATCH_RESOLVE_DIRECT, 195, OpenGL_ES_1_0, 20528}, /* glGetMaterialxv */
-    {DISPATCH_RESOLVE_EXTENSION, 196, 702 /* GL_OES_fixed_point */, 20544}, /* glGetMaterialxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 196, 706 /* GL_OES_fixed_point */, 20544}, /* glGetMaterialxvOES */
     {DISPATCH_RESOLVE_EXTENSION, 197, 190 /* GL_ARB_imaging */, 20563}, /* glGetMinmax */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 382 /* GL_EXT_histogram */, 20575}, /* glGetMinmaxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 385 /* GL_EXT_histogram */, 20575}, /* glGetMinmaxEXT */
     {DISPATCH_RESOLVE_EXTENSION, 199, 190 /* GL_ARB_imaging */, 20590}, /* glGetMinmaxParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 382 /* GL_EXT_histogram */, 20613}, /* glGetMinmaxParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 385 /* GL_EXT_histogram */, 20613}, /* glGetMinmaxParameterfvEXT */
     {DISPATCH_RESOLVE_EXTENSION, 201, 190 /* GL_ARB_imaging */, 20639}, /* glGetMinmaxParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 202, 382 /* GL_EXT_histogram */, 20662}, /* glGetMinmaxParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 203, 357 /* GL_EXT_direct_state_access */, 20688}, /* glGetMultiTexEnvfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 357 /* GL_EXT_direct_state_access */, 20710}, /* glGetMultiTexEnvivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 205, 357 /* GL_EXT_direct_state_access */, 20732}, /* glGetMultiTexGendvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 357 /* GL_EXT_direct_state_access */, 20754}, /* glGetMultiTexGenfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 207, 357 /* GL_EXT_direct_state_access */, 20776}, /* glGetMultiTexGenivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 357 /* GL_EXT_direct_state_access */, 20798}, /* glGetMultiTexImageEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 357 /* GL_EXT_direct_state_access */, 20820}, /* glGetMultiTexLevelParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 357 /* GL_EXT_direct_state_access */, 20853}, /* glGetMultiTexLevelParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 211, 357 /* GL_EXT_direct_state_access */, 20886}, /* glGetMultiTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 357 /* GL_EXT_direct_state_access */, 20915}, /* glGetMultiTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 357 /* GL_EXT_direct_state_access */, 20945}, /* glGetMultiTexParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 357 /* GL_EXT_direct_state_access */, 20973}, /* glGetMultiTexParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 202, 385 /* GL_EXT_histogram */, 20662}, /* glGetMinmaxParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 203, 360 /* GL_EXT_direct_state_access */, 20688}, /* glGetMultiTexEnvfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 360 /* GL_EXT_direct_state_access */, 20710}, /* glGetMultiTexEnvivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 205, 360 /* GL_EXT_direct_state_access */, 20732}, /* glGetMultiTexGendvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 360 /* GL_EXT_direct_state_access */, 20754}, /* glGetMultiTexGenfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 207, 360 /* GL_EXT_direct_state_access */, 20776}, /* glGetMultiTexGenivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 360 /* GL_EXT_direct_state_access */, 20798}, /* glGetMultiTexImageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 360 /* GL_EXT_direct_state_access */, 20820}, /* glGetMultiTexLevelParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 360 /* GL_EXT_direct_state_access */, 20853}, /* glGetMultiTexLevelParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 211, 360 /* GL_EXT_direct_state_access */, 20886}, /* glGetMultiTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 360 /* GL_EXT_direct_state_access */, 20915}, /* glGetMultiTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 360 /* GL_EXT_direct_state_access */, 20945}, /* glGetMultiTexParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 360 /* GL_EXT_direct_state_access */, 20973}, /* glGetMultiTexParameterivEXT */
     {DISPATCH_RESOLVE_VERSION, 215, OpenGL_Desktop_3_2, 21001}, /* glGetMultisamplefv */
     {DISPATCH_RESOLVE_VERSION, 215, OpenGL_ES_3_1, 21001}, /* glGetMultisamplefv */
     {DISPATCH_RESOLVE_EXTENSION, 215, 272 /* GL_ARB_texture_multisample */, 21001}, /* glGetMultisamplefv */
-    {DISPATCH_RESOLVE_EXTENSION, 215, 578 /* GL_NV_explicit_multisample */, 21020}, /* glGetMultisamplefvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 578 /* GL_NV_explicit_multisample */, 21020}, /* glGetMultisamplefvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 215, 582 /* GL_NV_explicit_multisample */, 21020}, /* glGetMultisamplefvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 582 /* GL_NV_explicit_multisample */, 21020}, /* glGetMultisamplefvNV */
     {DISPATCH_RESOLVE_VERSION, 216, OpenGL_Desktop_3_2, 21001}, /* glGetMultisamplefv */
     {DISPATCH_RESOLVE_VERSION, 216, OpenGL_ES_3_1, 21001}, /* glGetMultisamplefv */
     {DISPATCH_RESOLVE_EXTENSION, 216, 272 /* GL_ARB_texture_multisample */, 21001}, /* glGetMultisamplefv */
@@ -7143,121 +7153,121 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 217, 163 /* GL_ARB_direct_state_access */, 21041}, /* glGetNamedBufferParameteri64v */
     {DISPATCH_RESOLVE_VERSION, 218, OpenGL_Desktop_4_5, 21071}, /* glGetNamedBufferParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 218, 163 /* GL_ARB_direct_state_access */, 21071}, /* glGetNamedBufferParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 357 /* GL_EXT_direct_state_access */, 21099}, /* glGetNamedBufferParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 220, 640 /* GL_NV_shader_buffer_load */, 21130}, /* glGetNamedBufferParameterui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 360 /* GL_EXT_direct_state_access */, 21099}, /* glGetNamedBufferParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 220, 644 /* GL_NV_shader_buffer_load */, 21130}, /* glGetNamedBufferParameterui64vNV */
     {DISPATCH_RESOLVE_VERSION, 221, OpenGL_Desktop_4_5, 21163}, /* glGetNamedBufferPointerv */
     {DISPATCH_RESOLVE_EXTENSION, 221, 163 /* GL_ARB_direct_state_access */, 21163}, /* glGetNamedBufferPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 357 /* GL_EXT_direct_state_access */, 21188}, /* glGetNamedBufferPointervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 360 /* GL_EXT_direct_state_access */, 21188}, /* glGetNamedBufferPointervEXT */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_Desktop_4_5, 21216}, /* glGetNamedBufferSubData */
     {DISPATCH_RESOLVE_EXTENSION, 223, 163 /* GL_ARB_direct_state_access */, 21216}, /* glGetNamedBufferSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 357 /* GL_EXT_direct_state_access */, 21240}, /* glGetNamedBufferSubDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 360 /* GL_EXT_direct_state_access */, 21240}, /* glGetNamedBufferSubDataEXT */
     {DISPATCH_RESOLVE_VERSION, 225, OpenGL_Desktop_4_5, 21267}, /* glGetNamedFramebufferAttachmentParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 225, 163 /* GL_ARB_direct_state_access */, 21267}, /* glGetNamedFramebufferAttachmentParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 357 /* GL_EXT_direct_state_access */, 21310}, /* glGetNamedFramebufferAttachmentParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 360 /* GL_EXT_direct_state_access */, 21310}, /* glGetNamedFramebufferAttachmentParameterivEXT */
     {DISPATCH_RESOLVE_VERSION, 227, OpenGL_Desktop_4_5, 21356}, /* glGetNamedFramebufferParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 227, 163 /* GL_ARB_direct_state_access */, 21356}, /* glGetNamedFramebufferParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 357 /* GL_EXT_direct_state_access */, 21389}, /* glGetNamedFramebufferParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 357 /* GL_EXT_direct_state_access */, 21425}, /* glGetNamedProgramLocalParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 357 /* GL_EXT_direct_state_access */, 21463}, /* glGetNamedProgramLocalParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 357 /* GL_EXT_direct_state_access */, 21502}, /* glGetNamedProgramLocalParameterdvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 357 /* GL_EXT_direct_state_access */, 21539}, /* glGetNamedProgramLocalParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 357 /* GL_EXT_direct_state_access */, 21576}, /* glGetNamedProgramStringEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 357 /* GL_EXT_direct_state_access */, 21603}, /* glGetNamedProgramivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 360 /* GL_EXT_direct_state_access */, 21389}, /* glGetNamedFramebufferParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 360 /* GL_EXT_direct_state_access */, 21425}, /* glGetNamedProgramLocalParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 360 /* GL_EXT_direct_state_access */, 21463}, /* glGetNamedProgramLocalParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 360 /* GL_EXT_direct_state_access */, 21502}, /* glGetNamedProgramLocalParameterdvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 360 /* GL_EXT_direct_state_access */, 21539}, /* glGetNamedProgramLocalParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 360 /* GL_EXT_direct_state_access */, 21576}, /* glGetNamedProgramStringEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 360 /* GL_EXT_direct_state_access */, 21603}, /* glGetNamedProgramivEXT */
     {DISPATCH_RESOLVE_VERSION, 235, OpenGL_Desktop_4_5, 21626}, /* glGetNamedRenderbufferParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 235, 163 /* GL_ARB_direct_state_access */, 21626}, /* glGetNamedRenderbufferParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 357 /* GL_EXT_direct_state_access */, 21660}, /* glGetNamedRenderbufferParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 360 /* GL_EXT_direct_state_access */, 21660}, /* glGetNamedRenderbufferParameterivEXT */
     {DISPATCH_RESOLVE_EXTENSION, 237, 242 /* GL_ARB_shading_language_include */, 21697}, /* glGetNamedStringARB */
     {DISPATCH_RESOLVE_EXTENSION, 238, 242 /* GL_ARB_shading_language_include */, 21717}, /* glGetNamedStringivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 529 /* GL_INTEL_performance_query */, 21739}, /* glGetNextPerfQueryIdINTEL */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 323 /* GL_ATI_vertex_array_object */, 21765}, /* glGetObjectBufferfvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 241, 323 /* GL_ATI_vertex_array_object */, 21788}, /* glGetObjectBufferivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 533 /* GL_INTEL_performance_query */, 21739}, /* glGetNextPerfQueryIdINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 326 /* GL_ATI_vertex_array_object */, 21765}, /* glGetObjectBufferfvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 241, 326 /* GL_ATI_vertex_array_object */, 21788}, /* glGetObjectBufferivATI */
     {DISPATCH_RESOLVE_VERSION, 242, OpenGL_Desktop_4_3, 21811}, /* glGetObjectLabel */
     {DISPATCH_RESOLVE_VERSION, 242, OpenGL_ES_3_2, 21811}, /* glGetObjectLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 534 /* GL_KHR_debug */, 21811}, /* glGetObjectLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 534 /* GL_KHR_debug */, 21848}, /* glGetObjectLabelKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 243, 354 /* GL_EXT_debug_label */, 21828}, /* glGetObjectLabelEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 244, 534 /* GL_KHR_debug */, 21848}, /* glGetObjectLabelKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 538 /* GL_KHR_debug */, 21811}, /* glGetObjectLabel */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 538 /* GL_KHR_debug */, 21848}, /* glGetObjectLabelKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 243, 357 /* GL_EXT_debug_label */, 21828}, /* glGetObjectLabelEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 244, 538 /* GL_KHR_debug */, 21848}, /* glGetObjectLabelKHR */
     {DISPATCH_RESOLVE_VERSION, 244, OpenGL_Desktop_4_3, 21811}, /* glGetObjectLabel */
     {DISPATCH_RESOLVE_VERSION, 244, OpenGL_ES_3_2, 21811}, /* glGetObjectLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 244, 534 /* GL_KHR_debug */, 21811}, /* glGetObjectLabel */
+    {DISPATCH_RESOLVE_EXTENSION, 244, 538 /* GL_KHR_debug */, 21811}, /* glGetObjectLabel */
     {DISPATCH_RESOLVE_EXTENSION, 245, 232 /* GL_ARB_shader_objects */, 21868}, /* glGetObjectParameterfvARB */
     {DISPATCH_RESOLVE_EXTENSION, 246, 119 /* GL_APPLE_object_purgeable */, 21894}, /* glGetObjectParameterivAPPLE */
     {DISPATCH_RESOLVE_EXTENSION, 247, 232 /* GL_ARB_shader_objects */, 21922}, /* glGetObjectParameterivARB */
     {DISPATCH_RESOLVE_VERSION, 248, OpenGL_Desktop_4_3, 21948}, /* glGetObjectPtrLabel */
     {DISPATCH_RESOLVE_VERSION, 248, OpenGL_ES_3_2, 21948}, /* glGetObjectPtrLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 534 /* GL_KHR_debug */, 21948}, /* glGetObjectPtrLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 534 /* GL_KHR_debug */, 21968}, /* glGetObjectPtrLabelKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 249, 534 /* GL_KHR_debug */, 21968}, /* glGetObjectPtrLabelKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 538 /* GL_KHR_debug */, 21948}, /* glGetObjectPtrLabel */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 538 /* GL_KHR_debug */, 21968}, /* glGetObjectPtrLabelKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 249, 538 /* GL_KHR_debug */, 21968}, /* glGetObjectPtrLabelKHR */
     {DISPATCH_RESOLVE_VERSION, 249, OpenGL_Desktop_4_3, 21948}, /* glGetObjectPtrLabel */
     {DISPATCH_RESOLVE_VERSION, 249, OpenGL_ES_3_2, 21948}, /* glGetObjectPtrLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 249, 534 /* GL_KHR_debug */, 21948}, /* glGetObjectPtrLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 611 /* GL_NV_occlusion_query */, 21991}, /* glGetOcclusionQueryivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 611 /* GL_NV_occlusion_query */, 22015}, /* glGetOcclusionQueryuivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 616 /* GL_NV_path_rendering */, 22040}, /* glGetPathColorGenfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 253, 616 /* GL_NV_path_rendering */, 22062}, /* glGetPathColorGenivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 616 /* GL_NV_path_rendering */, 22084}, /* glGetPathCommandsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 616 /* GL_NV_path_rendering */, 22104}, /* glGetPathCoordsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 0, 616 /* GL_NV_path_rendering */, 22122}, /* glGetPathDashArrayNV */
-    {DISPATCH_RESOLVE_EXTENSION, 1, 616 /* GL_NV_path_rendering */, 22143}, /* glGetPathLengthNV */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 616 /* GL_NV_path_rendering */, 22161}, /* glGetPathMetricRangeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 616 /* GL_NV_path_rendering */, 22184}, /* glGetPathMetricsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 616 /* GL_NV_path_rendering */, 22203}, /* glGetPathParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 616 /* GL_NV_path_rendering */, 22226}, /* glGetPathParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 616 /* GL_NV_path_rendering */, 22249}, /* glGetPathSpacingNV */
-    {DISPATCH_RESOLVE_EXTENSION, 7, 616 /* GL_NV_path_rendering */, 22268}, /* glGetPathTexGenfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 616 /* GL_NV_path_rendering */, 22288}, /* glGetPathTexGenivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 9, 529 /* GL_INTEL_performance_query */, 22308}, /* glGetPerfCounterInfoINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 249, 538 /* GL_KHR_debug */, 21948}, /* glGetObjectPtrLabel */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 615 /* GL_NV_occlusion_query */, 21991}, /* glGetOcclusionQueryivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 615 /* GL_NV_occlusion_query */, 22015}, /* glGetOcclusionQueryuivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 620 /* GL_NV_path_rendering */, 22040}, /* glGetPathColorGenfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 253, 620 /* GL_NV_path_rendering */, 22062}, /* glGetPathColorGenivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 620 /* GL_NV_path_rendering */, 22084}, /* glGetPathCommandsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 620 /* GL_NV_path_rendering */, 22104}, /* glGetPathCoordsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 620 /* GL_NV_path_rendering */, 22122}, /* glGetPathDashArrayNV */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 620 /* GL_NV_path_rendering */, 22143}, /* glGetPathLengthNV */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 620 /* GL_NV_path_rendering */, 22161}, /* glGetPathMetricRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 620 /* GL_NV_path_rendering */, 22184}, /* glGetPathMetricsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 620 /* GL_NV_path_rendering */, 22203}, /* glGetPathParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 620 /* GL_NV_path_rendering */, 22226}, /* glGetPathParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 620 /* GL_NV_path_rendering */, 22249}, /* glGetPathSpacingNV */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 620 /* GL_NV_path_rendering */, 22268}, /* glGetPathTexGenfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 620 /* GL_NV_path_rendering */, 22288}, /* glGetPathTexGenivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 533 /* GL_INTEL_performance_query */, 22308}, /* glGetPerfCounterInfoINTEL */
     {DISPATCH_RESOLVE_EXTENSION, 10, 77 /* GL_AMD_performance_monitor */, 22334}, /* glGetPerfMonitorCounterDataAMD */
     {DISPATCH_RESOLVE_EXTENSION, 11, 77 /* GL_AMD_performance_monitor */, 22365}, /* glGetPerfMonitorCounterInfoAMD */
     {DISPATCH_RESOLVE_EXTENSION, 12, 77 /* GL_AMD_performance_monitor */, 22396}, /* glGetPerfMonitorCounterStringAMD */
     {DISPATCH_RESOLVE_EXTENSION, 13, 77 /* GL_AMD_performance_monitor */, 22429}, /* glGetPerfMonitorCountersAMD */
     {DISPATCH_RESOLVE_EXTENSION, 14, 77 /* GL_AMD_performance_monitor */, 22457}, /* glGetPerfMonitorGroupStringAMD */
     {DISPATCH_RESOLVE_EXTENSION, 15, 77 /* GL_AMD_performance_monitor */, 22488}, /* glGetPerfMonitorGroupsAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 529 /* GL_INTEL_performance_query */, 22514}, /* glGetPerfQueryDataINTEL */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 529 /* GL_INTEL_performance_query */, 22538}, /* glGetPerfQueryIdByNameINTEL */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 529 /* GL_INTEL_performance_query */, 22566}, /* glGetPerfQueryInfoINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 533 /* GL_INTEL_performance_query */, 22514}, /* glGetPerfQueryDataINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 533 /* GL_INTEL_performance_query */, 22538}, /* glGetPerfQueryIdByNameINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 533 /* GL_INTEL_performance_query */, 22566}, /* glGetPerfQueryInfoINTEL */
     {DISPATCH_RESOLVE_DIRECT, 19, OpenGL_Desktop_1_0, 22590}, /* glGetPixelMapfv */
     {DISPATCH_RESOLVE_DIRECT, 20, OpenGL_Desktop_1_0, 22606}, /* glGetPixelMapuiv */
     {DISPATCH_RESOLVE_DIRECT, 21, OpenGL_Desktop_1_0, 22623}, /* glGetPixelMapusv */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 702 /* GL_OES_fixed_point */, 22640}, /* glGetPixelMapxv */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 776 /* GL_SGIS_pixel_texture */, 22656}, /* glGetPixelTexGenParameterfvSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 776 /* GL_SGIS_pixel_texture */, 22688}, /* glGetPixelTexGenParameterivSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 403 /* GL_EXT_pixel_transform */, 22720}, /* glGetPixelTransformParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 403 /* GL_EXT_pixel_transform */, 22754}, /* glGetPixelTransformParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 357 /* GL_EXT_direct_state_access */, 22788}, /* glGetPointerIndexedvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 28, 357 /* GL_EXT_direct_state_access */, 22812}, /* glGetPointeri_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 706 /* GL_OES_fixed_point */, 22640}, /* glGetPixelMapxv */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 781 /* GL_SGIS_pixel_texture */, 22656}, /* glGetPixelTexGenParameterfvSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 781 /* GL_SGIS_pixel_texture */, 22688}, /* glGetPixelTexGenParameterivSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 406 /* GL_EXT_pixel_transform */, 22720}, /* glGetPixelTransformParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 406 /* GL_EXT_pixel_transform */, 22754}, /* glGetPixelTransformParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 360 /* GL_EXT_direct_state_access */, 22788}, /* glGetPointerIndexedvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 360 /* GL_EXT_direct_state_access */, 22812}, /* glGetPointeri_vEXT */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_Desktop_1_1, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_Desktop_4_3, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_DIRECT, 29, OpenGL_ES_1_0, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_ES_3_2, 22831}, /* glGetPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 534 /* GL_KHR_debug */, 22831}, /* glGetPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 489 /* GL_EXT_vertex_array */, 22845}, /* glGetPointervEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 534 /* GL_KHR_debug */, 22862}, /* glGetPointervKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 489 /* GL_EXT_vertex_array */, 22845}, /* glGetPointervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 538 /* GL_KHR_debug */, 22831}, /* glGetPointerv */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 493 /* GL_EXT_vertex_array */, 22845}, /* glGetPointervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 538 /* GL_KHR_debug */, 22862}, /* glGetPointervKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 493 /* GL_EXT_vertex_array */, 22845}, /* glGetPointervEXT */
     {DISPATCH_RESOLVE_VERSION, 30, OpenGL_Desktop_1_1, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_VERSION, 30, OpenGL_Desktop_4_3, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_DIRECT, 30, OpenGL_ES_1_0, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_VERSION, 30, OpenGL_ES_3_2, 22831}, /* glGetPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 534 /* GL_KHR_debug */, 22831}, /* glGetPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 534 /* GL_KHR_debug */, 22862}, /* glGetPointervKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 534 /* GL_KHR_debug */, 22862}, /* glGetPointervKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 538 /* GL_KHR_debug */, 22831}, /* glGetPointerv */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 538 /* GL_KHR_debug */, 22862}, /* glGetPointervKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 538 /* GL_KHR_debug */, 22862}, /* glGetPointervKHR */
     {DISPATCH_RESOLVE_VERSION, 31, OpenGL_Desktop_1_1, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_VERSION, 31, OpenGL_Desktop_4_3, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_DIRECT, 31, OpenGL_ES_1_0, 22831}, /* glGetPointerv */
     {DISPATCH_RESOLVE_VERSION, 31, OpenGL_ES_3_2, 22831}, /* glGetPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 534 /* GL_KHR_debug */, 22831}, /* glGetPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 489 /* GL_EXT_vertex_array */, 22845}, /* glGetPointervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 538 /* GL_KHR_debug */, 22831}, /* glGetPointerv */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 493 /* GL_EXT_vertex_array */, 22845}, /* glGetPointervEXT */
     {DISPATCH_RESOLVE_DIRECT, 32, OpenGL_Desktop_1_0, 22879}, /* glGetPolygonStipple */
     {DISPATCH_RESOLVE_VERSION, 33, OpenGL_Desktop_4_1, 22899}, /* glGetProgramBinary */
     {DISPATCH_RESOLVE_VERSION, 33, OpenGL_ES_3_0, 22899}, /* glGetProgramBinary */
     {DISPATCH_RESOLVE_EXTENSION, 33, 182 /* GL_ARB_get_program_binary */, 22899}, /* glGetProgramBinary */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 707 /* GL_OES_get_program_binary */, 22918}, /* glGetProgramBinaryOES */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 707 /* GL_OES_get_program_binary */, 22918}, /* glGetProgramBinaryOES */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 711 /* GL_OES_get_program_binary */, 22918}, /* glGetProgramBinaryOES */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 711 /* GL_OES_get_program_binary */, 22918}, /* glGetProgramBinaryOES */
     {DISPATCH_RESOLVE_VERSION, 34, OpenGL_Desktop_4_1, 22899}, /* glGetProgramBinary */
     {DISPATCH_RESOLVE_VERSION, 34, OpenGL_ES_3_0, 22899}, /* glGetProgramBinary */
     {DISPATCH_RESOLVE_EXTENSION, 34, 182 /* GL_ARB_get_program_binary */, 22899}, /* glGetProgramBinary */
-    {DISPATCH_RESOLVE_EXTENSION, 35, 599 /* GL_NV_gpu_program4 */, 22940}, /* glGetProgramEnvParameterIivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 36, 599 /* GL_NV_gpu_program4 */, 22970}, /* glGetProgramEnvParameterIuivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 603 /* GL_NV_gpu_program4 */, 22940}, /* glGetProgramEnvParameterIivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 603 /* GL_NV_gpu_program4 */, 22970}, /* glGetProgramEnvParameterIuivNV */
     {DISPATCH_RESOLVE_EXTENSION, 37, 174 /* GL_ARB_fragment_program */, 23001}, /* glGetProgramEnvParameterdvARB */
     {DISPATCH_RESOLVE_EXTENSION, 37, 297 /* GL_ARB_vertex_program */, 23001}, /* glGetProgramEnvParameterdvARB */
     {DISPATCH_RESOLVE_EXTENSION, 38, 174 /* GL_ARB_fragment_program */, 23031}, /* glGetProgramEnvParameterfvARB */
@@ -7267,24 +7277,24 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 40, OpenGL_Desktop_4_3, 23081}, /* glGetProgramInterfaceiv */
     {DISPATCH_RESOLVE_VERSION, 40, OpenGL_ES_3_1, 23081}, /* glGetProgramInterfaceiv */
     {DISPATCH_RESOLVE_EXTENSION, 40, 211 /* GL_ARB_program_interface_query */, 23081}, /* glGetProgramInterfaceiv */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 599 /* GL_NV_gpu_program4 */, 23105}, /* glGetProgramLocalParameterIivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 42, 599 /* GL_NV_gpu_program4 */, 23137}, /* glGetProgramLocalParameterIuivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 603 /* GL_NV_gpu_program4 */, 23105}, /* glGetProgramLocalParameterIivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 603 /* GL_NV_gpu_program4 */, 23137}, /* glGetProgramLocalParameterIuivNV */
     {DISPATCH_RESOLVE_EXTENSION, 43, 174 /* GL_ARB_fragment_program */, 23170}, /* glGetProgramLocalParameterdvARB */
     {DISPATCH_RESOLVE_EXTENSION, 43, 297 /* GL_ARB_vertex_program */, 23170}, /* glGetProgramLocalParameterdvARB */
     {DISPATCH_RESOLVE_EXTENSION, 44, 174 /* GL_ARB_fragment_program */, 23202}, /* glGetProgramLocalParameterfvARB */
     {DISPATCH_RESOLVE_EXTENSION, 44, 297 /* GL_ARB_vertex_program */, 23202}, /* glGetProgramLocalParameterfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 585 /* GL_NV_fragment_program */, 23234}, /* glGetProgramNamedParameterdvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 585 /* GL_NV_fragment_program */, 23265}, /* glGetProgramNamedParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 672 /* GL_NV_vertex_program */, 23296}, /* glGetProgramParameterdvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 672 /* GL_NV_vertex_program */, 23322}, /* glGetProgramParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 589 /* GL_NV_fragment_program */, 23234}, /* glGetProgramNamedParameterdvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 589 /* GL_NV_fragment_program */, 23265}, /* glGetProgramNamedParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 676 /* GL_NV_vertex_program */, 23296}, /* glGetProgramParameterdvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 676 /* GL_NV_vertex_program */, 23322}, /* glGetProgramParameterfvNV */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_4_1, 23348}, /* glGetProgramPipelineInfoLog */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_ES_3_1, 23348}, /* glGetProgramPipelineInfoLog */
     {DISPATCH_RESOLVE_EXTENSION, 49, 222 /* GL_ARB_separate_shader_objects */, 23348}, /* glGetProgramPipelineInfoLog */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 422 /* GL_EXT_separate_shader_objects */, 23376}, /* glGetProgramPipelineInfoLogEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 425 /* GL_EXT_separate_shader_objects */, 23376}, /* glGetProgramPipelineInfoLogEXT */
     {DISPATCH_RESOLVE_VERSION, 51, OpenGL_Desktop_4_1, 23407}, /* glGetProgramPipelineiv */
     {DISPATCH_RESOLVE_VERSION, 51, OpenGL_ES_3_1, 23407}, /* glGetProgramPipelineiv */
     {DISPATCH_RESOLVE_EXTENSION, 51, 222 /* GL_ARB_separate_shader_objects */, 23407}, /* glGetProgramPipelineiv */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 422 /* GL_EXT_separate_shader_objects */, 23430}, /* glGetProgramPipelineivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 425 /* GL_EXT_separate_shader_objects */, 23430}, /* glGetProgramPipelineivEXT */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_Desktop_4_3, 23456}, /* glGetProgramResourceIndex */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_ES_3_1, 23456}, /* glGetProgramResourceIndex */
     {DISPATCH_RESOLVE_EXTENSION, 53, 211 /* GL_ARB_program_interface_query */, 23456}, /* glGetProgramResourceIndex */
@@ -7293,11 +7303,11 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 54, 211 /* GL_ARB_program_interface_query */, 23482}, /* glGetProgramResourceLocation */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_Desktop_4_3, 23511}, /* glGetProgramResourceLocationIndex */
     {DISPATCH_RESOLVE_EXTENSION, 55, 211 /* GL_ARB_program_interface_query */, 23511}, /* glGetProgramResourceLocationIndex */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 336 /* GL_EXT_blend_func_extended */, 23545}, /* glGetProgramResourceLocationIndexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 339 /* GL_EXT_blend_func_extended */, 23545}, /* glGetProgramResourceLocationIndexEXT */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_Desktop_4_3, 23582}, /* glGetProgramResourceName */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_ES_3_1, 23582}, /* glGetProgramResourceName */
     {DISPATCH_RESOLVE_EXTENSION, 57, 211 /* GL_ARB_program_interface_query */, 23582}, /* glGetProgramResourceName */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 616 /* GL_NV_path_rendering */, 23607}, /* glGetProgramResourcefvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 620 /* GL_NV_path_rendering */, 23607}, /* glGetProgramResourcefvNV */
     {DISPATCH_RESOLVE_VERSION, 59, OpenGL_Desktop_4_3, 23632}, /* glGetProgramResourceiv */
     {DISPATCH_RESOLVE_VERSION, 59, OpenGL_ES_3_1, 23632}, /* glGetProgramResourceiv */
     {DISPATCH_RESOLVE_EXTENSION, 59, 211 /* GL_ARB_program_interface_query */, 23632}, /* glGetProgramResourceiv */
@@ -7305,13 +7315,13 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 60, 236 /* GL_ARB_shader_subroutine */, 23655}, /* glGetProgramStageiv */
     {DISPATCH_RESOLVE_EXTENSION, 61, 174 /* GL_ARB_fragment_program */, 23675}, /* glGetProgramStringARB */
     {DISPATCH_RESOLVE_EXTENSION, 61, 297 /* GL_ARB_vertex_program */, 23675}, /* glGetProgramStringARB */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 672 /* GL_NV_vertex_program */, 23697}, /* glGetProgramStringNV */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 600 /* GL_NV_gpu_program5 */, 23718}, /* glGetProgramSubroutineParameteruivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 676 /* GL_NV_vertex_program */, 23697}, /* glGetProgramStringNV */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 604 /* GL_NV_gpu_program5 */, 23718}, /* glGetProgramSubroutineParameteruivNV */
     {DISPATCH_RESOLVE_VERSION, 64, OpenGL_Desktop_2_0, 23755}, /* glGetProgramiv */
     {DISPATCH_RESOLVE_DIRECT, 64, OpenGL_ES_2_0, 23755}, /* glGetProgramiv */
     {DISPATCH_RESOLVE_EXTENSION, 65, 174 /* GL_ARB_fragment_program */, 23770}, /* glGetProgramivARB */
     {DISPATCH_RESOLVE_EXTENSION, 65, 297 /* GL_ARB_vertex_program */, 23770}, /* glGetProgramivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 66, 672 /* GL_NV_vertex_program */, 23788}, /* glGetProgramivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 676 /* GL_NV_vertex_program */, 23788}, /* glGetProgramivNV */
     {DISPATCH_RESOLVE_VERSION, 67, OpenGL_Desktop_4_5, 23805}, /* glGetQueryBufferObjecti64v */
     {DISPATCH_RESOLVE_EXTENSION, 67, 163 /* GL_ARB_direct_state_access */, 23805}, /* glGetQueryBufferObjecti64v */
     {DISPATCH_RESOLVE_VERSION, 68, OpenGL_Desktop_4_5, 23832}, /* glGetQueryBufferObjectiv */
@@ -7324,27 +7334,27 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 71, 286 /* GL_ARB_transform_feedback3 */, 23911}, /* glGetQueryIndexediv */
     {DISPATCH_RESOLVE_VERSION, 72, OpenGL_Desktop_3_3, 23931}, /* glGetQueryObjecti64v */
     {DISPATCH_RESOLVE_EXTENSION, 72, 284 /* GL_ARB_timer_query */, 23931}, /* glGetQueryObjecti64v */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 359 /* GL_EXT_disjoint_timer_query */, 23952}, /* glGetQueryObjecti64vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 486 /* GL_EXT_timer_query */, 23952}, /* glGetQueryObjecti64vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 359 /* GL_EXT_disjoint_timer_query */, 23952}, /* glGetQueryObjecti64vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 486 /* GL_EXT_timer_query */, 23952}, /* glGetQueryObjecti64vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 362 /* GL_EXT_disjoint_timer_query */, 23952}, /* glGetQueryObjecti64vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 490 /* GL_EXT_timer_query */, 23952}, /* glGetQueryObjecti64vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 362 /* GL_EXT_disjoint_timer_query */, 23952}, /* glGetQueryObjecti64vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 490 /* GL_EXT_timer_query */, 23952}, /* glGetQueryObjecti64vEXT */
     {DISPATCH_RESOLVE_VERSION, 73, OpenGL_Desktop_3_3, 23931}, /* glGetQueryObjecti64v */
     {DISPATCH_RESOLVE_EXTENSION, 73, 284 /* GL_ARB_timer_query */, 23931}, /* glGetQueryObjecti64v */
     {DISPATCH_RESOLVE_VERSION, 74, OpenGL_Desktop_1_5, 23976}, /* glGetQueryObjectiv */
     {DISPATCH_RESOLVE_EXTENSION, 74, 203 /* GL_ARB_occlusion_query */, 23995}, /* glGetQueryObjectivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 359 /* GL_EXT_disjoint_timer_query */, 24017}, /* glGetQueryObjectivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 362 /* GL_EXT_disjoint_timer_query */, 24017}, /* glGetQueryObjectivEXT */
     {DISPATCH_RESOLVE_EXTENSION, 75, 203 /* GL_ARB_occlusion_query */, 23995}, /* glGetQueryObjectivARB */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_Desktop_1_5, 23976}, /* glGetQueryObjectiv */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 359 /* GL_EXT_disjoint_timer_query */, 24017}, /* glGetQueryObjectivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 359 /* GL_EXT_disjoint_timer_query */, 24017}, /* glGetQueryObjectivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 362 /* GL_EXT_disjoint_timer_query */, 24017}, /* glGetQueryObjectivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 362 /* GL_EXT_disjoint_timer_query */, 24017}, /* glGetQueryObjectivEXT */
     {DISPATCH_RESOLVE_VERSION, 76, OpenGL_Desktop_1_5, 23976}, /* glGetQueryObjectiv */
     {DISPATCH_RESOLVE_EXTENSION, 76, 203 /* GL_ARB_occlusion_query */, 23995}, /* glGetQueryObjectivARB */
     {DISPATCH_RESOLVE_VERSION, 77, OpenGL_Desktop_3_3, 24039}, /* glGetQueryObjectui64v */
     {DISPATCH_RESOLVE_EXTENSION, 77, 284 /* GL_ARB_timer_query */, 24039}, /* glGetQueryObjectui64v */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 359 /* GL_EXT_disjoint_timer_query */, 24061}, /* glGetQueryObjectui64vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 486 /* GL_EXT_timer_query */, 24061}, /* glGetQueryObjectui64vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 359 /* GL_EXT_disjoint_timer_query */, 24061}, /* glGetQueryObjectui64vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 486 /* GL_EXT_timer_query */, 24061}, /* glGetQueryObjectui64vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 362 /* GL_EXT_disjoint_timer_query */, 24061}, /* glGetQueryObjectui64vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 490 /* GL_EXT_timer_query */, 24061}, /* glGetQueryObjectui64vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 362 /* GL_EXT_disjoint_timer_query */, 24061}, /* glGetQueryObjectui64vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 490 /* GL_EXT_timer_query */, 24061}, /* glGetQueryObjectui64vEXT */
     {DISPATCH_RESOLVE_VERSION, 78, OpenGL_Desktop_3_3, 24039}, /* glGetQueryObjectui64v */
     {DISPATCH_RESOLVE_EXTENSION, 78, 284 /* GL_ARB_timer_query */, 24039}, /* glGetQueryObjectui64v */
     {DISPATCH_RESOLVE_VERSION, 79, OpenGL_Desktop_1_5, 24086}, /* glGetQueryObjectuiv */
@@ -7353,55 +7363,55 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 80, 203 /* GL_ARB_occlusion_query */, 24106}, /* glGetQueryObjectuivARB */
     {DISPATCH_RESOLVE_VERSION, 80, OpenGL_Desktop_1_5, 24086}, /* glGetQueryObjectuiv */
     {DISPATCH_RESOLVE_VERSION, 80, OpenGL_ES_3_0, 24086}, /* glGetQueryObjectuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 81, 359 /* GL_EXT_disjoint_timer_query */, 24129}, /* glGetQueryObjectuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 81, 397 /* GL_EXT_occlusion_query_boolean */, 24129}, /* glGetQueryObjectuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 362 /* GL_EXT_disjoint_timer_query */, 24129}, /* glGetQueryObjectuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 400 /* GL_EXT_occlusion_query_boolean */, 24129}, /* glGetQueryObjectuivEXT */
     {DISPATCH_RESOLVE_VERSION, 82, OpenGL_Desktop_1_5, 24152}, /* glGetQueryiv */
     {DISPATCH_RESOLVE_VERSION, 82, OpenGL_ES_3_0, 24152}, /* glGetQueryiv */
     {DISPATCH_RESOLVE_EXTENSION, 82, 203 /* GL_ARB_occlusion_query */, 24165}, /* glGetQueryivARB */
     {DISPATCH_RESOLVE_EXTENSION, 83, 203 /* GL_ARB_occlusion_query */, 24165}, /* glGetQueryivARB */
     {DISPATCH_RESOLVE_VERSION, 83, OpenGL_Desktop_1_5, 24152}, /* glGetQueryiv */
     {DISPATCH_RESOLVE_VERSION, 83, OpenGL_ES_3_0, 24152}, /* glGetQueryiv */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 359 /* GL_EXT_disjoint_timer_query */, 24181}, /* glGetQueryivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 397 /* GL_EXT_occlusion_query_boolean */, 24181}, /* glGetQueryivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 362 /* GL_EXT_disjoint_timer_query */, 24181}, /* glGetQueryivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 400 /* GL_EXT_occlusion_query_boolean */, 24181}, /* glGetQueryivEXT */
     {DISPATCH_RESOLVE_VERSION, 85, OpenGL_Desktop_3_0, 24197}, /* glGetRenderbufferParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 85, OpenGL_ES_2_0, 24197}, /* glGetRenderbufferParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 85, 179 /* GL_ARB_framebuffer_object */, 24197}, /* glGetRenderbufferParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 85, 373 /* GL_EXT_framebuffer_object */, 24226}, /* glGetRenderbufferParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 373 /* GL_EXT_framebuffer_object */, 24226}, /* glGetRenderbufferParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 376 /* GL_EXT_framebuffer_object */, 24226}, /* glGetRenderbufferParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 376 /* GL_EXT_framebuffer_object */, 24226}, /* glGetRenderbufferParameterivEXT */
     {DISPATCH_RESOLVE_VERSION, 86, OpenGL_Desktop_3_0, 24197}, /* glGetRenderbufferParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 86, OpenGL_ES_2_0, 24197}, /* glGetRenderbufferParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 86, 179 /* GL_ARB_framebuffer_object */, 24197}, /* glGetRenderbufferParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 704 /* GL_OES_framebuffer_object */, 24258}, /* glGetRenderbufferParameterivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 708 /* GL_OES_framebuffer_object */, 24258}, /* glGetRenderbufferParameterivOES */
     {DISPATCH_RESOLVE_VERSION, 88, OpenGL_Desktop_3_3, 24290}, /* glGetSamplerParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 88, OpenGL_ES_3_2, 24290}, /* glGetSamplerParameterIiv */
     {DISPATCH_RESOLVE_EXTENSION, 88, 219 /* GL_ARB_sampler_objects */, 24290}, /* glGetSamplerParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 451 /* GL_EXT_texture_border_clamp */, 24315}, /* glGetSamplerParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 735 /* GL_OES_texture_border_clamp */, 24343}, /* glGetSamplerParameterIivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 451 /* GL_EXT_texture_border_clamp */, 24315}, /* glGetSamplerParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 455 /* GL_EXT_texture_border_clamp */, 24315}, /* glGetSamplerParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 739 /* GL_OES_texture_border_clamp */, 24343}, /* glGetSamplerParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 455 /* GL_EXT_texture_border_clamp */, 24315}, /* glGetSamplerParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 89, OpenGL_Desktop_3_3, 24290}, /* glGetSamplerParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 89, OpenGL_ES_3_2, 24290}, /* glGetSamplerParameterIiv */
     {DISPATCH_RESOLVE_EXTENSION, 89, 219 /* GL_ARB_sampler_objects */, 24290}, /* glGetSamplerParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 735 /* GL_OES_texture_border_clamp */, 24343}, /* glGetSamplerParameterIivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 90, 735 /* GL_OES_texture_border_clamp */, 24343}, /* glGetSamplerParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 739 /* GL_OES_texture_border_clamp */, 24343}, /* glGetSamplerParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 739 /* GL_OES_texture_border_clamp */, 24343}, /* glGetSamplerParameterIivOES */
     {DISPATCH_RESOLVE_VERSION, 90, OpenGL_Desktop_3_3, 24290}, /* glGetSamplerParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 90, OpenGL_ES_3_2, 24290}, /* glGetSamplerParameterIiv */
     {DISPATCH_RESOLVE_EXTENSION, 90, 219 /* GL_ARB_sampler_objects */, 24290}, /* glGetSamplerParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 90, 451 /* GL_EXT_texture_border_clamp */, 24315}, /* glGetSamplerParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 455 /* GL_EXT_texture_border_clamp */, 24315}, /* glGetSamplerParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_Desktop_3_3, 24371}, /* glGetSamplerParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_ES_3_2, 24371}, /* glGetSamplerParameterIuiv */
     {DISPATCH_RESOLVE_EXTENSION, 91, 219 /* GL_ARB_sampler_objects */, 24371}, /* glGetSamplerParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 91, 451 /* GL_EXT_texture_border_clamp */, 24397}, /* glGetSamplerParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 91, 735 /* GL_OES_texture_border_clamp */, 24426}, /* glGetSamplerParameterIuivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 451 /* GL_EXT_texture_border_clamp */, 24397}, /* glGetSamplerParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 455 /* GL_EXT_texture_border_clamp */, 24397}, /* glGetSamplerParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 739 /* GL_OES_texture_border_clamp */, 24426}, /* glGetSamplerParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 455 /* GL_EXT_texture_border_clamp */, 24397}, /* glGetSamplerParameterIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 92, OpenGL_Desktop_3_3, 24371}, /* glGetSamplerParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 92, OpenGL_ES_3_2, 24371}, /* glGetSamplerParameterIuiv */
     {DISPATCH_RESOLVE_EXTENSION, 92, 219 /* GL_ARB_sampler_objects */, 24371}, /* glGetSamplerParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 735 /* GL_OES_texture_border_clamp */, 24426}, /* glGetSamplerParameterIuivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 735 /* GL_OES_texture_border_clamp */, 24426}, /* glGetSamplerParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 739 /* GL_OES_texture_border_clamp */, 24426}, /* glGetSamplerParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 739 /* GL_OES_texture_border_clamp */, 24426}, /* glGetSamplerParameterIuivOES */
     {DISPATCH_RESOLVE_VERSION, 93, OpenGL_Desktop_3_3, 24371}, /* glGetSamplerParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 93, OpenGL_ES_3_2, 24371}, /* glGetSamplerParameterIuiv */
     {DISPATCH_RESOLVE_EXTENSION, 93, 219 /* GL_ARB_sampler_objects */, 24371}, /* glGetSamplerParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 451 /* GL_EXT_texture_border_clamp */, 24397}, /* glGetSamplerParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 455 /* GL_EXT_texture_border_clamp */, 24397}, /* glGetSamplerParameterIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_Desktop_3_3, 24455}, /* glGetSamplerParameterfv */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_ES_3_0, 24455}, /* glGetSamplerParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 94, 219 /* GL_ARB_sampler_objects */, 24455}, /* glGetSamplerParameterfv */
@@ -7409,7 +7419,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_ES_3_0, 24479}, /* glGetSamplerParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 95, 219 /* GL_ARB_sampler_objects */, 24479}, /* glGetSamplerParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 96, 190 /* GL_ARB_imaging */, 24503}, /* glGetSeparableFilter */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 349 /* GL_EXT_convolution */, 24524}, /* glGetSeparableFilterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 352 /* GL_EXT_convolution */, 24524}, /* glGetSeparableFilterEXT */
     {DISPATCH_RESOLVE_VERSION, 98, OpenGL_Desktop_2_0, 24548}, /* glGetShaderInfoLog */
     {DISPATCH_RESOLVE_DIRECT, 98, OpenGL_ES_2_0, 24548}, /* glGetShaderInfoLog */
     {DISPATCH_RESOLVE_VERSION, 99, OpenGL_Desktop_4_1, 24567}, /* glGetShaderPrecisionFormat */
@@ -7423,8 +7433,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 101, OpenGL_ES_2_0, 24594}, /* glGetShaderSource */
     {DISPATCH_RESOLVE_VERSION, 102, OpenGL_Desktop_2_0, 24633}, /* glGetShaderiv */
     {DISPATCH_RESOLVE_DIRECT, 102, OpenGL_ES_2_0, 24633}, /* glGetShaderiv */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 779 /* GL_SGIS_sharpen_texture */, 24647}, /* glGetSharpenTexFuncSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 559 /* GL_NV_command_list */, 24671}, /* glGetStageIndexNV */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 784 /* GL_SGIS_sharpen_texture */, 24647}, /* glGetSharpenTexFuncSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 563 /* GL_NV_command_list */, 24671}, /* glGetStageIndexNV */
     {DISPATCH_RESOLVE_DIRECT, 105, OpenGL_Desktop_1_0, 24689}, /* glGetString */
     {DISPATCH_RESOLVE_DIRECT, 105, OpenGL_ES_1_0, 24689}, /* glGetString */
     {DISPATCH_RESOLVE_DIRECT, 105, OpenGL_ES_2_0, 24689}, /* glGetString */
@@ -7442,58 +7452,58 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_Desktop_3_2, 24766}, /* glGetSynciv */
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_ES_3_0, 24766}, /* glGetSynciv */
     {DISPATCH_RESOLVE_EXTENSION, 110, 251 /* GL_ARB_sync */, 24766}, /* glGetSynciv */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 311 /* GL_ATI_envmap_bumpmap */, 24795}, /* glGetTexBumpParameterfvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 311 /* GL_ATI_envmap_bumpmap */, 24822}, /* glGetTexBumpParameterivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 314 /* GL_ATI_envmap_bumpmap */, 24795}, /* glGetTexBumpParameterfvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 314 /* GL_ATI_envmap_bumpmap */, 24822}, /* glGetTexBumpParameterivATI */
     {DISPATCH_RESOLVE_DIRECT, 113, OpenGL_Desktop_1_0, 24849}, /* glGetTexEnvfv */
     {DISPATCH_RESOLVE_DIRECT, 113, OpenGL_ES_1_0, 24849}, /* glGetTexEnvfv */
     {DISPATCH_RESOLVE_DIRECT, 114, OpenGL_Desktop_1_0, 24863}, /* glGetTexEnviv */
     {DISPATCH_RESOLVE_DIRECT, 114, OpenGL_ES_1_0, 24863}, /* glGetTexEnviv */
     {DISPATCH_RESOLVE_DIRECT, 115, OpenGL_ES_1_0, 24877}, /* glGetTexEnvxv */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 702 /* GL_OES_fixed_point */, 24891}, /* glGetTexEnvxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 784 /* GL_SGIS_texture_filter4 */, 24908}, /* glGetTexFilterFuncSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 706 /* GL_OES_fixed_point */, 24891}, /* glGetTexEnvxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 789 /* GL_SGIS_texture_filter4 */, 24908}, /* glGetTexFilterFuncSGIS */
     {DISPATCH_RESOLVE_DIRECT, 118, OpenGL_Desktop_1_0, 24931}, /* glGetTexGendv */
     {DISPATCH_RESOLVE_DIRECT, 119, OpenGL_Desktop_1_0, 24945}, /* glGetTexGenfv */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 738 /* GL_OES_texture_cube_map */, 24959}, /* glGetTexGenfvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 742 /* GL_OES_texture_cube_map */, 24959}, /* glGetTexGenfvOES */
     {DISPATCH_RESOLVE_DIRECT, 121, OpenGL_Desktop_1_0, 24976}, /* glGetTexGeniv */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 738 /* GL_OES_texture_cube_map */, 24990}, /* glGetTexGenivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 702 /* GL_OES_fixed_point */, 25007}, /* glGetTexGenxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 738 /* GL_OES_texture_cube_map */, 25007}, /* glGetTexGenxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 742 /* GL_OES_texture_cube_map */, 24990}, /* glGetTexGenivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 706 /* GL_OES_fixed_point */, 25007}, /* glGetTexGenxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 742 /* GL_OES_texture_cube_map */, 25007}, /* glGetTexGenxvOES */
     {DISPATCH_RESOLVE_DIRECT, 124, OpenGL_Desktop_1_0, 25024}, /* glGetTexImage */
     {DISPATCH_RESOLVE_DIRECT, 125, OpenGL_Desktop_1_0, 25038}, /* glGetTexLevelParameterfv */
     {DISPATCH_RESOLVE_VERSION, 125, OpenGL_ES_3_1, 25038}, /* glGetTexLevelParameterfv */
     {DISPATCH_RESOLVE_DIRECT, 126, OpenGL_Desktop_1_0, 25063}, /* glGetTexLevelParameteriv */
     {DISPATCH_RESOLVE_VERSION, 126, OpenGL_ES_3_1, 25063}, /* glGetTexLevelParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 702 /* GL_OES_fixed_point */, 25088}, /* glGetTexLevelParameterxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 706 /* GL_OES_fixed_point */, 25088}, /* glGetTexLevelParameterxvOES */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_Desktop_3_0, 25116}, /* glGetTexParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_ES_3_2, 25116}, /* glGetTexParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 451 /* GL_EXT_texture_border_clamp */, 25137}, /* glGetTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 468 /* GL_EXT_texture_integer */, 25137}, /* glGetTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 735 /* GL_OES_texture_border_clamp */, 25161}, /* glGetTexParameterIivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 451 /* GL_EXT_texture_border_clamp */, 25137}, /* glGetTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 468 /* GL_EXT_texture_integer */, 25137}, /* glGetTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 455 /* GL_EXT_texture_border_clamp */, 25137}, /* glGetTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 472 /* GL_EXT_texture_integer */, 25137}, /* glGetTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 739 /* GL_OES_texture_border_clamp */, 25161}, /* glGetTexParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 455 /* GL_EXT_texture_border_clamp */, 25137}, /* glGetTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 472 /* GL_EXT_texture_integer */, 25137}, /* glGetTexParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_Desktop_3_0, 25116}, /* glGetTexParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_ES_3_2, 25116}, /* glGetTexParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 735 /* GL_OES_texture_border_clamp */, 25161}, /* glGetTexParameterIivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 735 /* GL_OES_texture_border_clamp */, 25161}, /* glGetTexParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 739 /* GL_OES_texture_border_clamp */, 25161}, /* glGetTexParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 739 /* GL_OES_texture_border_clamp */, 25161}, /* glGetTexParameterIivOES */
     {DISPATCH_RESOLVE_VERSION, 130, OpenGL_Desktop_3_0, 25116}, /* glGetTexParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 130, OpenGL_ES_3_2, 25116}, /* glGetTexParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 451 /* GL_EXT_texture_border_clamp */, 25137}, /* glGetTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 468 /* GL_EXT_texture_integer */, 25137}, /* glGetTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 455 /* GL_EXT_texture_border_clamp */, 25137}, /* glGetTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 472 /* GL_EXT_texture_integer */, 25137}, /* glGetTexParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 131, OpenGL_Desktop_3_0, 25185}, /* glGetTexParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 131, OpenGL_ES_3_2, 25185}, /* glGetTexParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 451 /* GL_EXT_texture_border_clamp */, 25207}, /* glGetTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 468 /* GL_EXT_texture_integer */, 25207}, /* glGetTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 735 /* GL_OES_texture_border_clamp */, 25232}, /* glGetTexParameterIuivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 451 /* GL_EXT_texture_border_clamp */, 25207}, /* glGetTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 468 /* GL_EXT_texture_integer */, 25207}, /* glGetTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 455 /* GL_EXT_texture_border_clamp */, 25207}, /* glGetTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 472 /* GL_EXT_texture_integer */, 25207}, /* glGetTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 739 /* GL_OES_texture_border_clamp */, 25232}, /* glGetTexParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 455 /* GL_EXT_texture_border_clamp */, 25207}, /* glGetTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 472 /* GL_EXT_texture_integer */, 25207}, /* glGetTexParameterIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 132, OpenGL_Desktop_3_0, 25185}, /* glGetTexParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 132, OpenGL_ES_3_2, 25185}, /* glGetTexParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 735 /* GL_OES_texture_border_clamp */, 25232}, /* glGetTexParameterIuivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 735 /* GL_OES_texture_border_clamp */, 25232}, /* glGetTexParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 739 /* GL_OES_texture_border_clamp */, 25232}, /* glGetTexParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 739 /* GL_OES_texture_border_clamp */, 25232}, /* glGetTexParameterIuivOES */
     {DISPATCH_RESOLVE_VERSION, 133, OpenGL_Desktop_3_0, 25185}, /* glGetTexParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 133, OpenGL_ES_3_2, 25185}, /* glGetTexParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 451 /* GL_EXT_texture_border_clamp */, 25207}, /* glGetTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 468 /* GL_EXT_texture_integer */, 25207}, /* glGetTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 455 /* GL_EXT_texture_border_clamp */, 25207}, /* glGetTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 472 /* GL_EXT_texture_integer */, 25207}, /* glGetTexParameterIuivEXT */
     {DISPATCH_RESOLVE_EXTENSION, 134, 129 /* GL_APPLE_texture_range */, 25257}, /* glGetTexParameterPointervAPPLE */
     {DISPATCH_RESOLVE_DIRECT, 135, OpenGL_Desktop_1_0, 25288}, /* glGetTexParameterfv */
     {DISPATCH_RESOLVE_DIRECT, 135, OpenGL_ES_1_0, 25288}, /* glGetTexParameterfv */
@@ -7502,42 +7512,42 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 136, OpenGL_ES_1_0, 25308}, /* glGetTexParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 136, OpenGL_ES_2_0, 25308}, /* glGetTexParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 137, OpenGL_ES_1_0, 25328}, /* glGetTexParameterxv */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 702 /* GL_OES_fixed_point */, 25348}, /* glGetTexParameterxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 706 /* GL_OES_fixed_point */, 25348}, /* glGetTexParameterxvOES */
     {DISPATCH_RESOLVE_EXTENSION, 139, 141 /* GL_ARB_bindless_texture */, 25371}, /* glGetTextureHandleARB */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 554 /* GL_NV_bindless_texture */, 25393}, /* glGetTextureHandleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 558 /* GL_NV_bindless_texture */, 25393}, /* glGetTextureHandleNV */
     {DISPATCH_RESOLVE_VERSION, 141, OpenGL_Desktop_4_5, 25414}, /* glGetTextureImage */
     {DISPATCH_RESOLVE_EXTENSION, 141, 163 /* GL_ARB_direct_state_access */, 25414}, /* glGetTextureImage */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 357 /* GL_EXT_direct_state_access */, 25432}, /* glGetTextureImageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 360 /* GL_EXT_direct_state_access */, 25432}, /* glGetTextureImageEXT */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_Desktop_4_5, 25453}, /* glGetTextureLevelParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 143, 163 /* GL_ARB_direct_state_access */, 25453}, /* glGetTextureLevelParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 357 /* GL_EXT_direct_state_access */, 25482}, /* glGetTextureLevelParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 360 /* GL_EXT_direct_state_access */, 25482}, /* glGetTextureLevelParameterfvEXT */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_Desktop_4_5, 25514}, /* glGetTextureLevelParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 145, 163 /* GL_ARB_direct_state_access */, 25514}, /* glGetTextureLevelParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 357 /* GL_EXT_direct_state_access */, 25543}, /* glGetTextureLevelParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 360 /* GL_EXT_direct_state_access */, 25543}, /* glGetTextureLevelParameterivEXT */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_Desktop_4_5, 25575}, /* glGetTextureParameterIiv */
     {DISPATCH_RESOLVE_EXTENSION, 147, 163 /* GL_ARB_direct_state_access */, 25575}, /* glGetTextureParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 357 /* GL_EXT_direct_state_access */, 25600}, /* glGetTextureParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 360 /* GL_EXT_direct_state_access */, 25600}, /* glGetTextureParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 149, OpenGL_Desktop_4_5, 25628}, /* glGetTextureParameterIuiv */
     {DISPATCH_RESOLVE_EXTENSION, 149, 163 /* GL_ARB_direct_state_access */, 25628}, /* glGetTextureParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 357 /* GL_EXT_direct_state_access */, 25654}, /* glGetTextureParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 360 /* GL_EXT_direct_state_access */, 25654}, /* glGetTextureParameterIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 151, OpenGL_Desktop_4_5, 25683}, /* glGetTextureParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 151, 163 /* GL_ARB_direct_state_access */, 25683}, /* glGetTextureParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 357 /* GL_EXT_direct_state_access */, 25707}, /* glGetTextureParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 360 /* GL_EXT_direct_state_access */, 25707}, /* glGetTextureParameterfvEXT */
     {DISPATCH_RESOLVE_VERSION, 153, OpenGL_Desktop_4_5, 25734}, /* glGetTextureParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 153, 163 /* GL_ARB_direct_state_access */, 25734}, /* glGetTextureParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 154, 357 /* GL_EXT_direct_state_access */, 25758}, /* glGetTextureParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 154, 360 /* GL_EXT_direct_state_access */, 25758}, /* glGetTextureParameterivEXT */
     {DISPATCH_RESOLVE_EXTENSION, 155, 141 /* GL_ARB_bindless_texture */, 25785}, /* glGetTextureSamplerHandleARB */
-    {DISPATCH_RESOLVE_EXTENSION, 156, 554 /* GL_NV_bindless_texture */, 25814}, /* glGetTextureSamplerHandleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 156, 558 /* GL_NV_bindless_texture */, 25814}, /* glGetTextureSamplerHandleNV */
     {DISPATCH_RESOLVE_VERSION, 157, OpenGL_Desktop_4_5, 25842}, /* glGetTextureSubImage */
     {DISPATCH_RESOLVE_EXTENSION, 157, 183 /* GL_ARB_get_texture_sub_image */, 25842}, /* glGetTextureSubImage */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 672 /* GL_NV_vertex_program */, 25863}, /* glGetTrackMatrixivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 676 /* GL_NV_vertex_program */, 25863}, /* glGetTrackMatrixivNV */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_Desktop_3_0, 25884}, /* glGetTransformFeedbackVarying */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_ES_3_0, 25884}, /* glGetTransformFeedbackVarying */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 487 /* GL_EXT_transform_feedback */, 25914}, /* glGetTransformFeedbackVaryingEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 487 /* GL_EXT_transform_feedback */, 25914}, /* glGetTransformFeedbackVaryingEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 491 /* GL_EXT_transform_feedback */, 25914}, /* glGetTransformFeedbackVaryingEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 491 /* GL_EXT_transform_feedback */, 25914}, /* glGetTransformFeedbackVaryingEXT */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_3_0, 25884}, /* glGetTransformFeedbackVarying */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_ES_3_0, 25884}, /* glGetTransformFeedbackVarying */
-    {DISPATCH_RESOLVE_EXTENSION, 161, 664 /* GL_NV_transform_feedback */, 25947}, /* glGetTransformFeedbackVaryingNV */
+    {DISPATCH_RESOLVE_EXTENSION, 161, 668 /* GL_NV_transform_feedback */, 25947}, /* glGetTransformFeedbackVaryingNV */
     {DISPATCH_RESOLVE_VERSION, 162, OpenGL_Desktop_4_5, 25979}, /* glGetTransformFeedbacki64_v */
     {DISPATCH_RESOLVE_EXTENSION, 162, 163 /* GL_ARB_direct_state_access */, 25979}, /* glGetTransformFeedbacki64_v */
     {DISPATCH_RESOLVE_VERSION, 163, OpenGL_Desktop_4_5, 26007}, /* glGetTransformFeedbacki_v */
@@ -7548,7 +7558,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_Desktop_3_1, 26091}, /* glGetUniformBlockIndex */
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_ES_3_0, 26091}, /* glGetUniformBlockIndex */
     {DISPATCH_RESOLVE_EXTENSION, 166, 290 /* GL_ARB_uniform_buffer_object */, 26091}, /* glGetUniformBlockIndex */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 333 /* GL_EXT_bindable_uniform */, 26114}, /* glGetUniformBufferSizeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 336 /* GL_EXT_bindable_uniform */, 26114}, /* glGetUniformBufferSizeEXT */
     {DISPATCH_RESOLVE_VERSION, 168, OpenGL_Desktop_3_1, 26140}, /* glGetUniformIndices */
     {DISPATCH_RESOLVE_VERSION, 168, OpenGL_ES_3_0, 26140}, /* glGetUniformIndices */
     {DISPATCH_RESOLVE_EXTENSION, 168, 290 /* GL_ARB_uniform_buffer_object */, 26140}, /* glGetUniformIndices */
@@ -7558,7 +7568,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 170, 232 /* GL_ARB_shader_objects */, 26181}, /* glGetUniformLocationARB */
     {DISPATCH_RESOLVE_VERSION, 170, OpenGL_Desktop_2_0, 26160}, /* glGetUniformLocation */
     {DISPATCH_RESOLVE_DIRECT, 170, OpenGL_ES_2_0, 26160}, /* glGetUniformLocation */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 333 /* GL_EXT_bindable_uniform */, 26205}, /* glGetUniformOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 336 /* GL_EXT_bindable_uniform */, 26205}, /* glGetUniformOffsetEXT */
     {DISPATCH_RESOLVE_VERSION, 172, OpenGL_Desktop_4_0, 26227}, /* glGetUniformSubroutineuiv */
     {DISPATCH_RESOLVE_EXTENSION, 172, 236 /* GL_ARB_shader_subroutine */, 26227}, /* glGetUniformSubroutineuiv */
     {DISPATCH_RESOLVE_VERSION, 173, OpenGL_Desktop_4_0, 26253}, /* glGetUniformdv */
@@ -7571,7 +7581,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 175, OpenGL_ES_2_0, 26268}, /* glGetUniformfv */
     {DISPATCH_RESOLVE_EXTENSION, 176, 187 /* GL_ARB_gpu_shader_int64 */, 26301}, /* glGetUniformi64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 177, 72 /* GL_AMD_gpu_shader_int64 */, 26321}, /* glGetUniformi64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 602 /* GL_NV_gpu_shader5 */, 26321}, /* glGetUniformi64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 606 /* GL_NV_gpu_shader5 */, 26321}, /* glGetUniformi64vNV */
     {DISPATCH_RESOLVE_VERSION, 178, OpenGL_Desktop_2_0, 26340}, /* glGetUniformiv */
     {DISPATCH_RESOLVE_DIRECT, 178, OpenGL_ES_2_0, 26340}, /* glGetUniformiv */
     {DISPATCH_RESOLVE_EXTENSION, 178, 232 /* GL_ARB_shader_objects */, 26355}, /* glGetUniformivARB */
@@ -7580,64 +7590,64 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 179, OpenGL_ES_2_0, 26340}, /* glGetUniformiv */
     {DISPATCH_RESOLVE_EXTENSION, 180, 187 /* GL_ARB_gpu_shader_int64 */, 26373}, /* glGetUniformui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 181, 72 /* GL_AMD_gpu_shader_int64 */, 26394}, /* glGetUniformui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 640 /* GL_NV_shader_buffer_load */, 26394}, /* glGetUniformui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 644 /* GL_NV_shader_buffer_load */, 26394}, /* glGetUniformui64vNV */
     {DISPATCH_RESOLVE_VERSION, 182, OpenGL_Desktop_3_0, 26414}, /* glGetUniformuiv */
     {DISPATCH_RESOLVE_VERSION, 182, OpenGL_ES_3_0, 26414}, /* glGetUniformuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 380 /* GL_EXT_gpu_shader4 */, 26430}, /* glGetUniformuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 380 /* GL_EXT_gpu_shader4 */, 26430}, /* glGetUniformuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 383 /* GL_EXT_gpu_shader4 */, 26430}, /* glGetUniformuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 383 /* GL_EXT_gpu_shader4 */, 26430}, /* glGetUniformuivEXT */
     {DISPATCH_RESOLVE_VERSION, 183, OpenGL_Desktop_3_0, 26414}, /* glGetUniformuiv */
     {DISPATCH_RESOLVE_VERSION, 183, OpenGL_ES_3_0, 26414}, /* glGetUniformuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 323 /* GL_ATI_vertex_array_object */, 26449}, /* glGetVariantArrayObjectfvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 323 /* GL_ATI_vertex_array_object */, 26478}, /* glGetVariantArrayObjectivATI */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 494 /* GL_EXT_vertex_shader */, 26507}, /* glGetVariantBooleanvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 494 /* GL_EXT_vertex_shader */, 26531}, /* glGetVariantFloatvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 188, 494 /* GL_EXT_vertex_shader */, 26553}, /* glGetVariantIntegervEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 189, 494 /* GL_EXT_vertex_shader */, 26577}, /* glGetVariantPointervEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 664 /* GL_NV_transform_feedback */, 26601}, /* glGetVaryingLocationNV */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 326 /* GL_ATI_vertex_array_object */, 26449}, /* glGetVariantArrayObjectfvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 326 /* GL_ATI_vertex_array_object */, 26478}, /* glGetVariantArrayObjectivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 498 /* GL_EXT_vertex_shader */, 26507}, /* glGetVariantBooleanvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 498 /* GL_EXT_vertex_shader */, 26531}, /* glGetVariantFloatvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 188, 498 /* GL_EXT_vertex_shader */, 26553}, /* glGetVariantIntegervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 189, 498 /* GL_EXT_vertex_shader */, 26577}, /* glGetVariantPointervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 668 /* GL_NV_transform_feedback */, 26601}, /* glGetVaryingLocationNV */
     {DISPATCH_RESOLVE_VERSION, 191, OpenGL_Desktop_4_5, 26624}, /* glGetVertexArrayIndexed64iv */
     {DISPATCH_RESOLVE_EXTENSION, 191, 163 /* GL_ARB_direct_state_access */, 26624}, /* glGetVertexArrayIndexed64iv */
     {DISPATCH_RESOLVE_VERSION, 192, OpenGL_Desktop_4_5, 26652}, /* glGetVertexArrayIndexediv */
     {DISPATCH_RESOLVE_EXTENSION, 192, 163 /* GL_ARB_direct_state_access */, 26652}, /* glGetVertexArrayIndexediv */
-    {DISPATCH_RESOLVE_EXTENSION, 193, 357 /* GL_EXT_direct_state_access */, 26678}, /* glGetVertexArrayIntegeri_vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 194, 357 /* GL_EXT_direct_state_access */, 26708}, /* glGetVertexArrayIntegervEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 195, 357 /* GL_EXT_direct_state_access */, 26736}, /* glGetVertexArrayPointeri_vEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 196, 357 /* GL_EXT_direct_state_access */, 26766}, /* glGetVertexArrayPointervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 193, 360 /* GL_EXT_direct_state_access */, 26678}, /* glGetVertexArrayIntegeri_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 194, 360 /* GL_EXT_direct_state_access */, 26708}, /* glGetVertexArrayIntegervEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 195, 360 /* GL_EXT_direct_state_access */, 26736}, /* glGetVertexArrayPointeri_vEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 196, 360 /* GL_EXT_direct_state_access */, 26766}, /* glGetVertexArrayPointervEXT */
     {DISPATCH_RESOLVE_VERSION, 197, OpenGL_Desktop_4_5, 26794}, /* glGetVertexArrayiv */
     {DISPATCH_RESOLVE_EXTENSION, 197, 163 /* GL_ARB_direct_state_access */, 26794}, /* glGetVertexArrayiv */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 324 /* GL_ATI_vertex_attrib_array_object */, 26813}, /* glGetVertexAttribArrayObjectfvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 199, 324 /* GL_ATI_vertex_attrib_array_object */, 26847}, /* glGetVertexAttribArrayObjectivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 327 /* GL_ATI_vertex_attrib_array_object */, 26813}, /* glGetVertexAttribArrayObjectfvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 199, 327 /* GL_ATI_vertex_attrib_array_object */, 26847}, /* glGetVertexAttribArrayObjectivATI */
     {DISPATCH_RESOLVE_VERSION, 200, OpenGL_Desktop_3_0, 26881}, /* glGetVertexAttribIiv */
     {DISPATCH_RESOLVE_VERSION, 200, OpenGL_ES_3_0, 26881}, /* glGetVertexAttribIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 677 /* GL_NV_vertex_program4 */, 26902}, /* glGetVertexAttribIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 201, 677 /* GL_NV_vertex_program4 */, 26902}, /* glGetVertexAttribIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 681 /* GL_NV_vertex_program4 */, 26902}, /* glGetVertexAttribIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 201, 681 /* GL_NV_vertex_program4 */, 26902}, /* glGetVertexAttribIivEXT */
     {DISPATCH_RESOLVE_VERSION, 201, OpenGL_Desktop_3_0, 26881}, /* glGetVertexAttribIiv */
     {DISPATCH_RESOLVE_VERSION, 201, OpenGL_ES_3_0, 26881}, /* glGetVertexAttribIiv */
     {DISPATCH_RESOLVE_VERSION, 202, OpenGL_Desktop_3_0, 26926}, /* glGetVertexAttribIuiv */
     {DISPATCH_RESOLVE_VERSION, 202, OpenGL_ES_3_0, 26926}, /* glGetVertexAttribIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 202, 677 /* GL_NV_vertex_program4 */, 26948}, /* glGetVertexAttribIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 203, 677 /* GL_NV_vertex_program4 */, 26948}, /* glGetVertexAttribIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 202, 681 /* GL_NV_vertex_program4 */, 26948}, /* glGetVertexAttribIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 203, 681 /* GL_NV_vertex_program4 */, 26948}, /* glGetVertexAttribIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 203, OpenGL_Desktop_3_0, 26926}, /* glGetVertexAttribIuiv */
     {DISPATCH_RESOLVE_VERSION, 203, OpenGL_ES_3_0, 26926}, /* glGetVertexAttribIuiv */
     {DISPATCH_RESOLVE_VERSION, 204, OpenGL_Desktop_4_1, 26973}, /* glGetVertexAttribLdv */
     {DISPATCH_RESOLVE_EXTENSION, 204, 293 /* GL_ARB_vertex_attrib_64bit */, 26973}, /* glGetVertexAttribLdv */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 493 /* GL_EXT_vertex_attrib_64bit */, 26994}, /* glGetVertexAttribLdvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 205, 493 /* GL_EXT_vertex_attrib_64bit */, 26994}, /* glGetVertexAttribLdvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 497 /* GL_EXT_vertex_attrib_64bit */, 26994}, /* glGetVertexAttribLdvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 205, 497 /* GL_EXT_vertex_attrib_64bit */, 26994}, /* glGetVertexAttribLdvEXT */
     {DISPATCH_RESOLVE_VERSION, 205, OpenGL_Desktop_4_1, 26973}, /* glGetVertexAttribLdv */
     {DISPATCH_RESOLVE_EXTENSION, 205, 293 /* GL_ARB_vertex_attrib_64bit */, 26973}, /* glGetVertexAttribLdv */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 670 /* GL_NV_vertex_attrib_integer_64bit */, 27018}, /* glGetVertexAttribLi64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 674 /* GL_NV_vertex_attrib_integer_64bit */, 27018}, /* glGetVertexAttribLi64vNV */
     {DISPATCH_RESOLVE_EXTENSION, 207, 141 /* GL_ARB_bindless_texture */, 27043}, /* glGetVertexAttribLui64vARB */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 670 /* GL_NV_vertex_attrib_integer_64bit */, 27070}, /* glGetVertexAttribLui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 674 /* GL_NV_vertex_attrib_integer_64bit */, 27070}, /* glGetVertexAttribLui64vNV */
     {DISPATCH_RESOLVE_VERSION, 209, OpenGL_Desktop_2_0, 27096}, /* glGetVertexAttribPointerv */
     {DISPATCH_RESOLVE_DIRECT, 209, OpenGL_ES_2_0, 27096}, /* glGetVertexAttribPointerv */
     {DISPATCH_RESOLVE_EXTENSION, 209, 297 /* GL_ARB_vertex_program */, 27122}, /* glGetVertexAttribPointervARB */
     {DISPATCH_RESOLVE_EXTENSION, 209, 298 /* GL_ARB_vertex_shader */, 27122}, /* glGetVertexAttribPointervARB */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 672 /* GL_NV_vertex_program */, 27151}, /* glGetVertexAttribPointervNV */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 676 /* GL_NV_vertex_program */, 27151}, /* glGetVertexAttribPointervNV */
     {DISPATCH_RESOLVE_EXTENSION, 210, 297 /* GL_ARB_vertex_program */, 27122}, /* glGetVertexAttribPointervARB */
     {DISPATCH_RESOLVE_EXTENSION, 210, 298 /* GL_ARB_vertex_shader */, 27122}, /* glGetVertexAttribPointervARB */
     {DISPATCH_RESOLVE_VERSION, 210, OpenGL_Desktop_2_0, 27096}, /* glGetVertexAttribPointerv */
     {DISPATCH_RESOLVE_DIRECT, 210, OpenGL_ES_2_0, 27096}, /* glGetVertexAttribPointerv */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 672 /* GL_NV_vertex_program */, 27151}, /* glGetVertexAttribPointervNV */
-    {DISPATCH_RESOLVE_EXTENSION, 211, 672 /* GL_NV_vertex_program */, 27151}, /* glGetVertexAttribPointervNV */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 676 /* GL_NV_vertex_program */, 27151}, /* glGetVertexAttribPointervNV */
+    {DISPATCH_RESOLVE_EXTENSION, 211, 676 /* GL_NV_vertex_program */, 27151}, /* glGetVertexAttribPointervNV */
     {DISPATCH_RESOLVE_VERSION, 211, OpenGL_Desktop_2_0, 27096}, /* glGetVertexAttribPointerv */
     {DISPATCH_RESOLVE_DIRECT, 211, OpenGL_ES_2_0, 27096}, /* glGetVertexAttribPointerv */
     {DISPATCH_RESOLVE_EXTENSION, 211, 297 /* GL_ARB_vertex_program */, 27122}, /* glGetVertexAttribPointervARB */
@@ -7645,12 +7655,12 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 212, OpenGL_Desktop_2_0, 27179}, /* glGetVertexAttribdv */
     {DISPATCH_RESOLVE_EXTENSION, 212, 297 /* GL_ARB_vertex_program */, 27199}, /* glGetVertexAttribdvARB */
     {DISPATCH_RESOLVE_EXTENSION, 212, 298 /* GL_ARB_vertex_shader */, 27199}, /* glGetVertexAttribdvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 672 /* GL_NV_vertex_program */, 27222}, /* glGetVertexAttribdvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 676 /* GL_NV_vertex_program */, 27222}, /* glGetVertexAttribdvNV */
     {DISPATCH_RESOLVE_EXTENSION, 213, 297 /* GL_ARB_vertex_program */, 27199}, /* glGetVertexAttribdvARB */
     {DISPATCH_RESOLVE_EXTENSION, 213, 298 /* GL_ARB_vertex_shader */, 27199}, /* glGetVertexAttribdvARB */
     {DISPATCH_RESOLVE_VERSION, 213, OpenGL_Desktop_2_0, 27179}, /* glGetVertexAttribdv */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 672 /* GL_NV_vertex_program */, 27222}, /* glGetVertexAttribdvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 672 /* GL_NV_vertex_program */, 27222}, /* glGetVertexAttribdvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 676 /* GL_NV_vertex_program */, 27222}, /* glGetVertexAttribdvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 676 /* GL_NV_vertex_program */, 27222}, /* glGetVertexAttribdvNV */
     {DISPATCH_RESOLVE_VERSION, 214, OpenGL_Desktop_2_0, 27179}, /* glGetVertexAttribdv */
     {DISPATCH_RESOLVE_EXTENSION, 214, 297 /* GL_ARB_vertex_program */, 27199}, /* glGetVertexAttribdvARB */
     {DISPATCH_RESOLVE_EXTENSION, 214, 298 /* GL_ARB_vertex_shader */, 27199}, /* glGetVertexAttribdvARB */
@@ -7658,13 +7668,13 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 215, OpenGL_ES_2_0, 27244}, /* glGetVertexAttribfv */
     {DISPATCH_RESOLVE_EXTENSION, 215, 297 /* GL_ARB_vertex_program */, 27264}, /* glGetVertexAttribfvARB */
     {DISPATCH_RESOLVE_EXTENSION, 215, 298 /* GL_ARB_vertex_shader */, 27264}, /* glGetVertexAttribfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 215, 672 /* GL_NV_vertex_program */, 27287}, /* glGetVertexAttribfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 215, 676 /* GL_NV_vertex_program */, 27287}, /* glGetVertexAttribfvNV */
     {DISPATCH_RESOLVE_EXTENSION, 216, 297 /* GL_ARB_vertex_program */, 27264}, /* glGetVertexAttribfvARB */
     {DISPATCH_RESOLVE_EXTENSION, 216, 298 /* GL_ARB_vertex_shader */, 27264}, /* glGetVertexAttribfvARB */
     {DISPATCH_RESOLVE_VERSION, 216, OpenGL_Desktop_2_0, 27244}, /* glGetVertexAttribfv */
     {DISPATCH_RESOLVE_DIRECT, 216, OpenGL_ES_2_0, 27244}, /* glGetVertexAttribfv */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 672 /* GL_NV_vertex_program */, 27287}, /* glGetVertexAttribfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 217, 672 /* GL_NV_vertex_program */, 27287}, /* glGetVertexAttribfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 676 /* GL_NV_vertex_program */, 27287}, /* glGetVertexAttribfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 217, 676 /* GL_NV_vertex_program */, 27287}, /* glGetVertexAttribfvNV */
     {DISPATCH_RESOLVE_VERSION, 217, OpenGL_Desktop_2_0, 27244}, /* glGetVertexAttribfv */
     {DISPATCH_RESOLVE_DIRECT, 217, OpenGL_ES_2_0, 27244}, /* glGetVertexAttribfv */
     {DISPATCH_RESOLVE_EXTENSION, 217, 297 /* GL_ARB_vertex_program */, 27264}, /* glGetVertexAttribfvARB */
@@ -7673,25 +7683,25 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 218, OpenGL_ES_2_0, 27309}, /* glGetVertexAttribiv */
     {DISPATCH_RESOLVE_EXTENSION, 218, 297 /* GL_ARB_vertex_program */, 27329}, /* glGetVertexAttribivARB */
     {DISPATCH_RESOLVE_EXTENSION, 218, 298 /* GL_ARB_vertex_shader */, 27329}, /* glGetVertexAttribivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 218, 672 /* GL_NV_vertex_program */, 27352}, /* glGetVertexAttribivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 218, 676 /* GL_NV_vertex_program */, 27352}, /* glGetVertexAttribivNV */
     {DISPATCH_RESOLVE_EXTENSION, 219, 297 /* GL_ARB_vertex_program */, 27329}, /* glGetVertexAttribivARB */
     {DISPATCH_RESOLVE_EXTENSION, 219, 298 /* GL_ARB_vertex_shader */, 27329}, /* glGetVertexAttribivARB */
     {DISPATCH_RESOLVE_VERSION, 219, OpenGL_Desktop_2_0, 27309}, /* glGetVertexAttribiv */
     {DISPATCH_RESOLVE_DIRECT, 219, OpenGL_ES_2_0, 27309}, /* glGetVertexAttribiv */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 672 /* GL_NV_vertex_program */, 27352}, /* glGetVertexAttribivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 220, 672 /* GL_NV_vertex_program */, 27352}, /* glGetVertexAttribivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 676 /* GL_NV_vertex_program */, 27352}, /* glGetVertexAttribivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 220, 676 /* GL_NV_vertex_program */, 27352}, /* glGetVertexAttribivNV */
     {DISPATCH_RESOLVE_VERSION, 220, OpenGL_Desktop_2_0, 27309}, /* glGetVertexAttribiv */
     {DISPATCH_RESOLVE_DIRECT, 220, OpenGL_ES_2_0, 27309}, /* glGetVertexAttribiv */
     {DISPATCH_RESOLVE_EXTENSION, 220, 297 /* GL_ARB_vertex_program */, 27329}, /* glGetVertexAttribivARB */
     {DISPATCH_RESOLVE_EXTENSION, 220, 298 /* GL_ARB_vertex_shader */, 27329}, /* glGetVertexAttribivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 221, 678 /* GL_NV_video_capture */, 27374}, /* glGetVideoCaptureStreamdvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 678 /* GL_NV_video_capture */, 27402}, /* glGetVideoCaptureStreamfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 678 /* GL_NV_video_capture */, 27430}, /* glGetVideoCaptureStreamivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 678 /* GL_NV_video_capture */, 27458}, /* glGetVideoCaptureivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 622 /* GL_NV_present_video */, 27480}, /* glGetVideoi64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 622 /* GL_NV_present_video */, 27497}, /* glGetVideoivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 622 /* GL_NV_present_video */, 27512}, /* glGetVideoui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 622 /* GL_NV_present_video */, 27530}, /* glGetVideouivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 221, 682 /* GL_NV_video_capture */, 27374}, /* glGetVideoCaptureStreamdvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 682 /* GL_NV_video_capture */, 27402}, /* glGetVideoCaptureStreamfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 682 /* GL_NV_video_capture */, 27430}, /* glGetVideoCaptureStreamivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 682 /* GL_NV_video_capture */, 27458}, /* glGetVideoCaptureivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 626 /* GL_NV_present_video */, 27480}, /* glGetVideoi64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 626 /* GL_NV_present_video */, 27497}, /* glGetVideoivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 626 /* GL_NV_present_video */, 27512}, /* glGetVideoui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 626 /* GL_NV_present_video */, 27530}, /* glGetVideouivNV */
     {DISPATCH_RESOLVE_VERSION, 229, OpenGL_Desktop_4_5, 27546}, /* glGetnColorTable */
     {DISPATCH_RESOLVE_EXTENSION, 230, 215 /* GL_ARB_robustness */, 27563}, /* glGetnColorTableARB */
     {DISPATCH_RESOLVE_VERSION, 231, OpenGL_Desktop_4_5, 27583}, /* glGetnCompressedTexImage */
@@ -7724,64 +7734,64 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 2, 215 /* GL_ARB_robustness */, 28088}, /* glGetnUniformdvARB */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_Desktop_4_5, 28107}, /* glGetnUniformfv */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_ES_3_2, 28107}, /* glGetnUniformfv */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 537 /* GL_KHR_robustness */, 28107}, /* glGetnUniformfv */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 537 /* GL_KHR_robustness */, 28161}, /* glGetnUniformfvKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 541 /* GL_KHR_robustness */, 28107}, /* glGetnUniformfv */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 541 /* GL_KHR_robustness */, 28161}, /* glGetnUniformfvKHR */
     {DISPATCH_RESOLVE_EXTENSION, 4, 215 /* GL_ARB_robustness */, 28123}, /* glGetnUniformfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 417 /* GL_EXT_robustness */, 28142}, /* glGetnUniformfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 537 /* GL_KHR_robustness */, 28161}, /* glGetnUniformfvKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 420 /* GL_EXT_robustness */, 28142}, /* glGetnUniformfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 541 /* GL_KHR_robustness */, 28161}, /* glGetnUniformfvKHR */
     {DISPATCH_RESOLVE_VERSION, 6, OpenGL_Desktop_4_5, 28107}, /* glGetnUniformfv */
     {DISPATCH_RESOLVE_VERSION, 6, OpenGL_ES_3_2, 28107}, /* glGetnUniformfv */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 537 /* GL_KHR_robustness */, 28107}, /* glGetnUniformfv */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 541 /* GL_KHR_robustness */, 28107}, /* glGetnUniformfv */
     {DISPATCH_RESOLVE_EXTENSION, 7, 187 /* GL_ARB_gpu_shader_int64 */, 28180}, /* glGetnUniformi64vARB */
     {DISPATCH_RESOLVE_VERSION, 8, OpenGL_Desktop_4_5, 28201}, /* glGetnUniformiv */
     {DISPATCH_RESOLVE_VERSION, 8, OpenGL_ES_3_2, 28201}, /* glGetnUniformiv */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 537 /* GL_KHR_robustness */, 28201}, /* glGetnUniformiv */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 537 /* GL_KHR_robustness */, 28255}, /* glGetnUniformivKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 541 /* GL_KHR_robustness */, 28201}, /* glGetnUniformiv */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 541 /* GL_KHR_robustness */, 28255}, /* glGetnUniformivKHR */
     {DISPATCH_RESOLVE_EXTENSION, 9, 215 /* GL_ARB_robustness */, 28217}, /* glGetnUniformivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 10, 417 /* GL_EXT_robustness */, 28236}, /* glGetnUniformivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 537 /* GL_KHR_robustness */, 28255}, /* glGetnUniformivKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 420 /* GL_EXT_robustness */, 28236}, /* glGetnUniformivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 541 /* GL_KHR_robustness */, 28255}, /* glGetnUniformivKHR */
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_Desktop_4_5, 28201}, /* glGetnUniformiv */
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_ES_3_2, 28201}, /* glGetnUniformiv */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 537 /* GL_KHR_robustness */, 28201}, /* glGetnUniformiv */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 541 /* GL_KHR_robustness */, 28201}, /* glGetnUniformiv */
     {DISPATCH_RESOLVE_EXTENSION, 12, 187 /* GL_ARB_gpu_shader_int64 */, 28274}, /* glGetnUniformui64vARB */
     {DISPATCH_RESOLVE_VERSION, 13, OpenGL_Desktop_4_5, 28296}, /* glGetnUniformuiv */
     {DISPATCH_RESOLVE_VERSION, 13, OpenGL_ES_3_2, 28296}, /* glGetnUniformuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 537 /* GL_KHR_robustness */, 28296}, /* glGetnUniformuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 537 /* GL_KHR_robustness */, 28333}, /* glGetnUniformuivKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 541 /* GL_KHR_robustness */, 28296}, /* glGetnUniformuiv */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 541 /* GL_KHR_robustness */, 28333}, /* glGetnUniformuivKHR */
     {DISPATCH_RESOLVE_EXTENSION, 14, 215 /* GL_ARB_robustness */, 28313}, /* glGetnUniformuivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 537 /* GL_KHR_robustness */, 28333}, /* glGetnUniformuivKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 541 /* GL_KHR_robustness */, 28333}, /* glGetnUniformuivKHR */
     {DISPATCH_RESOLVE_VERSION, 15, OpenGL_Desktop_4_5, 28296}, /* glGetnUniformuiv */
     {DISPATCH_RESOLVE_VERSION, 15, OpenGL_ES_3_2, 28296}, /* glGetnUniformuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 537 /* GL_KHR_robustness */, 28296}, /* glGetnUniformuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 835 /* GL_SUN_global_alpha */, 28353}, /* glGlobalAlphaFactorbSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 835 /* GL_SUN_global_alpha */, 28377}, /* glGlobalAlphaFactordSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 835 /* GL_SUN_global_alpha */, 28401}, /* glGlobalAlphaFactorfSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 835 /* GL_SUN_global_alpha */, 28425}, /* glGlobalAlphaFactoriSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 835 /* GL_SUN_global_alpha */, 28449}, /* glGlobalAlphaFactorsSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 835 /* GL_SUN_global_alpha */, 28473}, /* glGlobalAlphaFactorubSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 835 /* GL_SUN_global_alpha */, 28498}, /* glGlobalAlphaFactoruiSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 835 /* GL_SUN_global_alpha */, 28523}, /* glGlobalAlphaFactorusSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 541 /* GL_KHR_robustness */, 28296}, /* glGetnUniformuiv */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 840 /* GL_SUN_global_alpha */, 28353}, /* glGlobalAlphaFactorbSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 840 /* GL_SUN_global_alpha */, 28377}, /* glGlobalAlphaFactordSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 840 /* GL_SUN_global_alpha */, 28401}, /* glGlobalAlphaFactorfSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 840 /* GL_SUN_global_alpha */, 28425}, /* glGlobalAlphaFactoriSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 840 /* GL_SUN_global_alpha */, 28449}, /* glGlobalAlphaFactorsSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 840 /* GL_SUN_global_alpha */, 28473}, /* glGlobalAlphaFactorubSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 840 /* GL_SUN_global_alpha */, 28498}, /* glGlobalAlphaFactoruiSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 840 /* GL_SUN_global_alpha */, 28523}, /* glGlobalAlphaFactorusSUN */
     {DISPATCH_RESOLVE_DIRECT, 24, OpenGL_Desktop_1_0, 28548}, /* glHint */
     {DISPATCH_RESOLVE_DIRECT, 24, OpenGL_ES_1_0, 28548}, /* glHint */
     {DISPATCH_RESOLVE_DIRECT, 24, OpenGL_ES_2_0, 28548}, /* glHint */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 759 /* GL_PGI_misc_hints */, 28555}, /* glHintPGI */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 763 /* GL_PGI_misc_hints */, 28555}, /* glHintPGI */
     {DISPATCH_RESOLVE_EXTENSION, 26, 190 /* GL_ARB_imaging */, 28565}, /* glHistogram */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 382 /* GL_EXT_histogram */, 28577}, /* glHistogramEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 382 /* GL_EXT_histogram */, 28577}, /* glHistogramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 385 /* GL_EXT_histogram */, 28577}, /* glHistogramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 385 /* GL_EXT_histogram */, 28577}, /* glHistogramEXT */
     {DISPATCH_RESOLVE_EXTENSION, 27, 190 /* GL_ARB_imaging */, 28565}, /* glHistogram */
-    {DISPATCH_RESOLVE_EXTENSION, 28, 802 /* GL_SGIX_igloo_interface */, 28592}, /* glIglooInterfaceSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 502 /* GL_HP_image_transform */, 28613}, /* glImageTransformParameterfHP */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 502 /* GL_HP_image_transform */, 28642}, /* glImageTransformParameterfvHP */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 502 /* GL_HP_image_transform */, 28672}, /* glImageTransformParameteriHP */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 502 /* GL_HP_image_transform */, 28701}, /* glImageTransformParameterivHP */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 497 /* GL_EXT_x11_sync_object */, 28731}, /* glImportSyncEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 671 /* GL_NV_vertex_buffer_unified_memory */, 28747}, /* glIndexFormatNV */
-    {DISPATCH_RESOLVE_EXTENSION, 35, 384 /* GL_EXT_index_func */, 28763}, /* glIndexFuncEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 807 /* GL_SGIX_igloo_interface */, 28592}, /* glIglooInterfaceSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 506 /* GL_HP_image_transform */, 28613}, /* glImageTransformParameterfHP */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 506 /* GL_HP_image_transform */, 28642}, /* glImageTransformParameterfvHP */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 506 /* GL_HP_image_transform */, 28672}, /* glImageTransformParameteriHP */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 506 /* GL_HP_image_transform */, 28701}, /* glImageTransformParameterivHP */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 501 /* GL_EXT_x11_sync_object */, 28731}, /* glImportSyncEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 675 /* GL_NV_vertex_buffer_unified_memory */, 28747}, /* glIndexFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 387 /* GL_EXT_index_func */, 28763}, /* glIndexFuncEXT */
     {DISPATCH_RESOLVE_DIRECT, 36, OpenGL_Desktop_1_0, 28778}, /* glIndexMask */
-    {DISPATCH_RESOLVE_EXTENSION, 37, 385 /* GL_EXT_index_material */, 28790}, /* glIndexMaterialEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 388 /* GL_EXT_index_material */, 28790}, /* glIndexMaterialEXT */
     {DISPATCH_RESOLVE_VERSION, 38, OpenGL_Desktop_1_1, 28809}, /* glIndexPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 489 /* GL_EXT_vertex_array */, 28824}, /* glIndexPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 510 /* GL_IBM_vertex_array_lists */, 28842}, /* glIndexPointerListIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 493 /* GL_EXT_vertex_array */, 28824}, /* glIndexPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 514 /* GL_IBM_vertex_array_lists */, 28842}, /* glIndexPointerListIBM */
     {DISPATCH_RESOLVE_DIRECT, 41, OpenGL_Desktop_1_0, 28864}, /* glIndexd */
     {DISPATCH_RESOLVE_DIRECT, 42, OpenGL_Desktop_1_0, 28873}, /* glIndexdv */
     {DISPATCH_RESOLVE_DIRECT, 43, OpenGL_Desktop_1_0, 28883}, /* glIndexf */
@@ -7792,14 +7802,14 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 48, OpenGL_Desktop_1_0, 28930}, /* glIndexsv */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_1_1, 28940}, /* glIndexub */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_Desktop_1_1, 28950}, /* glIndexubv */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 702 /* GL_OES_fixed_point */, 28961}, /* glIndexxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 702 /* GL_OES_fixed_point */, 28973}, /* glIndexxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 706 /* GL_OES_fixed_point */, 28961}, /* glIndexxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 706 /* GL_OES_fixed_point */, 28973}, /* glIndexxvOES */
     {DISPATCH_RESOLVE_DIRECT, 53, OpenGL_Desktop_1_0, 28986}, /* glInitNames */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 494 /* GL_EXT_vertex_shader */, 28998}, /* glInsertComponentEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 355 /* GL_EXT_debug_marker */, 29019}, /* glInsertEventMarkerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 803 /* GL_SGIX_instruments */, 29042}, /* glInstrumentsBufferSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 498 /* GL_EXT_vertex_shader */, 28998}, /* glInsertComponentEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 358 /* GL_EXT_debug_marker */, 29019}, /* glInsertEventMarkerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 808 /* GL_SGIX_instruments */, 29042}, /* glInstrumentsBufferSGIX */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_Desktop_1_1, 29066}, /* glInterleavedArrays */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 616 /* GL_NV_path_rendering */, 29086}, /* glInterpolatePathsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 620 /* GL_NV_path_rendering */, 29086}, /* glInterpolatePathsNV */
     {DISPATCH_RESOLVE_VERSION, 59, OpenGL_Desktop_4_3, 29107}, /* glInvalidateBufferData */
     {DISPATCH_RESOLVE_EXTENSION, 59, 195 /* GL_ARB_invalidate_subdata */, 29107}, /* glInvalidateBufferData */
     {DISPATCH_RESOLVE_VERSION, 60, OpenGL_Desktop_4_3, 29130}, /* glInvalidateBufferSubData */
@@ -7818,7 +7828,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 65, 195 /* GL_ARB_invalidate_subdata */, 29276}, /* glInvalidateTexImage */
     {DISPATCH_RESOLVE_VERSION, 66, OpenGL_Desktop_4_3, 29297}, /* glInvalidateTexSubImage */
     {DISPATCH_RESOLVE_EXTENSION, 66, 195 /* GL_ARB_invalidate_subdata */, 29297}, /* glInvalidateTexSubImage */
-    {DISPATCH_RESOLVE_EXTENSION, 67, 787 /* GL_SGIX_async */, 29321}, /* glIsAsyncMarkerSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 792 /* GL_SGIX_async */, 29321}, /* glIsAsyncMarkerSGIX */
     {DISPATCH_RESOLVE_VERSION, 68, OpenGL_Desktop_1_5, 29341}, /* glIsBuffer */
     {DISPATCH_RESOLVE_DIRECT, 68, OpenGL_ES_1_0, 29341}, /* glIsBuffer */
     {DISPATCH_RESOLVE_DIRECT, 68, OpenGL_ES_2_0, 29341}, /* glIsBuffer */
@@ -7827,103 +7837,103 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_Desktop_1_5, 29341}, /* glIsBuffer */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_ES_1_0, 29341}, /* glIsBuffer */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_ES_2_0, 29341}, /* glIsBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 640 /* GL_NV_shader_buffer_load */, 29366}, /* glIsBufferResidentNV */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 559 /* GL_NV_command_list */, 29387}, /* glIsCommandListNV */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 644 /* GL_NV_shader_buffer_load */, 29366}, /* glIsBufferResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 563 /* GL_NV_command_list */, 29387}, /* glIsCommandListNV */
     {DISPATCH_RESOLVE_DIRECT, 72, OpenGL_Desktop_1_0, 29405}, /* glIsEnabled */
     {DISPATCH_RESOLVE_DIRECT, 72, OpenGL_ES_1_0, 29405}, /* glIsEnabled */
     {DISPATCH_RESOLVE_DIRECT, 72, OpenGL_ES_2_0, 29405}, /* glIsEnabled */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 357 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 361 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 360 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 364 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 73, OpenGL_Desktop_3_0, 29439}, /* glIsEnabledi */
     {DISPATCH_RESOLVE_VERSION, 73, OpenGL_ES_3_2, 29439}, /* glIsEnabledi */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 362 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 679 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 696 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 365 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 683 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 700 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
     {DISPATCH_RESOLVE_VERSION, 74, OpenGL_Desktop_3_0, 29439}, /* glIsEnabledi */
     {DISPATCH_RESOLVE_VERSION, 74, OpenGL_ES_3_2, 29439}, /* glIsEnabledi */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 357 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 361 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 362 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 679 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 696 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 362 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 357 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 361 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 360 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 364 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 365 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 683 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 700 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 365 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 360 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 364 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_Desktop_3_0, 29439}, /* glIsEnabledi */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_ES_3_2, 29439}, /* glIsEnabledi */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 679 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 696 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 679 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 357 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 361 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 683 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 700 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 683 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 360 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 364 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 76, OpenGL_Desktop_3_0, 29439}, /* glIsEnabledi */
     {DISPATCH_RESOLVE_VERSION, 76, OpenGL_ES_3_2, 29439}, /* glIsEnabledi */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 362 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 696 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 696 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 357 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 361 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 365 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 700 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 700 /* GL_OES_draw_buffers_indexed */, 29483}, /* glIsEnablediOES */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 360 /* GL_EXT_direct_state_access */, 29417}, /* glIsEnabledIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 364 /* GL_EXT_draw_buffers2 */, 29417}, /* glIsEnabledIndexedEXT */
     {DISPATCH_RESOLVE_VERSION, 77, OpenGL_Desktop_3_0, 29439}, /* glIsEnabledi */
     {DISPATCH_RESOLVE_VERSION, 77, OpenGL_ES_3_2, 29439}, /* glIsEnabledi */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 362 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 679 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 365 /* GL_EXT_draw_buffers_indexed */, 29452}, /* glIsEnablediEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 683 /* GL_NV_viewport_array */, 29468}, /* glIsEnablediNV */
     {DISPATCH_RESOLVE_EXTENSION, 78, 115 /* GL_APPLE_fence */, 29499}, /* glIsFenceAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 79, 580 /* GL_NV_fence */, 29514}, /* glIsFenceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 584 /* GL_NV_fence */, 29514}, /* glIsFenceNV */
     {DISPATCH_RESOLVE_VERSION, 80, OpenGL_Desktop_3_0, 29526}, /* glIsFramebuffer */
     {DISPATCH_RESOLVE_DIRECT, 80, OpenGL_ES_2_0, 29526}, /* glIsFramebuffer */
     {DISPATCH_RESOLVE_EXTENSION, 80, 179 /* GL_ARB_framebuffer_object */, 29526}, /* glIsFramebuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 80, 373 /* GL_EXT_framebuffer_object */, 29542}, /* glIsFramebufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 81, 373 /* GL_EXT_framebuffer_object */, 29542}, /* glIsFramebufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 80, 376 /* GL_EXT_framebuffer_object */, 29542}, /* glIsFramebufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 376 /* GL_EXT_framebuffer_object */, 29542}, /* glIsFramebufferEXT */
     {DISPATCH_RESOLVE_VERSION, 81, OpenGL_Desktop_3_0, 29526}, /* glIsFramebuffer */
     {DISPATCH_RESOLVE_DIRECT, 81, OpenGL_ES_2_0, 29526}, /* glIsFramebuffer */
     {DISPATCH_RESOLVE_EXTENSION, 81, 179 /* GL_ARB_framebuffer_object */, 29526}, /* glIsFramebuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 82, 704 /* GL_OES_framebuffer_object */, 29561}, /* glIsFramebufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 708 /* GL_OES_framebuffer_object */, 29561}, /* glIsFramebufferOES */
     {DISPATCH_RESOLVE_EXTENSION, 83, 141 /* GL_ARB_bindless_texture */, 29580}, /* glIsImageHandleResidentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 554 /* GL_NV_bindless_texture */, 29607}, /* glIsImageHandleResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 558 /* GL_NV_bindless_texture */, 29607}, /* glIsImageHandleResidentNV */
     {DISPATCH_RESOLVE_DIRECT, 85, OpenGL_Desktop_1_0, 29633}, /* glIsList */
     {DISPATCH_RESOLVE_EXTENSION, 86, 75 /* GL_AMD_name_gen_delete */, 29642}, /* glIsNameAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 640 /* GL_NV_shader_buffer_load */, 29654}, /* glIsNamedBufferResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 644 /* GL_NV_shader_buffer_load */, 29654}, /* glIsNamedBufferResidentNV */
     {DISPATCH_RESOLVE_EXTENSION, 88, 242 /* GL_ARB_shading_language_include */, 29680}, /* glIsNamedStringARB */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 323 /* GL_ATI_vertex_array_object */, 29699}, /* glIsObjectBufferATI */
-    {DISPATCH_RESOLVE_EXTENSION, 90, 611 /* GL_NV_occlusion_query */, 29719}, /* glIsOcclusionQueryNV */
-    {DISPATCH_RESOLVE_EXTENSION, 91, 616 /* GL_NV_path_rendering */, 29740}, /* glIsPathNV */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 616 /* GL_NV_path_rendering */, 29751}, /* glIsPointInFillPathNV */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 616 /* GL_NV_path_rendering */, 29773}, /* glIsPointInStrokePathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 326 /* GL_ATI_vertex_array_object */, 29699}, /* glIsObjectBufferATI */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 615 /* GL_NV_occlusion_query */, 29719}, /* glIsOcclusionQueryNV */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 620 /* GL_NV_path_rendering */, 29740}, /* glIsPathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 620 /* GL_NV_path_rendering */, 29751}, /* glIsPointInFillPathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 620 /* GL_NV_path_rendering */, 29773}, /* glIsPointInStrokePathNV */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_Desktop_2_0, 29797}, /* glIsProgram */
     {DISPATCH_RESOLVE_DIRECT, 94, OpenGL_ES_2_0, 29797}, /* glIsProgram */
     {DISPATCH_RESOLVE_EXTENSION, 95, 174 /* GL_ARB_fragment_program */, 29809}, /* glIsProgramARB */
     {DISPATCH_RESOLVE_EXTENSION, 95, 297 /* GL_ARB_vertex_program */, 29809}, /* glIsProgramARB */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 672 /* GL_NV_vertex_program */, 29824}, /* glIsProgramNV */
-    {DISPATCH_RESOLVE_EXTENSION, 96, 672 /* GL_NV_vertex_program */, 29824}, /* glIsProgramNV */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 676 /* GL_NV_vertex_program */, 29824}, /* glIsProgramNV */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 676 /* GL_NV_vertex_program */, 29824}, /* glIsProgramNV */
     {DISPATCH_RESOLVE_EXTENSION, 96, 174 /* GL_ARB_fragment_program */, 29809}, /* glIsProgramARB */
     {DISPATCH_RESOLVE_EXTENSION, 96, 297 /* GL_ARB_vertex_program */, 29809}, /* glIsProgramARB */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_Desktop_4_1, 29838}, /* glIsProgramPipeline */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_ES_3_1, 29838}, /* glIsProgramPipeline */
     {DISPATCH_RESOLVE_EXTENSION, 97, 222 /* GL_ARB_separate_shader_objects */, 29838}, /* glIsProgramPipeline */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 422 /* GL_EXT_separate_shader_objects */, 29858}, /* glIsProgramPipelineEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 425 /* GL_EXT_separate_shader_objects */, 29858}, /* glIsProgramPipelineEXT */
     {DISPATCH_RESOLVE_VERSION, 99, OpenGL_Desktop_1_5, 29881}, /* glIsQuery */
     {DISPATCH_RESOLVE_VERSION, 99, OpenGL_ES_3_0, 29881}, /* glIsQuery */
     {DISPATCH_RESOLVE_EXTENSION, 99, 203 /* GL_ARB_occlusion_query */, 29891}, /* glIsQueryARB */
     {DISPATCH_RESOLVE_EXTENSION, 100, 203 /* GL_ARB_occlusion_query */, 29891}, /* glIsQueryARB */
     {DISPATCH_RESOLVE_VERSION, 100, OpenGL_Desktop_1_5, 29881}, /* glIsQuery */
     {DISPATCH_RESOLVE_VERSION, 100, OpenGL_ES_3_0, 29881}, /* glIsQuery */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 359 /* GL_EXT_disjoint_timer_query */, 29904}, /* glIsQueryEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 397 /* GL_EXT_occlusion_query_boolean */, 29904}, /* glIsQueryEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 362 /* GL_EXT_disjoint_timer_query */, 29904}, /* glIsQueryEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 400 /* GL_EXT_occlusion_query_boolean */, 29904}, /* glIsQueryEXT */
     {DISPATCH_RESOLVE_VERSION, 102, OpenGL_Desktop_3_0, 29917}, /* glIsRenderbuffer */
     {DISPATCH_RESOLVE_DIRECT, 102, OpenGL_ES_2_0, 29917}, /* glIsRenderbuffer */
     {DISPATCH_RESOLVE_EXTENSION, 102, 179 /* GL_ARB_framebuffer_object */, 29917}, /* glIsRenderbuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 373 /* GL_EXT_framebuffer_object */, 29934}, /* glIsRenderbufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 373 /* GL_EXT_framebuffer_object */, 29934}, /* glIsRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 376 /* GL_EXT_framebuffer_object */, 29934}, /* glIsRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 376 /* GL_EXT_framebuffer_object */, 29934}, /* glIsRenderbufferEXT */
     {DISPATCH_RESOLVE_VERSION, 103, OpenGL_Desktop_3_0, 29917}, /* glIsRenderbuffer */
     {DISPATCH_RESOLVE_DIRECT, 103, OpenGL_ES_2_0, 29917}, /* glIsRenderbuffer */
     {DISPATCH_RESOLVE_EXTENSION, 103, 179 /* GL_ARB_framebuffer_object */, 29917}, /* glIsRenderbuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 704 /* GL_OES_framebuffer_object */, 29954}, /* glIsRenderbufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 708 /* GL_OES_framebuffer_object */, 29954}, /* glIsRenderbufferOES */
     {DISPATCH_RESOLVE_VERSION, 105, OpenGL_Desktop_3_3, 29974}, /* glIsSampler */
     {DISPATCH_RESOLVE_VERSION, 105, OpenGL_ES_3_0, 29974}, /* glIsSampler */
     {DISPATCH_RESOLVE_EXTENSION, 105, 219 /* GL_ARB_sampler_objects */, 29974}, /* glIsSampler */
     {DISPATCH_RESOLVE_VERSION, 106, OpenGL_Desktop_2_0, 29986}, /* glIsShader */
     {DISPATCH_RESOLVE_DIRECT, 106, OpenGL_ES_2_0, 29986}, /* glIsShader */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 559 /* GL_NV_command_list */, 29997}, /* glIsStateNV */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 563 /* GL_NV_command_list */, 29997}, /* glIsStateNV */
     {DISPATCH_RESOLVE_VERSION, 108, OpenGL_Desktop_3_2, 30009}, /* glIsSync */
     {DISPATCH_RESOLVE_VERSION, 108, OpenGL_ES_3_0, 30009}, /* glIsSync */
     {DISPATCH_RESOLVE_EXTENSION, 108, 251 /* GL_ARB_sync */, 30009}, /* glIsSync */
@@ -7935,36 +7945,36 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_Desktop_1_1, 30032}, /* glIsTexture */
     {DISPATCH_RESOLVE_DIRECT, 110, OpenGL_ES_1_0, 30032}, /* glIsTexture */
     {DISPATCH_RESOLVE_DIRECT, 110, OpenGL_ES_2_0, 30032}, /* glIsTexture */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 472 /* GL_EXT_texture_object */, 30044}, /* glIsTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 476 /* GL_EXT_texture_object */, 30044}, /* glIsTextureEXT */
     {DISPATCH_RESOLVE_EXTENSION, 112, 141 /* GL_ARB_bindless_texture */, 30059}, /* glIsTextureHandleResidentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 113, 554 /* GL_NV_bindless_texture */, 30088}, /* glIsTextureHandleResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 558 /* GL_NV_bindless_texture */, 30088}, /* glIsTextureHandleResidentNV */
     {DISPATCH_RESOLVE_VERSION, 114, OpenGL_Desktop_4_0, 30116}, /* glIsTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 114, OpenGL_ES_3_0, 30116}, /* glIsTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 114, 285 /* GL_ARB_transform_feedback2 */, 30116}, /* glIsTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 665 /* GL_NV_transform_feedback2 */, 30138}, /* glIsTransformFeedbackNV */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 665 /* GL_NV_transform_feedback2 */, 30138}, /* glIsTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 669 /* GL_NV_transform_feedback2 */, 30138}, /* glIsTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 669 /* GL_NV_transform_feedback2 */, 30138}, /* glIsTransformFeedbackNV */
     {DISPATCH_RESOLVE_VERSION, 115, OpenGL_Desktop_4_0, 30116}, /* glIsTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 115, OpenGL_ES_3_0, 30116}, /* glIsTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 115, 285 /* GL_ARB_transform_feedback2 */, 30116}, /* glIsTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 494 /* GL_EXT_vertex_shader */, 30162}, /* glIsVariantEnabledEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 498 /* GL_EXT_vertex_shader */, 30162}, /* glIsVariantEnabledEXT */
     {DISPATCH_RESOLVE_VERSION, 117, OpenGL_Desktop_3_0, 30184}, /* glIsVertexArray */
     {DISPATCH_RESOLVE_VERSION, 117, OpenGL_ES_3_0, 30184}, /* glIsVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 117, 292 /* GL_ARB_vertex_array_object */, 30184}, /* glIsVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 117, 131 /* GL_APPLE_vertex_array_object */, 30200}, /* glIsVertexArrayAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 750 /* GL_OES_vertex_array_object */, 30221}, /* glIsVertexArrayOES */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 754 /* GL_OES_vertex_array_object */, 30221}, /* glIsVertexArrayOES */
     {DISPATCH_RESOLVE_EXTENSION, 118, 131 /* GL_APPLE_vertex_array_object */, 30200}, /* glIsVertexArrayAPPLE */
     {DISPATCH_RESOLVE_VERSION, 118, OpenGL_Desktop_3_0, 30184}, /* glIsVertexArray */
     {DISPATCH_RESOLVE_VERSION, 118, OpenGL_ES_3_0, 30184}, /* glIsVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 118, 292 /* GL_ARB_vertex_array_object */, 30184}, /* glIsVertexArray */
-    {DISPATCH_RESOLVE_EXTENSION, 118, 750 /* GL_OES_vertex_array_object */, 30221}, /* glIsVertexArrayOES */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 750 /* GL_OES_vertex_array_object */, 30221}, /* glIsVertexArrayOES */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 754 /* GL_OES_vertex_array_object */, 30221}, /* glIsVertexArrayOES */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 754 /* GL_OES_vertex_array_object */, 30221}, /* glIsVertexArrayOES */
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_Desktop_3_0, 30184}, /* glIsVertexArray */
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_ES_3_0, 30184}, /* glIsVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 119, 292 /* GL_ARB_vertex_array_object */, 30184}, /* glIsVertexArray */
     {DISPATCH_RESOLVE_EXTENSION, 119, 131 /* GL_APPLE_vertex_array_object */, 30200}, /* glIsVertexArrayAPPLE */
     {DISPATCH_RESOLVE_EXTENSION, 120, 133 /* GL_APPLE_vertex_program_evaluators */, 30240}, /* glIsVertexAttribEnabledAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 354 /* GL_EXT_debug_label */, 30269}, /* glLabelObjectEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 799 /* GL_SGIX_fragment_lighting */, 30286}, /* glLightEnviSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 357 /* GL_EXT_debug_label */, 30269}, /* glLabelObjectEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 804 /* GL_SGIX_fragment_lighting */, 30286}, /* glLightEnviSGIX */
     {DISPATCH_RESOLVE_DIRECT, 123, OpenGL_Desktop_1_0, 30302}, /* glLightModelf */
     {DISPATCH_RESOLVE_DIRECT, 123, OpenGL_ES_1_0, 30302}, /* glLightModelf */
     {DISPATCH_RESOLVE_DIRECT, 124, OpenGL_Desktop_1_0, 30316}, /* glLightModelfv */
@@ -7972,9 +7982,9 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 125, OpenGL_Desktop_1_0, 30331}, /* glLightModeli */
     {DISPATCH_RESOLVE_DIRECT, 126, OpenGL_Desktop_1_0, 30345}, /* glLightModeliv */
     {DISPATCH_RESOLVE_DIRECT, 127, OpenGL_ES_1_0, 30360}, /* glLightModelx */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 702 /* GL_OES_fixed_point */, 30374}, /* glLightModelxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 706 /* GL_OES_fixed_point */, 30374}, /* glLightModelxOES */
     {DISPATCH_RESOLVE_DIRECT, 129, OpenGL_ES_1_0, 30391}, /* glLightModelxv */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 702 /* GL_OES_fixed_point */, 30406}, /* glLightModelxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 706 /* GL_OES_fixed_point */, 30406}, /* glLightModelxvOES */
     {DISPATCH_RESOLVE_DIRECT, 131, OpenGL_Desktop_1_0, 30424}, /* glLightf */
     {DISPATCH_RESOLVE_DIRECT, 131, OpenGL_ES_1_0, 30424}, /* glLightf */
     {DISPATCH_RESOLVE_DIRECT, 132, OpenGL_Desktop_1_0, 30433}, /* glLightfv */
@@ -7982,15 +7992,15 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 133, OpenGL_Desktop_1_0, 30443}, /* glLighti */
     {DISPATCH_RESOLVE_DIRECT, 134, OpenGL_Desktop_1_0, 30452}, /* glLightiv */
     {DISPATCH_RESOLVE_DIRECT, 135, OpenGL_ES_1_0, 30462}, /* glLightx */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 702 /* GL_OES_fixed_point */, 30471}, /* glLightxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 706 /* GL_OES_fixed_point */, 30471}, /* glLightxOES */
     {DISPATCH_RESOLVE_DIRECT, 137, OpenGL_ES_1_0, 30483}, /* glLightxv */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 702 /* GL_OES_fixed_point */, 30493}, /* glLightxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 706 /* GL_OES_fixed_point */, 30493}, /* glLightxvOES */
     {DISPATCH_RESOLVE_DIRECT, 139, OpenGL_Desktop_1_0, 30506}, /* glLineStipple */
     {DISPATCH_RESOLVE_DIRECT, 140, OpenGL_Desktop_1_0, 30520}, /* glLineWidth */
     {DISPATCH_RESOLVE_DIRECT, 140, OpenGL_ES_1_0, 30520}, /* glLineWidth */
     {DISPATCH_RESOLVE_DIRECT, 140, OpenGL_ES_2_0, 30520}, /* glLineWidth */
     {DISPATCH_RESOLVE_DIRECT, 141, OpenGL_ES_1_0, 30532}, /* glLineWidthx */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 702 /* GL_OES_fixed_point */, 30545}, /* glLineWidthxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 706 /* GL_OES_fixed_point */, 30545}, /* glLineWidthxOES */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_Desktop_2_0, 30561}, /* glLinkProgram */
     {DISPATCH_RESOLVE_DIRECT, 143, OpenGL_ES_2_0, 30561}, /* glLinkProgram */
     {DISPATCH_RESOLVE_EXTENSION, 143, 232 /* GL_ARB_shader_objects */, 30575}, /* glLinkProgramARB */
@@ -7998,22 +8008,22 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 144, OpenGL_Desktop_2_0, 30561}, /* glLinkProgram */
     {DISPATCH_RESOLVE_DIRECT, 144, OpenGL_ES_2_0, 30561}, /* glLinkProgram */
     {DISPATCH_RESOLVE_DIRECT, 145, OpenGL_Desktop_1_0, 30592}, /* glListBase */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 559 /* GL_NV_command_list */, 30603}, /* glListDrawCommandsStatesClientNV */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 806 /* GL_SGIX_list_priority */, 30636}, /* glListParameterfSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 806 /* GL_SGIX_list_priority */, 30657}, /* glListParameterfvSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 806 /* GL_SGIX_list_priority */, 30679}, /* glListParameteriSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 806 /* GL_SGIX_list_priority */, 30700}, /* glListParameterivSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 563 /* GL_NV_command_list */, 30603}, /* glListDrawCommandsStatesClientNV */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 811 /* GL_SGIX_list_priority */, 30636}, /* glListParameterfSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 811 /* GL_SGIX_list_priority */, 30657}, /* glListParameterfvSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 811 /* GL_SGIX_list_priority */, 30679}, /* glListParameteriSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 811 /* GL_SGIX_list_priority */, 30700}, /* glListParameterivSGIX */
     {DISPATCH_RESOLVE_DIRECT, 151, OpenGL_Desktop_1_0, 30722}, /* glLoadIdentity */
     {DISPATCH_RESOLVE_DIRECT, 151, OpenGL_ES_1_0, 30722}, /* glLoadIdentity */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 810 /* GL_SGIX_polynomial_ffd */, 30737}, /* glLoadIdentityDeformationMapSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 815 /* GL_SGIX_polynomial_ffd */, 30737}, /* glLoadIdentityDeformationMapSGIX */
     {DISPATCH_RESOLVE_DIRECT, 153, OpenGL_Desktop_1_0, 30770}, /* glLoadMatrixd */
     {DISPATCH_RESOLVE_DIRECT, 154, OpenGL_Desktop_1_0, 30784}, /* glLoadMatrixf */
     {DISPATCH_RESOLVE_DIRECT, 154, OpenGL_ES_1_0, 30784}, /* glLoadMatrixf */
     {DISPATCH_RESOLVE_DIRECT, 155, OpenGL_ES_1_0, 30798}, /* glLoadMatrixx */
-    {DISPATCH_RESOLVE_EXTENSION, 156, 702 /* GL_OES_fixed_point */, 30812}, /* glLoadMatrixxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 156, 706 /* GL_OES_fixed_point */, 30812}, /* glLoadMatrixxOES */
     {DISPATCH_RESOLVE_DIRECT, 157, OpenGL_Desktop_1_0, 30829}, /* glLoadName */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 711 /* GL_OES_matrix_palette */, 30840}, /* glLoadPaletteFromModelViewMatrixOES */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 672 /* GL_NV_vertex_program */, 30876}, /* glLoadProgramNV */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 715 /* GL_OES_matrix_palette */, 30840}, /* glLoadPaletteFromModelViewMatrixOES */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 676 /* GL_NV_vertex_program */, 30876}, /* glLoadProgramNV */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_1_3, 30892}, /* glLoadTransposeMatrixd */
     {DISPATCH_RESOLVE_EXTENSION, 160, 289 /* GL_ARB_transpose_matrix */, 30915}, /* glLoadTransposeMatrixdARB */
     {DISPATCH_RESOLVE_EXTENSION, 161, 289 /* GL_ARB_transpose_matrix */, 30915}, /* glLoadTransposeMatrixdARB */
@@ -8022,62 +8032,62 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 162, 289 /* GL_ARB_transpose_matrix */, 30964}, /* glLoadTransposeMatrixfARB */
     {DISPATCH_RESOLVE_EXTENSION, 163, 289 /* GL_ARB_transpose_matrix */, 30964}, /* glLoadTransposeMatrixfARB */
     {DISPATCH_RESOLVE_VERSION, 163, OpenGL_Desktop_1_3, 30941}, /* glLoadTransposeMatrixf */
-    {DISPATCH_RESOLVE_EXTENSION, 164, 702 /* GL_OES_fixed_point */, 30990}, /* glLoadTransposeMatrixxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 165, 348 /* GL_EXT_compiled_vertex_array */, 31016}, /* glLockArraysEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 164, 706 /* GL_OES_fixed_point */, 30990}, /* glLoadTransposeMatrixxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 165, 351 /* GL_EXT_compiled_vertex_array */, 31016}, /* glLockArraysEXT */
     {DISPATCH_RESOLVE_DIRECT, 166, OpenGL_Desktop_1_0, 31032}, /* glLogicOp */
     {DISPATCH_RESOLVE_DIRECT, 166, OpenGL_ES_1_0, 31032}, /* glLogicOp */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 640 /* GL_NV_shader_buffer_load */, 31042}, /* glMakeBufferNonResidentNV */
-    {DISPATCH_RESOLVE_EXTENSION, 168, 640 /* GL_NV_shader_buffer_load */, 31068}, /* glMakeBufferResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 644 /* GL_NV_shader_buffer_load */, 31042}, /* glMakeBufferNonResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 168, 644 /* GL_NV_shader_buffer_load */, 31068}, /* glMakeBufferResidentNV */
     {DISPATCH_RESOLVE_EXTENSION, 169, 141 /* GL_ARB_bindless_texture */, 31091}, /* glMakeImageHandleNonResidentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 170, 554 /* GL_NV_bindless_texture */, 31123}, /* glMakeImageHandleNonResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 170, 558 /* GL_NV_bindless_texture */, 31123}, /* glMakeImageHandleNonResidentNV */
     {DISPATCH_RESOLVE_EXTENSION, 171, 141 /* GL_ARB_bindless_texture */, 31154}, /* glMakeImageHandleResidentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 554 /* GL_NV_bindless_texture */, 31183}, /* glMakeImageHandleResidentNV */
-    {DISPATCH_RESOLVE_EXTENSION, 173, 640 /* GL_NV_shader_buffer_load */, 31211}, /* glMakeNamedBufferNonResidentNV */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 640 /* GL_NV_shader_buffer_load */, 31242}, /* glMakeNamedBufferResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 558 /* GL_NV_bindless_texture */, 31183}, /* glMakeImageHandleResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 173, 644 /* GL_NV_shader_buffer_load */, 31211}, /* glMakeNamedBufferNonResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 644 /* GL_NV_shader_buffer_load */, 31242}, /* glMakeNamedBufferResidentNV */
     {DISPATCH_RESOLVE_EXTENSION, 175, 141 /* GL_ARB_bindless_texture */, 31270}, /* glMakeTextureHandleNonResidentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 554 /* GL_NV_bindless_texture */, 31304}, /* glMakeTextureHandleNonResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 558 /* GL_NV_bindless_texture */, 31304}, /* glMakeTextureHandleNonResidentNV */
     {DISPATCH_RESOLVE_EXTENSION, 177, 141 /* GL_ARB_bindless_texture */, 31337}, /* glMakeTextureHandleResidentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 554 /* GL_NV_bindless_texture */, 31368}, /* glMakeTextureHandleResidentNV */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 558 /* GL_NV_bindless_texture */, 31368}, /* glMakeTextureHandleResidentNV */
     {DISPATCH_RESOLVE_DIRECT, 179, OpenGL_Desktop_1_0, 31398}, /* glMap1d */
     {DISPATCH_RESOLVE_DIRECT, 180, OpenGL_Desktop_1_0, 31406}, /* glMap1f */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 702 /* GL_OES_fixed_point */, 31414}, /* glMap1xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 706 /* GL_OES_fixed_point */, 31414}, /* glMap1xOES */
     {DISPATCH_RESOLVE_DIRECT, 182, OpenGL_Desktop_1_0, 31425}, /* glMap2d */
     {DISPATCH_RESOLVE_DIRECT, 183, OpenGL_Desktop_1_0, 31433}, /* glMap2f */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 702 /* GL_OES_fixed_point */, 31441}, /* glMap2xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 706 /* GL_OES_fixed_point */, 31441}, /* glMap2xOES */
     {DISPATCH_RESOLVE_VERSION, 185, OpenGL_Desktop_1_5, 31452}, /* glMapBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 185, 296 /* GL_ARB_vertex_buffer_object */, 31464}, /* glMapBufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 709 /* GL_OES_mapbuffer */, 31479}, /* glMapBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 713 /* GL_OES_mapbuffer */, 31479}, /* glMapBufferOES */
     {DISPATCH_RESOLVE_EXTENSION, 186, 296 /* GL_ARB_vertex_buffer_object */, 31464}, /* glMapBufferARB */
     {DISPATCH_RESOLVE_VERSION, 186, OpenGL_Desktop_1_5, 31452}, /* glMapBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 709 /* GL_OES_mapbuffer */, 31479}, /* glMapBufferOES */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 709 /* GL_OES_mapbuffer */, 31479}, /* glMapBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 713 /* GL_OES_mapbuffer */, 31479}, /* glMapBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 713 /* GL_OES_mapbuffer */, 31479}, /* glMapBufferOES */
     {DISPATCH_RESOLVE_VERSION, 187, OpenGL_Desktop_1_5, 31452}, /* glMapBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 187, 296 /* GL_ARB_vertex_buffer_object */, 31464}, /* glMapBufferARB */
     {DISPATCH_RESOLVE_VERSION, 188, OpenGL_Desktop_3_0, 31494}, /* glMapBufferRange */
     {DISPATCH_RESOLVE_VERSION, 188, OpenGL_ES_3_0, 31494}, /* glMapBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 188, 197 /* GL_ARB_map_buffer_range */, 31494}, /* glMapBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 188, 389 /* GL_EXT_map_buffer_range */, 31511}, /* glMapBufferRangeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 189, 389 /* GL_EXT_map_buffer_range */, 31511}, /* glMapBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 188, 392 /* GL_EXT_map_buffer_range */, 31511}, /* glMapBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 189, 392 /* GL_EXT_map_buffer_range */, 31511}, /* glMapBufferRangeEXT */
     {DISPATCH_RESOLVE_VERSION, 189, OpenGL_Desktop_3_0, 31494}, /* glMapBufferRange */
     {DISPATCH_RESOLVE_VERSION, 189, OpenGL_ES_3_0, 31494}, /* glMapBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 189, 197 /* GL_ARB_map_buffer_range */, 31494}, /* glMapBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 576 /* GL_NV_evaluators */, 31531}, /* glMapControlPointsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 580 /* GL_NV_evaluators */, 31531}, /* glMapControlPointsNV */
     {DISPATCH_RESOLVE_DIRECT, 191, OpenGL_Desktop_1_0, 31552}, /* glMapGrid1d */
     {DISPATCH_RESOLVE_DIRECT, 192, OpenGL_Desktop_1_0, 31564}, /* glMapGrid1f */
-    {DISPATCH_RESOLVE_EXTENSION, 193, 702 /* GL_OES_fixed_point */, 31576}, /* glMapGrid1xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 193, 706 /* GL_OES_fixed_point */, 31576}, /* glMapGrid1xOES */
     {DISPATCH_RESOLVE_DIRECT, 194, OpenGL_Desktop_1_0, 31591}, /* glMapGrid2d */
     {DISPATCH_RESOLVE_DIRECT, 195, OpenGL_Desktop_1_0, 31603}, /* glMapGrid2f */
-    {DISPATCH_RESOLVE_EXTENSION, 196, 702 /* GL_OES_fixed_point */, 31615}, /* glMapGrid2xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 196, 706 /* GL_OES_fixed_point */, 31615}, /* glMapGrid2xOES */
     {DISPATCH_RESOLVE_VERSION, 197, OpenGL_Desktop_4_5, 31630}, /* glMapNamedBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 197, 163 /* GL_ARB_direct_state_access */, 31630}, /* glMapNamedBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 357 /* GL_EXT_direct_state_access */, 31647}, /* glMapNamedBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 360 /* GL_EXT_direct_state_access */, 31647}, /* glMapNamedBufferEXT */
     {DISPATCH_RESOLVE_VERSION, 199, OpenGL_Desktop_4_5, 31667}, /* glMapNamedBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 199, 163 /* GL_ARB_direct_state_access */, 31667}, /* glMapNamedBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 357 /* GL_EXT_direct_state_access */, 31689}, /* glMapNamedBufferRangeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 201, 313 /* GL_ATI_map_object_buffer */, 31714}, /* glMapObjectBufferATI */
-    {DISPATCH_RESOLVE_EXTENSION, 202, 576 /* GL_NV_evaluators */, 31735}, /* glMapParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 203, 576 /* GL_NV_evaluators */, 31754}, /* glMapParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 527 /* GL_INTEL_map_texture */, 31773}, /* glMapTexture2DINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 360 /* GL_EXT_direct_state_access */, 31689}, /* glMapNamedBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 201, 316 /* GL_ATI_map_object_buffer */, 31714}, /* glMapObjectBufferATI */
+    {DISPATCH_RESOLVE_EXTENSION, 202, 580 /* GL_NV_evaluators */, 31735}, /* glMapParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 203, 580 /* GL_NV_evaluators */, 31754}, /* glMapParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 531 /* GL_INTEL_map_texture */, 31773}, /* glMapTexture2DINTEL */
     {DISPATCH_RESOLVE_EXTENSION, 205, 133 /* GL_APPLE_vertex_program_evaluators */, 31793}, /* glMapVertexAttrib1dAPPLE */
     {DISPATCH_RESOLVE_EXTENSION, 206, 133 /* GL_APPLE_vertex_program_evaluators */, 31818}, /* glMapVertexAttrib1fAPPLE */
     {DISPATCH_RESOLVE_EXTENSION, 207, 133 /* GL_APPLE_vertex_program_evaluators */, 31843}, /* glMapVertexAttrib2dAPPLE */
@@ -8089,74 +8099,74 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 211, OpenGL_Desktop_1_0, 31918}, /* glMateriali */
     {DISPATCH_RESOLVE_DIRECT, 212, OpenGL_Desktop_1_0, 31930}, /* glMaterialiv */
     {DISPATCH_RESOLVE_DIRECT, 213, OpenGL_ES_1_0, 31943}, /* glMaterialx */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 702 /* GL_OES_fixed_point */, 31955}, /* glMaterialxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 706 /* GL_OES_fixed_point */, 31955}, /* glMaterialxOES */
     {DISPATCH_RESOLVE_DIRECT, 215, OpenGL_ES_1_0, 31970}, /* glMaterialxv */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 702 /* GL_OES_fixed_point */, 31983}, /* glMaterialxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 217, 357 /* GL_EXT_direct_state_access */, 31999}, /* glMatrixFrustumEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 706 /* GL_OES_fixed_point */, 31983}, /* glMaterialxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 217, 360 /* GL_EXT_direct_state_access */, 31999}, /* glMatrixFrustumEXT */
     {DISPATCH_RESOLVE_EXTENSION, 218, 198 /* GL_ARB_matrix_palette */, 32018}, /* glMatrixIndexPointerARB */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 711 /* GL_OES_matrix_palette */, 32042}, /* glMatrixIndexPointerOES */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 715 /* GL_OES_matrix_palette */, 32042}, /* glMatrixIndexPointerOES */
     {DISPATCH_RESOLVE_EXTENSION, 220, 198 /* GL_ARB_matrix_palette */, 32066}, /* glMatrixIndexubvARB */
     {DISPATCH_RESOLVE_EXTENSION, 221, 198 /* GL_ARB_matrix_palette */, 32086}, /* glMatrixIndexuivARB */
     {DISPATCH_RESOLVE_EXTENSION, 222, 198 /* GL_ARB_matrix_palette */, 32106}, /* glMatrixIndexusvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 616 /* GL_NV_path_rendering */, 32126}, /* glMatrixLoad3x2fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 616 /* GL_NV_path_rendering */, 32145}, /* glMatrixLoad3x3fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 357 /* GL_EXT_direct_state_access */, 32164}, /* glMatrixLoadIdentityEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 616 /* GL_NV_path_rendering */, 32188}, /* glMatrixLoadTranspose3x3fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 357 /* GL_EXT_direct_state_access */, 32216}, /* glMatrixLoadTransposedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 357 /* GL_EXT_direct_state_access */, 32242}, /* glMatrixLoadTransposefEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 357 /* GL_EXT_direct_state_access */, 32268}, /* glMatrixLoaddEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 357 /* GL_EXT_direct_state_access */, 32285}, /* glMatrixLoadfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 620 /* GL_NV_path_rendering */, 32126}, /* glMatrixLoad3x2fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 620 /* GL_NV_path_rendering */, 32145}, /* glMatrixLoad3x3fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 360 /* GL_EXT_direct_state_access */, 32164}, /* glMatrixLoadIdentityEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 620 /* GL_NV_path_rendering */, 32188}, /* glMatrixLoadTranspose3x3fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 360 /* GL_EXT_direct_state_access */, 32216}, /* glMatrixLoadTransposedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 360 /* GL_EXT_direct_state_access */, 32242}, /* glMatrixLoadTransposefEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 360 /* GL_EXT_direct_state_access */, 32268}, /* glMatrixLoaddEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 360 /* GL_EXT_direct_state_access */, 32285}, /* glMatrixLoadfEXT */
     {DISPATCH_RESOLVE_DIRECT, 231, OpenGL_Desktop_1_0, 32302}, /* glMatrixMode */
     {DISPATCH_RESOLVE_DIRECT, 231, OpenGL_ES_1_0, 32302}, /* glMatrixMode */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 616 /* GL_NV_path_rendering */, 32315}, /* glMatrixMult3x2fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 616 /* GL_NV_path_rendering */, 32334}, /* glMatrixMult3x3fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 616 /* GL_NV_path_rendering */, 32353}, /* glMatrixMultTranspose3x3fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 357 /* GL_EXT_direct_state_access */, 32381}, /* glMatrixMultTransposedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 357 /* GL_EXT_direct_state_access */, 32407}, /* glMatrixMultTransposefEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 237, 357 /* GL_EXT_direct_state_access */, 32433}, /* glMatrixMultdEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 238, 357 /* GL_EXT_direct_state_access */, 32450}, /* glMatrixMultfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 357 /* GL_EXT_direct_state_access */, 32467}, /* glMatrixOrthoEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 357 /* GL_EXT_direct_state_access */, 32484}, /* glMatrixPopEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 241, 357 /* GL_EXT_direct_state_access */, 32499}, /* glMatrixPushEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 357 /* GL_EXT_direct_state_access */, 32515}, /* glMatrixRotatedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 243, 357 /* GL_EXT_direct_state_access */, 32534}, /* glMatrixRotatefEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 244, 357 /* GL_EXT_direct_state_access */, 32553}, /* glMatrixScaledEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 357 /* GL_EXT_direct_state_access */, 32571}, /* glMatrixScalefEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 246, 357 /* GL_EXT_direct_state_access */, 32589}, /* glMatrixTranslatedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 247, 357 /* GL_EXT_direct_state_access */, 32611}, /* glMatrixTranslatefEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 620 /* GL_NV_path_rendering */, 32315}, /* glMatrixMult3x2fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 620 /* GL_NV_path_rendering */, 32334}, /* glMatrixMult3x3fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 620 /* GL_NV_path_rendering */, 32353}, /* glMatrixMultTranspose3x3fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 360 /* GL_EXT_direct_state_access */, 32381}, /* glMatrixMultTransposedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 360 /* GL_EXT_direct_state_access */, 32407}, /* glMatrixMultTransposefEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 237, 360 /* GL_EXT_direct_state_access */, 32433}, /* glMatrixMultdEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 238, 360 /* GL_EXT_direct_state_access */, 32450}, /* glMatrixMultfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 360 /* GL_EXT_direct_state_access */, 32467}, /* glMatrixOrthoEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 360 /* GL_EXT_direct_state_access */, 32484}, /* glMatrixPopEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 241, 360 /* GL_EXT_direct_state_access */, 32499}, /* glMatrixPushEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 360 /* GL_EXT_direct_state_access */, 32515}, /* glMatrixRotatedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 243, 360 /* GL_EXT_direct_state_access */, 32534}, /* glMatrixRotatefEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 244, 360 /* GL_EXT_direct_state_access */, 32553}, /* glMatrixScaledEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 360 /* GL_EXT_direct_state_access */, 32571}, /* glMatrixScalefEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 246, 360 /* GL_EXT_direct_state_access */, 32589}, /* glMatrixTranslatedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 247, 360 /* GL_EXT_direct_state_access */, 32611}, /* glMatrixTranslatefEXT */
     {DISPATCH_RESOLVE_EXTENSION, 248, 205 /* GL_ARB_parallel_shader_compile */, 32633}, /* glMaxShaderCompilerThreadsARB */
     {DISPATCH_RESOLVE_VERSION, 249, OpenGL_Desktop_4_2, 32663}, /* glMemoryBarrier */
     {DISPATCH_RESOLVE_VERSION, 249, OpenGL_ES_3_1, 32663}, /* glMemoryBarrier */
     {DISPATCH_RESOLVE_EXTENSION, 249, 230 /* GL_ARB_shader_image_load_store */, 32663}, /* glMemoryBarrier */
-    {DISPATCH_RESOLVE_EXTENSION, 249, 427 /* GL_EXT_shader_image_load_store */, 32703}, /* glMemoryBarrierEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 249, 430 /* GL_EXT_shader_image_load_store */, 32703}, /* glMemoryBarrierEXT */
     {DISPATCH_RESOLVE_VERSION, 250, OpenGL_Desktop_4_5, 32679}, /* glMemoryBarrierByRegion */
     {DISPATCH_RESOLVE_VERSION, 250, OpenGL_ES_3_1, 32679}, /* glMemoryBarrierByRegion */
     {DISPATCH_RESOLVE_EXTENSION, 250, 136 /* GL_ARB_ES3_1_compatibility */, 32679}, /* glMemoryBarrierByRegion */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 427 /* GL_EXT_shader_image_load_store */, 32703}, /* glMemoryBarrierEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 430 /* GL_EXT_shader_image_load_store */, 32703}, /* glMemoryBarrierEXT */
     {DISPATCH_RESOLVE_VERSION, 251, OpenGL_Desktop_4_2, 32663}, /* glMemoryBarrier */
     {DISPATCH_RESOLVE_VERSION, 251, OpenGL_ES_3_1, 32663}, /* glMemoryBarrier */
     {DISPATCH_RESOLVE_EXTENSION, 251, 230 /* GL_ARB_shader_image_load_store */, 32663}, /* glMemoryBarrier */
     {DISPATCH_RESOLVE_VERSION, 252, OpenGL_Desktop_4_0, 32722}, /* glMinSampleShading */
     {DISPATCH_RESOLVE_VERSION, 252, OpenGL_ES_3_2, 32722}, /* glMinSampleShading */
     {DISPATCH_RESOLVE_EXTENSION, 252, 218 /* GL_ARB_sample_shading */, 32741}, /* glMinSampleShadingARB */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 720 /* GL_OES_sample_shading */, 32763}, /* glMinSampleShadingOES */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 724 /* GL_OES_sample_shading */, 32763}, /* glMinSampleShadingOES */
     {DISPATCH_RESOLVE_EXTENSION, 253, 218 /* GL_ARB_sample_shading */, 32741}, /* glMinSampleShadingARB */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_Desktop_4_0, 32722}, /* glMinSampleShading */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_ES_3_2, 32722}, /* glMinSampleShading */
-    {DISPATCH_RESOLVE_EXTENSION, 253, 720 /* GL_OES_sample_shading */, 32763}, /* glMinSampleShadingOES */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 720 /* GL_OES_sample_shading */, 32763}, /* glMinSampleShadingOES */
+    {DISPATCH_RESOLVE_EXTENSION, 253, 724 /* GL_OES_sample_shading */, 32763}, /* glMinSampleShadingOES */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 724 /* GL_OES_sample_shading */, 32763}, /* glMinSampleShadingOES */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_Desktop_4_0, 32722}, /* glMinSampleShading */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_ES_3_2, 32722}, /* glMinSampleShading */
     {DISPATCH_RESOLVE_EXTENSION, 254, 218 /* GL_ARB_sample_shading */, 32741}, /* glMinSampleShadingARB */
     {DISPATCH_RESOLVE_EXTENSION, 255, 190 /* GL_ARB_imaging */, 32785}, /* glMinmax */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 382 /* GL_EXT_histogram */, 32794}, /* glMinmaxEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 0, 382 /* GL_EXT_histogram */, 32794}, /* glMinmaxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 385 /* GL_EXT_histogram */, 32794}, /* glMinmaxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 385 /* GL_EXT_histogram */, 32794}, /* glMinmaxEXT */
     {DISPATCH_RESOLVE_EXTENSION, 0, 190 /* GL_ARB_imaging */, 32785}, /* glMinmax */
     {DISPATCH_RESOLVE_DIRECT, 1, OpenGL_Desktop_1_0, 32806}, /* glMultMatrixd */
     {DISPATCH_RESOLVE_DIRECT, 2, OpenGL_Desktop_1_0, 32820}, /* glMultMatrixf */
     {DISPATCH_RESOLVE_DIRECT, 2, OpenGL_ES_1_0, 32820}, /* glMultMatrixf */
     {DISPATCH_RESOLVE_DIRECT, 3, OpenGL_ES_1_0, 32834}, /* glMultMatrixx */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 702 /* GL_OES_fixed_point */, 32848}, /* glMultMatrixxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 706 /* GL_OES_fixed_point */, 32848}, /* glMultMatrixxOES */
     {DISPATCH_RESOLVE_VERSION, 5, OpenGL_Desktop_1_3, 32865}, /* glMultTransposeMatrixd */
     {DISPATCH_RESOLVE_EXTENSION, 5, 289 /* GL_ARB_transpose_matrix */, 32888}, /* glMultTransposeMatrixdARB */
     {DISPATCH_RESOLVE_EXTENSION, 6, 289 /* GL_ARB_transpose_matrix */, 32888}, /* glMultTransposeMatrixdARB */
@@ -8165,64 +8175,64 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 7, 289 /* GL_ARB_transpose_matrix */, 32937}, /* glMultTransposeMatrixfARB */
     {DISPATCH_RESOLVE_EXTENSION, 8, 289 /* GL_ARB_transpose_matrix */, 32937}, /* glMultTransposeMatrixfARB */
     {DISPATCH_RESOLVE_VERSION, 8, OpenGL_Desktop_1_3, 32914}, /* glMultTransposeMatrixf */
-    {DISPATCH_RESOLVE_EXTENSION, 9, 702 /* GL_OES_fixed_point */, 32963}, /* glMultTransposeMatrixxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 706 /* GL_OES_fixed_point */, 32963}, /* glMultTransposeMatrixxOES */
     {DISPATCH_RESOLVE_VERSION, 10, OpenGL_Desktop_1_4, 32989}, /* glMultiDrawArrays */
-    {DISPATCH_RESOLVE_EXTENSION, 10, 391 /* GL_EXT_multi_draw_arrays */, 33007}, /* glMultiDrawArraysEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 391 /* GL_EXT_multi_draw_arrays */, 33007}, /* glMultiDrawArraysEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 394 /* GL_EXT_multi_draw_arrays */, 33007}, /* glMultiDrawArraysEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 394 /* GL_EXT_multi_draw_arrays */, 33007}, /* glMultiDrawArraysEXT */
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_Desktop_1_4, 32989}, /* glMultiDrawArrays */
     {DISPATCH_RESOLVE_VERSION, 12, OpenGL_Desktop_4_3, 33028}, /* glMultiDrawArraysIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 12, 200 /* GL_ARB_multi_draw_indirect */, 33028}, /* glMultiDrawArraysIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 12, 74 /* GL_AMD_multi_draw_indirect */, 33054}, /* glMultiDrawArraysIndirectAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 392 /* GL_EXT_multi_draw_indirect */, 33194}, /* glMultiDrawArraysIndirectEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 395 /* GL_EXT_multi_draw_indirect */, 33194}, /* glMultiDrawArraysIndirectEXT */
     {DISPATCH_RESOLVE_EXTENSION, 13, 74 /* GL_AMD_multi_draw_indirect */, 33054}, /* glMultiDrawArraysIndirectAMD */
     {DISPATCH_RESOLVE_VERSION, 13, OpenGL_Desktop_4_3, 33028}, /* glMultiDrawArraysIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 13, 200 /* GL_ARB_multi_draw_indirect */, 33028}, /* glMultiDrawArraysIndirect */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 392 /* GL_EXT_multi_draw_indirect */, 33194}, /* glMultiDrawArraysIndirectEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 553 /* GL_NV_bindless_multi_draw_indirect_count */, 33083}, /* glMultiDrawArraysIndirectBindlessCountNV */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 552 /* GL_NV_bindless_multi_draw_indirect */, 33124}, /* glMultiDrawArraysIndirectBindlessNV */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 395 /* GL_EXT_multi_draw_indirect */, 33194}, /* glMultiDrawArraysIndirectEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 557 /* GL_NV_bindless_multi_draw_indirect_count */, 33083}, /* glMultiDrawArraysIndirectBindlessCountNV */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 556 /* GL_NV_bindless_multi_draw_indirect */, 33124}, /* glMultiDrawArraysIndirectBindlessNV */
     {DISPATCH_RESOLVE_EXTENSION, 16, 191 /* GL_ARB_indirect_parameters */, 33160}, /* glMultiDrawArraysIndirectCountARB */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 392 /* GL_EXT_multi_draw_indirect */, 33194}, /* glMultiDrawArraysIndirectEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 395 /* GL_EXT_multi_draw_indirect */, 33194}, /* glMultiDrawArraysIndirectEXT */
     {DISPATCH_RESOLVE_VERSION, 17, OpenGL_Desktop_4_3, 33028}, /* glMultiDrawArraysIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 17, 200 /* GL_ARB_multi_draw_indirect */, 33028}, /* glMultiDrawArraysIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 17, 74 /* GL_AMD_multi_draw_indirect */, 33054}, /* glMultiDrawArraysIndirectAMD */
     {DISPATCH_RESOLVE_EXTENSION, 18, 114 /* GL_APPLE_element_array */, 33223}, /* glMultiDrawElementArrayAPPLE */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_Desktop_1_4, 33252}, /* glMultiDrawElements */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 391 /* GL_EXT_multi_draw_arrays */, 33368}, /* glMultiDrawElementsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 394 /* GL_EXT_multi_draw_arrays */, 33368}, /* glMultiDrawElementsEXT */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_3_2, 33272}, /* glMultiDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 20, 166 /* GL_ARB_draw_elements_base_vertex */, 33272}, /* glMultiDrawElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 363 /* GL_EXT_draw_elements_base_vertex */, 33302}, /* glMultiDrawElementsBaseVertexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 697 /* GL_OES_draw_elements_base_vertex */, 33335}, /* glMultiDrawElementsBaseVertexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 363 /* GL_EXT_draw_elements_base_vertex */, 33302}, /* glMultiDrawElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 366 /* GL_EXT_draw_elements_base_vertex */, 33302}, /* glMultiDrawElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 701 /* GL_OES_draw_elements_base_vertex */, 33335}, /* glMultiDrawElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 366 /* GL_EXT_draw_elements_base_vertex */, 33302}, /* glMultiDrawElementsBaseVertexEXT */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_3_2, 33272}, /* glMultiDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 21, 166 /* GL_ARB_draw_elements_base_vertex */, 33272}, /* glMultiDrawElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 697 /* GL_OES_draw_elements_base_vertex */, 33335}, /* glMultiDrawElementsBaseVertexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 697 /* GL_OES_draw_elements_base_vertex */, 33335}, /* glMultiDrawElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 701 /* GL_OES_draw_elements_base_vertex */, 33335}, /* glMultiDrawElementsBaseVertexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 701 /* GL_OES_draw_elements_base_vertex */, 33335}, /* glMultiDrawElementsBaseVertexOES */
     {DISPATCH_RESOLVE_VERSION, 22, OpenGL_Desktop_3_2, 33272}, /* glMultiDrawElementsBaseVertex */
     {DISPATCH_RESOLVE_EXTENSION, 22, 166 /* GL_ARB_draw_elements_base_vertex */, 33272}, /* glMultiDrawElementsBaseVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 363 /* GL_EXT_draw_elements_base_vertex */, 33302}, /* glMultiDrawElementsBaseVertexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 391 /* GL_EXT_multi_draw_arrays */, 33368}, /* glMultiDrawElementsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 366 /* GL_EXT_draw_elements_base_vertex */, 33302}, /* glMultiDrawElementsBaseVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 394 /* GL_EXT_multi_draw_arrays */, 33368}, /* glMultiDrawElementsEXT */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_Desktop_1_4, 33252}, /* glMultiDrawElements */
     {DISPATCH_RESOLVE_VERSION, 24, OpenGL_Desktop_4_3, 33391}, /* glMultiDrawElementsIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 24, 200 /* GL_ARB_multi_draw_indirect */, 33391}, /* glMultiDrawElementsIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 24, 74 /* GL_AMD_multi_draw_indirect */, 33419}, /* glMultiDrawElementsIndirectAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 392 /* GL_EXT_multi_draw_indirect */, 33567}, /* glMultiDrawElementsIndirectEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 395 /* GL_EXT_multi_draw_indirect */, 33567}, /* glMultiDrawElementsIndirectEXT */
     {DISPATCH_RESOLVE_EXTENSION, 25, 74 /* GL_AMD_multi_draw_indirect */, 33419}, /* glMultiDrawElementsIndirectAMD */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_Desktop_4_3, 33391}, /* glMultiDrawElementsIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 25, 200 /* GL_ARB_multi_draw_indirect */, 33391}, /* glMultiDrawElementsIndirect */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 392 /* GL_EXT_multi_draw_indirect */, 33567}, /* glMultiDrawElementsIndirectEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 553 /* GL_NV_bindless_multi_draw_indirect_count */, 33450}, /* glMultiDrawElementsIndirectBindlessCountNV */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 552 /* GL_NV_bindless_multi_draw_indirect */, 33493}, /* glMultiDrawElementsIndirectBindlessNV */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 395 /* GL_EXT_multi_draw_indirect */, 33567}, /* glMultiDrawElementsIndirectEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 557 /* GL_NV_bindless_multi_draw_indirect_count */, 33450}, /* glMultiDrawElementsIndirectBindlessCountNV */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 556 /* GL_NV_bindless_multi_draw_indirect */, 33493}, /* glMultiDrawElementsIndirectBindlessNV */
     {DISPATCH_RESOLVE_EXTENSION, 28, 191 /* GL_ARB_indirect_parameters */, 33531}, /* glMultiDrawElementsIndirectCountARB */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 392 /* GL_EXT_multi_draw_indirect */, 33567}, /* glMultiDrawElementsIndirectEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 395 /* GL_EXT_multi_draw_indirect */, 33567}, /* glMultiDrawElementsIndirectEXT */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_Desktop_4_3, 33391}, /* glMultiDrawElementsIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 29, 200 /* GL_ARB_multi_draw_indirect */, 33391}, /* glMultiDrawElementsIndirect */
     {DISPATCH_RESOLVE_EXTENSION, 29, 74 /* GL_AMD_multi_draw_indirect */, 33419}, /* glMultiDrawElementsIndirectAMD */
     {DISPATCH_RESOLVE_EXTENSION, 30, 114 /* GL_APPLE_element_array */, 33598}, /* glMultiDrawRangeElementArrayAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 506 /* GL_IBM_multimode_draw_arrays */, 33632}, /* glMultiModeDrawArraysIBM */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 506 /* GL_IBM_multimode_draw_arrays */, 33657}, /* glMultiModeDrawElementsIBM */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 357 /* GL_EXT_direct_state_access */, 33684}, /* glMultiTexBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 688 /* GL_OES_byte_coordinates */, 33704}, /* glMultiTexCoord1bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 35, 688 /* GL_OES_byte_coordinates */, 33725}, /* glMultiTexCoord1bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 510 /* GL_IBM_multimode_draw_arrays */, 33632}, /* glMultiModeDrawArraysIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 510 /* GL_IBM_multimode_draw_arrays */, 33657}, /* glMultiModeDrawElementsIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 360 /* GL_EXT_direct_state_access */, 33684}, /* glMultiTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 692 /* GL_OES_byte_coordinates */, 33704}, /* glMultiTexCoord1bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 692 /* GL_OES_byte_coordinates */, 33725}, /* glMultiTexCoord1bvOES */
     {DISPATCH_RESOLVE_VERSION, 36, OpenGL_Desktop_1_3, 33747}, /* glMultiTexCoord1d */
     {DISPATCH_RESOLVE_EXTENSION, 36, 202 /* GL_ARB_multitexture */, 33765}, /* glMultiTexCoord1dARB */
     {DISPATCH_RESOLVE_EXTENSION, 37, 202 /* GL_ARB_multitexture */, 33765}, /* glMultiTexCoord1dARB */
@@ -8239,8 +8249,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 42, 202 /* GL_ARB_multitexture */, 33885}, /* glMultiTexCoord1fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 43, 202 /* GL_ARB_multitexture */, 33885}, /* glMultiTexCoord1fvARB */
     {DISPATCH_RESOLVE_VERSION, 43, OpenGL_Desktop_1_3, 33866}, /* glMultiTexCoord1fv */
-    {DISPATCH_RESOLVE_EXTENSION, 44, 603 /* GL_NV_half_float */, 33907}, /* glMultiTexCoord1hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 603 /* GL_NV_half_float */, 33927}, /* glMultiTexCoord1hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 607 /* GL_NV_half_float */, 33907}, /* glMultiTexCoord1hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 607 /* GL_NV_half_float */, 33927}, /* glMultiTexCoord1hvNV */
     {DISPATCH_RESOLVE_VERSION, 46, OpenGL_Desktop_1_3, 33948}, /* glMultiTexCoord1i */
     {DISPATCH_RESOLVE_EXTENSION, 46, 202 /* GL_ARB_multitexture */, 33966}, /* glMultiTexCoord1iARB */
     {DISPATCH_RESOLVE_EXTENSION, 47, 202 /* GL_ARB_multitexture */, 33966}, /* glMultiTexCoord1iARB */
@@ -8257,10 +8267,10 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 52, 202 /* GL_ARB_multitexture */, 34086}, /* glMultiTexCoord1svARB */
     {DISPATCH_RESOLVE_EXTENSION, 53, 202 /* GL_ARB_multitexture */, 34086}, /* glMultiTexCoord1svARB */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_Desktop_1_3, 34067}, /* glMultiTexCoord1sv */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 702 /* GL_OES_fixed_point */, 34108}, /* glMultiTexCoord1xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 702 /* GL_OES_fixed_point */, 34129}, /* glMultiTexCoord1xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 688 /* GL_OES_byte_coordinates */, 34151}, /* glMultiTexCoord2bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 688 /* GL_OES_byte_coordinates */, 34172}, /* glMultiTexCoord2bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 706 /* GL_OES_fixed_point */, 34108}, /* glMultiTexCoord1xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 706 /* GL_OES_fixed_point */, 34129}, /* glMultiTexCoord1xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 692 /* GL_OES_byte_coordinates */, 34151}, /* glMultiTexCoord2bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 692 /* GL_OES_byte_coordinates */, 34172}, /* glMultiTexCoord2bvOES */
     {DISPATCH_RESOLVE_VERSION, 58, OpenGL_Desktop_1_3, 34194}, /* glMultiTexCoord2d */
     {DISPATCH_RESOLVE_EXTENSION, 58, 202 /* GL_ARB_multitexture */, 34212}, /* glMultiTexCoord2dARB */
     {DISPATCH_RESOLVE_EXTENSION, 59, 202 /* GL_ARB_multitexture */, 34212}, /* glMultiTexCoord2dARB */
@@ -8277,8 +8287,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 64, 202 /* GL_ARB_multitexture */, 34332}, /* glMultiTexCoord2fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 65, 202 /* GL_ARB_multitexture */, 34332}, /* glMultiTexCoord2fvARB */
     {DISPATCH_RESOLVE_VERSION, 65, OpenGL_Desktop_1_3, 34313}, /* glMultiTexCoord2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 66, 603 /* GL_NV_half_float */, 34354}, /* glMultiTexCoord2hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 67, 603 /* GL_NV_half_float */, 34374}, /* glMultiTexCoord2hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 607 /* GL_NV_half_float */, 34354}, /* glMultiTexCoord2hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 607 /* GL_NV_half_float */, 34374}, /* glMultiTexCoord2hvNV */
     {DISPATCH_RESOLVE_VERSION, 68, OpenGL_Desktop_1_3, 34395}, /* glMultiTexCoord2i */
     {DISPATCH_RESOLVE_EXTENSION, 68, 202 /* GL_ARB_multitexture */, 34413}, /* glMultiTexCoord2iARB */
     {DISPATCH_RESOLVE_EXTENSION, 69, 202 /* GL_ARB_multitexture */, 34413}, /* glMultiTexCoord2iARB */
@@ -8295,10 +8305,10 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 74, 202 /* GL_ARB_multitexture */, 34533}, /* glMultiTexCoord2svARB */
     {DISPATCH_RESOLVE_EXTENSION, 75, 202 /* GL_ARB_multitexture */, 34533}, /* glMultiTexCoord2svARB */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_Desktop_1_3, 34514}, /* glMultiTexCoord2sv */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 702 /* GL_OES_fixed_point */, 34555}, /* glMultiTexCoord2xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 702 /* GL_OES_fixed_point */, 34576}, /* glMultiTexCoord2xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 688 /* GL_OES_byte_coordinates */, 34598}, /* glMultiTexCoord3bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 79, 688 /* GL_OES_byte_coordinates */, 34619}, /* glMultiTexCoord3bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 706 /* GL_OES_fixed_point */, 34555}, /* glMultiTexCoord2xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 706 /* GL_OES_fixed_point */, 34576}, /* glMultiTexCoord2xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 692 /* GL_OES_byte_coordinates */, 34598}, /* glMultiTexCoord3bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 692 /* GL_OES_byte_coordinates */, 34619}, /* glMultiTexCoord3bvOES */
     {DISPATCH_RESOLVE_VERSION, 80, OpenGL_Desktop_1_3, 34641}, /* glMultiTexCoord3d */
     {DISPATCH_RESOLVE_EXTENSION, 80, 202 /* GL_ARB_multitexture */, 34659}, /* glMultiTexCoord3dARB */
     {DISPATCH_RESOLVE_EXTENSION, 81, 202 /* GL_ARB_multitexture */, 34659}, /* glMultiTexCoord3dARB */
@@ -8315,8 +8325,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 86, 202 /* GL_ARB_multitexture */, 34779}, /* glMultiTexCoord3fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 87, 202 /* GL_ARB_multitexture */, 34779}, /* glMultiTexCoord3fvARB */
     {DISPATCH_RESOLVE_VERSION, 87, OpenGL_Desktop_1_3, 34760}, /* glMultiTexCoord3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 603 /* GL_NV_half_float */, 34801}, /* glMultiTexCoord3hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 603 /* GL_NV_half_float */, 34821}, /* glMultiTexCoord3hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 607 /* GL_NV_half_float */, 34801}, /* glMultiTexCoord3hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 607 /* GL_NV_half_float */, 34821}, /* glMultiTexCoord3hvNV */
     {DISPATCH_RESOLVE_VERSION, 90, OpenGL_Desktop_1_3, 34842}, /* glMultiTexCoord3i */
     {DISPATCH_RESOLVE_EXTENSION, 90, 202 /* GL_ARB_multitexture */, 34860}, /* glMultiTexCoord3iARB */
     {DISPATCH_RESOLVE_EXTENSION, 91, 202 /* GL_ARB_multitexture */, 34860}, /* glMultiTexCoord3iARB */
@@ -8333,10 +8343,10 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 96, 202 /* GL_ARB_multitexture */, 34980}, /* glMultiTexCoord3svARB */
     {DISPATCH_RESOLVE_EXTENSION, 97, 202 /* GL_ARB_multitexture */, 34980}, /* glMultiTexCoord3svARB */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_Desktop_1_3, 34961}, /* glMultiTexCoord3sv */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 702 /* GL_OES_fixed_point */, 35002}, /* glMultiTexCoord3xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 702 /* GL_OES_fixed_point */, 35023}, /* glMultiTexCoord3xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 688 /* GL_OES_byte_coordinates */, 35045}, /* glMultiTexCoord4bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 688 /* GL_OES_byte_coordinates */, 35066}, /* glMultiTexCoord4bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 706 /* GL_OES_fixed_point */, 35002}, /* glMultiTexCoord3xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 706 /* GL_OES_fixed_point */, 35023}, /* glMultiTexCoord3xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 692 /* GL_OES_byte_coordinates */, 35045}, /* glMultiTexCoord4bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 692 /* GL_OES_byte_coordinates */, 35066}, /* glMultiTexCoord4bvOES */
     {DISPATCH_RESOLVE_VERSION, 102, OpenGL_Desktop_1_3, 35088}, /* glMultiTexCoord4d */
     {DISPATCH_RESOLVE_EXTENSION, 102, 202 /* GL_ARB_multitexture */, 35106}, /* glMultiTexCoord4dARB */
     {DISPATCH_RESOLVE_EXTENSION, 103, 202 /* GL_ARB_multitexture */, 35106}, /* glMultiTexCoord4dARB */
@@ -8355,8 +8365,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 108, 202 /* GL_ARB_multitexture */, 35226}, /* glMultiTexCoord4fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 109, 202 /* GL_ARB_multitexture */, 35226}, /* glMultiTexCoord4fvARB */
     {DISPATCH_RESOLVE_VERSION, 109, OpenGL_Desktop_1_3, 35207}, /* glMultiTexCoord4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 110, 603 /* GL_NV_half_float */, 35248}, /* glMultiTexCoord4hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 603 /* GL_NV_half_float */, 35268}, /* glMultiTexCoord4hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 607 /* GL_NV_half_float */, 35248}, /* glMultiTexCoord4hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 607 /* GL_NV_half_float */, 35268}, /* glMultiTexCoord4hvNV */
     {DISPATCH_RESOLVE_VERSION, 112, OpenGL_Desktop_1_3, 35289}, /* glMultiTexCoord4i */
     {DISPATCH_RESOLVE_EXTENSION, 112, 202 /* GL_ARB_multitexture */, 35307}, /* glMultiTexCoord4iARB */
     {DISPATCH_RESOLVE_EXTENSION, 113, 202 /* GL_ARB_multitexture */, 35307}, /* glMultiTexCoord4iARB */
@@ -8374,8 +8384,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 119, 202 /* GL_ARB_multitexture */, 35427}, /* glMultiTexCoord4svARB */
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_Desktop_1_3, 35408}, /* glMultiTexCoord4sv */
     {DISPATCH_RESOLVE_DIRECT, 120, OpenGL_ES_1_0, 35449}, /* glMultiTexCoord4x */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 702 /* GL_OES_fixed_point */, 35467}, /* glMultiTexCoord4xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 702 /* GL_OES_fixed_point */, 35488}, /* glMultiTexCoord4xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 706 /* GL_OES_fixed_point */, 35467}, /* glMultiTexCoord4xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 706 /* GL_OES_fixed_point */, 35488}, /* glMultiTexCoord4xvOES */
     {DISPATCH_RESOLVE_VERSION, 123, OpenGL_Desktop_3_3, 35510}, /* glMultiTexCoordP1ui */
     {DISPATCH_RESOLVE_EXTENSION, 123, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 35510}, /* glMultiTexCoordP1ui */
     {DISPATCH_RESOLVE_VERSION, 124, OpenGL_Desktop_3_3, 35530}, /* glMultiTexCoordP1uiv */
@@ -8392,353 +8402,353 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 129, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 35633}, /* glMultiTexCoordP4ui */
     {DISPATCH_RESOLVE_VERSION, 130, OpenGL_Desktop_3_3, 35653}, /* glMultiTexCoordP4uiv */
     {DISPATCH_RESOLVE_EXTENSION, 130, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 35653}, /* glMultiTexCoordP4uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 357 /* GL_EXT_direct_state_access */, 35674}, /* glMultiTexCoordPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 357 /* GL_EXT_direct_state_access */, 35700}, /* glMultiTexEnvfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 357 /* GL_EXT_direct_state_access */, 35718}, /* glMultiTexEnvfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 357 /* GL_EXT_direct_state_access */, 35737}, /* glMultiTexEnviEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 135, 357 /* GL_EXT_direct_state_access */, 35755}, /* glMultiTexEnvivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 357 /* GL_EXT_direct_state_access */, 35774}, /* glMultiTexGendEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 137, 357 /* GL_EXT_direct_state_access */, 35792}, /* glMultiTexGendvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 357 /* GL_EXT_direct_state_access */, 35811}, /* glMultiTexGenfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 357 /* GL_EXT_direct_state_access */, 35829}, /* glMultiTexGenfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 357 /* GL_EXT_direct_state_access */, 35848}, /* glMultiTexGeniEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 357 /* GL_EXT_direct_state_access */, 35866}, /* glMultiTexGenivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 357 /* GL_EXT_direct_state_access */, 35885}, /* glMultiTexImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 357 /* GL_EXT_direct_state_access */, 35906}, /* glMultiTexImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 357 /* GL_EXT_direct_state_access */, 35927}, /* glMultiTexImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 357 /* GL_EXT_direct_state_access */, 35948}, /* glMultiTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 357 /* GL_EXT_direct_state_access */, 35974}, /* glMultiTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 357 /* GL_EXT_direct_state_access */, 36001}, /* glMultiTexParameterfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 357 /* GL_EXT_direct_state_access */, 36025}, /* glMultiTexParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 357 /* GL_EXT_direct_state_access */, 36050}, /* glMultiTexParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 357 /* GL_EXT_direct_state_access */, 36074}, /* glMultiTexParameterivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 151, 357 /* GL_EXT_direct_state_access */, 36099}, /* glMultiTexRenderbufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 357 /* GL_EXT_direct_state_access */, 36125}, /* glMultiTexSubImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 153, 357 /* GL_EXT_direct_state_access */, 36149}, /* glMultiTexSubImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 154, 357 /* GL_EXT_direct_state_access */, 36173}, /* glMultiTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 360 /* GL_EXT_direct_state_access */, 35674}, /* glMultiTexCoordPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 360 /* GL_EXT_direct_state_access */, 35700}, /* glMultiTexEnvfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 360 /* GL_EXT_direct_state_access */, 35718}, /* glMultiTexEnvfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 360 /* GL_EXT_direct_state_access */, 35737}, /* glMultiTexEnviEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 135, 360 /* GL_EXT_direct_state_access */, 35755}, /* glMultiTexEnvivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 360 /* GL_EXT_direct_state_access */, 35774}, /* glMultiTexGendEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 137, 360 /* GL_EXT_direct_state_access */, 35792}, /* glMultiTexGendvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 360 /* GL_EXT_direct_state_access */, 35811}, /* glMultiTexGenfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 360 /* GL_EXT_direct_state_access */, 35829}, /* glMultiTexGenfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 360 /* GL_EXT_direct_state_access */, 35848}, /* glMultiTexGeniEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 360 /* GL_EXT_direct_state_access */, 35866}, /* glMultiTexGenivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 360 /* GL_EXT_direct_state_access */, 35885}, /* glMultiTexImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 360 /* GL_EXT_direct_state_access */, 35906}, /* glMultiTexImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 360 /* GL_EXT_direct_state_access */, 35927}, /* glMultiTexImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 360 /* GL_EXT_direct_state_access */, 35948}, /* glMultiTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 360 /* GL_EXT_direct_state_access */, 35974}, /* glMultiTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 360 /* GL_EXT_direct_state_access */, 36001}, /* glMultiTexParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 360 /* GL_EXT_direct_state_access */, 36025}, /* glMultiTexParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 360 /* GL_EXT_direct_state_access */, 36050}, /* glMultiTexParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 360 /* GL_EXT_direct_state_access */, 36074}, /* glMultiTexParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 151, 360 /* GL_EXT_direct_state_access */, 36099}, /* glMultiTexRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 360 /* GL_EXT_direct_state_access */, 36125}, /* glMultiTexSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 153, 360 /* GL_EXT_direct_state_access */, 36149}, /* glMultiTexSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 154, 360 /* GL_EXT_direct_state_access */, 36173}, /* glMultiTexSubImage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 155, OpenGL_Desktop_4_5, 36197}, /* glNamedBufferData */
     {DISPATCH_RESOLVE_EXTENSION, 155, 163 /* GL_ARB_direct_state_access */, 36197}, /* glNamedBufferData */
-    {DISPATCH_RESOLVE_EXTENSION, 156, 357 /* GL_EXT_direct_state_access */, 36215}, /* glNamedBufferDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 156, 360 /* GL_EXT_direct_state_access */, 36215}, /* glNamedBufferDataEXT */
     {DISPATCH_RESOLVE_EXTENSION, 157, 246 /* GL_ARB_sparse_buffer */, 36236}, /* glNamedBufferPageCommitmentARB */
     {DISPATCH_RESOLVE_EXTENSION, 158, 246 /* GL_ARB_sparse_buffer */, 36267}, /* glNamedBufferPageCommitmentEXT */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_Desktop_4_5, 36298}, /* glNamedBufferStorage */
     {DISPATCH_RESOLVE_EXTENSION, 159, 163 /* GL_ARB_direct_state_access */, 36298}, /* glNamedBufferStorage */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 357 /* GL_EXT_direct_state_access */, 36319}, /* glNamedBufferStorageEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 357 /* GL_EXT_direct_state_access */, 36319}, /* glNamedBufferStorageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 360 /* GL_EXT_direct_state_access */, 36319}, /* glNamedBufferStorageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 360 /* GL_EXT_direct_state_access */, 36319}, /* glNamedBufferStorageEXT */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_4_5, 36298}, /* glNamedBufferStorage */
     {DISPATCH_RESOLVE_EXTENSION, 160, 163 /* GL_ARB_direct_state_access */, 36298}, /* glNamedBufferStorage */
     {DISPATCH_RESOLVE_VERSION, 161, OpenGL_Desktop_4_5, 36343}, /* glNamedBufferSubData */
     {DISPATCH_RESOLVE_EXTENSION, 161, 163 /* GL_ARB_direct_state_access */, 36343}, /* glNamedBufferSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 161, 357 /* GL_EXT_direct_state_access */, 36364}, /* glNamedBufferSubDataEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 162, 357 /* GL_EXT_direct_state_access */, 36364}, /* glNamedBufferSubDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 161, 360 /* GL_EXT_direct_state_access */, 36364}, /* glNamedBufferSubDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 162, 360 /* GL_EXT_direct_state_access */, 36364}, /* glNamedBufferSubDataEXT */
     {DISPATCH_RESOLVE_VERSION, 162, OpenGL_Desktop_4_5, 36343}, /* glNamedBufferSubData */
     {DISPATCH_RESOLVE_EXTENSION, 162, 163 /* GL_ARB_direct_state_access */, 36343}, /* glNamedBufferSubData */
-    {DISPATCH_RESOLVE_EXTENSION, 163, 357 /* GL_EXT_direct_state_access */, 36388}, /* glNamedCopyBufferSubDataEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 163, 360 /* GL_EXT_direct_state_access */, 36388}, /* glNamedCopyBufferSubDataEXT */
     {DISPATCH_RESOLVE_VERSION, 164, OpenGL_Desktop_4_5, 36416}, /* glNamedFramebufferDrawBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 164, 163 /* GL_ARB_direct_state_access */, 36416}, /* glNamedFramebufferDrawBuffer */
     {DISPATCH_RESOLVE_VERSION, 165, OpenGL_Desktop_4_5, 36445}, /* glNamedFramebufferDrawBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 165, 163 /* GL_ARB_direct_state_access */, 36445}, /* glNamedFramebufferDrawBuffers */
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_Desktop_4_5, 36475}, /* glNamedFramebufferParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 166, 163 /* GL_ARB_direct_state_access */, 36475}, /* glNamedFramebufferParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 357 /* GL_EXT_direct_state_access */, 36504}, /* glNamedFramebufferParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 360 /* GL_EXT_direct_state_access */, 36504}, /* glNamedFramebufferParameteriEXT */
     {DISPATCH_RESOLVE_VERSION, 168, OpenGL_Desktop_4_5, 36536}, /* glNamedFramebufferReadBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 168, 163 /* GL_ARB_direct_state_access */, 36536}, /* glNamedFramebufferReadBuffer */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_Desktop_4_5, 36565}, /* glNamedFramebufferRenderbuffer */
     {DISPATCH_RESOLVE_EXTENSION, 169, 163 /* GL_ARB_direct_state_access */, 36565}, /* glNamedFramebufferRenderbuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 170, 357 /* GL_EXT_direct_state_access */, 36596}, /* glNamedFramebufferRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 170, 360 /* GL_EXT_direct_state_access */, 36596}, /* glNamedFramebufferRenderbufferEXT */
     {DISPATCH_RESOLVE_EXTENSION, 171, 217 /* GL_ARB_sample_locations */, 36630}, /* glNamedFramebufferSampleLocationsfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 633 /* GL_NV_sample_locations */, 36669}, /* glNamedFramebufferSampleLocationsfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 637 /* GL_NV_sample_locations */, 36669}, /* glNamedFramebufferSampleLocationsfvNV */
     {DISPATCH_RESOLVE_VERSION, 173, OpenGL_Desktop_4_5, 36707}, /* glNamedFramebufferTexture */
     {DISPATCH_RESOLVE_EXTENSION, 173, 163 /* GL_ARB_direct_state_access */, 36707}, /* glNamedFramebufferTexture */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 357 /* GL_EXT_direct_state_access */, 36733}, /* glNamedFramebufferTexture1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 357 /* GL_EXT_direct_state_access */, 36764}, /* glNamedFramebufferTexture2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 357 /* GL_EXT_direct_state_access */, 36795}, /* glNamedFramebufferTexture3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 357 /* GL_EXT_direct_state_access */, 36826}, /* glNamedFramebufferTextureEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 357 /* GL_EXT_direct_state_access */, 36855}, /* glNamedFramebufferTextureFaceEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 360 /* GL_EXT_direct_state_access */, 36733}, /* glNamedFramebufferTexture1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 360 /* GL_EXT_direct_state_access */, 36764}, /* glNamedFramebufferTexture2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 360 /* GL_EXT_direct_state_access */, 36795}, /* glNamedFramebufferTexture3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 360 /* GL_EXT_direct_state_access */, 36826}, /* glNamedFramebufferTextureEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 360 /* GL_EXT_direct_state_access */, 36855}, /* glNamedFramebufferTextureFaceEXT */
     {DISPATCH_RESOLVE_VERSION, 179, OpenGL_Desktop_4_5, 36888}, /* glNamedFramebufferTextureLayer */
     {DISPATCH_RESOLVE_EXTENSION, 179, 163 /* GL_ARB_direct_state_access */, 36888}, /* glNamedFramebufferTextureLayer */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 357 /* GL_EXT_direct_state_access */, 36919}, /* glNamedFramebufferTextureLayerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 357 /* GL_EXT_direct_state_access */, 36953}, /* glNamedProgramLocalParameter4dEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 357 /* GL_EXT_direct_state_access */, 36987}, /* glNamedProgramLocalParameter4dvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 357 /* GL_EXT_direct_state_access */, 37022}, /* glNamedProgramLocalParameter4fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 357 /* GL_EXT_direct_state_access */, 37056}, /* glNamedProgramLocalParameter4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 357 /* GL_EXT_direct_state_access */, 37091}, /* glNamedProgramLocalParameterI4iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 357 /* GL_EXT_direct_state_access */, 37126}, /* glNamedProgramLocalParameterI4ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 357 /* GL_EXT_direct_state_access */, 37162}, /* glNamedProgramLocalParameterI4uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 188, 357 /* GL_EXT_direct_state_access */, 37198}, /* glNamedProgramLocalParameterI4uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 189, 357 /* GL_EXT_direct_state_access */, 37235}, /* glNamedProgramLocalParameters4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 357 /* GL_EXT_direct_state_access */, 37271}, /* glNamedProgramLocalParametersI4ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 191, 357 /* GL_EXT_direct_state_access */, 37308}, /* glNamedProgramLocalParametersI4uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 357 /* GL_EXT_direct_state_access */, 37346}, /* glNamedProgramStringEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 360 /* GL_EXT_direct_state_access */, 36919}, /* glNamedFramebufferTextureLayerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 360 /* GL_EXT_direct_state_access */, 36953}, /* glNamedProgramLocalParameter4dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 360 /* GL_EXT_direct_state_access */, 36987}, /* glNamedProgramLocalParameter4dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 360 /* GL_EXT_direct_state_access */, 37022}, /* glNamedProgramLocalParameter4fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 360 /* GL_EXT_direct_state_access */, 37056}, /* glNamedProgramLocalParameter4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 360 /* GL_EXT_direct_state_access */, 37091}, /* glNamedProgramLocalParameterI4iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 360 /* GL_EXT_direct_state_access */, 37126}, /* glNamedProgramLocalParameterI4ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 360 /* GL_EXT_direct_state_access */, 37162}, /* glNamedProgramLocalParameterI4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 188, 360 /* GL_EXT_direct_state_access */, 37198}, /* glNamedProgramLocalParameterI4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 189, 360 /* GL_EXT_direct_state_access */, 37235}, /* glNamedProgramLocalParameters4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 360 /* GL_EXT_direct_state_access */, 37271}, /* glNamedProgramLocalParametersI4ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 191, 360 /* GL_EXT_direct_state_access */, 37308}, /* glNamedProgramLocalParametersI4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 360 /* GL_EXT_direct_state_access */, 37346}, /* glNamedProgramStringEXT */
     {DISPATCH_RESOLVE_VERSION, 193, OpenGL_Desktop_4_5, 37370}, /* glNamedRenderbufferStorage */
     {DISPATCH_RESOLVE_EXTENSION, 193, 163 /* GL_ARB_direct_state_access */, 37370}, /* glNamedRenderbufferStorage */
-    {DISPATCH_RESOLVE_EXTENSION, 194, 357 /* GL_EXT_direct_state_access */, 37397}, /* glNamedRenderbufferStorageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 194, 360 /* GL_EXT_direct_state_access */, 37397}, /* glNamedRenderbufferStorageEXT */
     {DISPATCH_RESOLVE_VERSION, 195, OpenGL_Desktop_4_5, 37427}, /* glNamedRenderbufferStorageMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 195, 163 /* GL_ARB_direct_state_access */, 37427}, /* glNamedRenderbufferStorageMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 196, 357 /* GL_EXT_direct_state_access */, 37465}, /* glNamedRenderbufferStorageMultisampleCoverageEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 197, 357 /* GL_EXT_direct_state_access */, 37514}, /* glNamedRenderbufferStorageMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 196, 360 /* GL_EXT_direct_state_access */, 37465}, /* glNamedRenderbufferStorageMultisampleCoverageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 197, 360 /* GL_EXT_direct_state_access */, 37514}, /* glNamedRenderbufferStorageMultisampleEXT */
     {DISPATCH_RESOLVE_EXTENSION, 198, 242 /* GL_ARB_shading_language_include */, 37555}, /* glNamedStringARB */
     {DISPATCH_RESOLVE_DIRECT, 199, OpenGL_Desktop_1_0, 37572}, /* glNewList */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 323 /* GL_ATI_vertex_array_object */, 37582}, /* glNewObjectBufferATI */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 326 /* GL_ATI_vertex_array_object */, 37582}, /* glNewObjectBufferATI */
     {DISPATCH_RESOLVE_DIRECT, 201, OpenGL_Desktop_1_0, 37603}, /* glNormal3b */
     {DISPATCH_RESOLVE_DIRECT, 202, OpenGL_Desktop_1_0, 37614}, /* glNormal3bv */
     {DISPATCH_RESOLVE_DIRECT, 203, OpenGL_Desktop_1_0, 37626}, /* glNormal3d */
     {DISPATCH_RESOLVE_DIRECT, 204, OpenGL_Desktop_1_0, 37637}, /* glNormal3dv */
     {DISPATCH_RESOLVE_DIRECT, 205, OpenGL_Desktop_1_0, 37649}, /* glNormal3f */
     {DISPATCH_RESOLVE_DIRECT, 205, OpenGL_ES_1_0, 37649}, /* glNormal3f */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 840 /* GL_SUN_vertex */, 37660}, /* glNormal3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 207, 840 /* GL_SUN_vertex */, 37682}, /* glNormal3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 845 /* GL_SUN_vertex */, 37660}, /* glNormal3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 207, 845 /* GL_SUN_vertex */, 37682}, /* glNormal3fVertex3fvSUN */
     {DISPATCH_RESOLVE_DIRECT, 208, OpenGL_Desktop_1_0, 37705}, /* glNormal3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 603 /* GL_NV_half_float */, 37717}, /* glNormal3hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 603 /* GL_NV_half_float */, 37730}, /* glNormal3hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 607 /* GL_NV_half_float */, 37717}, /* glNormal3hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 607 /* GL_NV_half_float */, 37730}, /* glNormal3hvNV */
     {DISPATCH_RESOLVE_DIRECT, 211, OpenGL_Desktop_1_0, 37744}, /* glNormal3i */
     {DISPATCH_RESOLVE_DIRECT, 212, OpenGL_Desktop_1_0, 37755}, /* glNormal3iv */
     {DISPATCH_RESOLVE_DIRECT, 213, OpenGL_Desktop_1_0, 37767}, /* glNormal3s */
     {DISPATCH_RESOLVE_DIRECT, 214, OpenGL_Desktop_1_0, 37778}, /* glNormal3sv */
     {DISPATCH_RESOLVE_DIRECT, 215, OpenGL_ES_1_0, 37790}, /* glNormal3x */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 702 /* GL_OES_fixed_point */, 37801}, /* glNormal3xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 217, 702 /* GL_OES_fixed_point */, 37815}, /* glNormal3xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 218, 671 /* GL_NV_vertex_buffer_unified_memory */, 37830}, /* glNormalFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 706 /* GL_OES_fixed_point */, 37801}, /* glNormal3xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 217, 706 /* GL_OES_fixed_point */, 37815}, /* glNormal3xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 218, 675 /* GL_NV_vertex_buffer_unified_memory */, 37830}, /* glNormalFormatNV */
     {DISPATCH_RESOLVE_VERSION, 219, OpenGL_Desktop_3_3, 37847}, /* glNormalP3ui */
     {DISPATCH_RESOLVE_EXTENSION, 219, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 37847}, /* glNormalP3ui */
     {DISPATCH_RESOLVE_VERSION, 220, OpenGL_Desktop_3_3, 37860}, /* glNormalP3uiv */
     {DISPATCH_RESOLVE_EXTENSION, 220, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 37860}, /* glNormalP3uiv */
     {DISPATCH_RESOLVE_VERSION, 221, OpenGL_Desktop_1_1, 37874}, /* glNormalPointer */
     {DISPATCH_RESOLVE_DIRECT, 221, OpenGL_ES_1_0, 37874}, /* glNormalPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 489 /* GL_EXT_vertex_array */, 37890}, /* glNormalPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 510 /* GL_IBM_vertex_array_lists */, 37909}, /* glNormalPointerListIBM */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 528 /* GL_INTEL_parallel_arrays */, 37932}, /* glNormalPointervINTEL */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 325 /* GL_ATI_vertex_streams */, 37954}, /* glNormalStream3bATI */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 325 /* GL_ATI_vertex_streams */, 37974}, /* glNormalStream3bvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 325 /* GL_ATI_vertex_streams */, 37995}, /* glNormalStream3dATI */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 325 /* GL_ATI_vertex_streams */, 38015}, /* glNormalStream3dvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 325 /* GL_ATI_vertex_streams */, 38036}, /* glNormalStream3fATI */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 325 /* GL_ATI_vertex_streams */, 38056}, /* glNormalStream3fvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 325 /* GL_ATI_vertex_streams */, 38077}, /* glNormalStream3iATI */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 325 /* GL_ATI_vertex_streams */, 38097}, /* glNormalStream3ivATI */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 325 /* GL_ATI_vertex_streams */, 38118}, /* glNormalStream3sATI */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 325 /* GL_ATI_vertex_streams */, 38138}, /* glNormalStream3svATI */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 493 /* GL_EXT_vertex_array */, 37890}, /* glNormalPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 514 /* GL_IBM_vertex_array_lists */, 37909}, /* glNormalPointerListIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 532 /* GL_INTEL_parallel_arrays */, 37932}, /* glNormalPointervINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 328 /* GL_ATI_vertex_streams */, 37954}, /* glNormalStream3bATI */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 328 /* GL_ATI_vertex_streams */, 37974}, /* glNormalStream3bvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 328 /* GL_ATI_vertex_streams */, 37995}, /* glNormalStream3dATI */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 328 /* GL_ATI_vertex_streams */, 38015}, /* glNormalStream3dvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 328 /* GL_ATI_vertex_streams */, 38036}, /* glNormalStream3fATI */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 328 /* GL_ATI_vertex_streams */, 38056}, /* glNormalStream3fvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 328 /* GL_ATI_vertex_streams */, 38077}, /* glNormalStream3iATI */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 328 /* GL_ATI_vertex_streams */, 38097}, /* glNormalStream3ivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 328 /* GL_ATI_vertex_streams */, 38118}, /* glNormalStream3sATI */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 328 /* GL_ATI_vertex_streams */, 38138}, /* glNormalStream3svATI */
     {DISPATCH_RESOLVE_VERSION, 235, OpenGL_Desktop_4_3, 38159}, /* glObjectLabel */
     {DISPATCH_RESOLVE_VERSION, 235, OpenGL_ES_3_2, 38159}, /* glObjectLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 534 /* GL_KHR_debug */, 38159}, /* glObjectLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 534 /* GL_KHR_debug */, 38173}, /* glObjectLabelKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 534 /* GL_KHR_debug */, 38173}, /* glObjectLabelKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 538 /* GL_KHR_debug */, 38159}, /* glObjectLabel */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 538 /* GL_KHR_debug */, 38173}, /* glObjectLabelKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 538 /* GL_KHR_debug */, 38173}, /* glObjectLabelKHR */
     {DISPATCH_RESOLVE_VERSION, 236, OpenGL_Desktop_4_3, 38159}, /* glObjectLabel */
     {DISPATCH_RESOLVE_VERSION, 236, OpenGL_ES_3_2, 38159}, /* glObjectLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 534 /* GL_KHR_debug */, 38159}, /* glObjectLabel */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 538 /* GL_KHR_debug */, 38159}, /* glObjectLabel */
     {DISPATCH_RESOLVE_VERSION, 237, OpenGL_Desktop_4_3, 38190}, /* glObjectPtrLabel */
     {DISPATCH_RESOLVE_VERSION, 237, OpenGL_ES_3_2, 38190}, /* glObjectPtrLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 237, 534 /* GL_KHR_debug */, 38190}, /* glObjectPtrLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 237, 534 /* GL_KHR_debug */, 38207}, /* glObjectPtrLabelKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 238, 534 /* GL_KHR_debug */, 38207}, /* glObjectPtrLabelKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 237, 538 /* GL_KHR_debug */, 38190}, /* glObjectPtrLabel */
+    {DISPATCH_RESOLVE_EXTENSION, 237, 538 /* GL_KHR_debug */, 38207}, /* glObjectPtrLabelKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 238, 538 /* GL_KHR_debug */, 38207}, /* glObjectPtrLabelKHR */
     {DISPATCH_RESOLVE_VERSION, 238, OpenGL_Desktop_4_3, 38190}, /* glObjectPtrLabel */
     {DISPATCH_RESOLVE_VERSION, 238, OpenGL_ES_3_2, 38190}, /* glObjectPtrLabel */
-    {DISPATCH_RESOLVE_EXTENSION, 238, 534 /* GL_KHR_debug */, 38190}, /* glObjectPtrLabel */
+    {DISPATCH_RESOLVE_EXTENSION, 238, 538 /* GL_KHR_debug */, 38190}, /* glObjectPtrLabel */
     {DISPATCH_RESOLVE_EXTENSION, 239, 119 /* GL_APPLE_object_purgeable */, 38227}, /* glObjectPurgeableAPPLE */
     {DISPATCH_RESOLVE_EXTENSION, 240, 119 /* GL_APPLE_object_purgeable */, 38250}, /* glObjectUnpurgeableAPPLE */
     {DISPATCH_RESOLVE_DIRECT, 241, OpenGL_Desktop_1_0, 38275}, /* glOrtho */
     {DISPATCH_RESOLVE_DIRECT, 242, OpenGL_ES_1_0, 38283}, /* glOrthof */
-    {DISPATCH_RESOLVE_EXTENSION, 243, 725 /* GL_OES_single_precision */, 38292}, /* glOrthofOES */
+    {DISPATCH_RESOLVE_EXTENSION, 243, 729 /* GL_OES_single_precision */, 38292}, /* glOrthofOES */
     {DISPATCH_RESOLVE_DIRECT, 244, OpenGL_ES_1_0, 38304}, /* glOrthox */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 702 /* GL_OES_fixed_point */, 38313}, /* glOrthoxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 246, 316 /* GL_ATI_pn_triangles */, 38325}, /* glPNTrianglesfATI */
-    {DISPATCH_RESOLVE_EXTENSION, 247, 316 /* GL_ATI_pn_triangles */, 38343}, /* glPNTrianglesiATI */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 312 /* GL_ATI_fragment_shader */, 38361}, /* glPassTexCoordATI */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 706 /* GL_OES_fixed_point */, 38313}, /* glOrthoxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 246, 319 /* GL_ATI_pn_triangles */, 38325}, /* glPNTrianglesfATI */
+    {DISPATCH_RESOLVE_EXTENSION, 247, 319 /* GL_ATI_pn_triangles */, 38343}, /* glPNTrianglesiATI */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 315 /* GL_ATI_fragment_shader */, 38361}, /* glPassTexCoordATI */
     {DISPATCH_RESOLVE_DIRECT, 249, OpenGL_Desktop_1_0, 38379}, /* glPassThrough */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 702 /* GL_OES_fixed_point */, 38393}, /* glPassThroughxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 706 /* GL_OES_fixed_point */, 38393}, /* glPassThroughxOES */
     {DISPATCH_RESOLVE_VERSION, 251, OpenGL_Desktop_4_0, 38411}, /* glPatchParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 251, 252 /* GL_ARB_tessellation_shader */, 38411}, /* glPatchParameterfv */
     {DISPATCH_RESOLVE_VERSION, 252, OpenGL_Desktop_4_0, 38430}, /* glPatchParameteri */
     {DISPATCH_RESOLVE_VERSION, 252, OpenGL_ES_3_2, 38430}, /* glPatchParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 252, 252 /* GL_ARB_tessellation_shader */, 38430}, /* glPatchParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 447 /* GL_EXT_tessellation_shader */, 38448}, /* glPatchParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 733 /* GL_OES_tessellation_shader */, 38469}, /* glPatchParameteriOES */
-    {DISPATCH_RESOLVE_EXTENSION, 253, 447 /* GL_EXT_tessellation_shader */, 38448}, /* glPatchParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 450 /* GL_EXT_tessellation_shader */, 38448}, /* glPatchParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 737 /* GL_OES_tessellation_shader */, 38469}, /* glPatchParameteriOES */
+    {DISPATCH_RESOLVE_EXTENSION, 253, 450 /* GL_EXT_tessellation_shader */, 38448}, /* glPatchParameteriEXT */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_Desktop_4_0, 38430}, /* glPatchParameteri */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_ES_3_2, 38430}, /* glPatchParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 253, 252 /* GL_ARB_tessellation_shader */, 38430}, /* glPatchParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 253, 733 /* GL_OES_tessellation_shader */, 38469}, /* glPatchParameteriOES */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 733 /* GL_OES_tessellation_shader */, 38469}, /* glPatchParameteriOES */
+    {DISPATCH_RESOLVE_EXTENSION, 253, 737 /* GL_OES_tessellation_shader */, 38469}, /* glPatchParameteriOES */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 737 /* GL_OES_tessellation_shader */, 38469}, /* glPatchParameteriOES */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_Desktop_4_0, 38430}, /* glPatchParameteri */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_ES_3_2, 38430}, /* glPatchParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 254, 252 /* GL_ARB_tessellation_shader */, 38430}, /* glPatchParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 447 /* GL_EXT_tessellation_shader */, 38448}, /* glPatchParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 616 /* GL_NV_path_rendering */, 38490}, /* glPathColorGenNV */
-    {DISPATCH_RESOLVE_EXTENSION, 0, 616 /* GL_NV_path_rendering */, 38507}, /* glPathCommandsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 1, 616 /* GL_NV_path_rendering */, 38524}, /* glPathCoordsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 616 /* GL_NV_path_rendering */, 38539}, /* glPathCoverDepthFuncNV */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 616 /* GL_NV_path_rendering */, 38562}, /* glPathDashArrayNV */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 616 /* GL_NV_path_rendering */, 38580}, /* glPathFogGenNV */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 616 /* GL_NV_path_rendering */, 38595}, /* glPathGlyphIndexArrayNV */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 616 /* GL_NV_path_rendering */, 38619}, /* glPathGlyphIndexRangeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 7, 616 /* GL_NV_path_rendering */, 38643}, /* glPathGlyphRangeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 616 /* GL_NV_path_rendering */, 38662}, /* glPathGlyphsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 9, 616 /* GL_NV_path_rendering */, 38677}, /* glPathMemoryGlyphIndexArrayNV */
-    {DISPATCH_RESOLVE_EXTENSION, 10, 616 /* GL_NV_path_rendering */, 38707}, /* glPathParameterfNV */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 616 /* GL_NV_path_rendering */, 38726}, /* glPathParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 616 /* GL_NV_path_rendering */, 38746}, /* glPathParameteriNV */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 616 /* GL_NV_path_rendering */, 38765}, /* glPathParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 616 /* GL_NV_path_rendering */, 38785}, /* glPathStencilDepthOffsetNV */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 616 /* GL_NV_path_rendering */, 38812}, /* glPathStencilFuncNV */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 616 /* GL_NV_path_rendering */, 38832}, /* glPathStringNV */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 616 /* GL_NV_path_rendering */, 38847}, /* glPathSubCommandsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 616 /* GL_NV_path_rendering */, 38867}, /* glPathSubCoordsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 616 /* GL_NV_path_rendering */, 38885}, /* glPathTexGenNV */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 450 /* GL_EXT_tessellation_shader */, 38448}, /* glPatchParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 620 /* GL_NV_path_rendering */, 38490}, /* glPathColorGenNV */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 620 /* GL_NV_path_rendering */, 38507}, /* glPathCommandsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 620 /* GL_NV_path_rendering */, 38524}, /* glPathCoordsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 620 /* GL_NV_path_rendering */, 38539}, /* glPathCoverDepthFuncNV */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 620 /* GL_NV_path_rendering */, 38562}, /* glPathDashArrayNV */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 620 /* GL_NV_path_rendering */, 38580}, /* glPathFogGenNV */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 620 /* GL_NV_path_rendering */, 38595}, /* glPathGlyphIndexArrayNV */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 620 /* GL_NV_path_rendering */, 38619}, /* glPathGlyphIndexRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 620 /* GL_NV_path_rendering */, 38643}, /* glPathGlyphRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 620 /* GL_NV_path_rendering */, 38662}, /* glPathGlyphsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 620 /* GL_NV_path_rendering */, 38677}, /* glPathMemoryGlyphIndexArrayNV */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 620 /* GL_NV_path_rendering */, 38707}, /* glPathParameterfNV */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 620 /* GL_NV_path_rendering */, 38726}, /* glPathParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 620 /* GL_NV_path_rendering */, 38746}, /* glPathParameteriNV */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 620 /* GL_NV_path_rendering */, 38765}, /* glPathParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 620 /* GL_NV_path_rendering */, 38785}, /* glPathStencilDepthOffsetNV */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 620 /* GL_NV_path_rendering */, 38812}, /* glPathStencilFuncNV */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 620 /* GL_NV_path_rendering */, 38832}, /* glPathStringNV */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 620 /* GL_NV_path_rendering */, 38847}, /* glPathSubCommandsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 620 /* GL_NV_path_rendering */, 38867}, /* glPathSubCoordsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 620 /* GL_NV_path_rendering */, 38885}, /* glPathTexGenNV */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_4_0, 38900}, /* glPauseTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_ES_3_0, 38900}, /* glPauseTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 20, 285 /* GL_ARB_transform_feedback2 */, 38900}, /* glPauseTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 665 /* GL_NV_transform_feedback2 */, 38925}, /* glPauseTransformFeedbackNV */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 665 /* GL_NV_transform_feedback2 */, 38925}, /* glPauseTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 669 /* GL_NV_transform_feedback2 */, 38925}, /* glPauseTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 669 /* GL_NV_transform_feedback2 */, 38925}, /* glPauseTransformFeedbackNV */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_4_0, 38900}, /* glPauseTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_ES_3_0, 38900}, /* glPauseTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 21, 285 /* GL_ARB_transform_feedback2 */, 38900}, /* glPauseTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 619 /* GL_NV_pixel_data_range */, 38952}, /* glPixelDataRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 623 /* GL_NV_pixel_data_range */, 38952}, /* glPixelDataRangeNV */
     {DISPATCH_RESOLVE_DIRECT, 23, OpenGL_Desktop_1_0, 38971}, /* glPixelMapfv */
     {DISPATCH_RESOLVE_DIRECT, 24, OpenGL_Desktop_1_0, 38984}, /* glPixelMapuiv */
     {DISPATCH_RESOLVE_DIRECT, 25, OpenGL_Desktop_1_0, 38998}, /* glPixelMapusv */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 702 /* GL_OES_fixed_point */, 39012}, /* glPixelMapx */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 706 /* GL_OES_fixed_point */, 39012}, /* glPixelMapx */
     {DISPATCH_RESOLVE_DIRECT, 27, OpenGL_Desktop_1_0, 39024}, /* glPixelStoref */
     {DISPATCH_RESOLVE_DIRECT, 28, OpenGL_Desktop_1_0, 39038}, /* glPixelStorei */
     {DISPATCH_RESOLVE_DIRECT, 28, OpenGL_ES_1_0, 39038}, /* glPixelStorei */
     {DISPATCH_RESOLVE_DIRECT, 28, OpenGL_ES_2_0, 39038}, /* glPixelStorei */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 702 /* GL_OES_fixed_point */, 39052}, /* glPixelStorex */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 776 /* GL_SGIS_pixel_texture */, 39066}, /* glPixelTexGenParameterfSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 776 /* GL_SGIS_pixel_texture */, 39094}, /* glPixelTexGenParameterfvSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 776 /* GL_SGIS_pixel_texture */, 39123}, /* glPixelTexGenParameteriSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 776 /* GL_SGIS_pixel_texture */, 39151}, /* glPixelTexGenParameterivSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 807 /* GL_SGIX_pixel_texture */, 39180}, /* glPixelTexGenSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 706 /* GL_OES_fixed_point */, 39052}, /* glPixelStorex */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 781 /* GL_SGIS_pixel_texture */, 39066}, /* glPixelTexGenParameterfSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 781 /* GL_SGIS_pixel_texture */, 39094}, /* glPixelTexGenParameterfvSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 781 /* GL_SGIS_pixel_texture */, 39123}, /* glPixelTexGenParameteriSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 781 /* GL_SGIS_pixel_texture */, 39151}, /* glPixelTexGenParameterivSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 812 /* GL_SGIX_pixel_texture */, 39180}, /* glPixelTexGenSGIX */
     {DISPATCH_RESOLVE_DIRECT, 35, OpenGL_Desktop_1_0, 39198}, /* glPixelTransferf */
     {DISPATCH_RESOLVE_DIRECT, 36, OpenGL_Desktop_1_0, 39215}, /* glPixelTransferi */
-    {DISPATCH_RESOLVE_EXTENSION, 37, 702 /* GL_OES_fixed_point */, 39232}, /* glPixelTransferxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 38, 403 /* GL_EXT_pixel_transform */, 39252}, /* glPixelTransformParameterfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 403 /* GL_EXT_pixel_transform */, 39282}, /* glPixelTransformParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 403 /* GL_EXT_pixel_transform */, 39313}, /* glPixelTransformParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 403 /* GL_EXT_pixel_transform */, 39343}, /* glPixelTransformParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 706 /* GL_OES_fixed_point */, 39232}, /* glPixelTransferxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 38, 406 /* GL_EXT_pixel_transform */, 39252}, /* glPixelTransformParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 406 /* GL_EXT_pixel_transform */, 39282}, /* glPixelTransformParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 406 /* GL_EXT_pixel_transform */, 39313}, /* glPixelTransformParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 406 /* GL_EXT_pixel_transform */, 39343}, /* glPixelTransformParameterivEXT */
     {DISPATCH_RESOLVE_DIRECT, 42, OpenGL_Desktop_1_0, 39374}, /* glPixelZoom */
-    {DISPATCH_RESOLVE_EXTENSION, 43, 702 /* GL_OES_fixed_point */, 39386}, /* glPixelZoomxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 44, 616 /* GL_NV_path_rendering */, 39402}, /* glPointAlongPathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 706 /* GL_OES_fixed_point */, 39386}, /* glPixelZoomxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 620 /* GL_NV_path_rendering */, 39402}, /* glPointAlongPathNV */
     {DISPATCH_RESOLVE_VERSION, 45, OpenGL_Desktop_1_4, 39421}, /* glPointParameterf */
     {DISPATCH_RESOLVE_DIRECT, 45, OpenGL_ES_1_0, 39421}, /* glPointParameterf */
     {DISPATCH_RESOLVE_EXTENSION, 45, 208 /* GL_ARB_point_parameters */, 39439}, /* glPointParameterfARB */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 405 /* GL_EXT_point_parameters */, 39460}, /* glPointParameterfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 778 /* GL_SGIS_point_parameters */, 39481}, /* glPointParameterfSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 408 /* GL_EXT_point_parameters */, 39460}, /* glPointParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 783 /* GL_SGIS_point_parameters */, 39481}, /* glPointParameterfSGIS */
     {DISPATCH_RESOLVE_EXTENSION, 46, 208 /* GL_ARB_point_parameters */, 39439}, /* glPointParameterfARB */
     {DISPATCH_RESOLVE_VERSION, 46, OpenGL_Desktop_1_4, 39421}, /* glPointParameterf */
     {DISPATCH_RESOLVE_DIRECT, 46, OpenGL_ES_1_0, 39421}, /* glPointParameterf */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 405 /* GL_EXT_point_parameters */, 39460}, /* glPointParameterfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 778 /* GL_SGIS_point_parameters */, 39481}, /* glPointParameterfSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 405 /* GL_EXT_point_parameters */, 39460}, /* glPointParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 408 /* GL_EXT_point_parameters */, 39460}, /* glPointParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 783 /* GL_SGIS_point_parameters */, 39481}, /* glPointParameterfSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 408 /* GL_EXT_point_parameters */, 39460}, /* glPointParameterfEXT */
     {DISPATCH_RESOLVE_VERSION, 47, OpenGL_Desktop_1_4, 39421}, /* glPointParameterf */
     {DISPATCH_RESOLVE_DIRECT, 47, OpenGL_ES_1_0, 39421}, /* glPointParameterf */
     {DISPATCH_RESOLVE_EXTENSION, 47, 208 /* GL_ARB_point_parameters */, 39439}, /* glPointParameterfARB */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 778 /* GL_SGIS_point_parameters */, 39481}, /* glPointParameterfSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 778 /* GL_SGIS_point_parameters */, 39481}, /* glPointParameterfSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 783 /* GL_SGIS_point_parameters */, 39481}, /* glPointParameterfSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 783 /* GL_SGIS_point_parameters */, 39481}, /* glPointParameterfSGIS */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_Desktop_1_4, 39421}, /* glPointParameterf */
     {DISPATCH_RESOLVE_DIRECT, 48, OpenGL_ES_1_0, 39421}, /* glPointParameterf */
     {DISPATCH_RESOLVE_EXTENSION, 48, 208 /* GL_ARB_point_parameters */, 39439}, /* glPointParameterfARB */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 405 /* GL_EXT_point_parameters */, 39460}, /* glPointParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 408 /* GL_EXT_point_parameters */, 39460}, /* glPointParameterfEXT */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_1_4, 39503}, /* glPointParameterfv */
     {DISPATCH_RESOLVE_DIRECT, 49, OpenGL_ES_1_0, 39503}, /* glPointParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 49, 208 /* GL_ARB_point_parameters */, 39522}, /* glPointParameterfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 405 /* GL_EXT_point_parameters */, 39544}, /* glPointParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 778 /* GL_SGIS_point_parameters */, 39566}, /* glPointParameterfvSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 408 /* GL_EXT_point_parameters */, 39544}, /* glPointParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 783 /* GL_SGIS_point_parameters */, 39566}, /* glPointParameterfvSGIS */
     {DISPATCH_RESOLVE_EXTENSION, 50, 208 /* GL_ARB_point_parameters */, 39522}, /* glPointParameterfvARB */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_Desktop_1_4, 39503}, /* glPointParameterfv */
     {DISPATCH_RESOLVE_DIRECT, 50, OpenGL_ES_1_0, 39503}, /* glPointParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 405 /* GL_EXT_point_parameters */, 39544}, /* glPointParameterfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 778 /* GL_SGIS_point_parameters */, 39566}, /* glPointParameterfvSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 405 /* GL_EXT_point_parameters */, 39544}, /* glPointParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 408 /* GL_EXT_point_parameters */, 39544}, /* glPointParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 783 /* GL_SGIS_point_parameters */, 39566}, /* glPointParameterfvSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 408 /* GL_EXT_point_parameters */, 39544}, /* glPointParameterfvEXT */
     {DISPATCH_RESOLVE_VERSION, 51, OpenGL_Desktop_1_4, 39503}, /* glPointParameterfv */
     {DISPATCH_RESOLVE_DIRECT, 51, OpenGL_ES_1_0, 39503}, /* glPointParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 51, 208 /* GL_ARB_point_parameters */, 39522}, /* glPointParameterfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 778 /* GL_SGIS_point_parameters */, 39566}, /* glPointParameterfvSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 778 /* GL_SGIS_point_parameters */, 39566}, /* glPointParameterfvSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 783 /* GL_SGIS_point_parameters */, 39566}, /* glPointParameterfvSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 783 /* GL_SGIS_point_parameters */, 39566}, /* glPointParameterfvSGIS */
     {DISPATCH_RESOLVE_VERSION, 52, OpenGL_Desktop_1_4, 39503}, /* glPointParameterfv */
     {DISPATCH_RESOLVE_DIRECT, 52, OpenGL_ES_1_0, 39503}, /* glPointParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 52, 208 /* GL_ARB_point_parameters */, 39522}, /* glPointParameterfvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 405 /* GL_EXT_point_parameters */, 39544}, /* glPointParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 408 /* GL_EXT_point_parameters */, 39544}, /* glPointParameterfvEXT */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_Desktop_1_4, 39589}, /* glPointParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 53, 620 /* GL_NV_point_sprite */, 39607}, /* glPointParameteriNV */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 620 /* GL_NV_point_sprite */, 39607}, /* glPointParameteriNV */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 624 /* GL_NV_point_sprite */, 39607}, /* glPointParameteriNV */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 624 /* GL_NV_point_sprite */, 39607}, /* glPointParameteriNV */
     {DISPATCH_RESOLVE_VERSION, 54, OpenGL_Desktop_1_4, 39589}, /* glPointParameteri */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_Desktop_1_4, 39627}, /* glPointParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 620 /* GL_NV_point_sprite */, 39646}, /* glPointParameterivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 620 /* GL_NV_point_sprite */, 39646}, /* glPointParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 624 /* GL_NV_point_sprite */, 39646}, /* glPointParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 624 /* GL_NV_point_sprite */, 39646}, /* glPointParameterivNV */
     {DISPATCH_RESOLVE_VERSION, 56, OpenGL_Desktop_1_4, 39627}, /* glPointParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 57, OpenGL_ES_1_0, 39667}, /* glPointParameterx */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 702 /* GL_OES_fixed_point */, 39685}, /* glPointParameterxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 706 /* GL_OES_fixed_point */, 39685}, /* glPointParameterxOES */
     {DISPATCH_RESOLVE_DIRECT, 59, OpenGL_ES_1_0, 39706}, /* glPointParameterxv */
-    {DISPATCH_RESOLVE_EXTENSION, 60, 702 /* GL_OES_fixed_point */, 39725}, /* glPointParameterxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 60, 706 /* GL_OES_fixed_point */, 39725}, /* glPointParameterxvOES */
     {DISPATCH_RESOLVE_DIRECT, 61, OpenGL_Desktop_1_0, 39747}, /* glPointSize */
     {DISPATCH_RESOLVE_DIRECT, 61, OpenGL_ES_1_0, 39747}, /* glPointSize */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 713 /* GL_OES_point_size_array */, 39759}, /* glPointSizePointerOES */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 717 /* GL_OES_point_size_array */, 39759}, /* glPointSizePointerOES */
     {DISPATCH_RESOLVE_DIRECT, 63, OpenGL_ES_1_0, 39781}, /* glPointSizex */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 702 /* GL_OES_fixed_point */, 39794}, /* glPointSizexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 65, 787 /* GL_SGIX_async */, 39810}, /* glPollAsyncSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 66, 803 /* GL_SGIX_instruments */, 39826}, /* glPollInstrumentsSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 706 /* GL_OES_fixed_point */, 39794}, /* glPointSizexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 792 /* GL_SGIX_async */, 39810}, /* glPollAsyncSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 808 /* GL_SGIX_instruments */, 39826}, /* glPollInstrumentsSGIX */
     {DISPATCH_RESOLVE_DIRECT, 67, OpenGL_Desktop_1_0, 39848}, /* glPolygonMode */
-    {DISPATCH_RESOLVE_EXTENSION, 67, 621 /* GL_NV_polygon_mode */, 39862}, /* glPolygonModeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 68, 621 /* GL_NV_polygon_mode */, 39862}, /* glPolygonModeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 625 /* GL_NV_polygon_mode */, 39862}, /* glPolygonModeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 68, 625 /* GL_NV_polygon_mode */, 39862}, /* glPolygonModeNV */
     {DISPATCH_RESOLVE_DIRECT, 68, OpenGL_Desktop_1_0, 39848}, /* glPolygonMode */
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_Desktop_1_1, 39878}, /* glPolygonOffset */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_ES_1_0, 39878}, /* glPolygonOffset */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_ES_2_0, 39878}, /* glPolygonOffset */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 407 /* GL_EXT_polygon_offset_clamp */, 39894}, /* glPolygonOffsetClampEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 406 /* GL_EXT_polygon_offset */, 39918}, /* glPolygonOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 410 /* GL_EXT_polygon_offset_clamp */, 39894}, /* glPolygonOffsetClampEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 409 /* GL_EXT_polygon_offset */, 39918}, /* glPolygonOffsetEXT */
     {DISPATCH_RESOLVE_DIRECT, 72, OpenGL_ES_1_0, 39937}, /* glPolygonOffsetx */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 702 /* GL_OES_fixed_point */, 39954}, /* glPolygonOffsetxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 706 /* GL_OES_fixed_point */, 39954}, /* glPolygonOffsetxOES */
     {DISPATCH_RESOLVE_DIRECT, 74, OpenGL_Desktop_1_0, 39974}, /* glPolygonStipple */
     {DISPATCH_RESOLVE_DIRECT, 75, OpenGL_Desktop_1_0, 39991}, /* glPopAttrib */
     {DISPATCH_RESOLVE_VERSION, 76, OpenGL_Desktop_1_1, 40003}, /* glPopClientAttrib */
     {DISPATCH_RESOLVE_VERSION, 77, OpenGL_Desktop_4_3, 40021}, /* glPopDebugGroup */
     {DISPATCH_RESOLVE_VERSION, 77, OpenGL_ES_3_2, 40021}, /* glPopDebugGroup */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 534 /* GL_KHR_debug */, 40021}, /* glPopDebugGroup */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 534 /* GL_KHR_debug */, 40037}, /* glPopDebugGroupKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 534 /* GL_KHR_debug */, 40037}, /* glPopDebugGroupKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 538 /* GL_KHR_debug */, 40021}, /* glPopDebugGroup */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 538 /* GL_KHR_debug */, 40037}, /* glPopDebugGroupKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 538 /* GL_KHR_debug */, 40037}, /* glPopDebugGroupKHR */
     {DISPATCH_RESOLVE_VERSION, 78, OpenGL_Desktop_4_3, 40021}, /* glPopDebugGroup */
     {DISPATCH_RESOLVE_VERSION, 78, OpenGL_ES_3_2, 40021}, /* glPopDebugGroup */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 534 /* GL_KHR_debug */, 40021}, /* glPopDebugGroup */
-    {DISPATCH_RESOLVE_EXTENSION, 79, 355 /* GL_EXT_debug_marker */, 40056}, /* glPopGroupMarkerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 538 /* GL_KHR_debug */, 40021}, /* glPopDebugGroup */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 358 /* GL_EXT_debug_marker */, 40056}, /* glPopGroupMarkerEXT */
     {DISPATCH_RESOLVE_DIRECT, 80, OpenGL_Desktop_1_0, 40076}, /* glPopMatrix */
     {DISPATCH_RESOLVE_DIRECT, 80, OpenGL_ES_1_0, 40076}, /* glPopMatrix */
     {DISPATCH_RESOLVE_DIRECT, 81, OpenGL_Desktop_1_0, 40088}, /* glPopName */
-    {DISPATCH_RESOLVE_EXTENSION, 82, 622 /* GL_NV_present_video */, 40098}, /* glPresentFrameDualFillNV */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 622 /* GL_NV_present_video */, 40123}, /* glPresentFrameKeyedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 626 /* GL_NV_present_video */, 40098}, /* glPresentFrameDualFillNV */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 626 /* GL_NV_present_video */, 40123}, /* glPresentFrameKeyedNV */
     {DISPATCH_RESOLVE_VERSION, 84, OpenGL_ES_3_2, 40145}, /* glPrimitiveBoundingBox */
     {DISPATCH_RESOLVE_EXTENSION, 84, 137 /* GL_ARB_ES3_2_compatibility */, 40168}, /* glPrimitiveBoundingBoxARB */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 409 /* GL_EXT_primitive_bounding_box */, 40194}, /* glPrimitiveBoundingBoxEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 715 /* GL_OES_primitive_bounding_box */, 40220}, /* glPrimitiveBoundingBoxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 412 /* GL_EXT_primitive_bounding_box */, 40194}, /* glPrimitiveBoundingBoxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 719 /* GL_OES_primitive_bounding_box */, 40220}, /* glPrimitiveBoundingBoxOES */
     {DISPATCH_RESOLVE_EXTENSION, 85, 137 /* GL_ARB_ES3_2_compatibility */, 40168}, /* glPrimitiveBoundingBoxARB */
     {DISPATCH_RESOLVE_VERSION, 85, OpenGL_ES_3_2, 40145}, /* glPrimitiveBoundingBox */
-    {DISPATCH_RESOLVE_EXTENSION, 85, 409 /* GL_EXT_primitive_bounding_box */, 40194}, /* glPrimitiveBoundingBoxEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 85, 715 /* GL_OES_primitive_bounding_box */, 40220}, /* glPrimitiveBoundingBoxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 409 /* GL_EXT_primitive_bounding_box */, 40194}, /* glPrimitiveBoundingBoxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 412 /* GL_EXT_primitive_bounding_box */, 40194}, /* glPrimitiveBoundingBoxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 719 /* GL_OES_primitive_bounding_box */, 40220}, /* glPrimitiveBoundingBoxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 412 /* GL_EXT_primitive_bounding_box */, 40194}, /* glPrimitiveBoundingBoxEXT */
     {DISPATCH_RESOLVE_VERSION, 86, OpenGL_ES_3_2, 40145}, /* glPrimitiveBoundingBox */
     {DISPATCH_RESOLVE_EXTENSION, 86, 137 /* GL_ARB_ES3_2_compatibility */, 40168}, /* glPrimitiveBoundingBoxARB */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 715 /* GL_OES_primitive_bounding_box */, 40220}, /* glPrimitiveBoundingBoxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 715 /* GL_OES_primitive_bounding_box */, 40220}, /* glPrimitiveBoundingBoxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 719 /* GL_OES_primitive_bounding_box */, 40220}, /* glPrimitiveBoundingBoxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 719 /* GL_OES_primitive_bounding_box */, 40220}, /* glPrimitiveBoundingBoxOES */
     {DISPATCH_RESOLVE_VERSION, 87, OpenGL_ES_3_2, 40145}, /* glPrimitiveBoundingBox */
     {DISPATCH_RESOLVE_EXTENSION, 87, 137 /* GL_ARB_ES3_2_compatibility */, 40168}, /* glPrimitiveBoundingBoxARB */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 409 /* GL_EXT_primitive_bounding_box */, 40194}, /* glPrimitiveBoundingBoxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 412 /* GL_EXT_primitive_bounding_box */, 40194}, /* glPrimitiveBoundingBoxEXT */
     {DISPATCH_RESOLVE_VERSION, 88, OpenGL_Desktop_3_1, 40246}, /* glPrimitiveRestartIndex */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 623 /* GL_NV_primitive_restart */, 40270}, /* glPrimitiveRestartIndexNV */
-    {DISPATCH_RESOLVE_EXTENSION, 90, 623 /* GL_NV_primitive_restart */, 40296}, /* glPrimitiveRestartNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 627 /* GL_NV_primitive_restart */, 40270}, /* glPrimitiveRestartIndexNV */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 627 /* GL_NV_primitive_restart */, 40296}, /* glPrimitiveRestartNV */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_Desktop_1_1, 40317}, /* glPrioritizeTextures */
-    {DISPATCH_RESOLVE_EXTENSION, 91, 472 /* GL_EXT_texture_object */, 40338}, /* glPrioritizeTexturesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 472 /* GL_EXT_texture_object */, 40338}, /* glPrioritizeTexturesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 476 /* GL_EXT_texture_object */, 40338}, /* glPrioritizeTexturesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 476 /* GL_EXT_texture_object */, 40338}, /* glPrioritizeTexturesEXT */
     {DISPATCH_RESOLVE_VERSION, 92, OpenGL_Desktop_1_1, 40317}, /* glPrioritizeTextures */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 702 /* GL_OES_fixed_point */, 40362}, /* glPrioritizeTexturesxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 706 /* GL_OES_fixed_point */, 40362}, /* glPrioritizeTexturesxOES */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_Desktop_4_1, 40387}, /* glProgramBinary */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_ES_3_0, 40387}, /* glProgramBinary */
     {DISPATCH_RESOLVE_EXTENSION, 94, 182 /* GL_ARB_get_program_binary */, 40387}, /* glProgramBinary */
-    {DISPATCH_RESOLVE_EXTENSION, 94, 707 /* GL_OES_get_program_binary */, 40403}, /* glProgramBinaryOES */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 707 /* GL_OES_get_program_binary */, 40403}, /* glProgramBinaryOES */
+    {DISPATCH_RESOLVE_EXTENSION, 94, 711 /* GL_OES_get_program_binary */, 40403}, /* glProgramBinaryOES */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 711 /* GL_OES_get_program_binary */, 40403}, /* glProgramBinaryOES */
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_Desktop_4_1, 40387}, /* glProgramBinary */
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_ES_3_0, 40387}, /* glProgramBinary */
     {DISPATCH_RESOLVE_EXTENSION, 95, 182 /* GL_ARB_get_program_binary */, 40387}, /* glProgramBinary */
-    {DISPATCH_RESOLVE_EXTENSION, 96, 614 /* GL_NV_parameter_buffer_object */, 40422}, /* glProgramBufferParametersIivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 614 /* GL_NV_parameter_buffer_object */, 40453}, /* glProgramBufferParametersIuivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 614 /* GL_NV_parameter_buffer_object */, 40485}, /* glProgramBufferParametersfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 618 /* GL_NV_parameter_buffer_object */, 40422}, /* glProgramBufferParametersIivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 618 /* GL_NV_parameter_buffer_object */, 40453}, /* glProgramBufferParametersIuivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 618 /* GL_NV_parameter_buffer_object */, 40485}, /* glProgramBufferParametersfvNV */
     {DISPATCH_RESOLVE_EXTENSION, 99, 174 /* GL_ARB_fragment_program */, 40515}, /* glProgramEnvParameter4dARB */
     {DISPATCH_RESOLVE_EXTENSION, 99, 297 /* GL_ARB_vertex_program */, 40515}, /* glProgramEnvParameter4dARB */
     {DISPATCH_RESOLVE_EXTENSION, 100, 174 /* GL_ARB_fragment_program */, 40542}, /* glProgramEnvParameter4dvARB */
@@ -8747,13 +8757,13 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 101, 297 /* GL_ARB_vertex_program */, 40570}, /* glProgramEnvParameter4fARB */
     {DISPATCH_RESOLVE_EXTENSION, 102, 174 /* GL_ARB_fragment_program */, 40597}, /* glProgramEnvParameter4fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 102, 297 /* GL_ARB_vertex_program */, 40597}, /* glProgramEnvParameter4fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 599 /* GL_NV_gpu_program4 */, 40625}, /* glProgramEnvParameterI4iNV */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 599 /* GL_NV_gpu_program4 */, 40652}, /* glProgramEnvParameterI4ivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 105, 599 /* GL_NV_gpu_program4 */, 40680}, /* glProgramEnvParameterI4uiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 106, 599 /* GL_NV_gpu_program4 */, 40708}, /* glProgramEnvParameterI4uivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 379 /* GL_EXT_gpu_program_parameters */, 40737}, /* glProgramEnvParameters4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 599 /* GL_NV_gpu_program4 */, 40766}, /* glProgramEnvParametersI4ivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 109, 599 /* GL_NV_gpu_program4 */, 40795}, /* glProgramEnvParametersI4uivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 603 /* GL_NV_gpu_program4 */, 40625}, /* glProgramEnvParameterI4iNV */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 603 /* GL_NV_gpu_program4 */, 40652}, /* glProgramEnvParameterI4ivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 603 /* GL_NV_gpu_program4 */, 40680}, /* glProgramEnvParameterI4uiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 603 /* GL_NV_gpu_program4 */, 40708}, /* glProgramEnvParameterI4uivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 382 /* GL_EXT_gpu_program_parameters */, 40737}, /* glProgramEnvParameters4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 603 /* GL_NV_gpu_program4 */, 40766}, /* glProgramEnvParametersI4ivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 603 /* GL_NV_gpu_program4 */, 40795}, /* glProgramEnvParametersI4uivNV */
     {DISPATCH_RESOLVE_EXTENSION, 110, 174 /* GL_ARB_fragment_program */, 40825}, /* glProgramLocalParameter4dARB */
     {DISPATCH_RESOLVE_EXTENSION, 110, 297 /* GL_ARB_vertex_program */, 40825}, /* glProgramLocalParameter4dARB */
     {DISPATCH_RESOLVE_EXTENSION, 111, 174 /* GL_ARB_fragment_program */, 40854}, /* glProgramLocalParameter4dvARB */
@@ -8762,509 +8772,509 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 112, 297 /* GL_ARB_vertex_program */, 40884}, /* glProgramLocalParameter4fARB */
     {DISPATCH_RESOLVE_EXTENSION, 113, 174 /* GL_ARB_fragment_program */, 40913}, /* glProgramLocalParameter4fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 113, 297 /* GL_ARB_vertex_program */, 40913}, /* glProgramLocalParameter4fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 599 /* GL_NV_gpu_program4 */, 40943}, /* glProgramLocalParameterI4iNV */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 599 /* GL_NV_gpu_program4 */, 40972}, /* glProgramLocalParameterI4ivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 599 /* GL_NV_gpu_program4 */, 41002}, /* glProgramLocalParameterI4uiNV */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 599 /* GL_NV_gpu_program4 */, 41032}, /* glProgramLocalParameterI4uivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 118, 379 /* GL_EXT_gpu_program_parameters */, 41063}, /* glProgramLocalParameters4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 599 /* GL_NV_gpu_program4 */, 41094}, /* glProgramLocalParametersI4ivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 599 /* GL_NV_gpu_program4 */, 41125}, /* glProgramLocalParametersI4uivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 585 /* GL_NV_fragment_program */, 41157}, /* glProgramNamedParameter4dNV */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 585 /* GL_NV_fragment_program */, 41185}, /* glProgramNamedParameter4dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 585 /* GL_NV_fragment_program */, 41214}, /* glProgramNamedParameter4fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 124, 585 /* GL_NV_fragment_program */, 41242}, /* glProgramNamedParameter4fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 672 /* GL_NV_vertex_program */, 41271}, /* glProgramParameter4dNV */
-    {DISPATCH_RESOLVE_EXTENSION, 126, 672 /* GL_NV_vertex_program */, 41294}, /* glProgramParameter4dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 672 /* GL_NV_vertex_program */, 41318}, /* glProgramParameter4fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 672 /* GL_NV_vertex_program */, 41341}, /* glProgramParameter4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 603 /* GL_NV_gpu_program4 */, 40943}, /* glProgramLocalParameterI4iNV */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 603 /* GL_NV_gpu_program4 */, 40972}, /* glProgramLocalParameterI4ivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 603 /* GL_NV_gpu_program4 */, 41002}, /* glProgramLocalParameterI4uiNV */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 603 /* GL_NV_gpu_program4 */, 41032}, /* glProgramLocalParameterI4uivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 382 /* GL_EXT_gpu_program_parameters */, 41063}, /* glProgramLocalParameters4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 603 /* GL_NV_gpu_program4 */, 41094}, /* glProgramLocalParametersI4ivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 603 /* GL_NV_gpu_program4 */, 41125}, /* glProgramLocalParametersI4uivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 589 /* GL_NV_fragment_program */, 41157}, /* glProgramNamedParameter4dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 589 /* GL_NV_fragment_program */, 41185}, /* glProgramNamedParameter4dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 589 /* GL_NV_fragment_program */, 41214}, /* glProgramNamedParameter4fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 124, 589 /* GL_NV_fragment_program */, 41242}, /* glProgramNamedParameter4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 676 /* GL_NV_vertex_program */, 41271}, /* glProgramParameter4dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 676 /* GL_NV_vertex_program */, 41294}, /* glProgramParameter4dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 676 /* GL_NV_vertex_program */, 41318}, /* glProgramParameter4fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 676 /* GL_NV_vertex_program */, 41341}, /* glProgramParameter4fvNV */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_Desktop_4_1, 41365}, /* glProgramParameteri */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_ES_3_0, 41365}, /* glProgramParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 129, 182 /* GL_ARB_get_program_binary */, 41365}, /* glProgramParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 129, 181 /* GL_ARB_geometry_shader4 */, 41385}, /* glProgramParameteriARB */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 377 /* GL_EXT_geometry_shader4 */, 41408}, /* glProgramParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 422 /* GL_EXT_separate_shader_objects */, 41408}, /* glProgramParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 380 /* GL_EXT_geometry_shader4 */, 41408}, /* glProgramParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 425 /* GL_EXT_separate_shader_objects */, 41408}, /* glProgramParameteriEXT */
     {DISPATCH_RESOLVE_EXTENSION, 130, 181 /* GL_ARB_geometry_shader4 */, 41385}, /* glProgramParameteriARB */
     {DISPATCH_RESOLVE_VERSION, 130, OpenGL_Desktop_4_1, 41365}, /* glProgramParameteri */
     {DISPATCH_RESOLVE_VERSION, 130, OpenGL_ES_3_0, 41365}, /* glProgramParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 130, 182 /* GL_ARB_get_program_binary */, 41365}, /* glProgramParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 377 /* GL_EXT_geometry_shader4 */, 41408}, /* glProgramParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 422 /* GL_EXT_separate_shader_objects */, 41408}, /* glProgramParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 377 /* GL_EXT_geometry_shader4 */, 41408}, /* glProgramParameteriEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 422 /* GL_EXT_separate_shader_objects */, 41408}, /* glProgramParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 380 /* GL_EXT_geometry_shader4 */, 41408}, /* glProgramParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 425 /* GL_EXT_separate_shader_objects */, 41408}, /* glProgramParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 380 /* GL_EXT_geometry_shader4 */, 41408}, /* glProgramParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 425 /* GL_EXT_separate_shader_objects */, 41408}, /* glProgramParameteriEXT */
     {DISPATCH_RESOLVE_VERSION, 131, OpenGL_Desktop_4_1, 41365}, /* glProgramParameteri */
     {DISPATCH_RESOLVE_VERSION, 131, OpenGL_ES_3_0, 41365}, /* glProgramParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 131, 182 /* GL_ARB_get_program_binary */, 41365}, /* glProgramParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 131, 181 /* GL_ARB_geometry_shader4 */, 41385}, /* glProgramParameteriARB */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 672 /* GL_NV_vertex_program */, 41431}, /* glProgramParameters4dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 672 /* GL_NV_vertex_program */, 41456}, /* glProgramParameters4fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 616 /* GL_NV_path_rendering */, 41481}, /* glProgramPathFragmentInputGenNV */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 676 /* GL_NV_vertex_program */, 41431}, /* glProgramParameters4dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 676 /* GL_NV_vertex_program */, 41456}, /* glProgramParameters4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 620 /* GL_NV_path_rendering */, 41481}, /* glProgramPathFragmentInputGenNV */
     {DISPATCH_RESOLVE_EXTENSION, 135, 174 /* GL_ARB_fragment_program */, 41513}, /* glProgramStringARB */
     {DISPATCH_RESOLVE_EXTENSION, 135, 297 /* GL_ARB_vertex_program */, 41513}, /* glProgramStringARB */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 600 /* GL_NV_gpu_program5 */, 41532}, /* glProgramSubroutineParametersuivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 604 /* GL_NV_gpu_program5 */, 41532}, /* glProgramSubroutineParametersuivNV */
     {DISPATCH_RESOLVE_VERSION, 137, OpenGL_Desktop_4_1, 41567}, /* glProgramUniform1d */
     {DISPATCH_RESOLVE_EXTENSION, 137, 222 /* GL_ARB_separate_shader_objects */, 41567}, /* glProgramUniform1d */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 357 /* GL_EXT_direct_state_access */, 41586}, /* glProgramUniform1dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 360 /* GL_EXT_direct_state_access */, 41586}, /* glProgramUniform1dEXT */
     {DISPATCH_RESOLVE_VERSION, 139, OpenGL_Desktop_4_1, 41608}, /* glProgramUniform1dv */
     {DISPATCH_RESOLVE_EXTENSION, 139, 222 /* GL_ARB_separate_shader_objects */, 41608}, /* glProgramUniform1dv */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 357 /* GL_EXT_direct_state_access */, 41628}, /* glProgramUniform1dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 360 /* GL_EXT_direct_state_access */, 41628}, /* glProgramUniform1dvEXT */
     {DISPATCH_RESOLVE_VERSION, 141, OpenGL_Desktop_4_1, 41651}, /* glProgramUniform1f */
     {DISPATCH_RESOLVE_VERSION, 141, OpenGL_ES_3_1, 41651}, /* glProgramUniform1f */
     {DISPATCH_RESOLVE_EXTENSION, 141, 222 /* GL_ARB_separate_shader_objects */, 41651}, /* glProgramUniform1f */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 357 /* GL_EXT_direct_state_access */, 41670}, /* glProgramUniform1fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 422 /* GL_EXT_separate_shader_objects */, 41670}, /* glProgramUniform1fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 357 /* GL_EXT_direct_state_access */, 41670}, /* glProgramUniform1fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 422 /* GL_EXT_separate_shader_objects */, 41670}, /* glProgramUniform1fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 360 /* GL_EXT_direct_state_access */, 41670}, /* glProgramUniform1fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 425 /* GL_EXT_separate_shader_objects */, 41670}, /* glProgramUniform1fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 360 /* GL_EXT_direct_state_access */, 41670}, /* glProgramUniform1fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 425 /* GL_EXT_separate_shader_objects */, 41670}, /* glProgramUniform1fEXT */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_Desktop_4_1, 41651}, /* glProgramUniform1f */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_ES_3_1, 41651}, /* glProgramUniform1f */
     {DISPATCH_RESOLVE_EXTENSION, 142, 222 /* GL_ARB_separate_shader_objects */, 41651}, /* glProgramUniform1f */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_Desktop_4_1, 41692}, /* glProgramUniform1fv */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_ES_3_1, 41692}, /* glProgramUniform1fv */
     {DISPATCH_RESOLVE_EXTENSION, 143, 222 /* GL_ARB_separate_shader_objects */, 41692}, /* glProgramUniform1fv */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 357 /* GL_EXT_direct_state_access */, 41712}, /* glProgramUniform1fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 422 /* GL_EXT_separate_shader_objects */, 41712}, /* glProgramUniform1fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 357 /* GL_EXT_direct_state_access */, 41712}, /* glProgramUniform1fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 422 /* GL_EXT_separate_shader_objects */, 41712}, /* glProgramUniform1fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 360 /* GL_EXT_direct_state_access */, 41712}, /* glProgramUniform1fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 425 /* GL_EXT_separate_shader_objects */, 41712}, /* glProgramUniform1fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 360 /* GL_EXT_direct_state_access */, 41712}, /* glProgramUniform1fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 425 /* GL_EXT_separate_shader_objects */, 41712}, /* glProgramUniform1fvEXT */
     {DISPATCH_RESOLVE_VERSION, 144, OpenGL_Desktop_4_1, 41692}, /* glProgramUniform1fv */
     {DISPATCH_RESOLVE_VERSION, 144, OpenGL_ES_3_1, 41692}, /* glProgramUniform1fv */
     {DISPATCH_RESOLVE_EXTENSION, 144, 222 /* GL_ARB_separate_shader_objects */, 41692}, /* glProgramUniform1fv */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_Desktop_4_1, 41735}, /* glProgramUniform1i */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_ES_3_1, 41735}, /* glProgramUniform1i */
     {DISPATCH_RESOLVE_EXTENSION, 145, 222 /* GL_ARB_separate_shader_objects */, 41735}, /* glProgramUniform1i */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 357 /* GL_EXT_direct_state_access */, 41850}, /* glProgramUniform1iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 422 /* GL_EXT_separate_shader_objects */, 41850}, /* glProgramUniform1iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 360 /* GL_EXT_direct_state_access */, 41850}, /* glProgramUniform1iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 425 /* GL_EXT_separate_shader_objects */, 41850}, /* glProgramUniform1iEXT */
     {DISPATCH_RESOLVE_EXTENSION, 146, 187 /* GL_ARB_gpu_shader_int64 */, 41754}, /* glProgramUniform1i64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 147, 72 /* GL_AMD_gpu_shader_int64 */, 41778}, /* glProgramUniform1i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 602 /* GL_NV_gpu_shader5 */, 41778}, /* glProgramUniform1i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 606 /* GL_NV_gpu_shader5 */, 41778}, /* glProgramUniform1i64NV */
     {DISPATCH_RESOLVE_EXTENSION, 148, 187 /* GL_ARB_gpu_shader_int64 */, 41801}, /* glProgramUniform1i64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 149, 72 /* GL_AMD_gpu_shader_int64 */, 41826}, /* glProgramUniform1i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 602 /* GL_NV_gpu_shader5 */, 41826}, /* glProgramUniform1i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 357 /* GL_EXT_direct_state_access */, 41850}, /* glProgramUniform1iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 422 /* GL_EXT_separate_shader_objects */, 41850}, /* glProgramUniform1iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 606 /* GL_NV_gpu_shader5 */, 41826}, /* glProgramUniform1i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 360 /* GL_EXT_direct_state_access */, 41850}, /* glProgramUniform1iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 425 /* GL_EXT_separate_shader_objects */, 41850}, /* glProgramUniform1iEXT */
     {DISPATCH_RESOLVE_VERSION, 150, OpenGL_Desktop_4_1, 41735}, /* glProgramUniform1i */
     {DISPATCH_RESOLVE_VERSION, 150, OpenGL_ES_3_1, 41735}, /* glProgramUniform1i */
     {DISPATCH_RESOLVE_EXTENSION, 150, 222 /* GL_ARB_separate_shader_objects */, 41735}, /* glProgramUniform1i */
     {DISPATCH_RESOLVE_VERSION, 151, OpenGL_Desktop_4_1, 41872}, /* glProgramUniform1iv */
     {DISPATCH_RESOLVE_VERSION, 151, OpenGL_ES_3_1, 41872}, /* glProgramUniform1iv */
     {DISPATCH_RESOLVE_EXTENSION, 151, 222 /* GL_ARB_separate_shader_objects */, 41872}, /* glProgramUniform1iv */
-    {DISPATCH_RESOLVE_EXTENSION, 151, 357 /* GL_EXT_direct_state_access */, 41892}, /* glProgramUniform1ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 151, 422 /* GL_EXT_separate_shader_objects */, 41892}, /* glProgramUniform1ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 357 /* GL_EXT_direct_state_access */, 41892}, /* glProgramUniform1ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 422 /* GL_EXT_separate_shader_objects */, 41892}, /* glProgramUniform1ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 151, 360 /* GL_EXT_direct_state_access */, 41892}, /* glProgramUniform1ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 151, 425 /* GL_EXT_separate_shader_objects */, 41892}, /* glProgramUniform1ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 360 /* GL_EXT_direct_state_access */, 41892}, /* glProgramUniform1ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 425 /* GL_EXT_separate_shader_objects */, 41892}, /* glProgramUniform1ivEXT */
     {DISPATCH_RESOLVE_VERSION, 152, OpenGL_Desktop_4_1, 41872}, /* glProgramUniform1iv */
     {DISPATCH_RESOLVE_VERSION, 152, OpenGL_ES_3_1, 41872}, /* glProgramUniform1iv */
     {DISPATCH_RESOLVE_EXTENSION, 152, 222 /* GL_ARB_separate_shader_objects */, 41872}, /* glProgramUniform1iv */
     {DISPATCH_RESOLVE_VERSION, 153, OpenGL_Desktop_4_1, 41915}, /* glProgramUniform1ui */
     {DISPATCH_RESOLVE_VERSION, 153, OpenGL_ES_3_1, 41915}, /* glProgramUniform1ui */
     {DISPATCH_RESOLVE_EXTENSION, 153, 222 /* GL_ARB_separate_shader_objects */, 41915}, /* glProgramUniform1ui */
-    {DISPATCH_RESOLVE_EXTENSION, 153, 357 /* GL_EXT_direct_state_access */, 42035}, /* glProgramUniform1uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 153, 422 /* GL_EXT_separate_shader_objects */, 42035}, /* glProgramUniform1uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 153, 360 /* GL_EXT_direct_state_access */, 42035}, /* glProgramUniform1uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 153, 425 /* GL_EXT_separate_shader_objects */, 42035}, /* glProgramUniform1uiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 154, 187 /* GL_ARB_gpu_shader_int64 */, 41935}, /* glProgramUniform1ui64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 155, 72 /* GL_AMD_gpu_shader_int64 */, 41960}, /* glProgramUniform1ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 155, 602 /* GL_NV_gpu_shader5 */, 41960}, /* glProgramUniform1ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 155, 606 /* GL_NV_gpu_shader5 */, 41960}, /* glProgramUniform1ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 156, 187 /* GL_ARB_gpu_shader_int64 */, 41984}, /* glProgramUniform1ui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 157, 72 /* GL_AMD_gpu_shader_int64 */, 42010}, /* glProgramUniform1ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 157, 602 /* GL_NV_gpu_shader5 */, 42010}, /* glProgramUniform1ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 357 /* GL_EXT_direct_state_access */, 42035}, /* glProgramUniform1uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 422 /* GL_EXT_separate_shader_objects */, 42035}, /* glProgramUniform1uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 157, 606 /* GL_NV_gpu_shader5 */, 42010}, /* glProgramUniform1ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 360 /* GL_EXT_direct_state_access */, 42035}, /* glProgramUniform1uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 425 /* GL_EXT_separate_shader_objects */, 42035}, /* glProgramUniform1uiEXT */
     {DISPATCH_RESOLVE_VERSION, 158, OpenGL_Desktop_4_1, 41915}, /* glProgramUniform1ui */
     {DISPATCH_RESOLVE_VERSION, 158, OpenGL_ES_3_1, 41915}, /* glProgramUniform1ui */
     {DISPATCH_RESOLVE_EXTENSION, 158, 222 /* GL_ARB_separate_shader_objects */, 41915}, /* glProgramUniform1ui */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_Desktop_4_1, 42058}, /* glProgramUniform1uiv */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_ES_3_1, 42058}, /* glProgramUniform1uiv */
     {DISPATCH_RESOLVE_EXTENSION, 159, 222 /* GL_ARB_separate_shader_objects */, 42058}, /* glProgramUniform1uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 357 /* GL_EXT_direct_state_access */, 42079}, /* glProgramUniform1uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 422 /* GL_EXT_separate_shader_objects */, 42079}, /* glProgramUniform1uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 357 /* GL_EXT_direct_state_access */, 42079}, /* glProgramUniform1uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 422 /* GL_EXT_separate_shader_objects */, 42079}, /* glProgramUniform1uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 360 /* GL_EXT_direct_state_access */, 42079}, /* glProgramUniform1uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 425 /* GL_EXT_separate_shader_objects */, 42079}, /* glProgramUniform1uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 360 /* GL_EXT_direct_state_access */, 42079}, /* glProgramUniform1uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 425 /* GL_EXT_separate_shader_objects */, 42079}, /* glProgramUniform1uivEXT */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_4_1, 42058}, /* glProgramUniform1uiv */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_ES_3_1, 42058}, /* glProgramUniform1uiv */
     {DISPATCH_RESOLVE_EXTENSION, 160, 222 /* GL_ARB_separate_shader_objects */, 42058}, /* glProgramUniform1uiv */
     {DISPATCH_RESOLVE_VERSION, 161, OpenGL_Desktop_4_1, 42103}, /* glProgramUniform2d */
     {DISPATCH_RESOLVE_EXTENSION, 161, 222 /* GL_ARB_separate_shader_objects */, 42103}, /* glProgramUniform2d */
-    {DISPATCH_RESOLVE_EXTENSION, 162, 357 /* GL_EXT_direct_state_access */, 42122}, /* glProgramUniform2dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 162, 360 /* GL_EXT_direct_state_access */, 42122}, /* glProgramUniform2dEXT */
     {DISPATCH_RESOLVE_VERSION, 163, OpenGL_Desktop_4_1, 42144}, /* glProgramUniform2dv */
     {DISPATCH_RESOLVE_EXTENSION, 163, 222 /* GL_ARB_separate_shader_objects */, 42144}, /* glProgramUniform2dv */
-    {DISPATCH_RESOLVE_EXTENSION, 164, 357 /* GL_EXT_direct_state_access */, 42164}, /* glProgramUniform2dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 164, 360 /* GL_EXT_direct_state_access */, 42164}, /* glProgramUniform2dvEXT */
     {DISPATCH_RESOLVE_VERSION, 165, OpenGL_Desktop_4_1, 42187}, /* glProgramUniform2f */
     {DISPATCH_RESOLVE_VERSION, 165, OpenGL_ES_3_1, 42187}, /* glProgramUniform2f */
     {DISPATCH_RESOLVE_EXTENSION, 165, 222 /* GL_ARB_separate_shader_objects */, 42187}, /* glProgramUniform2f */
-    {DISPATCH_RESOLVE_EXTENSION, 165, 357 /* GL_EXT_direct_state_access */, 42206}, /* glProgramUniform2fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 165, 422 /* GL_EXT_separate_shader_objects */, 42206}, /* glProgramUniform2fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 166, 357 /* GL_EXT_direct_state_access */, 42206}, /* glProgramUniform2fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 166, 422 /* GL_EXT_separate_shader_objects */, 42206}, /* glProgramUniform2fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 165, 360 /* GL_EXT_direct_state_access */, 42206}, /* glProgramUniform2fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 165, 425 /* GL_EXT_separate_shader_objects */, 42206}, /* glProgramUniform2fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 166, 360 /* GL_EXT_direct_state_access */, 42206}, /* glProgramUniform2fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 166, 425 /* GL_EXT_separate_shader_objects */, 42206}, /* glProgramUniform2fEXT */
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_Desktop_4_1, 42187}, /* glProgramUniform2f */
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_ES_3_1, 42187}, /* glProgramUniform2f */
     {DISPATCH_RESOLVE_EXTENSION, 166, 222 /* GL_ARB_separate_shader_objects */, 42187}, /* glProgramUniform2f */
     {DISPATCH_RESOLVE_VERSION, 167, OpenGL_Desktop_4_1, 42228}, /* glProgramUniform2fv */
     {DISPATCH_RESOLVE_VERSION, 167, OpenGL_ES_3_1, 42228}, /* glProgramUniform2fv */
     {DISPATCH_RESOLVE_EXTENSION, 167, 222 /* GL_ARB_separate_shader_objects */, 42228}, /* glProgramUniform2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 357 /* GL_EXT_direct_state_access */, 42248}, /* glProgramUniform2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 422 /* GL_EXT_separate_shader_objects */, 42248}, /* glProgramUniform2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 168, 357 /* GL_EXT_direct_state_access */, 42248}, /* glProgramUniform2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 168, 422 /* GL_EXT_separate_shader_objects */, 42248}, /* glProgramUniform2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 360 /* GL_EXT_direct_state_access */, 42248}, /* glProgramUniform2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 425 /* GL_EXT_separate_shader_objects */, 42248}, /* glProgramUniform2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 168, 360 /* GL_EXT_direct_state_access */, 42248}, /* glProgramUniform2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 168, 425 /* GL_EXT_separate_shader_objects */, 42248}, /* glProgramUniform2fvEXT */
     {DISPATCH_RESOLVE_VERSION, 168, OpenGL_Desktop_4_1, 42228}, /* glProgramUniform2fv */
     {DISPATCH_RESOLVE_VERSION, 168, OpenGL_ES_3_1, 42228}, /* glProgramUniform2fv */
     {DISPATCH_RESOLVE_EXTENSION, 168, 222 /* GL_ARB_separate_shader_objects */, 42228}, /* glProgramUniform2fv */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_Desktop_4_1, 42271}, /* glProgramUniform2i */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_ES_3_1, 42271}, /* glProgramUniform2i */
     {DISPATCH_RESOLVE_EXTENSION, 169, 222 /* GL_ARB_separate_shader_objects */, 42271}, /* glProgramUniform2i */
-    {DISPATCH_RESOLVE_EXTENSION, 169, 357 /* GL_EXT_direct_state_access */, 42386}, /* glProgramUniform2iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 169, 422 /* GL_EXT_separate_shader_objects */, 42386}, /* glProgramUniform2iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 169, 360 /* GL_EXT_direct_state_access */, 42386}, /* glProgramUniform2iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 169, 425 /* GL_EXT_separate_shader_objects */, 42386}, /* glProgramUniform2iEXT */
     {DISPATCH_RESOLVE_EXTENSION, 170, 187 /* GL_ARB_gpu_shader_int64 */, 42290}, /* glProgramUniform2i64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 171, 72 /* GL_AMD_gpu_shader_int64 */, 42314}, /* glProgramUniform2i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 602 /* GL_NV_gpu_shader5 */, 42314}, /* glProgramUniform2i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 606 /* GL_NV_gpu_shader5 */, 42314}, /* glProgramUniform2i64NV */
     {DISPATCH_RESOLVE_EXTENSION, 172, 187 /* GL_ARB_gpu_shader_int64 */, 42337}, /* glProgramUniform2i64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 173, 72 /* GL_AMD_gpu_shader_int64 */, 42362}, /* glProgramUniform2i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 173, 602 /* GL_NV_gpu_shader5 */, 42362}, /* glProgramUniform2i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 357 /* GL_EXT_direct_state_access */, 42386}, /* glProgramUniform2iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 422 /* GL_EXT_separate_shader_objects */, 42386}, /* glProgramUniform2iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 173, 606 /* GL_NV_gpu_shader5 */, 42362}, /* glProgramUniform2i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 360 /* GL_EXT_direct_state_access */, 42386}, /* glProgramUniform2iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 425 /* GL_EXT_separate_shader_objects */, 42386}, /* glProgramUniform2iEXT */
     {DISPATCH_RESOLVE_VERSION, 174, OpenGL_Desktop_4_1, 42271}, /* glProgramUniform2i */
     {DISPATCH_RESOLVE_VERSION, 174, OpenGL_ES_3_1, 42271}, /* glProgramUniform2i */
     {DISPATCH_RESOLVE_EXTENSION, 174, 222 /* GL_ARB_separate_shader_objects */, 42271}, /* glProgramUniform2i */
     {DISPATCH_RESOLVE_VERSION, 175, OpenGL_Desktop_4_1, 42408}, /* glProgramUniform2iv */
     {DISPATCH_RESOLVE_VERSION, 175, OpenGL_ES_3_1, 42408}, /* glProgramUniform2iv */
     {DISPATCH_RESOLVE_EXTENSION, 175, 222 /* GL_ARB_separate_shader_objects */, 42408}, /* glProgramUniform2iv */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 357 /* GL_EXT_direct_state_access */, 42428}, /* glProgramUniform2ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 422 /* GL_EXT_separate_shader_objects */, 42428}, /* glProgramUniform2ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 357 /* GL_EXT_direct_state_access */, 42428}, /* glProgramUniform2ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 422 /* GL_EXT_separate_shader_objects */, 42428}, /* glProgramUniform2ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 360 /* GL_EXT_direct_state_access */, 42428}, /* glProgramUniform2ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 425 /* GL_EXT_separate_shader_objects */, 42428}, /* glProgramUniform2ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 360 /* GL_EXT_direct_state_access */, 42428}, /* glProgramUniform2ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 425 /* GL_EXT_separate_shader_objects */, 42428}, /* glProgramUniform2ivEXT */
     {DISPATCH_RESOLVE_VERSION, 176, OpenGL_Desktop_4_1, 42408}, /* glProgramUniform2iv */
     {DISPATCH_RESOLVE_VERSION, 176, OpenGL_ES_3_1, 42408}, /* glProgramUniform2iv */
     {DISPATCH_RESOLVE_EXTENSION, 176, 222 /* GL_ARB_separate_shader_objects */, 42408}, /* glProgramUniform2iv */
     {DISPATCH_RESOLVE_VERSION, 177, OpenGL_Desktop_4_1, 42451}, /* glProgramUniform2ui */
     {DISPATCH_RESOLVE_VERSION, 177, OpenGL_ES_3_1, 42451}, /* glProgramUniform2ui */
     {DISPATCH_RESOLVE_EXTENSION, 177, 222 /* GL_ARB_separate_shader_objects */, 42451}, /* glProgramUniform2ui */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 357 /* GL_EXT_direct_state_access */, 42571}, /* glProgramUniform2uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 422 /* GL_EXT_separate_shader_objects */, 42571}, /* glProgramUniform2uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 360 /* GL_EXT_direct_state_access */, 42571}, /* glProgramUniform2uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 425 /* GL_EXT_separate_shader_objects */, 42571}, /* glProgramUniform2uiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 178, 187 /* GL_ARB_gpu_shader_int64 */, 42471}, /* glProgramUniform2ui64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 179, 72 /* GL_AMD_gpu_shader_int64 */, 42496}, /* glProgramUniform2ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 179, 602 /* GL_NV_gpu_shader5 */, 42496}, /* glProgramUniform2ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 179, 606 /* GL_NV_gpu_shader5 */, 42496}, /* glProgramUniform2ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 180, 187 /* GL_ARB_gpu_shader_int64 */, 42520}, /* glProgramUniform2ui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 181, 72 /* GL_AMD_gpu_shader_int64 */, 42546}, /* glProgramUniform2ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 602 /* GL_NV_gpu_shader5 */, 42546}, /* glProgramUniform2ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 357 /* GL_EXT_direct_state_access */, 42571}, /* glProgramUniform2uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 422 /* GL_EXT_separate_shader_objects */, 42571}, /* glProgramUniform2uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 606 /* GL_NV_gpu_shader5 */, 42546}, /* glProgramUniform2ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 360 /* GL_EXT_direct_state_access */, 42571}, /* glProgramUniform2uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 425 /* GL_EXT_separate_shader_objects */, 42571}, /* glProgramUniform2uiEXT */
     {DISPATCH_RESOLVE_VERSION, 182, OpenGL_Desktop_4_1, 42451}, /* glProgramUniform2ui */
     {DISPATCH_RESOLVE_VERSION, 182, OpenGL_ES_3_1, 42451}, /* glProgramUniform2ui */
     {DISPATCH_RESOLVE_EXTENSION, 182, 222 /* GL_ARB_separate_shader_objects */, 42451}, /* glProgramUniform2ui */
     {DISPATCH_RESOLVE_VERSION, 183, OpenGL_Desktop_4_1, 42594}, /* glProgramUniform2uiv */
     {DISPATCH_RESOLVE_VERSION, 183, OpenGL_ES_3_1, 42594}, /* glProgramUniform2uiv */
     {DISPATCH_RESOLVE_EXTENSION, 183, 222 /* GL_ARB_separate_shader_objects */, 42594}, /* glProgramUniform2uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 357 /* GL_EXT_direct_state_access */, 42615}, /* glProgramUniform2uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 422 /* GL_EXT_separate_shader_objects */, 42615}, /* glProgramUniform2uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 357 /* GL_EXT_direct_state_access */, 42615}, /* glProgramUniform2uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 422 /* GL_EXT_separate_shader_objects */, 42615}, /* glProgramUniform2uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 360 /* GL_EXT_direct_state_access */, 42615}, /* glProgramUniform2uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 425 /* GL_EXT_separate_shader_objects */, 42615}, /* glProgramUniform2uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 360 /* GL_EXT_direct_state_access */, 42615}, /* glProgramUniform2uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 425 /* GL_EXT_separate_shader_objects */, 42615}, /* glProgramUniform2uivEXT */
     {DISPATCH_RESOLVE_VERSION, 184, OpenGL_Desktop_4_1, 42594}, /* glProgramUniform2uiv */
     {DISPATCH_RESOLVE_VERSION, 184, OpenGL_ES_3_1, 42594}, /* glProgramUniform2uiv */
     {DISPATCH_RESOLVE_EXTENSION, 184, 222 /* GL_ARB_separate_shader_objects */, 42594}, /* glProgramUniform2uiv */
     {DISPATCH_RESOLVE_VERSION, 185, OpenGL_Desktop_4_1, 42639}, /* glProgramUniform3d */
     {DISPATCH_RESOLVE_EXTENSION, 185, 222 /* GL_ARB_separate_shader_objects */, 42639}, /* glProgramUniform3d */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 357 /* GL_EXT_direct_state_access */, 42658}, /* glProgramUniform3dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 360 /* GL_EXT_direct_state_access */, 42658}, /* glProgramUniform3dEXT */
     {DISPATCH_RESOLVE_VERSION, 187, OpenGL_Desktop_4_1, 42680}, /* glProgramUniform3dv */
     {DISPATCH_RESOLVE_EXTENSION, 187, 222 /* GL_ARB_separate_shader_objects */, 42680}, /* glProgramUniform3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 188, 357 /* GL_EXT_direct_state_access */, 42700}, /* glProgramUniform3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 188, 360 /* GL_EXT_direct_state_access */, 42700}, /* glProgramUniform3dvEXT */
     {DISPATCH_RESOLVE_VERSION, 189, OpenGL_Desktop_4_1, 42723}, /* glProgramUniform3f */
     {DISPATCH_RESOLVE_VERSION, 189, OpenGL_ES_3_1, 42723}, /* glProgramUniform3f */
     {DISPATCH_RESOLVE_EXTENSION, 189, 222 /* GL_ARB_separate_shader_objects */, 42723}, /* glProgramUniform3f */
-    {DISPATCH_RESOLVE_EXTENSION, 189, 357 /* GL_EXT_direct_state_access */, 42742}, /* glProgramUniform3fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 189, 422 /* GL_EXT_separate_shader_objects */, 42742}, /* glProgramUniform3fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 357 /* GL_EXT_direct_state_access */, 42742}, /* glProgramUniform3fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 422 /* GL_EXT_separate_shader_objects */, 42742}, /* glProgramUniform3fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 189, 360 /* GL_EXT_direct_state_access */, 42742}, /* glProgramUniform3fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 189, 425 /* GL_EXT_separate_shader_objects */, 42742}, /* glProgramUniform3fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 360 /* GL_EXT_direct_state_access */, 42742}, /* glProgramUniform3fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 425 /* GL_EXT_separate_shader_objects */, 42742}, /* glProgramUniform3fEXT */
     {DISPATCH_RESOLVE_VERSION, 190, OpenGL_Desktop_4_1, 42723}, /* glProgramUniform3f */
     {DISPATCH_RESOLVE_VERSION, 190, OpenGL_ES_3_1, 42723}, /* glProgramUniform3f */
     {DISPATCH_RESOLVE_EXTENSION, 190, 222 /* GL_ARB_separate_shader_objects */, 42723}, /* glProgramUniform3f */
     {DISPATCH_RESOLVE_VERSION, 191, OpenGL_Desktop_4_1, 42764}, /* glProgramUniform3fv */
     {DISPATCH_RESOLVE_VERSION, 191, OpenGL_ES_3_1, 42764}, /* glProgramUniform3fv */
     {DISPATCH_RESOLVE_EXTENSION, 191, 222 /* GL_ARB_separate_shader_objects */, 42764}, /* glProgramUniform3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 191, 357 /* GL_EXT_direct_state_access */, 42784}, /* glProgramUniform3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 191, 422 /* GL_EXT_separate_shader_objects */, 42784}, /* glProgramUniform3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 357 /* GL_EXT_direct_state_access */, 42784}, /* glProgramUniform3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 422 /* GL_EXT_separate_shader_objects */, 42784}, /* glProgramUniform3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 191, 360 /* GL_EXT_direct_state_access */, 42784}, /* glProgramUniform3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 191, 425 /* GL_EXT_separate_shader_objects */, 42784}, /* glProgramUniform3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 360 /* GL_EXT_direct_state_access */, 42784}, /* glProgramUniform3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 425 /* GL_EXT_separate_shader_objects */, 42784}, /* glProgramUniform3fvEXT */
     {DISPATCH_RESOLVE_VERSION, 192, OpenGL_Desktop_4_1, 42764}, /* glProgramUniform3fv */
     {DISPATCH_RESOLVE_VERSION, 192, OpenGL_ES_3_1, 42764}, /* glProgramUniform3fv */
     {DISPATCH_RESOLVE_EXTENSION, 192, 222 /* GL_ARB_separate_shader_objects */, 42764}, /* glProgramUniform3fv */
     {DISPATCH_RESOLVE_VERSION, 193, OpenGL_Desktop_4_1, 42807}, /* glProgramUniform3i */
     {DISPATCH_RESOLVE_VERSION, 193, OpenGL_ES_3_1, 42807}, /* glProgramUniform3i */
     {DISPATCH_RESOLVE_EXTENSION, 193, 222 /* GL_ARB_separate_shader_objects */, 42807}, /* glProgramUniform3i */
-    {DISPATCH_RESOLVE_EXTENSION, 193, 357 /* GL_EXT_direct_state_access */, 42922}, /* glProgramUniform3iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 193, 422 /* GL_EXT_separate_shader_objects */, 42922}, /* glProgramUniform3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 193, 360 /* GL_EXT_direct_state_access */, 42922}, /* glProgramUniform3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 193, 425 /* GL_EXT_separate_shader_objects */, 42922}, /* glProgramUniform3iEXT */
     {DISPATCH_RESOLVE_EXTENSION, 194, 187 /* GL_ARB_gpu_shader_int64 */, 42826}, /* glProgramUniform3i64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 195, 72 /* GL_AMD_gpu_shader_int64 */, 42850}, /* glProgramUniform3i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 195, 602 /* GL_NV_gpu_shader5 */, 42850}, /* glProgramUniform3i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 195, 606 /* GL_NV_gpu_shader5 */, 42850}, /* glProgramUniform3i64NV */
     {DISPATCH_RESOLVE_EXTENSION, 196, 187 /* GL_ARB_gpu_shader_int64 */, 42873}, /* glProgramUniform3i64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 197, 72 /* GL_AMD_gpu_shader_int64 */, 42898}, /* glProgramUniform3i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 197, 602 /* GL_NV_gpu_shader5 */, 42898}, /* glProgramUniform3i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 357 /* GL_EXT_direct_state_access */, 42922}, /* glProgramUniform3iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 422 /* GL_EXT_separate_shader_objects */, 42922}, /* glProgramUniform3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 197, 606 /* GL_NV_gpu_shader5 */, 42898}, /* glProgramUniform3i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 360 /* GL_EXT_direct_state_access */, 42922}, /* glProgramUniform3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 425 /* GL_EXT_separate_shader_objects */, 42922}, /* glProgramUniform3iEXT */
     {DISPATCH_RESOLVE_VERSION, 198, OpenGL_Desktop_4_1, 42807}, /* glProgramUniform3i */
     {DISPATCH_RESOLVE_VERSION, 198, OpenGL_ES_3_1, 42807}, /* glProgramUniform3i */
     {DISPATCH_RESOLVE_EXTENSION, 198, 222 /* GL_ARB_separate_shader_objects */, 42807}, /* glProgramUniform3i */
     {DISPATCH_RESOLVE_VERSION, 199, OpenGL_Desktop_4_1, 42944}, /* glProgramUniform3iv */
     {DISPATCH_RESOLVE_VERSION, 199, OpenGL_ES_3_1, 42944}, /* glProgramUniform3iv */
     {DISPATCH_RESOLVE_EXTENSION, 199, 222 /* GL_ARB_separate_shader_objects */, 42944}, /* glProgramUniform3iv */
-    {DISPATCH_RESOLVE_EXTENSION, 199, 357 /* GL_EXT_direct_state_access */, 42964}, /* glProgramUniform3ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 199, 422 /* GL_EXT_separate_shader_objects */, 42964}, /* glProgramUniform3ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 357 /* GL_EXT_direct_state_access */, 42964}, /* glProgramUniform3ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 422 /* GL_EXT_separate_shader_objects */, 42964}, /* glProgramUniform3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 199, 360 /* GL_EXT_direct_state_access */, 42964}, /* glProgramUniform3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 199, 425 /* GL_EXT_separate_shader_objects */, 42964}, /* glProgramUniform3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 360 /* GL_EXT_direct_state_access */, 42964}, /* glProgramUniform3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 425 /* GL_EXT_separate_shader_objects */, 42964}, /* glProgramUniform3ivEXT */
     {DISPATCH_RESOLVE_VERSION, 200, OpenGL_Desktop_4_1, 42944}, /* glProgramUniform3iv */
     {DISPATCH_RESOLVE_VERSION, 200, OpenGL_ES_3_1, 42944}, /* glProgramUniform3iv */
     {DISPATCH_RESOLVE_EXTENSION, 200, 222 /* GL_ARB_separate_shader_objects */, 42944}, /* glProgramUniform3iv */
     {DISPATCH_RESOLVE_VERSION, 201, OpenGL_Desktop_4_1, 42987}, /* glProgramUniform3ui */
     {DISPATCH_RESOLVE_VERSION, 201, OpenGL_ES_3_1, 42987}, /* glProgramUniform3ui */
     {DISPATCH_RESOLVE_EXTENSION, 201, 222 /* GL_ARB_separate_shader_objects */, 42987}, /* glProgramUniform3ui */
-    {DISPATCH_RESOLVE_EXTENSION, 201, 357 /* GL_EXT_direct_state_access */, 43107}, /* glProgramUniform3uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 201, 422 /* GL_EXT_separate_shader_objects */, 43107}, /* glProgramUniform3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 201, 360 /* GL_EXT_direct_state_access */, 43107}, /* glProgramUniform3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 201, 425 /* GL_EXT_separate_shader_objects */, 43107}, /* glProgramUniform3uiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 202, 187 /* GL_ARB_gpu_shader_int64 */, 43007}, /* glProgramUniform3ui64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 203, 72 /* GL_AMD_gpu_shader_int64 */, 43032}, /* glProgramUniform3ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 203, 602 /* GL_NV_gpu_shader5 */, 43032}, /* glProgramUniform3ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 203, 606 /* GL_NV_gpu_shader5 */, 43032}, /* glProgramUniform3ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 204, 187 /* GL_ARB_gpu_shader_int64 */, 43056}, /* glProgramUniform3ui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 205, 72 /* GL_AMD_gpu_shader_int64 */, 43082}, /* glProgramUniform3ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 205, 602 /* GL_NV_gpu_shader5 */, 43082}, /* glProgramUniform3ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 357 /* GL_EXT_direct_state_access */, 43107}, /* glProgramUniform3uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 422 /* GL_EXT_separate_shader_objects */, 43107}, /* glProgramUniform3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 205, 606 /* GL_NV_gpu_shader5 */, 43082}, /* glProgramUniform3ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 360 /* GL_EXT_direct_state_access */, 43107}, /* glProgramUniform3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 425 /* GL_EXT_separate_shader_objects */, 43107}, /* glProgramUniform3uiEXT */
     {DISPATCH_RESOLVE_VERSION, 206, OpenGL_Desktop_4_1, 42987}, /* glProgramUniform3ui */
     {DISPATCH_RESOLVE_VERSION, 206, OpenGL_ES_3_1, 42987}, /* glProgramUniform3ui */
     {DISPATCH_RESOLVE_EXTENSION, 206, 222 /* GL_ARB_separate_shader_objects */, 42987}, /* glProgramUniform3ui */
     {DISPATCH_RESOLVE_VERSION, 207, OpenGL_Desktop_4_1, 43130}, /* glProgramUniform3uiv */
     {DISPATCH_RESOLVE_VERSION, 207, OpenGL_ES_3_1, 43130}, /* glProgramUniform3uiv */
     {DISPATCH_RESOLVE_EXTENSION, 207, 222 /* GL_ARB_separate_shader_objects */, 43130}, /* glProgramUniform3uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 207, 357 /* GL_EXT_direct_state_access */, 43151}, /* glProgramUniform3uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 207, 422 /* GL_EXT_separate_shader_objects */, 43151}, /* glProgramUniform3uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 357 /* GL_EXT_direct_state_access */, 43151}, /* glProgramUniform3uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 422 /* GL_EXT_separate_shader_objects */, 43151}, /* glProgramUniform3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 207, 360 /* GL_EXT_direct_state_access */, 43151}, /* glProgramUniform3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 207, 425 /* GL_EXT_separate_shader_objects */, 43151}, /* glProgramUniform3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 360 /* GL_EXT_direct_state_access */, 43151}, /* glProgramUniform3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 425 /* GL_EXT_separate_shader_objects */, 43151}, /* glProgramUniform3uivEXT */
     {DISPATCH_RESOLVE_VERSION, 208, OpenGL_Desktop_4_1, 43130}, /* glProgramUniform3uiv */
     {DISPATCH_RESOLVE_VERSION, 208, OpenGL_ES_3_1, 43130}, /* glProgramUniform3uiv */
     {DISPATCH_RESOLVE_EXTENSION, 208, 222 /* GL_ARB_separate_shader_objects */, 43130}, /* glProgramUniform3uiv */
     {DISPATCH_RESOLVE_VERSION, 209, OpenGL_Desktop_4_1, 43175}, /* glProgramUniform4d */
     {DISPATCH_RESOLVE_EXTENSION, 209, 222 /* GL_ARB_separate_shader_objects */, 43175}, /* glProgramUniform4d */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 357 /* GL_EXT_direct_state_access */, 43194}, /* glProgramUniform4dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 360 /* GL_EXT_direct_state_access */, 43194}, /* glProgramUniform4dEXT */
     {DISPATCH_RESOLVE_VERSION, 211, OpenGL_Desktop_4_1, 43216}, /* glProgramUniform4dv */
     {DISPATCH_RESOLVE_EXTENSION, 211, 222 /* GL_ARB_separate_shader_objects */, 43216}, /* glProgramUniform4dv */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 357 /* GL_EXT_direct_state_access */, 43236}, /* glProgramUniform4dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 360 /* GL_EXT_direct_state_access */, 43236}, /* glProgramUniform4dvEXT */
     {DISPATCH_RESOLVE_VERSION, 213, OpenGL_Desktop_4_1, 43259}, /* glProgramUniform4f */
     {DISPATCH_RESOLVE_VERSION, 213, OpenGL_ES_3_1, 43259}, /* glProgramUniform4f */
     {DISPATCH_RESOLVE_EXTENSION, 213, 222 /* GL_ARB_separate_shader_objects */, 43259}, /* glProgramUniform4f */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 357 /* GL_EXT_direct_state_access */, 43278}, /* glProgramUniform4fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 422 /* GL_EXT_separate_shader_objects */, 43278}, /* glProgramUniform4fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 357 /* GL_EXT_direct_state_access */, 43278}, /* glProgramUniform4fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 422 /* GL_EXT_separate_shader_objects */, 43278}, /* glProgramUniform4fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 360 /* GL_EXT_direct_state_access */, 43278}, /* glProgramUniform4fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 425 /* GL_EXT_separate_shader_objects */, 43278}, /* glProgramUniform4fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 360 /* GL_EXT_direct_state_access */, 43278}, /* glProgramUniform4fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 425 /* GL_EXT_separate_shader_objects */, 43278}, /* glProgramUniform4fEXT */
     {DISPATCH_RESOLVE_VERSION, 214, OpenGL_Desktop_4_1, 43259}, /* glProgramUniform4f */
     {DISPATCH_RESOLVE_VERSION, 214, OpenGL_ES_3_1, 43259}, /* glProgramUniform4f */
     {DISPATCH_RESOLVE_EXTENSION, 214, 222 /* GL_ARB_separate_shader_objects */, 43259}, /* glProgramUniform4f */
     {DISPATCH_RESOLVE_VERSION, 215, OpenGL_Desktop_4_1, 43300}, /* glProgramUniform4fv */
     {DISPATCH_RESOLVE_VERSION, 215, OpenGL_ES_3_1, 43300}, /* glProgramUniform4fv */
     {DISPATCH_RESOLVE_EXTENSION, 215, 222 /* GL_ARB_separate_shader_objects */, 43300}, /* glProgramUniform4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 215, 357 /* GL_EXT_direct_state_access */, 43320}, /* glProgramUniform4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 215, 422 /* GL_EXT_separate_shader_objects */, 43320}, /* glProgramUniform4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 357 /* GL_EXT_direct_state_access */, 43320}, /* glProgramUniform4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 422 /* GL_EXT_separate_shader_objects */, 43320}, /* glProgramUniform4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 215, 360 /* GL_EXT_direct_state_access */, 43320}, /* glProgramUniform4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 215, 425 /* GL_EXT_separate_shader_objects */, 43320}, /* glProgramUniform4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 360 /* GL_EXT_direct_state_access */, 43320}, /* glProgramUniform4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 425 /* GL_EXT_separate_shader_objects */, 43320}, /* glProgramUniform4fvEXT */
     {DISPATCH_RESOLVE_VERSION, 216, OpenGL_Desktop_4_1, 43300}, /* glProgramUniform4fv */
     {DISPATCH_RESOLVE_VERSION, 216, OpenGL_ES_3_1, 43300}, /* glProgramUniform4fv */
     {DISPATCH_RESOLVE_EXTENSION, 216, 222 /* GL_ARB_separate_shader_objects */, 43300}, /* glProgramUniform4fv */
     {DISPATCH_RESOLVE_VERSION, 217, OpenGL_Desktop_4_1, 43343}, /* glProgramUniform4i */
     {DISPATCH_RESOLVE_VERSION, 217, OpenGL_ES_3_1, 43343}, /* glProgramUniform4i */
     {DISPATCH_RESOLVE_EXTENSION, 217, 222 /* GL_ARB_separate_shader_objects */, 43343}, /* glProgramUniform4i */
-    {DISPATCH_RESOLVE_EXTENSION, 217, 357 /* GL_EXT_direct_state_access */, 43458}, /* glProgramUniform4iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 217, 422 /* GL_EXT_separate_shader_objects */, 43458}, /* glProgramUniform4iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 217, 360 /* GL_EXT_direct_state_access */, 43458}, /* glProgramUniform4iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 217, 425 /* GL_EXT_separate_shader_objects */, 43458}, /* glProgramUniform4iEXT */
     {DISPATCH_RESOLVE_EXTENSION, 218, 187 /* GL_ARB_gpu_shader_int64 */, 43362}, /* glProgramUniform4i64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 219, 72 /* GL_AMD_gpu_shader_int64 */, 43386}, /* glProgramUniform4i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 602 /* GL_NV_gpu_shader5 */, 43386}, /* glProgramUniform4i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 606 /* GL_NV_gpu_shader5 */, 43386}, /* glProgramUniform4i64NV */
     {DISPATCH_RESOLVE_EXTENSION, 220, 187 /* GL_ARB_gpu_shader_int64 */, 43409}, /* glProgramUniform4i64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 221, 72 /* GL_AMD_gpu_shader_int64 */, 43434}, /* glProgramUniform4i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 221, 602 /* GL_NV_gpu_shader5 */, 43434}, /* glProgramUniform4i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 357 /* GL_EXT_direct_state_access */, 43458}, /* glProgramUniform4iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 422 /* GL_EXT_separate_shader_objects */, 43458}, /* glProgramUniform4iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 221, 606 /* GL_NV_gpu_shader5 */, 43434}, /* glProgramUniform4i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 360 /* GL_EXT_direct_state_access */, 43458}, /* glProgramUniform4iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 425 /* GL_EXT_separate_shader_objects */, 43458}, /* glProgramUniform4iEXT */
     {DISPATCH_RESOLVE_VERSION, 222, OpenGL_Desktop_4_1, 43343}, /* glProgramUniform4i */
     {DISPATCH_RESOLVE_VERSION, 222, OpenGL_ES_3_1, 43343}, /* glProgramUniform4i */
     {DISPATCH_RESOLVE_EXTENSION, 222, 222 /* GL_ARB_separate_shader_objects */, 43343}, /* glProgramUniform4i */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_Desktop_4_1, 43480}, /* glProgramUniform4iv */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_ES_3_1, 43480}, /* glProgramUniform4iv */
     {DISPATCH_RESOLVE_EXTENSION, 223, 222 /* GL_ARB_separate_shader_objects */, 43480}, /* glProgramUniform4iv */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 357 /* GL_EXT_direct_state_access */, 43500}, /* glProgramUniform4ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 422 /* GL_EXT_separate_shader_objects */, 43500}, /* glProgramUniform4ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 357 /* GL_EXT_direct_state_access */, 43500}, /* glProgramUniform4ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 422 /* GL_EXT_separate_shader_objects */, 43500}, /* glProgramUniform4ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 360 /* GL_EXT_direct_state_access */, 43500}, /* glProgramUniform4ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 425 /* GL_EXT_separate_shader_objects */, 43500}, /* glProgramUniform4ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 360 /* GL_EXT_direct_state_access */, 43500}, /* glProgramUniform4ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 425 /* GL_EXT_separate_shader_objects */, 43500}, /* glProgramUniform4ivEXT */
     {DISPATCH_RESOLVE_VERSION, 224, OpenGL_Desktop_4_1, 43480}, /* glProgramUniform4iv */
     {DISPATCH_RESOLVE_VERSION, 224, OpenGL_ES_3_1, 43480}, /* glProgramUniform4iv */
     {DISPATCH_RESOLVE_EXTENSION, 224, 222 /* GL_ARB_separate_shader_objects */, 43480}, /* glProgramUniform4iv */
     {DISPATCH_RESOLVE_VERSION, 225, OpenGL_Desktop_4_1, 43523}, /* glProgramUniform4ui */
     {DISPATCH_RESOLVE_VERSION, 225, OpenGL_ES_3_1, 43523}, /* glProgramUniform4ui */
     {DISPATCH_RESOLVE_EXTENSION, 225, 222 /* GL_ARB_separate_shader_objects */, 43523}, /* glProgramUniform4ui */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 357 /* GL_EXT_direct_state_access */, 43643}, /* glProgramUniform4uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 422 /* GL_EXT_separate_shader_objects */, 43643}, /* glProgramUniform4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 360 /* GL_EXT_direct_state_access */, 43643}, /* glProgramUniform4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 425 /* GL_EXT_separate_shader_objects */, 43643}, /* glProgramUniform4uiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 226, 187 /* GL_ARB_gpu_shader_int64 */, 43543}, /* glProgramUniform4ui64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 227, 72 /* GL_AMD_gpu_shader_int64 */, 43568}, /* glProgramUniform4ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 602 /* GL_NV_gpu_shader5 */, 43568}, /* glProgramUniform4ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 606 /* GL_NV_gpu_shader5 */, 43568}, /* glProgramUniform4ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 228, 187 /* GL_ARB_gpu_shader_int64 */, 43592}, /* glProgramUniform4ui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 229, 72 /* GL_AMD_gpu_shader_int64 */, 43618}, /* glProgramUniform4ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 602 /* GL_NV_gpu_shader5 */, 43618}, /* glProgramUniform4ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 357 /* GL_EXT_direct_state_access */, 43643}, /* glProgramUniform4uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 422 /* GL_EXT_separate_shader_objects */, 43643}, /* glProgramUniform4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 606 /* GL_NV_gpu_shader5 */, 43618}, /* glProgramUniform4ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 360 /* GL_EXT_direct_state_access */, 43643}, /* glProgramUniform4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 425 /* GL_EXT_separate_shader_objects */, 43643}, /* glProgramUniform4uiEXT */
     {DISPATCH_RESOLVE_VERSION, 230, OpenGL_Desktop_4_1, 43523}, /* glProgramUniform4ui */
     {DISPATCH_RESOLVE_VERSION, 230, OpenGL_ES_3_1, 43523}, /* glProgramUniform4ui */
     {DISPATCH_RESOLVE_EXTENSION, 230, 222 /* GL_ARB_separate_shader_objects */, 43523}, /* glProgramUniform4ui */
     {DISPATCH_RESOLVE_VERSION, 231, OpenGL_Desktop_4_1, 43666}, /* glProgramUniform4uiv */
     {DISPATCH_RESOLVE_VERSION, 231, OpenGL_ES_3_1, 43666}, /* glProgramUniform4uiv */
     {DISPATCH_RESOLVE_EXTENSION, 231, 222 /* GL_ARB_separate_shader_objects */, 43666}, /* glProgramUniform4uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 357 /* GL_EXT_direct_state_access */, 43687}, /* glProgramUniform4uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 422 /* GL_EXT_separate_shader_objects */, 43687}, /* glProgramUniform4uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 357 /* GL_EXT_direct_state_access */, 43687}, /* glProgramUniform4uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 422 /* GL_EXT_separate_shader_objects */, 43687}, /* glProgramUniform4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 360 /* GL_EXT_direct_state_access */, 43687}, /* glProgramUniform4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 425 /* GL_EXT_separate_shader_objects */, 43687}, /* glProgramUniform4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 360 /* GL_EXT_direct_state_access */, 43687}, /* glProgramUniform4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 425 /* GL_EXT_separate_shader_objects */, 43687}, /* glProgramUniform4uivEXT */
     {DISPATCH_RESOLVE_VERSION, 232, OpenGL_Desktop_4_1, 43666}, /* glProgramUniform4uiv */
     {DISPATCH_RESOLVE_VERSION, 232, OpenGL_ES_3_1, 43666}, /* glProgramUniform4uiv */
     {DISPATCH_RESOLVE_EXTENSION, 232, 222 /* GL_ARB_separate_shader_objects */, 43666}, /* glProgramUniform4uiv */
     {DISPATCH_RESOLVE_EXTENSION, 233, 141 /* GL_ARB_bindless_texture */, 43711}, /* glProgramUniformHandleui64ARB */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 554 /* GL_NV_bindless_texture */, 43741}, /* glProgramUniformHandleui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 558 /* GL_NV_bindless_texture */, 43741}, /* glProgramUniformHandleui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 235, 141 /* GL_ARB_bindless_texture */, 43770}, /* glProgramUniformHandleui64vARB */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 554 /* GL_NV_bindless_texture */, 43801}, /* glProgramUniformHandleui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 558 /* GL_NV_bindless_texture */, 43801}, /* glProgramUniformHandleui64vNV */
     {DISPATCH_RESOLVE_VERSION, 237, OpenGL_Desktop_4_1, 43831}, /* glProgramUniformMatrix2dv */
     {DISPATCH_RESOLVE_EXTENSION, 237, 222 /* GL_ARB_separate_shader_objects */, 43831}, /* glProgramUniformMatrix2dv */
-    {DISPATCH_RESOLVE_EXTENSION, 238, 357 /* GL_EXT_direct_state_access */, 43857}, /* glProgramUniformMatrix2dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 238, 360 /* GL_EXT_direct_state_access */, 43857}, /* glProgramUniformMatrix2dvEXT */
     {DISPATCH_RESOLVE_VERSION, 239, OpenGL_Desktop_4_1, 43886}, /* glProgramUniformMatrix2fv */
     {DISPATCH_RESOLVE_VERSION, 239, OpenGL_ES_3_1, 43886}, /* glProgramUniformMatrix2fv */
     {DISPATCH_RESOLVE_EXTENSION, 239, 222 /* GL_ARB_separate_shader_objects */, 43886}, /* glProgramUniformMatrix2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 357 /* GL_EXT_direct_state_access */, 43912}, /* glProgramUniformMatrix2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 422 /* GL_EXT_separate_shader_objects */, 43912}, /* glProgramUniformMatrix2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 357 /* GL_EXT_direct_state_access */, 43912}, /* glProgramUniformMatrix2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 422 /* GL_EXT_separate_shader_objects */, 43912}, /* glProgramUniformMatrix2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 360 /* GL_EXT_direct_state_access */, 43912}, /* glProgramUniformMatrix2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 425 /* GL_EXT_separate_shader_objects */, 43912}, /* glProgramUniformMatrix2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 360 /* GL_EXT_direct_state_access */, 43912}, /* glProgramUniformMatrix2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 425 /* GL_EXT_separate_shader_objects */, 43912}, /* glProgramUniformMatrix2fvEXT */
     {DISPATCH_RESOLVE_VERSION, 240, OpenGL_Desktop_4_1, 43886}, /* glProgramUniformMatrix2fv */
     {DISPATCH_RESOLVE_VERSION, 240, OpenGL_ES_3_1, 43886}, /* glProgramUniformMatrix2fv */
     {DISPATCH_RESOLVE_EXTENSION, 240, 222 /* GL_ARB_separate_shader_objects */, 43886}, /* glProgramUniformMatrix2fv */
     {DISPATCH_RESOLVE_VERSION, 241, OpenGL_Desktop_4_1, 43941}, /* glProgramUniformMatrix2x3dv */
     {DISPATCH_RESOLVE_EXTENSION, 241, 222 /* GL_ARB_separate_shader_objects */, 43941}, /* glProgramUniformMatrix2x3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 357 /* GL_EXT_direct_state_access */, 43969}, /* glProgramUniformMatrix2x3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 360 /* GL_EXT_direct_state_access */, 43969}, /* glProgramUniformMatrix2x3dvEXT */
     {DISPATCH_RESOLVE_VERSION, 243, OpenGL_Desktop_4_1, 44000}, /* glProgramUniformMatrix2x3fv */
     {DISPATCH_RESOLVE_VERSION, 243, OpenGL_ES_3_1, 44000}, /* glProgramUniformMatrix2x3fv */
     {DISPATCH_RESOLVE_EXTENSION, 243, 222 /* GL_ARB_separate_shader_objects */, 44000}, /* glProgramUniformMatrix2x3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 243, 357 /* GL_EXT_direct_state_access */, 44028}, /* glProgramUniformMatrix2x3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 243, 422 /* GL_EXT_separate_shader_objects */, 44028}, /* glProgramUniformMatrix2x3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 244, 357 /* GL_EXT_direct_state_access */, 44028}, /* glProgramUniformMatrix2x3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 244, 422 /* GL_EXT_separate_shader_objects */, 44028}, /* glProgramUniformMatrix2x3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 243, 360 /* GL_EXT_direct_state_access */, 44028}, /* glProgramUniformMatrix2x3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 243, 425 /* GL_EXT_separate_shader_objects */, 44028}, /* glProgramUniformMatrix2x3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 244, 360 /* GL_EXT_direct_state_access */, 44028}, /* glProgramUniformMatrix2x3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 244, 425 /* GL_EXT_separate_shader_objects */, 44028}, /* glProgramUniformMatrix2x3fvEXT */
     {DISPATCH_RESOLVE_VERSION, 244, OpenGL_Desktop_4_1, 44000}, /* glProgramUniformMatrix2x3fv */
     {DISPATCH_RESOLVE_VERSION, 244, OpenGL_ES_3_1, 44000}, /* glProgramUniformMatrix2x3fv */
     {DISPATCH_RESOLVE_EXTENSION, 244, 222 /* GL_ARB_separate_shader_objects */, 44000}, /* glProgramUniformMatrix2x3fv */
     {DISPATCH_RESOLVE_VERSION, 245, OpenGL_Desktop_4_1, 44059}, /* glProgramUniformMatrix2x4dv */
     {DISPATCH_RESOLVE_EXTENSION, 245, 222 /* GL_ARB_separate_shader_objects */, 44059}, /* glProgramUniformMatrix2x4dv */
-    {DISPATCH_RESOLVE_EXTENSION, 246, 357 /* GL_EXT_direct_state_access */, 44087}, /* glProgramUniformMatrix2x4dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 246, 360 /* GL_EXT_direct_state_access */, 44087}, /* glProgramUniformMatrix2x4dvEXT */
     {DISPATCH_RESOLVE_VERSION, 247, OpenGL_Desktop_4_1, 44118}, /* glProgramUniformMatrix2x4fv */
     {DISPATCH_RESOLVE_VERSION, 247, OpenGL_ES_3_1, 44118}, /* glProgramUniformMatrix2x4fv */
     {DISPATCH_RESOLVE_EXTENSION, 247, 222 /* GL_ARB_separate_shader_objects */, 44118}, /* glProgramUniformMatrix2x4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 247, 357 /* GL_EXT_direct_state_access */, 44146}, /* glProgramUniformMatrix2x4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 247, 422 /* GL_EXT_separate_shader_objects */, 44146}, /* glProgramUniformMatrix2x4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 357 /* GL_EXT_direct_state_access */, 44146}, /* glProgramUniformMatrix2x4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 422 /* GL_EXT_separate_shader_objects */, 44146}, /* glProgramUniformMatrix2x4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 247, 360 /* GL_EXT_direct_state_access */, 44146}, /* glProgramUniformMatrix2x4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 247, 425 /* GL_EXT_separate_shader_objects */, 44146}, /* glProgramUniformMatrix2x4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 360 /* GL_EXT_direct_state_access */, 44146}, /* glProgramUniformMatrix2x4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 425 /* GL_EXT_separate_shader_objects */, 44146}, /* glProgramUniformMatrix2x4fvEXT */
     {DISPATCH_RESOLVE_VERSION, 248, OpenGL_Desktop_4_1, 44118}, /* glProgramUniformMatrix2x4fv */
     {DISPATCH_RESOLVE_VERSION, 248, OpenGL_ES_3_1, 44118}, /* glProgramUniformMatrix2x4fv */
     {DISPATCH_RESOLVE_EXTENSION, 248, 222 /* GL_ARB_separate_shader_objects */, 44118}, /* glProgramUniformMatrix2x4fv */
     {DISPATCH_RESOLVE_VERSION, 249, OpenGL_Desktop_4_1, 44177}, /* glProgramUniformMatrix3dv */
     {DISPATCH_RESOLVE_EXTENSION, 249, 222 /* GL_ARB_separate_shader_objects */, 44177}, /* glProgramUniformMatrix3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 357 /* GL_EXT_direct_state_access */, 44203}, /* glProgramUniformMatrix3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 360 /* GL_EXT_direct_state_access */, 44203}, /* glProgramUniformMatrix3dvEXT */
     {DISPATCH_RESOLVE_VERSION, 251, OpenGL_Desktop_4_1, 44232}, /* glProgramUniformMatrix3fv */
     {DISPATCH_RESOLVE_VERSION, 251, OpenGL_ES_3_1, 44232}, /* glProgramUniformMatrix3fv */
     {DISPATCH_RESOLVE_EXTENSION, 251, 222 /* GL_ARB_separate_shader_objects */, 44232}, /* glProgramUniformMatrix3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 357 /* GL_EXT_direct_state_access */, 44258}, /* glProgramUniformMatrix3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 422 /* GL_EXT_separate_shader_objects */, 44258}, /* glProgramUniformMatrix3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 357 /* GL_EXT_direct_state_access */, 44258}, /* glProgramUniformMatrix3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 422 /* GL_EXT_separate_shader_objects */, 44258}, /* glProgramUniformMatrix3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 360 /* GL_EXT_direct_state_access */, 44258}, /* glProgramUniformMatrix3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 425 /* GL_EXT_separate_shader_objects */, 44258}, /* glProgramUniformMatrix3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 360 /* GL_EXT_direct_state_access */, 44258}, /* glProgramUniformMatrix3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 425 /* GL_EXT_separate_shader_objects */, 44258}, /* glProgramUniformMatrix3fvEXT */
     {DISPATCH_RESOLVE_VERSION, 252, OpenGL_Desktop_4_1, 44232}, /* glProgramUniformMatrix3fv */
     {DISPATCH_RESOLVE_VERSION, 252, OpenGL_ES_3_1, 44232}, /* glProgramUniformMatrix3fv */
     {DISPATCH_RESOLVE_EXTENSION, 252, 222 /* GL_ARB_separate_shader_objects */, 44232}, /* glProgramUniformMatrix3fv */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_Desktop_4_1, 44287}, /* glProgramUniformMatrix3x2dv */
     {DISPATCH_RESOLVE_EXTENSION, 253, 222 /* GL_ARB_separate_shader_objects */, 44287}, /* glProgramUniformMatrix3x2dv */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 357 /* GL_EXT_direct_state_access */, 44315}, /* glProgramUniformMatrix3x2dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 360 /* GL_EXT_direct_state_access */, 44315}, /* glProgramUniformMatrix3x2dvEXT */
     {DISPATCH_RESOLVE_VERSION, 255, OpenGL_Desktop_4_1, 44346}, /* glProgramUniformMatrix3x2fv */
     {DISPATCH_RESOLVE_VERSION, 255, OpenGL_ES_3_1, 44346}, /* glProgramUniformMatrix3x2fv */
     {DISPATCH_RESOLVE_EXTENSION, 255, 222 /* GL_ARB_separate_shader_objects */, 44346}, /* glProgramUniformMatrix3x2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 357 /* GL_EXT_direct_state_access */, 44374}, /* glProgramUniformMatrix3x2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 422 /* GL_EXT_separate_shader_objects */, 44374}, /* glProgramUniformMatrix3x2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 0, 357 /* GL_EXT_direct_state_access */, 44374}, /* glProgramUniformMatrix3x2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 0, 422 /* GL_EXT_separate_shader_objects */, 44374}, /* glProgramUniformMatrix3x2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 360 /* GL_EXT_direct_state_access */, 44374}, /* glProgramUniformMatrix3x2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 425 /* GL_EXT_separate_shader_objects */, 44374}, /* glProgramUniformMatrix3x2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 360 /* GL_EXT_direct_state_access */, 44374}, /* glProgramUniformMatrix3x2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 425 /* GL_EXT_separate_shader_objects */, 44374}, /* glProgramUniformMatrix3x2fvEXT */
     {DISPATCH_RESOLVE_VERSION, 0, OpenGL_Desktop_4_1, 44346}, /* glProgramUniformMatrix3x2fv */
     {DISPATCH_RESOLVE_VERSION, 0, OpenGL_ES_3_1, 44346}, /* glProgramUniformMatrix3x2fv */
     {DISPATCH_RESOLVE_EXTENSION, 0, 222 /* GL_ARB_separate_shader_objects */, 44346}, /* glProgramUniformMatrix3x2fv */
     {DISPATCH_RESOLVE_VERSION, 1, OpenGL_Desktop_4_1, 44405}, /* glProgramUniformMatrix3x4dv */
     {DISPATCH_RESOLVE_EXTENSION, 1, 222 /* GL_ARB_separate_shader_objects */, 44405}, /* glProgramUniformMatrix3x4dv */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 357 /* GL_EXT_direct_state_access */, 44433}, /* glProgramUniformMatrix3x4dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 360 /* GL_EXT_direct_state_access */, 44433}, /* glProgramUniformMatrix3x4dvEXT */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_Desktop_4_1, 44464}, /* glProgramUniformMatrix3x4fv */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_ES_3_1, 44464}, /* glProgramUniformMatrix3x4fv */
     {DISPATCH_RESOLVE_EXTENSION, 3, 222 /* GL_ARB_separate_shader_objects */, 44464}, /* glProgramUniformMatrix3x4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 357 /* GL_EXT_direct_state_access */, 44492}, /* glProgramUniformMatrix3x4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 422 /* GL_EXT_separate_shader_objects */, 44492}, /* glProgramUniformMatrix3x4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 357 /* GL_EXT_direct_state_access */, 44492}, /* glProgramUniformMatrix3x4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 422 /* GL_EXT_separate_shader_objects */, 44492}, /* glProgramUniformMatrix3x4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 360 /* GL_EXT_direct_state_access */, 44492}, /* glProgramUniformMatrix3x4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 425 /* GL_EXT_separate_shader_objects */, 44492}, /* glProgramUniformMatrix3x4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 360 /* GL_EXT_direct_state_access */, 44492}, /* glProgramUniformMatrix3x4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 425 /* GL_EXT_separate_shader_objects */, 44492}, /* glProgramUniformMatrix3x4fvEXT */
     {DISPATCH_RESOLVE_VERSION, 4, OpenGL_Desktop_4_1, 44464}, /* glProgramUniformMatrix3x4fv */
     {DISPATCH_RESOLVE_VERSION, 4, OpenGL_ES_3_1, 44464}, /* glProgramUniformMatrix3x4fv */
     {DISPATCH_RESOLVE_EXTENSION, 4, 222 /* GL_ARB_separate_shader_objects */, 44464}, /* glProgramUniformMatrix3x4fv */
     {DISPATCH_RESOLVE_VERSION, 5, OpenGL_Desktop_4_1, 44523}, /* glProgramUniformMatrix4dv */
     {DISPATCH_RESOLVE_EXTENSION, 5, 222 /* GL_ARB_separate_shader_objects */, 44523}, /* glProgramUniformMatrix4dv */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 357 /* GL_EXT_direct_state_access */, 44549}, /* glProgramUniformMatrix4dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 360 /* GL_EXT_direct_state_access */, 44549}, /* glProgramUniformMatrix4dvEXT */
     {DISPATCH_RESOLVE_VERSION, 7, OpenGL_Desktop_4_1, 44578}, /* glProgramUniformMatrix4fv */
     {DISPATCH_RESOLVE_VERSION, 7, OpenGL_ES_3_1, 44578}, /* glProgramUniformMatrix4fv */
     {DISPATCH_RESOLVE_EXTENSION, 7, 222 /* GL_ARB_separate_shader_objects */, 44578}, /* glProgramUniformMatrix4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 7, 357 /* GL_EXT_direct_state_access */, 44604}, /* glProgramUniformMatrix4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 7, 422 /* GL_EXT_separate_shader_objects */, 44604}, /* glProgramUniformMatrix4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 357 /* GL_EXT_direct_state_access */, 44604}, /* glProgramUniformMatrix4fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 422 /* GL_EXT_separate_shader_objects */, 44604}, /* glProgramUniformMatrix4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 360 /* GL_EXT_direct_state_access */, 44604}, /* glProgramUniformMatrix4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 425 /* GL_EXT_separate_shader_objects */, 44604}, /* glProgramUniformMatrix4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 360 /* GL_EXT_direct_state_access */, 44604}, /* glProgramUniformMatrix4fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 425 /* GL_EXT_separate_shader_objects */, 44604}, /* glProgramUniformMatrix4fvEXT */
     {DISPATCH_RESOLVE_VERSION, 8, OpenGL_Desktop_4_1, 44578}, /* glProgramUniformMatrix4fv */
     {DISPATCH_RESOLVE_VERSION, 8, OpenGL_ES_3_1, 44578}, /* glProgramUniformMatrix4fv */
     {DISPATCH_RESOLVE_EXTENSION, 8, 222 /* GL_ARB_separate_shader_objects */, 44578}, /* glProgramUniformMatrix4fv */
     {DISPATCH_RESOLVE_VERSION, 9, OpenGL_Desktop_4_1, 44633}, /* glProgramUniformMatrix4x2dv */
     {DISPATCH_RESOLVE_EXTENSION, 9, 222 /* GL_ARB_separate_shader_objects */, 44633}, /* glProgramUniformMatrix4x2dv */
-    {DISPATCH_RESOLVE_EXTENSION, 10, 357 /* GL_EXT_direct_state_access */, 44661}, /* glProgramUniformMatrix4x2dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 360 /* GL_EXT_direct_state_access */, 44661}, /* glProgramUniformMatrix4x2dvEXT */
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_Desktop_4_1, 44692}, /* glProgramUniformMatrix4x2fv */
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_ES_3_1, 44692}, /* glProgramUniformMatrix4x2fv */
     {DISPATCH_RESOLVE_EXTENSION, 11, 222 /* GL_ARB_separate_shader_objects */, 44692}, /* glProgramUniformMatrix4x2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 357 /* GL_EXT_direct_state_access */, 44720}, /* glProgramUniformMatrix4x2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 422 /* GL_EXT_separate_shader_objects */, 44720}, /* glProgramUniformMatrix4x2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 357 /* GL_EXT_direct_state_access */, 44720}, /* glProgramUniformMatrix4x2fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 422 /* GL_EXT_separate_shader_objects */, 44720}, /* glProgramUniformMatrix4x2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 360 /* GL_EXT_direct_state_access */, 44720}, /* glProgramUniformMatrix4x2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 425 /* GL_EXT_separate_shader_objects */, 44720}, /* glProgramUniformMatrix4x2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 360 /* GL_EXT_direct_state_access */, 44720}, /* glProgramUniformMatrix4x2fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 425 /* GL_EXT_separate_shader_objects */, 44720}, /* glProgramUniformMatrix4x2fvEXT */
     {DISPATCH_RESOLVE_VERSION, 12, OpenGL_Desktop_4_1, 44692}, /* glProgramUniformMatrix4x2fv */
     {DISPATCH_RESOLVE_VERSION, 12, OpenGL_ES_3_1, 44692}, /* glProgramUniformMatrix4x2fv */
     {DISPATCH_RESOLVE_EXTENSION, 12, 222 /* GL_ARB_separate_shader_objects */, 44692}, /* glProgramUniformMatrix4x2fv */
     {DISPATCH_RESOLVE_VERSION, 13, OpenGL_Desktop_4_1, 44751}, /* glProgramUniformMatrix4x3dv */
     {DISPATCH_RESOLVE_EXTENSION, 13, 222 /* GL_ARB_separate_shader_objects */, 44751}, /* glProgramUniformMatrix4x3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 357 /* GL_EXT_direct_state_access */, 44779}, /* glProgramUniformMatrix4x3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 360 /* GL_EXT_direct_state_access */, 44779}, /* glProgramUniformMatrix4x3dvEXT */
     {DISPATCH_RESOLVE_VERSION, 15, OpenGL_Desktop_4_1, 44810}, /* glProgramUniformMatrix4x3fv */
     {DISPATCH_RESOLVE_VERSION, 15, OpenGL_ES_3_1, 44810}, /* glProgramUniformMatrix4x3fv */
     {DISPATCH_RESOLVE_EXTENSION, 15, 222 /* GL_ARB_separate_shader_objects */, 44810}, /* glProgramUniformMatrix4x3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 357 /* GL_EXT_direct_state_access */, 44838}, /* glProgramUniformMatrix4x3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 422 /* GL_EXT_separate_shader_objects */, 44838}, /* glProgramUniformMatrix4x3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 357 /* GL_EXT_direct_state_access */, 44838}, /* glProgramUniformMatrix4x3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 422 /* GL_EXT_separate_shader_objects */, 44838}, /* glProgramUniformMatrix4x3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 360 /* GL_EXT_direct_state_access */, 44838}, /* glProgramUniformMatrix4x3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 425 /* GL_EXT_separate_shader_objects */, 44838}, /* glProgramUniformMatrix4x3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 360 /* GL_EXT_direct_state_access */, 44838}, /* glProgramUniformMatrix4x3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 425 /* GL_EXT_separate_shader_objects */, 44838}, /* glProgramUniformMatrix4x3fvEXT */
     {DISPATCH_RESOLVE_VERSION, 16, OpenGL_Desktop_4_1, 44810}, /* glProgramUniformMatrix4x3fv */
     {DISPATCH_RESOLVE_VERSION, 16, OpenGL_ES_3_1, 44810}, /* glProgramUniformMatrix4x3fv */
     {DISPATCH_RESOLVE_EXTENSION, 16, 222 /* GL_ARB_separate_shader_objects */, 44810}, /* glProgramUniformMatrix4x3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 640 /* GL_NV_shader_buffer_load */, 44869}, /* glProgramUniformui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 640 /* GL_NV_shader_buffer_load */, 44892}, /* glProgramUniformui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 595 /* GL_NV_geometry_program4 */, 44916}, /* glProgramVertexLimitNV */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 644 /* GL_NV_shader_buffer_load */, 44869}, /* glProgramUniformui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 644 /* GL_NV_shader_buffer_load */, 44892}, /* glProgramUniformui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 599 /* GL_NV_geometry_program4 */, 44916}, /* glProgramVertexLimitNV */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_3_2, 44939}, /* glProvokingVertex */
     {DISPATCH_RESOLVE_EXTENSION, 20, 212 /* GL_ARB_provoking_vertex */, 44939}, /* glProvokingVertex */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 411 /* GL_EXT_provoking_vertex */, 44957}, /* glProvokingVertexEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 411 /* GL_EXT_provoking_vertex */, 44957}, /* glProvokingVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 414 /* GL_EXT_provoking_vertex */, 44957}, /* glProvokingVertexEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 414 /* GL_EXT_provoking_vertex */, 44957}, /* glProvokingVertexEXT */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_3_2, 44939}, /* glProvokingVertex */
     {DISPATCH_RESOLVE_EXTENSION, 21, 212 /* GL_ARB_provoking_vertex */, 44939}, /* glProvokingVertex */
     {DISPATCH_RESOLVE_DIRECT, 22, OpenGL_Desktop_1_0, 44978}, /* glPushAttrib */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_Desktop_1_1, 44991}, /* glPushClientAttrib */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 357 /* GL_EXT_direct_state_access */, 45010}, /* glPushClientAttribDefaultEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 360 /* GL_EXT_direct_state_access */, 45010}, /* glPushClientAttribDefaultEXT */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_Desktop_4_3, 45039}, /* glPushDebugGroup */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_ES_3_2, 45039}, /* glPushDebugGroup */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 534 /* GL_KHR_debug */, 45039}, /* glPushDebugGroup */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 534 /* GL_KHR_debug */, 45056}, /* glPushDebugGroupKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 534 /* GL_KHR_debug */, 45056}, /* glPushDebugGroupKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 538 /* GL_KHR_debug */, 45039}, /* glPushDebugGroup */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 538 /* GL_KHR_debug */, 45056}, /* glPushDebugGroupKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 538 /* GL_KHR_debug */, 45056}, /* glPushDebugGroupKHR */
     {DISPATCH_RESOLVE_VERSION, 26, OpenGL_Desktop_4_3, 45039}, /* glPushDebugGroup */
     {DISPATCH_RESOLVE_VERSION, 26, OpenGL_ES_3_2, 45039}, /* glPushDebugGroup */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 534 /* GL_KHR_debug */, 45039}, /* glPushDebugGroup */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 355 /* GL_EXT_debug_marker */, 45076}, /* glPushGroupMarkerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 538 /* GL_KHR_debug */, 45039}, /* glPushDebugGroup */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 358 /* GL_EXT_debug_marker */, 45076}, /* glPushGroupMarkerEXT */
     {DISPATCH_RESOLVE_DIRECT, 28, OpenGL_Desktop_1_0, 45097}, /* glPushMatrix */
     {DISPATCH_RESOLVE_DIRECT, 28, OpenGL_ES_1_0, 45097}, /* glPushMatrix */
     {DISPATCH_RESOLVE_DIRECT, 29, OpenGL_Desktop_1_0, 45110}, /* glPushName */
     {DISPATCH_RESOLVE_VERSION, 30, OpenGL_Desktop_3_3, 45121}, /* glQueryCounter */
     {DISPATCH_RESOLVE_EXTENSION, 30, 284 /* GL_ARB_timer_query */, 45121}, /* glQueryCounter */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 359 /* GL_EXT_disjoint_timer_query */, 45136}, /* glQueryCounterEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 359 /* GL_EXT_disjoint_timer_query */, 45136}, /* glQueryCounterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 362 /* GL_EXT_disjoint_timer_query */, 45136}, /* glQueryCounterEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 362 /* GL_EXT_disjoint_timer_query */, 45136}, /* glQueryCounterEXT */
     {DISPATCH_RESOLVE_VERSION, 31, OpenGL_Desktop_3_3, 45121}, /* glQueryCounter */
     {DISPATCH_RESOLVE_EXTENSION, 31, 284 /* GL_ARB_timer_query */, 45121}, /* glQueryCounter */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 716 /* GL_OES_query_matrix */, 45154}, /* glQueryMatrixxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 720 /* GL_OES_query_matrix */, 45154}, /* glQueryMatrixxOES */
     {DISPATCH_RESOLVE_EXTENSION, 33, 76 /* GL_AMD_occlusion_query_event */, 45172}, /* glQueryObjectParameteruiAMD */
     {DISPATCH_RESOLVE_DIRECT, 34, OpenGL_Desktop_1_0, 45200}, /* glRasterPos2d */
     {DISPATCH_RESOLVE_DIRECT, 35, OpenGL_Desktop_1_0, 45214}, /* glRasterPos2dv */
@@ -9274,8 +9284,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 39, OpenGL_Desktop_1_0, 45272}, /* glRasterPos2iv */
     {DISPATCH_RESOLVE_DIRECT, 40, OpenGL_Desktop_1_0, 45287}, /* glRasterPos2s */
     {DISPATCH_RESOLVE_DIRECT, 41, OpenGL_Desktop_1_0, 45301}, /* glRasterPos2sv */
-    {DISPATCH_RESOLVE_EXTENSION, 42, 702 /* GL_OES_fixed_point */, 45316}, /* glRasterPos2xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 43, 702 /* GL_OES_fixed_point */, 45333}, /* glRasterPos2xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 706 /* GL_OES_fixed_point */, 45316}, /* glRasterPos2xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 706 /* GL_OES_fixed_point */, 45333}, /* glRasterPos2xvOES */
     {DISPATCH_RESOLVE_DIRECT, 44, OpenGL_Desktop_1_0, 45351}, /* glRasterPos3d */
     {DISPATCH_RESOLVE_DIRECT, 45, OpenGL_Desktop_1_0, 45365}, /* glRasterPos3dv */
     {DISPATCH_RESOLVE_DIRECT, 46, OpenGL_Desktop_1_0, 45380}, /* glRasterPos3f */
@@ -9284,8 +9294,8 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 49, OpenGL_Desktop_1_0, 45423}, /* glRasterPos3iv */
     {DISPATCH_RESOLVE_DIRECT, 50, OpenGL_Desktop_1_0, 45438}, /* glRasterPos3s */
     {DISPATCH_RESOLVE_DIRECT, 51, OpenGL_Desktop_1_0, 45452}, /* glRasterPos3sv */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 702 /* GL_OES_fixed_point */, 45467}, /* glRasterPos3xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 53, 702 /* GL_OES_fixed_point */, 45484}, /* glRasterPos3xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 706 /* GL_OES_fixed_point */, 45467}, /* glRasterPos3xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 706 /* GL_OES_fixed_point */, 45484}, /* glRasterPos3xvOES */
     {DISPATCH_RESOLVE_DIRECT, 54, OpenGL_Desktop_1_0, 45502}, /* glRasterPos4d */
     {DISPATCH_RESOLVE_DIRECT, 55, OpenGL_Desktop_1_0, 45516}, /* glRasterPos4dv */
     {DISPATCH_RESOLVE_DIRECT, 56, OpenGL_Desktop_1_0, 45531}, /* glRasterPos4f */
@@ -9294,43 +9304,43 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 59, OpenGL_Desktop_1_0, 45574}, /* glRasterPos4iv */
     {DISPATCH_RESOLVE_DIRECT, 60, OpenGL_Desktop_1_0, 45589}, /* glRasterPos4s */
     {DISPATCH_RESOLVE_DIRECT, 61, OpenGL_Desktop_1_0, 45603}, /* glRasterPos4sv */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 702 /* GL_OES_fixed_point */, 45618}, /* glRasterPos4xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 702 /* GL_OES_fixed_point */, 45635}, /* glRasterPos4xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 413 /* GL_EXT_raster_multisample */, 45653}, /* glRasterSamplesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 466 /* GL_EXT_texture_filter_minmax */, 45653}, /* glRasterSamplesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 591 /* GL_NV_framebuffer_mixed_samples */, 45653}, /* glRasterSamplesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 706 /* GL_OES_fixed_point */, 45618}, /* glRasterPos4xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 706 /* GL_OES_fixed_point */, 45635}, /* glRasterPos4xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 416 /* GL_EXT_raster_multisample */, 45653}, /* glRasterSamplesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 470 /* GL_EXT_texture_filter_minmax */, 45653}, /* glRasterSamplesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 595 /* GL_NV_framebuffer_mixed_samples */, 45653}, /* glRasterSamplesEXT */
     {DISPATCH_RESOLVE_DIRECT, 65, OpenGL_Desktop_1_0, 45672}, /* glReadBuffer */
     {DISPATCH_RESOLVE_VERSION, 65, OpenGL_ES_3_0, 45672}, /* glReadBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 66, 396 /* GL_EXT_multiview_draw_buffers */, 45685}, /* glReadBufferIndexedEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 67, 624 /* GL_NV_read_buffer */, 45708}, /* glReadBufferNV */
-    {DISPATCH_RESOLVE_EXTENSION, 68, 803 /* GL_SGIX_instruments */, 45723}, /* glReadInstrumentsSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 399 /* GL_EXT_multiview_draw_buffers */, 45685}, /* glReadBufferIndexedEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 628 /* GL_NV_read_buffer */, 45708}, /* glReadBufferNV */
+    {DISPATCH_RESOLVE_EXTENSION, 68, 808 /* GL_SGIX_instruments */, 45723}, /* glReadInstrumentsSGIX */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_Desktop_1_0, 45745}, /* glReadPixels */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_ES_1_0, 45745}, /* glReadPixels */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_ES_2_0, 45745}, /* glReadPixels */
     {DISPATCH_RESOLVE_VERSION, 70, OpenGL_Desktop_4_5, 45758}, /* glReadnPixels */
     {DISPATCH_RESOLVE_VERSION, 70, OpenGL_ES_3_2, 45758}, /* glReadnPixels */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 537 /* GL_KHR_robustness */, 45758}, /* glReadnPixels */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 541 /* GL_KHR_robustness */, 45758}, /* glReadnPixels */
     {DISPATCH_RESOLVE_EXTENSION, 70, 215 /* GL_ARB_robustness */, 45772}, /* glReadnPixelsARB */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 417 /* GL_EXT_robustness */, 45789}, /* glReadnPixelsEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 537 /* GL_KHR_robustness */, 45806}, /* glReadnPixelsKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 420 /* GL_EXT_robustness */, 45789}, /* glReadnPixelsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 541 /* GL_KHR_robustness */, 45806}, /* glReadnPixelsKHR */
     {DISPATCH_RESOLVE_EXTENSION, 71, 215 /* GL_ARB_robustness */, 45772}, /* glReadnPixelsARB */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_Desktop_4_5, 45758}, /* glReadnPixels */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_ES_3_2, 45758}, /* glReadnPixels */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 537 /* GL_KHR_robustness */, 45758}, /* glReadnPixels */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 417 /* GL_EXT_robustness */, 45789}, /* glReadnPixelsEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 537 /* GL_KHR_robustness */, 45806}, /* glReadnPixelsKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 417 /* GL_EXT_robustness */, 45789}, /* glReadnPixelsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 541 /* GL_KHR_robustness */, 45758}, /* glReadnPixels */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 420 /* GL_EXT_robustness */, 45789}, /* glReadnPixelsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 541 /* GL_KHR_robustness */, 45806}, /* glReadnPixelsKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 420 /* GL_EXT_robustness */, 45789}, /* glReadnPixelsEXT */
     {DISPATCH_RESOLVE_VERSION, 72, OpenGL_Desktop_4_5, 45758}, /* glReadnPixels */
     {DISPATCH_RESOLVE_VERSION, 72, OpenGL_ES_3_2, 45758}, /* glReadnPixels */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 537 /* GL_KHR_robustness */, 45758}, /* glReadnPixels */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 541 /* GL_KHR_robustness */, 45758}, /* glReadnPixels */
     {DISPATCH_RESOLVE_EXTENSION, 72, 215 /* GL_ARB_robustness */, 45772}, /* glReadnPixelsARB */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 537 /* GL_KHR_robustness */, 45806}, /* glReadnPixelsKHR */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 537 /* GL_KHR_robustness */, 45806}, /* glReadnPixelsKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 541 /* GL_KHR_robustness */, 45806}, /* glReadnPixelsKHR */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 541 /* GL_KHR_robustness */, 45806}, /* glReadnPixelsKHR */
     {DISPATCH_RESOLVE_VERSION, 73, OpenGL_Desktop_4_5, 45758}, /* glReadnPixels */
     {DISPATCH_RESOLVE_VERSION, 73, OpenGL_ES_3_2, 45758}, /* glReadnPixels */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 537 /* GL_KHR_robustness */, 45758}, /* glReadnPixels */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 541 /* GL_KHR_robustness */, 45758}, /* glReadnPixels */
     {DISPATCH_RESOLVE_EXTENSION, 73, 215 /* GL_ARB_robustness */, 45772}, /* glReadnPixelsARB */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 417 /* GL_EXT_robustness */, 45789}, /* glReadnPixelsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 420 /* GL_EXT_robustness */, 45789}, /* glReadnPixelsEXT */
     {DISPATCH_RESOLVE_DIRECT, 74, OpenGL_Desktop_1_0, 45823}, /* glRectd */
     {DISPATCH_RESOLVE_DIRECT, 75, OpenGL_Desktop_1_0, 45831}, /* glRectdv */
     {DISPATCH_RESOLVE_DIRECT, 76, OpenGL_Desktop_1_0, 45840}, /* glRectf */
@@ -9339,9 +9349,9 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 79, OpenGL_Desktop_1_0, 45865}, /* glRectiv */
     {DISPATCH_RESOLVE_DIRECT, 80, OpenGL_Desktop_1_0, 45874}, /* glRects */
     {DISPATCH_RESOLVE_DIRECT, 81, OpenGL_Desktop_1_0, 45882}, /* glRectsv */
-    {DISPATCH_RESOLVE_EXTENSION, 82, 702 /* GL_OES_fixed_point */, 45891}, /* glRectxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 702 /* GL_OES_fixed_point */, 45902}, /* glRectxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 811 /* GL_SGIX_reference_plane */, 45914}, /* glReferencePlaneSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 706 /* GL_OES_fixed_point */, 45891}, /* glRectxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 706 /* GL_OES_fixed_point */, 45902}, /* glRectxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 816 /* GL_SGIX_reference_plane */, 45914}, /* glReferencePlaneSGIX */
     {DISPATCH_RESOLVE_VERSION, 85, OpenGL_Desktop_4_1, 45935}, /* glReleaseShaderCompiler */
     {DISPATCH_RESOLVE_DIRECT, 85, OpenGL_ES_2_0, 45935}, /* glReleaseShaderCompiler */
     {DISPATCH_RESOLVE_EXTENSION, 85, 135 /* GL_ARB_ES2_compatibility */, 45935}, /* glReleaseShaderCompiler */
@@ -9349,74 +9359,74 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 87, OpenGL_Desktop_3_0, 45972}, /* glRenderbufferStorage */
     {DISPATCH_RESOLVE_DIRECT, 87, OpenGL_ES_2_0, 45972}, /* glRenderbufferStorage */
     {DISPATCH_RESOLVE_EXTENSION, 87, 179 /* GL_ARB_framebuffer_object */, 45972}, /* glRenderbufferStorage */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 373 /* GL_EXT_framebuffer_object */, 45994}, /* glRenderbufferStorageEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 373 /* GL_EXT_framebuffer_object */, 45994}, /* glRenderbufferStorageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 376 /* GL_EXT_framebuffer_object */, 45994}, /* glRenderbufferStorageEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 376 /* GL_EXT_framebuffer_object */, 45994}, /* glRenderbufferStorageEXT */
     {DISPATCH_RESOLVE_VERSION, 88, OpenGL_Desktop_3_0, 45972}, /* glRenderbufferStorage */
     {DISPATCH_RESOLVE_DIRECT, 88, OpenGL_ES_2_0, 45972}, /* glRenderbufferStorage */
     {DISPATCH_RESOLVE_EXTENSION, 88, 179 /* GL_ARB_framebuffer_object */, 45972}, /* glRenderbufferStorage */
     {DISPATCH_RESOLVE_VERSION, 89, OpenGL_Desktop_3_0, 46019}, /* glRenderbufferStorageMultisample */
     {DISPATCH_RESOLVE_VERSION, 89, OpenGL_ES_3_0, 46019}, /* glRenderbufferStorageMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 89, 179 /* GL_ARB_framebuffer_object */, 46019}, /* glRenderbufferStorageMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 371 /* GL_EXT_framebuffer_multisample */, 46171}, /* glRenderbufferStorageMultisampleEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 395 /* GL_EXT_multisampled_render_to_texture */, 46171}, /* glRenderbufferStorageMultisampleEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 592 /* GL_NV_framebuffer_multisample */, 46243}, /* glRenderbufferStorageMultisampleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 374 /* GL_EXT_framebuffer_multisample */, 46171}, /* glRenderbufferStorageMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 398 /* GL_EXT_multisampled_render_to_texture */, 46171}, /* glRenderbufferStorageMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 596 /* GL_NV_framebuffer_multisample */, 46243}, /* glRenderbufferStorageMultisampleNV */
     {DISPATCH_RESOLVE_EXTENSION, 90, 100 /* GL_ANGLE_framebuffer_multisample */, 46052}, /* glRenderbufferStorageMultisampleANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 91, 118 /* GL_APPLE_framebuffer_multisample */, 46090}, /* glRenderbufferStorageMultisampleAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 593 /* GL_NV_framebuffer_multisample_coverage */, 46128}, /* glRenderbufferStorageMultisampleCoverageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 371 /* GL_EXT_framebuffer_multisample */, 46171}, /* glRenderbufferStorageMultisampleEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 395 /* GL_EXT_multisampled_render_to_texture */, 46171}, /* glRenderbufferStorageMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 597 /* GL_NV_framebuffer_multisample_coverage */, 46128}, /* glRenderbufferStorageMultisampleCoverageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 374 /* GL_EXT_framebuffer_multisample */, 46171}, /* glRenderbufferStorageMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 398 /* GL_EXT_multisampled_render_to_texture */, 46171}, /* glRenderbufferStorageMultisampleEXT */
     {DISPATCH_RESOLVE_VERSION, 93, OpenGL_Desktop_3_0, 46019}, /* glRenderbufferStorageMultisample */
     {DISPATCH_RESOLVE_VERSION, 93, OpenGL_ES_3_0, 46019}, /* glRenderbufferStorageMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 93, 179 /* GL_ARB_framebuffer_object */, 46019}, /* glRenderbufferStorageMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 592 /* GL_NV_framebuffer_multisample */, 46243}, /* glRenderbufferStorageMultisampleNV */
-    {DISPATCH_RESOLVE_EXTENSION, 94, 512 /* GL_IMG_multisampled_render_to_texture */, 46207}, /* glRenderbufferStorageMultisampleIMG */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 592 /* GL_NV_framebuffer_multisample */, 46243}, /* glRenderbufferStorageMultisampleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 596 /* GL_NV_framebuffer_multisample */, 46243}, /* glRenderbufferStorageMultisampleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 94, 516 /* GL_IMG_multisampled_render_to_texture */, 46207}, /* glRenderbufferStorageMultisampleIMG */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 596 /* GL_NV_framebuffer_multisample */, 46243}, /* glRenderbufferStorageMultisampleNV */
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_Desktop_3_0, 46019}, /* glRenderbufferStorageMultisample */
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_ES_3_0, 46019}, /* glRenderbufferStorageMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 95, 179 /* GL_ARB_framebuffer_object */, 46019}, /* glRenderbufferStorageMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 371 /* GL_EXT_framebuffer_multisample */, 46171}, /* glRenderbufferStorageMultisampleEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 395 /* GL_EXT_multisampled_render_to_texture */, 46171}, /* glRenderbufferStorageMultisampleEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 96, 704 /* GL_OES_framebuffer_object */, 46278}, /* glRenderbufferStorageOES */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 839 /* GL_SUN_triangle_list */, 46303}, /* glReplacementCodePointerSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 839 /* GL_SUN_triangle_list */, 46331}, /* glReplacementCodeubSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 839 /* GL_SUN_triangle_list */, 46354}, /* glReplacementCodeubvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 840 /* GL_SUN_vertex */, 46378}, /* glReplacementCodeuiColor3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 840 /* GL_SUN_vertex */, 46416}, /* glReplacementCodeuiColor3fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 840 /* GL_SUN_vertex */, 46455}, /* glReplacementCodeuiColor4fNormal3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 840 /* GL_SUN_vertex */, 46501}, /* glReplacementCodeuiColor4fNormal3fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 840 /* GL_SUN_vertex */, 46548}, /* glReplacementCodeuiColor4ubVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 105, 840 /* GL_SUN_vertex */, 46587}, /* glReplacementCodeuiColor4ubVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 106, 840 /* GL_SUN_vertex */, 46627}, /* glReplacementCodeuiNormal3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 840 /* GL_SUN_vertex */, 46666}, /* glReplacementCodeuiNormal3fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 839 /* GL_SUN_triangle_list */, 46706}, /* glReplacementCodeuiSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 109, 840 /* GL_SUN_vertex */, 46729}, /* glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 110, 840 /* GL_SUN_vertex */, 46785}, /* glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 840 /* GL_SUN_vertex */, 46842}, /* glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 840 /* GL_SUN_vertex */, 46891}, /* glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 113, 840 /* GL_SUN_vertex */, 46941}, /* glReplacementCodeuiTexCoord2fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 840 /* GL_SUN_vertex */, 46982}, /* glReplacementCodeuiTexCoord2fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 840 /* GL_SUN_vertex */, 47024}, /* glReplacementCodeuiVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 840 /* GL_SUN_vertex */, 47055}, /* glReplacementCodeuiVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 839 /* GL_SUN_triangle_list */, 47087}, /* glReplacementCodeuivSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 118, 839 /* GL_SUN_triangle_list */, 47111}, /* glReplacementCodeusSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 839 /* GL_SUN_triangle_list */, 47134}, /* glReplacementCodeusvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 672 /* GL_NV_vertex_program */, 47158}, /* glRequestResidentProgramsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 374 /* GL_EXT_framebuffer_multisample */, 46171}, /* glRenderbufferStorageMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 398 /* GL_EXT_multisampled_render_to_texture */, 46171}, /* glRenderbufferStorageMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 708 /* GL_OES_framebuffer_object */, 46278}, /* glRenderbufferStorageOES */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 844 /* GL_SUN_triangle_list */, 46303}, /* glReplacementCodePointerSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 844 /* GL_SUN_triangle_list */, 46331}, /* glReplacementCodeubSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 844 /* GL_SUN_triangle_list */, 46354}, /* glReplacementCodeubvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 845 /* GL_SUN_vertex */, 46378}, /* glReplacementCodeuiColor3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 845 /* GL_SUN_vertex */, 46416}, /* glReplacementCodeuiColor3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 845 /* GL_SUN_vertex */, 46455}, /* glReplacementCodeuiColor4fNormal3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 845 /* GL_SUN_vertex */, 46501}, /* glReplacementCodeuiColor4fNormal3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 845 /* GL_SUN_vertex */, 46548}, /* glReplacementCodeuiColor4ubVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 845 /* GL_SUN_vertex */, 46587}, /* glReplacementCodeuiColor4ubVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 845 /* GL_SUN_vertex */, 46627}, /* glReplacementCodeuiNormal3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 845 /* GL_SUN_vertex */, 46666}, /* glReplacementCodeuiNormal3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 844 /* GL_SUN_triangle_list */, 46706}, /* glReplacementCodeuiSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 845 /* GL_SUN_vertex */, 46729}, /* glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 845 /* GL_SUN_vertex */, 46785}, /* glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 845 /* GL_SUN_vertex */, 46842}, /* glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 845 /* GL_SUN_vertex */, 46891}, /* glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 845 /* GL_SUN_vertex */, 46941}, /* glReplacementCodeuiTexCoord2fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 845 /* GL_SUN_vertex */, 46982}, /* glReplacementCodeuiTexCoord2fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 845 /* GL_SUN_vertex */, 47024}, /* glReplacementCodeuiVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 845 /* GL_SUN_vertex */, 47055}, /* glReplacementCodeuiVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 844 /* GL_SUN_triangle_list */, 47087}, /* glReplacementCodeuivSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 844 /* GL_SUN_triangle_list */, 47111}, /* glReplacementCodeusSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 844 /* GL_SUN_triangle_list */, 47134}, /* glReplacementCodeusvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 676 /* GL_NV_vertex_program */, 47158}, /* glRequestResidentProgramsNV */
     {DISPATCH_RESOLVE_EXTENSION, 121, 190 /* GL_ARB_imaging */, 47186}, /* glResetHistogram */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 382 /* GL_EXT_histogram */, 47203}, /* glResetHistogramEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 382 /* GL_EXT_histogram */, 47203}, /* glResetHistogramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 385 /* GL_EXT_histogram */, 47203}, /* glResetHistogramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 385 /* GL_EXT_histogram */, 47203}, /* glResetHistogramEXT */
     {DISPATCH_RESOLVE_EXTENSION, 122, 190 /* GL_ARB_imaging */, 47186}, /* glResetHistogram */
     {DISPATCH_RESOLVE_EXTENSION, 123, 190 /* GL_ARB_imaging */, 47223}, /* glResetMinmax */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 382 /* GL_EXT_histogram */, 47237}, /* glResetMinmaxEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 124, 382 /* GL_EXT_histogram */, 47237}, /* glResetMinmaxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 385 /* GL_EXT_histogram */, 47237}, /* glResetMinmaxEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 124, 385 /* GL_EXT_histogram */, 47237}, /* glResetMinmaxEXT */
     {DISPATCH_RESOLVE_EXTENSION, 124, 190 /* GL_ARB_imaging */, 47223}, /* glResetMinmax */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 543 /* GL_MESA_resize_buffers */, 47254}, /* glResizeBuffersMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 126, 633 /* GL_NV_sample_locations */, 47274}, /* glResolveDepthValuesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 547 /* GL_MESA_resize_buffers */, 47254}, /* glResizeBuffersMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 637 /* GL_NV_sample_locations */, 47274}, /* glResolveDepthValuesNV */
     {DISPATCH_RESOLVE_EXTENSION, 127, 118 /* GL_APPLE_framebuffer_multisample */, 47297}, /* glResolveMultisampleFramebufferAPPLE */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_Desktop_4_0, 47334}, /* glResumeTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 128, OpenGL_ES_3_0, 47334}, /* glResumeTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 128, 285 /* GL_ARB_transform_feedback2 */, 47334}, /* glResumeTransformFeedback */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 665 /* GL_NV_transform_feedback2 */, 47360}, /* glResumeTransformFeedbackNV */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 665 /* GL_NV_transform_feedback2 */, 47360}, /* glResumeTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 669 /* GL_NV_transform_feedback2 */, 47360}, /* glResumeTransformFeedbackNV */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 669 /* GL_NV_transform_feedback2 */, 47360}, /* glResumeTransformFeedbackNV */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_Desktop_4_0, 47334}, /* glResumeTransformFeedback */
     {DISPATCH_RESOLVE_VERSION, 129, OpenGL_ES_3_0, 47334}, /* glResumeTransformFeedback */
     {DISPATCH_RESOLVE_EXTENSION, 129, 285 /* GL_ARB_transform_feedback2 */, 47334}, /* glResumeTransformFeedback */
@@ -9424,7 +9434,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 131, OpenGL_Desktop_1_0, 47398}, /* glRotatef */
     {DISPATCH_RESOLVE_DIRECT, 131, OpenGL_ES_1_0, 47398}, /* glRotatef */
     {DISPATCH_RESOLVE_DIRECT, 132, OpenGL_ES_1_0, 47408}, /* glRotatex */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 702 /* GL_OES_fixed_point */, 47418}, /* glRotatexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 706 /* GL_OES_fixed_point */, 47418}, /* glRotatexOES */
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_Desktop_1_3, 47431}, /* glSampleCoverage */
     {DISPATCH_RESOLVE_DIRECT, 134, OpenGL_ES_1_0, 47431}, /* glSampleCoverage */
     {DISPATCH_RESOLVE_DIRECT, 134, OpenGL_ES_2_0, 47431}, /* glSampleCoverage */
@@ -9434,50 +9444,50 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 135, OpenGL_ES_1_0, 47431}, /* glSampleCoverage */
     {DISPATCH_RESOLVE_DIRECT, 135, OpenGL_ES_2_0, 47431}, /* glSampleCoverage */
     {DISPATCH_RESOLVE_DIRECT, 136, OpenGL_ES_1_0, 47468}, /* glSampleCoveragex */
-    {DISPATCH_RESOLVE_EXTENSION, 137, 702 /* GL_OES_fixed_point */, 47486}, /* glSampleCoveragexOES */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 312 /* GL_ATI_fragment_shader */, 47507}, /* glSampleMapATI */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 393 /* GL_EXT_multisample */, 47522}, /* glSampleMaskEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 775 /* GL_SGIS_multisample */, 47560}, /* glSampleMaskSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 578 /* GL_NV_explicit_multisample */, 47538}, /* glSampleMaskIndexedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 775 /* GL_SGIS_multisample */, 47560}, /* glSampleMaskSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 393 /* GL_EXT_multisample */, 47522}, /* glSampleMaskEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 137, 706 /* GL_OES_fixed_point */, 47486}, /* glSampleCoveragexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 315 /* GL_ATI_fragment_shader */, 47507}, /* glSampleMapATI */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 396 /* GL_EXT_multisample */, 47522}, /* glSampleMaskEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 779 /* GL_SGIS_multisample */, 47560}, /* glSampleMaskSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 582 /* GL_NV_explicit_multisample */, 47538}, /* glSampleMaskIndexedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 779 /* GL_SGIS_multisample */, 47560}, /* glSampleMaskSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 396 /* GL_EXT_multisample */, 47522}, /* glSampleMaskEXT */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_Desktop_3_2, 47577}, /* glSampleMaski */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_ES_3_1, 47577}, /* glSampleMaski */
     {DISPATCH_RESOLVE_EXTENSION, 142, 272 /* GL_ARB_texture_multisample */, 47577}, /* glSampleMaski */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 393 /* GL_EXT_multisample */, 47591}, /* glSamplePatternEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 775 /* GL_SGIS_multisample */, 47610}, /* glSamplePatternSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 775 /* GL_SGIS_multisample */, 47610}, /* glSamplePatternSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 393 /* GL_EXT_multisample */, 47591}, /* glSamplePatternEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 396 /* GL_EXT_multisample */, 47591}, /* glSamplePatternEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 779 /* GL_SGIS_multisample */, 47610}, /* glSamplePatternSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 779 /* GL_SGIS_multisample */, 47610}, /* glSamplePatternSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 396 /* GL_EXT_multisample */, 47591}, /* glSamplePatternEXT */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_Desktop_3_3, 47630}, /* glSamplerParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_ES_3_2, 47630}, /* glSamplerParameterIiv */
     {DISPATCH_RESOLVE_EXTENSION, 145, 219 /* GL_ARB_sampler_objects */, 47630}, /* glSamplerParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 451 /* GL_EXT_texture_border_clamp */, 47652}, /* glSamplerParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 735 /* GL_OES_texture_border_clamp */, 47677}, /* glSamplerParameterIivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 451 /* GL_EXT_texture_border_clamp */, 47652}, /* glSamplerParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 455 /* GL_EXT_texture_border_clamp */, 47652}, /* glSamplerParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 739 /* GL_OES_texture_border_clamp */, 47677}, /* glSamplerParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 455 /* GL_EXT_texture_border_clamp */, 47652}, /* glSamplerParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 146, OpenGL_Desktop_3_3, 47630}, /* glSamplerParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 146, OpenGL_ES_3_2, 47630}, /* glSamplerParameterIiv */
     {DISPATCH_RESOLVE_EXTENSION, 146, 219 /* GL_ARB_sampler_objects */, 47630}, /* glSamplerParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 735 /* GL_OES_texture_border_clamp */, 47677}, /* glSamplerParameterIivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 735 /* GL_OES_texture_border_clamp */, 47677}, /* glSamplerParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 739 /* GL_OES_texture_border_clamp */, 47677}, /* glSamplerParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 739 /* GL_OES_texture_border_clamp */, 47677}, /* glSamplerParameterIivOES */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_Desktop_3_3, 47630}, /* glSamplerParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_ES_3_2, 47630}, /* glSamplerParameterIiv */
     {DISPATCH_RESOLVE_EXTENSION, 147, 219 /* GL_ARB_sampler_objects */, 47630}, /* glSamplerParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 451 /* GL_EXT_texture_border_clamp */, 47652}, /* glSamplerParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 455 /* GL_EXT_texture_border_clamp */, 47652}, /* glSamplerParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 148, OpenGL_Desktop_3_3, 47702}, /* glSamplerParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 148, OpenGL_ES_3_2, 47702}, /* glSamplerParameterIuiv */
     {DISPATCH_RESOLVE_EXTENSION, 148, 219 /* GL_ARB_sampler_objects */, 47702}, /* glSamplerParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 451 /* GL_EXT_texture_border_clamp */, 47725}, /* glSamplerParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 735 /* GL_OES_texture_border_clamp */, 47751}, /* glSamplerParameterIuivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 451 /* GL_EXT_texture_border_clamp */, 47725}, /* glSamplerParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 455 /* GL_EXT_texture_border_clamp */, 47725}, /* glSamplerParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 739 /* GL_OES_texture_border_clamp */, 47751}, /* glSamplerParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 455 /* GL_EXT_texture_border_clamp */, 47725}, /* glSamplerParameterIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 149, OpenGL_Desktop_3_3, 47702}, /* glSamplerParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 149, OpenGL_ES_3_2, 47702}, /* glSamplerParameterIuiv */
     {DISPATCH_RESOLVE_EXTENSION, 149, 219 /* GL_ARB_sampler_objects */, 47702}, /* glSamplerParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 735 /* GL_OES_texture_border_clamp */, 47751}, /* glSamplerParameterIuivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 735 /* GL_OES_texture_border_clamp */, 47751}, /* glSamplerParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 739 /* GL_OES_texture_border_clamp */, 47751}, /* glSamplerParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 739 /* GL_OES_texture_border_clamp */, 47751}, /* glSamplerParameterIuivOES */
     {DISPATCH_RESOLVE_VERSION, 150, OpenGL_Desktop_3_3, 47702}, /* glSamplerParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 150, OpenGL_ES_3_2, 47702}, /* glSamplerParameterIuiv */
     {DISPATCH_RESOLVE_EXTENSION, 150, 219 /* GL_ARB_sampler_objects */, 47702}, /* glSamplerParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 451 /* GL_EXT_texture_border_clamp */, 47725}, /* glSamplerParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 455 /* GL_EXT_texture_border_clamp */, 47725}, /* glSamplerParameterIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 151, OpenGL_Desktop_3_3, 47777}, /* glSamplerParameterf */
     {DISPATCH_RESOLVE_VERSION, 151, OpenGL_ES_3_0, 47777}, /* glSamplerParameterf */
     {DISPATCH_RESOLVE_EXTENSION, 151, 219 /* GL_ARB_sampler_objects */, 47777}, /* glSamplerParameterf */
@@ -9494,124 +9504,124 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 156, OpenGL_Desktop_1_0, 47868}, /* glScalef */
     {DISPATCH_RESOLVE_DIRECT, 156, OpenGL_ES_1_0, 47868}, /* glScalef */
     {DISPATCH_RESOLVE_DIRECT, 157, OpenGL_ES_1_0, 47877}, /* glScalex */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 702 /* GL_OES_fixed_point */, 47886}, /* glScalexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 706 /* GL_OES_fixed_point */, 47886}, /* glScalexOES */
     {DISPATCH_RESOLVE_DIRECT, 159, OpenGL_Desktop_1_0, 47898}, /* glScissor */
     {DISPATCH_RESOLVE_DIRECT, 159, OpenGL_ES_1_0, 47898}, /* glScissor */
     {DISPATCH_RESOLVE_DIRECT, 159, OpenGL_ES_2_0, 47898}, /* glScissor */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_4_1, 47908}, /* glScissorArrayv */
     {DISPATCH_RESOLVE_EXTENSION, 160, 301 /* GL_ARB_viewport_array */, 47908}, /* glScissorArrayv */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 679 /* GL_NV_viewport_array */, 47924}, /* glScissorArrayvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 161, 679 /* GL_NV_viewport_array */, 47924}, /* glScissorArrayvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 683 /* GL_NV_viewport_array */, 47924}, /* glScissorArrayvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 161, 683 /* GL_NV_viewport_array */, 47924}, /* glScissorArrayvNV */
     {DISPATCH_RESOLVE_VERSION, 161, OpenGL_Desktop_4_1, 47908}, /* glScissorArrayv */
     {DISPATCH_RESOLVE_EXTENSION, 161, 301 /* GL_ARB_viewport_array */, 47908}, /* glScissorArrayv */
     {DISPATCH_RESOLVE_VERSION, 162, OpenGL_Desktop_4_1, 47942}, /* glScissorIndexed */
     {DISPATCH_RESOLVE_EXTENSION, 162, 301 /* GL_ARB_viewport_array */, 47942}, /* glScissorIndexed */
-    {DISPATCH_RESOLVE_EXTENSION, 162, 679 /* GL_NV_viewport_array */, 47959}, /* glScissorIndexedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 163, 679 /* GL_NV_viewport_array */, 47959}, /* glScissorIndexedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 162, 683 /* GL_NV_viewport_array */, 47959}, /* glScissorIndexedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 163, 683 /* GL_NV_viewport_array */, 47959}, /* glScissorIndexedNV */
     {DISPATCH_RESOLVE_VERSION, 163, OpenGL_Desktop_4_1, 47942}, /* glScissorIndexed */
     {DISPATCH_RESOLVE_EXTENSION, 163, 301 /* GL_ARB_viewport_array */, 47942}, /* glScissorIndexed */
     {DISPATCH_RESOLVE_VERSION, 164, OpenGL_Desktop_4_1, 47978}, /* glScissorIndexedv */
     {DISPATCH_RESOLVE_EXTENSION, 164, 301 /* GL_ARB_viewport_array */, 47978}, /* glScissorIndexedv */
-    {DISPATCH_RESOLVE_EXTENSION, 164, 679 /* GL_NV_viewport_array */, 47996}, /* glScissorIndexedvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 165, 679 /* GL_NV_viewport_array */, 47996}, /* glScissorIndexedvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 164, 683 /* GL_NV_viewport_array */, 47996}, /* glScissorIndexedvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 165, 683 /* GL_NV_viewport_array */, 47996}, /* glScissorIndexedvNV */
     {DISPATCH_RESOLVE_VERSION, 165, OpenGL_Desktop_4_1, 47978}, /* glScissorIndexedv */
     {DISPATCH_RESOLVE_EXTENSION, 165, 301 /* GL_ARB_viewport_array */, 47978}, /* glScissorIndexedv */
     {DISPATCH_RESOLVE_VERSION, 166, OpenGL_Desktop_1_4, 48016}, /* glSecondaryColor3b */
-    {DISPATCH_RESOLVE_EXTENSION, 166, 421 /* GL_EXT_secondary_color */, 48035}, /* glSecondaryColor3bEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 421 /* GL_EXT_secondary_color */, 48035}, /* glSecondaryColor3bEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 166, 424 /* GL_EXT_secondary_color */, 48035}, /* glSecondaryColor3bEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 424 /* GL_EXT_secondary_color */, 48035}, /* glSecondaryColor3bEXT */
     {DISPATCH_RESOLVE_VERSION, 167, OpenGL_Desktop_1_4, 48016}, /* glSecondaryColor3b */
     {DISPATCH_RESOLVE_VERSION, 168, OpenGL_Desktop_1_4, 48057}, /* glSecondaryColor3bv */
-    {DISPATCH_RESOLVE_EXTENSION, 168, 421 /* GL_EXT_secondary_color */, 48077}, /* glSecondaryColor3bvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 169, 421 /* GL_EXT_secondary_color */, 48077}, /* glSecondaryColor3bvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 168, 424 /* GL_EXT_secondary_color */, 48077}, /* glSecondaryColor3bvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 169, 424 /* GL_EXT_secondary_color */, 48077}, /* glSecondaryColor3bvEXT */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_Desktop_1_4, 48057}, /* glSecondaryColor3bv */
     {DISPATCH_RESOLVE_VERSION, 170, OpenGL_Desktop_1_4, 48100}, /* glSecondaryColor3d */
-    {DISPATCH_RESOLVE_EXTENSION, 170, 421 /* GL_EXT_secondary_color */, 48119}, /* glSecondaryColor3dEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 421 /* GL_EXT_secondary_color */, 48119}, /* glSecondaryColor3dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 170, 424 /* GL_EXT_secondary_color */, 48119}, /* glSecondaryColor3dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 424 /* GL_EXT_secondary_color */, 48119}, /* glSecondaryColor3dEXT */
     {DISPATCH_RESOLVE_VERSION, 171, OpenGL_Desktop_1_4, 48100}, /* glSecondaryColor3d */
     {DISPATCH_RESOLVE_VERSION, 172, OpenGL_Desktop_1_4, 48141}, /* glSecondaryColor3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 421 /* GL_EXT_secondary_color */, 48161}, /* glSecondaryColor3dvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 173, 421 /* GL_EXT_secondary_color */, 48161}, /* glSecondaryColor3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 424 /* GL_EXT_secondary_color */, 48161}, /* glSecondaryColor3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 173, 424 /* GL_EXT_secondary_color */, 48161}, /* glSecondaryColor3dvEXT */
     {DISPATCH_RESOLVE_VERSION, 173, OpenGL_Desktop_1_4, 48141}, /* glSecondaryColor3dv */
     {DISPATCH_RESOLVE_VERSION, 174, OpenGL_Desktop_1_4, 48184}, /* glSecondaryColor3f */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 421 /* GL_EXT_secondary_color */, 48203}, /* glSecondaryColor3fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 421 /* GL_EXT_secondary_color */, 48203}, /* glSecondaryColor3fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 424 /* GL_EXT_secondary_color */, 48203}, /* glSecondaryColor3fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 424 /* GL_EXT_secondary_color */, 48203}, /* glSecondaryColor3fEXT */
     {DISPATCH_RESOLVE_VERSION, 175, OpenGL_Desktop_1_4, 48184}, /* glSecondaryColor3f */
     {DISPATCH_RESOLVE_VERSION, 176, OpenGL_Desktop_1_4, 48225}, /* glSecondaryColor3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 421 /* GL_EXT_secondary_color */, 48245}, /* glSecondaryColor3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 421 /* GL_EXT_secondary_color */, 48245}, /* glSecondaryColor3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 424 /* GL_EXT_secondary_color */, 48245}, /* glSecondaryColor3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 424 /* GL_EXT_secondary_color */, 48245}, /* glSecondaryColor3fvEXT */
     {DISPATCH_RESOLVE_VERSION, 177, OpenGL_Desktop_1_4, 48225}, /* glSecondaryColor3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 603 /* GL_NV_half_float */, 48268}, /* glSecondaryColor3hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 179, 603 /* GL_NV_half_float */, 48289}, /* glSecondaryColor3hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 607 /* GL_NV_half_float */, 48268}, /* glSecondaryColor3hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 179, 607 /* GL_NV_half_float */, 48289}, /* glSecondaryColor3hvNV */
     {DISPATCH_RESOLVE_VERSION, 180, OpenGL_Desktop_1_4, 48311}, /* glSecondaryColor3i */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 421 /* GL_EXT_secondary_color */, 48330}, /* glSecondaryColor3iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 421 /* GL_EXT_secondary_color */, 48330}, /* glSecondaryColor3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 424 /* GL_EXT_secondary_color */, 48330}, /* glSecondaryColor3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 424 /* GL_EXT_secondary_color */, 48330}, /* glSecondaryColor3iEXT */
     {DISPATCH_RESOLVE_VERSION, 181, OpenGL_Desktop_1_4, 48311}, /* glSecondaryColor3i */
     {DISPATCH_RESOLVE_VERSION, 182, OpenGL_Desktop_1_4, 48352}, /* glSecondaryColor3iv */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 421 /* GL_EXT_secondary_color */, 48372}, /* glSecondaryColor3ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 421 /* GL_EXT_secondary_color */, 48372}, /* glSecondaryColor3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 424 /* GL_EXT_secondary_color */, 48372}, /* glSecondaryColor3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 424 /* GL_EXT_secondary_color */, 48372}, /* glSecondaryColor3ivEXT */
     {DISPATCH_RESOLVE_VERSION, 183, OpenGL_Desktop_1_4, 48352}, /* glSecondaryColor3iv */
     {DISPATCH_RESOLVE_VERSION, 184, OpenGL_Desktop_1_4, 48395}, /* glSecondaryColor3s */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 421 /* GL_EXT_secondary_color */, 48414}, /* glSecondaryColor3sEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 421 /* GL_EXT_secondary_color */, 48414}, /* glSecondaryColor3sEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 424 /* GL_EXT_secondary_color */, 48414}, /* glSecondaryColor3sEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 424 /* GL_EXT_secondary_color */, 48414}, /* glSecondaryColor3sEXT */
     {DISPATCH_RESOLVE_VERSION, 185, OpenGL_Desktop_1_4, 48395}, /* glSecondaryColor3s */
     {DISPATCH_RESOLVE_VERSION, 186, OpenGL_Desktop_1_4, 48436}, /* glSecondaryColor3sv */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 421 /* GL_EXT_secondary_color */, 48456}, /* glSecondaryColor3svEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 421 /* GL_EXT_secondary_color */, 48456}, /* glSecondaryColor3svEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 424 /* GL_EXT_secondary_color */, 48456}, /* glSecondaryColor3svEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 424 /* GL_EXT_secondary_color */, 48456}, /* glSecondaryColor3svEXT */
     {DISPATCH_RESOLVE_VERSION, 187, OpenGL_Desktop_1_4, 48436}, /* glSecondaryColor3sv */
     {DISPATCH_RESOLVE_VERSION, 188, OpenGL_Desktop_1_4, 48479}, /* glSecondaryColor3ub */
-    {DISPATCH_RESOLVE_EXTENSION, 188, 421 /* GL_EXT_secondary_color */, 48499}, /* glSecondaryColor3ubEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 189, 421 /* GL_EXT_secondary_color */, 48499}, /* glSecondaryColor3ubEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 188, 424 /* GL_EXT_secondary_color */, 48499}, /* glSecondaryColor3ubEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 189, 424 /* GL_EXT_secondary_color */, 48499}, /* glSecondaryColor3ubEXT */
     {DISPATCH_RESOLVE_VERSION, 189, OpenGL_Desktop_1_4, 48479}, /* glSecondaryColor3ub */
     {DISPATCH_RESOLVE_VERSION, 190, OpenGL_Desktop_1_4, 48522}, /* glSecondaryColor3ubv */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 421 /* GL_EXT_secondary_color */, 48543}, /* glSecondaryColor3ubvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 191, 421 /* GL_EXT_secondary_color */, 48543}, /* glSecondaryColor3ubvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 424 /* GL_EXT_secondary_color */, 48543}, /* glSecondaryColor3ubvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 191, 424 /* GL_EXT_secondary_color */, 48543}, /* glSecondaryColor3ubvEXT */
     {DISPATCH_RESOLVE_VERSION, 191, OpenGL_Desktop_1_4, 48522}, /* glSecondaryColor3ubv */
     {DISPATCH_RESOLVE_VERSION, 192, OpenGL_Desktop_1_4, 48567}, /* glSecondaryColor3ui */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 421 /* GL_EXT_secondary_color */, 48587}, /* glSecondaryColor3uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 193, 421 /* GL_EXT_secondary_color */, 48587}, /* glSecondaryColor3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 424 /* GL_EXT_secondary_color */, 48587}, /* glSecondaryColor3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 193, 424 /* GL_EXT_secondary_color */, 48587}, /* glSecondaryColor3uiEXT */
     {DISPATCH_RESOLVE_VERSION, 193, OpenGL_Desktop_1_4, 48567}, /* glSecondaryColor3ui */
     {DISPATCH_RESOLVE_VERSION, 194, OpenGL_Desktop_1_4, 48610}, /* glSecondaryColor3uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 194, 421 /* GL_EXT_secondary_color */, 48631}, /* glSecondaryColor3uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 195, 421 /* GL_EXT_secondary_color */, 48631}, /* glSecondaryColor3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 194, 424 /* GL_EXT_secondary_color */, 48631}, /* glSecondaryColor3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 195, 424 /* GL_EXT_secondary_color */, 48631}, /* glSecondaryColor3uivEXT */
     {DISPATCH_RESOLVE_VERSION, 195, OpenGL_Desktop_1_4, 48610}, /* glSecondaryColor3uiv */
     {DISPATCH_RESOLVE_VERSION, 196, OpenGL_Desktop_1_4, 48655}, /* glSecondaryColor3us */
-    {DISPATCH_RESOLVE_EXTENSION, 196, 421 /* GL_EXT_secondary_color */, 48675}, /* glSecondaryColor3usEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 197, 421 /* GL_EXT_secondary_color */, 48675}, /* glSecondaryColor3usEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 196, 424 /* GL_EXT_secondary_color */, 48675}, /* glSecondaryColor3usEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 197, 424 /* GL_EXT_secondary_color */, 48675}, /* glSecondaryColor3usEXT */
     {DISPATCH_RESOLVE_VERSION, 197, OpenGL_Desktop_1_4, 48655}, /* glSecondaryColor3us */
     {DISPATCH_RESOLVE_VERSION, 198, OpenGL_Desktop_1_4, 48698}, /* glSecondaryColor3usv */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 421 /* GL_EXT_secondary_color */, 48719}, /* glSecondaryColor3usvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 199, 421 /* GL_EXT_secondary_color */, 48719}, /* glSecondaryColor3usvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 424 /* GL_EXT_secondary_color */, 48719}, /* glSecondaryColor3usvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 199, 424 /* GL_EXT_secondary_color */, 48719}, /* glSecondaryColor3usvEXT */
     {DISPATCH_RESOLVE_VERSION, 199, OpenGL_Desktop_1_4, 48698}, /* glSecondaryColor3usv */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 671 /* GL_NV_vertex_buffer_unified_memory */, 48743}, /* glSecondaryColorFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 675 /* GL_NV_vertex_buffer_unified_memory */, 48743}, /* glSecondaryColorFormatNV */
     {DISPATCH_RESOLVE_VERSION, 201, OpenGL_Desktop_3_3, 48768}, /* glSecondaryColorP3ui */
     {DISPATCH_RESOLVE_EXTENSION, 201, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 48768}, /* glSecondaryColorP3ui */
     {DISPATCH_RESOLVE_VERSION, 202, OpenGL_Desktop_3_3, 48789}, /* glSecondaryColorP3uiv */
     {DISPATCH_RESOLVE_EXTENSION, 202, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 48789}, /* glSecondaryColorP3uiv */
     {DISPATCH_RESOLVE_VERSION, 203, OpenGL_Desktop_1_4, 48811}, /* glSecondaryColorPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 203, 421 /* GL_EXT_secondary_color */, 48835}, /* glSecondaryColorPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 421 /* GL_EXT_secondary_color */, 48835}, /* glSecondaryColorPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 203, 424 /* GL_EXT_secondary_color */, 48835}, /* glSecondaryColorPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 424 /* GL_EXT_secondary_color */, 48835}, /* glSecondaryColorPointerEXT */
     {DISPATCH_RESOLVE_VERSION, 204, OpenGL_Desktop_1_4, 48811}, /* glSecondaryColorPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 205, 510 /* GL_IBM_vertex_array_lists */, 48862}, /* glSecondaryColorPointerListIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 205, 514 /* GL_IBM_vertex_array_lists */, 48862}, /* glSecondaryColorPointerListIBM */
     {DISPATCH_RESOLVE_DIRECT, 206, OpenGL_Desktop_1_0, 48893}, /* glSelectBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 207, 77 /* GL_AMD_performance_monitor */, 48908}, /* glSelectPerfMonitorCountersAMD */
     {DISPATCH_RESOLVE_EXTENSION, 208, 190 /* GL_ARB_imaging */, 48939}, /* glSeparableFilter2D */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 349 /* GL_EXT_convolution */, 48959}, /* glSeparableFilter2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 349 /* GL_EXT_convolution */, 48959}, /* glSeparableFilter2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 352 /* GL_EXT_convolution */, 48959}, /* glSeparableFilter2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 352 /* GL_EXT_convolution */, 48959}, /* glSeparableFilter2DEXT */
     {DISPATCH_RESOLVE_EXTENSION, 209, 190 /* GL_ARB_imaging */, 48939}, /* glSeparableFilter2D */
     {DISPATCH_RESOLVE_EXTENSION, 210, 115 /* GL_APPLE_fence */, 48982}, /* glSetFenceAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 211, 580 /* GL_NV_fence */, 48998}, /* glSetFenceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 312 /* GL_ATI_fragment_shader */, 49011}, /* glSetFragmentShaderConstantATI */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 494 /* GL_EXT_vertex_shader */, 49042}, /* glSetInvariantEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 494 /* GL_EXT_vertex_shader */, 49060}, /* glSetLocalConstantEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 211, 584 /* GL_NV_fence */, 48998}, /* glSetFenceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 315 /* GL_ATI_fragment_shader */, 49011}, /* glSetFragmentShaderConstantATI */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 498 /* GL_EXT_vertex_shader */, 49042}, /* glSetInvariantEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 498 /* GL_EXT_vertex_shader */, 49060}, /* glSetLocalConstantEXT */
     {DISPATCH_RESOLVE_EXTENSION, 215, 81 /* GL_AMD_sample_positions */, 49082}, /* glSetMultisamplefvAMD */
     {DISPATCH_RESOLVE_DIRECT, 216, OpenGL_Desktop_1_0, 49104}, /* glShadeModel */
     {DISPATCH_RESOLVE_DIRECT, 216, OpenGL_ES_1_0, 49104}, /* glShadeModel */
     {DISPATCH_RESOLVE_VERSION, 217, OpenGL_Desktop_4_1, 49117}, /* glShaderBinary */
     {DISPATCH_RESOLVE_DIRECT, 217, OpenGL_ES_2_0, 49117}, /* glShaderBinary */
     {DISPATCH_RESOLVE_EXTENSION, 217, 135 /* GL_ARB_ES2_compatibility */, 49117}, /* glShaderBinary */
-    {DISPATCH_RESOLVE_EXTENSION, 218, 494 /* GL_EXT_vertex_shader */, 49132}, /* glShaderOp1EXT */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 494 /* GL_EXT_vertex_shader */, 49147}, /* glShaderOp2EXT */
-    {DISPATCH_RESOLVE_EXTENSION, 220, 494 /* GL_EXT_vertex_shader */, 49162}, /* glShaderOp3EXT */
+    {DISPATCH_RESOLVE_EXTENSION, 218, 498 /* GL_EXT_vertex_shader */, 49132}, /* glShaderOp1EXT */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 498 /* GL_EXT_vertex_shader */, 49147}, /* glShaderOp2EXT */
+    {DISPATCH_RESOLVE_EXTENSION, 220, 498 /* GL_EXT_vertex_shader */, 49162}, /* glShaderOp3EXT */
     {DISPATCH_RESOLVE_VERSION, 221, OpenGL_Desktop_2_0, 49177}, /* glShaderSource */
     {DISPATCH_RESOLVE_DIRECT, 221, OpenGL_ES_2_0, 49177}, /* glShaderSource */
     {DISPATCH_RESOLVE_EXTENSION, 221, 232 /* GL_ARB_shader_objects */, 49192}, /* glShaderSourceARB */
@@ -9620,23 +9630,23 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 222, OpenGL_ES_2_0, 49177}, /* glShaderSource */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_Desktop_4_3, 49210}, /* glShaderStorageBlockBinding */
     {DISPATCH_RESOLVE_EXTENSION, 223, 235 /* GL_ARB_shader_storage_buffer_object */, 49210}, /* glShaderStorageBlockBinding */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 779 /* GL_SGIS_sharpen_texture */, 49238}, /* glSharpenTexFuncSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 816 /* GL_SGIX_sprite */, 49259}, /* glSpriteParameterfSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 816 /* GL_SGIX_sprite */, 49282}, /* glSpriteParameterfvSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 816 /* GL_SGIX_sprite */, 49306}, /* glSpriteParameteriSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 816 /* GL_SGIX_sprite */, 49329}, /* glSpriteParameterivSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 803 /* GL_SGIX_instruments */, 49353}, /* glStartInstrumentsSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 767 /* GL_QCOM_tiled_rendering */, 49376}, /* glStartTilingQCOM */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 559 /* GL_NV_command_list */, 49394}, /* glStateCaptureNV */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 441 /* GL_EXT_stencil_clear_tag */, 49411}, /* glStencilClearTagEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 616 /* GL_NV_path_rendering */, 49432}, /* glStencilFillPathInstancedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 616 /* GL_NV_path_rendering */, 49461}, /* glStencilFillPathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 784 /* GL_SGIS_sharpen_texture */, 49238}, /* glSharpenTexFuncSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 821 /* GL_SGIX_sprite */, 49259}, /* glSpriteParameterfSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 821 /* GL_SGIX_sprite */, 49282}, /* glSpriteParameterfvSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 821 /* GL_SGIX_sprite */, 49306}, /* glSpriteParameteriSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 821 /* GL_SGIX_sprite */, 49329}, /* glSpriteParameterivSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 808 /* GL_SGIX_instruments */, 49353}, /* glStartInstrumentsSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 771 /* GL_QCOM_tiled_rendering */, 49376}, /* glStartTilingQCOM */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 563 /* GL_NV_command_list */, 49394}, /* glStateCaptureNV */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 444 /* GL_EXT_stencil_clear_tag */, 49411}, /* glStencilClearTagEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 620 /* GL_NV_path_rendering */, 49432}, /* glStencilFillPathInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 620 /* GL_NV_path_rendering */, 49461}, /* glStencilFillPathNV */
     {DISPATCH_RESOLVE_DIRECT, 235, OpenGL_Desktop_1_0, 49481}, /* glStencilFunc */
     {DISPATCH_RESOLVE_DIRECT, 235, OpenGL_ES_1_0, 49481}, /* glStencilFunc */
     {DISPATCH_RESOLVE_DIRECT, 235, OpenGL_ES_2_0, 49481}, /* glStencilFunc */
     {DISPATCH_RESOLVE_VERSION, 236, OpenGL_Desktop_2_0, 49495}, /* glStencilFuncSeparate */
     {DISPATCH_RESOLVE_DIRECT, 236, OpenGL_ES_2_0, 49495}, /* glStencilFuncSeparate */
-    {DISPATCH_RESOLVE_EXTENSION, 237, 317 /* GL_ATI_separate_stencil */, 49517}, /* glStencilFuncSeparateATI */
+    {DISPATCH_RESOLVE_EXTENSION, 237, 320 /* GL_ATI_separate_stencil */, 49517}, /* glStencilFuncSeparateATI */
     {DISPATCH_RESOLVE_DIRECT, 238, OpenGL_Desktop_1_0, 49542}, /* glStencilMask */
     {DISPATCH_RESOLVE_DIRECT, 238, OpenGL_ES_1_0, 49542}, /* glStencilMask */
     {DISPATCH_RESOLVE_DIRECT, 238, OpenGL_ES_2_0, 49542}, /* glStencilMask */
@@ -9647,152 +9657,152 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 240, OpenGL_ES_2_0, 49578}, /* glStencilOp */
     {DISPATCH_RESOLVE_VERSION, 241, OpenGL_Desktop_2_0, 49590}, /* glStencilOpSeparate */
     {DISPATCH_RESOLVE_DIRECT, 241, OpenGL_ES_2_0, 49590}, /* glStencilOpSeparate */
-    {DISPATCH_RESOLVE_EXTENSION, 241, 317 /* GL_ATI_separate_stencil */, 49610}, /* glStencilOpSeparateATI */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 317 /* GL_ATI_separate_stencil */, 49610}, /* glStencilOpSeparateATI */
+    {DISPATCH_RESOLVE_EXTENSION, 241, 320 /* GL_ATI_separate_stencil */, 49610}, /* glStencilOpSeparateATI */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 320 /* GL_ATI_separate_stencil */, 49610}, /* glStencilOpSeparateATI */
     {DISPATCH_RESOLVE_VERSION, 242, OpenGL_Desktop_2_0, 49590}, /* glStencilOpSeparate */
     {DISPATCH_RESOLVE_DIRECT, 242, OpenGL_ES_2_0, 49590}, /* glStencilOpSeparate */
     {DISPATCH_RESOLVE_EXTENSION, 243, 90 /* GL_AMD_stencil_operation_extended */, 49633}, /* glStencilOpValueAMD */
-    {DISPATCH_RESOLVE_EXTENSION, 244, 616 /* GL_NV_path_rendering */, 49653}, /* glStencilStrokePathInstancedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 616 /* GL_NV_path_rendering */, 49684}, /* glStencilStrokePathNV */
-    {DISPATCH_RESOLVE_EXTENSION, 246, 616 /* GL_NV_path_rendering */, 49706}, /* glStencilThenCoverFillPathInstancedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 247, 616 /* GL_NV_path_rendering */, 49744}, /* glStencilThenCoverFillPathNV */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 616 /* GL_NV_path_rendering */, 49773}, /* glStencilThenCoverStrokePathInstancedNV */
-    {DISPATCH_RESOLVE_EXTENSION, 249, 616 /* GL_NV_path_rendering */, 49813}, /* glStencilThenCoverStrokePathNV */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 803 /* GL_SGIX_instruments */, 49844}, /* glStopInstrumentsSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 500 /* GL_GREMEDY_string_marker */, 49866}, /* glStringMarkerGREMEDY */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 562 /* GL_NV_conservative_raster */, 49888}, /* glSubpixelPrecisionBiasNV */
-    {DISPATCH_RESOLVE_EXTENSION, 253, 494 /* GL_EXT_vertex_shader */, 49914}, /* glSwizzleEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 527 /* GL_INTEL_map_texture */, 49927}, /* glSyncTextureINTEL */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 818 /* GL_SGIX_tag_sample_buffer */, 49946}, /* glTagSampleBufferSGIX */
-    {DISPATCH_RESOLVE_EXTENSION, 0, 350 /* GL_EXT_coordinate_frame */, 49968}, /* glTangent3bEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 1, 350 /* GL_EXT_coordinate_frame */, 49983}, /* glTangent3bvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 350 /* GL_EXT_coordinate_frame */, 49999}, /* glTangent3dEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 350 /* GL_EXT_coordinate_frame */, 50014}, /* glTangent3dvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 350 /* GL_EXT_coordinate_frame */, 50030}, /* glTangent3fEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 350 /* GL_EXT_coordinate_frame */, 50045}, /* glTangent3fvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 350 /* GL_EXT_coordinate_frame */, 50061}, /* glTangent3iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 7, 350 /* GL_EXT_coordinate_frame */, 50076}, /* glTangent3ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 350 /* GL_EXT_coordinate_frame */, 50092}, /* glTangent3sEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 9, 350 /* GL_EXT_coordinate_frame */, 50107}, /* glTangent3svEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 10, 350 /* GL_EXT_coordinate_frame */, 50123}, /* glTangentPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 244, 620 /* GL_NV_path_rendering */, 49653}, /* glStencilStrokePathInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 620 /* GL_NV_path_rendering */, 49684}, /* glStencilStrokePathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 246, 620 /* GL_NV_path_rendering */, 49706}, /* glStencilThenCoverFillPathInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 247, 620 /* GL_NV_path_rendering */, 49744}, /* glStencilThenCoverFillPathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 620 /* GL_NV_path_rendering */, 49773}, /* glStencilThenCoverStrokePathInstancedNV */
+    {DISPATCH_RESOLVE_EXTENSION, 249, 620 /* GL_NV_path_rendering */, 49813}, /* glStencilThenCoverStrokePathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 808 /* GL_SGIX_instruments */, 49844}, /* glStopInstrumentsSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 504 /* GL_GREMEDY_string_marker */, 49866}, /* glStringMarkerGREMEDY */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 566 /* GL_NV_conservative_raster */, 49888}, /* glSubpixelPrecisionBiasNV */
+    {DISPATCH_RESOLVE_EXTENSION, 253, 498 /* GL_EXT_vertex_shader */, 49914}, /* glSwizzleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 531 /* GL_INTEL_map_texture */, 49927}, /* glSyncTextureINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 823 /* GL_SGIX_tag_sample_buffer */, 49946}, /* glTagSampleBufferSGIX */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 353 /* GL_EXT_coordinate_frame */, 49968}, /* glTangent3bEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 353 /* GL_EXT_coordinate_frame */, 49983}, /* glTangent3bvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 353 /* GL_EXT_coordinate_frame */, 49999}, /* glTangent3dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 353 /* GL_EXT_coordinate_frame */, 50014}, /* glTangent3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 353 /* GL_EXT_coordinate_frame */, 50030}, /* glTangent3fEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 353 /* GL_EXT_coordinate_frame */, 50045}, /* glTangent3fvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 353 /* GL_EXT_coordinate_frame */, 50061}, /* glTangent3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 353 /* GL_EXT_coordinate_frame */, 50076}, /* glTangent3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 353 /* GL_EXT_coordinate_frame */, 50092}, /* glTangent3sEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 353 /* GL_EXT_coordinate_frame */, 50107}, /* glTangent3svEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 353 /* GL_EXT_coordinate_frame */, 50123}, /* glTangentPointerEXT */
     {DISPATCH_RESOLVE_EXTENSION, 11, 61 /* GL_3DFX_tbuffer */, 50143}, /* glTbufferMask3DFX */
     {DISPATCH_RESOLVE_EXTENSION, 12, 95 /* GL_AMD_vertex_shader_tessellator */, 50161}, /* glTessellationFactorAMD */
     {DISPATCH_RESOLVE_EXTENSION, 13, 95 /* GL_AMD_vertex_shader_tessellator */, 50185}, /* glTessellationModeAMD */
     {DISPATCH_RESOLVE_EXTENSION, 14, 115 /* GL_APPLE_fence */, 50207}, /* glTestFenceAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 580 /* GL_NV_fence */, 50224}, /* glTestFenceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 584 /* GL_NV_fence */, 50224}, /* glTestFenceNV */
     {DISPATCH_RESOLVE_EXTENSION, 16, 115 /* GL_APPLE_fence */, 50238}, /* glTestObjectAPPLE */
     {DISPATCH_RESOLVE_VERSION, 17, OpenGL_Desktop_3_1, 50256}, /* glTexBuffer */
     {DISPATCH_RESOLVE_VERSION, 17, OpenGL_ES_3_2, 50256}, /* glTexBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 17, 255 /* GL_ARB_texture_buffer_object */, 50268}, /* glTexBufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 452 /* GL_EXT_texture_buffer */, 50283}, /* glTexBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 453 /* GL_EXT_texture_buffer_object */, 50283}, /* glTexBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 736 /* GL_OES_texture_buffer */, 50298}, /* glTexBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 456 /* GL_EXT_texture_buffer */, 50283}, /* glTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 457 /* GL_EXT_texture_buffer_object */, 50283}, /* glTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 740 /* GL_OES_texture_buffer */, 50298}, /* glTexBufferOES */
     {DISPATCH_RESOLVE_EXTENSION, 18, 255 /* GL_ARB_texture_buffer_object */, 50268}, /* glTexBufferARB */
     {DISPATCH_RESOLVE_VERSION, 18, OpenGL_Desktop_3_1, 50256}, /* glTexBuffer */
     {DISPATCH_RESOLVE_VERSION, 18, OpenGL_ES_3_2, 50256}, /* glTexBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 452 /* GL_EXT_texture_buffer */, 50283}, /* glTexBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 453 /* GL_EXT_texture_buffer_object */, 50283}, /* glTexBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 736 /* GL_OES_texture_buffer */, 50298}, /* glTexBufferOES */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 452 /* GL_EXT_texture_buffer */, 50283}, /* glTexBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 453 /* GL_EXT_texture_buffer_object */, 50283}, /* glTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 456 /* GL_EXT_texture_buffer */, 50283}, /* glTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 457 /* GL_EXT_texture_buffer_object */, 50283}, /* glTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 740 /* GL_OES_texture_buffer */, 50298}, /* glTexBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 456 /* GL_EXT_texture_buffer */, 50283}, /* glTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 457 /* GL_EXT_texture_buffer_object */, 50283}, /* glTexBufferEXT */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_Desktop_3_1, 50256}, /* glTexBuffer */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_ES_3_2, 50256}, /* glTexBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 19, 255 /* GL_ARB_texture_buffer_object */, 50268}, /* glTexBufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 736 /* GL_OES_texture_buffer */, 50298}, /* glTexBufferOES */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 736 /* GL_OES_texture_buffer */, 50298}, /* glTexBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 740 /* GL_OES_texture_buffer */, 50298}, /* glTexBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 740 /* GL_OES_texture_buffer */, 50298}, /* glTexBufferOES */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_3_1, 50256}, /* glTexBuffer */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_ES_3_2, 50256}, /* glTexBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 20, 255 /* GL_ARB_texture_buffer_object */, 50268}, /* glTexBufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 452 /* GL_EXT_texture_buffer */, 50283}, /* glTexBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 453 /* GL_EXT_texture_buffer_object */, 50283}, /* glTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 456 /* GL_EXT_texture_buffer */, 50283}, /* glTexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 457 /* GL_EXT_texture_buffer_object */, 50283}, /* glTexBufferEXT */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_4_3, 50313}, /* glTexBufferRange */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_ES_3_2, 50313}, /* glTexBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 21, 257 /* GL_ARB_texture_buffer_range */, 50313}, /* glTexBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 452 /* GL_EXT_texture_buffer */, 50330}, /* glTexBufferRangeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 736 /* GL_OES_texture_buffer */, 50350}, /* glTexBufferRangeOES */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 452 /* GL_EXT_texture_buffer */, 50330}, /* glTexBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 456 /* GL_EXT_texture_buffer */, 50330}, /* glTexBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 740 /* GL_OES_texture_buffer */, 50350}, /* glTexBufferRangeOES */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 456 /* GL_EXT_texture_buffer */, 50330}, /* glTexBufferRangeEXT */
     {DISPATCH_RESOLVE_VERSION, 22, OpenGL_Desktop_4_3, 50313}, /* glTexBufferRange */
     {DISPATCH_RESOLVE_VERSION, 22, OpenGL_ES_3_2, 50313}, /* glTexBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 22, 257 /* GL_ARB_texture_buffer_range */, 50313}, /* glTexBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 736 /* GL_OES_texture_buffer */, 50350}, /* glTexBufferRangeOES */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 736 /* GL_OES_texture_buffer */, 50350}, /* glTexBufferRangeOES */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 740 /* GL_OES_texture_buffer */, 50350}, /* glTexBufferRangeOES */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 740 /* GL_OES_texture_buffer */, 50350}, /* glTexBufferRangeOES */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_Desktop_4_3, 50313}, /* glTexBufferRange */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_ES_3_2, 50313}, /* glTexBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 23, 257 /* GL_ARB_texture_buffer_range */, 50313}, /* glTexBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 452 /* GL_EXT_texture_buffer */, 50330}, /* glTexBufferRangeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 311 /* GL_ATI_envmap_bumpmap */, 50370}, /* glTexBumpParameterfvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 311 /* GL_ATI_envmap_bumpmap */, 50394}, /* glTexBumpParameterivATI */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 688 /* GL_OES_byte_coordinates */, 50418}, /* glTexCoord1bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 688 /* GL_OES_byte_coordinates */, 50434}, /* glTexCoord1bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 456 /* GL_EXT_texture_buffer */, 50330}, /* glTexBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 314 /* GL_ATI_envmap_bumpmap */, 50370}, /* glTexBumpParameterfvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 314 /* GL_ATI_envmap_bumpmap */, 50394}, /* glTexBumpParameterivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 692 /* GL_OES_byte_coordinates */, 50418}, /* glTexCoord1bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 692 /* GL_OES_byte_coordinates */, 50434}, /* glTexCoord1bvOES */
     {DISPATCH_RESOLVE_DIRECT, 28, OpenGL_Desktop_1_0, 50451}, /* glTexCoord1d */
     {DISPATCH_RESOLVE_DIRECT, 29, OpenGL_Desktop_1_0, 50464}, /* glTexCoord1dv */
     {DISPATCH_RESOLVE_DIRECT, 30, OpenGL_Desktop_1_0, 50478}, /* glTexCoord1f */
     {DISPATCH_RESOLVE_DIRECT, 31, OpenGL_Desktop_1_0, 50491}, /* glTexCoord1fv */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 603 /* GL_NV_half_float */, 50505}, /* glTexCoord1hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 603 /* GL_NV_half_float */, 50520}, /* glTexCoord1hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 607 /* GL_NV_half_float */, 50505}, /* glTexCoord1hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 607 /* GL_NV_half_float */, 50520}, /* glTexCoord1hvNV */
     {DISPATCH_RESOLVE_DIRECT, 34, OpenGL_Desktop_1_0, 50536}, /* glTexCoord1i */
     {DISPATCH_RESOLVE_DIRECT, 35, OpenGL_Desktop_1_0, 50549}, /* glTexCoord1iv */
     {DISPATCH_RESOLVE_DIRECT, 36, OpenGL_Desktop_1_0, 50563}, /* glTexCoord1s */
     {DISPATCH_RESOLVE_DIRECT, 37, OpenGL_Desktop_1_0, 50576}, /* glTexCoord1sv */
-    {DISPATCH_RESOLVE_EXTENSION, 38, 702 /* GL_OES_fixed_point */, 50590}, /* glTexCoord1xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 702 /* GL_OES_fixed_point */, 50606}, /* glTexCoord1xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 688 /* GL_OES_byte_coordinates */, 50623}, /* glTexCoord2bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 688 /* GL_OES_byte_coordinates */, 50639}, /* glTexCoord2bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 38, 706 /* GL_OES_fixed_point */, 50590}, /* glTexCoord1xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 706 /* GL_OES_fixed_point */, 50606}, /* glTexCoord1xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 692 /* GL_OES_byte_coordinates */, 50623}, /* glTexCoord2bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 692 /* GL_OES_byte_coordinates */, 50639}, /* glTexCoord2bvOES */
     {DISPATCH_RESOLVE_DIRECT, 42, OpenGL_Desktop_1_0, 50656}, /* glTexCoord2d */
     {DISPATCH_RESOLVE_DIRECT, 43, OpenGL_Desktop_1_0, 50669}, /* glTexCoord2dv */
     {DISPATCH_RESOLVE_DIRECT, 44, OpenGL_Desktop_1_0, 50683}, /* glTexCoord2f */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 840 /* GL_SUN_vertex */, 50696}, /* glTexCoord2fColor3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 840 /* GL_SUN_vertex */, 50727}, /* glTexCoord2fColor3fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 840 /* GL_SUN_vertex */, 50759}, /* glTexCoord2fColor4fNormal3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 840 /* GL_SUN_vertex */, 50798}, /* glTexCoord2fColor4fNormal3fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 840 /* GL_SUN_vertex */, 50838}, /* glTexCoord2fColor4ubVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 840 /* GL_SUN_vertex */, 50870}, /* glTexCoord2fColor4ubVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 840 /* GL_SUN_vertex */, 50903}, /* glTexCoord2fNormal3fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 840 /* GL_SUN_vertex */, 50935}, /* glTexCoord2fNormal3fVertex3fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 53, 840 /* GL_SUN_vertex */, 50968}, /* glTexCoord2fVertex3fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 840 /* GL_SUN_vertex */, 50992}, /* glTexCoord2fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 845 /* GL_SUN_vertex */, 50696}, /* glTexCoord2fColor3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 845 /* GL_SUN_vertex */, 50727}, /* glTexCoord2fColor3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 845 /* GL_SUN_vertex */, 50759}, /* glTexCoord2fColor4fNormal3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 845 /* GL_SUN_vertex */, 50798}, /* glTexCoord2fColor4fNormal3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 845 /* GL_SUN_vertex */, 50838}, /* glTexCoord2fColor4ubVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 845 /* GL_SUN_vertex */, 50870}, /* glTexCoord2fColor4ubVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 845 /* GL_SUN_vertex */, 50903}, /* glTexCoord2fNormal3fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 845 /* GL_SUN_vertex */, 50935}, /* glTexCoord2fNormal3fVertex3fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 845 /* GL_SUN_vertex */, 50968}, /* glTexCoord2fVertex3fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 845 /* GL_SUN_vertex */, 50992}, /* glTexCoord2fVertex3fvSUN */
     {DISPATCH_RESOLVE_DIRECT, 55, OpenGL_Desktop_1_0, 51017}, /* glTexCoord2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 603 /* GL_NV_half_float */, 51031}, /* glTexCoord2hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 603 /* GL_NV_half_float */, 51046}, /* glTexCoord2hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 607 /* GL_NV_half_float */, 51031}, /* glTexCoord2hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 607 /* GL_NV_half_float */, 51046}, /* glTexCoord2hvNV */
     {DISPATCH_RESOLVE_DIRECT, 58, OpenGL_Desktop_1_0, 51062}, /* glTexCoord2i */
     {DISPATCH_RESOLVE_DIRECT, 59, OpenGL_Desktop_1_0, 51075}, /* glTexCoord2iv */
     {DISPATCH_RESOLVE_DIRECT, 60, OpenGL_Desktop_1_0, 51089}, /* glTexCoord2s */
     {DISPATCH_RESOLVE_DIRECT, 61, OpenGL_Desktop_1_0, 51102}, /* glTexCoord2sv */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 702 /* GL_OES_fixed_point */, 51116}, /* glTexCoord2xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 702 /* GL_OES_fixed_point */, 51132}, /* glTexCoord2xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 688 /* GL_OES_byte_coordinates */, 51149}, /* glTexCoord3bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 65, 688 /* GL_OES_byte_coordinates */, 51165}, /* glTexCoord3bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 706 /* GL_OES_fixed_point */, 51116}, /* glTexCoord2xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 706 /* GL_OES_fixed_point */, 51132}, /* glTexCoord2xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 692 /* GL_OES_byte_coordinates */, 51149}, /* glTexCoord3bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 692 /* GL_OES_byte_coordinates */, 51165}, /* glTexCoord3bvOES */
     {DISPATCH_RESOLVE_DIRECT, 66, OpenGL_Desktop_1_0, 51182}, /* glTexCoord3d */
     {DISPATCH_RESOLVE_DIRECT, 67, OpenGL_Desktop_1_0, 51195}, /* glTexCoord3dv */
     {DISPATCH_RESOLVE_DIRECT, 68, OpenGL_Desktop_1_0, 51209}, /* glTexCoord3f */
     {DISPATCH_RESOLVE_DIRECT, 69, OpenGL_Desktop_1_0, 51222}, /* glTexCoord3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 603 /* GL_NV_half_float */, 51236}, /* glTexCoord3hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 603 /* GL_NV_half_float */, 51251}, /* glTexCoord3hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 607 /* GL_NV_half_float */, 51236}, /* glTexCoord3hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 607 /* GL_NV_half_float */, 51251}, /* glTexCoord3hvNV */
     {DISPATCH_RESOLVE_DIRECT, 72, OpenGL_Desktop_1_0, 51267}, /* glTexCoord3i */
     {DISPATCH_RESOLVE_DIRECT, 73, OpenGL_Desktop_1_0, 51280}, /* glTexCoord3iv */
     {DISPATCH_RESOLVE_DIRECT, 74, OpenGL_Desktop_1_0, 51294}, /* glTexCoord3s */
     {DISPATCH_RESOLVE_DIRECT, 75, OpenGL_Desktop_1_0, 51307}, /* glTexCoord3sv */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 702 /* GL_OES_fixed_point */, 51321}, /* glTexCoord3xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 702 /* GL_OES_fixed_point */, 51337}, /* glTexCoord3xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 688 /* GL_OES_byte_coordinates */, 51354}, /* glTexCoord4bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 79, 688 /* GL_OES_byte_coordinates */, 51370}, /* glTexCoord4bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 706 /* GL_OES_fixed_point */, 51321}, /* glTexCoord3xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 706 /* GL_OES_fixed_point */, 51337}, /* glTexCoord3xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 692 /* GL_OES_byte_coordinates */, 51354}, /* glTexCoord4bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 692 /* GL_OES_byte_coordinates */, 51370}, /* glTexCoord4bvOES */
     {DISPATCH_RESOLVE_DIRECT, 80, OpenGL_Desktop_1_0, 51387}, /* glTexCoord4d */
     {DISPATCH_RESOLVE_DIRECT, 81, OpenGL_Desktop_1_0, 51400}, /* glTexCoord4dv */
     {DISPATCH_RESOLVE_DIRECT, 82, OpenGL_Desktop_1_0, 51414}, /* glTexCoord4f */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 840 /* GL_SUN_vertex */, 51427}, /* glTexCoord4fColor4fNormal3fVertex4fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 840 /* GL_SUN_vertex */, 51466}, /* glTexCoord4fColor4fNormal3fVertex4fvSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 85, 840 /* GL_SUN_vertex */, 51506}, /* glTexCoord4fVertex4fSUN */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 840 /* GL_SUN_vertex */, 51530}, /* glTexCoord4fVertex4fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 845 /* GL_SUN_vertex */, 51427}, /* glTexCoord4fColor4fNormal3fVertex4fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 845 /* GL_SUN_vertex */, 51466}, /* glTexCoord4fColor4fNormal3fVertex4fvSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 845 /* GL_SUN_vertex */, 51506}, /* glTexCoord4fVertex4fSUN */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 845 /* GL_SUN_vertex */, 51530}, /* glTexCoord4fVertex4fvSUN */
     {DISPATCH_RESOLVE_DIRECT, 87, OpenGL_Desktop_1_0, 51555}, /* glTexCoord4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 603 /* GL_NV_half_float */, 51569}, /* glTexCoord4hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 603 /* GL_NV_half_float */, 51584}, /* glTexCoord4hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 607 /* GL_NV_half_float */, 51569}, /* glTexCoord4hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 607 /* GL_NV_half_float */, 51584}, /* glTexCoord4hvNV */
     {DISPATCH_RESOLVE_DIRECT, 90, OpenGL_Desktop_1_0, 51600}, /* glTexCoord4i */
     {DISPATCH_RESOLVE_DIRECT, 91, OpenGL_Desktop_1_0, 51613}, /* glTexCoord4iv */
     {DISPATCH_RESOLVE_DIRECT, 92, OpenGL_Desktop_1_0, 51627}, /* glTexCoord4s */
     {DISPATCH_RESOLVE_DIRECT, 93, OpenGL_Desktop_1_0, 51640}, /* glTexCoord4sv */
-    {DISPATCH_RESOLVE_EXTENSION, 94, 702 /* GL_OES_fixed_point */, 51654}, /* glTexCoord4xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 702 /* GL_OES_fixed_point */, 51670}, /* glTexCoord4xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 96, 671 /* GL_NV_vertex_buffer_unified_memory */, 51687}, /* glTexCoordFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 94, 706 /* GL_OES_fixed_point */, 51654}, /* glTexCoord4xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 706 /* GL_OES_fixed_point */, 51670}, /* glTexCoord4xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 675 /* GL_NV_vertex_buffer_unified_memory */, 51687}, /* glTexCoordFormatNV */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_Desktop_3_3, 51706}, /* glTexCoordP1ui */
     {DISPATCH_RESOLVE_EXTENSION, 97, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 51706}, /* glTexCoordP1ui */
     {DISPATCH_RESOLVE_VERSION, 98, OpenGL_Desktop_3_3, 51721}, /* glTexCoordP1uiv */
@@ -9811,9 +9821,9 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 104, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 51814}, /* glTexCoordP4uiv */
     {DISPATCH_RESOLVE_VERSION, 105, OpenGL_Desktop_1_1, 51830}, /* glTexCoordPointer */
     {DISPATCH_RESOLVE_DIRECT, 105, OpenGL_ES_1_0, 51830}, /* glTexCoordPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 106, 489 /* GL_EXT_vertex_array */, 51848}, /* glTexCoordPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 510 /* GL_IBM_vertex_array_lists */, 51869}, /* glTexCoordPointerListIBM */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 528 /* GL_INTEL_parallel_arrays */, 51894}, /* glTexCoordPointervINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 493 /* GL_EXT_vertex_array */, 51848}, /* glTexCoordPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 514 /* GL_IBM_vertex_array_lists */, 51869}, /* glTexCoordPointerListIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 532 /* GL_INTEL_parallel_arrays */, 51894}, /* glTexCoordPointervINTEL */
     {DISPATCH_RESOLVE_DIRECT, 109, OpenGL_Desktop_1_0, 51918}, /* glTexEnvf */
     {DISPATCH_RESOLVE_DIRECT, 109, OpenGL_ES_1_0, 51918}, /* glTexEnvf */
     {DISPATCH_RESOLVE_DIRECT, 110, OpenGL_Desktop_1_0, 51928}, /* glTexEnvfv */
@@ -9823,81 +9833,81 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 112, OpenGL_Desktop_1_0, 51949}, /* glTexEnviv */
     {DISPATCH_RESOLVE_DIRECT, 112, OpenGL_ES_1_0, 51949}, /* glTexEnviv */
     {DISPATCH_RESOLVE_DIRECT, 113, OpenGL_ES_1_0, 51960}, /* glTexEnvx */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 702 /* GL_OES_fixed_point */, 51970}, /* glTexEnvxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 706 /* GL_OES_fixed_point */, 51970}, /* glTexEnvxOES */
     {DISPATCH_RESOLVE_DIRECT, 115, OpenGL_ES_1_0, 51983}, /* glTexEnvxv */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 702 /* GL_OES_fixed_point */, 51994}, /* glTexEnvxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 117, 784 /* GL_SGIS_texture_filter4 */, 52008}, /* glTexFilterFuncSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 706 /* GL_OES_fixed_point */, 51994}, /* glTexEnvxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 117, 789 /* GL_SGIS_texture_filter4 */, 52008}, /* glTexFilterFuncSGIS */
     {DISPATCH_RESOLVE_DIRECT, 118, OpenGL_Desktop_1_0, 52028}, /* glTexGend */
     {DISPATCH_RESOLVE_DIRECT, 119, OpenGL_Desktop_1_0, 52038}, /* glTexGendv */
     {DISPATCH_RESOLVE_DIRECT, 120, OpenGL_Desktop_1_0, 52049}, /* glTexGenf */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 738 /* GL_OES_texture_cube_map */, 52059}, /* glTexGenfOES */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 742 /* GL_OES_texture_cube_map */, 52059}, /* glTexGenfOES */
     {DISPATCH_RESOLVE_DIRECT, 122, OpenGL_Desktop_1_0, 52072}, /* glTexGenfv */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 738 /* GL_OES_texture_cube_map */, 52083}, /* glTexGenfvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 742 /* GL_OES_texture_cube_map */, 52083}, /* glTexGenfvOES */
     {DISPATCH_RESOLVE_DIRECT, 124, OpenGL_Desktop_1_0, 52097}, /* glTexGeni */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 738 /* GL_OES_texture_cube_map */, 52107}, /* glTexGeniOES */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 742 /* GL_OES_texture_cube_map */, 52107}, /* glTexGeniOES */
     {DISPATCH_RESOLVE_DIRECT, 126, OpenGL_Desktop_1_0, 52120}, /* glTexGeniv */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 738 /* GL_OES_texture_cube_map */, 52131}, /* glTexGenivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 702 /* GL_OES_fixed_point */, 52145}, /* glTexGenxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 738 /* GL_OES_texture_cube_map */, 52145}, /* glTexGenxOES */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 702 /* GL_OES_fixed_point */, 52158}, /* glTexGenxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 738 /* GL_OES_texture_cube_map */, 52158}, /* glTexGenxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 742 /* GL_OES_texture_cube_map */, 52131}, /* glTexGenivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 706 /* GL_OES_fixed_point */, 52145}, /* glTexGenxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 742 /* GL_OES_texture_cube_map */, 52145}, /* glTexGenxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 706 /* GL_OES_fixed_point */, 52158}, /* glTexGenxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 742 /* GL_OES_texture_cube_map */, 52158}, /* glTexGenxvOES */
     {DISPATCH_RESOLVE_DIRECT, 130, OpenGL_Desktop_1_0, 52172}, /* glTexImage1D */
     {DISPATCH_RESOLVE_DIRECT, 131, OpenGL_Desktop_1_0, 52185}, /* glTexImage2D */
     {DISPATCH_RESOLVE_DIRECT, 131, OpenGL_ES_1_0, 52185}, /* glTexImage2D */
     {DISPATCH_RESOLVE_DIRECT, 131, OpenGL_ES_2_0, 52185}, /* glTexImage2D */
     {DISPATCH_RESOLVE_VERSION, 132, OpenGL_Desktop_3_2, 52198}, /* glTexImage2DMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 132, 272 /* GL_ARB_texture_multisample */, 52198}, /* glTexImage2DMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 658 /* GL_NV_texture_multisample */, 52222}, /* glTexImage2DMultisampleCoverageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 662 /* GL_NV_texture_multisample */, 52222}, /* glTexImage2DMultisampleCoverageNV */
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_Desktop_1_2, 52256}, /* glTexImage3D */
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_ES_3_0, 52256}, /* glTexImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 449 /* GL_EXT_texture3D */, 52269}, /* glTexImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 734 /* GL_OES_texture_3D */, 52343}, /* glTexImage3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 135, 449 /* GL_EXT_texture3D */, 52269}, /* glTexImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 453 /* GL_EXT_texture3D */, 52269}, /* glTexImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 738 /* GL_OES_texture_3D */, 52343}, /* glTexImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 135, 453 /* GL_EXT_texture3D */, 52269}, /* glTexImage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 135, OpenGL_Desktop_1_2, 52256}, /* glTexImage3D */
     {DISPATCH_RESOLVE_VERSION, 135, OpenGL_ES_3_0, 52256}, /* glTexImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 135, 734 /* GL_OES_texture_3D */, 52343}, /* glTexImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 135, 738 /* GL_OES_texture_3D */, 52343}, /* glTexImage3DOES */
     {DISPATCH_RESOLVE_VERSION, 136, OpenGL_Desktop_3_2, 52285}, /* glTexImage3DMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 136, 272 /* GL_ARB_texture_multisample */, 52285}, /* glTexImage3DMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 137, 658 /* GL_NV_texture_multisample */, 52309}, /* glTexImage3DMultisampleCoverageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 734 /* GL_OES_texture_3D */, 52343}, /* glTexImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 137, 662 /* GL_NV_texture_multisample */, 52309}, /* glTexImage3DMultisampleCoverageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 738 /* GL_OES_texture_3D */, 52343}, /* glTexImage3DOES */
     {DISPATCH_RESOLVE_VERSION, 138, OpenGL_Desktop_1_2, 52256}, /* glTexImage3D */
     {DISPATCH_RESOLVE_VERSION, 138, OpenGL_ES_3_0, 52256}, /* glTexImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 449 /* GL_EXT_texture3D */, 52269}, /* glTexImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 780 /* GL_SGIS_texture4D */, 52359}, /* glTexImage4DSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 453 /* GL_EXT_texture3D */, 52269}, /* glTexImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 785 /* GL_SGIS_texture4D */, 52359}, /* glTexImage4DSGIS */
     {DISPATCH_RESOLVE_EXTENSION, 140, 247 /* GL_ARB_sparse_texture */, 52376}, /* glTexPageCommitmentARB */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 438 /* GL_EXT_sparse_texture */, 52399}, /* glTexPageCommitmentEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 438 /* GL_EXT_sparse_texture */, 52399}, /* glTexPageCommitmentEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 441 /* GL_EXT_sparse_texture */, 52399}, /* glTexPageCommitmentEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 441 /* GL_EXT_sparse_texture */, 52399}, /* glTexPageCommitmentEXT */
     {DISPATCH_RESOLVE_EXTENSION, 141, 247 /* GL_ARB_sparse_texture */, 52376}, /* glTexPageCommitmentARB */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_Desktop_3_0, 52422}, /* glTexParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_ES_3_2, 52422}, /* glTexParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 451 /* GL_EXT_texture_border_clamp */, 52440}, /* glTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 468 /* GL_EXT_texture_integer */, 52440}, /* glTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 735 /* GL_OES_texture_border_clamp */, 52461}, /* glTexParameterIivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 451 /* GL_EXT_texture_border_clamp */, 52440}, /* glTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 468 /* GL_EXT_texture_integer */, 52440}, /* glTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 455 /* GL_EXT_texture_border_clamp */, 52440}, /* glTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 472 /* GL_EXT_texture_integer */, 52440}, /* glTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 739 /* GL_OES_texture_border_clamp */, 52461}, /* glTexParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 455 /* GL_EXT_texture_border_clamp */, 52440}, /* glTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 472 /* GL_EXT_texture_integer */, 52440}, /* glTexParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_Desktop_3_0, 52422}, /* glTexParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 143, OpenGL_ES_3_2, 52422}, /* glTexParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 735 /* GL_OES_texture_border_clamp */, 52461}, /* glTexParameterIivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 735 /* GL_OES_texture_border_clamp */, 52461}, /* glTexParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 739 /* GL_OES_texture_border_clamp */, 52461}, /* glTexParameterIivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 739 /* GL_OES_texture_border_clamp */, 52461}, /* glTexParameterIivOES */
     {DISPATCH_RESOLVE_VERSION, 144, OpenGL_Desktop_3_0, 52422}, /* glTexParameterIiv */
     {DISPATCH_RESOLVE_VERSION, 144, OpenGL_ES_3_2, 52422}, /* glTexParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 451 /* GL_EXT_texture_border_clamp */, 52440}, /* glTexParameterIivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 468 /* GL_EXT_texture_integer */, 52440}, /* glTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 455 /* GL_EXT_texture_border_clamp */, 52440}, /* glTexParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 472 /* GL_EXT_texture_integer */, 52440}, /* glTexParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_Desktop_3_0, 52482}, /* glTexParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 145, OpenGL_ES_3_2, 52482}, /* glTexParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 451 /* GL_EXT_texture_border_clamp */, 52501}, /* glTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 468 /* GL_EXT_texture_integer */, 52501}, /* glTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 735 /* GL_OES_texture_border_clamp */, 52523}, /* glTexParameterIuivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 451 /* GL_EXT_texture_border_clamp */, 52501}, /* glTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 468 /* GL_EXT_texture_integer */, 52501}, /* glTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 455 /* GL_EXT_texture_border_clamp */, 52501}, /* glTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 472 /* GL_EXT_texture_integer */, 52501}, /* glTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 739 /* GL_OES_texture_border_clamp */, 52523}, /* glTexParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 455 /* GL_EXT_texture_border_clamp */, 52501}, /* glTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 472 /* GL_EXT_texture_integer */, 52501}, /* glTexParameterIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 146, OpenGL_Desktop_3_0, 52482}, /* glTexParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 146, OpenGL_ES_3_2, 52482}, /* glTexParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 735 /* GL_OES_texture_border_clamp */, 52523}, /* glTexParameterIuivOES */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 735 /* GL_OES_texture_border_clamp */, 52523}, /* glTexParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 739 /* GL_OES_texture_border_clamp */, 52523}, /* glTexParameterIuivOES */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 739 /* GL_OES_texture_border_clamp */, 52523}, /* glTexParameterIuivOES */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_Desktop_3_0, 52482}, /* glTexParameterIuiv */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_ES_3_2, 52482}, /* glTexParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 451 /* GL_EXT_texture_border_clamp */, 52501}, /* glTexParameterIuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 468 /* GL_EXT_texture_integer */, 52501}, /* glTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 455 /* GL_EXT_texture_border_clamp */, 52501}, /* glTexParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 472 /* GL_EXT_texture_integer */, 52501}, /* glTexParameterIuivEXT */
     {DISPATCH_RESOLVE_DIRECT, 148, OpenGL_Desktop_1_0, 52545}, /* glTexParameterf */
     {DISPATCH_RESOLVE_DIRECT, 148, OpenGL_ES_1_0, 52545}, /* glTexParameterf */
     {DISPATCH_RESOLVE_DIRECT, 148, OpenGL_ES_2_0, 52545}, /* glTexParameterf */
@@ -9911,21 +9921,21 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 151, OpenGL_ES_1_0, 52594}, /* glTexParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 151, OpenGL_ES_2_0, 52594}, /* glTexParameteriv */
     {DISPATCH_RESOLVE_DIRECT, 152, OpenGL_ES_1_0, 52611}, /* glTexParameterx */
-    {DISPATCH_RESOLVE_EXTENSION, 153, 702 /* GL_OES_fixed_point */, 52627}, /* glTexParameterxOES */
+    {DISPATCH_RESOLVE_EXTENSION, 153, 706 /* GL_OES_fixed_point */, 52627}, /* glTexParameterxOES */
     {DISPATCH_RESOLVE_DIRECT, 154, OpenGL_ES_1_0, 52646}, /* glTexParameterxv */
-    {DISPATCH_RESOLVE_EXTENSION, 155, 702 /* GL_OES_fixed_point */, 52663}, /* glTexParameterxvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 156, 578 /* GL_NV_explicit_multisample */, 52683}, /* glTexRenderbufferNV */
+    {DISPATCH_RESOLVE_EXTENSION, 155, 706 /* GL_OES_fixed_point */, 52663}, /* glTexParameterxvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 156, 582 /* GL_NV_explicit_multisample */, 52683}, /* glTexRenderbufferNV */
     {DISPATCH_RESOLVE_VERSION, 157, OpenGL_Desktop_4_2, 52703}, /* glTexStorage1D */
     {DISPATCH_RESOLVE_EXTENSION, 157, 280 /* GL_ARB_texture_storage */, 52703}, /* glTexStorage1D */
-    {DISPATCH_RESOLVE_EXTENSION, 157, 482 /* GL_EXT_texture_storage */, 52718}, /* glTexStorage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 482 /* GL_EXT_texture_storage */, 52718}, /* glTexStorage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 157, 486 /* GL_EXT_texture_storage */, 52718}, /* glTexStorage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 486 /* GL_EXT_texture_storage */, 52718}, /* glTexStorage1DEXT */
     {DISPATCH_RESOLVE_VERSION, 158, OpenGL_Desktop_4_2, 52703}, /* glTexStorage1D */
     {DISPATCH_RESOLVE_EXTENSION, 158, 280 /* GL_ARB_texture_storage */, 52703}, /* glTexStorage1D */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_Desktop_4_2, 52736}, /* glTexStorage2D */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_ES_3_0, 52736}, /* glTexStorage2D */
     {DISPATCH_RESOLVE_EXTENSION, 159, 280 /* GL_ARB_texture_storage */, 52736}, /* glTexStorage2D */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 482 /* GL_EXT_texture_storage */, 52751}, /* glTexStorage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 482 /* GL_EXT_texture_storage */, 52751}, /* glTexStorage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 486 /* GL_EXT_texture_storage */, 52751}, /* glTexStorage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 486 /* GL_EXT_texture_storage */, 52751}, /* glTexStorage2DEXT */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_Desktop_4_2, 52736}, /* glTexStorage2D */
     {DISPATCH_RESOLVE_VERSION, 160, OpenGL_ES_3_0, 52736}, /* glTexStorage2D */
     {DISPATCH_RESOLVE_EXTENSION, 160, 280 /* GL_ARB_texture_storage */, 52736}, /* glTexStorage2D */
@@ -9935,146 +9945,146 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 162, OpenGL_Desktop_4_2, 52795}, /* glTexStorage3D */
     {DISPATCH_RESOLVE_VERSION, 162, OpenGL_ES_3_0, 52795}, /* glTexStorage3D */
     {DISPATCH_RESOLVE_EXTENSION, 162, 280 /* GL_ARB_texture_storage */, 52795}, /* glTexStorage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 162, 482 /* GL_EXT_texture_storage */, 52810}, /* glTexStorage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 163, 482 /* GL_EXT_texture_storage */, 52810}, /* glTexStorage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 162, 486 /* GL_EXT_texture_storage */, 52810}, /* glTexStorage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 163, 486 /* GL_EXT_texture_storage */, 52810}, /* glTexStorage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 163, OpenGL_Desktop_4_2, 52795}, /* glTexStorage3D */
     {DISPATCH_RESOLVE_VERSION, 163, OpenGL_ES_3_0, 52795}, /* glTexStorage3D */
     {DISPATCH_RESOLVE_EXTENSION, 163, 280 /* GL_ARB_texture_storage */, 52795}, /* glTexStorage3D */
     {DISPATCH_RESOLVE_VERSION, 164, OpenGL_Desktop_4_3, 52828}, /* glTexStorage3DMultisample */
     {DISPATCH_RESOLVE_VERSION, 164, OpenGL_ES_3_2, 52828}, /* glTexStorage3DMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 164, 281 /* GL_ARB_texture_storage_multisample */, 52828}, /* glTexStorage3DMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 164, 748 /* GL_OES_texture_storage_multisample_2d_array */, 52854}, /* glTexStorage3DMultisampleOES */
-    {DISPATCH_RESOLVE_EXTENSION, 165, 748 /* GL_OES_texture_storage_multisample_2d_array */, 52854}, /* glTexStorage3DMultisampleOES */
+    {DISPATCH_RESOLVE_EXTENSION, 164, 752 /* GL_OES_texture_storage_multisample_2d_array */, 52854}, /* glTexStorage3DMultisampleOES */
+    {DISPATCH_RESOLVE_EXTENSION, 165, 752 /* GL_OES_texture_storage_multisample_2d_array */, 52854}, /* glTexStorage3DMultisampleOES */
     {DISPATCH_RESOLVE_VERSION, 165, OpenGL_Desktop_4_3, 52828}, /* glTexStorage3DMultisample */
     {DISPATCH_RESOLVE_VERSION, 165, OpenGL_ES_3_2, 52828}, /* glTexStorage3DMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 165, 281 /* GL_ARB_texture_storage_multisample */, 52828}, /* glTexStorage3DMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 166, 89 /* GL_AMD_sparse_texture */, 52883}, /* glTexStorageSparseAMD */
     {DISPATCH_RESOLVE_VERSION, 167, OpenGL_Desktop_1_1, 52905}, /* glTexSubImage1D */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 444 /* GL_EXT_subtexture */, 52921}, /* glTexSubImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 168, 444 /* GL_EXT_subtexture */, 52921}, /* glTexSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 447 /* GL_EXT_subtexture */, 52921}, /* glTexSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 168, 447 /* GL_EXT_subtexture */, 52921}, /* glTexSubImage1DEXT */
     {DISPATCH_RESOLVE_VERSION, 168, OpenGL_Desktop_1_1, 52905}, /* glTexSubImage1D */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_Desktop_1_1, 52940}, /* glTexSubImage2D */
     {DISPATCH_RESOLVE_DIRECT, 169, OpenGL_ES_1_0, 52940}, /* glTexSubImage2D */
     {DISPATCH_RESOLVE_DIRECT, 169, OpenGL_ES_2_0, 52940}, /* glTexSubImage2D */
-    {DISPATCH_RESOLVE_EXTENSION, 169, 444 /* GL_EXT_subtexture */, 52956}, /* glTexSubImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 170, 444 /* GL_EXT_subtexture */, 52956}, /* glTexSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 169, 447 /* GL_EXT_subtexture */, 52956}, /* glTexSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 170, 447 /* GL_EXT_subtexture */, 52956}, /* glTexSubImage2DEXT */
     {DISPATCH_RESOLVE_VERSION, 170, OpenGL_Desktop_1_1, 52940}, /* glTexSubImage2D */
     {DISPATCH_RESOLVE_DIRECT, 170, OpenGL_ES_1_0, 52940}, /* glTexSubImage2D */
     {DISPATCH_RESOLVE_DIRECT, 170, OpenGL_ES_2_0, 52940}, /* glTexSubImage2D */
     {DISPATCH_RESOLVE_VERSION, 171, OpenGL_Desktop_1_2, 52975}, /* glTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 171, OpenGL_ES_3_0, 52975}, /* glTexSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 449 /* GL_EXT_texture3D */, 52991}, /* glTexSubImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 734 /* GL_OES_texture_3D */, 53010}, /* glTexSubImage3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 449 /* GL_EXT_texture3D */, 52991}, /* glTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 453 /* GL_EXT_texture3D */, 52991}, /* glTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 738 /* GL_OES_texture_3D */, 53010}, /* glTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 453 /* GL_EXT_texture3D */, 52991}, /* glTexSubImage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 172, OpenGL_Desktop_1_2, 52975}, /* glTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 172, OpenGL_ES_3_0, 52975}, /* glTexSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 734 /* GL_OES_texture_3D */, 53010}, /* glTexSubImage3DOES */
-    {DISPATCH_RESOLVE_EXTENSION, 173, 734 /* GL_OES_texture_3D */, 53010}, /* glTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 738 /* GL_OES_texture_3D */, 53010}, /* glTexSubImage3DOES */
+    {DISPATCH_RESOLVE_EXTENSION, 173, 738 /* GL_OES_texture_3D */, 53010}, /* glTexSubImage3DOES */
     {DISPATCH_RESOLVE_VERSION, 173, OpenGL_Desktop_1_2, 52975}, /* glTexSubImage3D */
     {DISPATCH_RESOLVE_VERSION, 173, OpenGL_ES_3_0, 52975}, /* glTexSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 173, 449 /* GL_EXT_texture3D */, 52991}, /* glTexSubImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 780 /* GL_SGIS_texture4D */, 53029}, /* glTexSubImage4DSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 173, 453 /* GL_EXT_texture3D */, 52991}, /* glTexSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 785 /* GL_SGIS_texture4D */, 53029}, /* glTexSubImage4DSGIS */
     {DISPATCH_RESOLVE_VERSION, 175, OpenGL_Desktop_4_5, 53049}, /* glTextureBarrier */
     {DISPATCH_RESOLVE_EXTENSION, 175, 253 /* GL_ARB_texture_barrier */, 53049}, /* glTextureBarrier */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 652 /* GL_NV_texture_barrier */, 53066}, /* glTextureBarrierNV */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 656 /* GL_NV_texture_barrier */, 53066}, /* glTextureBarrierNV */
     {DISPATCH_RESOLVE_VERSION, 177, OpenGL_Desktop_4_5, 53085}, /* glTextureBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 177, 163 /* GL_ARB_direct_state_access */, 53085}, /* glTextureBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 357 /* GL_EXT_direct_state_access */, 53101}, /* glTextureBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 360 /* GL_EXT_direct_state_access */, 53101}, /* glTextureBufferEXT */
     {DISPATCH_RESOLVE_VERSION, 179, OpenGL_Desktop_4_5, 53120}, /* glTextureBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 179, 163 /* GL_ARB_direct_state_access */, 53120}, /* glTextureBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 357 /* GL_EXT_direct_state_access */, 53141}, /* glTextureBufferRangeEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 782 /* GL_SGIS_texture_color_mask */, 53165}, /* glTextureColorMaskSGIS */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 357 /* GL_EXT_direct_state_access */, 53188}, /* glTextureImage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 357 /* GL_EXT_direct_state_access */, 53208}, /* glTextureImage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 658 /* GL_NV_texture_multisample */, 53228}, /* glTextureImage2DMultisampleCoverageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 658 /* GL_NV_texture_multisample */, 53266}, /* glTextureImage2DMultisampleNV */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 357 /* GL_EXT_direct_state_access */, 53296}, /* glTextureImage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 658 /* GL_NV_texture_multisample */, 53316}, /* glTextureImage3DMultisampleCoverageNV */
-    {DISPATCH_RESOLVE_EXTENSION, 188, 658 /* GL_NV_texture_multisample */, 53354}, /* glTextureImage3DMultisampleNV */
-    {DISPATCH_RESOLVE_EXTENSION, 189, 388 /* GL_EXT_light_texture */, 53384}, /* glTextureLightEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 388 /* GL_EXT_light_texture */, 53402}, /* glTextureMaterialEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 191, 473 /* GL_EXT_texture_perturb_normal */, 53423}, /* glTextureNormalEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 357 /* GL_EXT_direct_state_access */, 53442}, /* glTexturePageCommitmentEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 360 /* GL_EXT_direct_state_access */, 53141}, /* glTextureBufferRangeEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 787 /* GL_SGIS_texture_color_mask */, 53165}, /* glTextureColorMaskSGIS */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 360 /* GL_EXT_direct_state_access */, 53188}, /* glTextureImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 360 /* GL_EXT_direct_state_access */, 53208}, /* glTextureImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 662 /* GL_NV_texture_multisample */, 53228}, /* glTextureImage2DMultisampleCoverageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 662 /* GL_NV_texture_multisample */, 53266}, /* glTextureImage2DMultisampleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 360 /* GL_EXT_direct_state_access */, 53296}, /* glTextureImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 662 /* GL_NV_texture_multisample */, 53316}, /* glTextureImage3DMultisampleCoverageNV */
+    {DISPATCH_RESOLVE_EXTENSION, 188, 662 /* GL_NV_texture_multisample */, 53354}, /* glTextureImage3DMultisampleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 189, 391 /* GL_EXT_light_texture */, 53384}, /* glTextureLightEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 391 /* GL_EXT_light_texture */, 53402}, /* glTextureMaterialEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 191, 477 /* GL_EXT_texture_perturb_normal */, 53423}, /* glTextureNormalEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 360 /* GL_EXT_direct_state_access */, 53442}, /* glTexturePageCommitmentEXT */
     {DISPATCH_RESOLVE_VERSION, 193, OpenGL_Desktop_4_5, 53469}, /* glTextureParameterIiv */
     {DISPATCH_RESOLVE_EXTENSION, 193, 163 /* GL_ARB_direct_state_access */, 53469}, /* glTextureParameterIiv */
-    {DISPATCH_RESOLVE_EXTENSION, 194, 357 /* GL_EXT_direct_state_access */, 53491}, /* glTextureParameterIivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 194, 360 /* GL_EXT_direct_state_access */, 53491}, /* glTextureParameterIivEXT */
     {DISPATCH_RESOLVE_VERSION, 195, OpenGL_Desktop_4_5, 53516}, /* glTextureParameterIuiv */
     {DISPATCH_RESOLVE_EXTENSION, 195, 163 /* GL_ARB_direct_state_access */, 53516}, /* glTextureParameterIuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 196, 357 /* GL_EXT_direct_state_access */, 53539}, /* glTextureParameterIuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 196, 360 /* GL_EXT_direct_state_access */, 53539}, /* glTextureParameterIuivEXT */
     {DISPATCH_RESOLVE_VERSION, 197, OpenGL_Desktop_4_5, 53565}, /* glTextureParameterf */
     {DISPATCH_RESOLVE_EXTENSION, 197, 163 /* GL_ARB_direct_state_access */, 53565}, /* glTextureParameterf */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 357 /* GL_EXT_direct_state_access */, 53585}, /* glTextureParameterfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 360 /* GL_EXT_direct_state_access */, 53585}, /* glTextureParameterfEXT */
     {DISPATCH_RESOLVE_VERSION, 199, OpenGL_Desktop_4_5, 53608}, /* glTextureParameterfv */
     {DISPATCH_RESOLVE_EXTENSION, 199, 163 /* GL_ARB_direct_state_access */, 53608}, /* glTextureParameterfv */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 357 /* GL_EXT_direct_state_access */, 53629}, /* glTextureParameterfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 360 /* GL_EXT_direct_state_access */, 53629}, /* glTextureParameterfvEXT */
     {DISPATCH_RESOLVE_VERSION, 201, OpenGL_Desktop_4_5, 53653}, /* glTextureParameteri */
     {DISPATCH_RESOLVE_EXTENSION, 201, 163 /* GL_ARB_direct_state_access */, 53653}, /* glTextureParameteri */
-    {DISPATCH_RESOLVE_EXTENSION, 202, 357 /* GL_EXT_direct_state_access */, 53673}, /* glTextureParameteriEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 202, 360 /* GL_EXT_direct_state_access */, 53673}, /* glTextureParameteriEXT */
     {DISPATCH_RESOLVE_VERSION, 203, OpenGL_Desktop_4_5, 53696}, /* glTextureParameteriv */
     {DISPATCH_RESOLVE_EXTENSION, 203, 163 /* GL_ARB_direct_state_access */, 53696}, /* glTextureParameteriv */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 357 /* GL_EXT_direct_state_access */, 53717}, /* glTextureParameterivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 360 /* GL_EXT_direct_state_access */, 53717}, /* glTextureParameterivEXT */
     {DISPATCH_RESOLVE_EXTENSION, 205, 129 /* GL_APPLE_texture_range */, 53741}, /* glTextureRangeAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 357 /* GL_EXT_direct_state_access */, 53761}, /* glTextureRenderbufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 360 /* GL_EXT_direct_state_access */, 53761}, /* glTextureRenderbufferEXT */
     {DISPATCH_RESOLVE_VERSION, 207, OpenGL_Desktop_4_5, 53786}, /* glTextureStorage1D */
     {DISPATCH_RESOLVE_EXTENSION, 207, 163 /* GL_ARB_direct_state_access */, 53786}, /* glTextureStorage1D */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 357 /* GL_EXT_direct_state_access */, 53805}, /* glTextureStorage1DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 482 /* GL_EXT_texture_storage */, 53805}, /* glTextureStorage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 360 /* GL_EXT_direct_state_access */, 53805}, /* glTextureStorage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 486 /* GL_EXT_texture_storage */, 53805}, /* glTextureStorage1DEXT */
     {DISPATCH_RESOLVE_VERSION, 209, OpenGL_Desktop_4_5, 53827}, /* glTextureStorage2D */
     {DISPATCH_RESOLVE_EXTENSION, 209, 163 /* GL_ARB_direct_state_access */, 53827}, /* glTextureStorage2D */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 357 /* GL_EXT_direct_state_access */, 53846}, /* glTextureStorage2DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 482 /* GL_EXT_texture_storage */, 53846}, /* glTextureStorage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 360 /* GL_EXT_direct_state_access */, 53846}, /* glTextureStorage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 486 /* GL_EXT_texture_storage */, 53846}, /* glTextureStorage2DEXT */
     {DISPATCH_RESOLVE_VERSION, 211, OpenGL_Desktop_4_5, 53868}, /* glTextureStorage2DMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 211, 163 /* GL_ARB_direct_state_access */, 53868}, /* glTextureStorage2DMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 357 /* GL_EXT_direct_state_access */, 53898}, /* glTextureStorage2DMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 360 /* GL_EXT_direct_state_access */, 53898}, /* glTextureStorage2DMultisampleEXT */
     {DISPATCH_RESOLVE_VERSION, 213, OpenGL_Desktop_4_5, 53931}, /* glTextureStorage3D */
     {DISPATCH_RESOLVE_EXTENSION, 213, 163 /* GL_ARB_direct_state_access */, 53931}, /* glTextureStorage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 357 /* GL_EXT_direct_state_access */, 53950}, /* glTextureStorage3DEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 482 /* GL_EXT_texture_storage */, 53950}, /* glTextureStorage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 360 /* GL_EXT_direct_state_access */, 53950}, /* glTextureStorage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 486 /* GL_EXT_texture_storage */, 53950}, /* glTextureStorage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 215, OpenGL_Desktop_4_5, 53972}, /* glTextureStorage3DMultisample */
     {DISPATCH_RESOLVE_EXTENSION, 215, 163 /* GL_ARB_direct_state_access */, 53972}, /* glTextureStorage3DMultisample */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 357 /* GL_EXT_direct_state_access */, 54002}, /* glTextureStorage3DMultisampleEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 360 /* GL_EXT_direct_state_access */, 54002}, /* glTextureStorage3DMultisampleEXT */
     {DISPATCH_RESOLVE_EXTENSION, 217, 89 /* GL_AMD_sparse_texture */, 54035}, /* glTextureStorageSparseAMD */
     {DISPATCH_RESOLVE_VERSION, 218, OpenGL_Desktop_4_5, 54061}, /* glTextureSubImage1D */
     {DISPATCH_RESOLVE_EXTENSION, 218, 163 /* GL_ARB_direct_state_access */, 54061}, /* glTextureSubImage1D */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 357 /* GL_EXT_direct_state_access */, 54081}, /* glTextureSubImage1DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 360 /* GL_EXT_direct_state_access */, 54081}, /* glTextureSubImage1DEXT */
     {DISPATCH_RESOLVE_VERSION, 220, OpenGL_Desktop_4_5, 54104}, /* glTextureSubImage2D */
     {DISPATCH_RESOLVE_EXTENSION, 220, 163 /* GL_ARB_direct_state_access */, 54104}, /* glTextureSubImage2D */
-    {DISPATCH_RESOLVE_EXTENSION, 221, 357 /* GL_EXT_direct_state_access */, 54124}, /* glTextureSubImage2DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 221, 360 /* GL_EXT_direct_state_access */, 54124}, /* glTextureSubImage2DEXT */
     {DISPATCH_RESOLVE_VERSION, 222, OpenGL_Desktop_4_5, 54147}, /* glTextureSubImage3D */
     {DISPATCH_RESOLVE_EXTENSION, 222, 163 /* GL_ARB_direct_state_access */, 54147}, /* glTextureSubImage3D */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 357 /* GL_EXT_direct_state_access */, 54167}, /* glTextureSubImage3DEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 360 /* GL_EXT_direct_state_access */, 54167}, /* glTextureSubImage3DEXT */
     {DISPATCH_RESOLVE_VERSION, 224, OpenGL_Desktop_4_3, 54190}, /* glTextureView */
     {DISPATCH_RESOLVE_EXTENSION, 224, 283 /* GL_ARB_texture_view */, 54190}, /* glTextureView */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 485 /* GL_EXT_texture_view */, 54204}, /* glTextureViewEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 749 /* GL_OES_texture_view */, 54221}, /* glTextureViewOES */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 485 /* GL_EXT_texture_view */, 54204}, /* glTextureViewEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 489 /* GL_EXT_texture_view */, 54204}, /* glTextureViewEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 753 /* GL_OES_texture_view */, 54221}, /* glTextureViewOES */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 489 /* GL_EXT_texture_view */, 54204}, /* glTextureViewEXT */
     {DISPATCH_RESOLVE_VERSION, 225, OpenGL_Desktop_4_3, 54190}, /* glTextureView */
     {DISPATCH_RESOLVE_EXTENSION, 225, 283 /* GL_ARB_texture_view */, 54190}, /* glTextureView */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 749 /* GL_OES_texture_view */, 54221}, /* glTextureViewOES */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 749 /* GL_OES_texture_view */, 54221}, /* glTextureViewOES */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 753 /* GL_OES_texture_view */, 54221}, /* glTextureViewOES */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 753 /* GL_OES_texture_view */, 54221}, /* glTextureViewOES */
     {DISPATCH_RESOLVE_VERSION, 226, OpenGL_Desktop_4_3, 54190}, /* glTextureView */
     {DISPATCH_RESOLVE_EXTENSION, 226, 283 /* GL_ARB_texture_view */, 54190}, /* glTextureView */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 485 /* GL_EXT_texture_view */, 54204}, /* glTextureViewEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 672 /* GL_NV_vertex_program */, 54238}, /* glTrackMatrixNV */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 664 /* GL_NV_transform_feedback */, 54254}, /* glTransformFeedbackAttribsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 489 /* GL_EXT_texture_view */, 54204}, /* glTextureViewEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 676 /* GL_NV_vertex_program */, 54238}, /* glTrackMatrixNV */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 668 /* GL_NV_transform_feedback */, 54254}, /* glTransformFeedbackAttribsNV */
     {DISPATCH_RESOLVE_VERSION, 229, OpenGL_Desktop_4_5, 54283}, /* glTransformFeedbackBufferBase */
     {DISPATCH_RESOLVE_EXTENSION, 229, 163 /* GL_ARB_direct_state_access */, 54283}, /* glTransformFeedbackBufferBase */
     {DISPATCH_RESOLVE_VERSION, 230, OpenGL_Desktop_4_5, 54313}, /* glTransformFeedbackBufferRange */
     {DISPATCH_RESOLVE_EXTENSION, 230, 163 /* GL_ARB_direct_state_access */, 54313}, /* glTransformFeedbackBufferRange */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 664 /* GL_NV_transform_feedback */, 54344}, /* glTransformFeedbackStreamAttribsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 668 /* GL_NV_transform_feedback */, 54344}, /* glTransformFeedbackStreamAttribsNV */
     {DISPATCH_RESOLVE_VERSION, 232, OpenGL_Desktop_3_0, 54379}, /* glTransformFeedbackVaryings */
     {DISPATCH_RESOLVE_VERSION, 232, OpenGL_ES_3_0, 54379}, /* glTransformFeedbackVaryings */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 487 /* GL_EXT_transform_feedback */, 54407}, /* glTransformFeedbackVaryingsEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 487 /* GL_EXT_transform_feedback */, 54407}, /* glTransformFeedbackVaryingsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 491 /* GL_EXT_transform_feedback */, 54407}, /* glTransformFeedbackVaryingsEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 491 /* GL_EXT_transform_feedback */, 54407}, /* glTransformFeedbackVaryingsEXT */
     {DISPATCH_RESOLVE_VERSION, 233, OpenGL_Desktop_3_0, 54379}, /* glTransformFeedbackVaryings */
     {DISPATCH_RESOLVE_VERSION, 233, OpenGL_ES_3_0, 54379}, /* glTransformFeedbackVaryings */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 664 /* GL_NV_transform_feedback */, 54438}, /* glTransformFeedbackVaryingsNV */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 616 /* GL_NV_path_rendering */, 54468}, /* glTransformPathNV */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 668 /* GL_NV_transform_feedback */, 54438}, /* glTransformFeedbackVaryingsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 620 /* GL_NV_path_rendering */, 54468}, /* glTransformPathNV */
     {DISPATCH_RESOLVE_DIRECT, 236, OpenGL_Desktop_1_0, 54486}, /* glTranslated */
     {DISPATCH_RESOLVE_DIRECT, 237, OpenGL_Desktop_1_0, 54499}, /* glTranslatef */
     {DISPATCH_RESOLVE_DIRECT, 237, OpenGL_ES_1_0, 54499}, /* glTranslatef */
     {DISPATCH_RESOLVE_DIRECT, 238, OpenGL_ES_1_0, 54512}, /* glTranslatex */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 702 /* GL_OES_fixed_point */, 54525}, /* glTranslatexOES */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 706 /* GL_OES_fixed_point */, 54525}, /* glTranslatexOES */
     {DISPATCH_RESOLVE_VERSION, 240, OpenGL_Desktop_4_0, 54541}, /* glUniform1d */
     {DISPATCH_RESOLVE_EXTENSION, 240, 186 /* GL_ARB_gpu_shader_fp64 */, 54541}, /* glUniform1d */
     {DISPATCH_RESOLVE_VERSION, 241, OpenGL_Desktop_4_0, 54553}, /* glUniform1dv */
@@ -10096,10 +10106,10 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 246, 232 /* GL_ARB_shader_objects */, 54702}, /* glUniform1iARB */
     {DISPATCH_RESOLVE_EXTENSION, 247, 187 /* GL_ARB_gpu_shader_int64 */, 54634}, /* glUniform1i64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 248, 72 /* GL_AMD_gpu_shader_int64 */, 54651}, /* glUniform1i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 602 /* GL_NV_gpu_shader5 */, 54651}, /* glUniform1i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 606 /* GL_NV_gpu_shader5 */, 54651}, /* glUniform1i64NV */
     {DISPATCH_RESOLVE_EXTENSION, 249, 187 /* GL_ARB_gpu_shader_int64 */, 54667}, /* glUniform1i64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 250, 72 /* GL_AMD_gpu_shader_int64 */, 54685}, /* glUniform1i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 602 /* GL_NV_gpu_shader5 */, 54685}, /* glUniform1i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 606 /* GL_NV_gpu_shader5 */, 54685}, /* glUniform1i64vNV */
     {DISPATCH_RESOLVE_EXTENSION, 251, 232 /* GL_ARB_shader_objects */, 54702}, /* glUniform1iARB */
     {DISPATCH_RESOLVE_VERSION, 251, OpenGL_Desktop_2_0, 54622}, /* glUniform1i */
     {DISPATCH_RESOLVE_DIRECT, 251, OpenGL_ES_2_0, 54622}, /* glUniform1i */
@@ -10111,20 +10121,20 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 253, OpenGL_ES_2_0, 54717}, /* glUniform1iv */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_Desktop_3_0, 54746}, /* glUniform1ui */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_ES_3_0, 54746}, /* glUniform1ui */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 380 /* GL_EXT_gpu_shader4 */, 54831}, /* glUniform1uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 383 /* GL_EXT_gpu_shader4 */, 54831}, /* glUniform1uiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 255, 187 /* GL_ARB_gpu_shader_int64 */, 54759}, /* glUniform1ui64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 0, 72 /* GL_AMD_gpu_shader_int64 */, 54777}, /* glUniform1ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 0, 602 /* GL_NV_gpu_shader5 */, 54777}, /* glUniform1ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 606 /* GL_NV_gpu_shader5 */, 54777}, /* glUniform1ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 1, 187 /* GL_ARB_gpu_shader_int64 */, 54794}, /* glUniform1ui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 2, 72 /* GL_AMD_gpu_shader_int64 */, 54813}, /* glUniform1ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 602 /* GL_NV_gpu_shader5 */, 54813}, /* glUniform1ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 380 /* GL_EXT_gpu_shader4 */, 54831}, /* glUniform1uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 606 /* GL_NV_gpu_shader5 */, 54813}, /* glUniform1ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 383 /* GL_EXT_gpu_shader4 */, 54831}, /* glUniform1uiEXT */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_Desktop_3_0, 54746}, /* glUniform1ui */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_ES_3_0, 54746}, /* glUniform1ui */
     {DISPATCH_RESOLVE_VERSION, 4, OpenGL_Desktop_3_0, 54847}, /* glUniform1uiv */
     {DISPATCH_RESOLVE_VERSION, 4, OpenGL_ES_3_0, 54847}, /* glUniform1uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 380 /* GL_EXT_gpu_shader4 */, 54861}, /* glUniform1uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 380 /* GL_EXT_gpu_shader4 */, 54861}, /* glUniform1uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 383 /* GL_EXT_gpu_shader4 */, 54861}, /* glUniform1uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 383 /* GL_EXT_gpu_shader4 */, 54861}, /* glUniform1uivEXT */
     {DISPATCH_RESOLVE_VERSION, 5, OpenGL_Desktop_3_0, 54847}, /* glUniform1uiv */
     {DISPATCH_RESOLVE_VERSION, 5, OpenGL_ES_3_0, 54847}, /* glUniform1uiv */
     {DISPATCH_RESOLVE_VERSION, 6, OpenGL_Desktop_4_0, 54878}, /* glUniform2d */
@@ -10148,10 +10158,10 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 12, 232 /* GL_ARB_shader_objects */, 55039}, /* glUniform2iARB */
     {DISPATCH_RESOLVE_EXTENSION, 13, 187 /* GL_ARB_gpu_shader_int64 */, 54971}, /* glUniform2i64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 14, 72 /* GL_AMD_gpu_shader_int64 */, 54988}, /* glUniform2i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 602 /* GL_NV_gpu_shader5 */, 54988}, /* glUniform2i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 606 /* GL_NV_gpu_shader5 */, 54988}, /* glUniform2i64NV */
     {DISPATCH_RESOLVE_EXTENSION, 15, 187 /* GL_ARB_gpu_shader_int64 */, 55004}, /* glUniform2i64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 16, 72 /* GL_AMD_gpu_shader_int64 */, 55022}, /* glUniform2i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 602 /* GL_NV_gpu_shader5 */, 55022}, /* glUniform2i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 606 /* GL_NV_gpu_shader5 */, 55022}, /* glUniform2i64vNV */
     {DISPATCH_RESOLVE_EXTENSION, 17, 232 /* GL_ARB_shader_objects */, 55039}, /* glUniform2iARB */
     {DISPATCH_RESOLVE_VERSION, 17, OpenGL_Desktop_2_0, 54959}, /* glUniform2i */
     {DISPATCH_RESOLVE_DIRECT, 17, OpenGL_ES_2_0, 54959}, /* glUniform2i */
@@ -10163,20 +10173,20 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 19, OpenGL_ES_2_0, 55054}, /* glUniform2iv */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_3_0, 55083}, /* glUniform2ui */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_ES_3_0, 55083}, /* glUniform2ui */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 380 /* GL_EXT_gpu_shader4 */, 55168}, /* glUniform2uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 383 /* GL_EXT_gpu_shader4 */, 55168}, /* glUniform2uiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 21, 187 /* GL_ARB_gpu_shader_int64 */, 55096}, /* glUniform2ui64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 22, 72 /* GL_AMD_gpu_shader_int64 */, 55114}, /* glUniform2ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 602 /* GL_NV_gpu_shader5 */, 55114}, /* glUniform2ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 606 /* GL_NV_gpu_shader5 */, 55114}, /* glUniform2ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 23, 187 /* GL_ARB_gpu_shader_int64 */, 55131}, /* glUniform2ui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 24, 72 /* GL_AMD_gpu_shader_int64 */, 55150}, /* glUniform2ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 602 /* GL_NV_gpu_shader5 */, 55150}, /* glUniform2ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 380 /* GL_EXT_gpu_shader4 */, 55168}, /* glUniform2uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 606 /* GL_NV_gpu_shader5 */, 55150}, /* glUniform2ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 383 /* GL_EXT_gpu_shader4 */, 55168}, /* glUniform2uiEXT */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_Desktop_3_0, 55083}, /* glUniform2ui */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_ES_3_0, 55083}, /* glUniform2ui */
     {DISPATCH_RESOLVE_VERSION, 26, OpenGL_Desktop_3_0, 55184}, /* glUniform2uiv */
     {DISPATCH_RESOLVE_VERSION, 26, OpenGL_ES_3_0, 55184}, /* glUniform2uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 380 /* GL_EXT_gpu_shader4 */, 55198}, /* glUniform2uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 380 /* GL_EXT_gpu_shader4 */, 55198}, /* glUniform2uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 383 /* GL_EXT_gpu_shader4 */, 55198}, /* glUniform2uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 383 /* GL_EXT_gpu_shader4 */, 55198}, /* glUniform2uivEXT */
     {DISPATCH_RESOLVE_VERSION, 27, OpenGL_Desktop_3_0, 55184}, /* glUniform2uiv */
     {DISPATCH_RESOLVE_VERSION, 27, OpenGL_ES_3_0, 55184}, /* glUniform2uiv */
     {DISPATCH_RESOLVE_VERSION, 28, OpenGL_Desktop_4_0, 55215}, /* glUniform3d */
@@ -10200,10 +10210,10 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 34, 232 /* GL_ARB_shader_objects */, 55376}, /* glUniform3iARB */
     {DISPATCH_RESOLVE_EXTENSION, 35, 187 /* GL_ARB_gpu_shader_int64 */, 55308}, /* glUniform3i64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 36, 72 /* GL_AMD_gpu_shader_int64 */, 55325}, /* glUniform3i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 36, 602 /* GL_NV_gpu_shader5 */, 55325}, /* glUniform3i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 606 /* GL_NV_gpu_shader5 */, 55325}, /* glUniform3i64NV */
     {DISPATCH_RESOLVE_EXTENSION, 37, 187 /* GL_ARB_gpu_shader_int64 */, 55341}, /* glUniform3i64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 38, 72 /* GL_AMD_gpu_shader_int64 */, 55359}, /* glUniform3i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 38, 602 /* GL_NV_gpu_shader5 */, 55359}, /* glUniform3i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 38, 606 /* GL_NV_gpu_shader5 */, 55359}, /* glUniform3i64vNV */
     {DISPATCH_RESOLVE_EXTENSION, 39, 232 /* GL_ARB_shader_objects */, 55376}, /* glUniform3iARB */
     {DISPATCH_RESOLVE_VERSION, 39, OpenGL_Desktop_2_0, 55296}, /* glUniform3i */
     {DISPATCH_RESOLVE_DIRECT, 39, OpenGL_ES_2_0, 55296}, /* glUniform3i */
@@ -10215,20 +10225,20 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 41, OpenGL_ES_2_0, 55391}, /* glUniform3iv */
     {DISPATCH_RESOLVE_VERSION, 42, OpenGL_Desktop_3_0, 55420}, /* glUniform3ui */
     {DISPATCH_RESOLVE_VERSION, 42, OpenGL_ES_3_0, 55420}, /* glUniform3ui */
-    {DISPATCH_RESOLVE_EXTENSION, 42, 380 /* GL_EXT_gpu_shader4 */, 55505}, /* glUniform3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 383 /* GL_EXT_gpu_shader4 */, 55505}, /* glUniform3uiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 43, 187 /* GL_ARB_gpu_shader_int64 */, 55433}, /* glUniform3ui64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 44, 72 /* GL_AMD_gpu_shader_int64 */, 55451}, /* glUniform3ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 44, 602 /* GL_NV_gpu_shader5 */, 55451}, /* glUniform3ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 606 /* GL_NV_gpu_shader5 */, 55451}, /* glUniform3ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 45, 187 /* GL_ARB_gpu_shader_int64 */, 55468}, /* glUniform3ui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 46, 72 /* GL_AMD_gpu_shader_int64 */, 55487}, /* glUniform3ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 602 /* GL_NV_gpu_shader5 */, 55487}, /* glUniform3ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 380 /* GL_EXT_gpu_shader4 */, 55505}, /* glUniform3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 606 /* GL_NV_gpu_shader5 */, 55487}, /* glUniform3ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 383 /* GL_EXT_gpu_shader4 */, 55505}, /* glUniform3uiEXT */
     {DISPATCH_RESOLVE_VERSION, 47, OpenGL_Desktop_3_0, 55420}, /* glUniform3ui */
     {DISPATCH_RESOLVE_VERSION, 47, OpenGL_ES_3_0, 55420}, /* glUniform3ui */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_Desktop_3_0, 55521}, /* glUniform3uiv */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_ES_3_0, 55521}, /* glUniform3uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 380 /* GL_EXT_gpu_shader4 */, 55535}, /* glUniform3uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 380 /* GL_EXT_gpu_shader4 */, 55535}, /* glUniform3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 383 /* GL_EXT_gpu_shader4 */, 55535}, /* glUniform3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 383 /* GL_EXT_gpu_shader4 */, 55535}, /* glUniform3uivEXT */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_3_0, 55521}, /* glUniform3uiv */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_ES_3_0, 55521}, /* glUniform3uiv */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_Desktop_4_0, 55552}, /* glUniform4d */
@@ -10252,10 +10262,10 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 56, 232 /* GL_ARB_shader_objects */, 55713}, /* glUniform4iARB */
     {DISPATCH_RESOLVE_EXTENSION, 57, 187 /* GL_ARB_gpu_shader_int64 */, 55645}, /* glUniform4i64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 58, 72 /* GL_AMD_gpu_shader_int64 */, 55662}, /* glUniform4i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 602 /* GL_NV_gpu_shader5 */, 55662}, /* glUniform4i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 606 /* GL_NV_gpu_shader5 */, 55662}, /* glUniform4i64NV */
     {DISPATCH_RESOLVE_EXTENSION, 59, 187 /* GL_ARB_gpu_shader_int64 */, 55678}, /* glUniform4i64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 60, 72 /* GL_AMD_gpu_shader_int64 */, 55696}, /* glUniform4i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 60, 602 /* GL_NV_gpu_shader5 */, 55696}, /* glUniform4i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 60, 606 /* GL_NV_gpu_shader5 */, 55696}, /* glUniform4i64vNV */
     {DISPATCH_RESOLVE_EXTENSION, 61, 232 /* GL_ARB_shader_objects */, 55713}, /* glUniform4iARB */
     {DISPATCH_RESOLVE_VERSION, 61, OpenGL_Desktop_2_0, 55633}, /* glUniform4i */
     {DISPATCH_RESOLVE_DIRECT, 61, OpenGL_ES_2_0, 55633}, /* glUniform4i */
@@ -10267,30 +10277,30 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 63, OpenGL_ES_2_0, 55728}, /* glUniform4iv */
     {DISPATCH_RESOLVE_VERSION, 64, OpenGL_Desktop_3_0, 55757}, /* glUniform4ui */
     {DISPATCH_RESOLVE_VERSION, 64, OpenGL_ES_3_0, 55757}, /* glUniform4ui */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 380 /* GL_EXT_gpu_shader4 */, 55842}, /* glUniform4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 383 /* GL_EXT_gpu_shader4 */, 55842}, /* glUniform4uiEXT */
     {DISPATCH_RESOLVE_EXTENSION, 65, 187 /* GL_ARB_gpu_shader_int64 */, 55770}, /* glUniform4ui64ARB */
     {DISPATCH_RESOLVE_EXTENSION, 66, 72 /* GL_AMD_gpu_shader_int64 */, 55788}, /* glUniform4ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 66, 602 /* GL_NV_gpu_shader5 */, 55788}, /* glUniform4ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 606 /* GL_NV_gpu_shader5 */, 55788}, /* glUniform4ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 67, 187 /* GL_ARB_gpu_shader_int64 */, 55805}, /* glUniform4ui64vARB */
     {DISPATCH_RESOLVE_EXTENSION, 68, 72 /* GL_AMD_gpu_shader_int64 */, 55824}, /* glUniform4ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 68, 602 /* GL_NV_gpu_shader5 */, 55824}, /* glUniform4ui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 69, 380 /* GL_EXT_gpu_shader4 */, 55842}, /* glUniform4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 68, 606 /* GL_NV_gpu_shader5 */, 55824}, /* glUniform4ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 69, 383 /* GL_EXT_gpu_shader4 */, 55842}, /* glUniform4uiEXT */
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_Desktop_3_0, 55757}, /* glUniform4ui */
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_ES_3_0, 55757}, /* glUniform4ui */
     {DISPATCH_RESOLVE_VERSION, 70, OpenGL_Desktop_3_0, 55858}, /* glUniform4uiv */
     {DISPATCH_RESOLVE_VERSION, 70, OpenGL_ES_3_0, 55858}, /* glUniform4uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 380 /* GL_EXT_gpu_shader4 */, 55872}, /* glUniform4uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 380 /* GL_EXT_gpu_shader4 */, 55872}, /* glUniform4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 383 /* GL_EXT_gpu_shader4 */, 55872}, /* glUniform4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 383 /* GL_EXT_gpu_shader4 */, 55872}, /* glUniform4uivEXT */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_Desktop_3_0, 55858}, /* glUniform4uiv */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_ES_3_0, 55858}, /* glUniform4uiv */
     {DISPATCH_RESOLVE_VERSION, 72, OpenGL_Desktop_3_1, 55889}, /* glUniformBlockBinding */
     {DISPATCH_RESOLVE_VERSION, 72, OpenGL_ES_3_0, 55889}, /* glUniformBlockBinding */
     {DISPATCH_RESOLVE_EXTENSION, 72, 290 /* GL_ARB_uniform_buffer_object */, 55889}, /* glUniformBlockBinding */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 333 /* GL_EXT_bindable_uniform */, 55911}, /* glUniformBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 336 /* GL_EXT_bindable_uniform */, 55911}, /* glUniformBufferEXT */
     {DISPATCH_RESOLVE_EXTENSION, 74, 141 /* GL_ARB_bindless_texture */, 55930}, /* glUniformHandleui64ARB */
-    {DISPATCH_RESOLVE_EXTENSION, 75, 554 /* GL_NV_bindless_texture */, 55953}, /* glUniformHandleui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 75, 558 /* GL_NV_bindless_texture */, 55953}, /* glUniformHandleui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 76, 141 /* GL_ARB_bindless_texture */, 55975}, /* glUniformHandleui64vARB */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 554 /* GL_NV_bindless_texture */, 55999}, /* glUniformHandleui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 558 /* GL_NV_bindless_texture */, 55999}, /* glUniformHandleui64vNV */
     {DISPATCH_RESOLVE_VERSION, 78, OpenGL_Desktop_4_0, 56022}, /* glUniformMatrix2dv */
     {DISPATCH_RESOLVE_EXTENSION, 78, 186 /* GL_ARB_gpu_shader_fp64 */, 56022}, /* glUniformMatrix2dv */
     {DISPATCH_RESOLVE_VERSION, 79, OpenGL_Desktop_2_0, 56041}, /* glUniformMatrix2fv */
@@ -10303,16 +10313,16 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 81, 186 /* GL_ARB_gpu_shader_fp64 */, 56082}, /* glUniformMatrix2x3dv */
     {DISPATCH_RESOLVE_VERSION, 82, OpenGL_Desktop_2_1, 56103}, /* glUniformMatrix2x3fv */
     {DISPATCH_RESOLVE_VERSION, 82, OpenGL_ES_3_0, 56103}, /* glUniformMatrix2x3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 82, 610 /* GL_NV_non_square_matrices */, 56124}, /* glUniformMatrix2x3fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 610 /* GL_NV_non_square_matrices */, 56124}, /* glUniformMatrix2x3fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 614 /* GL_NV_non_square_matrices */, 56124}, /* glUniformMatrix2x3fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 614 /* GL_NV_non_square_matrices */, 56124}, /* glUniformMatrix2x3fvNV */
     {DISPATCH_RESOLVE_VERSION, 83, OpenGL_Desktop_2_1, 56103}, /* glUniformMatrix2x3fv */
     {DISPATCH_RESOLVE_VERSION, 83, OpenGL_ES_3_0, 56103}, /* glUniformMatrix2x3fv */
     {DISPATCH_RESOLVE_VERSION, 84, OpenGL_Desktop_4_0, 56147}, /* glUniformMatrix2x4dv */
     {DISPATCH_RESOLVE_EXTENSION, 84, 186 /* GL_ARB_gpu_shader_fp64 */, 56147}, /* glUniformMatrix2x4dv */
     {DISPATCH_RESOLVE_VERSION, 85, OpenGL_Desktop_2_1, 56168}, /* glUniformMatrix2x4fv */
     {DISPATCH_RESOLVE_VERSION, 85, OpenGL_ES_3_0, 56168}, /* glUniformMatrix2x4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 85, 610 /* GL_NV_non_square_matrices */, 56189}, /* glUniformMatrix2x4fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 610 /* GL_NV_non_square_matrices */, 56189}, /* glUniformMatrix2x4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 614 /* GL_NV_non_square_matrices */, 56189}, /* glUniformMatrix2x4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 614 /* GL_NV_non_square_matrices */, 56189}, /* glUniformMatrix2x4fvNV */
     {DISPATCH_RESOLVE_VERSION, 86, OpenGL_Desktop_2_1, 56168}, /* glUniformMatrix2x4fv */
     {DISPATCH_RESOLVE_VERSION, 86, OpenGL_ES_3_0, 56168}, /* glUniformMatrix2x4fv */
     {DISPATCH_RESOLVE_VERSION, 87, OpenGL_Desktop_4_0, 56212}, /* glUniformMatrix3dv */
@@ -10327,16 +10337,16 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 90, 186 /* GL_ARB_gpu_shader_fp64 */, 56272}, /* glUniformMatrix3x2dv */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_Desktop_2_1, 56293}, /* glUniformMatrix3x2fv */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_ES_3_0, 56293}, /* glUniformMatrix3x2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 91, 610 /* GL_NV_non_square_matrices */, 56314}, /* glUniformMatrix3x2fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 610 /* GL_NV_non_square_matrices */, 56314}, /* glUniformMatrix3x2fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 614 /* GL_NV_non_square_matrices */, 56314}, /* glUniformMatrix3x2fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 614 /* GL_NV_non_square_matrices */, 56314}, /* glUniformMatrix3x2fvNV */
     {DISPATCH_RESOLVE_VERSION, 92, OpenGL_Desktop_2_1, 56293}, /* glUniformMatrix3x2fv */
     {DISPATCH_RESOLVE_VERSION, 92, OpenGL_ES_3_0, 56293}, /* glUniformMatrix3x2fv */
     {DISPATCH_RESOLVE_VERSION, 93, OpenGL_Desktop_4_0, 56337}, /* glUniformMatrix3x4dv */
     {DISPATCH_RESOLVE_EXTENSION, 93, 186 /* GL_ARB_gpu_shader_fp64 */, 56337}, /* glUniformMatrix3x4dv */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_Desktop_2_1, 56358}, /* glUniformMatrix3x4fv */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_ES_3_0, 56358}, /* glUniformMatrix3x4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 94, 610 /* GL_NV_non_square_matrices */, 56379}, /* glUniformMatrix3x4fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 610 /* GL_NV_non_square_matrices */, 56379}, /* glUniformMatrix3x4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 94, 614 /* GL_NV_non_square_matrices */, 56379}, /* glUniformMatrix3x4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 614 /* GL_NV_non_square_matrices */, 56379}, /* glUniformMatrix3x4fvNV */
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_Desktop_2_1, 56358}, /* glUniformMatrix3x4fv */
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_ES_3_0, 56358}, /* glUniformMatrix3x4fv */
     {DISPATCH_RESOLVE_VERSION, 96, OpenGL_Desktop_4_0, 56402}, /* glUniformMatrix4dv */
@@ -10351,41 +10361,41 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 99, 186 /* GL_ARB_gpu_shader_fp64 */, 56462}, /* glUniformMatrix4x2dv */
     {DISPATCH_RESOLVE_VERSION, 100, OpenGL_Desktop_2_1, 56483}, /* glUniformMatrix4x2fv */
     {DISPATCH_RESOLVE_VERSION, 100, OpenGL_ES_3_0, 56483}, /* glUniformMatrix4x2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 610 /* GL_NV_non_square_matrices */, 56504}, /* glUniformMatrix4x2fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 610 /* GL_NV_non_square_matrices */, 56504}, /* glUniformMatrix4x2fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 614 /* GL_NV_non_square_matrices */, 56504}, /* glUniformMatrix4x2fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 614 /* GL_NV_non_square_matrices */, 56504}, /* glUniformMatrix4x2fvNV */
     {DISPATCH_RESOLVE_VERSION, 101, OpenGL_Desktop_2_1, 56483}, /* glUniformMatrix4x2fv */
     {DISPATCH_RESOLVE_VERSION, 101, OpenGL_ES_3_0, 56483}, /* glUniformMatrix4x2fv */
     {DISPATCH_RESOLVE_VERSION, 102, OpenGL_Desktop_4_0, 56527}, /* glUniformMatrix4x3dv */
     {DISPATCH_RESOLVE_EXTENSION, 102, 186 /* GL_ARB_gpu_shader_fp64 */, 56527}, /* glUniformMatrix4x3dv */
     {DISPATCH_RESOLVE_VERSION, 103, OpenGL_Desktop_2_1, 56548}, /* glUniformMatrix4x3fv */
     {DISPATCH_RESOLVE_VERSION, 103, OpenGL_ES_3_0, 56548}, /* glUniformMatrix4x3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 610 /* GL_NV_non_square_matrices */, 56569}, /* glUniformMatrix4x3fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 610 /* GL_NV_non_square_matrices */, 56569}, /* glUniformMatrix4x3fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 614 /* GL_NV_non_square_matrices */, 56569}, /* glUniformMatrix4x3fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 614 /* GL_NV_non_square_matrices */, 56569}, /* glUniformMatrix4x3fvNV */
     {DISPATCH_RESOLVE_VERSION, 104, OpenGL_Desktop_2_1, 56548}, /* glUniformMatrix4x3fv */
     {DISPATCH_RESOLVE_VERSION, 104, OpenGL_ES_3_0, 56548}, /* glUniformMatrix4x3fv */
     {DISPATCH_RESOLVE_VERSION, 105, OpenGL_Desktop_4_0, 56592}, /* glUniformSubroutinesuiv */
     {DISPATCH_RESOLVE_EXTENSION, 105, 236 /* GL_ARB_shader_subroutine */, 56592}, /* glUniformSubroutinesuiv */
-    {DISPATCH_RESOLVE_EXTENSION, 106, 640 /* GL_NV_shader_buffer_load */, 56616}, /* glUniformui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 640 /* GL_NV_shader_buffer_load */, 56632}, /* glUniformui64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 348 /* GL_EXT_compiled_vertex_array */, 56649}, /* glUnlockArraysEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 644 /* GL_NV_shader_buffer_load */, 56616}, /* glUniformui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 644 /* GL_NV_shader_buffer_load */, 56632}, /* glUniformui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 351 /* GL_EXT_compiled_vertex_array */, 56649}, /* glUnlockArraysEXT */
     {DISPATCH_RESOLVE_VERSION, 109, OpenGL_Desktop_1_5, 56667}, /* glUnmapBuffer */
     {DISPATCH_RESOLVE_VERSION, 109, OpenGL_ES_3_0, 56667}, /* glUnmapBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 109, 296 /* GL_ARB_vertex_buffer_object */, 56681}, /* glUnmapBufferARB */
-    {DISPATCH_RESOLVE_EXTENSION, 109, 709 /* GL_OES_mapbuffer */, 56698}, /* glUnmapBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 713 /* GL_OES_mapbuffer */, 56698}, /* glUnmapBufferOES */
     {DISPATCH_RESOLVE_EXTENSION, 110, 296 /* GL_ARB_vertex_buffer_object */, 56681}, /* glUnmapBufferARB */
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_Desktop_1_5, 56667}, /* glUnmapBuffer */
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_ES_3_0, 56667}, /* glUnmapBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 110, 709 /* GL_OES_mapbuffer */, 56698}, /* glUnmapBufferOES */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 709 /* GL_OES_mapbuffer */, 56698}, /* glUnmapBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 713 /* GL_OES_mapbuffer */, 56698}, /* glUnmapBufferOES */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 713 /* GL_OES_mapbuffer */, 56698}, /* glUnmapBufferOES */
     {DISPATCH_RESOLVE_VERSION, 111, OpenGL_Desktop_1_5, 56667}, /* glUnmapBuffer */
     {DISPATCH_RESOLVE_VERSION, 111, OpenGL_ES_3_0, 56667}, /* glUnmapBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 111, 296 /* GL_ARB_vertex_buffer_object */, 56681}, /* glUnmapBufferARB */
     {DISPATCH_RESOLVE_VERSION, 112, OpenGL_Desktop_4_5, 56715}, /* glUnmapNamedBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 112, 163 /* GL_ARB_direct_state_access */, 56715}, /* glUnmapNamedBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 113, 357 /* GL_EXT_direct_state_access */, 56734}, /* glUnmapNamedBufferEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 313 /* GL_ATI_map_object_buffer */, 56756}, /* glUnmapObjectBufferATI */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 527 /* GL_INTEL_map_texture */, 56779}, /* glUnmapTexture2DINTEL */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 323 /* GL_ATI_vertex_array_object */, 56801}, /* glUpdateObjectBufferATI */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 360 /* GL_EXT_direct_state_access */, 56734}, /* glUnmapNamedBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 316 /* GL_ATI_map_object_buffer */, 56756}, /* glUnmapObjectBufferATI */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 531 /* GL_INTEL_map_texture */, 56779}, /* glUnmapTexture2DINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 326 /* GL_ATI_vertex_array_object */, 56801}, /* glUpdateObjectBufferATI */
     {DISPATCH_RESOLVE_VERSION, 117, OpenGL_Desktop_2_0, 56825}, /* glUseProgram */
     {DISPATCH_RESOLVE_DIRECT, 117, OpenGL_ES_2_0, 56825}, /* glUseProgram */
     {DISPATCH_RESOLVE_EXTENSION, 117, 232 /* GL_ARB_shader_objects */, 56838}, /* glUseProgramObjectARB */
@@ -10395,18 +10405,18 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_Desktop_4_1, 56860}, /* glUseProgramStages */
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_ES_3_1, 56860}, /* glUseProgramStages */
     {DISPATCH_RESOLVE_EXTENSION, 119, 222 /* GL_ARB_separate_shader_objects */, 56860}, /* glUseProgramStages */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 422 /* GL_EXT_separate_shader_objects */, 56879}, /* glUseProgramStagesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 422 /* GL_EXT_separate_shader_objects */, 56901}, /* glUseShaderProgramEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 667 /* GL_NV_vdpau_interop */, 56923}, /* glVDPAUFiniNV */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 667 /* GL_NV_vdpau_interop */, 56937}, /* glVDPAUGetSurfaceivNV */
-    {DISPATCH_RESOLVE_EXTENSION, 124, 667 /* GL_NV_vdpau_interop */, 56959}, /* glVDPAUInitNV */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 667 /* GL_NV_vdpau_interop */, 56973}, /* glVDPAUIsSurfaceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 126, 667 /* GL_NV_vdpau_interop */, 56992}, /* glVDPAUMapSurfacesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 127, 667 /* GL_NV_vdpau_interop */, 57013}, /* glVDPAURegisterOutputSurfaceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 667 /* GL_NV_vdpau_interop */, 57044}, /* glVDPAURegisterVideoSurfaceNV */
-    {DISPATCH_RESOLVE_EXTENSION, 129, 667 /* GL_NV_vdpau_interop */, 57074}, /* glVDPAUSurfaceAccessNV */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 667 /* GL_NV_vdpau_interop */, 57097}, /* glVDPAUUnmapSurfacesNV */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 667 /* GL_NV_vdpau_interop */, 57120}, /* glVDPAUUnregisterSurfaceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 425 /* GL_EXT_separate_shader_objects */, 56879}, /* glUseProgramStagesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 425 /* GL_EXT_separate_shader_objects */, 56901}, /* glUseShaderProgramEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 671 /* GL_NV_vdpau_interop */, 56923}, /* glVDPAUFiniNV */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 671 /* GL_NV_vdpau_interop */, 56937}, /* glVDPAUGetSurfaceivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 124, 671 /* GL_NV_vdpau_interop */, 56959}, /* glVDPAUInitNV */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 671 /* GL_NV_vdpau_interop */, 56973}, /* glVDPAUIsSurfaceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 671 /* GL_NV_vdpau_interop */, 56992}, /* glVDPAUMapSurfacesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 127, 671 /* GL_NV_vdpau_interop */, 57013}, /* glVDPAURegisterOutputSurfaceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 671 /* GL_NV_vdpau_interop */, 57044}, /* glVDPAURegisterVideoSurfaceNV */
+    {DISPATCH_RESOLVE_EXTENSION, 129, 671 /* GL_NV_vdpau_interop */, 57074}, /* glVDPAUSurfaceAccessNV */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 671 /* GL_NV_vdpau_interop */, 57097}, /* glVDPAUUnmapSurfacesNV */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 671 /* GL_NV_vdpau_interop */, 57120}, /* glVDPAUUnregisterSurfaceNV */
     {DISPATCH_RESOLVE_VERSION, 132, OpenGL_Desktop_2_0, 57147}, /* glValidateProgram */
     {DISPATCH_RESOLVE_DIRECT, 132, OpenGL_ES_2_0, 57147}, /* glValidateProgram */
     {DISPATCH_RESOLVE_EXTENSION, 132, 232 /* GL_ARB_shader_objects */, 57165}, /* glValidateProgramARB */
@@ -10416,59 +10426,59 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_Desktop_4_1, 57186}, /* glValidateProgramPipeline */
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_ES_3_1, 57186}, /* glValidateProgramPipeline */
     {DISPATCH_RESOLVE_EXTENSION, 134, 222 /* GL_ARB_separate_shader_objects */, 57186}, /* glValidateProgramPipeline */
-    {DISPATCH_RESOLVE_EXTENSION, 135, 422 /* GL_EXT_separate_shader_objects */, 57212}, /* glValidateProgramPipelineEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 323 /* GL_ATI_vertex_array_object */, 57241}, /* glVariantArrayObjectATI */
-    {DISPATCH_RESOLVE_EXTENSION, 137, 494 /* GL_EXT_vertex_shader */, 57265}, /* glVariantPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 494 /* GL_EXT_vertex_shader */, 57285}, /* glVariantbvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 494 /* GL_EXT_vertex_shader */, 57300}, /* glVariantdvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 494 /* GL_EXT_vertex_shader */, 57315}, /* glVariantfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 494 /* GL_EXT_vertex_shader */, 57330}, /* glVariantivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 494 /* GL_EXT_vertex_shader */, 57345}, /* glVariantsvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 494 /* GL_EXT_vertex_shader */, 57360}, /* glVariantubvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 494 /* GL_EXT_vertex_shader */, 57376}, /* glVariantuivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 494 /* GL_EXT_vertex_shader */, 57392}, /* glVariantusvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 688 /* GL_OES_byte_coordinates */, 57408}, /* glVertex2bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 688 /* GL_OES_byte_coordinates */, 57422}, /* glVertex2bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 135, 425 /* GL_EXT_separate_shader_objects */, 57212}, /* glValidateProgramPipelineEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 326 /* GL_ATI_vertex_array_object */, 57241}, /* glVariantArrayObjectATI */
+    {DISPATCH_RESOLVE_EXTENSION, 137, 498 /* GL_EXT_vertex_shader */, 57265}, /* glVariantPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 498 /* GL_EXT_vertex_shader */, 57285}, /* glVariantbvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 498 /* GL_EXT_vertex_shader */, 57300}, /* glVariantdvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 498 /* GL_EXT_vertex_shader */, 57315}, /* glVariantfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 498 /* GL_EXT_vertex_shader */, 57330}, /* glVariantivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 498 /* GL_EXT_vertex_shader */, 57345}, /* glVariantsvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 498 /* GL_EXT_vertex_shader */, 57360}, /* glVariantubvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 498 /* GL_EXT_vertex_shader */, 57376}, /* glVariantuivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 498 /* GL_EXT_vertex_shader */, 57392}, /* glVariantusvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 692 /* GL_OES_byte_coordinates */, 57408}, /* glVertex2bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 692 /* GL_OES_byte_coordinates */, 57422}, /* glVertex2bvOES */
     {DISPATCH_RESOLVE_DIRECT, 148, OpenGL_Desktop_1_0, 57437}, /* glVertex2d */
     {DISPATCH_RESOLVE_DIRECT, 149, OpenGL_Desktop_1_0, 57448}, /* glVertex2dv */
     {DISPATCH_RESOLVE_DIRECT, 150, OpenGL_Desktop_1_0, 57460}, /* glVertex2f */
     {DISPATCH_RESOLVE_DIRECT, 151, OpenGL_Desktop_1_0, 57471}, /* glVertex2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 603 /* GL_NV_half_float */, 57483}, /* glVertex2hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 153, 603 /* GL_NV_half_float */, 57496}, /* glVertex2hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 607 /* GL_NV_half_float */, 57483}, /* glVertex2hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 153, 607 /* GL_NV_half_float */, 57496}, /* glVertex2hvNV */
     {DISPATCH_RESOLVE_DIRECT, 154, OpenGL_Desktop_1_0, 57510}, /* glVertex2i */
     {DISPATCH_RESOLVE_DIRECT, 155, OpenGL_Desktop_1_0, 57521}, /* glVertex2iv */
     {DISPATCH_RESOLVE_DIRECT, 156, OpenGL_Desktop_1_0, 57533}, /* glVertex2s */
     {DISPATCH_RESOLVE_DIRECT, 157, OpenGL_Desktop_1_0, 57544}, /* glVertex2sv */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 702 /* GL_OES_fixed_point */, 57556}, /* glVertex2xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 159, 702 /* GL_OES_fixed_point */, 57570}, /* glVertex2xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 160, 688 /* GL_OES_byte_coordinates */, 57585}, /* glVertex3bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 161, 688 /* GL_OES_byte_coordinates */, 57599}, /* glVertex3bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 706 /* GL_OES_fixed_point */, 57556}, /* glVertex2xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 159, 706 /* GL_OES_fixed_point */, 57570}, /* glVertex2xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 160, 692 /* GL_OES_byte_coordinates */, 57585}, /* glVertex3bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 161, 692 /* GL_OES_byte_coordinates */, 57599}, /* glVertex3bvOES */
     {DISPATCH_RESOLVE_DIRECT, 162, OpenGL_Desktop_1_0, 57614}, /* glVertex3d */
     {DISPATCH_RESOLVE_DIRECT, 163, OpenGL_Desktop_1_0, 57625}, /* glVertex3dv */
     {DISPATCH_RESOLVE_DIRECT, 164, OpenGL_Desktop_1_0, 57637}, /* glVertex3f */
     {DISPATCH_RESOLVE_DIRECT, 165, OpenGL_Desktop_1_0, 57648}, /* glVertex3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 166, 603 /* GL_NV_half_float */, 57660}, /* glVertex3hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 167, 603 /* GL_NV_half_float */, 57673}, /* glVertex3hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 166, 607 /* GL_NV_half_float */, 57660}, /* glVertex3hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 167, 607 /* GL_NV_half_float */, 57673}, /* glVertex3hvNV */
     {DISPATCH_RESOLVE_DIRECT, 168, OpenGL_Desktop_1_0, 57687}, /* glVertex3i */
     {DISPATCH_RESOLVE_DIRECT, 169, OpenGL_Desktop_1_0, 57698}, /* glVertex3iv */
     {DISPATCH_RESOLVE_DIRECT, 170, OpenGL_Desktop_1_0, 57710}, /* glVertex3s */
     {DISPATCH_RESOLVE_DIRECT, 171, OpenGL_Desktop_1_0, 57721}, /* glVertex3sv */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 702 /* GL_OES_fixed_point */, 57733}, /* glVertex3xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 173, 702 /* GL_OES_fixed_point */, 57747}, /* glVertex3xvOES */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 688 /* GL_OES_byte_coordinates */, 57762}, /* glVertex4bOES */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 688 /* GL_OES_byte_coordinates */, 57776}, /* glVertex4bvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 706 /* GL_OES_fixed_point */, 57733}, /* glVertex3xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 173, 706 /* GL_OES_fixed_point */, 57747}, /* glVertex3xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 692 /* GL_OES_byte_coordinates */, 57762}, /* glVertex4bOES */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 692 /* GL_OES_byte_coordinates */, 57776}, /* glVertex4bvOES */
     {DISPATCH_RESOLVE_DIRECT, 176, OpenGL_Desktop_1_0, 57791}, /* glVertex4d */
     {DISPATCH_RESOLVE_DIRECT, 177, OpenGL_Desktop_1_0, 57802}, /* glVertex4dv */
     {DISPATCH_RESOLVE_DIRECT, 178, OpenGL_Desktop_1_0, 57814}, /* glVertex4f */
     {DISPATCH_RESOLVE_DIRECT, 179, OpenGL_Desktop_1_0, 57825}, /* glVertex4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 603 /* GL_NV_half_float */, 57837}, /* glVertex4hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 603 /* GL_NV_half_float */, 57850}, /* glVertex4hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 607 /* GL_NV_half_float */, 57837}, /* glVertex4hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 607 /* GL_NV_half_float */, 57850}, /* glVertex4hvNV */
     {DISPATCH_RESOLVE_DIRECT, 182, OpenGL_Desktop_1_0, 57864}, /* glVertex4i */
     {DISPATCH_RESOLVE_DIRECT, 183, OpenGL_Desktop_1_0, 57875}, /* glVertex4iv */
     {DISPATCH_RESOLVE_DIRECT, 184, OpenGL_Desktop_1_0, 57887}, /* glVertex4s */
     {DISPATCH_RESOLVE_DIRECT, 185, OpenGL_Desktop_1_0, 57898}, /* glVertex4sv */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 702 /* GL_OES_fixed_point */, 57910}, /* glVertex4xOES */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 702 /* GL_OES_fixed_point */, 57924}, /* glVertex4xvOES */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 706 /* GL_OES_fixed_point */, 57910}, /* glVertex4xOES */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 706 /* GL_OES_fixed_point */, 57924}, /* glVertex4xvOES */
     {DISPATCH_RESOLVE_VERSION, 188, OpenGL_Desktop_4_5, 57939}, /* glVertexArrayAttribBinding */
     {DISPATCH_RESOLVE_EXTENSION, 188, 163 /* GL_ARB_direct_state_access */, 57939}, /* glVertexArrayAttribBinding */
     {DISPATCH_RESOLVE_VERSION, 189, OpenGL_Desktop_4_5, 57966}, /* glVertexArrayAttribFormat */
@@ -10477,57 +10487,57 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 190, 163 /* GL_ARB_direct_state_access */, 57992}, /* glVertexArrayAttribIFormat */
     {DISPATCH_RESOLVE_VERSION, 191, OpenGL_Desktop_4_5, 58019}, /* glVertexArrayAttribLFormat */
     {DISPATCH_RESOLVE_EXTENSION, 191, 163 /* GL_ARB_direct_state_access */, 58019}, /* glVertexArrayAttribLFormat */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 357 /* GL_EXT_direct_state_access */, 58046}, /* glVertexArrayBindVertexBufferEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 360 /* GL_EXT_direct_state_access */, 58046}, /* glVertexArrayBindVertexBufferEXT */
     {DISPATCH_RESOLVE_VERSION, 193, OpenGL_Desktop_4_5, 58079}, /* glVertexArrayBindingDivisor */
     {DISPATCH_RESOLVE_EXTENSION, 193, 163 /* GL_ARB_direct_state_access */, 58079}, /* glVertexArrayBindingDivisor */
-    {DISPATCH_RESOLVE_EXTENSION, 194, 357 /* GL_EXT_direct_state_access */, 58107}, /* glVertexArrayColorOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 195, 357 /* GL_EXT_direct_state_access */, 58135}, /* glVertexArrayEdgeFlagOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 194, 360 /* GL_EXT_direct_state_access */, 58107}, /* glVertexArrayColorOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 195, 360 /* GL_EXT_direct_state_access */, 58135}, /* glVertexArrayEdgeFlagOffsetEXT */
     {DISPATCH_RESOLVE_VERSION, 196, OpenGL_Desktop_4_5, 58166}, /* glVertexArrayElementBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 196, 163 /* GL_ARB_direct_state_access */, 58166}, /* glVertexArrayElementBuffer */
-    {DISPATCH_RESOLVE_EXTENSION, 197, 357 /* GL_EXT_direct_state_access */, 58193}, /* glVertexArrayFogCoordOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 198, 357 /* GL_EXT_direct_state_access */, 58224}, /* glVertexArrayIndexOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 199, 357 /* GL_EXT_direct_state_access */, 58252}, /* glVertexArrayMultiTexCoordOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 357 /* GL_EXT_direct_state_access */, 58288}, /* glVertexArrayNormalOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 197, 360 /* GL_EXT_direct_state_access */, 58193}, /* glVertexArrayFogCoordOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 198, 360 /* GL_EXT_direct_state_access */, 58224}, /* glVertexArrayIndexOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 199, 360 /* GL_EXT_direct_state_access */, 58252}, /* glVertexArrayMultiTexCoordOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 360 /* GL_EXT_direct_state_access */, 58288}, /* glVertexArrayNormalOffsetEXT */
     {DISPATCH_RESOLVE_EXTENSION, 201, 132 /* GL_APPLE_vertex_array_range */, 58317}, /* glVertexArrayParameteriAPPLE */
     {DISPATCH_RESOLVE_EXTENSION, 202, 132 /* GL_APPLE_vertex_array_range */, 58346}, /* glVertexArrayRangeAPPLE */
-    {DISPATCH_RESOLVE_EXTENSION, 203, 668 /* GL_NV_vertex_array_range */, 58370}, /* glVertexArrayRangeNV */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 357 /* GL_EXT_direct_state_access */, 58391}, /* glVertexArraySecondaryColorOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 205, 357 /* GL_EXT_direct_state_access */, 58428}, /* glVertexArrayTexCoordOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 357 /* GL_EXT_direct_state_access */, 58459}, /* glVertexArrayVertexAttribBindingEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 207, 357 /* GL_EXT_direct_state_access */, 58495}, /* glVertexArrayVertexAttribDivisorEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 357 /* GL_EXT_direct_state_access */, 58531}, /* glVertexArrayVertexAttribFormatEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 357 /* GL_EXT_direct_state_access */, 58566}, /* glVertexArrayVertexAttribIFormatEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 357 /* GL_EXT_direct_state_access */, 58602}, /* glVertexArrayVertexAttribIOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 211, 357 /* GL_EXT_direct_state_access */, 58638}, /* glVertexArrayVertexAttribLFormatEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 357 /* GL_EXT_direct_state_access */, 58674}, /* glVertexArrayVertexAttribLOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 357 /* GL_EXT_direct_state_access */, 58710}, /* glVertexArrayVertexAttribOffsetEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 357 /* GL_EXT_direct_state_access */, 58745}, /* glVertexArrayVertexBindingDivisorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 203, 672 /* GL_NV_vertex_array_range */, 58370}, /* glVertexArrayRangeNV */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 360 /* GL_EXT_direct_state_access */, 58391}, /* glVertexArraySecondaryColorOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 205, 360 /* GL_EXT_direct_state_access */, 58428}, /* glVertexArrayTexCoordOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 360 /* GL_EXT_direct_state_access */, 58459}, /* glVertexArrayVertexAttribBindingEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 207, 360 /* GL_EXT_direct_state_access */, 58495}, /* glVertexArrayVertexAttribDivisorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 360 /* GL_EXT_direct_state_access */, 58531}, /* glVertexArrayVertexAttribFormatEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 360 /* GL_EXT_direct_state_access */, 58566}, /* glVertexArrayVertexAttribIFormatEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 360 /* GL_EXT_direct_state_access */, 58602}, /* glVertexArrayVertexAttribIOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 211, 360 /* GL_EXT_direct_state_access */, 58638}, /* glVertexArrayVertexAttribLFormatEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 360 /* GL_EXT_direct_state_access */, 58674}, /* glVertexArrayVertexAttribLOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 360 /* GL_EXT_direct_state_access */, 58710}, /* glVertexArrayVertexAttribOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 360 /* GL_EXT_direct_state_access */, 58745}, /* glVertexArrayVertexBindingDivisorEXT */
     {DISPATCH_RESOLVE_VERSION, 215, OpenGL_Desktop_4_5, 58782}, /* glVertexArrayVertexBuffer */
     {DISPATCH_RESOLVE_EXTENSION, 215, 163 /* GL_ARB_direct_state_access */, 58782}, /* glVertexArrayVertexBuffer */
     {DISPATCH_RESOLVE_VERSION, 216, OpenGL_Desktop_4_5, 58808}, /* glVertexArrayVertexBuffers */
     {DISPATCH_RESOLVE_EXTENSION, 216, 163 /* GL_ARB_direct_state_access */, 58808}, /* glVertexArrayVertexBuffers */
-    {DISPATCH_RESOLVE_EXTENSION, 217, 357 /* GL_EXT_direct_state_access */, 58835}, /* glVertexArrayVertexOffsetEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 217, 360 /* GL_EXT_direct_state_access */, 58835}, /* glVertexArrayVertexOffsetEXT */
     {DISPATCH_RESOLVE_VERSION, 218, OpenGL_Desktop_2_0, 58864}, /* glVertexAttrib1d */
     {DISPATCH_RESOLVE_EXTENSION, 218, 297 /* GL_ARB_vertex_program */, 58881}, /* glVertexAttrib1dARB */
     {DISPATCH_RESOLVE_EXTENSION, 218, 298 /* GL_ARB_vertex_shader */, 58881}, /* glVertexAttrib1dARB */
-    {DISPATCH_RESOLVE_EXTENSION, 218, 672 /* GL_NV_vertex_program */, 58901}, /* glVertexAttrib1dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 218, 676 /* GL_NV_vertex_program */, 58901}, /* glVertexAttrib1dNV */
     {DISPATCH_RESOLVE_EXTENSION, 219, 297 /* GL_ARB_vertex_program */, 58881}, /* glVertexAttrib1dARB */
     {DISPATCH_RESOLVE_EXTENSION, 219, 298 /* GL_ARB_vertex_shader */, 58881}, /* glVertexAttrib1dARB */
     {DISPATCH_RESOLVE_VERSION, 219, OpenGL_Desktop_2_0, 58864}, /* glVertexAttrib1d */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 672 /* GL_NV_vertex_program */, 58901}, /* glVertexAttrib1dNV */
-    {DISPATCH_RESOLVE_EXTENSION, 220, 672 /* GL_NV_vertex_program */, 58901}, /* glVertexAttrib1dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 676 /* GL_NV_vertex_program */, 58901}, /* glVertexAttrib1dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 220, 676 /* GL_NV_vertex_program */, 58901}, /* glVertexAttrib1dNV */
     {DISPATCH_RESOLVE_VERSION, 220, OpenGL_Desktop_2_0, 58864}, /* glVertexAttrib1d */
     {DISPATCH_RESOLVE_EXTENSION, 220, 297 /* GL_ARB_vertex_program */, 58881}, /* glVertexAttrib1dARB */
     {DISPATCH_RESOLVE_EXTENSION, 220, 298 /* GL_ARB_vertex_shader */, 58881}, /* glVertexAttrib1dARB */
     {DISPATCH_RESOLVE_VERSION, 221, OpenGL_Desktop_2_0, 58920}, /* glVertexAttrib1dv */
     {DISPATCH_RESOLVE_EXTENSION, 221, 297 /* GL_ARB_vertex_program */, 58938}, /* glVertexAttrib1dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 221, 298 /* GL_ARB_vertex_shader */, 58938}, /* glVertexAttrib1dvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 221, 672 /* GL_NV_vertex_program */, 58959}, /* glVertexAttrib1dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 221, 676 /* GL_NV_vertex_program */, 58959}, /* glVertexAttrib1dvNV */
     {DISPATCH_RESOLVE_EXTENSION, 222, 297 /* GL_ARB_vertex_program */, 58938}, /* glVertexAttrib1dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 222, 298 /* GL_ARB_vertex_shader */, 58938}, /* glVertexAttrib1dvARB */
     {DISPATCH_RESOLVE_VERSION, 222, OpenGL_Desktop_2_0, 58920}, /* glVertexAttrib1dv */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 672 /* GL_NV_vertex_program */, 58959}, /* glVertexAttrib1dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 672 /* GL_NV_vertex_program */, 58959}, /* glVertexAttrib1dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 676 /* GL_NV_vertex_program */, 58959}, /* glVertexAttrib1dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 676 /* GL_NV_vertex_program */, 58959}, /* glVertexAttrib1dvNV */
     {DISPATCH_RESOLVE_VERSION, 223, OpenGL_Desktop_2_0, 58920}, /* glVertexAttrib1dv */
     {DISPATCH_RESOLVE_EXTENSION, 223, 297 /* GL_ARB_vertex_program */, 58938}, /* glVertexAttrib1dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 223, 298 /* GL_ARB_vertex_shader */, 58938}, /* glVertexAttrib1dvARB */
@@ -10535,13 +10545,13 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 224, OpenGL_ES_2_0, 58979}, /* glVertexAttrib1f */
     {DISPATCH_RESOLVE_EXTENSION, 224, 297 /* GL_ARB_vertex_program */, 58996}, /* glVertexAttrib1fARB */
     {DISPATCH_RESOLVE_EXTENSION, 224, 298 /* GL_ARB_vertex_shader */, 58996}, /* glVertexAttrib1fARB */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 672 /* GL_NV_vertex_program */, 59016}, /* glVertexAttrib1fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 676 /* GL_NV_vertex_program */, 59016}, /* glVertexAttrib1fNV */
     {DISPATCH_RESOLVE_EXTENSION, 225, 297 /* GL_ARB_vertex_program */, 58996}, /* glVertexAttrib1fARB */
     {DISPATCH_RESOLVE_EXTENSION, 225, 298 /* GL_ARB_vertex_shader */, 58996}, /* glVertexAttrib1fARB */
     {DISPATCH_RESOLVE_VERSION, 225, OpenGL_Desktop_2_0, 58979}, /* glVertexAttrib1f */
     {DISPATCH_RESOLVE_DIRECT, 225, OpenGL_ES_2_0, 58979}, /* glVertexAttrib1f */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 672 /* GL_NV_vertex_program */, 59016}, /* glVertexAttrib1fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 672 /* GL_NV_vertex_program */, 59016}, /* glVertexAttrib1fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 676 /* GL_NV_vertex_program */, 59016}, /* glVertexAttrib1fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 676 /* GL_NV_vertex_program */, 59016}, /* glVertexAttrib1fNV */
     {DISPATCH_RESOLVE_VERSION, 226, OpenGL_Desktop_2_0, 58979}, /* glVertexAttrib1f */
     {DISPATCH_RESOLVE_DIRECT, 226, OpenGL_ES_2_0, 58979}, /* glVertexAttrib1f */
     {DISPATCH_RESOLVE_EXTENSION, 226, 297 /* GL_ARB_vertex_program */, 58996}, /* glVertexAttrib1fARB */
@@ -10550,64 +10560,64 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 227, OpenGL_ES_2_0, 59035}, /* glVertexAttrib1fv */
     {DISPATCH_RESOLVE_EXTENSION, 227, 297 /* GL_ARB_vertex_program */, 59053}, /* glVertexAttrib1fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 227, 298 /* GL_ARB_vertex_shader */, 59053}, /* glVertexAttrib1fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 672 /* GL_NV_vertex_program */, 59074}, /* glVertexAttrib1fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 676 /* GL_NV_vertex_program */, 59074}, /* glVertexAttrib1fvNV */
     {DISPATCH_RESOLVE_EXTENSION, 228, 297 /* GL_ARB_vertex_program */, 59053}, /* glVertexAttrib1fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 228, 298 /* GL_ARB_vertex_shader */, 59053}, /* glVertexAttrib1fvARB */
     {DISPATCH_RESOLVE_VERSION, 228, OpenGL_Desktop_2_0, 59035}, /* glVertexAttrib1fv */
     {DISPATCH_RESOLVE_DIRECT, 228, OpenGL_ES_2_0, 59035}, /* glVertexAttrib1fv */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 672 /* GL_NV_vertex_program */, 59074}, /* glVertexAttrib1fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 672 /* GL_NV_vertex_program */, 59074}, /* glVertexAttrib1fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 676 /* GL_NV_vertex_program */, 59074}, /* glVertexAttrib1fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 676 /* GL_NV_vertex_program */, 59074}, /* glVertexAttrib1fvNV */
     {DISPATCH_RESOLVE_VERSION, 229, OpenGL_Desktop_2_0, 59035}, /* glVertexAttrib1fv */
     {DISPATCH_RESOLVE_DIRECT, 229, OpenGL_ES_2_0, 59035}, /* glVertexAttrib1fv */
     {DISPATCH_RESOLVE_EXTENSION, 229, 297 /* GL_ARB_vertex_program */, 59053}, /* glVertexAttrib1fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 229, 298 /* GL_ARB_vertex_shader */, 59053}, /* glVertexAttrib1fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 603 /* GL_NV_half_float */, 59094}, /* glVertexAttrib1hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 603 /* GL_NV_half_float */, 59113}, /* glVertexAttrib1hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 607 /* GL_NV_half_float */, 59094}, /* glVertexAttrib1hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 607 /* GL_NV_half_float */, 59113}, /* glVertexAttrib1hvNV */
     {DISPATCH_RESOLVE_VERSION, 232, OpenGL_Desktop_2_0, 59133}, /* glVertexAttrib1s */
     {DISPATCH_RESOLVE_EXTENSION, 232, 297 /* GL_ARB_vertex_program */, 59150}, /* glVertexAttrib1sARB */
     {DISPATCH_RESOLVE_EXTENSION, 232, 298 /* GL_ARB_vertex_shader */, 59150}, /* glVertexAttrib1sARB */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 672 /* GL_NV_vertex_program */, 59170}, /* glVertexAttrib1sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 676 /* GL_NV_vertex_program */, 59170}, /* glVertexAttrib1sNV */
     {DISPATCH_RESOLVE_EXTENSION, 233, 297 /* GL_ARB_vertex_program */, 59150}, /* glVertexAttrib1sARB */
     {DISPATCH_RESOLVE_EXTENSION, 233, 298 /* GL_ARB_vertex_shader */, 59150}, /* glVertexAttrib1sARB */
     {DISPATCH_RESOLVE_VERSION, 233, OpenGL_Desktop_2_0, 59133}, /* glVertexAttrib1s */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 672 /* GL_NV_vertex_program */, 59170}, /* glVertexAttrib1sNV */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 672 /* GL_NV_vertex_program */, 59170}, /* glVertexAttrib1sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 676 /* GL_NV_vertex_program */, 59170}, /* glVertexAttrib1sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 676 /* GL_NV_vertex_program */, 59170}, /* glVertexAttrib1sNV */
     {DISPATCH_RESOLVE_VERSION, 234, OpenGL_Desktop_2_0, 59133}, /* glVertexAttrib1s */
     {DISPATCH_RESOLVE_EXTENSION, 234, 297 /* GL_ARB_vertex_program */, 59150}, /* glVertexAttrib1sARB */
     {DISPATCH_RESOLVE_EXTENSION, 234, 298 /* GL_ARB_vertex_shader */, 59150}, /* glVertexAttrib1sARB */
     {DISPATCH_RESOLVE_VERSION, 235, OpenGL_Desktop_2_0, 59189}, /* glVertexAttrib1sv */
     {DISPATCH_RESOLVE_EXTENSION, 235, 297 /* GL_ARB_vertex_program */, 59207}, /* glVertexAttrib1svARB */
     {DISPATCH_RESOLVE_EXTENSION, 235, 298 /* GL_ARB_vertex_shader */, 59207}, /* glVertexAttrib1svARB */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 672 /* GL_NV_vertex_program */, 59228}, /* glVertexAttrib1svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 676 /* GL_NV_vertex_program */, 59228}, /* glVertexAttrib1svNV */
     {DISPATCH_RESOLVE_EXTENSION, 236, 297 /* GL_ARB_vertex_program */, 59207}, /* glVertexAttrib1svARB */
     {DISPATCH_RESOLVE_EXTENSION, 236, 298 /* GL_ARB_vertex_shader */, 59207}, /* glVertexAttrib1svARB */
     {DISPATCH_RESOLVE_VERSION, 236, OpenGL_Desktop_2_0, 59189}, /* glVertexAttrib1sv */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 672 /* GL_NV_vertex_program */, 59228}, /* glVertexAttrib1svNV */
-    {DISPATCH_RESOLVE_EXTENSION, 237, 672 /* GL_NV_vertex_program */, 59228}, /* glVertexAttrib1svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 676 /* GL_NV_vertex_program */, 59228}, /* glVertexAttrib1svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 237, 676 /* GL_NV_vertex_program */, 59228}, /* glVertexAttrib1svNV */
     {DISPATCH_RESOLVE_VERSION, 237, OpenGL_Desktop_2_0, 59189}, /* glVertexAttrib1sv */
     {DISPATCH_RESOLVE_EXTENSION, 237, 297 /* GL_ARB_vertex_program */, 59207}, /* glVertexAttrib1svARB */
     {DISPATCH_RESOLVE_EXTENSION, 237, 298 /* GL_ARB_vertex_shader */, 59207}, /* glVertexAttrib1svARB */
     {DISPATCH_RESOLVE_VERSION, 238, OpenGL_Desktop_2_0, 59248}, /* glVertexAttrib2d */
     {DISPATCH_RESOLVE_EXTENSION, 238, 297 /* GL_ARB_vertex_program */, 59265}, /* glVertexAttrib2dARB */
     {DISPATCH_RESOLVE_EXTENSION, 238, 298 /* GL_ARB_vertex_shader */, 59265}, /* glVertexAttrib2dARB */
-    {DISPATCH_RESOLVE_EXTENSION, 238, 672 /* GL_NV_vertex_program */, 59285}, /* glVertexAttrib2dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 238, 676 /* GL_NV_vertex_program */, 59285}, /* glVertexAttrib2dNV */
     {DISPATCH_RESOLVE_EXTENSION, 239, 297 /* GL_ARB_vertex_program */, 59265}, /* glVertexAttrib2dARB */
     {DISPATCH_RESOLVE_EXTENSION, 239, 298 /* GL_ARB_vertex_shader */, 59265}, /* glVertexAttrib2dARB */
     {DISPATCH_RESOLVE_VERSION, 239, OpenGL_Desktop_2_0, 59248}, /* glVertexAttrib2d */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 672 /* GL_NV_vertex_program */, 59285}, /* glVertexAttrib2dNV */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 672 /* GL_NV_vertex_program */, 59285}, /* glVertexAttrib2dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 676 /* GL_NV_vertex_program */, 59285}, /* glVertexAttrib2dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 676 /* GL_NV_vertex_program */, 59285}, /* glVertexAttrib2dNV */
     {DISPATCH_RESOLVE_VERSION, 240, OpenGL_Desktop_2_0, 59248}, /* glVertexAttrib2d */
     {DISPATCH_RESOLVE_EXTENSION, 240, 297 /* GL_ARB_vertex_program */, 59265}, /* glVertexAttrib2dARB */
     {DISPATCH_RESOLVE_EXTENSION, 240, 298 /* GL_ARB_vertex_shader */, 59265}, /* glVertexAttrib2dARB */
     {DISPATCH_RESOLVE_VERSION, 241, OpenGL_Desktop_2_0, 59304}, /* glVertexAttrib2dv */
     {DISPATCH_RESOLVE_EXTENSION, 241, 297 /* GL_ARB_vertex_program */, 59322}, /* glVertexAttrib2dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 241, 298 /* GL_ARB_vertex_shader */, 59322}, /* glVertexAttrib2dvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 241, 672 /* GL_NV_vertex_program */, 59343}, /* glVertexAttrib2dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 241, 676 /* GL_NV_vertex_program */, 59343}, /* glVertexAttrib2dvNV */
     {DISPATCH_RESOLVE_EXTENSION, 242, 297 /* GL_ARB_vertex_program */, 59322}, /* glVertexAttrib2dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 242, 298 /* GL_ARB_vertex_shader */, 59322}, /* glVertexAttrib2dvARB */
     {DISPATCH_RESOLVE_VERSION, 242, OpenGL_Desktop_2_0, 59304}, /* glVertexAttrib2dv */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 672 /* GL_NV_vertex_program */, 59343}, /* glVertexAttrib2dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 243, 672 /* GL_NV_vertex_program */, 59343}, /* glVertexAttrib2dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 676 /* GL_NV_vertex_program */, 59343}, /* glVertexAttrib2dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 243, 676 /* GL_NV_vertex_program */, 59343}, /* glVertexAttrib2dvNV */
     {DISPATCH_RESOLVE_VERSION, 243, OpenGL_Desktop_2_0, 59304}, /* glVertexAttrib2dv */
     {DISPATCH_RESOLVE_EXTENSION, 243, 297 /* GL_ARB_vertex_program */, 59322}, /* glVertexAttrib2dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 243, 298 /* GL_ARB_vertex_shader */, 59322}, /* glVertexAttrib2dvARB */
@@ -10615,13 +10625,13 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 244, OpenGL_ES_2_0, 59363}, /* glVertexAttrib2f */
     {DISPATCH_RESOLVE_EXTENSION, 244, 297 /* GL_ARB_vertex_program */, 59380}, /* glVertexAttrib2fARB */
     {DISPATCH_RESOLVE_EXTENSION, 244, 298 /* GL_ARB_vertex_shader */, 59380}, /* glVertexAttrib2fARB */
-    {DISPATCH_RESOLVE_EXTENSION, 244, 672 /* GL_NV_vertex_program */, 59400}, /* glVertexAttrib2fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 244, 676 /* GL_NV_vertex_program */, 59400}, /* glVertexAttrib2fNV */
     {DISPATCH_RESOLVE_EXTENSION, 245, 297 /* GL_ARB_vertex_program */, 59380}, /* glVertexAttrib2fARB */
     {DISPATCH_RESOLVE_EXTENSION, 245, 298 /* GL_ARB_vertex_shader */, 59380}, /* glVertexAttrib2fARB */
     {DISPATCH_RESOLVE_VERSION, 245, OpenGL_Desktop_2_0, 59363}, /* glVertexAttrib2f */
     {DISPATCH_RESOLVE_DIRECT, 245, OpenGL_ES_2_0, 59363}, /* glVertexAttrib2f */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 672 /* GL_NV_vertex_program */, 59400}, /* glVertexAttrib2fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 246, 672 /* GL_NV_vertex_program */, 59400}, /* glVertexAttrib2fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 676 /* GL_NV_vertex_program */, 59400}, /* glVertexAttrib2fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 246, 676 /* GL_NV_vertex_program */, 59400}, /* glVertexAttrib2fNV */
     {DISPATCH_RESOLVE_VERSION, 246, OpenGL_Desktop_2_0, 59363}, /* glVertexAttrib2f */
     {DISPATCH_RESOLVE_DIRECT, 246, OpenGL_ES_2_0, 59363}, /* glVertexAttrib2f */
     {DISPATCH_RESOLVE_EXTENSION, 246, 297 /* GL_ARB_vertex_program */, 59380}, /* glVertexAttrib2fARB */
@@ -10630,64 +10640,64 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 247, OpenGL_ES_2_0, 59419}, /* glVertexAttrib2fv */
     {DISPATCH_RESOLVE_EXTENSION, 247, 297 /* GL_ARB_vertex_program */, 59437}, /* glVertexAttrib2fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 247, 298 /* GL_ARB_vertex_shader */, 59437}, /* glVertexAttrib2fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 247, 672 /* GL_NV_vertex_program */, 59458}, /* glVertexAttrib2fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 247, 676 /* GL_NV_vertex_program */, 59458}, /* glVertexAttrib2fvNV */
     {DISPATCH_RESOLVE_EXTENSION, 248, 297 /* GL_ARB_vertex_program */, 59437}, /* glVertexAttrib2fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 248, 298 /* GL_ARB_vertex_shader */, 59437}, /* glVertexAttrib2fvARB */
     {DISPATCH_RESOLVE_VERSION, 248, OpenGL_Desktop_2_0, 59419}, /* glVertexAttrib2fv */
     {DISPATCH_RESOLVE_DIRECT, 248, OpenGL_ES_2_0, 59419}, /* glVertexAttrib2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 672 /* GL_NV_vertex_program */, 59458}, /* glVertexAttrib2fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 249, 672 /* GL_NV_vertex_program */, 59458}, /* glVertexAttrib2fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 676 /* GL_NV_vertex_program */, 59458}, /* glVertexAttrib2fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 249, 676 /* GL_NV_vertex_program */, 59458}, /* glVertexAttrib2fvNV */
     {DISPATCH_RESOLVE_VERSION, 249, OpenGL_Desktop_2_0, 59419}, /* glVertexAttrib2fv */
     {DISPATCH_RESOLVE_DIRECT, 249, OpenGL_ES_2_0, 59419}, /* glVertexAttrib2fv */
     {DISPATCH_RESOLVE_EXTENSION, 249, 297 /* GL_ARB_vertex_program */, 59437}, /* glVertexAttrib2fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 249, 298 /* GL_ARB_vertex_shader */, 59437}, /* glVertexAttrib2fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 603 /* GL_NV_half_float */, 59478}, /* glVertexAttrib2hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 603 /* GL_NV_half_float */, 59497}, /* glVertexAttrib2hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 607 /* GL_NV_half_float */, 59478}, /* glVertexAttrib2hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 607 /* GL_NV_half_float */, 59497}, /* glVertexAttrib2hvNV */
     {DISPATCH_RESOLVE_VERSION, 252, OpenGL_Desktop_2_0, 59517}, /* glVertexAttrib2s */
     {DISPATCH_RESOLVE_EXTENSION, 252, 297 /* GL_ARB_vertex_program */, 59534}, /* glVertexAttrib2sARB */
     {DISPATCH_RESOLVE_EXTENSION, 252, 298 /* GL_ARB_vertex_shader */, 59534}, /* glVertexAttrib2sARB */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 672 /* GL_NV_vertex_program */, 59554}, /* glVertexAttrib2sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 676 /* GL_NV_vertex_program */, 59554}, /* glVertexAttrib2sNV */
     {DISPATCH_RESOLVE_EXTENSION, 253, 297 /* GL_ARB_vertex_program */, 59534}, /* glVertexAttrib2sARB */
     {DISPATCH_RESOLVE_EXTENSION, 253, 298 /* GL_ARB_vertex_shader */, 59534}, /* glVertexAttrib2sARB */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_Desktop_2_0, 59517}, /* glVertexAttrib2s */
-    {DISPATCH_RESOLVE_EXTENSION, 253, 672 /* GL_NV_vertex_program */, 59554}, /* glVertexAttrib2sNV */
-    {DISPATCH_RESOLVE_EXTENSION, 254, 672 /* GL_NV_vertex_program */, 59554}, /* glVertexAttrib2sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 253, 676 /* GL_NV_vertex_program */, 59554}, /* glVertexAttrib2sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 254, 676 /* GL_NV_vertex_program */, 59554}, /* glVertexAttrib2sNV */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_Desktop_2_0, 59517}, /* glVertexAttrib2s */
     {DISPATCH_RESOLVE_EXTENSION, 254, 297 /* GL_ARB_vertex_program */, 59534}, /* glVertexAttrib2sARB */
     {DISPATCH_RESOLVE_EXTENSION, 254, 298 /* GL_ARB_vertex_shader */, 59534}, /* glVertexAttrib2sARB */
     {DISPATCH_RESOLVE_VERSION, 255, OpenGL_Desktop_2_0, 59573}, /* glVertexAttrib2sv */
     {DISPATCH_RESOLVE_EXTENSION, 255, 297 /* GL_ARB_vertex_program */, 59591}, /* glVertexAttrib2svARB */
     {DISPATCH_RESOLVE_EXTENSION, 255, 298 /* GL_ARB_vertex_shader */, 59591}, /* glVertexAttrib2svARB */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 672 /* GL_NV_vertex_program */, 59612}, /* glVertexAttrib2svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 676 /* GL_NV_vertex_program */, 59612}, /* glVertexAttrib2svNV */
     {DISPATCH_RESOLVE_EXTENSION, 0, 297 /* GL_ARB_vertex_program */, 59591}, /* glVertexAttrib2svARB */
     {DISPATCH_RESOLVE_EXTENSION, 0, 298 /* GL_ARB_vertex_shader */, 59591}, /* glVertexAttrib2svARB */
     {DISPATCH_RESOLVE_VERSION, 0, OpenGL_Desktop_2_0, 59573}, /* glVertexAttrib2sv */
-    {DISPATCH_RESOLVE_EXTENSION, 0, 672 /* GL_NV_vertex_program */, 59612}, /* glVertexAttrib2svNV */
-    {DISPATCH_RESOLVE_EXTENSION, 1, 672 /* GL_NV_vertex_program */, 59612}, /* glVertexAttrib2svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 0, 676 /* GL_NV_vertex_program */, 59612}, /* glVertexAttrib2svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 676 /* GL_NV_vertex_program */, 59612}, /* glVertexAttrib2svNV */
     {DISPATCH_RESOLVE_VERSION, 1, OpenGL_Desktop_2_0, 59573}, /* glVertexAttrib2sv */
     {DISPATCH_RESOLVE_EXTENSION, 1, 297 /* GL_ARB_vertex_program */, 59591}, /* glVertexAttrib2svARB */
     {DISPATCH_RESOLVE_EXTENSION, 1, 298 /* GL_ARB_vertex_shader */, 59591}, /* glVertexAttrib2svARB */
     {DISPATCH_RESOLVE_VERSION, 2, OpenGL_Desktop_2_0, 59632}, /* glVertexAttrib3d */
     {DISPATCH_RESOLVE_EXTENSION, 2, 297 /* GL_ARB_vertex_program */, 59649}, /* glVertexAttrib3dARB */
     {DISPATCH_RESOLVE_EXTENSION, 2, 298 /* GL_ARB_vertex_shader */, 59649}, /* glVertexAttrib3dARB */
-    {DISPATCH_RESOLVE_EXTENSION, 2, 672 /* GL_NV_vertex_program */, 59669}, /* glVertexAttrib3dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 2, 676 /* GL_NV_vertex_program */, 59669}, /* glVertexAttrib3dNV */
     {DISPATCH_RESOLVE_EXTENSION, 3, 297 /* GL_ARB_vertex_program */, 59649}, /* glVertexAttrib3dARB */
     {DISPATCH_RESOLVE_EXTENSION, 3, 298 /* GL_ARB_vertex_shader */, 59649}, /* glVertexAttrib3dARB */
     {DISPATCH_RESOLVE_VERSION, 3, OpenGL_Desktop_2_0, 59632}, /* glVertexAttrib3d */
-    {DISPATCH_RESOLVE_EXTENSION, 3, 672 /* GL_NV_vertex_program */, 59669}, /* glVertexAttrib3dNV */
-    {DISPATCH_RESOLVE_EXTENSION, 4, 672 /* GL_NV_vertex_program */, 59669}, /* glVertexAttrib3dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 3, 676 /* GL_NV_vertex_program */, 59669}, /* glVertexAttrib3dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 4, 676 /* GL_NV_vertex_program */, 59669}, /* glVertexAttrib3dNV */
     {DISPATCH_RESOLVE_VERSION, 4, OpenGL_Desktop_2_0, 59632}, /* glVertexAttrib3d */
     {DISPATCH_RESOLVE_EXTENSION, 4, 297 /* GL_ARB_vertex_program */, 59649}, /* glVertexAttrib3dARB */
     {DISPATCH_RESOLVE_EXTENSION, 4, 298 /* GL_ARB_vertex_shader */, 59649}, /* glVertexAttrib3dARB */
     {DISPATCH_RESOLVE_VERSION, 5, OpenGL_Desktop_2_0, 59688}, /* glVertexAttrib3dv */
     {DISPATCH_RESOLVE_EXTENSION, 5, 297 /* GL_ARB_vertex_program */, 59706}, /* glVertexAttrib3dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 5, 298 /* GL_ARB_vertex_shader */, 59706}, /* glVertexAttrib3dvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 5, 672 /* GL_NV_vertex_program */, 59727}, /* glVertexAttrib3dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 5, 676 /* GL_NV_vertex_program */, 59727}, /* glVertexAttrib3dvNV */
     {DISPATCH_RESOLVE_EXTENSION, 6, 297 /* GL_ARB_vertex_program */, 59706}, /* glVertexAttrib3dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 6, 298 /* GL_ARB_vertex_shader */, 59706}, /* glVertexAttrib3dvARB */
     {DISPATCH_RESOLVE_VERSION, 6, OpenGL_Desktop_2_0, 59688}, /* glVertexAttrib3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 6, 672 /* GL_NV_vertex_program */, 59727}, /* glVertexAttrib3dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 7, 672 /* GL_NV_vertex_program */, 59727}, /* glVertexAttrib3dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 6, 676 /* GL_NV_vertex_program */, 59727}, /* glVertexAttrib3dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 7, 676 /* GL_NV_vertex_program */, 59727}, /* glVertexAttrib3dvNV */
     {DISPATCH_RESOLVE_VERSION, 7, OpenGL_Desktop_2_0, 59688}, /* glVertexAttrib3dv */
     {DISPATCH_RESOLVE_EXTENSION, 7, 297 /* GL_ARB_vertex_program */, 59706}, /* glVertexAttrib3dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 7, 298 /* GL_ARB_vertex_shader */, 59706}, /* glVertexAttrib3dvARB */
@@ -10695,13 +10705,13 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 8, OpenGL_ES_2_0, 59747}, /* glVertexAttrib3f */
     {DISPATCH_RESOLVE_EXTENSION, 8, 297 /* GL_ARB_vertex_program */, 59764}, /* glVertexAttrib3fARB */
     {DISPATCH_RESOLVE_EXTENSION, 8, 298 /* GL_ARB_vertex_shader */, 59764}, /* glVertexAttrib3fARB */
-    {DISPATCH_RESOLVE_EXTENSION, 8, 672 /* GL_NV_vertex_program */, 59784}, /* glVertexAttrib3fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 8, 676 /* GL_NV_vertex_program */, 59784}, /* glVertexAttrib3fNV */
     {DISPATCH_RESOLVE_EXTENSION, 9, 297 /* GL_ARB_vertex_program */, 59764}, /* glVertexAttrib3fARB */
     {DISPATCH_RESOLVE_EXTENSION, 9, 298 /* GL_ARB_vertex_shader */, 59764}, /* glVertexAttrib3fARB */
     {DISPATCH_RESOLVE_VERSION, 9, OpenGL_Desktop_2_0, 59747}, /* glVertexAttrib3f */
     {DISPATCH_RESOLVE_DIRECT, 9, OpenGL_ES_2_0, 59747}, /* glVertexAttrib3f */
-    {DISPATCH_RESOLVE_EXTENSION, 9, 672 /* GL_NV_vertex_program */, 59784}, /* glVertexAttrib3fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 10, 672 /* GL_NV_vertex_program */, 59784}, /* glVertexAttrib3fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 9, 676 /* GL_NV_vertex_program */, 59784}, /* glVertexAttrib3fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 676 /* GL_NV_vertex_program */, 59784}, /* glVertexAttrib3fNV */
     {DISPATCH_RESOLVE_VERSION, 10, OpenGL_Desktop_2_0, 59747}, /* glVertexAttrib3f */
     {DISPATCH_RESOLVE_DIRECT, 10, OpenGL_ES_2_0, 59747}, /* glVertexAttrib3f */
     {DISPATCH_RESOLVE_EXTENSION, 10, 297 /* GL_ARB_vertex_program */, 59764}, /* glVertexAttrib3fARB */
@@ -10710,40 +10720,40 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 11, OpenGL_ES_2_0, 59803}, /* glVertexAttrib3fv */
     {DISPATCH_RESOLVE_EXTENSION, 11, 297 /* GL_ARB_vertex_program */, 59821}, /* glVertexAttrib3fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 11, 298 /* GL_ARB_vertex_shader */, 59821}, /* glVertexAttrib3fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 672 /* GL_NV_vertex_program */, 59842}, /* glVertexAttrib3fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 676 /* GL_NV_vertex_program */, 59842}, /* glVertexAttrib3fvNV */
     {DISPATCH_RESOLVE_EXTENSION, 12, 297 /* GL_ARB_vertex_program */, 59821}, /* glVertexAttrib3fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 12, 298 /* GL_ARB_vertex_shader */, 59821}, /* glVertexAttrib3fvARB */
     {DISPATCH_RESOLVE_VERSION, 12, OpenGL_Desktop_2_0, 59803}, /* glVertexAttrib3fv */
     {DISPATCH_RESOLVE_DIRECT, 12, OpenGL_ES_2_0, 59803}, /* glVertexAttrib3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 672 /* GL_NV_vertex_program */, 59842}, /* glVertexAttrib3fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 672 /* GL_NV_vertex_program */, 59842}, /* glVertexAttrib3fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 676 /* GL_NV_vertex_program */, 59842}, /* glVertexAttrib3fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 676 /* GL_NV_vertex_program */, 59842}, /* glVertexAttrib3fvNV */
     {DISPATCH_RESOLVE_VERSION, 13, OpenGL_Desktop_2_0, 59803}, /* glVertexAttrib3fv */
     {DISPATCH_RESOLVE_DIRECT, 13, OpenGL_ES_2_0, 59803}, /* glVertexAttrib3fv */
     {DISPATCH_RESOLVE_EXTENSION, 13, 297 /* GL_ARB_vertex_program */, 59821}, /* glVertexAttrib3fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 13, 298 /* GL_ARB_vertex_shader */, 59821}, /* glVertexAttrib3fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 603 /* GL_NV_half_float */, 59862}, /* glVertexAttrib3hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 603 /* GL_NV_half_float */, 59881}, /* glVertexAttrib3hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 607 /* GL_NV_half_float */, 59862}, /* glVertexAttrib3hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 607 /* GL_NV_half_float */, 59881}, /* glVertexAttrib3hvNV */
     {DISPATCH_RESOLVE_VERSION, 16, OpenGL_Desktop_2_0, 59901}, /* glVertexAttrib3s */
     {DISPATCH_RESOLVE_EXTENSION, 16, 297 /* GL_ARB_vertex_program */, 59918}, /* glVertexAttrib3sARB */
     {DISPATCH_RESOLVE_EXTENSION, 16, 298 /* GL_ARB_vertex_shader */, 59918}, /* glVertexAttrib3sARB */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 672 /* GL_NV_vertex_program */, 59938}, /* glVertexAttrib3sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 676 /* GL_NV_vertex_program */, 59938}, /* glVertexAttrib3sNV */
     {DISPATCH_RESOLVE_EXTENSION, 17, 297 /* GL_ARB_vertex_program */, 59918}, /* glVertexAttrib3sARB */
     {DISPATCH_RESOLVE_EXTENSION, 17, 298 /* GL_ARB_vertex_shader */, 59918}, /* glVertexAttrib3sARB */
     {DISPATCH_RESOLVE_VERSION, 17, OpenGL_Desktop_2_0, 59901}, /* glVertexAttrib3s */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 672 /* GL_NV_vertex_program */, 59938}, /* glVertexAttrib3sNV */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 672 /* GL_NV_vertex_program */, 59938}, /* glVertexAttrib3sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 676 /* GL_NV_vertex_program */, 59938}, /* glVertexAttrib3sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 676 /* GL_NV_vertex_program */, 59938}, /* glVertexAttrib3sNV */
     {DISPATCH_RESOLVE_VERSION, 18, OpenGL_Desktop_2_0, 59901}, /* glVertexAttrib3s */
     {DISPATCH_RESOLVE_EXTENSION, 18, 297 /* GL_ARB_vertex_program */, 59918}, /* glVertexAttrib3sARB */
     {DISPATCH_RESOLVE_EXTENSION, 18, 298 /* GL_ARB_vertex_shader */, 59918}, /* glVertexAttrib3sARB */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_Desktop_2_0, 59957}, /* glVertexAttrib3sv */
     {DISPATCH_RESOLVE_EXTENSION, 19, 297 /* GL_ARB_vertex_program */, 59975}, /* glVertexAttrib3svARB */
     {DISPATCH_RESOLVE_EXTENSION, 19, 298 /* GL_ARB_vertex_shader */, 59975}, /* glVertexAttrib3svARB */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 672 /* GL_NV_vertex_program */, 59996}, /* glVertexAttrib3svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 676 /* GL_NV_vertex_program */, 59996}, /* glVertexAttrib3svNV */
     {DISPATCH_RESOLVE_EXTENSION, 20, 297 /* GL_ARB_vertex_program */, 59975}, /* glVertexAttrib3svARB */
     {DISPATCH_RESOLVE_EXTENSION, 20, 298 /* GL_ARB_vertex_shader */, 59975}, /* glVertexAttrib3svARB */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_2_0, 59957}, /* glVertexAttrib3sv */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 672 /* GL_NV_vertex_program */, 59996}, /* glVertexAttrib3svNV */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 672 /* GL_NV_vertex_program */, 59996}, /* glVertexAttrib3svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 676 /* GL_NV_vertex_program */, 59996}, /* glVertexAttrib3svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 676 /* GL_NV_vertex_program */, 59996}, /* glVertexAttrib3svNV */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_2_0, 59957}, /* glVertexAttrib3sv */
     {DISPATCH_RESOLVE_EXTENSION, 21, 297 /* GL_ARB_vertex_program */, 59975}, /* glVertexAttrib3svARB */
     {DISPATCH_RESOLVE_EXTENSION, 21, 298 /* GL_ARB_vertex_shader */, 59975}, /* glVertexAttrib3svARB */
@@ -10768,19 +10778,19 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 28, OpenGL_Desktop_2_0, 60139}, /* glVertexAttrib4Nub */
     {DISPATCH_RESOLVE_EXTENSION, 28, 297 /* GL_ARB_vertex_program */, 60158}, /* glVertexAttrib4NubARB */
     {DISPATCH_RESOLVE_EXTENSION, 28, 298 /* GL_ARB_vertex_shader */, 60158}, /* glVertexAttrib4NubARB */
-    {DISPATCH_RESOLVE_EXTENSION, 28, 672 /* GL_NV_vertex_program */, 60771}, /* glVertexAttrib4ubNV */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 676 /* GL_NV_vertex_program */, 60771}, /* glVertexAttrib4ubNV */
     {DISPATCH_RESOLVE_EXTENSION, 29, 297 /* GL_ARB_vertex_program */, 60158}, /* glVertexAttrib4NubARB */
     {DISPATCH_RESOLVE_EXTENSION, 29, 298 /* GL_ARB_vertex_shader */, 60158}, /* glVertexAttrib4NubARB */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_Desktop_2_0, 60139}, /* glVertexAttrib4Nub */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 672 /* GL_NV_vertex_program */, 60771}, /* glVertexAttrib4ubNV */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 676 /* GL_NV_vertex_program */, 60771}, /* glVertexAttrib4ubNV */
     {DISPATCH_RESOLVE_VERSION, 30, OpenGL_Desktop_2_0, 60180}, /* glVertexAttrib4Nubv */
     {DISPATCH_RESOLVE_EXTENSION, 30, 297 /* GL_ARB_vertex_program */, 60200}, /* glVertexAttrib4NubvARB */
     {DISPATCH_RESOLVE_EXTENSION, 30, 298 /* GL_ARB_vertex_shader */, 60200}, /* glVertexAttrib4NubvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 672 /* GL_NV_vertex_program */, 60832}, /* glVertexAttrib4ubvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 676 /* GL_NV_vertex_program */, 60832}, /* glVertexAttrib4ubvNV */
     {DISPATCH_RESOLVE_EXTENSION, 31, 297 /* GL_ARB_vertex_program */, 60200}, /* glVertexAttrib4NubvARB */
     {DISPATCH_RESOLVE_EXTENSION, 31, 298 /* GL_ARB_vertex_shader */, 60200}, /* glVertexAttrib4NubvARB */
     {DISPATCH_RESOLVE_VERSION, 31, OpenGL_Desktop_2_0, 60180}, /* glVertexAttrib4Nubv */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 672 /* GL_NV_vertex_program */, 60832}, /* glVertexAttrib4ubvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 676 /* GL_NV_vertex_program */, 60832}, /* glVertexAttrib4ubvNV */
     {DISPATCH_RESOLVE_VERSION, 32, OpenGL_Desktop_2_0, 60223}, /* glVertexAttrib4Nuiv */
     {DISPATCH_RESOLVE_EXTENSION, 32, 297 /* GL_ARB_vertex_program */, 60243}, /* glVertexAttrib4NuivARB */
     {DISPATCH_RESOLVE_EXTENSION, 32, 298 /* GL_ARB_vertex_shader */, 60243}, /* glVertexAttrib4NuivARB */
@@ -10802,24 +10812,24 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 38, OpenGL_Desktop_2_0, 60348}, /* glVertexAttrib4d */
     {DISPATCH_RESOLVE_EXTENSION, 38, 297 /* GL_ARB_vertex_program */, 60365}, /* glVertexAttrib4dARB */
     {DISPATCH_RESOLVE_EXTENSION, 38, 298 /* GL_ARB_vertex_shader */, 60365}, /* glVertexAttrib4dARB */
-    {DISPATCH_RESOLVE_EXTENSION, 38, 672 /* GL_NV_vertex_program */, 60385}, /* glVertexAttrib4dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 38, 676 /* GL_NV_vertex_program */, 60385}, /* glVertexAttrib4dNV */
     {DISPATCH_RESOLVE_EXTENSION, 39, 297 /* GL_ARB_vertex_program */, 60365}, /* glVertexAttrib4dARB */
     {DISPATCH_RESOLVE_EXTENSION, 39, 298 /* GL_ARB_vertex_shader */, 60365}, /* glVertexAttrib4dARB */
     {DISPATCH_RESOLVE_VERSION, 39, OpenGL_Desktop_2_0, 60348}, /* glVertexAttrib4d */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 672 /* GL_NV_vertex_program */, 60385}, /* glVertexAttrib4dNV */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 672 /* GL_NV_vertex_program */, 60385}, /* glVertexAttrib4dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 676 /* GL_NV_vertex_program */, 60385}, /* glVertexAttrib4dNV */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 676 /* GL_NV_vertex_program */, 60385}, /* glVertexAttrib4dNV */
     {DISPATCH_RESOLVE_VERSION, 40, OpenGL_Desktop_2_0, 60348}, /* glVertexAttrib4d */
     {DISPATCH_RESOLVE_EXTENSION, 40, 297 /* GL_ARB_vertex_program */, 60365}, /* glVertexAttrib4dARB */
     {DISPATCH_RESOLVE_EXTENSION, 40, 298 /* GL_ARB_vertex_shader */, 60365}, /* glVertexAttrib4dARB */
     {DISPATCH_RESOLVE_VERSION, 41, OpenGL_Desktop_2_0, 60404}, /* glVertexAttrib4dv */
     {DISPATCH_RESOLVE_EXTENSION, 41, 297 /* GL_ARB_vertex_program */, 60422}, /* glVertexAttrib4dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 41, 298 /* GL_ARB_vertex_shader */, 60422}, /* glVertexAttrib4dvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 672 /* GL_NV_vertex_program */, 60443}, /* glVertexAttrib4dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 676 /* GL_NV_vertex_program */, 60443}, /* glVertexAttrib4dvNV */
     {DISPATCH_RESOLVE_EXTENSION, 42, 297 /* GL_ARB_vertex_program */, 60422}, /* glVertexAttrib4dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 42, 298 /* GL_ARB_vertex_shader */, 60422}, /* glVertexAttrib4dvARB */
     {DISPATCH_RESOLVE_VERSION, 42, OpenGL_Desktop_2_0, 60404}, /* glVertexAttrib4dv */
-    {DISPATCH_RESOLVE_EXTENSION, 42, 672 /* GL_NV_vertex_program */, 60443}, /* glVertexAttrib4dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 43, 672 /* GL_NV_vertex_program */, 60443}, /* glVertexAttrib4dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 676 /* GL_NV_vertex_program */, 60443}, /* glVertexAttrib4dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 676 /* GL_NV_vertex_program */, 60443}, /* glVertexAttrib4dvNV */
     {DISPATCH_RESOLVE_VERSION, 43, OpenGL_Desktop_2_0, 60404}, /* glVertexAttrib4dv */
     {DISPATCH_RESOLVE_EXTENSION, 43, 297 /* GL_ARB_vertex_program */, 60422}, /* glVertexAttrib4dvARB */
     {DISPATCH_RESOLVE_EXTENSION, 43, 298 /* GL_ARB_vertex_shader */, 60422}, /* glVertexAttrib4dvARB */
@@ -10827,13 +10837,13 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 44, OpenGL_ES_2_0, 60463}, /* glVertexAttrib4f */
     {DISPATCH_RESOLVE_EXTENSION, 44, 297 /* GL_ARB_vertex_program */, 60480}, /* glVertexAttrib4fARB */
     {DISPATCH_RESOLVE_EXTENSION, 44, 298 /* GL_ARB_vertex_shader */, 60480}, /* glVertexAttrib4fARB */
-    {DISPATCH_RESOLVE_EXTENSION, 44, 672 /* GL_NV_vertex_program */, 60500}, /* glVertexAttrib4fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 676 /* GL_NV_vertex_program */, 60500}, /* glVertexAttrib4fNV */
     {DISPATCH_RESOLVE_EXTENSION, 45, 297 /* GL_ARB_vertex_program */, 60480}, /* glVertexAttrib4fARB */
     {DISPATCH_RESOLVE_EXTENSION, 45, 298 /* GL_ARB_vertex_shader */, 60480}, /* glVertexAttrib4fARB */
     {DISPATCH_RESOLVE_VERSION, 45, OpenGL_Desktop_2_0, 60463}, /* glVertexAttrib4f */
     {DISPATCH_RESOLVE_DIRECT, 45, OpenGL_ES_2_0, 60463}, /* glVertexAttrib4f */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 672 /* GL_NV_vertex_program */, 60500}, /* glVertexAttrib4fNV */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 672 /* GL_NV_vertex_program */, 60500}, /* glVertexAttrib4fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 676 /* GL_NV_vertex_program */, 60500}, /* glVertexAttrib4fNV */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 676 /* GL_NV_vertex_program */, 60500}, /* glVertexAttrib4fNV */
     {DISPATCH_RESOLVE_VERSION, 46, OpenGL_Desktop_2_0, 60463}, /* glVertexAttrib4f */
     {DISPATCH_RESOLVE_DIRECT, 46, OpenGL_ES_2_0, 60463}, /* glVertexAttrib4f */
     {DISPATCH_RESOLVE_EXTENSION, 46, 297 /* GL_ARB_vertex_program */, 60480}, /* glVertexAttrib4fARB */
@@ -10842,19 +10852,19 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_DIRECT, 47, OpenGL_ES_2_0, 60519}, /* glVertexAttrib4fv */
     {DISPATCH_RESOLVE_EXTENSION, 47, 297 /* GL_ARB_vertex_program */, 60537}, /* glVertexAttrib4fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 47, 298 /* GL_ARB_vertex_shader */, 60537}, /* glVertexAttrib4fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 672 /* GL_NV_vertex_program */, 60558}, /* glVertexAttrib4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 676 /* GL_NV_vertex_program */, 60558}, /* glVertexAttrib4fvNV */
     {DISPATCH_RESOLVE_EXTENSION, 48, 297 /* GL_ARB_vertex_program */, 60537}, /* glVertexAttrib4fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 48, 298 /* GL_ARB_vertex_shader */, 60537}, /* glVertexAttrib4fvARB */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_Desktop_2_0, 60519}, /* glVertexAttrib4fv */
     {DISPATCH_RESOLVE_DIRECT, 48, OpenGL_ES_2_0, 60519}, /* glVertexAttrib4fv */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 672 /* GL_NV_vertex_program */, 60558}, /* glVertexAttrib4fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 672 /* GL_NV_vertex_program */, 60558}, /* glVertexAttrib4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 676 /* GL_NV_vertex_program */, 60558}, /* glVertexAttrib4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 676 /* GL_NV_vertex_program */, 60558}, /* glVertexAttrib4fvNV */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_2_0, 60519}, /* glVertexAttrib4fv */
     {DISPATCH_RESOLVE_DIRECT, 49, OpenGL_ES_2_0, 60519}, /* glVertexAttrib4fv */
     {DISPATCH_RESOLVE_EXTENSION, 49, 297 /* GL_ARB_vertex_program */, 60537}, /* glVertexAttrib4fvARB */
     {DISPATCH_RESOLVE_EXTENSION, 49, 298 /* GL_ARB_vertex_shader */, 60537}, /* glVertexAttrib4fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 603 /* GL_NV_half_float */, 60578}, /* glVertexAttrib4hNV */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 603 /* GL_NV_half_float */, 60597}, /* glVertexAttrib4hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 607 /* GL_NV_half_float */, 60578}, /* glVertexAttrib4hNV */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 607 /* GL_NV_half_float */, 60597}, /* glVertexAttrib4hvNV */
     {DISPATCH_RESOLVE_VERSION, 52, OpenGL_Desktop_2_0, 60617}, /* glVertexAttrib4iv */
     {DISPATCH_RESOLVE_EXTENSION, 52, 297 /* GL_ARB_vertex_program */, 60635}, /* glVertexAttrib4ivARB */
     {DISPATCH_RESOLVE_EXTENSION, 52, 298 /* GL_ARB_vertex_shader */, 60635}, /* glVertexAttrib4ivARB */
@@ -10864,28 +10874,28 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 54, OpenGL_Desktop_2_0, 60656}, /* glVertexAttrib4s */
     {DISPATCH_RESOLVE_EXTENSION, 54, 297 /* GL_ARB_vertex_program */, 60673}, /* glVertexAttrib4sARB */
     {DISPATCH_RESOLVE_EXTENSION, 54, 298 /* GL_ARB_vertex_shader */, 60673}, /* glVertexAttrib4sARB */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 672 /* GL_NV_vertex_program */, 60693}, /* glVertexAttrib4sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 676 /* GL_NV_vertex_program */, 60693}, /* glVertexAttrib4sNV */
     {DISPATCH_RESOLVE_EXTENSION, 55, 297 /* GL_ARB_vertex_program */, 60673}, /* glVertexAttrib4sARB */
     {DISPATCH_RESOLVE_EXTENSION, 55, 298 /* GL_ARB_vertex_shader */, 60673}, /* glVertexAttrib4sARB */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_Desktop_2_0, 60656}, /* glVertexAttrib4s */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 672 /* GL_NV_vertex_program */, 60693}, /* glVertexAttrib4sNV */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 672 /* GL_NV_vertex_program */, 60693}, /* glVertexAttrib4sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 676 /* GL_NV_vertex_program */, 60693}, /* glVertexAttrib4sNV */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 676 /* GL_NV_vertex_program */, 60693}, /* glVertexAttrib4sNV */
     {DISPATCH_RESOLVE_VERSION, 56, OpenGL_Desktop_2_0, 60656}, /* glVertexAttrib4s */
     {DISPATCH_RESOLVE_EXTENSION, 56, 297 /* GL_ARB_vertex_program */, 60673}, /* glVertexAttrib4sARB */
     {DISPATCH_RESOLVE_EXTENSION, 56, 298 /* GL_ARB_vertex_shader */, 60673}, /* glVertexAttrib4sARB */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_Desktop_2_0, 60712}, /* glVertexAttrib4sv */
     {DISPATCH_RESOLVE_EXTENSION, 57, 297 /* GL_ARB_vertex_program */, 60730}, /* glVertexAttrib4svARB */
     {DISPATCH_RESOLVE_EXTENSION, 57, 298 /* GL_ARB_vertex_shader */, 60730}, /* glVertexAttrib4svARB */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 672 /* GL_NV_vertex_program */, 60751}, /* glVertexAttrib4svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 676 /* GL_NV_vertex_program */, 60751}, /* glVertexAttrib4svNV */
     {DISPATCH_RESOLVE_EXTENSION, 58, 297 /* GL_ARB_vertex_program */, 60730}, /* glVertexAttrib4svARB */
     {DISPATCH_RESOLVE_EXTENSION, 58, 298 /* GL_ARB_vertex_shader */, 60730}, /* glVertexAttrib4svARB */
     {DISPATCH_RESOLVE_VERSION, 58, OpenGL_Desktop_2_0, 60712}, /* glVertexAttrib4sv */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 672 /* GL_NV_vertex_program */, 60751}, /* glVertexAttrib4svNV */
-    {DISPATCH_RESOLVE_EXTENSION, 59, 672 /* GL_NV_vertex_program */, 60751}, /* glVertexAttrib4svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 676 /* GL_NV_vertex_program */, 60751}, /* glVertexAttrib4svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 59, 676 /* GL_NV_vertex_program */, 60751}, /* glVertexAttrib4svNV */
     {DISPATCH_RESOLVE_VERSION, 59, OpenGL_Desktop_2_0, 60712}, /* glVertexAttrib4sv */
     {DISPATCH_RESOLVE_EXTENSION, 59, 297 /* GL_ARB_vertex_program */, 60730}, /* glVertexAttrib4svARB */
     {DISPATCH_RESOLVE_EXTENSION, 59, 298 /* GL_ARB_vertex_shader */, 60730}, /* glVertexAttrib4svARB */
-    {DISPATCH_RESOLVE_EXTENSION, 60, 672 /* GL_NV_vertex_program */, 60771}, /* glVertexAttrib4ubNV */
+    {DISPATCH_RESOLVE_EXTENSION, 60, 676 /* GL_NV_vertex_program */, 60771}, /* glVertexAttrib4ubNV */
     {DISPATCH_RESOLVE_VERSION, 60, OpenGL_Desktop_2_0, 60139}, /* glVertexAttrib4Nub */
     {DISPATCH_RESOLVE_EXTENSION, 60, 297 /* GL_ARB_vertex_program */, 60158}, /* glVertexAttrib4NubARB */
     {DISPATCH_RESOLVE_EXTENSION, 60, 298 /* GL_ARB_vertex_shader */, 60158}, /* glVertexAttrib4NubARB */
@@ -10895,7 +10905,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 62, 297 /* GL_ARB_vertex_program */, 60810}, /* glVertexAttrib4ubvARB */
     {DISPATCH_RESOLVE_EXTENSION, 62, 298 /* GL_ARB_vertex_shader */, 60810}, /* glVertexAttrib4ubvARB */
     {DISPATCH_RESOLVE_VERSION, 62, OpenGL_Desktop_2_0, 60791}, /* glVertexAttrib4ubv */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 672 /* GL_NV_vertex_program */, 60832}, /* glVertexAttrib4ubvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 676 /* GL_NV_vertex_program */, 60832}, /* glVertexAttrib4ubvNV */
     {DISPATCH_RESOLVE_VERSION, 63, OpenGL_Desktop_2_0, 60180}, /* glVertexAttrib4Nubv */
     {DISPATCH_RESOLVE_EXTENSION, 63, 297 /* GL_ARB_vertex_program */, 60200}, /* glVertexAttrib4NubvARB */
     {DISPATCH_RESOLVE_EXTENSION, 63, 298 /* GL_ARB_vertex_shader */, 60200}, /* glVertexAttrib4NubvARB */
@@ -10911,7 +10921,7 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 67, 297 /* GL_ARB_vertex_program */, 60913}, /* glVertexAttrib4usvARB */
     {DISPATCH_RESOLVE_EXTENSION, 67, 298 /* GL_ARB_vertex_shader */, 60913}, /* glVertexAttrib4usvARB */
     {DISPATCH_RESOLVE_VERSION, 67, OpenGL_Desktop_2_0, 60894}, /* glVertexAttrib4usv */
-    {DISPATCH_RESOLVE_EXTENSION, 68, 324 /* GL_ATI_vertex_attrib_array_object */, 60935}, /* glVertexAttribArrayObjectATI */
+    {DISPATCH_RESOLVE_EXTENSION, 68, 327 /* GL_ATI_vertex_attrib_array_object */, 60935}, /* glVertexAttribArrayObjectATI */
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_Desktop_4_3, 60964}, /* glVertexAttribBinding */
     {DISPATCH_RESOLVE_VERSION, 69, OpenGL_ES_3_1, 60964}, /* glVertexAttribBinding */
     {DISPATCH_RESOLVE_EXTENSION, 69, 294 /* GL_ARB_vertex_attrib_binding */, 60964}, /* glVertexAttribBinding */
@@ -10919,207 +10929,207 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 70, OpenGL_ES_3_0, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_EXTENSION, 70, 101 /* GL_ANGLE_instanced_arrays */, 61008}, /* glVertexAttribDivisorANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 70, 192 /* GL_ARB_instanced_arrays */, 61035}, /* glVertexAttribDivisorARB */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 387 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 70, 605 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 390 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 70, 609 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
     {DISPATCH_RESOLVE_EXTENSION, 71, 101 /* GL_ANGLE_instanced_arrays */, 61008}, /* glVertexAttribDivisorANGLE */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_Desktop_3_3, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_VERSION, 71, OpenGL_ES_3_0, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_EXTENSION, 71, 192 /* GL_ARB_instanced_arrays */, 61035}, /* glVertexAttribDivisorARB */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 387 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 71, 605 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 390 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 71, 609 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
     {DISPATCH_RESOLVE_EXTENSION, 72, 192 /* GL_ARB_instanced_arrays */, 61035}, /* glVertexAttribDivisorARB */
     {DISPATCH_RESOLVE_VERSION, 72, OpenGL_Desktop_3_3, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_VERSION, 72, OpenGL_ES_3_0, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_EXTENSION, 72, 101 /* GL_ANGLE_instanced_arrays */, 61008}, /* glVertexAttribDivisorANGLE */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 387 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 72, 605 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 387 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 390 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 72, 609 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 390 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
     {DISPATCH_RESOLVE_VERSION, 73, OpenGL_Desktop_3_3, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_VERSION, 73, OpenGL_ES_3_0, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_EXTENSION, 73, 101 /* GL_ANGLE_instanced_arrays */, 61008}, /* glVertexAttribDivisorANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 73, 192 /* GL_ARB_instanced_arrays */, 61035}, /* glVertexAttribDivisorARB */
-    {DISPATCH_RESOLVE_EXTENSION, 73, 605 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 605 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
+    {DISPATCH_RESOLVE_EXTENSION, 73, 609 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 609 /* GL_NV_instanced_arrays */, 61085}, /* glVertexAttribDivisorNV */
     {DISPATCH_RESOLVE_VERSION, 74, OpenGL_Desktop_3_3, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_VERSION, 74, OpenGL_ES_3_0, 60986}, /* glVertexAttribDivisor */
     {DISPATCH_RESOLVE_EXTENSION, 74, 101 /* GL_ANGLE_instanced_arrays */, 61008}, /* glVertexAttribDivisorANGLE */
     {DISPATCH_RESOLVE_EXTENSION, 74, 192 /* GL_ARB_instanced_arrays */, 61035}, /* glVertexAttribDivisorARB */
-    {DISPATCH_RESOLVE_EXTENSION, 74, 387 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 74, 390 /* GL_EXT_instanced_arrays */, 61060}, /* glVertexAttribDivisorEXT */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_Desktop_4_3, 61109}, /* glVertexAttribFormat */
     {DISPATCH_RESOLVE_VERSION, 75, OpenGL_ES_3_1, 61109}, /* glVertexAttribFormat */
     {DISPATCH_RESOLVE_EXTENSION, 75, 294 /* GL_ARB_vertex_attrib_binding */, 61109}, /* glVertexAttribFormat */
-    {DISPATCH_RESOLVE_EXTENSION, 76, 671 /* GL_NV_vertex_buffer_unified_memory */, 61130}, /* glVertexAttribFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 76, 675 /* GL_NV_vertex_buffer_unified_memory */, 61130}, /* glVertexAttribFormatNV */
     {DISPATCH_RESOLVE_VERSION, 77, OpenGL_Desktop_3_0, 61153}, /* glVertexAttribI1i */
-    {DISPATCH_RESOLVE_EXTENSION, 77, 677 /* GL_NV_vertex_program4 */, 61171}, /* glVertexAttribI1iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 78, 677 /* GL_NV_vertex_program4 */, 61171}, /* glVertexAttribI1iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 77, 681 /* GL_NV_vertex_program4 */, 61171}, /* glVertexAttribI1iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 78, 681 /* GL_NV_vertex_program4 */, 61171}, /* glVertexAttribI1iEXT */
     {DISPATCH_RESOLVE_VERSION, 78, OpenGL_Desktop_3_0, 61153}, /* glVertexAttribI1i */
     {DISPATCH_RESOLVE_VERSION, 79, OpenGL_Desktop_3_0, 61192}, /* glVertexAttribI1iv */
-    {DISPATCH_RESOLVE_EXTENSION, 79, 677 /* GL_NV_vertex_program4 */, 61211}, /* glVertexAttribI1ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 80, 677 /* GL_NV_vertex_program4 */, 61211}, /* glVertexAttribI1ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 79, 681 /* GL_NV_vertex_program4 */, 61211}, /* glVertexAttribI1ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 80, 681 /* GL_NV_vertex_program4 */, 61211}, /* glVertexAttribI1ivEXT */
     {DISPATCH_RESOLVE_VERSION, 80, OpenGL_Desktop_3_0, 61192}, /* glVertexAttribI1iv */
     {DISPATCH_RESOLVE_VERSION, 81, OpenGL_Desktop_3_0, 61233}, /* glVertexAttribI1ui */
-    {DISPATCH_RESOLVE_EXTENSION, 81, 677 /* GL_NV_vertex_program4 */, 61252}, /* glVertexAttribI1uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 82, 677 /* GL_NV_vertex_program4 */, 61252}, /* glVertexAttribI1uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 81, 681 /* GL_NV_vertex_program4 */, 61252}, /* glVertexAttribI1uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 82, 681 /* GL_NV_vertex_program4 */, 61252}, /* glVertexAttribI1uiEXT */
     {DISPATCH_RESOLVE_VERSION, 82, OpenGL_Desktop_3_0, 61233}, /* glVertexAttribI1ui */
     {DISPATCH_RESOLVE_VERSION, 83, OpenGL_Desktop_3_0, 61274}, /* glVertexAttribI1uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 83, 677 /* GL_NV_vertex_program4 */, 61294}, /* glVertexAttribI1uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 84, 677 /* GL_NV_vertex_program4 */, 61294}, /* glVertexAttribI1uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 83, 681 /* GL_NV_vertex_program4 */, 61294}, /* glVertexAttribI1uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 84, 681 /* GL_NV_vertex_program4 */, 61294}, /* glVertexAttribI1uivEXT */
     {DISPATCH_RESOLVE_VERSION, 84, OpenGL_Desktop_3_0, 61274}, /* glVertexAttribI1uiv */
     {DISPATCH_RESOLVE_VERSION, 85, OpenGL_Desktop_3_0, 61317}, /* glVertexAttribI2i */
-    {DISPATCH_RESOLVE_EXTENSION, 85, 677 /* GL_NV_vertex_program4 */, 61335}, /* glVertexAttribI2iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 86, 677 /* GL_NV_vertex_program4 */, 61335}, /* glVertexAttribI2iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 85, 681 /* GL_NV_vertex_program4 */, 61335}, /* glVertexAttribI2iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 86, 681 /* GL_NV_vertex_program4 */, 61335}, /* glVertexAttribI2iEXT */
     {DISPATCH_RESOLVE_VERSION, 86, OpenGL_Desktop_3_0, 61317}, /* glVertexAttribI2i */
     {DISPATCH_RESOLVE_VERSION, 87, OpenGL_Desktop_3_0, 61356}, /* glVertexAttribI2iv */
-    {DISPATCH_RESOLVE_EXTENSION, 87, 677 /* GL_NV_vertex_program4 */, 61375}, /* glVertexAttribI2ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 88, 677 /* GL_NV_vertex_program4 */, 61375}, /* glVertexAttribI2ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 87, 681 /* GL_NV_vertex_program4 */, 61375}, /* glVertexAttribI2ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 88, 681 /* GL_NV_vertex_program4 */, 61375}, /* glVertexAttribI2ivEXT */
     {DISPATCH_RESOLVE_VERSION, 88, OpenGL_Desktop_3_0, 61356}, /* glVertexAttribI2iv */
     {DISPATCH_RESOLVE_VERSION, 89, OpenGL_Desktop_3_0, 61397}, /* glVertexAttribI2ui */
-    {DISPATCH_RESOLVE_EXTENSION, 89, 677 /* GL_NV_vertex_program4 */, 61416}, /* glVertexAttribI2uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 90, 677 /* GL_NV_vertex_program4 */, 61416}, /* glVertexAttribI2uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 89, 681 /* GL_NV_vertex_program4 */, 61416}, /* glVertexAttribI2uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 90, 681 /* GL_NV_vertex_program4 */, 61416}, /* glVertexAttribI2uiEXT */
     {DISPATCH_RESOLVE_VERSION, 90, OpenGL_Desktop_3_0, 61397}, /* glVertexAttribI2ui */
     {DISPATCH_RESOLVE_VERSION, 91, OpenGL_Desktop_3_0, 61438}, /* glVertexAttribI2uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 91, 677 /* GL_NV_vertex_program4 */, 61458}, /* glVertexAttribI2uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 92, 677 /* GL_NV_vertex_program4 */, 61458}, /* glVertexAttribI2uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 91, 681 /* GL_NV_vertex_program4 */, 61458}, /* glVertexAttribI2uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 92, 681 /* GL_NV_vertex_program4 */, 61458}, /* glVertexAttribI2uivEXT */
     {DISPATCH_RESOLVE_VERSION, 92, OpenGL_Desktop_3_0, 61438}, /* glVertexAttribI2uiv */
     {DISPATCH_RESOLVE_VERSION, 93, OpenGL_Desktop_3_0, 61481}, /* glVertexAttribI3i */
-    {DISPATCH_RESOLVE_EXTENSION, 93, 677 /* GL_NV_vertex_program4 */, 61499}, /* glVertexAttribI3iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 94, 677 /* GL_NV_vertex_program4 */, 61499}, /* glVertexAttribI3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 93, 681 /* GL_NV_vertex_program4 */, 61499}, /* glVertexAttribI3iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 94, 681 /* GL_NV_vertex_program4 */, 61499}, /* glVertexAttribI3iEXT */
     {DISPATCH_RESOLVE_VERSION, 94, OpenGL_Desktop_3_0, 61481}, /* glVertexAttribI3i */
     {DISPATCH_RESOLVE_VERSION, 95, OpenGL_Desktop_3_0, 61520}, /* glVertexAttribI3iv */
-    {DISPATCH_RESOLVE_EXTENSION, 95, 677 /* GL_NV_vertex_program4 */, 61539}, /* glVertexAttribI3ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 96, 677 /* GL_NV_vertex_program4 */, 61539}, /* glVertexAttribI3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 95, 681 /* GL_NV_vertex_program4 */, 61539}, /* glVertexAttribI3ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 96, 681 /* GL_NV_vertex_program4 */, 61539}, /* glVertexAttribI3ivEXT */
     {DISPATCH_RESOLVE_VERSION, 96, OpenGL_Desktop_3_0, 61520}, /* glVertexAttribI3iv */
     {DISPATCH_RESOLVE_VERSION, 97, OpenGL_Desktop_3_0, 61561}, /* glVertexAttribI3ui */
-    {DISPATCH_RESOLVE_EXTENSION, 97, 677 /* GL_NV_vertex_program4 */, 61580}, /* glVertexAttribI3uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 98, 677 /* GL_NV_vertex_program4 */, 61580}, /* glVertexAttribI3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 97, 681 /* GL_NV_vertex_program4 */, 61580}, /* glVertexAttribI3uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 98, 681 /* GL_NV_vertex_program4 */, 61580}, /* glVertexAttribI3uiEXT */
     {DISPATCH_RESOLVE_VERSION, 98, OpenGL_Desktop_3_0, 61561}, /* glVertexAttribI3ui */
     {DISPATCH_RESOLVE_VERSION, 99, OpenGL_Desktop_3_0, 61602}, /* glVertexAttribI3uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 99, 677 /* GL_NV_vertex_program4 */, 61622}, /* glVertexAttribI3uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 100, 677 /* GL_NV_vertex_program4 */, 61622}, /* glVertexAttribI3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 99, 681 /* GL_NV_vertex_program4 */, 61622}, /* glVertexAttribI3uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 100, 681 /* GL_NV_vertex_program4 */, 61622}, /* glVertexAttribI3uivEXT */
     {DISPATCH_RESOLVE_VERSION, 100, OpenGL_Desktop_3_0, 61602}, /* glVertexAttribI3uiv */
     {DISPATCH_RESOLVE_VERSION, 101, OpenGL_Desktop_3_0, 61645}, /* glVertexAttribI4bv */
-    {DISPATCH_RESOLVE_EXTENSION, 101, 677 /* GL_NV_vertex_program4 */, 61664}, /* glVertexAttribI4bvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 102, 677 /* GL_NV_vertex_program4 */, 61664}, /* glVertexAttribI4bvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 101, 681 /* GL_NV_vertex_program4 */, 61664}, /* glVertexAttribI4bvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 102, 681 /* GL_NV_vertex_program4 */, 61664}, /* glVertexAttribI4bvEXT */
     {DISPATCH_RESOLVE_VERSION, 102, OpenGL_Desktop_3_0, 61645}, /* glVertexAttribI4bv */
     {DISPATCH_RESOLVE_VERSION, 103, OpenGL_Desktop_3_0, 61686}, /* glVertexAttribI4i */
     {DISPATCH_RESOLVE_VERSION, 103, OpenGL_ES_3_0, 61686}, /* glVertexAttribI4i */
-    {DISPATCH_RESOLVE_EXTENSION, 103, 677 /* GL_NV_vertex_program4 */, 61704}, /* glVertexAttribI4iEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 104, 677 /* GL_NV_vertex_program4 */, 61704}, /* glVertexAttribI4iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 103, 681 /* GL_NV_vertex_program4 */, 61704}, /* glVertexAttribI4iEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 104, 681 /* GL_NV_vertex_program4 */, 61704}, /* glVertexAttribI4iEXT */
     {DISPATCH_RESOLVE_VERSION, 104, OpenGL_Desktop_3_0, 61686}, /* glVertexAttribI4i */
     {DISPATCH_RESOLVE_VERSION, 104, OpenGL_ES_3_0, 61686}, /* glVertexAttribI4i */
     {DISPATCH_RESOLVE_VERSION, 105, OpenGL_Desktop_3_0, 61725}, /* glVertexAttribI4iv */
     {DISPATCH_RESOLVE_VERSION, 105, OpenGL_ES_3_0, 61725}, /* glVertexAttribI4iv */
-    {DISPATCH_RESOLVE_EXTENSION, 105, 677 /* GL_NV_vertex_program4 */, 61744}, /* glVertexAttribI4ivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 106, 677 /* GL_NV_vertex_program4 */, 61744}, /* glVertexAttribI4ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 105, 681 /* GL_NV_vertex_program4 */, 61744}, /* glVertexAttribI4ivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 106, 681 /* GL_NV_vertex_program4 */, 61744}, /* glVertexAttribI4ivEXT */
     {DISPATCH_RESOLVE_VERSION, 106, OpenGL_Desktop_3_0, 61725}, /* glVertexAttribI4iv */
     {DISPATCH_RESOLVE_VERSION, 106, OpenGL_ES_3_0, 61725}, /* glVertexAttribI4iv */
     {DISPATCH_RESOLVE_VERSION, 107, OpenGL_Desktop_3_0, 61766}, /* glVertexAttribI4sv */
-    {DISPATCH_RESOLVE_EXTENSION, 107, 677 /* GL_NV_vertex_program4 */, 61785}, /* glVertexAttribI4svEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 108, 677 /* GL_NV_vertex_program4 */, 61785}, /* glVertexAttribI4svEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 107, 681 /* GL_NV_vertex_program4 */, 61785}, /* glVertexAttribI4svEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 108, 681 /* GL_NV_vertex_program4 */, 61785}, /* glVertexAttribI4svEXT */
     {DISPATCH_RESOLVE_VERSION, 108, OpenGL_Desktop_3_0, 61766}, /* glVertexAttribI4sv */
     {DISPATCH_RESOLVE_VERSION, 109, OpenGL_Desktop_3_0, 61807}, /* glVertexAttribI4ubv */
-    {DISPATCH_RESOLVE_EXTENSION, 109, 677 /* GL_NV_vertex_program4 */, 61827}, /* glVertexAttribI4ubvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 110, 677 /* GL_NV_vertex_program4 */, 61827}, /* glVertexAttribI4ubvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 109, 681 /* GL_NV_vertex_program4 */, 61827}, /* glVertexAttribI4ubvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 110, 681 /* GL_NV_vertex_program4 */, 61827}, /* glVertexAttribI4ubvEXT */
     {DISPATCH_RESOLVE_VERSION, 110, OpenGL_Desktop_3_0, 61807}, /* glVertexAttribI4ubv */
     {DISPATCH_RESOLVE_VERSION, 111, OpenGL_Desktop_3_0, 61850}, /* glVertexAttribI4ui */
     {DISPATCH_RESOLVE_VERSION, 111, OpenGL_ES_3_0, 61850}, /* glVertexAttribI4ui */
-    {DISPATCH_RESOLVE_EXTENSION, 111, 677 /* GL_NV_vertex_program4 */, 61869}, /* glVertexAttribI4uiEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 112, 677 /* GL_NV_vertex_program4 */, 61869}, /* glVertexAttribI4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 111, 681 /* GL_NV_vertex_program4 */, 61869}, /* glVertexAttribI4uiEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 112, 681 /* GL_NV_vertex_program4 */, 61869}, /* glVertexAttribI4uiEXT */
     {DISPATCH_RESOLVE_VERSION, 112, OpenGL_Desktop_3_0, 61850}, /* glVertexAttribI4ui */
     {DISPATCH_RESOLVE_VERSION, 112, OpenGL_ES_3_0, 61850}, /* glVertexAttribI4ui */
     {DISPATCH_RESOLVE_VERSION, 113, OpenGL_Desktop_3_0, 61891}, /* glVertexAttribI4uiv */
     {DISPATCH_RESOLVE_VERSION, 113, OpenGL_ES_3_0, 61891}, /* glVertexAttribI4uiv */
-    {DISPATCH_RESOLVE_EXTENSION, 113, 677 /* GL_NV_vertex_program4 */, 61911}, /* glVertexAttribI4uivEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 114, 677 /* GL_NV_vertex_program4 */, 61911}, /* glVertexAttribI4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 113, 681 /* GL_NV_vertex_program4 */, 61911}, /* glVertexAttribI4uivEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 114, 681 /* GL_NV_vertex_program4 */, 61911}, /* glVertexAttribI4uivEXT */
     {DISPATCH_RESOLVE_VERSION, 114, OpenGL_Desktop_3_0, 61891}, /* glVertexAttribI4uiv */
     {DISPATCH_RESOLVE_VERSION, 114, OpenGL_ES_3_0, 61891}, /* glVertexAttribI4uiv */
     {DISPATCH_RESOLVE_VERSION, 115, OpenGL_Desktop_3_0, 61934}, /* glVertexAttribI4usv */
-    {DISPATCH_RESOLVE_EXTENSION, 115, 677 /* GL_NV_vertex_program4 */, 61954}, /* glVertexAttribI4usvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 116, 677 /* GL_NV_vertex_program4 */, 61954}, /* glVertexAttribI4usvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 115, 681 /* GL_NV_vertex_program4 */, 61954}, /* glVertexAttribI4usvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 116, 681 /* GL_NV_vertex_program4 */, 61954}, /* glVertexAttribI4usvEXT */
     {DISPATCH_RESOLVE_VERSION, 116, OpenGL_Desktop_3_0, 61934}, /* glVertexAttribI4usv */
     {DISPATCH_RESOLVE_VERSION, 117, OpenGL_Desktop_4_3, 61977}, /* glVertexAttribIFormat */
     {DISPATCH_RESOLVE_VERSION, 117, OpenGL_ES_3_1, 61977}, /* glVertexAttribIFormat */
     {DISPATCH_RESOLVE_EXTENSION, 117, 294 /* GL_ARB_vertex_attrib_binding */, 61977}, /* glVertexAttribIFormat */
-    {DISPATCH_RESOLVE_EXTENSION, 118, 671 /* GL_NV_vertex_buffer_unified_memory */, 61999}, /* glVertexAttribIFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 118, 675 /* GL_NV_vertex_buffer_unified_memory */, 61999}, /* glVertexAttribIFormatNV */
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_Desktop_3_0, 62023}, /* glVertexAttribIPointer */
     {DISPATCH_RESOLVE_VERSION, 119, OpenGL_ES_3_0, 62023}, /* glVertexAttribIPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 119, 677 /* GL_NV_vertex_program4 */, 62046}, /* glVertexAttribIPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 120, 677 /* GL_NV_vertex_program4 */, 62046}, /* glVertexAttribIPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 119, 681 /* GL_NV_vertex_program4 */, 62046}, /* glVertexAttribIPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 120, 681 /* GL_NV_vertex_program4 */, 62046}, /* glVertexAttribIPointerEXT */
     {DISPATCH_RESOLVE_VERSION, 120, OpenGL_Desktop_3_0, 62023}, /* glVertexAttribIPointer */
     {DISPATCH_RESOLVE_VERSION, 120, OpenGL_ES_3_0, 62023}, /* glVertexAttribIPointer */
     {DISPATCH_RESOLVE_VERSION, 121, OpenGL_Desktop_4_1, 62072}, /* glVertexAttribL1d */
     {DISPATCH_RESOLVE_EXTENSION, 121, 293 /* GL_ARB_vertex_attrib_64bit */, 62072}, /* glVertexAttribL1d */
-    {DISPATCH_RESOLVE_EXTENSION, 121, 493 /* GL_EXT_vertex_attrib_64bit */, 62090}, /* glVertexAttribL1dEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 122, 493 /* GL_EXT_vertex_attrib_64bit */, 62090}, /* glVertexAttribL1dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 121, 497 /* GL_EXT_vertex_attrib_64bit */, 62090}, /* glVertexAttribL1dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 122, 497 /* GL_EXT_vertex_attrib_64bit */, 62090}, /* glVertexAttribL1dEXT */
     {DISPATCH_RESOLVE_VERSION, 122, OpenGL_Desktop_4_1, 62072}, /* glVertexAttribL1d */
     {DISPATCH_RESOLVE_EXTENSION, 122, 293 /* GL_ARB_vertex_attrib_64bit */, 62072}, /* glVertexAttribL1d */
     {DISPATCH_RESOLVE_VERSION, 123, OpenGL_Desktop_4_1, 62111}, /* glVertexAttribL1dv */
     {DISPATCH_RESOLVE_EXTENSION, 123, 293 /* GL_ARB_vertex_attrib_64bit */, 62111}, /* glVertexAttribL1dv */
-    {DISPATCH_RESOLVE_EXTENSION, 123, 493 /* GL_EXT_vertex_attrib_64bit */, 62130}, /* glVertexAttribL1dvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 124, 493 /* GL_EXT_vertex_attrib_64bit */, 62130}, /* glVertexAttribL1dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 123, 497 /* GL_EXT_vertex_attrib_64bit */, 62130}, /* glVertexAttribL1dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 124, 497 /* GL_EXT_vertex_attrib_64bit */, 62130}, /* glVertexAttribL1dvEXT */
     {DISPATCH_RESOLVE_VERSION, 124, OpenGL_Desktop_4_1, 62111}, /* glVertexAttribL1dv */
     {DISPATCH_RESOLVE_EXTENSION, 124, 293 /* GL_ARB_vertex_attrib_64bit */, 62111}, /* glVertexAttribL1dv */
-    {DISPATCH_RESOLVE_EXTENSION, 125, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62152}, /* glVertexAttribL1i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 126, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62174}, /* glVertexAttribL1i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 125, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62152}, /* glVertexAttribL1i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 126, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62174}, /* glVertexAttribL1i64vNV */
     {DISPATCH_RESOLVE_EXTENSION, 127, 141 /* GL_ARB_bindless_texture */, 62197}, /* glVertexAttribL1ui64ARB */
-    {DISPATCH_RESOLVE_EXTENSION, 128, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62221}, /* glVertexAttribL1ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 128, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62221}, /* glVertexAttribL1ui64NV */
     {DISPATCH_RESOLVE_EXTENSION, 129, 141 /* GL_ARB_bindless_texture */, 62244}, /* glVertexAttribL1ui64vARB */
-    {DISPATCH_RESOLVE_EXTENSION, 130, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62269}, /* glVertexAttribL1ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 130, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62269}, /* glVertexAttribL1ui64vNV */
     {DISPATCH_RESOLVE_VERSION, 131, OpenGL_Desktop_4_1, 62293}, /* glVertexAttribL2d */
     {DISPATCH_RESOLVE_EXTENSION, 131, 293 /* GL_ARB_vertex_attrib_64bit */, 62293}, /* glVertexAttribL2d */
-    {DISPATCH_RESOLVE_EXTENSION, 131, 493 /* GL_EXT_vertex_attrib_64bit */, 62311}, /* glVertexAttribL2dEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 132, 493 /* GL_EXT_vertex_attrib_64bit */, 62311}, /* glVertexAttribL2dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 131, 497 /* GL_EXT_vertex_attrib_64bit */, 62311}, /* glVertexAttribL2dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 132, 497 /* GL_EXT_vertex_attrib_64bit */, 62311}, /* glVertexAttribL2dEXT */
     {DISPATCH_RESOLVE_VERSION, 132, OpenGL_Desktop_4_1, 62293}, /* glVertexAttribL2d */
     {DISPATCH_RESOLVE_EXTENSION, 132, 293 /* GL_ARB_vertex_attrib_64bit */, 62293}, /* glVertexAttribL2d */
     {DISPATCH_RESOLVE_VERSION, 133, OpenGL_Desktop_4_1, 62332}, /* glVertexAttribL2dv */
     {DISPATCH_RESOLVE_EXTENSION, 133, 293 /* GL_ARB_vertex_attrib_64bit */, 62332}, /* glVertexAttribL2dv */
-    {DISPATCH_RESOLVE_EXTENSION, 133, 493 /* GL_EXT_vertex_attrib_64bit */, 62351}, /* glVertexAttribL2dvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 134, 493 /* GL_EXT_vertex_attrib_64bit */, 62351}, /* glVertexAttribL2dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 133, 497 /* GL_EXT_vertex_attrib_64bit */, 62351}, /* glVertexAttribL2dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 134, 497 /* GL_EXT_vertex_attrib_64bit */, 62351}, /* glVertexAttribL2dvEXT */
     {DISPATCH_RESOLVE_VERSION, 134, OpenGL_Desktop_4_1, 62332}, /* glVertexAttribL2dv */
     {DISPATCH_RESOLVE_EXTENSION, 134, 293 /* GL_ARB_vertex_attrib_64bit */, 62332}, /* glVertexAttribL2dv */
-    {DISPATCH_RESOLVE_EXTENSION, 135, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62373}, /* glVertexAttribL2i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 136, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62395}, /* glVertexAttribL2i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 137, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62418}, /* glVertexAttribL2ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 138, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62441}, /* glVertexAttribL2ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 135, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62373}, /* glVertexAttribL2i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 136, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62395}, /* glVertexAttribL2i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 137, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62418}, /* glVertexAttribL2ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 138, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62441}, /* glVertexAttribL2ui64vNV */
     {DISPATCH_RESOLVE_VERSION, 139, OpenGL_Desktop_4_1, 62465}, /* glVertexAttribL3d */
     {DISPATCH_RESOLVE_EXTENSION, 139, 293 /* GL_ARB_vertex_attrib_64bit */, 62465}, /* glVertexAttribL3d */
-    {DISPATCH_RESOLVE_EXTENSION, 139, 493 /* GL_EXT_vertex_attrib_64bit */, 62483}, /* glVertexAttribL3dEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 140, 493 /* GL_EXT_vertex_attrib_64bit */, 62483}, /* glVertexAttribL3dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 139, 497 /* GL_EXT_vertex_attrib_64bit */, 62483}, /* glVertexAttribL3dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 140, 497 /* GL_EXT_vertex_attrib_64bit */, 62483}, /* glVertexAttribL3dEXT */
     {DISPATCH_RESOLVE_VERSION, 140, OpenGL_Desktop_4_1, 62465}, /* glVertexAttribL3d */
     {DISPATCH_RESOLVE_EXTENSION, 140, 293 /* GL_ARB_vertex_attrib_64bit */, 62465}, /* glVertexAttribL3d */
     {DISPATCH_RESOLVE_VERSION, 141, OpenGL_Desktop_4_1, 62504}, /* glVertexAttribL3dv */
     {DISPATCH_RESOLVE_EXTENSION, 141, 293 /* GL_ARB_vertex_attrib_64bit */, 62504}, /* glVertexAttribL3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 141, 493 /* GL_EXT_vertex_attrib_64bit */, 62523}, /* glVertexAttribL3dvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 142, 493 /* GL_EXT_vertex_attrib_64bit */, 62523}, /* glVertexAttribL3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 141, 497 /* GL_EXT_vertex_attrib_64bit */, 62523}, /* glVertexAttribL3dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 142, 497 /* GL_EXT_vertex_attrib_64bit */, 62523}, /* glVertexAttribL3dvEXT */
     {DISPATCH_RESOLVE_VERSION, 142, OpenGL_Desktop_4_1, 62504}, /* glVertexAttribL3dv */
     {DISPATCH_RESOLVE_EXTENSION, 142, 293 /* GL_ARB_vertex_attrib_64bit */, 62504}, /* glVertexAttribL3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 143, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62545}, /* glVertexAttribL3i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 144, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62567}, /* glVertexAttribL3i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 145, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62590}, /* glVertexAttribL3ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 146, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62613}, /* glVertexAttribL3ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 143, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62545}, /* glVertexAttribL3i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 144, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62567}, /* glVertexAttribL3i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 145, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62590}, /* glVertexAttribL3ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 146, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62613}, /* glVertexAttribL3ui64vNV */
     {DISPATCH_RESOLVE_VERSION, 147, OpenGL_Desktop_4_1, 62637}, /* glVertexAttribL4d */
     {DISPATCH_RESOLVE_EXTENSION, 147, 293 /* GL_ARB_vertex_attrib_64bit */, 62637}, /* glVertexAttribL4d */
-    {DISPATCH_RESOLVE_EXTENSION, 147, 493 /* GL_EXT_vertex_attrib_64bit */, 62655}, /* glVertexAttribL4dEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 148, 493 /* GL_EXT_vertex_attrib_64bit */, 62655}, /* glVertexAttribL4dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 147, 497 /* GL_EXT_vertex_attrib_64bit */, 62655}, /* glVertexAttribL4dEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 148, 497 /* GL_EXT_vertex_attrib_64bit */, 62655}, /* glVertexAttribL4dEXT */
     {DISPATCH_RESOLVE_VERSION, 148, OpenGL_Desktop_4_1, 62637}, /* glVertexAttribL4d */
     {DISPATCH_RESOLVE_EXTENSION, 148, 293 /* GL_ARB_vertex_attrib_64bit */, 62637}, /* glVertexAttribL4d */
     {DISPATCH_RESOLVE_VERSION, 149, OpenGL_Desktop_4_1, 62676}, /* glVertexAttribL4dv */
     {DISPATCH_RESOLVE_EXTENSION, 149, 293 /* GL_ARB_vertex_attrib_64bit */, 62676}, /* glVertexAttribL4dv */
-    {DISPATCH_RESOLVE_EXTENSION, 149, 493 /* GL_EXT_vertex_attrib_64bit */, 62695}, /* glVertexAttribL4dvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 150, 493 /* GL_EXT_vertex_attrib_64bit */, 62695}, /* glVertexAttribL4dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 149, 497 /* GL_EXT_vertex_attrib_64bit */, 62695}, /* glVertexAttribL4dvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 150, 497 /* GL_EXT_vertex_attrib_64bit */, 62695}, /* glVertexAttribL4dvEXT */
     {DISPATCH_RESOLVE_VERSION, 150, OpenGL_Desktop_4_1, 62676}, /* glVertexAttribL4dv */
     {DISPATCH_RESOLVE_EXTENSION, 150, 293 /* GL_ARB_vertex_attrib_64bit */, 62676}, /* glVertexAttribL4dv */
-    {DISPATCH_RESOLVE_EXTENSION, 151, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62717}, /* glVertexAttribL4i64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 152, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62739}, /* glVertexAttribL4i64vNV */
-    {DISPATCH_RESOLVE_EXTENSION, 153, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62762}, /* glVertexAttribL4ui64NV */
-    {DISPATCH_RESOLVE_EXTENSION, 154, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62785}, /* glVertexAttribL4ui64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 151, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62717}, /* glVertexAttribL4i64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 152, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62739}, /* glVertexAttribL4i64vNV */
+    {DISPATCH_RESOLVE_EXTENSION, 153, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62762}, /* glVertexAttribL4ui64NV */
+    {DISPATCH_RESOLVE_EXTENSION, 154, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62785}, /* glVertexAttribL4ui64vNV */
     {DISPATCH_RESOLVE_VERSION, 155, OpenGL_Desktop_4_3, 62809}, /* glVertexAttribLFormat */
     {DISPATCH_RESOLVE_EXTENSION, 155, 294 /* GL_ARB_vertex_attrib_binding */, 62809}, /* glVertexAttribLFormat */
-    {DISPATCH_RESOLVE_EXTENSION, 156, 670 /* GL_NV_vertex_attrib_integer_64bit */, 62831}, /* glVertexAttribLFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 156, 674 /* GL_NV_vertex_attrib_integer_64bit */, 62831}, /* glVertexAttribLFormatNV */
     {DISPATCH_RESOLVE_VERSION, 157, OpenGL_Desktop_4_1, 62855}, /* glVertexAttribLPointer */
     {DISPATCH_RESOLVE_EXTENSION, 157, 293 /* GL_ARB_vertex_attrib_64bit */, 62855}, /* glVertexAttribLPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 157, 493 /* GL_EXT_vertex_attrib_64bit */, 62878}, /* glVertexAttribLPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 158, 493 /* GL_EXT_vertex_attrib_64bit */, 62878}, /* glVertexAttribLPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 157, 497 /* GL_EXT_vertex_attrib_64bit */, 62878}, /* glVertexAttribLPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 158, 497 /* GL_EXT_vertex_attrib_64bit */, 62878}, /* glVertexAttribLPointerEXT */
     {DISPATCH_RESOLVE_VERSION, 158, OpenGL_Desktop_4_1, 62855}, /* glVertexAttribLPointer */
     {DISPATCH_RESOLVE_EXTENSION, 158, 293 /* GL_ARB_vertex_attrib_64bit */, 62855}, /* glVertexAttribLPointer */
     {DISPATCH_RESOLVE_VERSION, 159, OpenGL_Desktop_3_3, 62904}, /* glVertexAttribP1ui */
@@ -11147,31 +11157,31 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 169, 298 /* GL_ARB_vertex_shader */, 63110}, /* glVertexAttribPointerARB */
     {DISPATCH_RESOLVE_VERSION, 169, OpenGL_Desktop_2_0, 63088}, /* glVertexAttribPointer */
     {DISPATCH_RESOLVE_DIRECT, 169, OpenGL_ES_2_0, 63088}, /* glVertexAttribPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 170, 672 /* GL_NV_vertex_program */, 63135}, /* glVertexAttribPointerNV */
-    {DISPATCH_RESOLVE_EXTENSION, 171, 672 /* GL_NV_vertex_program */, 63159}, /* glVertexAttribs1dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 172, 672 /* GL_NV_vertex_program */, 63180}, /* glVertexAttribs1fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 173, 603 /* GL_NV_half_float */, 63201}, /* glVertexAttribs1hvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 174, 672 /* GL_NV_vertex_program */, 63222}, /* glVertexAttribs1svNV */
-    {DISPATCH_RESOLVE_EXTENSION, 175, 672 /* GL_NV_vertex_program */, 63243}, /* glVertexAttribs2dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 176, 672 /* GL_NV_vertex_program */, 63264}, /* glVertexAttribs2fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 177, 603 /* GL_NV_half_float */, 63285}, /* glVertexAttribs2hvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 178, 672 /* GL_NV_vertex_program */, 63306}, /* glVertexAttribs2svNV */
-    {DISPATCH_RESOLVE_EXTENSION, 179, 672 /* GL_NV_vertex_program */, 63327}, /* glVertexAttribs3dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 180, 672 /* GL_NV_vertex_program */, 63348}, /* glVertexAttribs3fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 181, 603 /* GL_NV_half_float */, 63369}, /* glVertexAttribs3hvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 182, 672 /* GL_NV_vertex_program */, 63390}, /* glVertexAttribs3svNV */
-    {DISPATCH_RESOLVE_EXTENSION, 183, 672 /* GL_NV_vertex_program */, 63411}, /* glVertexAttribs4dvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 184, 672 /* GL_NV_vertex_program */, 63432}, /* glVertexAttribs4fvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 185, 603 /* GL_NV_half_float */, 63453}, /* glVertexAttribs4hvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 186, 672 /* GL_NV_vertex_program */, 63474}, /* glVertexAttribs4svNV */
-    {DISPATCH_RESOLVE_EXTENSION, 187, 672 /* GL_NV_vertex_program */, 63495}, /* glVertexAttribs4ubvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 170, 676 /* GL_NV_vertex_program */, 63135}, /* glVertexAttribPointerNV */
+    {DISPATCH_RESOLVE_EXTENSION, 171, 676 /* GL_NV_vertex_program */, 63159}, /* glVertexAttribs1dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 172, 676 /* GL_NV_vertex_program */, 63180}, /* glVertexAttribs1fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 173, 607 /* GL_NV_half_float */, 63201}, /* glVertexAttribs1hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 174, 676 /* GL_NV_vertex_program */, 63222}, /* glVertexAttribs1svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 175, 676 /* GL_NV_vertex_program */, 63243}, /* glVertexAttribs2dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 176, 676 /* GL_NV_vertex_program */, 63264}, /* glVertexAttribs2fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 177, 607 /* GL_NV_half_float */, 63285}, /* glVertexAttribs2hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 178, 676 /* GL_NV_vertex_program */, 63306}, /* glVertexAttribs2svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 179, 676 /* GL_NV_vertex_program */, 63327}, /* glVertexAttribs3dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 180, 676 /* GL_NV_vertex_program */, 63348}, /* glVertexAttribs3fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 181, 607 /* GL_NV_half_float */, 63369}, /* glVertexAttribs3hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 182, 676 /* GL_NV_vertex_program */, 63390}, /* glVertexAttribs3svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 183, 676 /* GL_NV_vertex_program */, 63411}, /* glVertexAttribs4dvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 184, 676 /* GL_NV_vertex_program */, 63432}, /* glVertexAttribs4fvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 185, 607 /* GL_NV_half_float */, 63453}, /* glVertexAttribs4hvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 186, 676 /* GL_NV_vertex_program */, 63474}, /* glVertexAttribs4svNV */
+    {DISPATCH_RESOLVE_EXTENSION, 187, 676 /* GL_NV_vertex_program */, 63495}, /* glVertexAttribs4ubvNV */
     {DISPATCH_RESOLVE_VERSION, 188, OpenGL_Desktop_4_3, 63517}, /* glVertexBindingDivisor */
     {DISPATCH_RESOLVE_VERSION, 188, OpenGL_ES_3_1, 63517}, /* glVertexBindingDivisor */
     {DISPATCH_RESOLVE_EXTENSION, 188, 294 /* GL_ARB_vertex_attrib_binding */, 63517}, /* glVertexBindingDivisor */
     {DISPATCH_RESOLVE_EXTENSION, 189, 295 /* GL_ARB_vertex_blend */, 63540}, /* glVertexBlendARB */
-    {DISPATCH_RESOLVE_EXTENSION, 190, 325 /* GL_ATI_vertex_streams */, 63557}, /* glVertexBlendEnvfATI */
-    {DISPATCH_RESOLVE_EXTENSION, 191, 325 /* GL_ATI_vertex_streams */, 63578}, /* glVertexBlendEnviATI */
-    {DISPATCH_RESOLVE_EXTENSION, 192, 671 /* GL_NV_vertex_buffer_unified_memory */, 63599}, /* glVertexFormatNV */
+    {DISPATCH_RESOLVE_EXTENSION, 190, 328 /* GL_ATI_vertex_streams */, 63557}, /* glVertexBlendEnvfATI */
+    {DISPATCH_RESOLVE_EXTENSION, 191, 328 /* GL_ATI_vertex_streams */, 63578}, /* glVertexBlendEnviATI */
+    {DISPATCH_RESOLVE_EXTENSION, 192, 675 /* GL_NV_vertex_buffer_unified_memory */, 63599}, /* glVertexFormatNV */
     {DISPATCH_RESOLVE_VERSION, 193, OpenGL_Desktop_3_3, 63616}, /* glVertexP2ui */
     {DISPATCH_RESOLVE_EXTENSION, 193, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 63616}, /* glVertexP2ui */
     {DISPATCH_RESOLVE_VERSION, 194, OpenGL_Desktop_3_3, 63629}, /* glVertexP2uiv */
@@ -11186,73 +11196,73 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 198, 300 /* GL_ARB_vertex_type_2_10_10_10_rev */, 63683}, /* glVertexP4uiv */
     {DISPATCH_RESOLVE_VERSION, 199, OpenGL_Desktop_1_1, 63697}, /* glVertexPointer */
     {DISPATCH_RESOLVE_DIRECT, 199, OpenGL_ES_1_0, 63697}, /* glVertexPointer */
-    {DISPATCH_RESOLVE_EXTENSION, 200, 489 /* GL_EXT_vertex_array */, 63713}, /* glVertexPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 201, 510 /* GL_IBM_vertex_array_lists */, 63732}, /* glVertexPointerListIBM */
-    {DISPATCH_RESOLVE_EXTENSION, 202, 528 /* GL_INTEL_parallel_arrays */, 63755}, /* glVertexPointervINTEL */
-    {DISPATCH_RESOLVE_EXTENSION, 203, 325 /* GL_ATI_vertex_streams */, 63777}, /* glVertexStream1dATI */
-    {DISPATCH_RESOLVE_EXTENSION, 204, 325 /* GL_ATI_vertex_streams */, 63797}, /* glVertexStream1dvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 205, 325 /* GL_ATI_vertex_streams */, 63818}, /* glVertexStream1fATI */
-    {DISPATCH_RESOLVE_EXTENSION, 206, 325 /* GL_ATI_vertex_streams */, 63838}, /* glVertexStream1fvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 207, 325 /* GL_ATI_vertex_streams */, 63859}, /* glVertexStream1iATI */
-    {DISPATCH_RESOLVE_EXTENSION, 208, 325 /* GL_ATI_vertex_streams */, 63879}, /* glVertexStream1ivATI */
-    {DISPATCH_RESOLVE_EXTENSION, 209, 325 /* GL_ATI_vertex_streams */, 63900}, /* glVertexStream1sATI */
-    {DISPATCH_RESOLVE_EXTENSION, 210, 325 /* GL_ATI_vertex_streams */, 63920}, /* glVertexStream1svATI */
-    {DISPATCH_RESOLVE_EXTENSION, 211, 325 /* GL_ATI_vertex_streams */, 63941}, /* glVertexStream2dATI */
-    {DISPATCH_RESOLVE_EXTENSION, 212, 325 /* GL_ATI_vertex_streams */, 63961}, /* glVertexStream2dvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 213, 325 /* GL_ATI_vertex_streams */, 63982}, /* glVertexStream2fATI */
-    {DISPATCH_RESOLVE_EXTENSION, 214, 325 /* GL_ATI_vertex_streams */, 64002}, /* glVertexStream2fvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 215, 325 /* GL_ATI_vertex_streams */, 64023}, /* glVertexStream2iATI */
-    {DISPATCH_RESOLVE_EXTENSION, 216, 325 /* GL_ATI_vertex_streams */, 64043}, /* glVertexStream2ivATI */
-    {DISPATCH_RESOLVE_EXTENSION, 217, 325 /* GL_ATI_vertex_streams */, 64064}, /* glVertexStream2sATI */
-    {DISPATCH_RESOLVE_EXTENSION, 218, 325 /* GL_ATI_vertex_streams */, 64084}, /* glVertexStream2svATI */
-    {DISPATCH_RESOLVE_EXTENSION, 219, 325 /* GL_ATI_vertex_streams */, 64105}, /* glVertexStream3dATI */
-    {DISPATCH_RESOLVE_EXTENSION, 220, 325 /* GL_ATI_vertex_streams */, 64125}, /* glVertexStream3dvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 221, 325 /* GL_ATI_vertex_streams */, 64146}, /* glVertexStream3fATI */
-    {DISPATCH_RESOLVE_EXTENSION, 222, 325 /* GL_ATI_vertex_streams */, 64166}, /* glVertexStream3fvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 223, 325 /* GL_ATI_vertex_streams */, 64187}, /* glVertexStream3iATI */
-    {DISPATCH_RESOLVE_EXTENSION, 224, 325 /* GL_ATI_vertex_streams */, 64207}, /* glVertexStream3ivATI */
-    {DISPATCH_RESOLVE_EXTENSION, 225, 325 /* GL_ATI_vertex_streams */, 64228}, /* glVertexStream3sATI */
-    {DISPATCH_RESOLVE_EXTENSION, 226, 325 /* GL_ATI_vertex_streams */, 64248}, /* glVertexStream3svATI */
-    {DISPATCH_RESOLVE_EXTENSION, 227, 325 /* GL_ATI_vertex_streams */, 64269}, /* glVertexStream4dATI */
-    {DISPATCH_RESOLVE_EXTENSION, 228, 325 /* GL_ATI_vertex_streams */, 64289}, /* glVertexStream4dvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 229, 325 /* GL_ATI_vertex_streams */, 64310}, /* glVertexStream4fATI */
-    {DISPATCH_RESOLVE_EXTENSION, 230, 325 /* GL_ATI_vertex_streams */, 64330}, /* glVertexStream4fvATI */
-    {DISPATCH_RESOLVE_EXTENSION, 231, 325 /* GL_ATI_vertex_streams */, 64351}, /* glVertexStream4iATI */
-    {DISPATCH_RESOLVE_EXTENSION, 232, 325 /* GL_ATI_vertex_streams */, 64371}, /* glVertexStream4ivATI */
-    {DISPATCH_RESOLVE_EXTENSION, 233, 325 /* GL_ATI_vertex_streams */, 64392}, /* glVertexStream4sATI */
-    {DISPATCH_RESOLVE_EXTENSION, 234, 325 /* GL_ATI_vertex_streams */, 64412}, /* glVertexStream4svATI */
-    {DISPATCH_RESOLVE_EXTENSION, 235, 495 /* GL_EXT_vertex_weighting */, 64433}, /* glVertexWeightPointerEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 236, 495 /* GL_EXT_vertex_weighting */, 64458}, /* glVertexWeightfEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 237, 495 /* GL_EXT_vertex_weighting */, 64477}, /* glVertexWeightfvEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 238, 603 /* GL_NV_half_float */, 64497}, /* glVertexWeighthNV */
-    {DISPATCH_RESOLVE_EXTENSION, 239, 603 /* GL_NV_half_float */, 64515}, /* glVertexWeighthvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 240, 678 /* GL_NV_video_capture */, 64534}, /* glVideoCaptureNV */
-    {DISPATCH_RESOLVE_EXTENSION, 241, 678 /* GL_NV_video_capture */, 64551}, /* glVideoCaptureStreamParameterdvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 242, 678 /* GL_NV_video_capture */, 64585}, /* glVideoCaptureStreamParameterfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 243, 678 /* GL_NV_video_capture */, 64619}, /* glVideoCaptureStreamParameterivNV */
+    {DISPATCH_RESOLVE_EXTENSION, 200, 493 /* GL_EXT_vertex_array */, 63713}, /* glVertexPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 201, 514 /* GL_IBM_vertex_array_lists */, 63732}, /* glVertexPointerListIBM */
+    {DISPATCH_RESOLVE_EXTENSION, 202, 532 /* GL_INTEL_parallel_arrays */, 63755}, /* glVertexPointervINTEL */
+    {DISPATCH_RESOLVE_EXTENSION, 203, 328 /* GL_ATI_vertex_streams */, 63777}, /* glVertexStream1dATI */
+    {DISPATCH_RESOLVE_EXTENSION, 204, 328 /* GL_ATI_vertex_streams */, 63797}, /* glVertexStream1dvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 205, 328 /* GL_ATI_vertex_streams */, 63818}, /* glVertexStream1fATI */
+    {DISPATCH_RESOLVE_EXTENSION, 206, 328 /* GL_ATI_vertex_streams */, 63838}, /* glVertexStream1fvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 207, 328 /* GL_ATI_vertex_streams */, 63859}, /* glVertexStream1iATI */
+    {DISPATCH_RESOLVE_EXTENSION, 208, 328 /* GL_ATI_vertex_streams */, 63879}, /* glVertexStream1ivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 209, 328 /* GL_ATI_vertex_streams */, 63900}, /* glVertexStream1sATI */
+    {DISPATCH_RESOLVE_EXTENSION, 210, 328 /* GL_ATI_vertex_streams */, 63920}, /* glVertexStream1svATI */
+    {DISPATCH_RESOLVE_EXTENSION, 211, 328 /* GL_ATI_vertex_streams */, 63941}, /* glVertexStream2dATI */
+    {DISPATCH_RESOLVE_EXTENSION, 212, 328 /* GL_ATI_vertex_streams */, 63961}, /* glVertexStream2dvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 213, 328 /* GL_ATI_vertex_streams */, 63982}, /* glVertexStream2fATI */
+    {DISPATCH_RESOLVE_EXTENSION, 214, 328 /* GL_ATI_vertex_streams */, 64002}, /* glVertexStream2fvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 215, 328 /* GL_ATI_vertex_streams */, 64023}, /* glVertexStream2iATI */
+    {DISPATCH_RESOLVE_EXTENSION, 216, 328 /* GL_ATI_vertex_streams */, 64043}, /* glVertexStream2ivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 217, 328 /* GL_ATI_vertex_streams */, 64064}, /* glVertexStream2sATI */
+    {DISPATCH_RESOLVE_EXTENSION, 218, 328 /* GL_ATI_vertex_streams */, 64084}, /* glVertexStream2svATI */
+    {DISPATCH_RESOLVE_EXTENSION, 219, 328 /* GL_ATI_vertex_streams */, 64105}, /* glVertexStream3dATI */
+    {DISPATCH_RESOLVE_EXTENSION, 220, 328 /* GL_ATI_vertex_streams */, 64125}, /* glVertexStream3dvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 221, 328 /* GL_ATI_vertex_streams */, 64146}, /* glVertexStream3fATI */
+    {DISPATCH_RESOLVE_EXTENSION, 222, 328 /* GL_ATI_vertex_streams */, 64166}, /* glVertexStream3fvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 223, 328 /* GL_ATI_vertex_streams */, 64187}, /* glVertexStream3iATI */
+    {DISPATCH_RESOLVE_EXTENSION, 224, 328 /* GL_ATI_vertex_streams */, 64207}, /* glVertexStream3ivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 225, 328 /* GL_ATI_vertex_streams */, 64228}, /* glVertexStream3sATI */
+    {DISPATCH_RESOLVE_EXTENSION, 226, 328 /* GL_ATI_vertex_streams */, 64248}, /* glVertexStream3svATI */
+    {DISPATCH_RESOLVE_EXTENSION, 227, 328 /* GL_ATI_vertex_streams */, 64269}, /* glVertexStream4dATI */
+    {DISPATCH_RESOLVE_EXTENSION, 228, 328 /* GL_ATI_vertex_streams */, 64289}, /* glVertexStream4dvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 229, 328 /* GL_ATI_vertex_streams */, 64310}, /* glVertexStream4fATI */
+    {DISPATCH_RESOLVE_EXTENSION, 230, 328 /* GL_ATI_vertex_streams */, 64330}, /* glVertexStream4fvATI */
+    {DISPATCH_RESOLVE_EXTENSION, 231, 328 /* GL_ATI_vertex_streams */, 64351}, /* glVertexStream4iATI */
+    {DISPATCH_RESOLVE_EXTENSION, 232, 328 /* GL_ATI_vertex_streams */, 64371}, /* glVertexStream4ivATI */
+    {DISPATCH_RESOLVE_EXTENSION, 233, 328 /* GL_ATI_vertex_streams */, 64392}, /* glVertexStream4sATI */
+    {DISPATCH_RESOLVE_EXTENSION, 234, 328 /* GL_ATI_vertex_streams */, 64412}, /* glVertexStream4svATI */
+    {DISPATCH_RESOLVE_EXTENSION, 235, 499 /* GL_EXT_vertex_weighting */, 64433}, /* glVertexWeightPointerEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 236, 499 /* GL_EXT_vertex_weighting */, 64458}, /* glVertexWeightfEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 237, 499 /* GL_EXT_vertex_weighting */, 64477}, /* glVertexWeightfvEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 238, 607 /* GL_NV_half_float */, 64497}, /* glVertexWeighthNV */
+    {DISPATCH_RESOLVE_EXTENSION, 239, 607 /* GL_NV_half_float */, 64515}, /* glVertexWeighthvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 240, 682 /* GL_NV_video_capture */, 64534}, /* glVideoCaptureNV */
+    {DISPATCH_RESOLVE_EXTENSION, 241, 682 /* GL_NV_video_capture */, 64551}, /* glVideoCaptureStreamParameterdvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 242, 682 /* GL_NV_video_capture */, 64585}, /* glVideoCaptureStreamParameterfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 243, 682 /* GL_NV_video_capture */, 64619}, /* glVideoCaptureStreamParameterivNV */
     {DISPATCH_RESOLVE_DIRECT, 244, OpenGL_Desktop_1_0, 64653}, /* glViewport */
     {DISPATCH_RESOLVE_DIRECT, 244, OpenGL_ES_1_0, 64653}, /* glViewport */
     {DISPATCH_RESOLVE_DIRECT, 244, OpenGL_ES_2_0, 64653}, /* glViewport */
     {DISPATCH_RESOLVE_VERSION, 245, OpenGL_Desktop_4_1, 64664}, /* glViewportArrayv */
     {DISPATCH_RESOLVE_EXTENSION, 245, 301 /* GL_ARB_viewport_array */, 64664}, /* glViewportArrayv */
-    {DISPATCH_RESOLVE_EXTENSION, 245, 679 /* GL_NV_viewport_array */, 64681}, /* glViewportArrayvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 246, 679 /* GL_NV_viewport_array */, 64681}, /* glViewportArrayvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 245, 683 /* GL_NV_viewport_array */, 64681}, /* glViewportArrayvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 246, 683 /* GL_NV_viewport_array */, 64681}, /* glViewportArrayvNV */
     {DISPATCH_RESOLVE_VERSION, 246, OpenGL_Desktop_4_1, 64664}, /* glViewportArrayv */
     {DISPATCH_RESOLVE_EXTENSION, 246, 301 /* GL_ARB_viewport_array */, 64664}, /* glViewportArrayv */
     {DISPATCH_RESOLVE_VERSION, 247, OpenGL_Desktop_4_1, 64700}, /* glViewportIndexedf */
     {DISPATCH_RESOLVE_EXTENSION, 247, 301 /* GL_ARB_viewport_array */, 64700}, /* glViewportIndexedf */
-    {DISPATCH_RESOLVE_EXTENSION, 247, 679 /* GL_NV_viewport_array */, 64719}, /* glViewportIndexedfNV */
-    {DISPATCH_RESOLVE_EXTENSION, 248, 679 /* GL_NV_viewport_array */, 64719}, /* glViewportIndexedfNV */
+    {DISPATCH_RESOLVE_EXTENSION, 247, 683 /* GL_NV_viewport_array */, 64719}, /* glViewportIndexedfNV */
+    {DISPATCH_RESOLVE_EXTENSION, 248, 683 /* GL_NV_viewport_array */, 64719}, /* glViewportIndexedfNV */
     {DISPATCH_RESOLVE_VERSION, 248, OpenGL_Desktop_4_1, 64700}, /* glViewportIndexedf */
     {DISPATCH_RESOLVE_EXTENSION, 248, 301 /* GL_ARB_viewport_array */, 64700}, /* glViewportIndexedf */
     {DISPATCH_RESOLVE_VERSION, 249, OpenGL_Desktop_4_1, 64740}, /* glViewportIndexedfv */
     {DISPATCH_RESOLVE_EXTENSION, 249, 301 /* GL_ARB_viewport_array */, 64740}, /* glViewportIndexedfv */
-    {DISPATCH_RESOLVE_EXTENSION, 249, 679 /* GL_NV_viewport_array */, 64760}, /* glViewportIndexedfvNV */
-    {DISPATCH_RESOLVE_EXTENSION, 250, 679 /* GL_NV_viewport_array */, 64760}, /* glViewportIndexedfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 249, 683 /* GL_NV_viewport_array */, 64760}, /* glViewportIndexedfvNV */
+    {DISPATCH_RESOLVE_EXTENSION, 250, 683 /* GL_NV_viewport_array */, 64760}, /* glViewportIndexedfvNV */
     {DISPATCH_RESOLVE_VERSION, 250, OpenGL_Desktop_4_1, 64740}, /* glViewportIndexedfv */
     {DISPATCH_RESOLVE_EXTENSION, 250, 301 /* GL_ARB_viewport_array */, 64740}, /* glViewportIndexedfv */
-    {DISPATCH_RESOLVE_EXTENSION, 251, 558 /* GL_NV_clip_space_w_scaling */, 64782}, /* glViewportPositionWScaleNV */
-    {DISPATCH_RESOLVE_EXTENSION, 252, 681 /* GL_NV_viewport_swizzle */, 64809}, /* glViewportSwizzleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 251, 562 /* GL_NV_clip_space_w_scaling */, 64782}, /* glViewportPositionWScaleNV */
+    {DISPATCH_RESOLVE_EXTENSION, 252, 685 /* GL_NV_viewport_swizzle */, 64809}, /* glViewportSwizzleNV */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_Desktop_3_2, 64829}, /* glWaitSync */
     {DISPATCH_RESOLVE_VERSION, 253, OpenGL_ES_3_0, 64829}, /* glWaitSync */
     {DISPATCH_RESOLVE_EXTENSION, 253, 251 /* GL_ARB_sync */, 64829}, /* glWaitSync */
@@ -11261,9 +11271,9 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_Desktop_3_2, 64829}, /* glWaitSync */
     {DISPATCH_RESOLVE_VERSION, 254, OpenGL_ES_3_0, 64829}, /* glWaitSync */
     {DISPATCH_RESOLVE_EXTENSION, 254, 251 /* GL_ARB_sync */, 64829}, /* glWaitSync */
-    {DISPATCH_RESOLVE_EXTENSION, 255, 616 /* GL_NV_path_rendering */, 64856}, /* glWeightPathsNV */
+    {DISPATCH_RESOLVE_EXTENSION, 255, 620 /* GL_NV_path_rendering */, 64856}, /* glWeightPathsNV */
     {DISPATCH_RESOLVE_EXTENSION, 0, 295 /* GL_ARB_vertex_blend */, 64872}, /* glWeightPointerARB */
-    {DISPATCH_RESOLVE_EXTENSION, 1, 711 /* GL_OES_matrix_palette */, 64891}, /* glWeightPointerOES */
+    {DISPATCH_RESOLVE_EXTENSION, 1, 715 /* GL_OES_matrix_palette */, 64891}, /* glWeightPointerOES */
     {DISPATCH_RESOLVE_EXTENSION, 2, 295 /* GL_ARB_vertex_blend */, 64910}, /* glWeightbvARB */
     {DISPATCH_RESOLVE_EXTENSION, 3, 295 /* GL_ARB_vertex_blend */, 64924}, /* glWeightdvARB */
     {DISPATCH_RESOLVE_EXTENSION, 4, 295 /* GL_ARB_vertex_blend */, 64938}, /* glWeightfvARB */
@@ -11274,158 +11284,158 @@ static const struct dispatch_resolve_info gl_resolve_info_table[] = {
     {DISPATCH_RESOLVE_EXTENSION, 9, 295 /* GL_ARB_vertex_blend */, 65010}, /* glWeightusvARB */
     {DISPATCH_RESOLVE_VERSION, 10, OpenGL_Desktop_1_4, 65025}, /* glWindowPos2d */
     {DISPATCH_RESOLVE_EXTENSION, 10, 302 /* GL_ARB_window_pos */, 65039}, /* glWindowPos2dARB */
-    {DISPATCH_RESOLVE_EXTENSION, 10, 546 /* GL_MESA_window_pos */, 65056}, /* glWindowPos2dMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 10, 550 /* GL_MESA_window_pos */, 65056}, /* glWindowPos2dMESA */
     {DISPATCH_RESOLVE_EXTENSION, 11, 302 /* GL_ARB_window_pos */, 65039}, /* glWindowPos2dARB */
     {DISPATCH_RESOLVE_VERSION, 11, OpenGL_Desktop_1_4, 65025}, /* glWindowPos2d */
-    {DISPATCH_RESOLVE_EXTENSION, 11, 546 /* GL_MESA_window_pos */, 65056}, /* glWindowPos2dMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 12, 546 /* GL_MESA_window_pos */, 65056}, /* glWindowPos2dMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 11, 550 /* GL_MESA_window_pos */, 65056}, /* glWindowPos2dMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 12, 550 /* GL_MESA_window_pos */, 65056}, /* glWindowPos2dMESA */
     {DISPATCH_RESOLVE_VERSION, 12, OpenGL_Desktop_1_4, 65025}, /* glWindowPos2d */
     {DISPATCH_RESOLVE_EXTENSION, 12, 302 /* GL_ARB_window_pos */, 65039}, /* glWindowPos2dARB */
     {DISPATCH_RESOLVE_VERSION, 13, OpenGL_Desktop_1_4, 65074}, /* glWindowPos2dv */
     {DISPATCH_RESOLVE_EXTENSION, 13, 302 /* GL_ARB_window_pos */, 65089}, /* glWindowPos2dvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 13, 546 /* GL_MESA_window_pos */, 65107}, /* glWindowPos2dvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 13, 550 /* GL_MESA_window_pos */, 65107}, /* glWindowPos2dvMESA */
     {DISPATCH_RESOLVE_EXTENSION, 14, 302 /* GL_ARB_window_pos */, 65089}, /* glWindowPos2dvARB */
     {DISPATCH_RESOLVE_VERSION, 14, OpenGL_Desktop_1_4, 65074}, /* glWindowPos2dv */
-    {DISPATCH_RESOLVE_EXTENSION, 14, 546 /* GL_MESA_window_pos */, 65107}, /* glWindowPos2dvMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 15, 546 /* GL_MESA_window_pos */, 65107}, /* glWindowPos2dvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 14, 550 /* GL_MESA_window_pos */, 65107}, /* glWindowPos2dvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 15, 550 /* GL_MESA_window_pos */, 65107}, /* glWindowPos2dvMESA */
     {DISPATCH_RESOLVE_VERSION, 15, OpenGL_Desktop_1_4, 65074}, /* glWindowPos2dv */
     {DISPATCH_RESOLVE_EXTENSION, 15, 302 /* GL_ARB_window_pos */, 65089}, /* glWindowPos2dvARB */
     {DISPATCH_RESOLVE_VERSION, 16, OpenGL_Desktop_1_4, 65126}, /* glWindowPos2f */
     {DISPATCH_RESOLVE_EXTENSION, 16, 302 /* GL_ARB_window_pos */, 65140}, /* glWindowPos2fARB */
-    {DISPATCH_RESOLVE_EXTENSION, 16, 546 /* GL_MESA_window_pos */, 65157}, /* glWindowPos2fMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 16, 550 /* GL_MESA_window_pos */, 65157}, /* glWindowPos2fMESA */
     {DISPATCH_RESOLVE_EXTENSION, 17, 302 /* GL_ARB_window_pos */, 65140}, /* glWindowPos2fARB */
     {DISPATCH_RESOLVE_VERSION, 17, OpenGL_Desktop_1_4, 65126}, /* glWindowPos2f */
-    {DISPATCH_RESOLVE_EXTENSION, 17, 546 /* GL_MESA_window_pos */, 65157}, /* glWindowPos2fMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 18, 546 /* GL_MESA_window_pos */, 65157}, /* glWindowPos2fMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 17, 550 /* GL_MESA_window_pos */, 65157}, /* glWindowPos2fMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 18, 550 /* GL_MESA_window_pos */, 65157}, /* glWindowPos2fMESA */
     {DISPATCH_RESOLVE_VERSION, 18, OpenGL_Desktop_1_4, 65126}, /* glWindowPos2f */
     {DISPATCH_RESOLVE_EXTENSION, 18, 302 /* GL_ARB_window_pos */, 65140}, /* glWindowPos2fARB */
     {DISPATCH_RESOLVE_VERSION, 19, OpenGL_Desktop_1_4, 65175}, /* glWindowPos2fv */
     {DISPATCH_RESOLVE_EXTENSION, 19, 302 /* GL_ARB_window_pos */, 65190}, /* glWindowPos2fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 19, 546 /* GL_MESA_window_pos */, 65208}, /* glWindowPos2fvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 19, 550 /* GL_MESA_window_pos */, 65208}, /* glWindowPos2fvMESA */
     {DISPATCH_RESOLVE_EXTENSION, 20, 302 /* GL_ARB_window_pos */, 65190}, /* glWindowPos2fvARB */
     {DISPATCH_RESOLVE_VERSION, 20, OpenGL_Desktop_1_4, 65175}, /* glWindowPos2fv */
-    {DISPATCH_RESOLVE_EXTENSION, 20, 546 /* GL_MESA_window_pos */, 65208}, /* glWindowPos2fvMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 21, 546 /* GL_MESA_window_pos */, 65208}, /* glWindowPos2fvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 20, 550 /* GL_MESA_window_pos */, 65208}, /* glWindowPos2fvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 21, 550 /* GL_MESA_window_pos */, 65208}, /* glWindowPos2fvMESA */
     {DISPATCH_RESOLVE_VERSION, 21, OpenGL_Desktop_1_4, 65175}, /* glWindowPos2fv */
     {DISPATCH_RESOLVE_EXTENSION, 21, 302 /* GL_ARB_window_pos */, 65190}, /* glWindowPos2fvARB */
     {DISPATCH_RESOLVE_VERSION, 22, OpenGL_Desktop_1_4, 65227}, /* glWindowPos2i */
     {DISPATCH_RESOLVE_EXTENSION, 22, 302 /* GL_ARB_window_pos */, 65241}, /* glWindowPos2iARB */
-    {DISPATCH_RESOLVE_EXTENSION, 22, 546 /* GL_MESA_window_pos */, 65258}, /* glWindowPos2iMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 22, 550 /* GL_MESA_window_pos */, 65258}, /* glWindowPos2iMESA */
     {DISPATCH_RESOLVE_EXTENSION, 23, 302 /* GL_ARB_window_pos */, 65241}, /* glWindowPos2iARB */
     {DISPATCH_RESOLVE_VERSION, 23, OpenGL_Desktop_1_4, 65227}, /* glWindowPos2i */
-    {DISPATCH_RESOLVE_EXTENSION, 23, 546 /* GL_MESA_window_pos */, 65258}, /* glWindowPos2iMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 24, 546 /* GL_MESA_window_pos */, 65258}, /* glWindowPos2iMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 23, 550 /* GL_MESA_window_pos */, 65258}, /* glWindowPos2iMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 24, 550 /* GL_MESA_window_pos */, 65258}, /* glWindowPos2iMESA */
     {DISPATCH_RESOLVE_VERSION, 24, OpenGL_Desktop_1_4, 65227}, /* glWindowPos2i */
     {DISPATCH_RESOLVE_EXTENSION, 24, 302 /* GL_ARB_window_pos */, 65241}, /* glWindowPos2iARB */
     {DISPATCH_RESOLVE_VERSION, 25, OpenGL_Desktop_1_4, 65276}, /* glWindowPos2iv */
     {DISPATCH_RESOLVE_EXTENSION, 25, 302 /* GL_ARB_window_pos */, 65291}, /* glWindowPos2ivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 25, 546 /* GL_MESA_window_pos */, 65309}, /* glWindowPos2ivMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 25, 550 /* GL_MESA_window_pos */, 65309}, /* glWindowPos2ivMESA */
     {DISPATCH_RESOLVE_EXTENSION, 26, 302 /* GL_ARB_window_pos */, 65291}, /* glWindowPos2ivARB */
     {DISPATCH_RESOLVE_VERSION, 26, OpenGL_Desktop_1_4, 65276}, /* glWindowPos2iv */
-    {DISPATCH_RESOLVE_EXTENSION, 26, 546 /* GL_MESA_window_pos */, 65309}, /* glWindowPos2ivMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 27, 546 /* GL_MESA_window_pos */, 65309}, /* glWindowPos2ivMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 26, 550 /* GL_MESA_window_pos */, 65309}, /* glWindowPos2ivMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 27, 550 /* GL_MESA_window_pos */, 65309}, /* glWindowPos2ivMESA */
     {DISPATCH_RESOLVE_VERSION, 27, OpenGL_Desktop_1_4, 65276}, /* glWindowPos2iv */
     {DISPATCH_RESOLVE_EXTENSION, 27, 302 /* GL_ARB_window_pos */, 65291}, /* glWindowPos2ivARB */
     {DISPATCH_RESOLVE_VERSION, 28, OpenGL_Desktop_1_4, 65328}, /* glWindowPos2s */
     {DISPATCH_RESOLVE_EXTENSION, 28, 302 /* GL_ARB_window_pos */, 65342}, /* glWindowPos2sARB */
-    {DISPATCH_RESOLVE_EXTENSION, 28, 546 /* GL_MESA_window_pos */, 65359}, /* glWindowPos2sMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 28, 550 /* GL_MESA_window_pos */, 65359}, /* glWindowPos2sMESA */
     {DISPATCH_RESOLVE_EXTENSION, 29, 302 /* GL_ARB_window_pos */, 65342}, /* glWindowPos2sARB */
     {DISPATCH_RESOLVE_VERSION, 29, OpenGL_Desktop_1_4, 65328}, /* glWindowPos2s */
-    {DISPATCH_RESOLVE_EXTENSION, 29, 546 /* GL_MESA_window_pos */, 65359}, /* glWindowPos2sMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 30, 546 /* GL_MESA_window_pos */, 65359}, /* glWindowPos2sMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 29, 550 /* GL_MESA_window_pos */, 65359}, /* glWindowPos2sMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 30, 550 /* GL_MESA_window_pos */, 65359}, /* glWindowPos2sMESA */
     {DISPATCH_RESOLVE_VERSION, 30, OpenGL_Desktop_1_4, 65328}, /* glWindowPos2s */
     {DISPATCH_RESOLVE_EXTENSION, 30, 302 /* GL_ARB_window_pos */, 65342}, /* glWindowPos2sARB */
     {DISPATCH_RESOLVE_VERSION, 31, OpenGL_Desktop_1_4, 65377}, /* glWindowPos2sv */
     {DISPATCH_RESOLVE_EXTENSION, 31, 302 /* GL_ARB_window_pos */, 65392}, /* glWindowPos2svARB */
-    {DISPATCH_RESOLVE_EXTENSION, 31, 546 /* GL_MESA_window_pos */, 65410}, /* glWindowPos2svMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 31, 550 /* GL_MESA_window_pos */, 65410}, /* glWindowPos2svMESA */
     {DISPATCH_RESOLVE_EXTENSION, 32, 302 /* GL_ARB_window_pos */, 65392}, /* glWindowPos2svARB */
     {DISPATCH_RESOLVE_VERSION, 32, OpenGL_Desktop_1_4, 65377}, /* glWindowPos2sv */
-    {DISPATCH_RESOLVE_EXTENSION, 32, 546 /* GL_MESA_window_pos */, 65410}, /* glWindowPos2svMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 33, 546 /* GL_MESA_window_pos */, 65410}, /* glWindowPos2svMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 32, 550 /* GL_MESA_window_pos */, 65410}, /* glWindowPos2svMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 33, 550 /* GL_MESA_window_pos */, 65410}, /* glWindowPos2svMESA */
     {DISPATCH_RESOLVE_VERSION, 33, OpenGL_Desktop_1_4, 65377}, /* glWindowPos2sv */
     {DISPATCH_RESOLVE_EXTENSION, 33, 302 /* GL_ARB_window_pos */, 65392}, /* glWindowPos2svARB */
     {DISPATCH_RESOLVE_VERSION, 34, OpenGL_Desktop_1_4, 65429}, /* glWindowPos3d */
     {DISPATCH_RESOLVE_EXTENSION, 34, 302 /* GL_ARB_window_pos */, 65443}, /* glWindowPos3dARB */
-    {DISPATCH_RESOLVE_EXTENSION, 34, 546 /* GL_MESA_window_pos */, 65460}, /* glWindowPos3dMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 34, 550 /* GL_MESA_window_pos */, 65460}, /* glWindowPos3dMESA */
     {DISPATCH_RESOLVE_EXTENSION, 35, 302 /* GL_ARB_window_pos */, 65443}, /* glWindowPos3dARB */
     {DISPATCH_RESOLVE_VERSION, 35, OpenGL_Desktop_1_4, 65429}, /* glWindowPos3d */
-    {DISPATCH_RESOLVE_EXTENSION, 35, 546 /* GL_MESA_window_pos */, 65460}, /* glWindowPos3dMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 36, 546 /* GL_MESA_window_pos */, 65460}, /* glWindowPos3dMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 35, 550 /* GL_MESA_window_pos */, 65460}, /* glWindowPos3dMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 36, 550 /* GL_MESA_window_pos */, 65460}, /* glWindowPos3dMESA */
     {DISPATCH_RESOLVE_VERSION, 36, OpenGL_Desktop_1_4, 65429}, /* glWindowPos3d */
     {DISPATCH_RESOLVE_EXTENSION, 36, 302 /* GL_ARB_window_pos */, 65443}, /* glWindowPos3dARB */
     {DISPATCH_RESOLVE_VERSION, 37, OpenGL_Desktop_1_4, 65478}, /* glWindowPos3dv */
     {DISPATCH_RESOLVE_EXTENSION, 37, 302 /* GL_ARB_window_pos */, 65493}, /* glWindowPos3dvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 37, 546 /* GL_MESA_window_pos */, 65511}, /* glWindowPos3dvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 37, 550 /* GL_MESA_window_pos */, 65511}, /* glWindowPos3dvMESA */
     {DISPATCH_RESOLVE_EXTENSION, 38, 302 /* GL_ARB_window_pos */, 65493}, /* glWindowPos3dvARB */
     {DISPATCH_RESOLVE_VERSION, 38, OpenGL_Desktop_1_4, 65478}, /* glWindowPos3dv */
-    {DISPATCH_RESOLVE_EXTENSION, 38, 546 /* GL_MESA_window_pos */, 65511}, /* glWindowPos3dvMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 39, 546 /* GL_MESA_window_pos */, 65511}, /* glWindowPos3dvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 38, 550 /* GL_MESA_window_pos */, 65511}, /* glWindowPos3dvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 39, 550 /* GL_MESA_window_pos */, 65511}, /* glWindowPos3dvMESA */
     {DISPATCH_RESOLVE_VERSION, 39, OpenGL_Desktop_1_4, 65478}, /* glWindowPos3dv */
     {DISPATCH_RESOLVE_EXTENSION, 39, 302 /* GL_ARB_window_pos */, 65493}, /* glWindowPos3dvARB */
     {DISPATCH_RESOLVE_VERSION, 40, OpenGL_Desktop_1_4, 65530}, /* glWindowPos3f */
     {DISPATCH_RESOLVE_EXTENSION, 40, 302 /* GL_ARB_window_pos */, 65544}, /* glWindowPos3fARB */
-    {DISPATCH_RESOLVE_EXTENSION, 40, 546 /* GL_MESA_window_pos */, 65561}, /* glWindowPos3fMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 40, 550 /* GL_MESA_window_pos */, 65561}, /* glWindowPos3fMESA */
     {DISPATCH_RESOLVE_EXTENSION, 41, 302 /* GL_ARB_window_pos */, 65544}, /* glWindowPos3fARB */
     {DISPATCH_RESOLVE_VERSION, 41, OpenGL_Desktop_1_4, 65530}, /* glWindowPos3f */
-    {DISPATCH_RESOLVE_EXTENSION, 41, 546 /* GL_MESA_window_pos */, 65561}, /* glWindowPos3fMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 42, 546 /* GL_MESA_window_pos */, 65561}, /* glWindowPos3fMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 41, 550 /* GL_MESA_window_pos */, 65561}, /* glWindowPos3fMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 42, 550 /* GL_MESA_window_pos */, 65561}, /* glWindowPos3fMESA */
     {DISPATCH_RESOLVE_VERSION, 42, OpenGL_Desktop_1_4, 65530}, /* glWindowPos3f */
     {DISPATCH_RESOLVE_EXTENSION, 42, 302 /* GL_ARB_window_pos */, 65544}, /* glWindowPos3fARB */
     {DISPATCH_RESOLVE_VERSION, 43, OpenGL_Desktop_1_4, 65579}, /* glWindowPos3fv */
     {DISPATCH_RESOLVE_EXTENSION, 43, 302 /* GL_ARB_window_pos */, 65594}, /* glWindowPos3fvARB */
-    {DISPATCH_RESOLVE_EXTENSION, 43, 546 /* GL_MESA_window_pos */, 65612}, /* glWindowPos3fvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 43, 550 /* GL_MESA_window_pos */, 65612}, /* glWindowPos3fvMESA */
     {DISPATCH_RESOLVE_EXTENSION, 44, 302 /* GL_ARB_window_pos */, 65594}, /* glWindowPos3fvARB */
     {DISPATCH_RESOLVE_VERSION, 44, OpenGL_Desktop_1_4, 65579}, /* glWindowPos3fv */
-    {DISPATCH_RESOLVE_EXTENSION, 44, 546 /* GL_MESA_window_pos */, 65612}, /* glWindowPos3fvMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 45, 546 /* GL_MESA_window_pos */, 65612}, /* glWindowPos3fvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 44, 550 /* GL_MESA_window_pos */, 65612}, /* glWindowPos3fvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 45, 550 /* GL_MESA_window_pos */, 65612}, /* glWindowPos3fvMESA */
     {DISPATCH_RESOLVE_VERSION, 45, OpenGL_Desktop_1_4, 65579}, /* glWindowPos3fv */
     {DISPATCH_RESOLVE_EXTENSION, 45, 302 /* GL_ARB_window_pos */, 65594}, /* glWindowPos3fvARB */
     {DISPATCH_RESOLVE_VERSION, 46, OpenGL_Desktop_1_4, 65631}, /* glWindowPos3i */
     {DISPATCH_RESOLVE_EXTENSION, 46, 302 /* GL_ARB_window_pos */, 65645}, /* glWindowPos3iARB */
-    {DISPATCH_RESOLVE_EXTENSION, 46, 546 /* GL_MESA_window_pos */, 65662}, /* glWindowPos3iMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 46, 550 /* GL_MESA_window_pos */, 65662}, /* glWindowPos3iMESA */
     {DISPATCH_RESOLVE_EXTENSION, 47, 302 /* GL_ARB_window_pos */, 65645}, /* glWindowPos3iARB */
     {DISPATCH_RESOLVE_VERSION, 47, OpenGL_Desktop_1_4, 65631}, /* glWindowPos3i */
-    {DISPATCH_RESOLVE_EXTENSION, 47, 546 /* GL_MESA_window_pos */, 65662}, /* glWindowPos3iMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 48, 546 /* GL_MESA_window_pos */, 65662}, /* glWindowPos3iMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 47, 550 /* GL_MESA_window_pos */, 65662}, /* glWindowPos3iMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 48, 550 /* GL_MESA_window_pos */, 65662}, /* glWindowPos3iMESA */
     {DISPATCH_RESOLVE_VERSION, 48, OpenGL_Desktop_1_4, 65631}, /* glWindowPos3i */
     {DISPATCH_RESOLVE_EXTENSION, 48, 302 /* GL_ARB_window_pos */, 65645}, /* glWindowPos3iARB */
     {DISPATCH_RESOLVE_VERSION, 49, OpenGL_Desktop_1_4, 65680}, /* glWindowPos3iv */
     {DISPATCH_RESOLVE_EXTENSION, 49, 302 /* GL_ARB_window_pos */, 65695}, /* glWindowPos3ivARB */
-    {DISPATCH_RESOLVE_EXTENSION, 49, 546 /* GL_MESA_window_pos */, 65713}, /* glWindowPos3ivMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 49, 550 /* GL_MESA_window_pos */, 65713}, /* glWindowPos3ivMESA */
     {DISPATCH_RESOLVE_EXTENSION, 50, 302 /* GL_ARB_window_pos */, 65695}, /* glWindowPos3ivARB */
     {DISPATCH_RESOLVE_VERSION, 50, OpenGL_Desktop_1_4, 65680}, /* glWindowPos3iv */
-    {DISPATCH_RESOLVE_EXTENSION, 50, 546 /* GL_MESA_window_pos */, 65713}, /* glWindowPos3ivMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 51, 546 /* GL_MESA_window_pos */, 65713}, /* glWindowPos3ivMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 50, 550 /* GL_MESA_window_pos */, 65713}, /* glWindowPos3ivMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 51, 550 /* GL_MESA_window_pos */, 65713}, /* glWindowPos3ivMESA */
     {DISPATCH_RESOLVE_VERSION, 51, OpenGL_Desktop_1_4, 65680}, /* glWindowPos3iv */
     {DISPATCH_RESOLVE_EXTENSION, 51, 302 /* GL_ARB_window_pos */, 65695}, /* glWindowPos3ivARB */
     {DISPATCH_RESOLVE_VERSION, 52, OpenGL_Desktop_1_4, 65732}, /* glWindowPos3s */
     {DISPATCH_RESOLVE_EXTENSION, 52, 302 /* GL_ARB_window_pos */, 65746}, /* glWindowPos3sARB */
-    {DISPATCH_RESOLVE_EXTENSION, 52, 546 /* GL_MESA_window_pos */, 65763}, /* glWindowPos3sMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 52, 550 /* GL_MESA_window_pos */, 65763}, /* glWindowPos3sMESA */
     {DISPATCH_RESOLVE_EXTENSION, 53, 302 /* GL_ARB_window_pos */, 65746}, /* glWindowPos3sARB */
     {DISPATCH_RESOLVE_VERSION, 53, OpenGL_Desktop_1_4, 65732}, /* glWindowPos3s */
-    {DISPATCH_RESOLVE_EXTENSION, 53, 546 /* GL_MESA_window_pos */, 65763}, /* glWindowPos3sMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 54, 546 /* GL_MESA_window_pos */, 65763}, /* glWindowPos3sMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 53, 550 /* GL_MESA_window_pos */, 65763}, /* glWindowPos3sMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 54, 550 /* GL_MESA_window_pos */, 65763}, /* glWindowPos3sMESA */
     {DISPATCH_RESOLVE_VERSION, 54, OpenGL_Desktop_1_4, 65732}, /* glWindowPos3s */
     {DISPATCH_RESOLVE_EXTENSION, 54, 302 /* GL_ARB_window_pos */, 65746}, /* glWindowPos3sARB */
     {DISPATCH_RESOLVE_VERSION, 55, OpenGL_Desktop_1_4, 65781}, /* glWindowPos3sv */
     {DISPATCH_RESOLVE_EXTENSION, 55, 302 /* GL_ARB_window_pos */, 65796}, /* glWindowPos3svARB */
-    {DISPATCH_RESOLVE_EXTENSION, 55, 546 /* GL_MESA_window_pos */, 65814}, /* glWindowPos3svMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 55, 550 /* GL_MESA_window_pos */, 65814}, /* glWindowPos3svMESA */
     {DISPATCH_RESOLVE_EXTENSION, 56, 302 /* GL_ARB_window_pos */, 65796}, /* glWindowPos3svARB */
     {DISPATCH_RESOLVE_VERSION, 56, OpenGL_Desktop_1_4, 65781}, /* glWindowPos3sv */
-    {DISPATCH_RESOLVE_EXTENSION, 56, 546 /* GL_MESA_window_pos */, 65814}, /* glWindowPos3svMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 57, 546 /* GL_MESA_window_pos */, 65814}, /* glWindowPos3svMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 56, 550 /* GL_MESA_window_pos */, 65814}, /* glWindowPos3svMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 57, 550 /* GL_MESA_window_pos */, 65814}, /* glWindowPos3svMESA */
     {DISPATCH_RESOLVE_VERSION, 57, OpenGL_Desktop_1_4, 65781}, /* glWindowPos3sv */
     {DISPATCH_RESOLVE_EXTENSION, 57, 302 /* GL_ARB_window_pos */, 65796}, /* glWindowPos3svARB */
-    {DISPATCH_RESOLVE_EXTENSION, 58, 546 /* GL_MESA_window_pos */, 65833}, /* glWindowPos4dMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 59, 546 /* GL_MESA_window_pos */, 65851}, /* glWindowPos4dvMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 60, 546 /* GL_MESA_window_pos */, 65870}, /* glWindowPos4fMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 61, 546 /* GL_MESA_window_pos */, 65888}, /* glWindowPos4fvMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 62, 546 /* GL_MESA_window_pos */, 65907}, /* glWindowPos4iMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 63, 546 /* GL_MESA_window_pos */, 65925}, /* glWindowPos4ivMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 64, 546 /* GL_MESA_window_pos */, 65944}, /* glWindowPos4sMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 65, 546 /* GL_MESA_window_pos */, 65962}, /* glWindowPos4svMESA */
-    {DISPATCH_RESOLVE_EXTENSION, 66, 496 /* GL_EXT_window_rectangles */, 65981}, /* glWindowRectanglesEXT */
-    {DISPATCH_RESOLVE_EXTENSION, 67, 494 /* GL_EXT_vertex_shader */, 66003}, /* glWriteMaskEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 58, 550 /* GL_MESA_window_pos */, 65833}, /* glWindowPos4dMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 59, 550 /* GL_MESA_window_pos */, 65851}, /* glWindowPos4dvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 60, 550 /* GL_MESA_window_pos */, 65870}, /* glWindowPos4fMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 61, 550 /* GL_MESA_window_pos */, 65888}, /* glWindowPos4fvMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 62, 550 /* GL_MESA_window_pos */, 65907}, /* glWindowPos4iMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 63, 550 /* GL_MESA_window_pos */, 65925}, /* glWindowPos4ivMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 64, 550 /* GL_MESA_window_pos */, 65944}, /* glWindowPos4sMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 65, 550 /* GL_MESA_window_pos */, 65962}, /* glWindowPos4svMESA */
+    {DISPATCH_RESOLVE_EXTENSION, 66, 500 /* GL_EXT_window_rectangles */, 65981}, /* glWindowRectanglesEXT */
+    {DISPATCH_RESOLVE_EXTENSION, 67, 498 /* GL_EXT_vertex_shader */, 66003}, /* glWriteMaskEXT */
     {DISPATCH_RESOLVE_TERMINATOR, 68, 0, 0}
 };
 

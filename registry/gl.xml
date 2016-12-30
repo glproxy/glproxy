@@ -36393,6 +36393,13 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_EXT_texture_rectangle" supported="gl"></extension>
         <extension name="GL_WIN_swap_hint" supported="gl"></extension>
 
+        <!-- Comes From ATI driver of Radeon 9000(Omega) on Win32 -->
+        <extension name="GL_ATIX_texture_env_combine3" supported="gl"></extension>
+        <extension name="GL_ATIX_texture_env_route" supported="gl"></extension>
+        <extension name="GL_ATIX_vertex_shader_output_point_size" supported="gl"></extension>
+        <extension name="GL_EXT_texgen_reflection" supported="gl"></extension>
+        <extension name="GL_SGIS_multitexture" supported="gl"></extension>
+
         <!-- Comes From Mesa on Win32 -->
         <extension name="GL_APPLE_packed_pixels" supported="gl"></extension>
         <extension name="GL_ATI_blend_equation_separate" supported="gl"></extension>
