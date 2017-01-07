@@ -406,7 +406,7 @@ static _PVFV p_glproxy_uninit_tls_destruct = glproxy_uninit_tls_destruct;
 
 #endif
 
-static void glproxy_context_handles_open(tls_ptr tls) {
+void glproxy_context_handles_open(tls_ptr tls) {
     tls->context.handles.cgl = dlopen_handle(tls->context.cgl_name, NULL);
     tls->context.handles.wgl = dlopen_handle(tls->context.wgl_name, NULL);
     tls->context.handles.glx = dlopen_handle(tls->context.glx_name, NULL);
@@ -415,7 +415,7 @@ static void glproxy_context_handles_open(tls_ptr tls) {
     tls->context.handles.gles2 = dlopen_handle(tls->context.gles_names.gles2, NULL);
 }
 
-static void glproxy_context_handles_close(tls_ptr tls) {
+void glproxy_context_handles_close(tls_ptr tls) {
     void** handles = (void**)&tls->context.handles;
     void** param_handles = (void**)&tls->param_context.handles;
     size_t count = sizeof(tls->context.handles) / sizeof(void*);
@@ -440,9 +440,22 @@ GLPROXY_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *par
         tls->context.glx_name = GLX_NAME;
         tls->context.gles_names = GLES_NAMES;
     }
-    glproxy_context_handles_open(tls);
+    /*
+       According to https://msdn.microsoft.com/zh-cn/library/windows/desktop/ms682583.aspx
+       The entry-point function should perform only simple initialization or termination tasks. It must not call the LoadLibrary or LoadLibraryEx function (or a function that calls these functions), because this may create dependency loops in the DLL load order. This can result in a DLL being used before the system has executed its initialization code. Similarly, the entry-point function must not call the FreeLibrary function (or a function that calls FreeLibrary) during process termination, because this can result in a DLL being used after the system has executed its termination code.
+       So we calling to glproxy_context_handles_open when do the first resolve after dll loading.
+    */
+    tls->handles_opened = false;
     glproxy_dispatch_common_tls_init(tls, glproxy_inited);
     return tls;
+}
+
+GLPROXY_IMPORTEXPORT void glproxy_context_init() {
+    tls_ptr tls = get_tls_by_index(glproxy_dispatch_common_tls_index);
+    if (tls->handles_opened == false) {
+        glproxy_context_handles_open(tls);
+        tls->handles_opened = true;
+    }
 }
 
 GLPROXY_IMPORTEXPORT void* glproxy_context_get() {

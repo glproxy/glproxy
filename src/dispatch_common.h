@@ -196,6 +196,8 @@ struct dispatch_common_tls {
     bool gl_called;
     enum DISPATCH_OPENGL_TYPE open_gl_type;
     int gl_version;
+
+    bool handles_opened;
 };
 
 typedef struct dispatch_common_tls *tls_ptr;
@@ -223,6 +225,9 @@ static inline void set_tls_by_index(TLS_TYPE index, tls_ptr value) {
     pthread_setspecific(index, (void*)value);
 #endif
 }
+
+void glproxy_context_handles_open(tls_ptr tls);
+void glproxy_context_handles_close(tls_ptr tls);
 
 #if PLATFORM_HAS_WGL
 void wgl_glproxy_resolve_init(tls_ptr tls);

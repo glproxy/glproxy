@@ -136,7 +136,8 @@ make_window_and_test(int (*callback)(HDC hdc))
         fprintf(stderr, "Failed to register window class\n");
         exit(1);
     }
-
+    /* Init glproxy context first, make sure wgl works under win server 2012 */
+    glproxy_context_init();
     /* create window */
     hwnd = CreateWindow(class_name, window_name,
                         WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS,

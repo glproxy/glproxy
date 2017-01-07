@@ -8,6 +8,11 @@ GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
         const struct dispatch_resolve_info *resolve_info = metadata->resolve_info_table + resolve_info_offset;
         const khronos_uint16_t target_identity = resolve_info->identity;
         const char* basic_name = metadata->entrypoint_strings + resolve_info->name_offset;
+        if (tls->handles_opened == false) {
+            glproxy_context_handles_open(tls);
+            tls->handles_opened = true;
+        }
+
         if (!metadata->inited) {
             current_glproxy_resolve_init(tls);
         }

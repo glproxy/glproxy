@@ -146,6 +146,7 @@ GLPROXY_IMPORTEXPORT void glproxy_init_tls(void);
 GLPROXY_IMPORTEXPORT void glproxy_uninit_tls(void);
 
 GLPROXY_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *params);
+GLPROXY_IMPORTEXPORT void glproxy_context_init();
 GLPROXY_IMPORTEXPORT void* glproxy_context_get();
 GLPROXY_IMPORTEXPORT void glproxy_context_set(void* new_contex);
 GLPROXY_IMPORTEXPORT void glproxy_context_destroy(void*);
