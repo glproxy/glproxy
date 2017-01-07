@@ -22,22 +22,22 @@ static void init_dispatch_metadata_metadata(struct dispatch_metadata *data) {
 #include "gl_generated_dispatch_thunks.inc"
 #include "egl_generated_dispatch_thunks.inc"
 
-void glproxy_dispatch_common_tls_init(tls_ptr tls, bool inited) {
+void glproxy_dispatch_common_tls_init(tls_ptr tls, bool glproxy_inited) {
     tls->open_gl_type = DISPATCH_OPENGL_UNKNOW;
 #ifndef NDEBUG
     // fprintf(stderr, "sizeof dispatch_resolve_info :%d\n", (int)sizeof(struct dispatch_resolve_info));
 #endif
 
 #if PLATFORM_HAS_WGL
-    wgl_glproxy_dispatch_metadata_init(&(tls->wgl_metadata), inited);
+    wgl_glproxy_dispatch_metadata_init(&(tls->wgl_metadata), glproxy_inited);
 #endif
 #if PLATFORM_HAS_GLX
-    glx_glproxy_dispatch_metadata_init(&(tls->glx_metadata), inited);
+    glx_glproxy_dispatch_metadata_init(&(tls->glx_metadata), glproxy_inited);
 #endif
 
-    gl_glproxy_dispatch_metadata_init(&(tls->gl_metadata), inited);
+    gl_glproxy_dispatch_metadata_init(&(tls->gl_metadata), glproxy_inited);
 
 #if PLATFORM_HAS_EGL
-    egl_glproxy_dispatch_metadata_init(&(tls->egl_metadata), inited);
+    egl_glproxy_dispatch_metadata_init(&(tls->egl_metadata), glproxy_inited);
 #endif
 }

@@ -246,6 +246,6 @@ void egl_glproxy_resolve_direct(tls_ptr tls, const char* name, void**ptr);
 void egl_glproxy_resolve_version(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t version);
 void egl_glproxy_resolve_extension(tls_ptr tls, const char* name, void**ptr, khronos_uint16_t offset);
 
-void glproxy_dispatch_common_tls_init(tls_ptr tls, bool inited);
+void glproxy_dispatch_common_tls_init(tls_ptr tls, bool glproxy_inited);
 
 #endif /* _DISPATCH_COMMON_H */

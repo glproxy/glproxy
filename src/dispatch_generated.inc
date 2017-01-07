@@ -40,7 +40,7 @@ GLPROXY_NOINLINE static void* current_resolve(khronos_uint16_t offset) {
     return *ptr;
 }
 
-static void current_glproxy_dispatch_metadata_init(struct dispatch_metadata *data, bool inited) {
+static void current_glproxy_dispatch_metadata_init(struct dispatch_metadata *data, bool glproxy_inited) {
     data->extensions_count = current_extensions_count;
     data->extension_offsets = current_extension_offsets;
     data->extension_enum_strings = current_extension_enum_strings;
@@ -49,7 +49,7 @@ static void current_glproxy_dispatch_metadata_init(struct dispatch_metadata *dat
     data->resolve_offsets = current_resolve_offsets;
     data->method_name_offsets = current_method_name_offsets;
     data->method_count = sizeof(current_resolve_offsets) / sizeof(current_resolve_offsets[0]);
-    if (!inited) {
+    if (!glproxy_inited) {
         init_dispatch_metadata_metadata(data);
     }
 }

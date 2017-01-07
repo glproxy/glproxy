@@ -315,14 +315,14 @@ bool glproxy_conservative_has_egl_extension(const char *ext)
 }
 
 
-static bool inited = false;
+static bool glproxy_inited = false;
 /* The context for main thread */
 static tls_ptr global_context = NULL;
 /* thread local storage index */
 TLS_TYPE glproxy_dispatch_common_tls_index = 0;
 
 GLPROXY_IMPORTEXPORT void glproxy_init_tls(void) {
-    if (inited) {
+    if (glproxy_inited) {
         return;
     }
 #if defined(_WIN32)
@@ -331,12 +331,12 @@ GLPROXY_IMPORTEXPORT void glproxy_init_tls(void) {
     pthread_key_create(&glproxy_dispatch_common_tls_index, NULL);
 #endif
     global_context = glproxy_context_create(NULL);
-    inited = true;
+    glproxy_inited = true;
     glproxy_context_set(global_context);
 }
 
 GLPROXY_IMPORTEXPORT void glproxy_uninit_tls(void) {
-    if (!inited) {
+    if (!glproxy_inited) {
         return;
     }
     if (!global_context) {
@@ -350,7 +350,7 @@ GLPROXY_IMPORTEXPORT void glproxy_uninit_tls(void) {
     pthread_key_delete(glproxy_dispatch_common_tls_index);
 #endif
     glproxy_dispatch_common_tls_index = 0;
-    inited = false;
+    glproxy_inited = false;
 }
 
 GLOBAL_STAIC_FUNCTION(glproxy_init_tls, glproxy_uninit_tls)
@@ -441,7 +441,7 @@ GLPROXY_IMPORTEXPORT void* glproxy_context_create(struct glproxy_gl_context *par
         tls->context.gles_names = GLES_NAMES;
     }
     glproxy_context_handles_open(tls);
-    glproxy_dispatch_common_tls_init(tls, inited);
+    glproxy_dispatch_common_tls_init(tls, glproxy_inited);
     return tls;
 }
 
@@ -450,7 +450,7 @@ GLPROXY_IMPORTEXPORT void* glproxy_context_get() {
 }
 
 GLPROXY_IMPORTEXPORT void glproxy_context_set(void* new_context) {
-    if (!inited) {
+    if (!glproxy_inited) {
         fprintf(stderr, "The glproxy are not inited yet\n");
         return;
     }
@@ -460,7 +460,7 @@ GLPROXY_IMPORTEXPORT void glproxy_context_set(void* new_context) {
 GLPROXY_IMPORTEXPORT void glproxy_context_destroy(void* context) {
     tls_ptr tls = context;
     tls_ptr exist_context = NULL;
-    if (!inited) {
+    if (!glproxy_inited) {
         fprintf(stderr, "The glproxy are not inited yet\n");
         return;
     }
