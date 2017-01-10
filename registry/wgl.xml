@@ -481,6 +481,11 @@
             <param>const <ptype>PIXELFORMATDESCRIPTOR</ptype> *<name>ppfd</name></param>
         </command>
         <command>
+            <proto><ptype>UINT</ptype> <name>GetEnhMetaFilePixelFormat</name></proto>
+            <param><ptype>HENHMETAFILE</ptype> <name>hemf</name></param>
+            <param>const <ptype>PIXELFORMATDESCRIPTOR</ptype> *<name>ppfd</name></param>
+        </command>
+        <command>
             <proto>int <name>GetPixelFormat</name></proto>
             <param><ptype>HDC</ptype> <name>hdc</name></param>
         </command>
@@ -557,6 +562,11 @@
             <param><ptype>GLint</ptype> <name>dstY1</name></param>
             <param><ptype>GLbitfield</ptype> <name>mask</name></param>
             <param><ptype>GLenum</ptype> <name>filter</name></param>
+        </command>
+        <command>
+            <proto>int <name>wglChoosePixelFormat</name></proto>
+            <param><ptype>HDC</ptype> <name>hDc</name></param>
+            <param>const <ptype>PIXELFORMATDESCRIPTOR</ptype> *<name>pPfd</name></param>
         </command>
         <command>
             <proto><ptype>BOOL</ptype> <name>wglChoosePixelFormatARB</name></proto>
@@ -691,6 +701,13 @@
             <param>int <name>layerPlane</name></param>
             <param><ptype>UINT</ptype> <name>nBytes</name></param>
             <param>const <ptype>LAYERPLANEDESCRIPTOR</ptype> *<name>plpd</name></param>
+        </command>
+        <command>
+            <proto>int <name>wglDescribePixelFormat</name></proto>
+            <param><ptype>HDC</ptype> <name>hdc</name></param>
+            <param>int <name>ipfd</name></param>
+            <param><ptype>UINT</ptype> <name>cjpfd</name></param>
+            <param>const <ptype>PIXELFORMATDESCRIPTOR</ptype> *<name>ppfd</name></param>
         </command>
         <command>
             <proto><ptype>VOID</ptype> <name>wglDestroyDisplayColorTableEXT</name></proto>
@@ -850,7 +867,7 @@
             <param>int *<name>piValue</name></param>
         </command>
         <command>
-            <proto><ptype>UINT</ptype> <name>GetEnhMetaFilePixelFormat</name></proto>
+            <proto><ptype>UINT</ptype> <name>wglGetEnhMetaFilePixelFormat</name></proto>
             <param><ptype>HENHMETAFILE</ptype> <name>hemf</name></param>
             <param>const <ptype>PIXELFORMATDESCRIPTOR</ptype> *<name>ppfd</name></param>
         </command>
@@ -933,6 +950,10 @@
         <command>
             <proto><ptype>HDC</ptype> <name>wglGetPbufferDCEXT</name></proto>
             <param><ptype>HPBUFFEREXT</ptype> <name>hPbuffer</name></param>
+        </command>
+        <command>
+            <proto>int <name>wglGetPixelFormat</name></proto>
+            <param><ptype>HDC</ptype> <name>hdc</name></param>
         </command>
         <command>
             <proto><ptype>BOOL</ptype> <name>wglGetPixelFormatAttribfvARB</name></proto>
@@ -1202,6 +1223,12 @@
             <param>const int *<name>piAttribList</name></param>
         </command>
         <command>
+            <proto><ptype>BOOL</ptype> <name>wglSetPixelFormat</name></proto>
+            <param><ptype>HDC</ptype> <name>hdc</name></param>
+            <param>int <name>ipfd</name></param>
+            <param>const <ptype>PIXELFORMATDESCRIPTOR</ptype> *<name>ppfd</name></param>
+        </command>
+        <command>
             <proto><ptype>BOOL</ptype> <name>wglSetStereoEmitterState3DL</name></proto>
             <param><ptype>HDC</ptype> <name>hDC</name></param>
             <param><ptype>UINT</ptype> <name>uState</name></param>
@@ -1210,6 +1237,10 @@
             <proto><ptype>BOOL</ptype> <name>wglShareLists</name></proto>
             <param><ptype>HGLRC</ptype> <name>hrcSrvShare</name></param>
             <param><ptype>HGLRC</ptype> <name>hrcSrvSource</name></param>
+        </command>
+        <command>
+            <proto><ptype>BOOL</ptype> <name>wglSwapBuffers</name></proto>
+            <param><ptype>HDC</ptype> <name>hdc</name></param>
         </command>
         <command>
             <proto><ptype>INT64</ptype> <name>wglSwapBuffersMscOML</name></proto>
@@ -1351,19 +1382,27 @@
             <command name="GetPixelFormat"/>
             <command name="SetPixelFormat"/>
             <command name="SwapBuffers"/>
+            <command name="wglChoosePixelFormat"/>
             <command name="wglCopyContext"/>
             <command name="wglCreateContext"/>
             <command name="wglCreateLayerContext"/>
             <command name="wglDeleteContext"/>
             <command name="wglDescribeLayerPlane"/>
+            <command name="wglDescribePixelFormat"/>
             <command name="wglGetCurrentContext"/>
             <command name="wglGetCurrentDC"/>
+            <command name="wglGetDefaultProcAddress"/>
+            <command name="wglGetEnhMetaFilePixelFormat"/>
+
             <command name="wglGetLayerPaletteEntries"/>
+            <command name="wglGetPixelFormat"/>
             <command name="wglGetProcAddress"/>
             <command name="wglMakeCurrent"/>
             <command name="wglRealizeLayerPalette"/>
             <command name="wglSetLayerPaletteEntries"/>
+            <command name="wglSetPixelFormat"/>
             <command name="wglShareLists"/>
+            <command name="wglSwapBuffers"/>
             <command name="wglSwapLayerBuffers"/>
             <command name="wglUseFontBitmaps"/>
             <command name="wglUseFontBitmapsA"/>

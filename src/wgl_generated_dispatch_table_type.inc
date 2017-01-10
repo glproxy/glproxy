@@ -15,6 +15,7 @@ struct wgl_dispatch_table {
     PFNWGLBINDVIDEODEVICENVPROC glproxy_wglBindVideoDeviceNV;
     PFNWGLBINDVIDEOIMAGENVPROC glproxy_wglBindVideoImageNV;
     PFNWGLBLITCONTEXTFRAMEBUFFERAMDPROC glproxy_wglBlitContextFramebufferAMD;
+    PFNWGLCHOOSEPIXELFORMATPROC glproxy_wglChoosePixelFormat;
     PFNWGLCHOOSEPIXELFORMATARBPROC glproxy_wglChoosePixelFormatARB;
     PFNWGLCHOOSEPIXELFORMATEXTPROC glproxy_wglChoosePixelFormatEXT;
     PFNWGLCOPYCONTEXTPROC glproxy_wglCopyContext;
@@ -44,6 +45,7 @@ struct wgl_dispatch_table {
     PFNWGLDELETECONTEXTPROC glproxy_wglDeleteContext;
     PFNWGLDELETEDCNVPROC glproxy_wglDeleteDCNV;
     PFNWGLDESCRIBELAYERPLANEPROC glproxy_wglDescribeLayerPlane;
+    PFNWGLDESCRIBEPIXELFORMATPROC glproxy_wglDescribePixelFormat;
     PFNWGLDESTROYDISPLAYCOLORTABLEEXTPROC glproxy_wglDestroyDisplayColorTableEXT;
     PFNWGLDESTROYIMAGEBUFFERI3DPROC glproxy_wglDestroyImageBufferI3D;
     PFNWGLDESTROYPBUFFERARBPROC glproxy_wglDestroyPbufferARB;
@@ -69,7 +71,9 @@ struct wgl_dispatch_table {
     PFNWGLGETCURRENTDCPROC glproxy_wglGetCurrentDC;
     PFNWGLGETCURRENTREADDCARBPROC glproxy_wglGetCurrentReadDCARB;
     PFNWGLGETCURRENTREADDCEXTPROC glproxy_wglGetCurrentReadDCEXT;
+    PFNWGLGETDEFAULTPROCADDRESSPROC glproxy_wglGetDefaultProcAddress;
     PFNWGLGETDIGITALVIDEOPARAMETERSI3DPROC glproxy_wglGetDigitalVideoParametersI3D;
+    PFNWGLGETENHMETAFILEPIXELFORMATPROC glproxy_wglGetEnhMetaFilePixelFormat;
     PFNWGLGETEXTENSIONSSTRINGARBPROC glproxy_wglGetExtensionsStringARB;
     PFNWGLGETEXTENSIONSSTRINGEXTPROC glproxy_wglGetExtensionsStringEXT;
     PFNWGLGETFRAMEUSAGEI3DPROC glproxy_wglGetFrameUsageI3D;
@@ -85,6 +89,7 @@ struct wgl_dispatch_table {
     PFNWGLGETMSCRATEOMLPROC glproxy_wglGetMscRateOML;
     PFNWGLGETPBUFFERDCARBPROC glproxy_wglGetPbufferDCARB;
     PFNWGLGETPBUFFERDCEXTPROC glproxy_wglGetPbufferDCEXT;
+    PFNWGLGETPIXELFORMATPROC glproxy_wglGetPixelFormat;
     PFNWGLGETPIXELFORMATATTRIBFVARBPROC glproxy_wglGetPixelFormatAttribfvARB;
     PFNWGLGETPIXELFORMATATTRIBFVEXTPROC glproxy_wglGetPixelFormatAttribfvEXT;
     PFNWGLGETPIXELFORMATATTRIBIVARBPROC glproxy_wglGetPixelFormatAttribivARB;
@@ -130,8 +135,10 @@ struct wgl_dispatch_table {
     PFNWGLSETGAMMATABLEPARAMETERSI3DPROC glproxy_wglSetGammaTableParametersI3D;
     PFNWGLSETLAYERPALETTEENTRIESPROC glproxy_wglSetLayerPaletteEntries;
     PFNWGLSETPBUFFERATTRIBARBPROC glproxy_wglSetPbufferAttribARB;
+    PFNWGLSETPIXELFORMATPROC glproxy_wglSetPixelFormat;
     PFNWGLSETSTEREOEMITTERSTATE3DLPROC glproxy_wglSetStereoEmitterState3DL;
     PFNWGLSHARELISTSPROC glproxy_wglShareLists;
+    PFNWGLSWAPBUFFERSPROC glproxy_wglSwapBuffers;
     PFNWGLSWAPBUFFERSMSCOMLPROC glproxy_wglSwapBuffersMscOML;
     PFNWGLSWAPINTERVALEXTPROC glproxy_wglSwapIntervalEXT;
     PFNWGLSWAPLAYERBUFFERSPROC glproxy_wglSwapLayerBuffers;

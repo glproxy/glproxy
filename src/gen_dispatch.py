@@ -975,6 +975,8 @@ class Generator(object):
             # change up our symbol loading to support that.  Just
             # don't wrap those functions.
             if self.target == 'wgl' and 'wgl' not in name:
+                # According to http://stackoverflow.com/questions/199016/wglcreatecontext-in-c-sharp-failing-but-not-in-managed-c
+                print("Remove function: " + name)
                 del self.functions[name]
                 continue;
 

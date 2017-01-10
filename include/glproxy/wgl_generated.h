@@ -346,6 +346,7 @@ typedef BOOL (GLAPIENTRY *PFNWGLBINDVIDEOCAPTUREDEVICENVPROC)(UINT uVideoSlot, H
 typedef BOOL (GLAPIENTRY *PFNWGLBINDVIDEODEVICENVPROC)(HDC hDC, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int * piAttribList);
 typedef BOOL (GLAPIENTRY *PFNWGLBINDVIDEOIMAGENVPROC)(HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
 typedef VOID (GLAPIENTRY *PFNWGLBLITCONTEXTFRAMEBUFFERAMDPROC)(HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+typedef int (GLAPIENTRY *PFNWGLCHOOSEPIXELFORMATPROC)(HDC hDc, const PIXELFORMATDESCRIPTOR * pPfd);
 typedef BOOL (GLAPIENTRY *PFNWGLCHOOSEPIXELFORMATARBPROC)(HDC hdc, const int * piAttribIList, const FLOAT * pfAttribFList, UINT nMaxFormats, int * piFormats, UINT * nNumFormats);
 typedef BOOL (GLAPIENTRY *PFNWGLCHOOSEPIXELFORMATEXTPROC)(HDC hdc, const int * piAttribIList, const FLOAT * pfAttribFList, UINT nMaxFormats, int * piFormats, UINT * nNumFormats);
 typedef BOOL (GLAPIENTRY *PFNWGLCOPYCONTEXTPROC)(HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask);
@@ -375,6 +376,7 @@ typedef VOID (GLAPIENTRY *PFNWGLDELETEBUFFERREGIONARBPROC)(HANDLE hRegion);
 typedef BOOL (GLAPIENTRY *PFNWGLDELETECONTEXTPROC)(HGLRC oldContext);
 typedef BOOL (GLAPIENTRY *PFNWGLDELETEDCNVPROC)(HDC hdc);
 typedef BOOL (GLAPIENTRY *PFNWGLDESCRIBELAYERPLANEPROC)(HDC hDc, int pixelFormat, int layerPlane, UINT nBytes, const LAYERPLANEDESCRIPTOR * plpd);
+typedef int (GLAPIENTRY *PFNWGLDESCRIBEPIXELFORMATPROC)(HDC hdc, int ipfd, UINT cjpfd, const PIXELFORMATDESCRIPTOR * ppfd);
 typedef VOID (GLAPIENTRY *PFNWGLDESTROYDISPLAYCOLORTABLEEXTPROC)(GLushort id);
 typedef BOOL (GLAPIENTRY *PFNWGLDESTROYIMAGEBUFFERI3DPROC)(HDC hDC, LPVOID pAddress);
 typedef BOOL (GLAPIENTRY *PFNWGLDESTROYPBUFFERARBPROC)(HPBUFFERARB hPbuffer);
@@ -400,7 +402,9 @@ typedef HGLRC (GLAPIENTRY *PFNWGLGETCURRENTCONTEXTPROC)(void);
 typedef HDC (GLAPIENTRY *PFNWGLGETCURRENTDCPROC)(void);
 typedef HDC (GLAPIENTRY *PFNWGLGETCURRENTREADDCARBPROC)(void);
 typedef HDC (GLAPIENTRY *PFNWGLGETCURRENTREADDCEXTPROC)(void);
+typedef PROC (GLAPIENTRY *PFNWGLGETDEFAULTPROCADDRESSPROC)(LPCSTR lpszProc);
 typedef BOOL (GLAPIENTRY *PFNWGLGETDIGITALVIDEOPARAMETERSI3DPROC)(HDC hDC, int iAttribute, int * piValue);
+typedef UINT (GLAPIENTRY *PFNWGLGETENHMETAFILEPIXELFORMATPROC)(HENHMETAFILE hemf, const PIXELFORMATDESCRIPTOR * ppfd);
 typedef const char * (GLAPIENTRY *PFNWGLGETEXTENSIONSSTRINGARBPROC)(HDC hdc);
 typedef const char * (GLAPIENTRY *PFNWGLGETEXTENSIONSSTRINGEXTPROC)(void);
 typedef BOOL (GLAPIENTRY *PFNWGLGETFRAMEUSAGEI3DPROC)(float * pUsage);
@@ -416,6 +420,7 @@ typedef int (GLAPIENTRY *PFNWGLGETLAYERPALETTEENTRIESPROC)(HDC hdc, int iLayerPl
 typedef BOOL (GLAPIENTRY *PFNWGLGETMSCRATEOMLPROC)(HDC hdc, INT32 * numerator, INT32 * denominator);
 typedef HDC (GLAPIENTRY *PFNWGLGETPBUFFERDCARBPROC)(HPBUFFERARB hPbuffer);
 typedef HDC (GLAPIENTRY *PFNWGLGETPBUFFERDCEXTPROC)(HPBUFFEREXT hPbuffer);
+typedef int (GLAPIENTRY *PFNWGLGETPIXELFORMATPROC)(HDC hdc);
 typedef BOOL (GLAPIENTRY *PFNWGLGETPIXELFORMATATTRIBFVARBPROC)(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, FLOAT * pfValues);
 typedef BOOL (GLAPIENTRY *PFNWGLGETPIXELFORMATATTRIBFVEXTPROC)(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, int * piAttributes, FLOAT * pfValues);
 typedef BOOL (GLAPIENTRY *PFNWGLGETPIXELFORMATATTRIBIVARBPROC)(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, int * piValues);
@@ -461,8 +466,10 @@ typedef BOOL (GLAPIENTRY *PFNWGLSETGAMMATABLEI3DPROC)(HDC hDC, int iEntries, con
 typedef BOOL (GLAPIENTRY *PFNWGLSETGAMMATABLEPARAMETERSI3DPROC)(HDC hDC, int iAttribute, const int * piValue);
 typedef int (GLAPIENTRY *PFNWGLSETLAYERPALETTEENTRIESPROC)(HDC hdc, int iLayerPlane, int iStart, int cEntries, const COLORREF * pcr);
 typedef BOOL (GLAPIENTRY *PFNWGLSETPBUFFERATTRIBARBPROC)(HPBUFFERARB hPbuffer, const int * piAttribList);
+typedef BOOL (GLAPIENTRY *PFNWGLSETPIXELFORMATPROC)(HDC hdc, int ipfd, const PIXELFORMATDESCRIPTOR * ppfd);
 typedef BOOL (GLAPIENTRY *PFNWGLSETSTEREOEMITTERSTATE3DLPROC)(HDC hDC, UINT uState);
 typedef BOOL (GLAPIENTRY *PFNWGLSHARELISTSPROC)(HGLRC hrcSrvShare, HGLRC hrcSrvSource);
+typedef BOOL (GLAPIENTRY *PFNWGLSWAPBUFFERSPROC)(HDC hdc);
 typedef INT64 (GLAPIENTRY *PFNWGLSWAPBUFFERSMSCOMLPROC)(HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder);
 typedef BOOL (GLAPIENTRY *PFNWGLSWAPINTERVALEXTPROC)(int interval);
 typedef BOOL (GLAPIENTRY *PFNWGLSWAPLAYERBUFFERSPROC)(HDC hdc, UINT fuFlags);
@@ -493,6 +500,8 @@ GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglBindVideoDeviceNV(HDC hDC,
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglBindVideoImageNV(HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
 
 GLPROXY_IMPORTEXPORT VOID GLPROXY_CALLSPEC glproxy_wglBlitContextFramebufferAMD(HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglChoosePixelFormat(HDC hDc, const PIXELFORMATDESCRIPTOR * pPfd);
 
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglChoosePixelFormatARB(HDC hdc, const int * piAttribIList, const FLOAT * pfAttribFList, UINT nMaxFormats, int * piFormats, UINT * nNumFormats);
 
@@ -552,6 +561,8 @@ GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDeleteDCNV(HDC hdc);
 
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDescribeLayerPlane(HDC hDc, int pixelFormat, int layerPlane, UINT nBytes, const LAYERPLANEDESCRIPTOR * plpd);
 
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglDescribePixelFormat(HDC hdc, int ipfd, UINT cjpfd, const PIXELFORMATDESCRIPTOR * ppfd);
+
 GLPROXY_IMPORTEXPORT VOID GLPROXY_CALLSPEC glproxy_wglDestroyDisplayColorTableEXT(GLushort id);
 
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglDestroyImageBufferI3D(HDC hDC, LPVOID pAddress);
@@ -602,8 +613,11 @@ GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetCurrentReadDCARB(void);
 
 GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetCurrentReadDCEXT(void);
 
+GLPROXY_IMPORTEXPORT PROC GLPROXY_CALLSPEC glproxy_wglGetDefaultProcAddress(LPCSTR lpszProc);
 
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetDigitalVideoParametersI3D(HDC hDC, int iAttribute, int * piValue);
+
+GLPROXY_IMPORTEXPORT UINT GLPROXY_CALLSPEC glproxy_wglGetEnhMetaFilePixelFormat(HENHMETAFILE hemf, const PIXELFORMATDESCRIPTOR * ppfd);
 
 GLPROXY_IMPORTEXPORT const char * GLPROXY_CALLSPEC glproxy_wglGetExtensionsStringARB(HDC hdc);
 
@@ -634,6 +648,8 @@ GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetMscRateOML(HDC hdc, INT
 GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetPbufferDCARB(HPBUFFERARB hPbuffer);
 
 GLPROXY_IMPORTEXPORT HDC GLPROXY_CALLSPEC glproxy_wglGetPbufferDCEXT(HPBUFFEREXT hPbuffer);
+
+GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglGetPixelFormat(HDC hdc);
 
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglGetPixelFormatAttribfvARB(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int * piAttributes, FLOAT * pfValues);
 
@@ -725,9 +741,13 @@ GLPROXY_IMPORTEXPORT int GLPROXY_CALLSPEC glproxy_wglSetLayerPaletteEntries(HDC 
 
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSetPbufferAttribARB(HPBUFFERARB hPbuffer, const int * piAttribList);
 
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSetPixelFormat(HDC hdc, int ipfd, const PIXELFORMATDESCRIPTOR * ppfd);
+
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSetStereoEmitterState3DL(HDC hDC, UINT uState);
 
 GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglShareLists(HGLRC hrcSrvShare, HGLRC hrcSrvSource);
+
+GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglSwapBuffers(HDC hdc);
 
 GLPROXY_IMPORTEXPORT INT64 GLPROXY_CALLSPEC glproxy_wglSwapBuffersMscOML(HDC hdc, INT64 target_msc, INT64 divisor, INT64 remainder);
 
@@ -761,6 +781,7 @@ GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglWaitForSbcOML(HDC hdc, INT
 #define wglBindVideoDeviceNV glproxy_wglBindVideoDeviceNV
 #define wglBindVideoImageNV glproxy_wglBindVideoImageNV
 #define wglBlitContextFramebufferAMD glproxy_wglBlitContextFramebufferAMD
+#define wglChoosePixelFormat glproxy_wglChoosePixelFormat
 #define wglChoosePixelFormatARB glproxy_wglChoosePixelFormatARB
 #define wglChoosePixelFormatEXT glproxy_wglChoosePixelFormatEXT
 #define wglCopyContext glproxy_wglCopyContext
@@ -790,6 +811,7 @@ GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglWaitForSbcOML(HDC hdc, INT
 #define wglDeleteContext glproxy_wglDeleteContext
 #define wglDeleteDCNV glproxy_wglDeleteDCNV
 #define wglDescribeLayerPlane glproxy_wglDescribeLayerPlane
+#define wglDescribePixelFormat glproxy_wglDescribePixelFormat
 #define wglDestroyDisplayColorTableEXT glproxy_wglDestroyDisplayColorTableEXT
 #define wglDestroyImageBufferI3D glproxy_wglDestroyImageBufferI3D
 #define wglDestroyPbufferARB glproxy_wglDestroyPbufferARB
@@ -817,6 +839,7 @@ GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglWaitForSbcOML(HDC hdc, INT
 #define wglGetCurrentReadDCEXT glproxy_wglGetCurrentReadDCEXT
 #define wglGetDefaultProcAddress glproxy_wglGetDefaultProcAddress
 #define wglGetDigitalVideoParametersI3D glproxy_wglGetDigitalVideoParametersI3D
+#define wglGetEnhMetaFilePixelFormat glproxy_wglGetEnhMetaFilePixelFormat
 #define wglGetExtensionsStringARB glproxy_wglGetExtensionsStringARB
 #define wglGetExtensionsStringEXT glproxy_wglGetExtensionsStringEXT
 #define wglGetFrameUsageI3D glproxy_wglGetFrameUsageI3D
@@ -832,6 +855,7 @@ GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglWaitForSbcOML(HDC hdc, INT
 #define wglGetMscRateOML glproxy_wglGetMscRateOML
 #define wglGetPbufferDCARB glproxy_wglGetPbufferDCARB
 #define wglGetPbufferDCEXT glproxy_wglGetPbufferDCEXT
+#define wglGetPixelFormat glproxy_wglGetPixelFormat
 #define wglGetPixelFormatAttribfvARB glproxy_wglGetPixelFormatAttribfvARB
 #define wglGetPixelFormatAttribfvEXT glproxy_wglGetPixelFormatAttribfvEXT
 #define wglGetPixelFormatAttribivARB glproxy_wglGetPixelFormatAttribivARB
@@ -877,8 +901,10 @@ GLPROXY_IMPORTEXPORT BOOL GLPROXY_CALLSPEC glproxy_wglWaitForSbcOML(HDC hdc, INT
 #define wglSetGammaTableParametersI3D glproxy_wglSetGammaTableParametersI3D
 #define wglSetLayerPaletteEntries glproxy_wglSetLayerPaletteEntries
 #define wglSetPbufferAttribARB glproxy_wglSetPbufferAttribARB
+#define wglSetPixelFormat glproxy_wglSetPixelFormat
 #define wglSetStereoEmitterState3DL glproxy_wglSetStereoEmitterState3DL
 #define wglShareLists glproxy_wglShareLists
+#define wglSwapBuffers glproxy_wglSwapBuffers
 #define wglSwapBuffersMscOML glproxy_wglSwapBuffersMscOML
 #define wglSwapIntervalEXT glproxy_wglSwapIntervalEXT
 #define wglSwapLayerBuffers glproxy_wglSwapLayerBuffers
