@@ -25,3 +25,5 @@
 
 void
 make_window_and_test(int (*callback)(HDC hdc));
+
+void report_error(const char* function_name);

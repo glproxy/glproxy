@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <glproxy/wgl.h>
 #include "wgl_common.h"
+#include <strsafe.h>
 
 static int (*test_callback)(HDC hdc);
 
@@ -62,6 +63,30 @@ setup_pixel_format(HDC hdc)
         fprintf(stderr, "SetPixelFormat() failed.\n");
         exit(1);
     }
+}
+
+void report_error(const char* function_name)
+{
+    // Retrieve the system error message for the last-error code
+
+    LPSTR lpMsgBuf;
+    DWORD dw = GetLastError();
+
+    FormatMessageA(
+        FORMAT_MESSAGE_ALLOCATE_BUFFER |
+        FORMAT_MESSAGE_FROM_SYSTEM |
+        FORMAT_MESSAGE_IGNORE_INSERTS,
+        NULL,
+        dw,
+        MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+        (LPSTR)&lpMsgBuf,
+        0, NULL);
+
+    // Display the error message and exit the process
+    printf("%s failed with error %d: %s", function_name, dw, lpMsgBuf);
+
+    LocalFree((HLOCAL)lpMsgBuf);
+    ExitProcess(dw);
 }
 
 static LRESULT CALLBACK

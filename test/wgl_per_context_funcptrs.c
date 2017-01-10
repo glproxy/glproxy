@@ -134,6 +134,7 @@ test_function(HDC hdc)
 
     if (!ctx1 || !ctx2) {
         fprintf(stderr, "Failed to create wgl contexts\n");
+        report_error(__FUNCTION__);
         return 1;
     }
     if (!glproxy_ctx1 || !glproxy_ctx2) {
