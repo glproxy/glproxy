@@ -20,3 +20,11 @@ GLAPI void glad_set_pre_callback(GLADcallback cb);
  */
 GLAPI void glad_set_post_callback(GLADcallback cb);
 ```
+
+* Add OSX support
+
+* Add RPI support
+
+* Add tizen support
+
+* Add WinPhone support
