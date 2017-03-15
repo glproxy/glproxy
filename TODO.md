@@ -28,3 +28,14 @@ GLAPI void glad_set_post_callback(GLADcallback cb);
 * Add tizen support
 
 * Add WinPhone support
+
+* Enable faster feature test, but can not using variable, a faster function are needed
+```
+    if(GL_EXT_framebuffer_multisample) { 
+        /* GL_EXT_framebuffer_multisample is supported */ 
+    }
+
+    if(GL_VERSION_3_0) {
+        /* We support at least OpenGL version 3 */
+    }
+```
