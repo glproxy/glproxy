@@ -29,7 +29,11 @@ GLAPI void glad_set_post_callback(GLADcallback cb);
 
 * Add WinPhone support
 
-* Enable faster feature test, but can not using variable, a faster function are needed
+* Document, Enable faster feature test, but can not using variable, using 
+```
+glproxy_has_gl_extension_by_enum
+```
+for 
 ```
     if(GL_EXT_framebuffer_multisample) { 
         /* GL_EXT_framebuffer_multisample is supported */ 
@@ -39,3 +43,6 @@ GLAPI void glad_set_post_callback(GLADcallback cb);
         /* We support at least OpenGL version 3 */
     }
 ```
+
+* Implement glproxy_has_gl_extension directly with the OpenGL funciton, now using
+  enum
