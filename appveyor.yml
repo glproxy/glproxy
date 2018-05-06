@@ -28,8 +28,10 @@ before_build:
       echo %ANGLE_PATH%
       set PATH=%ANGLE_PATH%;%PATH%
       cd /d %APPVEYOR_BUILD_FOLDER%
-      if "%PLATFORM%"=="Win32" mkdir build & cd build & cmake -G"Visual Studio 10 2010" ..
-      if "%PLATFORM%"=="x64" mkdir build & cd build & cmake -G"Visual Studio 10 2010 Win64" ..
+      mkdir build
+      cd build
+      if "%PLATFORM%"=="Win32" cmake -G"Visual Studio 10 2010" ..
+      if "%PLATFORM%"=="x64" cmake -G"Visual Studio 10 2010 Win64" ..
 
 build_script:
   - cmd: |
