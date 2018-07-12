@@ -1,5 +1,3 @@
-set (GLPROXY_APIS gl egl wgl glx)
-
 set (HEADERS "../include/glproxy/_common.h"
              "../include/glproxy/gl.h"
              "../include/glproxy/khrplatform.h"
@@ -9,12 +7,7 @@ set (SOURCES
   dispatch_generated.c
 )
 
-if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC)
-  list (APPEND SOURCES "gen_dispatch.py")
-endif ()
-
 list (APPEND HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/../include/glproxy/gl_generated.h")
-list (APPEND HEADERS "${CMAKE_CURRENT_BINARY_DIR}/../include/glproxy/config.h")
 
 set (GLPROXY_COMPILE_DEFS PRIVATE GLPROXY_BUILDING_LIB)
 if (CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC)

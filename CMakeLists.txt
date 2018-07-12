@@ -8,9 +8,9 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.3")
 else ()
     set (HONOR_VISIBILITY FALSE)
 endif ()
-project (GLproxy VERSION 1.3.1 LANGUAGES C)
+project (GLproxy VERSION 1.3.2 LANGUAGES C)
 set (GLPROXY_TARGET_NAME glproxy)
-set (TARGET_VER 1.3.1_yaronct-5)
+set (TARGET_VER 1.3.2)
 set (TARGET_ABI_VER 0)
 
 include (GNUInstallDirs)
@@ -36,7 +36,6 @@ endif ()
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package (X11)
-find_package (PythonInterp)
 if (WIN32)
 set (EGL_FOUND TRUE)
 set (GLES_V1_FOUND FALSE)
@@ -76,7 +75,6 @@ option (GLPROXY_BUILD_TESTS "Build tests" "${GLPROXY_BUILD_TESTS_DEFAULT}")
 cmake_dependent_option (GLPROXY_MSVC_USE_RUNTIME_LIBRARY_DLL "Link with MSVC Runtime Library DLL" ON
                         "CMAKE_C_COMPILER_ID STREQUAL COMPILER_ID_MSVC" OFF)
 
-configure_file ("include/glproxy/config.h.in" "include/glproxy/config.h")
 
 set (GLPROXY_INCLUDE_DIRS  "${CMAKE_CURRENT_SOURCE_DIR}/include"
                          "${CMAKE_CURRENT_BINARY_DIR}/include"
